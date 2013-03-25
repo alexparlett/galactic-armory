@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<settings scale="30" name="SC6 Kodachi Class Battlecruiser" />
+<subSystems>
+	<subSystem name="FuelCell" x="-0.992188" y=".539063" scale=".375" link="-1" />
+	<subSystem name="Bulkhead" x=".476563" y=".039063" scale="1" link="9" />
+	<subSystem name="ShieldGen" x="-0.195313" y="-0.023438" scale=".5" link="-7" />
+	<subSystem name="RepairBay" x="-1.664063" y="-0.820313" scale=".5" link="-1" />
+	<subSystem name="ShieldCharger" x="-0.210938" y=".601563" scale=".75" link="-1" />
+	<subSystem name="ShieldHardener" x="-0.210938" y="-0.695313" scale=".75" link="2" />
+	<subSystem name="CoolantSys" x="1.460938" y="1.226563" scale=".5" link="12" />
+	<subSystem name="CoolantSys" x="1.585938" y="-1.429688" scale=".5" link="17" />
+	<subSystem name="NanoArmor" x="-1.421875" y="-2.171875" scale="2" link="-1" />
+	<subSystem name="StealthHull" x=".859375" y=".03125" scale="1" link="-3" />
+	<subSystem name="IntegratedCommandCenter" x=".734375" y="-0.9375" scale=".25" link="-1" />
+	<subSystem name="ShieldedAntimatterGen" x="-1.710938" y=".773438" scale=".875" link="-1" />
+	<subSystem name="AntimatterProjector" x="2.242188" y="1.351563" scale="1.875" link="-8" />
+	<subSystem name="Attractor" x="2.765625" y=".03125" scale="1" link="-1" />
+	<subSystem name="ThermalPenetrator" x="1.640625" y=".03125" scale="1" link="-1" />
+	<subSystem name="AmmoFabricator" x="-1.007813" y="-0.367188" scale=".5" link="-1" />
+	<subSystem name="AmmoStorage" x=".8125" y=".828125" scale=".25" link="-1" />
+	<subSystem name="TwinParticleCannon" x="2.273438" y="-1.289063" scale="1.875" link="-9" />
+	<subSystem name="AntimatterCannon" x=".523438" y="-2.195313" scale=".875" link="-1" />
+	<subSystem name="AntimatterCannon" x=".398438" y="2.039063" scale=".875" link="-1" />
+	<subSystem name="AMConverter" x="-1.726563" y="-0.039063" scale=".5" link="-1" />
+	<subSystem name="AntimatterRocket" x="-2.765625" y="-0.09375" scale="1" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="true" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="false" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="JoinFleet:-1.000000:true" />
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Defend" />
+	<order desc="Work:EnterStargate" />
+</orders>
+

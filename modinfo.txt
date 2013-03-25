@@ -1,0 +1,33 @@
+Name: Galactic Armory 1.9
+
+Authors:	Galactic Armory Mod Project
+
+			Core Team:
+			Azalrion - Scripting, testing, UI
+			balancesheet - race profile images & additional art
+			Constellation - Ship blueprints, balancing, data file editing
+			MDK - Scripting, UI
+			Starman001 - Modelling, texturing, testing
+			XTRMNTR2K - Project and QA lead, graphical assets, sound effects, data file editing
+		
+			Contributors:
+			mickleroi - Realistic Systems Mod
+			Tectonic - additional planet textures
+			eRe4s3r - additional subsystem graphics and effects
+			Baleur, ayrnieu and SRDominator - Starnames Mod
+			Bromoc - Computer-dependant trait blueprint fix
+			Zzz1010 - Homeworld 2 shipset glowmaps & player color markings, Models & Textures by Relic Entertainment
+			bigcat - Additional Homeworld 2 models, Models & Textures by Relic Entertainment
+			hellsan631 - Testing, mod manual
+			Here be noobs - Testing
+			Robik - Advisor Mod, testing
+			spyre2000 - Testing
+			Swampfox - Blueprint design, testing
+			Vodswyld - Testing
+			WarStalkeR - Modelling, texturing, testing
+			xilr - Testing
+			orzelek - Remnant AI Mod, testing
+			DwunkyPengy - Modelling, texturing, testing
+
+Derive from: base
+Mod ID: 3

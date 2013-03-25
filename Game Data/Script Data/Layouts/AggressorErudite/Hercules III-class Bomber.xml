@@ -1,0 +1,37 @@
+﻿<?xml version="1.0"?>
+<settings scale="1" name="Hercules III-class Bomber" />
+<subSystems>
+	<subSystem name="FuelCell" x="-1.75" y="-0.890625" scale="1.5" link="-1" />
+	<subSystem name="Armor" x="2.026933" y=".027577" scale="2" link="-1" />
+	<subSystem name="Bulkhead" x="-0.222505" y=".27195" scale="1" link="3" />
+	<subSystem name="Cockpit" x="-0.164063" y="-0.054688" scale=".75" link="-4" />
+	<subSystem name="FuelCell" x="-1.6875" y="1.046875" scale="1.5" link="-1" />
+	<subSystem name="PolypropellantThruster" x="-2.34375" y=".09375" scale="3.75" link="-1" />
+	<subSystem name="PolypropellantThruster" x="-2.632813" y="1.023438" scale=".75" link="-1" />
+	<subSystem name="PolypropellantThruster" x="-2.664063" y="-0.929688" scale=".75" link="-1" />
+	<subSystem name="BomberHull" x="-0.828125" y="-0.03125" scale="1" link="-1" />
+	<subSystem name="FighterPrecisionBomb" x="-0.217171" y="1.278898" scale="3.25" link="-1" />
+	<subSystem name="FighterPrecisionBomb" x="-0.341269" y="-1.230638" scale="3.25" link="-1" />
+</subSystems>
+<ai>
+	<targetScale low="1" hi="9999999" forced="false" />
+	<orbit flag="true" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Defend" />
+</orders>
+

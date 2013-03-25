@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<settings scale="14" name="Ero Tuch" />
+<subSystems>
+	<subSystem name="HeavyHull" x=".53125" y="-0.203125" scale="1" link="-15" />
+	<subSystem name="BigAmmoStorage" x="-0.515625" y="-0.125" scale="1" link="-14" />
+	<subSystem name="Capacitor" x="-1.09375" y=".90625" scale=".25" link="-1" />
+	<subSystem name="RepairBay" x="-1.882813" y=".726563" scale=".5" link="-1" />
+	<subSystem name="RepairTool" x="-1.820313" y="-0.976563" scale=".5" link="-1" />
+	<subSystem name="MissileRack" x="2.25" y="1.703125" scale="1" link="-22" />
+	<subSystem name="MissileRack" x="2.046875" y="-1.9375" scale="1" link="-23" />
+	<subSystem name="InterceptorMissile" x=".757813" y="-1.179688" scale=".5" link="-1" />
+	<subSystem name="FuelCell" x="-1.5" y="-0.125" scale="1" link="-13" />
+	<subSystem name="Armor" x="-1.40625" y="2.171875" scale="1" link="-1" />
+	<subSystem name="Armor" x="-1.34375" y="-2.28125" scale="1" link="-1" />
+	<subSystem name="Bulkhead" x="-1.296875" y=".328125" scale=".5" link="8" />
+	<subSystem name="Bulkhead" x="-0.664063" y="-0.632813" scale="1" link="1" />
+	<subSystem name="Bulkhead" x="1.039063" y="-0.210938" scale="1" link="0" />
+	<subSystem name="FusionGen" x="-0.460938" y=".773438" scale=".375" link="-1" />
+	<subSystem name="NaniteTorpedoBay" x="-0.085938" y="-2.882813" scale=".75" link="-1" />
+	<subSystem name="TorpedoBay" x=".117188" y="2.820313" scale=".75" link="-1" />
+	<subSystem name="LargeMissileRack" x="2.820313" y="-0.226563" scale=".875" link="-25" />
+	<subSystem name="ClusterMissile" x=".804688" y=".898438" scale=".5" link="-1" />
+	<subSystem name="AmmoFabricator" x="-1.203125" y="-1.046875" scale=".25" link="-1" />
+	<subSystem name="ExtendedMagazine" x="1.601563" y="1.492188" scale=".5" link="5" />
+	<subSystem name="CoolantSys" x="1.414063" y="-1.757813" scale=".5" link="6" />
+	<subSystem name="IntegratedCommandCenter" x="1.59375" y="-0.1875" scale=".125" link="-1" />
+	<subSystem name="ExtendedMagazine" x="2.210938" y="-0.195313" scale=".5" link="17" />
+	<subSystem name="VASIMRThruster" x="-2.610097" y="-0.170899" scale="2" link="-1" />
+	<subSystem name="NanoArmor" x="1.765625" y="-0.9375" scale="1" link="-1" />
+	<subSystem name="NanoArmor" x="1.875" y=".609375" scale="1" link="-1" />
+	<subSystem name="Armor" x=".59375" y="-2.203125" scale="1" link="-1" />
+	<subSystem name="Armor" x=".609375" y="1.8125" scale="1" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Defend" />
+</orders>

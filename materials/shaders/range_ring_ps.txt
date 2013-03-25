@@ -1,0 +1,21 @@
+const float innerRad = 0.77;
+const float midRad = 0.97;
+const float outerRad = 0.99;
+
+const float minAlpha = 3.0/255.0;
+
+//Pick a color based on a radius, making a perfect circle
+void main() {
+  float radius = length(gl_TexCoord[0].xy);
+
+  if(radius <= innerRad || radius >= outerRad)
+	discard;
+
+  float alpha;
+  if(radius < midRad)
+	alpha = minAlpha + ((1.0 - minAlpha) * ( (radius - innerRad) / (midRad - innerRad) ));
+  else
+	alpha = 1.0 - ((1.0 - minAlpha) * ( (radius - midRad) / (outerRad - midRad) ));
+
+  gl_FragColor = vec4(1.0,0.4,0.0,alpha);
+}

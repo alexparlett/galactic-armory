@@ -1,0 +1,51 @@
+﻿<?xml version="1.0"?>
+<settings scale="30" name="Zeitnot-class Carrier" />
+<subSystems>
+	<subSystem name="FuelCell" x="-0.5" y=".703125" scale=".125" link="-1" />
+	<subSystem name="AmmoStorage" x="-0.414063" y="1.320313" scale=".75" link="-1" />
+	<subSystem name="AmmoStorage" x="-0.382813" y="-1.460938" scale=".75" link="-1" />
+	<subSystem name="RepairBay" x=".867188" y="-0.132813" scale=".5" link="-1" />
+	<subSystem name="ShieldGen" x="-1.390625" y="-1.0625" scale="1" link="-1" />
+	<subSystem name="ShieldCharger" x="-1.359375" y=".5625" scale="1" link="-1" />
+	<subSystem name="AutocannonBattery" x="2.5" y=".3125" scale=".25" link="-1" />
+	<subSystem name="MultiRack" x="2.03125" y=".265625" scale=".625" link="7" />
+	<subSystem name="FlakTurret" x="1.804688" y="-0.664063" scale=".5" link="-1" />
+	<subSystem name="PointDefense" x="1.726563" y="1.070313" scale=".5" link="-1" />
+	<subSystem name="ReactArmor" x=".03125" y="-2.8125" scale="1" link="-1" />
+	<subSystem name="ReactArmor" x=".046875" y="2.796875" scale="1" link="-1" />
+	<subSystem name="CarrierHull" x="-0.15625" y="-0.046875" scale="1" link="-1" />
+	<subSystem name="IntegratedCommandCenter" x=".75" y="-0.90625" scale=".25" link="-1" />
+	<subSystem name="AntimatterProjector" x="2.585938" y="-0.617188" scale=".5" link="-1" />
+	<subSystem name="ShieldedAntimatterGen" x="-1.453125" y="-0.265625" scale="1" link="-1" />
+	<subSystem name="AmmoFabricator" x="-0.054688" y="-0.976563" scale=".5" link="-1" />
+	<subSystem name="RepairFacilities" x=".734375" y=".875" scale=".25" link="-1" />
+	<subSystem name="VASIMRThruster" x="-2.476563" y="-0.960938" scale="1.125" link="-1" />
+	<subSystem name="VASIMRThruster" x="-2.617188" y=".804688" scale="1.125" link="-1" />
+	<subSystem name="TRayEmitter" x="2.539063" y="1.257813" scale=".5" link="-1" />
+	<subSystem name="HeavyTorpedo" x="3.0625" y="-0.09375" scale=".25" link="-1" />
+	<subSystem name="TorpedoBay" x="3.015625" y=".546875" scale=".25" link="-1" />
+</subSystems>
+<ai>
+	<targetScale low="0" hi="999999" forced="false" />
+	<orbit flag="false" />
+	<allowFetch flag="true" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="false" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="1000" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="AutoUnDock" />
+	<order desc="Replenish" />
+	<order desc="Defend" />
+</orders>
+

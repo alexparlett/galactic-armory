@@ -1,0 +1,11 @@
+uniform sampler2D texture;
+void main() {
+	vec3 tc = texture2D(texture, gl_TexCoord[0].xy).rgb;
+	tc.rgb -= 0.5;
+	tc.rgb *= 2.0;
+
+	vec4 col = gl_FrontMaterial.diffuse;
+	col.rgb = (col.rgb * gl_Color.rgb) + tc.rgb;
+
+	gl_FragColor = col * gl_Color.a;
+}

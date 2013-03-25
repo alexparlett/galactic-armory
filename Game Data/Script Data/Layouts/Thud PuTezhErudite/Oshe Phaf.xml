@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<settings scale="10" name="Oshe Phaf" />
+<subSystems>
+	<subSystem name="MediumHull" x=".625" y="-0.1875" scale="1" link="-9" />
+	<subSystem name="Capacitor" x="-0.109375" y="-0.875" scale=".25" link="-1" />
+	<subSystem name="RepairBay" x="-1.953125" y="-1.203125" scale=".625" link="-1" />
+	<subSystem name="RepairTool" x="-1.9375" y=".890625" scale=".625" link="-1" />
+	<subSystem name="MissileRack" x="2.25" y="-1.515625" scale="1.5" link="-7" />
+	<subSystem name="CoolantSys" x="1.5" y="-1.265625" scale="1" link="4" />
+	<subSystem name="Bulkhead" x="-0.632813" y="-0.226563" scale="1.75" link="24" />
+	<subSystem name="Bulkhead" x=".28125" y="-0.15625" scale="1.25" link="0" />
+	<subSystem name="Armor" x="1.03125" y="-2.328125" scale="1" link="-1" />
+	<subSystem name="Armor" x="1.21875" y="2.0625" scale="1" link="-1" />
+	<subSystem name="Armor" x="-1.40625" y="-2.109375" scale="1" link="-1" />
+	<subSystem name="Armor" x="-1.4375" y="1.765625" scale="1" link="-1" />
+	<subSystem name="TorpedoBay" x="1.703125" y="-0.171875" scale="1" link="-1" />
+	<subSystem name="LargeMissileRack" x="2.5625" y="1.09375" scale="1" link="-22" />
+	<subSystem name="FusionGen" x="-0.117188" y=".617188" scale=".5" link="-1" />
+	<subSystem name="IntegratedCommandCenter" x="-0.640625" y="-1.125" scale=".25" link="-1" />
+	<subSystem name="FuelCell" x="-1.085938" y=".789063" scale=".5" link="-1" />
+	<subSystem name="RamScoop" x="-2.734375" y="-1.171875" scale=".25" link="-1" />
+	<subSystem name="AmmoFabricator" x="-1.234375" y="-1.25" scale=".25" link="-1" />
+	<subSystem name="FusionTorpedoBay" x="2.6875" y="-0.203125" scale="1.5" link="-1" />
+	<subSystem name="CoolantSys" x="1.71875" y=".96875" scale="1" link="13" />
+	<subSystem name="VASIMRThruster" x="-2.601563" y="-0.226563" scale="1.875" link="-1" />
+	<subSystem name="InterceptorMissile" x=".53125" y="-1.171875" scale=".25" link="-1" />
+	<subSystem name="MissileRack" x=".640625" y=".84375" scale=".25" link="-1" />
+	<subSystem name="AmmoStorage" x="-1.320313" y="-0.242188" scale="1.625" link="-8" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.480000" />
+	<order desc="Fetch:Ammo:0.200000" />
+	<order desc="Defend" />
+	<order desc="Work:Repairer" />
+</orders>
+

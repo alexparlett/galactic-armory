@@ -1,0 +1,27 @@
+uniform float time;
+varying vec3 normal, pos;
+
+const float fullPeriod = 15000.0; //milliseconds
+const float distorLen = 0.05; //Amount of distortion, in units for a scale 1 (this amounts scales with the size of the shield)
+
+const float circleRads = 6.28318531; //2 * pi
+
+void main() {
+	gl_FrontColor = gl_Color;
+	gl_BackColor = gl_Color;
+	
+	normal = normalize(gl_NormalMatrix * gl_Normal);
+	
+	//Angles, horizontal cycles at a different speed than vertical to allow every possible angle to be the distortion
+	float vert = circleRads * time / fullPeriod, horiz = circleRads * time / (0.637 * fullPeriod);
+	float cosV = cos(vert);
+	vec3 distortDirection = vec3(cos(horiz) * cosV, sin(vert), sin(horiz) * cosV);
+	
+	float distortion = distorLen * dot(normal, distortDirection);
+	vec4 newPos = vec4(1.0,1.0,1.0,1.0);
+	newPos.xyz = gl_Vertex.xyz + (distortDirection * distortion);
+	pos = (gl_ModelViewMatrix * newPos).xyz;
+
+	gl_TexCoord[0] = gl_TextureMatrix[0] * gl_MultiTexCoord0;
+	gl_Position = gl_ModelViewProjectionMatrix * newPos;
+}

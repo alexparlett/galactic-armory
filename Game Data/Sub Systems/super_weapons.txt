@@ -1,0 +1,91 @@
+//	Variables Used
+//
+//////////////////////////
+//
+//	vDamage - All Types of Damage
+//	vDelay - Reload Time
+//	vDeviation
+//	vPowCost - Power Costs
+//	vRange - Weapons Range ONLY! Not used for AoE Effect Range
+//	vEffectiveRange - Effective Range
+//	vMinDmg - Lowest Damage
+//	vWasteHeat - Heat Needed
+//	vAoE_Range - Range AoE Weapons Effect
+//	vRequiredCharge - Charge needed for Charge to Fire
+//	vSpeed - Weapon Speed
+// 	vMinHit - Minimum Hit Chance
+// 	vAccuracy - Hit Chance
+//
+//////////////////////////
+
+System: DirectedSpaceFold
+	Name: #SS_SPATIALMANIP_NAME
+	Description: #SS_SPATIALMANIP_DESC
+	Appearance: DSM
+	Explosion: subsystem_destroyed
+	
+	Tags: SuperWeapon, SpecWeapon, DSM, Require:ThermalManagement, Tool:DSM, WMD, ECM
+	Tied To: BeamWeapons 10, EnergyPhysics 10, WarpPhysics 8
+	
+	Available: ((Techs.BeamWeapons.Level > 9) && (Techs.EnergyPhysics.Level > 9) && (Techs.WarpPhysics.Level > 7)) && not(Traits.religious) && not(Traits.no_overkill)
+	Level: floor(weight(Techs.BeamWeapons.Level, 2 / 5, Techs.EnergyPhysics.Level, 2 / 5, Techs.WarpPhysics.Level, 1 / 5))
+	Size: max(Scale, 3600)											//was if(Object.Scale >= 1000, Scale * 2, 999999)
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 250 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 500 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+	Costs: Metals[400 * Size * pow(SUBS_COST_CRV, Level)], Electronics[400 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[500 * Size * pow(SUBS_COST_CRV, Level)], Labr[20 * Size]
+	Complexity: 16
+	
+	//Damage/Charge ratio is 1 at Size ~ 20
+	vRequiredCharge: (500000 + (5000 * Size)) * decay(pow(LEVEL_GAIN_CURVE,Level),45)
+	vDamage: 50000 * Size * 1 * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT				//was 25000
+	vAoE_Range: min((50 + sqrt(Size)), (120 * (1 + (Level * 0.05))))																//was min(5 + ((Size / 8) * 0.25 * pow(LEVEL_GAIN_CURVE, Level)), 40)
+	vRange: (160 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vWasteHeat: Size * 12 * min((1 + (sqrt(Size) / 20)), 3) * (1 / GAME_RELOAD_MULT) * GAME_HEAT_MULT
+
+	Provides: ChargeToFireTemplate with Damage[vDamage], AoE_Range[vAoE_Range], Range[vRange], ReqCharge[vRequiredCharge], MaxChargeRate[vRequiredCharge / 60], wasteHeat[vWasteHeat]
+	
+	Triggerable: AreaDamage: AreaDamageTriggered with AoE_Damage[vDamage], AoE_Range[vAoE_Range]
+
+	Requires:
+		To Run:
+			Control[80 * Size]
+	
+	Hints: Alpha[vDamage], Charge[vRequiredCharge * -1], SW Max DPS[vDamage / 60], Local/Range[vRange], Local/AoERange[vAoE_Range], WasteHeat[vWasteHeat / 60]
+
+
+System: Superlaser
+	Name: #SS_SUPERLASER_NAME
+	Description: #SS_SUPERLASER_DESC
+	Appearance: Superlaser
+	Explosion: subsystem_destroyed
+	
+	Tags: SuperWeapon, SpecWeapon, Superlaser, Require:ThermalManagement, Tool:Superlaser, Laser, ECM
+	Tied To: BeamWeapons 11
+	
+	Available: Techs.BeamWeapons.Level > 10 && not(Traits.no_overkill) && not(Traits.code_of_honor)
+	Level: Techs.BeamWeapons.Level
+	Size: max(Scale, 2400)
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 150 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 300 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Costs: Metals[500 * Size * pow(SUBS_COST_CRV, Level)], Electronics[500 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[350 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 15
+	
+	vDamage: Size * 4000 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT
+	vDelay: 30 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+	vPowCost: Size * 300 * decay(pow(LEVEL_GAIN_CURVE,Level),22.5)
+	vRange: (240 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vTotalDelay: vDelay + 10
+	vWasteHeat: Size * 5.0 * min((1 + (sqrt(Size) / 20)), 3) * (1 / GAME_RELOAD_MULT) * GAME_HEAT_MULT
+	
+	Provides: MegaEnergyWeapon with Damage[vDamage], Delay[vDelay], Duration[10], PowCost[vPowCost], Range[vRange], wasteHeat[vWasteHeat]
+
+	Requires:
+		To Run:
+			Control[40 * Size]
+	
+	Hints: Alpha[vDamage * 10], Power[-1 * vPowCost], DPS[(vDamage * 10)/ vTotalDelay], Local/Range[vRange], Local/DMGperShot[vDamage * 10], Local/HitsperShot[40], Local/Duration[10], Local/Delay[vDelay], WasteHeat[(vWasteHeat * 10)/ vTotalDelay]
+

@@ -1,0 +1,296 @@
+<?xml version="1.0"?>
+
+<personality>
+	
+        <!-- Goes to war more often -->
+
+	<var id="ConsiderWarStrengthRatio" value="1.5" />
+	
+        <var id="ConsiderBribeStrengthRatio" value="0.3" />
+	
+        <var id="ConsiderObliterateStrengthRatio" value="2.5" />
+
+	
+        <!-- Gets bored more quickly -->
+	
+        <var id="BoredomFactor" value="1.08" />
+	
+        <var id="BoredomNoBribes" value="4" />
+
+	
+        <!-- Will attack with fleets more quickly -->
+	
+        <var id="FleetAttackRatio" value="1.5" />
+
+        <var id="FleetRetreatRatio" value="0.3" />
+	
+	
+        <!-- Determines how much ships will be upscaled per level -->
+	
+        <var id="ScalingCurve" value="1.3" />
+
+	
+<!-- More technologies to research and unlock -->
+	
+<list id="ResearchTechs" mode="append">
+		
+<li>BeamWeapons</li>
+		
+<li>Missiles</li>
+		
+<li>Shields</li>
+		
+<li>Computers</li>
+		
+<li>WarpPhysics</li>
+		
+<li>Sensors</li>
+	
+</list>
+
+	<list id="LinkTechs">
+		
+<li>Armor</li>
+		
+<li>Missiles</li>
+		
+<li>MegaConstruction</li>
+		
+<li>Chemistry</li>
+		
+<li>Biology</li>
+		
+<li>Computers</li>
+		
+<li>Sociology</li>
+		
+<li>BeamWeapons</li>
+		
+<li>Sensors</li>
+		
+<li>WarpPhysics</li>
+		
+<li>Shields</li>
+	
+</list>
+
+	<list id="LinkFromTechs">
+		
+<li>ProjWeapons</li>
+		
+<li>ProjWeapons</li>
+		
+<li>ShipConstruction</li>
+		
+<li>Science</li>
+		
+<li>Science</li>
+		
+<li>Biology</li>
+		
+<li>Biology</li>
+		
+<li>EnergyPhysics</li>
+		
+<li>EnergyPhysics</li>
+		
+<li>ShipSystems</li>
+		
+<li>EnergyPhysics</li>
+	
+
+</list>
+
+	
+<list id="Traits">
+<li>longevity</li>      
+<li>dextrous</li>		
+<li>euphoric</li>		
+<li>slavery</li>		
+<li>efficient</li>		
+<li>efficient_rec</li>		
+<li>economical</li>			
+<li>bustling</li>		
+<li>colonialism</li>		
+<li>violent_his</li>		
+<li>entrenchment</li>		
+<li>natural_research</li>			
+<li>planet_defense</li>		
+<li>goodbiology</li>		
+<li>randtech</li>			
+<li>ultra_dense</li>		
+<li>fine_tuned</li>		
+<li>adv_warhead</li>		
+<li>super_rail</li>		
+<li>defensive_targetting</li>		
+</list>
+	
+	
+	
+<!-- Layouts -->
+
+<layouts>
+		
+<obsolete name="Scout C"/>
+
+<obsolete name="Colony Ship C"/>
+
+                
+<!-- Combat 1 -->
+		
+<default name="Stuart" file="Layouts/RystungErudite/Stuart" goal="Combat" />
+
+		
+<design name="Locust" file="Layouts/RystungErudite/Locust" goal="Combat" replaces="Stuart" />
+
+		
+<design name="Lee" file="Layouts/RystungErudite/Lee" goal="Combat" minTime="45" replaces="Locust" />
+
+
+<design name="Sherman" file="Layouts/RystungErudite/Sherman" goal="Combat" minTime="30" replaces="Lee" />
+
+			
+
+<!-- Combat 2 -->
+		
+<design name="Pershing" file="Layouts/RystungErudite/Pershing" goal="Combat" minTime="60" />
+
+		
+<design name="Hellcat" file="Layouts/RystungErudite/Hellcat" goal="Combat" minTime="85" replaces="Pershing" />
+
+		
+<design name="Slugger" file="Layouts/RystungErudite/Slugger" goal="Combat" minTime="110" replaces="Hellcat" />
+
+
+
+<!-- Combat Specialized 1 -->
+		
+<default name="Hummel" file="Layouts/RystungErudite/Hummel" goal="CombatSpecialized" />
+
+		
+<design name="Grille" file="Layouts/RystungErudite/Grille" goal="CombatSpecialized" replaces="Hummel" />
+
+		
+<design name="Wespe" file="Layouts/RystungErudite/Lee" goal="CombatSpecialized" minTime="45" replaces="Grille" />
+
+
+<design name="Brummbar" file="Layouts/RystungErudite/Brummbar" goal="CombatSpecialized" minTime="30" replaces="Brummbar" />
+
+
+
+<!-- Combat Specialized 2 -->
+		
+<design name="Panther" file="Layouts/RystungErudite/Panther" goal="CombatSpecialized" minTime="60" />
+
+		
+<design name="Tiger I" file="Layouts/RystungErudite/Tiger I" goal="CombatSpecialized" minTime="80"  replaces="Panther" />
+
+		
+<design name="Tiger II" file="Layouts/RystungErudite/Tiger II" goal="CombatSpecialized" minTime="110"  replaces="Tiger I" />
+
+ 
+
+<!-- Carrier Line -->
+		
+<default name="Kangaroo I" file="Layouts/RystungErudite/Kangaroo I" goal="Carrier" strikecraft="Greyhound I" />
+
+		
+<design name="Kangaroo II" file="Layouts/RystungErudite/Kangaroo II" goal="Carrier" replaces="Kangaroo I" strikecraft="Greyhound II" />
+
+
+<design name="Terrapin" file="Layouts/RystungErudite/Terrapin" goal="Carrier"  minTime="30" replaces="Kangaroo II" strikecraft="Daimler" />
+
+
+
+<!-- Leader 1 -->
+		
+<default name="Crusader" file="Layouts/RystungErudite/Crusader" goal="Leader" />
+
+		
+<design name="Cavalier" file="Layouts/RystungErudite/Cavalier" goal="Leader" replaces="Crusader" />
+
+		
+<design name="Centaur" file="Layouts/RystungErudite/Lee" goal="Leader" replaces="Cavalier" />
+
+
+<design name="Cromwell" file="Layouts/RystungErudite/Cromwell" goal="Leader" minTime="30" replaces="Cromwell" />
+
+			
+
+<!-- Leader 2 -->
+		
+<design name="Challenger" file="Layouts/RystungErudite/Challenger" goal="Leader" minTime="60" />
+
+		
+<design name="Comet" file="Layouts/RystungErudite/Comet" goal="Leader" minTime="75"  replaces="Challenger" />
+
+		
+<design name="Centurion" file="Layouts/RystungErudite/Centurion" goal="Leader" minTime="100"  replaces="Comet" />
+
+
+
+<!-- Repair Drones -->
+		
+<default name="Greyhound I" file="Layouts/RystungErudite/Greyhound I" goal="Tanker" autoscale="false" />
+
+		
+<design name="Greyhound II" file="Layouts/RystungErudite/Grille" goal="Tanker" autoscale="false" />
+
+		
+<design name="Daimler" file="Layouts/RystungErudite/Lee" goal="Tanker" autoscale="false" />
+
+
+
+<!-- Orbital Defenses -->
+		
+<design name="Grant" file="Layouts/RystungErudite/Grant" goal="StaticDefense" minTime="30" />
+		
+<design name="Priest" file="Layouts/RystungErudite/Priest" goal="StaticDefense" minTime="60"  replaces="Grant" />
+
+		
+<design name="Wolverine" file="Layouts/RystungErudite/Black Widow" goal="StaticDefense" minTime="100"  replaces="Priest" />
+
+<!-- Ammo Carriers -->
+<default name="Ammo Carrier I" file="Layouts/RystungErudite/Ammo Carrier I" goal="Tanker" />
+
+		
+<design name="Ammo Carrier II" file="Layouts/RystungErudite/Ammo Carrier II" goal="Tanker" replaces="Ammo Carrier I" />
+
+		
+<design name="Ammo Carrier III" file="Layouts/RystungErudite/Ammo Carrier III" goal="Tanker" replaces="Ammo Carrier II" />
+
+
+
+<!-- Colony Ships -->
+<design name="Colony Ship I" file="Layouts/RystungErudite/Colony Ship I" goal="Expand" minTime="30" autoscale="false"/>
+
+		
+<design name="Colony Ship II" file="Layouts/RystungErudite/Colony Ship II" goal="Expand" replaces="Colony Ship I" minTime="60" autoscale="false" />
+
+
+		<!-- Industrial Vessels -->
+		<design name="Orbital Electronics Factory" file="Layouts/Default/Orbital Electronics Factory" goal="Miner" autoscale="false"  />
+		<design name="Orbital Advanced Parts Factory" file="Layouts/Default/Orbital Advanced Parts Factory" goal="Miner" autoscale="false"  />		
+		<design name="Orbital Metal Factory" file="Layouts/Default/Orbital Metal Factory" goal="Miner" autoscale="false" />
+	
+		<!-- Ringworld -->
+		<design name="Ringworld" file="Layouts/Default/Ringworld" goal="Ringworld" autoscale="false" />
+</layouts>
+</personality>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                

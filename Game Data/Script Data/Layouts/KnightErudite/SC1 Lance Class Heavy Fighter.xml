@@ -1,0 +1,36 @@
+﻿<?xml version="1.0"?>
+<settings scale=".5" name="SC1 Lance Class Heavy Fighter" />
+<subSystems>
+	<subSystem name="FuelCell" x="-0.640625" y="-1.046875" scale="1.5" link="-1" />
+	<subSystem name="PowerGen" x="-1.53125" y="-0.015625" scale="2" link="-1" />
+	<subSystem name="FighterHull" x=".03125" y="-0.015625" scale="1" link="-1" />
+	<subSystem name="Cockpit" x=".375" y="-0.03125" scale=".5" link="-1" />
+	<subSystem name="FuelCell" x="-0.640625" y="1.015625" scale="1.5" link="-1" />
+	<subSystem name="Armor" x="-1.125" y="-2.578125" scale="1" link="-1" />
+	<subSystem name="Capacitor" x="-0.9375" y="-0.0625" scale=".5" link="-1" />
+	<subSystem name="MagnetoPlasmaThruster" x="-2.328125" y="0" scale="4" link="-1" />
+	<subSystem name="FighterAAMissile" x=".53125" y="2.359375" scale="1" link="-1" />
+	<subSystem name="DualPlasmaBlaster" x="2.46875" y="0" scale="3" link="-1" />
+	<subSystem name="FighterAAMissile" x=".484375" y="-2.34375" scale="1" link="-1" />
+</subSystems>
+<ai>
+	<targetScale low="0" hi="1" forced="false" />
+	<orbit flag="true" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="false" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Defend" />
+</orders>
+

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<settings scale="13" name="Tesla" />
+<subSystems>
+	<subSystem name="HeavyHull" x=".4375" y="-0.203125" scale="1" link="-1" />
+	<subSystem name="IntegratedCommandCenter" x="-0.4375" y=".171875" scale=".25" link="-10" />
+	<subSystem name="NaniteRepair" x="-0.445313" y="-0.570313" scale=".5" link="-1" />
+	<subSystem name="ShieldedAntimatterGen" x="-0.140625" y=".890625" scale=".75" link="-9" />
+	<subSystem name="RamScoop" x=".03125" y="-1.109375" scale=".25" link="-1" />
+	<subSystem name="QuantumBattery" x=".578125" y="-1.375" scale=".25" link="-1" />
+	<subSystem name="FuelCell" x=".59375" y=".734375" scale=".25" link="-1" />
+	<subSystem name="Bulkhead" x="-0.328125" y=".953125" scale=".5" link="3" />
+	<subSystem name="Bulkhead" x="-0.59375" y=".140625" scale=".5" link="1" />
+	<subSystem name="NanoArmor" x=".53125" y="-2.65625" scale="1.5" link="-1" />
+	<subSystem name="NanoArmor" x=".546875" y="2.640625" scale="1.5" link="-1" />
+	<subSystem name="ReactArmor" x="-2.71875" y=".015625" scale="1.5" link="-1" />
+	<subSystem name="ShieldGen" x="-1.734375" y=".03125" scale="2" link="-1" />
+	<subSystem name="ShieldCharger" x="1.125" y="-0.140625" scale="1" link="-1" />
+	<subSystem name="PFW" x="2.359375" y="-1.296875" scale="1.5" link="-20" />
+	<subSystem name="PhasedLaser" x="2.25" y="1.484375" scale="1.5" link="-21" />
+	<subSystem name="AntimatterRocket" x="-0.234375" y="-2.65625" scale="1.75" link="-1" />
+	<subSystem name="AMConverter" x="-0.5" y="-1.34375" scale=".25" link="-1" />
+	<subSystem name="CoolantSys" x="2" y="-1" scale=".5" link="14" />
+	<subSystem name="CoolantSys" x="1.84375" y="1.125" scale=".5" link="15" />
+	<subSystem name="Heatsink" x="2.1875" y="-0.03125" scale=".25" link="-1" />
+	<subSystem name="AntimatterRocket" x="-0.125" y="2.65625" scale="1.75" link="-1" />
+	<subSystem name="Attractor" x="2.867188" y=".023438" scale=".5" link="-1" />
+</subSystems>
+<ai>
+	<targetScale low="10" hi="9999999" forced="false" />
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.200000" />
+	<order desc="Defend" />
+</orders>
+

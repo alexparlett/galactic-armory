@@ -1,0 +1,49 @@
+﻿<?xml version="1.0"?>
+<settings scale="20" name="Inhibitor Unit 224 - 5 - 12 -" />
+<subSystems>
+	<subSystem name="Computer" x="-0.34375" y="-0.03125" scale=".5" link="-1" />
+	<subSystem name="ShieldGen" x="-1.53125" y="0" scale="2" link="-9" />
+	<subSystem name="Capacitor" x="-1.046875" y="-0.03125" scale=".25" link="-1" />
+	<subSystem name="RepairBay" x="-0.21875" y="-0.875" scale=".75" link="-1" />
+	<subSystem name="MediumHull" x=".265625" y="-0.015625" scale="1" link="-1" />
+	<subSystem name="ZeroPointGenerator" x=".109375" y="-0.03125" scale=".75" link="-1" />
+	<subSystem name="ShieldCharger" x="-1.398438" y="-0.695313" scale=".75" link="-1" />
+	<subSystem name="ShieldHardener" x="-1.335938" y=".492188" scale=".75" link="1" />
+	<subSystem name="GraviticAccelerator" x="2.3125" y=".046875" scale="4" link="-11" />
+	<subSystem name="CoolantSys" x="1.445313" y=".007813" scale="1.25" link="8" />
+	<subSystem name="RepairBay" x="-0.265625" y=".734375" scale=".75" link="-1" />
+	<subSystem name="AmmoFabricator" x=".375" y="-0.046875" scale=".25" link="-1" />
+	<subSystem name="AntiSurfaceWarhead" x=".65625" y="-1.015625" scale=".5" link="-1" />
+	<subSystem name="AntiSurfaceWarhead" x=".640625" y="1" scale=".5" link="-1" />
+	<subSystem name="RamScoop" x="-2.625" y="-0.03125" scale=".125" link="-1" />
+	<subSystem name="AntimatterRocket" x="-2.578125" y="-0.953125" scale=".625" link="-1" />
+	<subSystem name="AntimatterRocket" x="-2.609375" y=".921875" scale=".625" link="-1" />
+	<subSystem name="AMConverter" x="-2.195313" y="-0.039063" scale=".5" link="-1" />
+	<subSystem name="PowerArmor" x=".125" y="-2.5" scale="1" link="-1" />
+	<subSystem name="PowerArmor" x=".28125" y="2.359375" scale="1" link="-1" />
+	<subSystem name="PowerArmor" x="-1.5625" y="-2.03125" scale="1" link="-1" />
+	<subSystem name="PowerArmor" x="-1.390625" y="2.03125" scale="1" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="false" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="0" />
+	<defaultStance value="0" />
+	<dockTargets ships="false" planets="false" stations="false" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="JoinFleet:-1.000000:false" />
+	<order desc="Defend" />
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Work:EnterStargate" />
+</orders>
+

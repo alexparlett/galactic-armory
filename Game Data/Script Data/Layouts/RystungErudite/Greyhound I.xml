@@ -1,0 +1,37 @@
+﻿<?xml version="1.0"?>
+<settings scale="1" name="Greyhound I" />
+<subSystems>
+	<subSystem name="MediumHull" x="-2.359375" y="-0.0625" scale="1" link="-1" />
+	<subSystem name="Computer" x=".789063" y="-0.117188" scale=".75" link="-1" />
+	<subSystem name="PowerGen" x="-1.539063" y="-0.085938" scale=".75" link="-1" />
+	<subSystem name="FuelCell" x="-0.328125" y="-0.125" scale="3" link="-1" />
+	<subSystem name="RepairTool" x="2.3125" y="-0.046875" scale="4" link="-1" />
+	<subSystem name="BussardRamjet" x="-1.474337" y="-1.922041" scale="3.25" link="-1" />
+	<subSystem name="BussardRamjet" x="-1.464561" y="1.929501" scale="3.25" link="-1" />
+	<subSystem name="Armor" x=".28125" y="-1.953125" scale="2" link="-1" />
+	<subSystem name="Armor" x=".265625" y="1.859375" scale="2" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+        <order desc="Fetch:Ammo:0.200000" />
+	<order desc="Fetch:Fuel:0.200000" />
+	<order desc="Work:Repairer" />
+</ai>
+<orders>
+	<order desc="Fetch:Ammo:0.200000" />
+	<order desc="Fetch:Fuel:0.200000" />
+	<order desc="Work:Repairer" />
+</orders>
+

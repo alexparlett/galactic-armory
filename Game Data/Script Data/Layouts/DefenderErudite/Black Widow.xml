@@ -1,0 +1,58 @@
+﻿<?xml version="1.0"?>
+<settings scale="30" name="Black Widow" />
+<subSystems>
+	<subSystem name="StationHull" x=".03125" y="-0.25" scale="1" link="-3" />
+	<subSystem name="IntegratedConstruction" x=".015625" y=".03125" scale="1" link="0" />
+	<subSystem name="AntimatterCannon" x="-2.3125" y="-0.296875" scale="4" link="-10" />
+	<subSystem name="Artillery" x="2.296875" y="-0.34375" scale="4" link="-8" />
+	<subSystem name="TwinHeavyRailgun" x="0" y="-2.328125" scale="4" link="-1" />
+	<subSystem name="ExternalMount" x=".65625" y="-2.75" scale="1" link="21" />
+	<subSystem name="ExternalMount" x="2.78125" y=".390625" scale="1" link="3" />
+	<subSystem name="ExternalMount" x=".765625" y="2.703125" scale="1" link="31" />
+	<subSystem name="ExternalMount" x="-2.831818" y=".333155" scale="1" link="2" />
+	<subSystem name="AdvancedAICore" x="-0.101563" y="-0.710938" scale=".5" link="-1" />
+	<subSystem name="ShieldedAntimatterGen" x=".03125" y="-0.453125" scale="1" link="-1" />
+	<subSystem name="FuelCell" x="-0.25" y="-0.203125" scale=".125" link="-1" />
+	<subSystem name="AmmoStorage" x=".078125" y="-0.171875" scale="2" link="-1" />
+	<subSystem name="AmmoFabricator" x="-0.015625" y="0" scale="2" link="-1" />
+	<subSystem name="AMConverter" x=".070313" y="-1.039063" scale=".375" link="-1" />
+	<subSystem name="GatlingLaser" x=".859375" y="-1.109375" scale="1" link="-1" />
+	<subSystem name="PointDefense" x=".976563" y=".773438" scale="1.25" link="-1" />
+	<subSystem name="AntimatterProjector" x="-1.3125" y="-1.40625" scale=".25" link="-1" />
+	<subSystem name="MultiRack" x="-0.9375" y="-1.109375" scale="1" link="18" />
+	<subSystem name="ReactArmor" x="-2.229328" y="-1.771247" scale="1" link="-1" />
+	<subSystem name="ReactArmor" x="-1.5" y="-2.3125" scale="1" link="-1" />
+	<subSystem name="ReactArmor" x="1.546875" y="-2.296875" scale="1" link="-7" />
+	<subSystem name="ReactArmor" x="2.140625" y="-1.6875" scale="1" link="-1" />
+	<subSystem name="ReactArmor" x="-2.421875" y="1.28125" scale="1" link="-1" />
+	<subSystem name="ReactArmor" x="-1.609375" y="2.171875" scale="1" link="-1" />
+	<subSystem name="ReactArmor" x="1.640625" y="2.09375" scale="1" link="-1" />
+	<subSystem name="ReactArmor" x="2.34375" y="1.515625" scale="1" link="-1" />
+	<subSystem name="ReactArmor" x="-1.695313" y="1.429688" scale=".5" link="-1" />
+	<subSystem name="ReactArmor" x="1.757813" y="1.414063" scale=".5" link="-1" />
+	<subSystem name="ReactArmor" x="1.414063" y="-1.695313" scale=".5" link="-1" />
+	<subSystem name="ReactArmor" x="-1.710938" y="-1.929688" scale=".5" link="-1" />
+	<subSystem name="HyperRailgun" x="0" y="2.3125" scale="4" link="-9" />
+	<subSystem name="RepairTool" x="-0.984375" y=".78125" scale="1" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Defend" />
+</orders>
+

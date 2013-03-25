@@ -1,0 +1,56 @@
+uniform sampler2D texture[2];
+
+varying vec3 normal, light;
+varying vec4 pos;
+varying float dist;
+
+
+const float DayTimeIntensity = 0.6;
+
+void doNightPass(  vec3 diffuse, vec4 sampleColor ) {  
+  float intensity = max(max(diffuse.r, diffuse.g), diffuse.b);
+  if(intensity > DayTimeIntensity) {
+	gl_FragColor = sampleColor;
+	return;
+  }
+  else {
+    intensity = 1.0 - (intensity/DayTimeIntensity);
+  }
+
+  vec3 nightSample = texture2D(texture[1], gl_TexCoord[0].xy).rgb;
+  
+  float nightBrightness = max(nightSample.r, max(nightSample.g, nightSample.b));
+  
+  sampleColor.rgb = max(sampleColor.rgb, nightSample.rgb * intensity);  
+
+  gl_FragColor = sampleColor;
+}
+
+void main() {
+  vec4 color = gl_FrontMaterial.diffuse;
+  vec4 matspec = gl_FrontMaterial.specular;
+  float shininess = gl_FrontMaterial.shininess;
+
+  vec3 n = normalize(normal);
+  vec3 r = normalize(-reflect(normalize(light), n));
+  vec3 v = normalize(-pos.xyz);
+  
+  vec4 diffuseSpec = texture2D(texture[0], gl_TexCoord[0].xy);
+  vec4 lightMap = texture2D(texture[1], gl_TexCoord[0].xy);
+
+  float nl = max(0.0, dot(n, light));
+  float intensity = nl;
+
+  vec4 diffuse = (color * gl_LightSource[0].diffuse * intensity) + (gl_LightModel.ambient * 0.75);
+  vec4 specular;
+  if (shininess != 0.0) {
+    vec4 lightspec = gl_LightSource[0].specular;
+    specular = matspec * 0.5;
+    specular = specular * lightspec * diffuseSpec.a * pow(max(0.0, dot(r, v)), shininess);
+  } else {
+    specular = vec4(0.0, 0.0, 0.0, 0.0);
+  }
+  
+  doNightPass(diffuse.rgb, diffuse * diffuseSpec);
+  gl_FragColor += specular;
+}

@@ -1,0 +1,121 @@
+//Damage factor for all weapons
+GAME_DAMAGE_MULT:	1
+
+//Firing Rate Multiplier
+GAME_RELOAD_MULT:	1.0
+
+//Shield Max HP factor for all shields
+GAME_SHIELD_MULT:	1			//was 2.0
+
+//Shield Regeneration rate factor for all shields
+GAME_SHIELD_REG_MULT:	1			//was 1.2
+
+//Armor Max HP factor for all armors
+GAME_ARMOR_MULT:	2.0
+
+//Planetary Structure Health Multiplier
+PLANET_STRUCT_MULT:	2.0
+
+//Planetary Damage Resistance Multiplier
+PLANET_DAMAGERES_MULT:	5.0
+
+//Complexity Multiplier for Planetary Structures
+STRUCT_COMPLX_MULT:	1.0			//was 2.0, reduced to 1 because of structure work cost increase
+
+//Test Multiplier
+TEST_STUFF_MULT:	1.0
+
+//Weapon range factor
+WEAP_RANGE_MULT:	1.0
+
+//Weapon range increase per Level
+WEAP_RANGE_CURVE:		5
+
+//Energy projectile weapon velocity factor
+ENERGY_PROJ_FACTOR:		0.5
+
+//Anti-planet projectile weapon velocity factor
+ANTIPLANET_PROJ_FACTOR:		0.75
+
+//Ballistic projectile weapon velocity factor
+BALLISTIC_PROJ_FACTOR:		0.5
+
+//Self-propelled projectile weapon velocity factor
+MISSILE_PROJ_FACTOR:		0.75
+
+//Subsystem Health Factor (excluding Armor and Hulls)
+GAME_SUBSYS_MULT:	0.5
+
+//Hull Health Factor
+GAME_HULL_MULT:		1.0
+
+//Thrust Strength factor for all engines
+GAME_THRUST_MULT:	1.0
+
+//Research Cost Multiplier
+RES_COST_MULT:		3				//3
+
+//Research Start Level
+RES_START_LEVEL:	0
+
+//Research gain curve
+RES_GAIN_CURVE:	1.35
+
+//Link Cost Multiplier
+LINK_COST:		100000
+
+//Standard Research cost curve
+//  Higher is more costly (by far)
+RES_COST_CURVE:		1.9			//was 1.8, Vanilla is 2.0
+
+//Standard Level gains curve
+LEVEL_GAIN_CURVE:	1.35			//Vanilla is 1.4
+
+//Per-level multiplier to health of sub systems (based on the materials tech)
+HEALTH_CURVE: 1.4
+
+//Base multiplier to sub system health (Also affects hulls)
+//Obsolete because of GAME_SUBSYS_MULT and GAME_HULL_MULT
+HEALTH_MULT: 1.0
+
+//Level health gain (% of base)
+LHG: 0.25
+
+//Increase in cost per level for planetary structures
+COST_INC_CRV:	1.2
+
+//Increase in cost per level for ship subsystems
+SUBS_COST_CRV:	1.15
+
+//Labor cost multiplier for structures
+BLDG_LABR_MULT:	2.0
+
+//Resource Generation Factor
+RES_GEN_MULT:	0.750			//was 0.25 before 1.9 Build 0533, vanilla is 0.167
+
+//Base Resource Generation Level (Result is Level Factor + Base Factor)
+RES_BASE_FACT:	0.0
+
+//Trade rate factor
+TRADE_RATE_MULT: 1.0
+
+//Use vanilla map generation or micklerois
+REAL_SYS_BOOL:	1
+
+//Minimum size for sub systems on a blueprint
+SS_MIN_SCALE: 0.125
+
+//Maximum size for sub systems on a blueprint
+SS_MAX_SCALE: 4
+
+//Waste Heat generation factor
+GAME_HEAT_MULT:		2.0
+
+//Terraforming Cost Factor
+TERRAFORM_COST_MULT:	2.5
+
+//Modifies the amount Population Effects Work Rate.
+WORK_POP_MULTI: 	1.0
+
+//Disparity in strength for a system to be blockaded
+BLOCKADE_RATIO: 2.0

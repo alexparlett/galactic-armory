@@ -1,0 +1,74 @@
+const int nLightCount = 2;
+
+uniform sampler2D diffuseRGBspecA, nightTime;
+uniform vec4 workers;
+
+//Number of workers required for the night texture to appear the same as the source image
+const float FullBrightWorkers = 250000000.0;
+
+varying vec3 normal;
+varying vec4 pos;
+varying vec3 light[nLightCount];
+varying float dist[nLightCount];
+
+const float DayTimeIntensity = 0.6;
+
+void doNightPass(  vec3 diffuse, vec4 sampleColor ) {  
+  float intensity = max(max(diffuse.r, diffuse.g), diffuse.b);
+  if(intensity > DayTimeIntensity) {
+	gl_FragColor = sampleColor;
+	return;
+  }
+  else {
+    intensity = 1.0 - (intensity/DayTimeIntensity);
+  }
+
+  vec3 nightSample = texture2D(nightTime, gl_TexCoord[0].xy).rgb;
+  
+  float nightBrightness = max(nightSample.r, max(nightSample.g, nightSample.b));
+  
+  //Correct the intensity based on overall population using a pow() function so very dim lights won't start to show until the population spreads across the whole planet
+  //NOTE: This pow() function causes twinkling due to interpolated values only being correct in linear space
+  intensity *= pow(nightBrightness, FullBrightWorkers / workers.x) / nightBrightness;
+  
+  sampleColor.rgb = max(sampleColor.rgb, nightSample.rgb * intensity);  
+
+  gl_FragColor = sampleColor;
+}
+
+void main() {
+	vec4 color = gl_FrontMaterial.diffuse, texSamp = texture2D(diffuseRGBspecA, gl_TexCoord[0].xy);
+	vec4 matspec = gl_FrontMaterial.specular * texSamp.a;
+	float shininess = gl_FrontMaterial.shininess * (0.5 + texSamp.a);
+
+	vec3 n = normalize(normal);
+	vec3 v = normalize(-pos.xyz);
+
+	vec4 diffuse = gl_LightModel.ambient * gl_FrontMaterial.ambient;
+  
+	vec4 specular = vec4(0.0,0.0,0.0,0.0);
+	if(nLightCount > 0) {
+		const int i = 0;
+		float falloff = 1.0 / (1.0 + (gl_LightSource[i].quadraticAttenuation * dist[i] * dist[i]));
+		float intensity = max(0.0, dot(n, light[i])) * falloff;
+		
+		diffuse.rgb += gl_LightSource[i].diffuse.rgb * intensity;
+		
+		vec3 r = normalize(-reflect(normalize(light[i]), n));
+		specular.rgb += gl_LightSource[i].specular.rgb * (pow(max(0.0, dot(r, v)), shininess) * intensity);
+	}
+	if(nLightCount > 1) {
+		const int i = 1;
+		float falloff = 1.0 / (1.0 + (gl_LightSource[i].quadraticAttenuation * dist[i] * dist[i]));
+		float intensity = max(0.0, dot(n, light[i])) * falloff;
+		
+		diffuse.rgb += gl_LightSource[i].diffuse.rgb * intensity;
+		
+		vec3 r = normalize(-reflect(normalize(light[i]), n));
+		specular.rgb += gl_LightSource[i].specular.rgb * (pow(max(0.0, dot(r, v)), shininess) * intensity);
+	}
+	diffuse *= color;
+	specular *= matspec;
+	doNightPass( diffuse.rgb, diffuse * texSamp);
+	gl_FragColor += specular;
+}

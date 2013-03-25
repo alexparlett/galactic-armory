@@ -1,0 +1,40 @@
+﻿<?xml version="1.0"?>
+<settings scale="10" name="Remnant Subverter" />
+<subSystems>
+	<subSystem name="MediumHull" x=".03125" y=".03125" scale="1" link="-1" />
+	<subSystem name="QuantumBattery" x=".670863" y=".026412" scale=".25" link="-1" />
+	<subSystem name="PowerVampire" x="2.28125" y=".03125" scale="4" link="-6" />
+	<subSystem name="MatterGen" x="1.140996" y=".02113" scale=".375" link="-1" />
+	<subSystem name="CoolantSys" x="2.53125" y=".046875" scale="1" link="2" />
+	<subSystem name="AntimatterRocket" x="-2.422237" y="-0.026046" scale="3.25" link="-1" />
+	<subSystem name="ShieldedAntimatterGen" x="-0.953125" y=".046875" scale="1" link="-11" />
+	<subSystem name="AdvancedAICore" x="-0.718405" y="-0.179601" scale=".5" link="-20" />
+	<subSystem name="FuelCell" x="-1.553021" y="-0.010565" scale=".125" link="-1" />
+	<subSystem name="Bulkhead" x="-0.90857" y=".655016" scale=".75" link="6" />
+	<subSystem name="ShieldGen" x="1.3125" y="-1.734375" scale="2.5" link="-1" />
+	<subSystem name="NaniteRepair" x="1.578125" y="-1.71875" scale=".25" link="-1" />
+	<subSystem name="AntimatterProjector" x="2.140625" y="1.71875" scale=".75" link="-1" />
+	<subSystem name="QuantumBattery" x="1.125" y="-1.71875" scale=".25" link="-1" />
+	<subSystem name="ReactArmor" x="-0.203125" y="-1.25" scale="1" link="-1" />
+	<subSystem name="SoakArmor" x="-0.15625" y="1.765625" scale="1" link="-1" />
+	<subSystem name="ReactArmor" x="-1.34375" y="1.453125" scale="1" link="-1" />
+	<subSystem name="SoakArmor" x="-1.265625" y="-1.0625" scale="1" link="-1" />
+	<subSystem name="Bulkhead" x="-0.570498" y="-0.517674" scale=".75" link="7" />
+</subSystems>
+<ai>
+	<targetScale low=".3" hi="9999999" forced="true" />
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="0" />
+</ai>
+

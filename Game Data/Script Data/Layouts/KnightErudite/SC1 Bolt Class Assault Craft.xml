@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<settings scale=".8" name="SC1 Bolt Class Assault Craft" />
+<subSystems>
+	<subSystem name="BomberHull" x="-0.703125" y="-0.046875" scale="1" link="-1" />
+	<subSystem name="Cockpit" x=".070313" y="-0.039063" scale=".75" link="-10" />
+	<subSystem name="PowerGen" x="-1.640625" y="-0.046875" scale=".75" link="-11" />
+	<subSystem name="Capacitor" x="-0.984375" y=".703125" scale=".25" link="-1" />
+	<subSystem name="FuelCell" x="-0.210938" y="1.226563" scale="2.125" link="-1" />
+	<subSystem name="FuelCell" x="-0.148438" y="-1.195313" scale="2.125" link="-1" />
+	<subSystem name="Armor" x="-1.390625" y="-2.390625" scale="1" link="-1" />
+	<subSystem name="Armor" x="-1.0625" y="-2.5625" scale="1" link="-1" />
+	<subSystem name="Bulkhead" x=".484375" y="-0.09375" scale=".5" link="1" />
+	<subSystem name="Bulkhead" x="-1.46875" y=".25" scale=".5" link="2" />
+	<subSystem name="PolypropellantThruster" x="-2.0625" y="-1.3125" scale="2.75" link="-1" />
+	<subSystem name="PolypropellantThruster" x="-2.015625" y="1.375" scale="2.75" link="-1" />
+	<subSystem name="FighterPrecisionBomb" x="2.3125" y="-0.03125" scale="4" link="-1" />
+</subSystems>
+<ai>
+	<targetScale low="1.1" hi="9999999" forced="false" />
+	<orbit flag="true" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="false" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="95" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="1" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Defend" />
+</orders>
+

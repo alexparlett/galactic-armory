@@ -1,0 +1,328 @@
+<?xml version="1.0"?>
+
+<personality>
+	
+
+<!-- Goes to war more often -->
+	
+<var id="ConsiderWarStrengthRatio" value="1.5" />
+	
+<var id="ConsiderBribeStrengthRatio" value="0.3" />
+	
+<var id="ConsiderObliterateStrengthRatio" value="2.5" />
+
+	
+
+<!-- Gets bored more quickly -->
+	
+<var id="BoredomFactor" value="1.08" />
+	
+<var id="BoredomNoBribes" value="4" />
+
+	
+
+<!-- Will attack with fleets more quickly -->
+	
+<var id="FleetAttackRatio" value="1.5" />
+	
+<var id="FleetRetreatRatio" value="0.3" />
+	
+	
+
+<!-- Determines how much ships will be upscaled per level -->
+	
+<var id="ScalingCurve" value="1.3" />
+
+	
+
+<!-- More technologies to research and unlock -->
+	
+<list id="ResearchTechs" mode="append">
+		
+<li>BeamWeapons</li>
+		
+<li>Missiles</li>
+		
+<li>Shields</li>
+		
+<li>Computers</li>
+		
+<li>WarpPhysics</li>
+		
+<li>Sensors</li>
+	
+</list>
+
+	
+<list id="LinkTechs">
+		
+<li>Armor</li>
+		
+<li>Missiles</li>
+		
+<li>MegaConstruction</li>
+		
+<li>Chemistry</li>
+		
+<li>Biology</li>
+		
+<li>Computers</li>
+		
+<li>Sociology</li>
+		
+<li>BeamWeapons</li>
+		
+<li>Sensors</li>
+		
+<li>WarpPhysics</li>
+		
+<li>Shields</li>
+	
+</list>
+
+	
+<list id="LinkFromTechs">
+		
+<li>ProjWeapons</li>
+		
+<li>ProjWeapons</li>
+		
+<li>ShipConstruction</li>
+		
+<li>Science</li>
+		
+<li>Science</li>
+		
+<li>Biology</li>
+		
+<li>Biology</li>
+		
+<li>EnergyPhysics</li>
+		
+<li>EnergyPhysics</li>
+		
+<li>ShipSystems</li>
+		
+<li>EnergyPhysics</li>
+	
+</list>
+
+	
+
+
+<list id="Traits">
+<li>highmetabolism</li>
+<li>dextrous</li>		
+<li>euphoric</li>		
+<li>slavery</li>		
+<li>efficient_rec</li>		
+<li>economical</li>			
+<li>bustling</li>		
+<li>colonialism</li>		
+<li>violent_his</li>		
+<li>entrenchment</li>		
+<li>natural_research</li>			
+<li>shieldtech</li>		
+<li>goodbiology</li>		
+<li>randtech</li>			
+<li>lightweight</li>		
+<li>fine_tuned</li>		
+<li>efficient_energy</li>		
+<li>adv_warhead</li>		
+<li>hard_project</li>		
+<li>super_rail</li>		
+</list>
+
+	
+	
+	
+
+<!-- Layouts -->
+<layouts>
+		
+<obsolete name="Scout C"/>
+		
+<obsolete name="Colony Ship C"/>
+	
+
+<!-- Fuel Tanker Line -->
+		
+<default name="Fuel Tanker" file="Layouts/AggressorErudite/Fuel Tanker" goal="Tanker" autoscale="false" />
+
+		
+
+<!-- Railgun Cruiser Line -->
+		
+<default name="Cancer-class Cruiser" file="Layouts/AggressorErudite/Cancer-class Cruiser" goal="leader" />
+		
+<design name="Cancer II-class Cruiser" file="Layouts/AggressorErudite/Cancer II-class Cruiser" goal="Leader" replaces="Cancer-class Cruiser" />
+		
+<design name="Cancer III-class Cruiser" file="Layouts/AggressorErudite/Cancer III-class Cruiser" goal="Leader" replaces="Cancer II-class Cruiser" />
+		
+<design name="Cancer IV-class Cruiser" file="Layouts/AggressorErudite/Cancer IV-class Cruiser" goal="Leader" replaces="Cancer III-class Cruiser" />
+
+		
+
+<!-- Porcupine Cruiser Line -->
+		
+<default name="Hammerhead-class Frigate" file="Layouts/AggressorErudite/Hammerhead-class Frigate" goal="leader" />
+		
+<design name="Hammerhead II-class Frigate" file="Layouts/AggressorErudite/Hammerhead II-class Frigate" goal="Leader" replaces="Hammerhead-class Frigate" />
+		
+<design name="Hammerhead III-class Frigate" file="Layouts/AggressorErudite/Hammerhead III-class Frigate" goal="Leader" replaces="Hammerhead II-class Frigate" />
+		
+<design name="Hammerhead IV-class Frigate" file="Layouts/AggressorErudite/Hammerhead IV-class Frigate" goal="Leader" replaces="Hammerhead III-class Frigate" />
+
+		
+
+<!-- Porcupine Flak Cruiser Line -->
+		
+<default name="Hydra-class Cruiser" file="Layouts/AggressorErudite/Hydra-class Cruiser" goal="CombatSpecialized" />
+		
+<design name="Hydra II-class Cruiser" file="Layouts/AggressorErudite/Hydra II-class Cruiser" goal="CombatSpecialized" replaces="Hydra-class Cruiser" />
+		
+<design name="Hydra III-class Cruiser" file="Layouts/AggressorErudite/Hydra III-class Cruiser" goal="CombatSpecialized" replaces="Hydra II-class Cruiser" />
+		
+<design name="Hydra IV-class Cruiser" file="Layouts/AggressorErudite/Hydra IV-class Cruiser" goal="CombatSpecialized" replaces="Hydra III-class Cruiser" />
+
+		
+
+<!-- Railgun Frigate Line -->
+		
+<default name="Warhound-class Frigate" file="Layouts/AggressorErudite/Warhound-class Frigate" goal="Leader" />
+		
+<design name="Warhound II-class Frigate" file="Layouts/AggressorErudite/Warhound II-class Frigate" goal="Leader" replaces="Warhound-class Frigate" />
+		
+<design name="Warhound III-class Frigate" file="Layouts/AggressorErudite/Warhound III-class Frigate" goal="Leader" replaces="Warhound II-class Frigate" />
+		
+<design name="Warhound IV-class Frigate" file="Layouts/AggressorErudite/Warhound IV-class Frigate" goal="Leader" replaces="Warhound III-class Frigate" />
+		
+<design name="Warhound V-class Frigate" file="Layouts/AggressorErudite/Warhound V-class Frigate" goal="Leader" replaces="Warhound IV-class Frigate" />
+
+		
+
+<!-- Artillery Frigate Line -->		
+		
+<design name="Devastator-class Frigate" file="Layouts/AggressorErudite/Devestator-class Frigate" goal="Leader" minTime="35" />
+		
+<design name="Devastator II-class Frigate" file="Layouts/AggressorErudite/Devestator II-class Frigate" goal="Leader" replaces="Devastator-class Frigate" />
+		
+<design name="Devastator III-class Frigate" file="Layouts/AggressorErudite/Devestator III-class Frigate" goal="Leader" replaces="Devastator II-class Frigate" />
+
+		
+
+<!-- Heavy Railgun Cruiser Line -->
+		
+<design name="Invader-class Frigate" file="Layouts/AggressorErudite/Invader-class Frigate" goal="Leader" />
+		
+<design name="Invader II-class Frigate" file="Layouts/AggressorErudite/Invader II-class Frigate" goal="Leader" replaces="Invader-class Frigate" />
+		
+<design name="Invader III-class Frigate" file="Layouts/AggressorErudite/Invader III-class Frigate" goal="Leader" replaces="Invader II-class Frigate" />
+
+		
+
+<!-- Multigun Cruiser Line -->
+		
+<default name="Scythe-class Cruiser" file="Layouts/AggressorErudite/Scythe-class Cruiser" goal="CombatSpecialized" />
+		
+<design name="Scythe II-class Cruiser" file="Layouts/AggressorErudite/Scythe II-class Cruiser" goal="CombatSpecialized" replaces="Scythe-class Cruiser" />
+		
+<design name="Scythe III-class Cruiser" file="Layouts/AggressorErudite/Scythe III-class Cruiser" goal="CombatSpecialized" replaces="Scythe II-class Cruiser" />
+		
+<design name="Scythe IV-class Cruiser" file="Layouts/AggressorErudite/Scythe IV-class Cruiser" goal="CombatSpecialized" replaces="Scythe III-class Cruiser" />
+		
+<design name="Scythe V-class Cruiser" file="Layouts/AggressorErudite/Scythe V-class Cruiser" goal="CombatSpecialized" replaces="Scythe IV-class Cruiser" />
+
+		
+
+<!-- Multigun Corvette Line -->
+		
+<default name="Multigun Corvette" file="Layouts/AggressorErudite/Multigun Corvette" goal="CombatSpecialized" />
+		
+<design name="Multigun Corvette II" file="Layouts/AggressorErudite/Multigun Corvette II" goal="CombatSpecialized" replaces="Multigun Corvette" />
+		
+<design name="Multigun Corvette III" file="Layouts/AggressorErudite/Multigun Corvette III" goal="CombatSpecialized" replaces="Multigun Corvette II" />
+		
+<design name="Multigun Corvette IV" file="Layouts/AggressorErudite/Multigun Corvette IV" goal="CombatSpecialized" replaces="Multigun Corvette III" />
+
+		
+
+<!-- Destroyer Line -->
+		
+<default name="Jackal-class Destroyer" file="Layouts/AggressorErudite/Jackal-class Destroyer" goal="Combat" replaces="Capital Ship" />
+		
+<design name="Jackal II-class Destroyer" file="Layouts/AggressorErudite/Jackal II-class Destroyer" goal="Combat" replaces="Jackal-class Destroyer" />
+		
+<design name="Jackal III-class Destroyer" file="Layouts/AggressorErudite/Jackal III-class Destroyer" goal="Combat" replaces="Jackal II-class Destroyer" />
+		
+<design name="Jackal IV-class Destroyer" file="Layouts/AggressorErudite/Jackal IV-class Destroyer" goal="Combat" replaces="Jackal III-class Destroyer" />
+		
+<design name="Jackal V-class Destroyer" file="Layouts/AggressorErudite/Jackal V-class Destroyer" goal="Combat" replaces="Jackal IV-class Destroyer" />
+
+		
+<design name="Vengance-class Battlecruiser" file="Layouts/AggressorErudite/Vengeance-class Battlecruiser" goal="Combat" minTime="35" />
+		
+<design name="Vengance II-class Battlecruiser" file="Layouts/AggressorErudite/Vengeance II-class Battlecruiser" goal="Combat" replaces="Vengance-class Battlecruiser" />
+		
+<design name="Vengance III-class Battlecruiser" file="Layouts/AggressorErudite/Vengeance III-class Battlecruiser" goal="Combat" replaces="Vengance II-class Battlecruiser" scalefrom="16" />
+		
+<design name="Vengance IV-class Battlecruiser" file="Layouts/AggressorErudite/Vengeance IV-class Battlecruiser" goal="Combat" replaces="Vengance III-class Battlecruiser" scalefrom="18" />
+		
+<design name="Vengance V-class Battlecruiser" file="Layouts/AggressorErudite/Vengeance V-class Battlecruiser" goal="Combat" replaces="Vengance IV-class Battlecruiser" scalefrom="20" />
+
+		
+
+<!-- Interceptor Line -->
+		
+<default name="Light Fighter" file="Layouts/AggressorErudite/Light Fighter" goal="Fighter" autoscale="false" />
+		
+<design name="Light Interceptor" file="Layouts/AggressorErudite/Light Interceptor" goal="Fighter" replaces="Light Fighter" autoscale="false" />
+		
+<design name="Torpedo Bomber" file="Layouts/AggressorErudite/Torpedo Bomber" goal="Fighter" replaces="Light Interceptor" autoscale="false" />
+		
+<design name="Heavy Torpedo Bomber" file="Layouts/AggressorErudite/Heavy Torpedo Bomber" goal="Fighter" replaces="Torpedo Bomber" autoscale="false" />
+
+		
+
+<!-- Orbital Defenses2 -->
+		
+<design name="Imperia II-class Station" file="Layouts/AggressorErudite/Imperia II-class Station" goal="StaticDefense" />
+		
+<design name="Viking II-class Battlestation" file="Layouts/AggressorErudite/Viking II-class Battlestation" goal="StaticDefense" replaces="Imperia II-class Station" />
+
+		
+
+<!-- Interceptor Line -->
+		
+<default name="Hercules-class Bomber" file="Layouts/AggressorErudite/Hercules-class Bomber" goal="Fighter" autoscale="false" />
+		
+<design name="Hercules II-class Bomber" file="Layouts/AggressorErudite/Hercules II-class Bomber" goal="Fighter" replaces="Hercules-class Bomber" autoscale="false" />
+		
+<design name="Hercules III-class Bomber" file="Layouts/AggressorErudite/Hercules III-class Bomber" goal="Fighter" replaces="Hercules II-class Bomber" autoscale="false" />
+		
+<design name="Hercules IV-class Bomber" file="Layouts/AggressorErudite/Hercules IV-class Bomber" goal="Fighter" replaces="Hercules III-class Bomber" autoscale="false" />
+
+		
+
+<!-- Torpedo Defenses -->
+		
+<design name="Torpedo Platform" file="Layouts/AggressorErudite/Torpedo Platform" goal="StaticDefense" />
+		
+<design name="Heavy Torpedo Platform" file="Layouts/AggressorErudite/Heavy Torpedo Platform" goal="Station" replaces="Torpedo Platform" />
+		
+<design name="Super Heavy Torpedo Platform" file="Layouts/AggressorErudite/Super Heavy Torpedo Platform" goal="Station" replaces="Heavy Torpedo Platform" minTime="85" />
+
+		
+
+
+		<!-- Industrial Vessels -->
+		<design name="Orbital Electronics Factory" file="Layouts/Default/Orbital Electronics Factory" goal="Miner" autoscale="false"  />
+		<design name="Orbital Advanced Parts Factory" file="Layouts/Default/Orbital Advanced Parts Factory" goal="Miner" autoscale="false"  />		
+		<design name="Orbital Metal Factory" file="Layouts/Default/Orbital Metal Factory" goal="Miner" autoscale="false" />
+	
+		<!-- Ringworld -->
+		<design name="Ringworld" file="Layouts/Default/Ringworld" goal="Ringworld" autoscale="false" />
+
+</layouts>	
+
+</personality>

@@ -1,0 +1,28 @@
+// (Colors are in hexadecimal argb format)
+// Space
+ff ff ff ff
+
+ff ff 46 00 //Orange
+ff 00 ae ae // Teal
+ff fe b3 00 // GA Bright Orange
+ff 9b 65 cf // Purple
+ff 00 cc 00 // Green
+ff ff 99 66 // Salmon
+ff 33 88 ff // Light Blue
+ff ff 00 9a // Pink
+ff f5 dc 00 // Yellow
+ff db ff 3d // GA Yellow
+ff ad 79 1e // GA Brown
+ff ff 80 00 // GA Orange
+ff ff a3 da // Bright Pink
+ff 0b 80 0b // GA Green
+ff 59 00 99 // GA Purple
+ff 04 5f b4 // GA Blue
+ff 66 cc 99 // GA Pale Green
+ff 3d db ff // GA Light Blue
+ff ff 33 ee // GA Bright Pink
+ff da a5 20 // GA Gold
+ff 5c 8a 8a // GA Dark Teal
+
+ff c3 bb 9d // Remnant
+ff a3 00 00 // Pirates

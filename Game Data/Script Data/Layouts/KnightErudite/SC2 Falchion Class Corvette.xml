@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<settings scale="20" name="SC2 Falchion Class Corvette" />
+<subSystems>
+	<subSystem name="MediumHull" x="-1.6875" y="-0.09375" scale="1" link="-8" />
+	<subSystem name="Bridge" x=".804688" y=".773438" scale=".5" link="-1" />
+	<subSystem name="CrewQuarters" x=".460938" y="-0.867188" scale=".375" link="-1" />
+	<subSystem name="LifeSupport" x=".109375" y=".84375" scale=".125" link="-1" />
+	<subSystem name="FuelCell" x="-0.71875" y="-1.390625" scale="1" link="-1" />
+	<subSystem name="PowerGen" x="-1.601563" y=".742188" scale=".5" link="-1" />
+	<subSystem name="Bulkhead" x="-1.6875" y="-0.640625" scale=".5" link="0" />
+	<subSystem name="Armor" x=".96875" y="-2.4375" scale="2" link="-1" />
+	<subSystem name="FuelCell" x="-0.609375" y="1.171875" scale="1" link="-1" />
+	<subSystem name="CoolantSys" x="1.296875" y="-0.046875" scale="1" link="15" />
+	<subSystem name="CoolantSys" x="1.085938" y="1.539063" scale=".5" link="13" />
+	<subSystem name="FlakTurret" x=".398438" y="-0.007813" scale=".75" link="-1" />
+	<subSystem name="Armor" x=".640625" y="2.53125" scale="2" link="-1" />
+	<subSystem name="MuonCannon" x="1.664063" y="1.742188" scale=".75" link="-12" />
+	<subSystem name="BigAmmoStorage" x="-0.617188" y=".367188" scale="1.375" link="-1" />
+	<subSystem name="TwinRailgun" x="2.3125" y="-0.046875" scale="4" link="-11" />
+	<subSystem name="IonThruster" x="-2.625" y="0" scale="2" link="-1" />
+	<subSystem name="TorpedoBay" x="1.632813" y="-1.460938" scale=".75" link="-1" />
+	<subSystem name="ShieldGen" x="-0.601563" y="-0.585938" scale=".875" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="true" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="false" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="161" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="JoinFleet:-1.000000:true" />
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Defend" />
+	<order desc="Work:EnterStargate" />
+	<order desc="Work:EnterStargate" />
+</orders>
+

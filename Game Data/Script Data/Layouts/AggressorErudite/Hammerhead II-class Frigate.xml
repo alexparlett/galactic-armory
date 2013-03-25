@@ -1,0 +1,45 @@
+﻿<?xml version="1.0"?>
+<settings scale="10" name="Hammerhead II-class Frigate" />
+<subSystems>
+	<subSystem name="Bridge" x="-1.484375" y="-0.078125" scale=".625" link="-12" />
+	<subSystem name="CrewQuarters" x="-1.640625" y="-0.109375" scale="1" link="-1" />
+	<subSystem name="LifeSupport" x="-1.90625" y="-0.15625" scale=".125" link="-1" />
+	<subSystem name="AmmoStorage" x="-2" y="-0.140625" scale="1.5" link="-1" />
+	<subSystem name="FuelCell" x="-2.398438" y="-0.132813" scale=".75" link="-1" />
+	<subSystem name="FuelCell" x="-2.15625" y="-0.140625" scale="1" link="-1" />
+	<subSystem name="PowerGen" x="-1.765625" y="-0.109375" scale=".25" link="-1" />
+	<subSystem name="RepairBay" x="-1.640625" y="-0.171875" scale="4" link="-1" />
+	<subSystem name="Armor" x="-0.734375" y="-0.125" scale="2" link="-1" />
+	<subSystem name="Railgun" x="1.234375" y="-0.0625" scale=".25" link="-15" />
+	<subSystem name="Bulkhead" x="-0.896199" y="-0.09271" scale="1.5" link="0" />
+	<subSystem name="LightHull" x="-1.21875" y="-0.109375" scale="1" link="-1" />
+	<subSystem name="RepairBay" x="-2.617188" y="-0.148438" scale=".5" link="-1" />
+	<subSystem name="MultiRack" x="1.34375" y=".140625" scale=".25" link="9" />
+	<subSystem name="CoolantSys" x=".257813" y="-0.695313" scale=".5" link="18" />
+	<subSystem name="PolypropellantThruster" x="-3.078125" y="-0.15625" scale=".25" link="-1" />
+	<subSystem name="PolypropellantThruster" x="-2.78125" y="-0.515625" scale="1" link="-1" />
+	<subSystem name="PolypropellantThruster" x="-2.8125" y=".265625" scale="1" link="-1" />
+	<subSystem name="TwinRailgun" x=".289063" y="-0.101563" scale="2.5" link="-16" />
+</subSystems>
+<ai>
+	<targetScale low="1" hi="9999999" forced="false" />
+	<orbit flag="true" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="163" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Defend" />
+</orders>
+

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<settings scale="1" name="Darwin" />
+<subSystems>
+	<subSystem name="BomberHull" x="0" y="0" scale="1" link="-1" />
+	<subSystem name="Cockpit" x=".8125" y="-0.046875" scale=".5" link="-1" />
+	<subSystem name="FusionGen" x="2.046875" y=".71875" scale=".5" link="-1" />
+	<subSystem name="FuelCell" x="-0.03125" y="-1.3125" scale="2.5" link="-1" />
+	<subSystem name="FuelCell" x=".203125" y="1.40625" scale="2.5" link="-1" />
+	<subSystem name="Thruster" x="-2.387263" y=".077509" scale="3.5" link="-1" />
+	<subSystem name="Armor" x="-0.499684" y="-2.821745" scale="1" link="-1" />
+	<subSystem name="Armor" x="-0.859375" y="2.46875" scale="1" link="-1" />
+	<subSystem name="Bulkhead" x=".859375" y="-0.03125" scale=".5" link="1" />
+	<subSystem name="FighterLaser" x="2.234375" y="-0.9375" scale="3" link="-1" />
+	<subSystem name="FighterLaser" x="2.265625" y=".9375" scale="3" link="-1" />
+	<subSystem name="Heatsink" x="2" y="-0.703125" scale=".25" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="true" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+

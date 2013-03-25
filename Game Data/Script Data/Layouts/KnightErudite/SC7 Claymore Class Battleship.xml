@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<settings scale="25" name="SC7 Claymore Class Battleship" />
+<subSystems>
+	<subSystem name="RepairBay" x="-0.203125" y="-0.859375" scale="1" link="-1" />
+	<subSystem name="AntiMatterGen" x="-1.109375" y=".078125" scale="1" link="-1" />
+	<subSystem name="HeavyHull" x=".96875" y="0" scale="1" link="-11" />
+	<subSystem name="PowerArmor" x="-1.90625" y="-1.71875" scale="2" link="-1" />
+	<subSystem name="PowerArmor" x="-1.21875" y="-2.25" scale="2" link="-1" />
+	<subSystem name="PowerArmor" x="-0.359375" y="-2.59375" scale="2" link="-1" />
+	<subSystem name="ShieldGen" x="-0.3125" y=".0625" scale="2" link="-1" />
+	<subSystem name="PulsedShieldCharger" x="-0.1875" y=".78125" scale="1" link="7" />
+	<subSystem name="IntegratedCommandCenter" x="1.945313" y="-0.007813" scale=".375" link="-1" />
+	<subSystem name="Bulkhead" x=".351563" y="-0.007813" scale="1" link="2" />
+	<subSystem name="Firestorm" x="2.8125" y="-0.09375" scale="1" link="-1" />
+	<subSystem name="IonCannon" x="2.234375" y="1.234375" scale="2" link="-15" />
+	<subSystem name="CoolantSys" x="1.421875" y="-1.359375" scale=".25" link="15" />
+	<subSystem name="CoolantSys" x="1.453125" y="1.40625" scale=".25" link="11" />
+	<subSystem name="RamScoop" x="-1.65625" y=".078125" scale=".25" link="-1" />
+	<subSystem name="ParticleCannon" x="2.21875" y="-1.375" scale="2" link="-14" />
+	<subSystem name="Heatsink" x="1.453125" y="-0.015625" scale=".25" link="-1" />
+	<subSystem name="MagnetoPlasmaThruster" x="-2.59375" y="-0.625" scale="1" link="-1" />
+	<subSystem name="MagnetoPlasmaThruster" x="-2.65625" y=".75" scale="1" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="false" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="92" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="JoinFleet:20000.000000:true" />
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Defend" />
+	<order desc="Work:EnterStargate" />
+</orders>
+

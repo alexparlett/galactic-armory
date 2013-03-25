@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<settings scale="25" name="Zhiy Juxof" />
+<subSystems>
+	<subSystem name="LightHull" x=".328125" y="-0.34375" scale="1" link="-7" />
+	<subSystem name="BigAmmoStorage" x="-0.414063" y=".554688" scale=".75" link="-6" />
+	<subSystem name="LargeMissileRack" x="1.882813" y="-0.335938" scale="1.125" link="-1" />
+	<subSystem name="MissileRack" x="0" y="2.615686" scale="2" link="-26" />
+	<subSystem name="Bulkhead" x="-0.773438" y="1.039063" scale=".75" link="1" />
+	<subSystem name="Bulkhead" x=".695313" y="-0.289063" scale="1" link="0" />
+	<subSystem name="Armor" x="1.78125" y="-2.15625" scale="1" link="-1" />
+	<subSystem name="Armor" x="1.859375" y="1.90625" scale="1" link="-1" />
+	<subSystem name="VASIMRThruster" x="-2.486055" y="-0.201992" scale="2.75" link="-1" />
+	<subSystem name="IntegratedCommandCenter" x="1.0625" y="-0.84375" scale=".125" link="-1" />
+	<subSystem name="MegaMissileRack" x="2.8125" y="-0.359375" scale="1" link="-1" />
+	<subSystem name="MissileRack" x="2.273438" y="-1.164063" scale=".5" link="-1" />
+	<subSystem name="MissileRack" x="2.289063" y=".539063" scale=".5" link="-1" />
+	<subSystem name="FusionGen" x="-0.539063" y="-0.320313" scale=".875" link="-1" />
+	<subSystem name="FuelCell" x="-1.1875" y="-1.015625" scale=".125" link="-1" />
+	<subSystem name="MatterGen" x="-1.34375" y="-0.25" scale="1" link="-1" />
+	<subSystem name="ExternalMount" x=".5" y="-1.75" scale="1" link="17" />
+	<subSystem name="RepairTool" x=".046875" y="-2.625" scale="2" link="-18" />
+	<subSystem name="NaniteRepair" x="-1.289063" y=".570313" scale=".375" link="-1" />
+	<subSystem name="ArmorMount" x="-1.734375" y="-1.9375" scale=".625" link="-1" />
+	<subSystem name="ArmorMount" x="-1.671875" y="1.4375" scale=".625" link="-1" />
+	<subSystem name="NanoArmor" x="-2.59375" y="-1.375" scale=".625" link="-1" />
+	<subSystem name="NanoArmor" x="-2.671875" y="1.078125" scale=".625" link="-1" />
+	<subSystem name="AdvancedAICore" x="-0.265625" y="-1.0625" scale=".25" link="-1" />
+	<subSystem name="OversizeMount" x=".007813" y="1.632813" scale=".875" link="3" />
+	<subSystem name="Capacitor" x="-1.6875" y="-1.046875" scale=".25" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="false" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+        <order desc="Supply:Ammo:0.250000" />
+	<order desc="Fetch:Ammo:0.480000" />
+	<order desc="Fetch:Fuel:0.480000" />
+	<order desc="Defend" />
+</ai>
+<orders>
+	<order desc="Supply:Ammo:0.250000" />
+	<order desc="Fetch:Ammo:0.480000" />
+	<order desc="Fetch:Fuel:0.480000" />
+	<order desc="Defend" />
+</orders>
+

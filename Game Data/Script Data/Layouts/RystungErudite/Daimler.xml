@@ -1,0 +1,47 @@
+﻿<?xml version="1.0"?>
+<settings scale="4" name="Daimler" />
+<subSystems>
+	<subSystem name="Computer" x="-0.023438" y="-0.117188" scale=".875" link="-1" />
+	<subSystem name="FuelCell" x="-0.59375" y="-0.109375" scale=".25" link="-1" />
+	<subSystem name="RepairTool" x="1.859375" y="-1.40625" scale="4" link="-6" />
+	<subSystem name="RepairTool" x="1.90625" y="1.3125" scale="4" link="-7" />
+	<subSystem name="ExternalMount" x=".6875" y="-1.484375" scale="1" link="2" />
+	<subSystem name="ExternalMount" x=".671875" y="1.359375" scale="1" link="3" />
+	<subSystem name="LightHull" x="-1.125" y="-0.078125" scale="1" link="-1" />
+	<subSystem name="RamScoop" x="-1.28125" y=".609375" scale=".125" link="-1" />
+	<subSystem name="VASIMRThruster" x="-1.277686" y="-2.209768" scale="2.375" link="-1" />
+	<subSystem name="VASIMRThruster" x="-1.317892" y="2.186028" scale="2.375" link="-1" />
+	<subSystem name="ZeroPointGenerator" x="-1.679688" y="-0.101563" scale=".875" link="-1" />
+	<subSystem name="NaniteRepair" x="-0.640625" y="-0.921875" scale="1" link="-1" />
+	<subSystem name="NaniteRepair" x="-0.65625" y=".765625" scale="1" link="-1" />
+	<subSystem name="SolarPowerGen" x="-1.296875" y="-0.640625" scale=".125" link="-1" />
+	<subSystem name="ArmorMount" x="-2.78125" y="-0.46875" scale="1" link="-1" />
+	<subSystem name="ArmorMount" x="-2.796875" y=".34375" scale="1" link="-1" />
+	<subSystem name="ArmorMount" x=".734375" y=".21875" scale="1" link="-1" />
+	<subSystem name="ArmorMount" x=".765625" y="-0.375" scale="1" link="-1" />
+	<subSystem name="PowerArmor" x=".015477" y="-2.615641" scale="2" link="-1" />
+	<subSystem name="PowerArmor" x=".108249" y="2.613446" scale="2" link="-1" />
+	<subSystem name="NanoArmor" x="-2.28125" y="-1.484375" scale="1" link="-1" />
+	<subSystem name="NanoArmor" x="-2.430305" y="1.470566" scale="1" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Ammo:0.200000" />
+	<order desc="Fetch:Fuel:0.200000" />
+	<order desc="Work:Repairer" />
+</orders>
+

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<settings scale="1" name="Remnant Interceptor" />
+<subSystems>
+	<subSystem name="Cockpit" x=".53125" y="-0.09375" scale="1" link="-1" />
+	<subSystem name="FuelCell" x=".015625" y="1.234375" scale=".25" link="-1" />
+	<subSystem name="FighterHull" x="-0.625" y="-0.09375" scale="1" link="-1" />
+	<subSystem name="Bulkhead" x="-1.453125" y=".046875" scale="1" link="9" />
+	<subSystem name="Bulkhead" x=".65625" y="-0.265625" scale=".5" link="0" />
+	<subSystem name="FuelCell" x=".078125" y="-1.390625" scale=".25" link="-1" />
+	<subSystem name="ReactArmor" x="-1.34375" y="-2.40625" scale="1" link="-1" />
+	<subSystem name="FighterTorpedo" x="2.125" y="1.140625" scale="3" link="-1" />
+	<subSystem name="FighterTorpedo" x="2.171875" y="-1.03125" scale="3" link="-1" />
+	<subSystem name="ShieldedAntimatterGen" x="-0.953125" y=".046875" scale="1.25" link="-1" />
+	<subSystem name="AntimatterRocket" x="-2.390625" y="-0.828125" scale="2.5" link="-1" />
+	<subSystem name="AntimatterRocket" x="-2.391655" y=".833222" scale="2.5" link="-1" />
+	<subSystem name="Bulkhead" x=".015625" y="-1.140625" scale=".5" link="5" />
+	<subSystem name="Bulkhead" x="0" y="1" scale=".5" link="1" />
+</subSystems>
+<ai>
+	<orbit flag="true" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="1" />
+	<carrierMode mode="0" />
+</ai>
+

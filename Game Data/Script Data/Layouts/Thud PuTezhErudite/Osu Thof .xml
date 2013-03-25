@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<settings scale="30" name="Osu Thof " />
+<subSystems>
+	<subSystem name="MediumHull" x="-1.375" y="-0.09375" scale="1" link="-1" />
+	<subSystem name="RepairBay" x="1.070313" y=".242188" scale=".5" link="-1" />
+	<subSystem name="RepairTool" x="1.007813" y="-0.617188" scale=".5" link="-1" />
+	<subSystem name="BigAmmoStorage" x=".0625" y="-0.96875" scale="1" link="-7" />
+	<subSystem name="Capacitor" x="-0.84375" y=".5625" scale=".25" link="-1" />
+	<subSystem name="Bulkhead" x=".460938" y="-1.117188" scale="1" link="3" />
+	<subSystem name="Bulkhead" x=".367188" y=".898438" scale="1" link="13" />
+	<subSystem name="FlakTurret" x="2.078125" y="-0.140625" scale=".25" link="-1" />
+	<subSystem name="Armor" x="-2.125" y="-1.875" scale="1" link="-1" />
+	<subSystem name="Armor" x="-2.03125" y="1.953125" scale="1" link="-1" />
+	<subSystem name="LargeMissileRack" x="2.8125" y="-0.140625" scale="1" link="-1" />
+	<subSystem name="IntegratedCommandCenter" x=".5625" y="-0.171875" scale=".125" link="-1" />
+	<subSystem name="FusionGen" x="-0.460938" y="-0.179688" scale=".5" link="-1" />
+	<subSystem name="FuelCell" x=".101563" y=".632813" scale=".75" link="-8" />
+	<subSystem name="VASIMRThruster" x="-2.726563" y="-0.117188" scale="1.375" link="-1" />
+	<subSystem name="FusionTorpedoBay" x="2.742188" y=".757813" scale=".75" link="-1" />
+	<subSystem name="InterceptorMissile" x="1.265625" y="-2.578125" scale=".25" link="-1" />
+	<subSystem name="AmmoFabricator" x="-0.882813" y="-0.945313" scale=".75" link="-1" />
+	<subSystem name="MissileRack" x="1.859375" y="-0.90625" scale=".625" link="-1" />
+	<subSystem name="MissileRack" x="1.90625" y=".703125" scale=".625" link="-1" />
+	<subSystem name="ExternalMount" x="-0.859375" y="1.609375" scale="1" link="30" />
+	<subSystem name="ExternalMount" x="-1.0625" y="-1.90625" scale="1" link="22" />
+	<subSystem name="ClusterMissile" x="0" y="-2.324258" scale="4" link="-23" />
+	<subSystem name="NanoArmor" x="2" y="-1.96875" scale="1" link="-1" />
+	<subSystem name="NanoArmor" x="2.140625" y="1.796875" scale="1" link="-1" />
+	<subSystem name="InterceptorMissile" x="1.5" y="2.609375" scale=".25" link="-1" />
+	<subSystem name="AdvancedAICore" x=".125" y="-0.1875" scale=".25" link="-1" />
+	<subSystem name="EMPMissile" x="1.289063" y="-1.460938" scale=".875" link="-1" />
+	<subSystem name="PhasedMissile" x="1.242188" y="1.257813" scale=".25" link="-1" />
+	<subSystem name="TerahertzTorpedo" x="2.648438" y="-1.101563" scale=".75" link="-1" />
+	<subSystem name="FusionTorpedoBay" x=".015625" y="2.3125" scale="4" link="-22" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Defend" />
+</orders>
+

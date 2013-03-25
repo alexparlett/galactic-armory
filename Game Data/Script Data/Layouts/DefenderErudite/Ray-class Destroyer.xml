@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<settings scale="5" name="Ray-class Destroyer" />
+<subSystems>
+	<subSystem name="Bridge" x="-0.710938" y=".289063" scale=".375" link="-1" />
+	<subSystem name="CrewQuarters" x="-0.210938" y=".039063" scale=".375" link="-1" />
+	<subSystem name="LifeSupport" x="-0.703125" y="-0.203125" scale=".125" link="-1" />
+	<subSystem name="HeavyHull" x=".546875" y=".046875" scale="1" link="-1" />
+	<subSystem name="ShortLaser" x="1.546875" y="-0.953125" scale=".25" link="-13" />
+	<subSystem name="ShortLaser" x="1.546875" y="1.046875" scale=".25" link="-14" />
+	<subSystem name="FuelCell" x="-0.960938" y="1.289063" scale="1.25" link="-1" />
+	<subSystem name="ShieldGen" x=".046875" y="-0.953125" scale="1" link="-1" />
+	<subSystem name="ShieldCharger" x=".046875" y="1.046875" scale=".5" link="-1" />
+	<subSystem name="Capacitor" x="-2.203125" y=".296875" scale=".25" link="-1" />
+	<subSystem name="SoakArmor" x=".03125" y="2.453125" scale="3" link="-1" />
+	<subSystem name="MultiRack" x="1.046875" y="-0.953125" scale=".625" link="4" />
+	<subSystem name="MultiRack" x="1.046875" y="1.046875" scale=".625" link="5" />
+	<subSystem name="SoakArmor" x=".046875" y="-2.453125" scale="3" link="-1" />
+	<subSystem name="FusionGen" x="-1.453125" y=".046875" scale=".5" link="-18" />
+	<subSystem name="FuelCell" x="-0.960938" y="-1.210938" scale="1.25" link="-1" />
+	<subSystem name="Bulkhead" x="-1.453125" y=".046875" scale=".5" link="14" />
+	<subSystem name="Heatsink" x="-2.1875" y="-0.1875" scale=".625" link="-1" />
+	<subSystem name="DamageSys" x="1.53125" y=".03125" scale=".5" link="22" />
+	<subSystem name="IonThruster" x="-2.582987" y="-0.81975" scale="1.5" link="-1" />
+	<subSystem name="IonThruster" x="-2.53125" y=".921875" scale="1.5" link="-1" />
+	<subSystem name="RamScoop" x="-2.765625" y=".0625" scale=".25" link="-1" />
+	<subSystem name="PlasmaBeam" x="2.234375" y=".046875" scale="2" link="-20" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="0" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Defend" />
+</orders>
+

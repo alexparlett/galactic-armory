@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<settings scale="29" name="SC8 Excalibur Class Super Battleship" />
+<subSystems>
+	<subSystem name="Bulkhead" x=".578125" y="0" scale=".5" link="15" />
+	<subSystem name="RamScoop" x="-2.015625" y="-0.984375" scale=".25" link="-1" />
+	<subSystem name="Firestorm" x="2.539063" y="-0.054688" scale=".5" link="-1" />
+	<subSystem name="MediumHull" x="-0.65625" y="-0.0625" scale="1" link="-1" />
+	<subSystem name="NaniteRepair" x="-1.109375" y=".875" scale=".5" link="-1" />
+	<subSystem name="ShieldedAntimatterGen" x="-1.703125" y="-0.03125" scale="1.5" link="-14" />
+	<subSystem name="JumpDrive" x="-0.40625" y="-0.109375" scale=".75" link="-1" />
+	<subSystem name="NaniteRepair" x="-1.0625" y="-0.859375" scale=".5" link="-1" />
+	<subSystem name="AntimatterProjector" x="1.03125" y="2.53125" scale="1" link="-19" />
+	<subSystem name="AntimatterProjector" x="2.546875" y="-1" scale="1" link="-21" />
+	<subSystem name="AntimatterProjector" x="1.03125" y="-2.46875" scale="1" link="-22" />
+	<subSystem name="AntimatterProjector" x="2.546875" y="1" scale="1" link="-20" />
+	<subSystem name="Bulkhead" x="-1.8125" y="-0.03125" scale="1" link="5" />
+	<subSystem name="PFW" x="1.546875" y="1.5" scale="1" link="-23" />
+	<subSystem name="PFW" x="1.515625" y="-1.5" scale="1" link="-24" />
+	<subSystem name="IntegratedCommandCenter" x=".34375" y=".015625" scale=".25" link="-2" />
+	<subSystem name="QuantumBattery" x="-1.96875" y=".921875" scale=".5" link="-1" />
+	<subSystem name="CoolantSys" x=".78125" y="2.28125" scale=".25" link="8" />
+	<subSystem name="CoolantSys" x="2.28125" y=".78125" scale=".25" link="11" />
+	<subSystem name="CoolantSys" x="2.28125" y="-0.71875" scale=".25" link="9" />
+	<subSystem name="CoolantSys" x=".78125" y="-2.21875" scale=".25" link="10" />
+	<subSystem name="CoolantSys" x="1.28125" y="1.28125" scale=".25" link="13" />
+	<subSystem name="CoolantSys" x="1.28125" y="-1.21875" scale=".25" link="14" />
+	<subSystem name="AmmoFabricator" x=".984375" y=".640625" scale=".25" link="-1" />
+	<subSystem name="GatlingLaser" x="1.804688" y="-0.054688" scale=".5" link="-1" />
+	<subSystem name="Heatsink" x="1" y="-0.65625" scale=".25" link="-1" />
+	<subSystem name="AntimatterRocket" x="-2.710938" y="-0.773438" scale=".75" link="-1" />
+	<subSystem name="AntimatterRocket" x="-2.742188" y=".679688" scale=".75" link="-1" />
+	<subSystem name="ShieldArmor" x="-1.453125" y="-2.171875" scale="2" link="-1" />
+	<subSystem name="ShieldArmor" x="-1.46875" y="2.140625" scale="2" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="false" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="JoinFleet:50000.000000:true" />
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Defend" />
+</orders>
+

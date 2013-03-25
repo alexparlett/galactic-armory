@@ -1,0 +1,322 @@
+#forceHighQTextures on
+#makeMipMaps off
+
+SpriteBank: vaygr_shipset
+ Texture: ../../Images/Ships/HW2/vaygr_shipset.png
+ AutoTile: rowmajor, 67, 55
+
+#forceHighQTextures off
+#makeMipMaps on
+
+Material: vaygr_drone_low
+ Defer: High
+ Texture: ~/Images/Ships/neumon_texture1.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ 
+Material: vaygr_drone
+ Defer: High
+ Texture: ~/Images/Ships/neumon_texture1.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ~/Images/Ships/neumon_texture1_glow.png
+ Texture3: ~/Images/Ships/neumon_texture1_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+
+Material: vaygr_fighter_low
+ Defer: High
+ Texture: ../../Images/Ships/HW2/vaygr_fighter.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ 
+Material: vaygr_fighter
+ Defer: High
+ Texture: ../../Images/Ships/HW2/vaygr_fighter.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/HW2/vaygr_fighter_glow.png
+ Texture3: ../../Images/Ships/HW2/vaygr_fighter_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+
+Material: vaygr_freighter_low
+ Defer: High
+ Texture: ../../Images/Ships/HW2/vaygr_tp.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ 
+Material: vaygr_freighter
+ Defer: High
+ Texture: ../../Images/Ships/HW2/vaygr_tp.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/HW2/vaygr_tp_glow.png
+ Texture3: ../../Images/Ships/HW2/vaygr_tp_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+ 
+
+Material: vaygr_colonizer_low
+Defer: High
+ Texture: ../../Images/Ships/HW2/vaygr_colonizer.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+
+Material: vaygr_colonizer
+ Defer: High
+ Texture: ../../Images/Ships/HW2/vaygr_colonizer.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/HW2/vaygr_colonizer_glow.png
+ Texture3: ../../Images/Ships/HW2/vaygr_colonizer_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+
+ 
+Material: vaygr_carrier_low
+ Defer: High
+ Texture: ../../Images/Ships/HW2/vaygr_carrier.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666 
+ 
+ 
+Material: vaygr_carrier
+ Defer: High
+ Texture: ../../Images/Ships/HW2/vaygr_carrier.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/HW2/vaygr_carrier_glow.png
+ Texture3: ../../Images/Ships/HW2/vaygr_carrier_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+ 
+ 
+Material: vaygr_tiny_low
+ Defer: High
+ Texture: ../../Images/Ships/HW2/vaygr_tiny.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+
+Material: vaygr_tiny
+ Defer: High
+ Texture: ../../Images/Ships/HW2/vaygr_tiny.png
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/HW2/vaygr_tiny_glow.png
+ Texture3: ../../Images/Ships/HW2/vaygr_tiny_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+ 
+ 
+ Material: vaygr_small_low
+ Defer: High
+ Texture: ../../Images/Ships/HW2/vaygr_small_LOD.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ 
+ Material: vaygr_small
+  Defer: High
+ Texture: ../../Images/Ships/HW2/vaygr_small.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/HW2/vaygr_small_glow.png
+ Texture3: ../../Images/Ships/HW2/vaygr_small_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+ 
+ 
+ Material: vaygr_medium_low
+ Defer: High
+ Texture: ../../Images/Ships/HW2/vaygr_medium.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ 
+ Material: vaygr_medium
+  Defer: High
+ Texture: ../../Images/Ships/HW2/vaygr_medium.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/HW2/vaygr_medium_glow.png
+ Texture3: ../../Images/Ships/HW2/vaygr_medium_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+ 
+ 
+ Material: vaygr_large_low
+ Defer: High
+ Texture: ../../Images/Ships/HW2/vaygr_large.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ 
+ Material: vaygr_large
+  Defer: High
+ Texture: ../../Images/Ships/HW2/vaygr_large.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/HW2/vaygr_large_glow.png
+ Texture3: ../../Images/Ships/HW2/vaygr_large_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+ 
+ Material: vaygr_verylarge_LOD
+ Defer: High
+ Texture: ../../Images/Ships/HW2/vaygr_verylarge_LOD.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+
+ Material: vaygr_verylarge_low
+ Defer: High
+ Texture: ../../Images/Ships/HW2/vaygr_verylarge.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+
+ Material: vaygr_verylarge
+  Defer: High
+ Texture: ../../Images/Ships/HW2/vaygr_verylarge.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/HW2/vaygr_Verylarge_glow.png
+ Texture3: ../../Images/Ships/HW2/vaygr_verylarge_masks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+
+ Material: vaygr_huge_low
+ Defer: High
+ Texture: ../../Images/Ships/HW2/vaygr_huge.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ 
+Material: vaygr_huge
+ Defer: High
+ Texture: ../../Images/Ships/HW2/vaygr_huge.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/HW2/vaygr_huge_glow.png
+ Texture3: ../../Images/Ships/HW2/vaygr_huge_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+ 
+  Material: vaygr_satellite_low
+ Defer: High
+ Texture: ~/Images/Ships/neumon_texture4.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ 
+ Material: vaygr_satellite
+  Defer: High
+ Texture: ~/Images/Ships/neumon_texture4.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ~/Images/Ships/neumon_texture4_glow.png
+ Texture3: ~/Images/Ships/neumon_texture4_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+ 
+ 
+  Material: vaygr_station_low
+ Defer: High
+ Texture: ../../Images/Ships/HW2/hiigaran_spacestation_LOD.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+
+ 
+ Material: vaygr_station
+  Defer: High
+ Texture: ../../Images/Ships/HW2/hiigaran_spacestation.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 888
+ #if shaders
+ Texture2: ../../Images/Ships/HW2/hiigaran_spacestation_glow.png
+ Texture3: ../../Images/Ships/HW2/hiigaran_spacestation_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end

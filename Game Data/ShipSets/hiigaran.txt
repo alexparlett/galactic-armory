@@ -1,0 +1,105 @@
+if class == ColonyShip {
+    Sprite = 13
+	Model = hiigaran_colonizer
+}
+
+tag RemnantSuperWeapon {
+	Sprite = 14
+	Model = neumon_superweapon
+}
+
+tag RemnantSWGreen {
+	Sprite = 15
+	Model = green_neumon_superweapon
+}
+
+tag MothershipHull {
+	Sprite = 7
+	Model = hgn_Huge
+}
+
+if (class == Carrier) || (class == Transport) {
+    Sprite = 14
+	Model = hiigaran_carrier
+}
+
+if class == Cargo {
+   Sprite = 10
+	Model = hiigaran_hauler
+}
+
+
+tag BuildsShips {
+   Sprite = 15
+   Model = hiigaran_station_trade
+}
+
+tag Salvager {
+   Sprite = 10
+   Model = hiigaran_hauler
+}
+
+
+
+if (class == Station) || (class == CivStation) {
+	if scale <= 10 {
+		Sprite = 8
+		Model = hgn_Satellite
+	}
+	Sprite = 12
+	Model =  hiigaran_station
+}
+	
+
+if scale <= 0.25 {
+Sprite = 0
+	Model = hgn_Probe
+}
+
+tag FighterHull {
+Sprite = 1
+	Model = hgn_Fighter
+}
+
+tag BomberHull {
+Sprite = 2
+	Model = hgn_Bomber
+}
+
+tag LightHull {
+Sprite = 3
+	Model = hiigaran_small
+}
+
+tag MediumHull {
+Sprite = 16
+	Model = hgn_Frigate
+}
+
+tag SpinalHull {
+Sprite = 17
+	Model = hgn_Juggernaut
+}
+
+tag MegaHull {
+Sprite = 6
+	Model = hiigaran_verylarge
+}
+
+tag GargantuanHull {
+Sprite = 9
+	Model = hiigaran_huge
+}
+
+tag HeavyHull {
+Sprite = 5
+	Model = hiigaran_large
+}
+
+tag StealthHull {
+Sprite = 4
+	Model = hiigaran_medium
+}
+
+Sprite = 16
+	Model = hgn_Frigate

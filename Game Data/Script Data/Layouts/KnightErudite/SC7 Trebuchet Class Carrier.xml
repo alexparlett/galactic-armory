@@ -1,0 +1,49 @@
+﻿<?xml version="1.0"?>
+<settings scale="30" name="SC7 Trebuchet Class Carrier" />
+<subSystems>
+	<subSystem name="RepairBay" x="-1.492188" y="-0.539063" scale=".875" link="-1" />
+	<subSystem name="PowerArmor" x="-1.90625" y="-1.71875" scale="2" link="-1" />
+	<subSystem name="ShieldGen" x="-0.328125" y="-0.078125" scale="1.5" link="-9" />
+	<subSystem name="IntegratedCommandCenter" x=".546875" y=".59375" scale=".125" link="-1" />
+	<subSystem name="Firestorm" x="2.835938" y="-0.539063" scale=".75" link="-12" />
+	<subSystem name="RepairFacilities" x=".601563" y="-0.867188" scale=".5" link="-1" />
+	<subSystem name="AmmoFabricator" x="2.265625" y="-0.03125" scale=".25" link="-1" />
+	<subSystem name="ShieldHardener" x="-0.46875" y="-0.828125" scale="1" link="2" />
+	<subSystem name="ShieldCharger" x="-0.40625" y=".765625" scale="1" link="-1" />
+	<subSystem name="AutocannonBattery" x="2.867188" y=".289063" scale=".75" link="-17" />
+	<subSystem name="MultiRack" x="2.304688" y="-0.867188" scale=".5" link="4" />
+	<subSystem name="CarrierHull" x="1.515625" y="-0.015625" scale="1" link="-1" />
+	<subSystem name="ShieldedAntimatterGen" x="-1.476563" y=".382813" scale=".875" link="-1" />
+	<subSystem name="RamScoop" x="-1.859375" y="-0.109375" scale=".125" link="-1" />
+	<subSystem name="TwinHeavyRailgun" x="1.695313" y="1.226563" scale=".75" link="-1" />
+	<subSystem name="MultiRack" x="2.398438" y=".679688" scale=".375" link="9" />
+	<subSystem name="AntimatterRocket" x="-2.6875" y="-0.5" scale="1" link="-1" />
+	<subSystem name="AntimatterRocket" x="-2.671875" y=".78125" scale="1" link="-1" />
+	<subSystem name="AmmoStorage" x=".710938" y=".007813" scale=".5" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="false" />
+	<depositTargets ships="false" planets="false" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="1000" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="JoinFleet:40000.000000:true" />
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="AutoUnDock" />
+	<order desc="Replenish" />
+	<order desc="Defend" />
+	<order desc="Work:Repairer" />
+	<order desc="Work:EnterStargate" />
+</orders>
+

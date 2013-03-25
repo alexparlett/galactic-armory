@@ -1,0 +1,79 @@
+#makeMipMaps off
+
+Material: res_tech_1
+ Texture: ~/Images/Research/research_icon_technology1.png
+
+Material: res_tech_2
+ Texture: ~/Images/Research/research_icon_technology2.png
+
+Material: res_tech_3
+ Texture: ~/Images/Research/research_icon_technology3.png
+
+Material: res_tech_4
+ Texture: ~/Images/Research/research_icon_technology4.png
+
+Material: res_tech_5
+ Texture: ~/Images/Research/research_icon_technology5.png
+
+Material: res_tech_6
+ Texture: ~/Images/Research/research_icon_technology6.png
+
+Material: res_tech_7
+ Texture: ~/Images/Research/research_icon_technology7.png
+
+Material: res_tech_8
+ Texture: ~/Images/Research/research_icon_technology8.png
+
+Material: res_tech_9
+ Texture: ~/Images/Research/research_icon_technology9.png
+
+Material: res_tech_10
+ Texture: ~/Images/Research/research_icon_technology10.png
+
+Material: res_tech_11
+ Texture: ~/Images/Research/research_icon_technology11.png
+
+Material: res_tech_12
+ Texture: ~/Images/Research/research_icon_technology12.png
+
+Material: res_tech_13
+ Texture: ~/Images/Research/research_icon_technology13.png
+
+Material: res_tech_14
+ Texture: ~/Images/Research/research_icon_technology14.png
+
+Material: res_tech_15
+ Texture: ~/Images/Research/research_icon_technology15.png
+
+Material: res_tech_16
+ Texture: ~/Images/Research/research_icon_technology16.png
+
+Material: res_tech_17
+ Texture: ~/Images/Research/research_icon_technology17.png
+
+Material: res_tech_18
+ Texture: ~/Images/Research/research_icon_technology18.png
+
+Material: res_tech_19
+ Texture: ~/Images/Research/research_icon_technology19.png
+
+Material: res_tech_20
+ Texture: ~/Images/Research/research_icon_technology20.png
+
+Material: res_tech_21
+ Texture: ~/Images/Research/research_icon_technology21.png
+
+Material: res_tech_22
+ Texture: ~/Images/Research/research_icon_technology22.png
+
+Material: res_tech_23
+ Texture: ~/Images/Research/research_icon_technology23.png
+
+Material: res_tech_24
+ Texture: ~/Images/Research/research_icon_technology24.png
+
+Material: res_tech_25
+ Texture: ~/Images/Research/research_icon_technology25.png
+ 
+Material: res_tech_ew
+ Texture: Images/Research/electronic_warfare.png

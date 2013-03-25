@@ -1,0 +1,15 @@
+uniform float cycle;
+varying float tail_pct, time, space;
+
+const float timeWidth = 0.125;
+
+void main() {
+	float x = gl_MultiTexCoord0.x, y = (gl_MultiTexCoord0.y - 0.5) * 2.0;
+	
+	tail_pct = x;
+	space = y;
+	
+	time = cycle - (timeWidth * x);
+	
+	gl_Position = ftransform();
+}

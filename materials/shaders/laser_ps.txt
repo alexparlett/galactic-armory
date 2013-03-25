@@ -1,0 +1,22 @@
+uniform sampler2D beam, detail;
+
+const float detailFactor = 2.5;
+
+void main() {
+	gl_FragColor.rgb = gl_FrontMaterial.diffuse.rgb * gl_Color.rgb * texture2D(beam, gl_TexCoord[0].xy).rgb;
+	
+	vec3 dtlColor = texture2D(detail, gl_TexCoord[1].xy).rgb;
+	dtlColor -= 0.5;
+	dtlColor *= detailFactor;
+	dtlColor += 1.0;
+	
+	gl_FragColor.rgb *= dtlColor;
+	
+	float maxChannel = max(max(gl_FragColor.r, gl_FragColor.g), gl_FragColor.b);
+	if(maxChannel > 1.0) {
+		maxChannel -= 1.0;
+		gl_FragColor.r = max(maxChannel, gl_FragColor.r);
+		gl_FragColor.g = max(maxChannel, gl_FragColor.g);
+		gl_FragColor.b = max(maxChannel, gl_FragColor.b);
+	}
+}

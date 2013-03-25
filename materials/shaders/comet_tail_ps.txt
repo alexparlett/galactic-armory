@@ -1,0 +1,19 @@
+uniform sampler2D texture;
+varying float tail_pct, time, space;
+const float tailSpread = 4.0;
+
+void main() {
+	float y = space;
+	y *= 1.0 + ((tailSpread - 1.0) * (1.0 - sqrt(tail_pct)));
+
+	//Due to how warping occurs, we must discard space coords that are outside of the texture
+	if(abs(y) > 1.0 || tail_pct < 0.003)
+		discard;
+
+	vec4 col = texture2D(texture, vec2((y + 1.0) * 0.5, time) );
+	
+	//Fade off strongly at the end
+	col.a *= 1.0 - (tail_pct * tail_pct);
+	
+	gl_FragColor.rgb = col.rgb * col.a;
+}

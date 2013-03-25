@@ -1,0 +1,36 @@
+﻿<?xml version="1.0"?>
+<settings scale="2" name="Ammo Carrier" />
+<subSystems>
+	<subSystem name="TankerHull" x="1.453125" y="-0.046875" scale="1" link="-1" />
+	<subSystem name="BussardRamjet" x="-2.009714" y="-1.780627" scale="1.625" link="-1" />
+	<subSystem name="BussardRamjet" x="-1.922788" y="1.711493" scale="1.625" link="-1" />
+	<subSystem name="AmmoStorage" x="-1.234375" y="-0.546875" scale="1.5" link="-1" />
+	<subSystem name="AmmoStorage" x="-1.21875" y=".5" scale="1.5" link="-1" />
+	<subSystem name="AmmoStorage" x="-0.265625" y="-0.5625" scale="1.5" link="-1" />
+	<subSystem name="AmmoStorage" x="-0.25" y=".484375" scale="1.5" link="-1" />
+	<subSystem name="Computer" x=".59375" y="-0.078125" scale=".25" link="-1" />
+	<subSystem name="PowerGen" x=".59375" y=".671875" scale=".25" link="-1" />
+	<subSystem name="Capacitor" x=".5625" y="-0.6875" scale=".25" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="true" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="false" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Supply:Fuel:0.400000" />
+	<order desc="Supply:Ammo:0.500000" />
+	<order desc="Fetch:Fuel:0.200000" />
+	<order desc="Fetch:Ammo:0.200000" />
+</orders>
+

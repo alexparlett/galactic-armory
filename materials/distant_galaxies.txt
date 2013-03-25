@@ -1,0 +1,53 @@
+Material: dist_glx_1
+ Texture: Images/dist_galaxy_spiral1.png
+ RenderMode: SignedColored
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: dist_glx_2
+ Texture: Images/dist_galaxy_spiral2.png
+ RenderMode: SignedColored
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: dist_glx_3
+ Texture: Images/dist_galaxy_spiral3.png
+ RenderMode: SignedColored
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: dist_glx_4
+ Texture: Images/dist_galaxy_cone1.png
+ RenderMode: SignedColored
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: dist_glx_5
+ Texture: Images/dist_galaxy_abstract01.png
+ RenderMode: SignedColored
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: dist_glx_6
+ Texture: Images/dist_galaxy_piepan01.png
+ RenderMode: SignedColored
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: dist_glx_7
+ Texture: Images/dist_galaxy_piepan02.png
+ RenderMode: SignedColored
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: dist_glx_8
+ Texture: Images/dist_galaxy_ripple1.png
+ RenderMode: SignedColored
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: dist_glx_9
+ Texture: Images/dist_galaxy_cluster01.png
+ RenderMode: SignedColored
+ FlagOff: Lighting
+ FlagOff: ZWrite

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<settings scale="10" name="Pirate Raider" />
+<subSystems>
+	<subSystem name="MediumHull" x=".265625" y="-0.078125" scale="1" link="-1" />
+	<subSystem name="Bridge" x="-0.28125" y=".90625" scale="1" link="-9" />
+	<subSystem name="CrewQuarters" x="-0.421875" y="-0.921875" scale=".75" link="-8" />
+	<subSystem name="LifeSupport" x="-1.1875" y=".6875" scale=".25" link="-1" />
+	<subSystem name="Thruster" x="-2.296875" y=".0625" scale="4" link="-1" />
+	<subSystem name="PowerGen" x="-0.796875" y="-0.09375" scale=".5" link="-1" />
+	<subSystem name="Bulkhead" x="-0.21875" y="-1.25" scale=".5" link="2" />
+	<subSystem name="Bulkhead" x="-0.0625" y=".984375" scale=".5" link="1" />
+	<subSystem name="AmmoStorage" x="1.03125" y="1.625" scale="1.5" link="-1" />
+	<subSystem name="Railgun" x="-0.15625" y="2.59375" scale="1" link="-1" />
+	<subSystem name="Railgun" x="-0.046875" y="-2.515625" scale="1" link="-1" />
+	<subSystem name="Railgun" x="2.026933" y="-0.220618" scale="4" link="-1" />
+	<subSystem name="BigFuelCell" x="-1.971778" y=".027577" scale=".5" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="false" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+

@@ -1,0 +1,1376 @@
+#include "subsys_icons.txt"
+#include "starpedia.txt"
+#include "~/materials/rock_textures.txt"
+#include "planet_textures.txt"
+#include "distant_galaxies.txt"
+#include "~/materials/gui_images.txt"
+#include "gui_images.txt"
+#include "~/materials/distant_icons.txt"
+#include "research_icons.txt"
+#include "shaders.txt"
+
+Material: rangeRing
+#if shaders & !intel
+ RenderMode: RangeRing
+#else
+ Texture: ~/Images/rangeRing.png
+ RenderMode: Alpha
+ RenderVal: 0
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: star_animated
+ Defer: High
+ FlagOff: Lighting
+#if shaders
+ Texture: ~/Images/star_tex.png
+	#if hi_shaders
+	  Texture2: ~/Images/planets/difference_noise.png
+	  RenderMode: StarAnimHigh
+	#elif med_shaders
+	  RenderMode: StarAnim
+	#else
+	 RenderMode: SolidSignedColored
+	#end
+#else
+ Texture: ~/Images/star_tex_basic.png
+#end
+
+Material: star_static
+ Defer: High
+#if shaders
+ Texture: ~/Images/star_tex.png
+ RenderMode: SolidSignedColored
+#else
+ Texture: ~/Images/star_tex_basic.png
+#end
+ FlagOff: Lighting
+
+Material: distantStar
+ Defer: Required
+ Texture: ~/Images/distant_white_star.png
+ RenderMode: Alpha
+ RenderVal: 0.05
+ FlagOff: Lighting 
+
+Material: systemUnderAttack
+ Defer: Required
+ //Texture: ~/Images/system_underattack.png
+ RenderMode: Colored
+ RenderVal: 0
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: emptyEmpty
+ Defer: Required
+ Texture: ~/Images/emptyEmpty.png
+ RenderMode: AttackGlow
+ RenderVal: 0
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: emptyFringe
+ Defer: Required
+ Texture: ~/Images/emptyFringe.png
+ RenderMode: AttackGlow
+ RenderVal: 0
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: emptyColony
+ Defer: Required
+ Texture: ~/Images/emptyColony.png
+ RenderMode: AttackGlow
+ RenderVal: 0
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: emptySector
+ Defer: Required
+ Texture: ~/Images/emptySector.png
+ RenderMode: AttackGlow
+ RenderVal: 0
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: scoutEmpty
+ Defer: Required
+ Texture: ~/Images/scoutEmpty.png
+ RenderMode: AttackGlow
+ RenderVal: 0
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: scoutFringe
+ Defer: Required
+ Texture: ~/Images/scoutFringe.png
+ RenderMode: AttackGlow
+ RenderVal: 0
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: scoutColony
+ Defer: Required
+ Texture: ~/Images/scoutColony.png
+ RenderMode: AttackGlow
+ RenderVal: 0
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: scoutSector
+ Defer: Required
+ Texture: ~/Images/scoutSector.png
+ RenderMode: AttackGlow
+ RenderVal: 0
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: armyEmpty
+ Defer: Required
+ Texture: ~/Images/armyEmpty.png
+ RenderMode: AttackGlow
+ RenderVal: 0
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: armyFringe
+ Defer: Required
+ Texture: ~/Images/armyFringe.png
+ RenderMode: AttackGlow
+ RenderVal: 0
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: armyColony
+ Defer: Required
+ Texture: ~/Images/armyColony.png
+ RenderMode: AttackGlow
+ RenderVal: 0
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: armySector
+ Defer: Required
+ Texture: ~/Images/armySector.png
+ RenderMode: AttackGlow
+ RenderVal: 0
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: selectRing
+ Defer: Required
+ Texture: ~/Images/GUI/Cursor.png
+ RenderMode: Alpha
+ RenderVal: 0
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ FlagOff: BackfaceCulling
+
+Material: planeDisc
+#if shaders
+ RenderMode: PlaneDisc
+#else
+ Defer: Required
+ Texture: ~/Images/planeDisc.png
+ RenderMode: Alpha
+ RenderVal: 0
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ FlagOff: BackfaceCulling
+
+Material: flagIcon
+ Defer: Required
+ Texture: ~/Images/flag_ico.png
+ RenderMode: Alpha
+ RenderVal: 0
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: fleet_leader
+ Defer: Required
+ Texture: ~/Images/fleet_leader.png
+ RenderMode: Alpha
+ RenderVal: 0
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: galaxyIco
+ Defer: Required
+ Texture: ~/Images/galaxyIco.png
+
+Material: starIco
+ Defer: Required
+ Texture: ~/Images/starIco.png
+
+Material: planetIco
+ Defer: Required
+ Texture: ~/Images/planetIco.png
+
+Material: explosion
+ Texture: Images/explosion.png
+ RenderMode: Add
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: flak_dust
+ Texture: ~/Images/flak.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+#makeMipMaps off
+Material: corona
+ Defer: Required
+#if shaders & !intel
+ RenderMode: CoronaAnim
+ Texture: ~/Images/corona_anim1.png
+#else
+ Texture: ~/Images/corona.png
+ RenderMode: Add
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+#makeMipMaps on
+
+Material: corona2
+ Defer: Required
+#if shaders
+ RenderMode: CoronaAnimOld
+ Texture: Images/corona_anim1.png
+#else
+ Texture: Images/corona.png
+ RenderMode: Add
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: smoke
+ Texture: ~/Images/smoke.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: animated_smoke
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedBullet
+ Texture: Images/animated_smoke.png
+#else
+ Texture: Images/animated_smoke.png
+ RenderMode: Add
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting 
+ 
+Material: dust
+ Texture: ~/Images/noisy_dust.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: ThrustFlare_Side
+ Texture: ~/Images/engineflare_conventional_side.png
+ RenderMode: SignedColored
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ FlagOn: Clamp
+
+Material: ThrustFlare_End
+ Texture: ~/Images/engineflare_conventional.png
+ RenderMode: SignedColored
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: comet_tail
+ Defer: Required
+#if shaders
+ Texture: ~/Images/comet_tail.png
+ RenderMode: CometTail
+#else
+ Texture: ~/Images/comet_tail_lowq.png
+ RenderMode: Add
+ FlagOn: Clamp
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: comet_sun_tail
+ Defer: Required
+ Texture: ~/Images/comet_sun_tail.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ FlagOn: Clamp
+
+Material: flare
+ Texture: ~/Images/flare.png
+ RenderMode: Add
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: laser_impact
+ Texture: Images/laserburn.png
+ RenderMode: AdditiveColored
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: laser_emit
+ Texture: Images/laseremit.png
+ RenderMode: AdditiveColored
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: galaxy_dust
+ Texture: ~/Images/galaxy_dust.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: spaceRing_tex
+ Texture: ~/Images/Ships/Spacedock.png
+ Texture2: ~/Images/Ships/Spacedock_glowmap.png
+ RenderMode: ShipLights
+ FlagOff: Lighting
+ FlagOn: NormalizeNorms
+ Specular: 050505
+ SpecularFactor: 3
+//#if shaders
+// Texture2: ~/Images/Ships/Spacedock_glowmap.png
+// RenderMode: ShipLights
+// FlagOff: Lighting
+// SpecularFactor: 12
+//#else
+// FlagOn: NormalizeNorms
+// SpecularFactor: 3
+// Specular: 050505
+//#end
+
+Material: beam
+#if shaders
+ Texture: ~/Images/beam_detail.png
+ Texture2: ~/Images/beam.png
+ RenderMode: DetailedBeam
+#else
+ Texture: ~/Images/beam.png
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: repair_beam
+ Defer: Medium
+#if shaders
+ Texture: ~/Images/repair_beam.png
+ Texture2: ~/Images/beam_detail.png
+ RenderMode: DetailedBeam
+#else
+ Texture: ~/Images/repair_beam.png
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: pulsing_beam
+ Defer: Medium
+ Texture: ~/Images/beam.png
+#if shaders
+ RenderMode: PulsedBeam
+#else
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: wave_beam
+ Defer: Medium
+ Texture: ~/Images/wave_beam.png
+ RenderMode: SignedVertexColored
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: glow
+ Texture: Images/glow.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: energy_ring
+ Texture: ~/Images/energy_ring.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: projectile
+ Defer: Medium
+ Texture: ~/Images/projectile.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: planetchunk1
+ Texture: ~/Images/PLANETCHUNK_1.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: debris1
+ Texture: ~/Images/debris_1.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+
+Material: debris2
+ Texture: ~/Images/debris_2.png
+ RenderMode: Colored
+ FlagOff: Lighting
+
+Material: debris3
+ Texture: ~/Images/debris_3.png
+ RenderMode: Colored
+ FlagOff: Lighting
+
+Material: sparks
+ Texture: Images/sparks.png
+ FlagOff: ZWrite
+#if med_shaders
+ RenderMode: SignedVertexColored
+#else
+ RenderMode: Add
+#end
+
+Material: plasmathruster
+ Texture: ~/Images/thruster_plasma.png
+#if shaders
+ RenderMode: SignedVertexColored
+#else
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: plasmathruster_back
+ Texture: ~/Images/thruster_plasma_back.png
+#if shaders
+ RenderMode: SignedVertexColored
+#else
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: bullet
+ Defer: Low
+ Texture: Images/railgun_slug.png
+ RenderMode: AdditiveColored
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+ FlagOn: Clamp
+
+Material: plasma_bolt
+ Defer: Low
+ Texture: ~/Images/plasma_bolt.png
+ RenderMode: AdditiveColored
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+ FlagOn: Clamp
+
+
+Material: rocket
+ Defer: Low
+ Texture: ~/Images/rocket.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ FlagOn: Clamp
+
+ 
+
+	//#include ~/materials/materials.txt
+	
+
+
+Material: galaxy_skybox
+ Defer: Required
+ Texture: Images/galaxy_bg_new.png
+
+Material: lightning_bolt
+ Texture: Images/particle_bullet.png
+ RenderMode: AdditiveColored
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+ FlagOn: Clamp
+
+Material: pfw_sphere
+ Texture: Images/pfw_ball.png
+ RenderMode: AdditiveColored
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+ FlagOn: Clamp
+
+Material: pfw_bolt
+ Texture: Images/pfw_bolt.png
+ RenderMode: AdditiveColored
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+ FlagOn: Clamp 
+ 
+Material: green_plasma_bolt
+ Texture: Images/plasma_bullet.png
+ RenderMode: AdditiveColored
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+ FlagOn: Clamp
+
+Material: thermal_bullet
+ Texture: Images/railgun_slug.png
+ RenderMode: AdditiveColored
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+ FlagOn: Clamp
+
+Material: hyper_bullet
+ Texture: Images/railgun_slug_heavy.png
+ RenderMode: AdditiveColored
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+ FlagOn: Clamp
+
+Material: projectile2
+ Texture: Images/projectile.png
+ RenderMode: AdditiveColored
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+ FlagOn: Clamp
+ 
+Material: projectile_salvo
+ Texture: Images/chaingun_salvo.png
+ RenderMode: AdditiveColored
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+ FlagOn: Clamp
+
+Material: projectile_salvo2
+ Texture: Images/autocannon_salvo.png
+ RenderMode: AdditiveColored
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+ FlagOn: Clamp
+
+Material: beam2
+#if shaders
+ Texture: Images/beam_detail.png
+ Texture2: Images/beam.png
+ RenderMode: DetailedBeam
+#else
+ Texture: Images/beam.png
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: torpedo
+ Texture: Images/torpedo.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ FlagOn: Clamp
+
+Material: nanite_torpedo
+ Texture: Images/nanite_torpedo.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ FlagOn: Clamp
+
+Material: fusion_torpedo
+ Texture: Images/fusion_torpedo.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ 
+Material: heavy_torpedo
+ Texture: Images/heavy_torpedo.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ 
+Material: tera_torpedo
+ Texture: Images/tera_torpedo.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ FlagOn: Clamp
+
+Material: laser_impact2
+ Texture: Images/laserburn2.png
+ RenderMode: AdditiveColored
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: laser_impact_blue
+ Texture: Images/laserburn3.png
+ RenderMode: AdditiveColored
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: pulsing_beam2
+ Texture: Images/beam_detail.png
+#if shaders
+ RenderMode: PulsedBeam
+#else
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: explosion2
+ Texture: Images/explosion2.png
+ RenderMode: Add
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ 
+Material: muzzleflash1
+ Texture: Images/muzzleflash1.png
+ RenderMode: Add
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: muzzleflash2
+ Texture: Images/muzzleflash2.png
+ RenderMode: Add
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: muzzleflash3
+ Texture: Images/muzzleflash3.png
+ RenderMode: Add
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: muzzleflash4
+ Texture: Images/muzzleflash4.png
+ RenderMode: Add
+ FlagOff: ZWrite
+ FlagOff: Lighting 
+ 
+Material: flak_dust2
+ Texture: Images/flak2.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: ionbeam
+#if shaders
+ Texture: Images/beam_detail2.png
+ Texture2: Images/beam.png
+ RenderMode: DetailedBeam
+#else
+ Texture: Images/beam.png
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: superbeam
+#if shaders
+ Texture: Images/beam_detail3.png
+ Texture2: Images/beam.png
+ RenderMode: DetailedBeam
+#else
+ Texture: Images/beam.png
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ 
+Material: wave_beam2
+ Texture: Images/wave_beam2.png
+ RenderMode: SignedVertexColored
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: bullet_trail
+ Texture: Images/bullet_trail.png
+ RenderMode: SignedVertexColored
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: twin_plasma_bullet
+ Texture: Images/twin_plasma_bullet.png
+ RenderMode: AdditiveColored
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+ FlagOn: Clamp
+ 
+Material: bomb
+ Texture: Images/bomb.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ FlagOn: Clamp
+
+Material: aamissile
+ Texture: Images/aamissile.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ FlagOn: Clamp
+
+
+Material: beam_red
+#if shaders
+ Texture: Images/beam_detail_red.png
+ Texture2: Images/beam_red.png
+ RenderMode: DetailedBeam
+#else
+ Texture: Images/beam_red.png
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: beam_violet
+#if shaders
+ Texture: Images/beam_detail_violet.png
+ Texture2: Images/beam_violet.png
+ RenderMode: DetailedBeam
+#else
+ Texture: Images/beam_violet.png
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+
+Material: beam_blue
+#if shaders
+ Texture: Images/beam_detail_blue.png
+ Texture2: Images/beam_blue.png
+ RenderMode: DetailedBeam
+#else
+ Texture: Images/beam_blue.png
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+ 
+Material: artillery_shell
+ Texture: Images/artillery_shell.png
+ RenderMode: AdditiveColored
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+ FlagOn: Clamp
+ 
+Material: laser_pulse_green
+ Texture: Images/twin_beam_green.png
+ RenderMode: SignedVertexColored
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: gatling_salvo
+ Texture: Images/gatling_bullet.png
+ RenderMode: AdditiveColored
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+ FlagOn: Clamp
+ 
+Material: beam_yellow
+#if shaders
+ Texture: Images/beam_detail_yellow.png
+ Texture2: Images/beam_yellow.png
+ RenderMode: DetailedBeam
+#else
+ Texture: Images/beam_yellow.png
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+ 
+Material: beam_darkorange
+#if shaders
+ Texture: Images/beam_detail_darkorange.png
+ Texture2: Images/beam_darkorange.png
+ RenderMode: DetailedBeam
+#else
+ Texture: Images/beam_darkorange.png
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ 
+Material: antimatterbeam
+#if shaders
+ Texture: Images/beam_detail_rainbow.png
+ Texture2: Images/beam.png
+ RenderMode: DetailedBeam
+#else
+ Texture: Images/beam.png
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ 
+Material: newrocket
+ Defer: Low
+ Texture: Images/newrocket.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ FlagOn: Clamp
+
+Material: phased_missile
+ Defer: Low
+ Texture: Images/phased_missile.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ FlagOn: Clamp 
+
+Material: shields
+ Texture: Images/shield.png
+#if shaders
+ #if med_shaders
+  RenderMode: Shield
+ #else
+  RenderMode: AdditiveColored
+ #end
+#else
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: shields_static
+ Texture: Images/shield.png
+#if shaders
+ RenderMode: AdditiveColored
+#else
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ 
+Material: low_glow
+ Texture: Images/low_res_glow.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: pfw_blast
+ Texture: Images/pfw_blast.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ 
+Material: lightning1
+ Texture: Images/lightning1.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ 
+Material: lightning2
+ Texture: Images/lightning2.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ 
+Material: lightning3
+ Texture: Images/lightning3.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ 
+Material: lightning4
+ Texture: Images/lightning4.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ 
+Material: lightning5
+ Texture: Images/lightning5.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ 
+Material: rift
+ Defer: Required
+ RenderMode: CoronaAnimOld
+ Texture: Images/rift_anim.png
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ 
+Material: pulsing_beam_fast
+ Defer: Medium
+ Texture: ~/Images/beam.png
+#if shaders
+ RenderMode: PulsedBeamFast
+#else
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ 
+Material: particle_beam
+#if shaders
+ Texture: Images/particle_beam.png
+ Texture2: Images/particle_beam.png
+ RenderMode: DetailedBeam
+#else
+ Texture: Images/particle_beam.png
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+ 
+Material: pulsing_beam_plasma
+ Defer: Medium
+ Texture: Images/plasma_beam.png
+#if shaders
+ RenderMode: PulsedBeam
+#else
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ 
+Material: fusion_lance
+ Texture: Images/fusion_lance.png
+ RenderMode: SignedVertexColored
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ 
+Material: artillery_shell_animated
+ Defer: Required
+ RenderMode: CoronaAnim
+ Texture: Images/artillery_shell_animated.png
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ 
+Material: blue_ring
+ Texture: Images/blue_ring.png
+ RenderMode: AdditiveColored
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ 
+Material: red_ring
+ Texture: Images/red_ring.png
+ RenderMode: AdditiveColored
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ 
+Material: point_defense_beam
+ Texture: Images/pdbeam2.png				//was point_defense_beam
+ RenderMode: AdditiveColored
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: particle_ring
+ Texture: Images/particle_ring.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ 
+Material: asteroid
+ Defer: Low
+ Texture: Images/asteroid.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ 
+Material: blinding_flash_cross
+ Texture: Images/blinding_flash_cross.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ 
+Material: bright_glow
+ Texture: Images/bright_glow.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+
+Material: antimatter_bullet
+ Texture: Images/antimatter_bullet.png
+ RenderMode: AdditiveColored
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+ FlagOn: Clamp
+
+Material: clustermissile
+ Texture: Images/clustermissile.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ FlagOn: Clamp
+
+Material: beam_empty
+ Texture: Images/beam_empty.png
+ RenderMode: SignedVertexColored
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ 
+Material: beam_lightning
+#if shaders
+ Texture: Images/beam_detail_lightning.png
+ Texture2: ~/Images/beam.png
+ RenderMode: DetailedBeam
+#else
+ Texture: ~/Images/beam.png
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ 
+Material: planetbuster
+ Texture: Images/planetbuster.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ 
+Material: lightning_bolt_purple
+ Texture: Images/particle_bullet_purple.png
+ RenderMode: AdditiveColored
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+ FlagOn: Clamp
+ 
+Material: plasma_bullet_purple
+ Texture: Images/plasma_bullet_purple.png
+ RenderMode: AdditiveColored
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+ FlagOn: Clamp
+
+Material: pulsing_beam_plasma_purple
+ Defer: Medium
+ Texture: Images/plasma_beam_purple.png
+#if shaders
+ RenderMode: PulsedBeam
+#else
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ 
+Material: muon
+ Defer: Low
+ Texture: Images/muon.png
+ RenderMode: AdditiveColored
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ 
+ Material: torpedo2
+ Defer: Low
+ Texture: Images/torpedo2.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ FlagOn: Clamp
+
+Material: wave_projectile
+ Texture: Images/wave_projectile.png
+ RenderMode: AdditiveColored
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+ FlagOn: Clamp
+
+Material: rkv
+ Defer: Low
+ Texture: Images/rkv.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ 
+Material: auto_slug
+ Texture: Images/autocannon_slug.png
+ RenderMode: AdditiveColored
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+ FlagOn: Clamp
+ 
+Material: anim_plasma_bullet
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedBullet
+ Texture: Images/animated_plasma_projectile.png
+#else
+ Texture: Images/animated_plasma_projectile.png
+ RenderMode: Add
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting 
+ 
+Material: anim_particle_bullet
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedBullet
+ Texture: Images/animated_particle_projectile.png
+#else
+ Texture: Images/animated_particle_projectile.png
+ RenderMode: Add
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting 
+
+Material: anim_antimatter_bullet
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedBullet
+ Texture: Images/animated_antimatter_projectile.png
+#else
+ Texture: Images/animated_antimatter_projectile.png
+ RenderMode: Add
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting 
+ 
+Material: anim_wave_bullet
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedBullet
+ Texture: Images/animated_wave_projectile.png
+#else
+ Texture: Images/animated_wave_projectile.png
+ RenderMode: Add
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ 
+Material: anim_pfw_bullet
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedBullet
+ Texture: Images/animated_pfw_projectile_alternate.png
+#else
+ Texture: Images/animated_pfw_projectile.png
+ RenderMode: Add
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ 
+Material: anim_artillery_bullet
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedBullet
+ Texture: Images/artillery_shell_animated.png
+#else
+ Texture: Images/artillery_shell_animated.png
+ RenderMode: Add
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ 
+Material: anim_missile
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedBullet
+ Texture: Images/animated_AA_missile.png
+#else
+ Texture: Images/animated_AA_missile.png
+ RenderMode: Add
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ 
+Material: anim_rocket
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedBullet
+ Texture: Images/animated_newrocket.png
+#else
+ Texture: Images/animated_newrocket.png
+ RenderMode: Add
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: xxxx
+ Defer: Low
+ Texture: Images/xxx.png
+ RenderMode: Colored
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ 
+ Material: xxxx1
+ Defer: Low
+ Texture: Images/xxx1.png
+ RenderMode: Colored
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ 
+ Material: xxxx2
+ Defer: Low
+ Texture: Images/xxx2.png
+ RenderMode: Colored
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ 
+ Material: xxxx3
+ Defer: Low
+ Texture: Images/xxx3.png
+  RenderMode: Colored
+FlagOff: ZWrite
+ FlagOn: Clamp
+ 
+ Material: xxxx4
+ Defer: Low
+ Texture: Images/xxx4.png
+ RenderMode: Colored
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ 
+ Material: xxxx5
+ Defer: Low
+ Texture: Images/xxx5.png
+ RenderMode: Colored
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ 
+ Material: xxxx6
+ Defer: Low
+ Texture: Images/xxx6.png
+ RenderMode: Colored
+FlagOff: ZWrite
+ FlagOn: Clamp
+ 
+ Material: xboom
+ Texture: Images/boom.png
+#if shaders
+ RenderMode: AdditiveColored
+#else
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+
+Material: medium_glow
+ Texture: Images/medium_glow.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ 
+Material: explosion_a
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedExplosion
+ Texture: Images/animated_explosion_a.png
+#else
+ Texture: Images/animated_explosion_a.png
+ RenderMode: Add
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: explosion_b
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedExplosion
+ Texture: Images/animated_explosion_b.png
+#else
+ Texture: Images/animated_explosion_b.png
+ RenderMode: Add
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ 
+Material: explosion_c
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedExplosion
+ Texture: Images/animated_explosion_c.png
+#else
+ Texture: Images/animated_explosion_c.png
+ RenderMode: Add
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ 
+Material: explosion_d
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedExplosion
+ Texture: Images/animated_explosion_d.png
+#else
+ Texture: Images/animated_explosion_d.png
+ RenderMode: Add
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: explosion_e
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedExplosion
+ Texture: Images/animated_explosion_e.png
+#else
+ Texture: Images/animated_explosion_e.png
+ RenderMode: Add
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ 
+Material: explosion_f
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedExplosion
+ Texture: Images/animated_explosion_f.png
+#else
+ Texture: Images/animated_explosion_f.png
+ RenderMode: Add
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ 
+Material: explosion_g
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedExplosion
+ Texture: Images/animated_explosion_g.png
+#else
+ Texture: Images/animated_explosion_g.png
+ RenderMode: Add
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ 
+Material: explosion_h
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedExplosion
+ Texture: Images/animated_explosion_h.png
+#else
+ Texture: Images/animated_explosion_h.png
+ RenderMode: Add
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ 
+Material: explosion_i
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedExplosion
+ Texture: Images/animated_explosion_i.png
+#else
+ Texture: Images/animated_explosion_i.png
+ RenderMode: Add
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ 
+Material: explosion_j
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedExplosion
+ Texture: Images/animated_explosion_j.png
+#else
+ Texture: Images/animated_explosion_j.png
+ RenderMode: Add
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<settings scale="10" name="SC9 Troika Class Tanker" />
+<subSystems>
+	<subSystem name="MediumHull" x="1.03125" y=".09375" scale="1" link="-18" />
+	<subSystem name="BigAmmoStorage" x=".34375" y="-0.75" scale="1" link="-20" />
+	<subSystem name="BigAmmoStorage" x=".453125" y="1" scale="1" link="-21" />
+	<subSystem name="BigFuelCell" x="-0.90625" y="-0.75" scale="1.5" link="-17" />
+	<subSystem name="BigFuelCell" x="-0.90625" y="1.15625" scale="1.5" link="-19" />
+	<subSystem name="BussardRamjet" x="-2.419951" y=".9928" scale="2" link="-1" />
+	<subSystem name="BussardRamjet" x="-2.519183" y="-0.782885" scale="1.875" link="-1" />
+	<subSystem name="Computer" x="1.820313" y="-0.007813" scale=".5" link="-10" />
+	<subSystem name="BackupPower" x="1.828125" y=".21875" scale=".25" link="7" />
+	<subSystem name="ShieldGen" x="-0.234375" y=".15625" scale="1" link="-1" />
+	<subSystem name="PowerGen" x="-0.96875" y=".171875" scale=".125" link="-1" />
+	<subSystem name="RamScoop" x="-2.796875" y=".109375" scale="1" link="-1" />
+	<subSystem name="Armor" x="1.609375" y="-1.140625" scale="1" link="-1" />
+	<subSystem name="Armor" x="1.671875" y="1.234375" scale="1" link="-1" />
+	<subSystem name="MissileRack" x="2.828125" y="-0.0625" scale="1" link="-1" />
+	<subSystem name="Bulkhead" x="-0.882813" y="-1.460938" scale="1" link="3" />
+	<subSystem name="Bulkhead" x=".570313" y=".101563" scale="1" link="0" />
+	<subSystem name="Bulkhead" x="-0.898438" y="1.898438" scale="1" link="4" />
+	<subSystem name="Bulkhead" x=".382813" y="-1.382813" scale=".75" link="1" />
+	<subSystem name="Bulkhead" x=".492188" y="1.664063" scale=".75" link="2" />
+	<subSystem name="Armor" x="-0.109375" y="-2.3125" scale="1" link="-1" />
+	<subSystem name="Armor" x="-0.0625" y="2.421875" scale="1" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="true" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="false" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="JoinFleet:-1.000000:false" />
+	<order desc="Supply:Fuel:0.500000" />
+	<order desc="Supply:Ammo:0.500000" />
+	<order desc="Fetch:Ammo:0.100000" />
+	<order desc="Fetch:Fuel:0.150000" />
+	<order desc="Defend" />
+	<order desc="Work:EnterStargate" />
+</orders>
+

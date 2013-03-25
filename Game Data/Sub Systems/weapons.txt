@@ -1,0 +1,268 @@
+//	Variables Used
+//
+//////////////////////////
+//
+//	vDamage - All Types of Damage
+//	vDelay - Reload Time
+//	vDeviation
+//	vPowCost - Power Costs
+//	vRange - Weapons Range ONLY! Not used for AoE Effect Range
+//	vEffectiveRange - Effective Range
+//	vMinDmg - Lowest Damage
+//	vWasteHeat - Heat Needed
+//	vAoE_Range - Range AoE Weapons Effect
+//	vRequiredCharge - Charge needed for Charge to Fire
+//	vSpeed - Weapon Speed
+// 	vMinHit - Minimum Hit Chance
+// 	vAccuracy - Hit Chance
+//
+//////////////////////////
+
+System: BoardingParty
+	Name: #SS_BOARDING_NAME
+	Description: #SS_BOARDING_DESC
+	Appearance: BoardingParty
+	Explosion: subsystem_destroyed
+
+	Available: Techs.Missiles.Level > 0
+	Level: Techs.Missiles.Level
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, SpecWeapon, ChargedWeapon, Tool:BoardingParty, BoardingParty, NoModifiers
+	Tied To: Missiles 1
+
+	Costs: Metals[150 * Size * pow(SUBS_COST_CRV, Level)], Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 1.2
+	
+	vTroops: (2 - decay(Level,50)) * 4 * Size
+	vRange: ((80 + sqrt(Size) / 10) + sqrt(Size)) * (1 + (Level * (0.01 * WEAP_RANGE_CURVE))) * WEAP_RANGE_MULT
+	
+	Triggerable: PDEffect: PointDefenseTriggered
+
+	Provides: Boarding with Troops[vTroops], Range[vRange]
+	Provides: TroopQuarters with Amount[vTroops], Regen[vTroops * 0.010]
+
+	Requires:
+		To Run:
+			Control[10 * Size], Power[5 * Size], Air[20 * Size]
+	
+	Hints: Troops[vTroops], Local/ProjSpeed[12], Local/Delay[1/.010], Local/Range[vRange]
+	
+
+System: PowerVampire
+	Name: #SS_POWERVAMP_NAME
+	Description: #SS_POWERVAMP_DESC
+	Appearance: ReverseInductor
+	Explosion: subsystem_destroyed
+	
+	Available: (((Techs.BeamWeapons.Level > 4) && (Techs.EnergyPhysics.Level > 4)) || Traits.remnants) && not(Traits.code_of_honor) 
+	Level: ceil(weight(Techs.BeamWeapons.Level, 0.5, Techs.EnergyPhysics.Level, 0.5))
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, SpecWeapon, ECM
+	Tied To: BeamWeapons 5, EnergyPhysics 5
+	
+	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[35 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[35 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 1.8
+	
+	vPowVamp: Size * progress(50, 10, Level)
+	vDelay: (1) * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+	vRange: (90 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	
+	Provides: AbsorbPower with Rate[vPowVamp], Delay[vDelay], Duration[1], Range[vRange]
+
+	Requires:
+		To Run:
+			Control[15 * Size]
+	
+	Hints: PowerVamp[vPowVamp / vDelay], Local/Range[vRange], Local/DMGperShot[vPowVamp / 4], Local/HitsperShot[4], Local/Duration[1], Local/Delay[vDelay]
+
+	
+System: MindSapper
+	Name: #SS_MINDSAP_NAME
+	Description: #SS_MINDSAP_DESC
+	Appearance: ReverseInductor
+	Explosion: subsystem_destroyed
+
+	Available: (((Techs.BeamWeapons.Level > 7) && (Techs.Science.Level > 3)) || Traits.remnants) && not(Traits.code_of_honor)
+	Level: Techs.BeamWeapons.Level												//was BeamWeapons - 7
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 20 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, SpecWeapon, ECM
+	Tied To: BeamWeapons 8, Science 4
+
+	Costs: Metals[30 * Size * pow(SUBS_COST_CRV, Level)], Electronics[90 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 4
+
+	vConDmg: Size * 10 * pow(LEVEL_GAIN_CURVE, Level)													//was Size * 15
+	vDelay: (1) * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+	vRange: (90 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+
+	Provides: MindSapper with Rate[vConDmg], Delay[vDelay], Duration[1], Range[vRange]
+
+	Consumes:
+		To Run:
+			Power[80 * Size]
+
+	Hints: ControlDmg[vConDmg / vDelay], Local/Range[vRange], Local/DMGperShot[vConDmg / 4], Local/HitsperShot[4], Local/Duration[1], Local/Delay[vDelay]
+
+	
+System: ResourceDrain
+	Name: #SS_RESOURCEDRAIN_NAME
+	Description: #SS_RESOURCEDRAIN_DESC
+	Appearance: MiningLaser
+	Explosion: subsystem_destroyed
+
+	Tags: Weapon, SpecWeapon, ECM
+	Tied To: BeamWeapons 6, Chemistry 6
+
+	Available: ((Techs.BeamWeapons.Level > 5) && (Techs.Chemistry.Level > 5)) && not(Traits.code_of_honor)
+	Level: Techs.BeamWeapons.Level											//was BeamWeapons - 5
+
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[40 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[40 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 1.6
+	
+	vRate: Size * 10 * pow(LEVEL_GAIN_CURVE, Level)						//was Size * 20
+	vDelay: 15 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+	vDuration: 10
+	vCargoStore: Size * 10 * (2 - decay(pow(LEVEL_GAIN_CURVE,Level), 12))
+	
+	Provides: ResourceDrain with Rate[vRate], Delay[vDelay], Duration[vDuration]
+	
+	Provides: Cargo with
+		Amount[vCargoStore]
+
+	Requires:
+		To Run:
+			Control[10 * Size]
+	
+	Hints: DrainRate[(vRate * vDuration)/vDelay], Cargo[vCargoStore]
+
+	
+System: Repulsor
+	Name: #SS_REPULSOR_NAME
+	Description: #SS_REPULSOR_DESC
+	Appearance: Repulsor
+	Explosion: subsystem_destroyed
+
+	Tags: Repulsor, Tool:Repulsor, SpecWeapon, ECM, SafeTool			//was Support
+	Tied To: Gravitics 8
+
+	Available: ((Techs.Gravitics.Level >= 8) || Traits.remnants) && not(Traits.religious) 
+	Level: Techs.Gravitics.Level
+
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 60 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+	Costs: Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[100 * Size * pow(SUBS_COST_CRV, Level)]
+
+	// A similarly-sized thruster on the target ship would take 4 seconds to compensate
+	vForce: Size * 4 * 700 * (2 - decay(pow(LEVEL_GAIN_CURVE,Level),35)) * GAME_THRUST_MULT
+	vDelay: max(4, 8 * decay(pow(LEVEL_GAIN_CURVE,Level),45)) * GAME_RELOAD_MULT
+	vPowCost: Size * 25 * decay(pow(LEVEL_GAIN_CURVE,Level), 125)
+	vRange: (300 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+
+	Provides: ImpartForce with
+		Delay[vDelay],
+		Force[vForce],
+		PowCost[vPowCost],
+		Range[vRange],
+		Duration[1]
+
+	Requires:
+		To Run:
+			Control[10 * Size]
+
+	Hints: Local/Repulsion[vForce], Power[-1 * vPowCost], Local/Range[vRange], Local/Delay[vDelay]
+
+	
+System: Attractor
+	Name: #SS_ATTRACTOR_NAME
+	Description: #SS_ATTRACTOR_DESC
+	Appearance: Repulsor
+	Explosion: subsystem_destroyed
+
+	Tags: Attractor, Tool:Attractor, SpecWeapon, ECM, SafeTool					//was Support
+	Tied To: Gravitics 8
+
+	Available: (((Techs.Gravitics.Level >= 8) || Traits.remnants)) && not(Traits.religious)
+	Level: Techs.Gravitics.Level
+
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 60 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+	Costs: Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[100 * Size * pow(SUBS_COST_CRV, Level)]
+
+	// A similarly-sized thruster on the target ship would take all of its power to compensate
+	vForce: Size * -700 * (2 - decay(pow(LEVEL_GAIN_CURVE,Level),35)) * GAME_THRUST_MULT
+	vDelay: max(5, 10 * decay(pow(LEVEL_GAIN_CURVE,Level),45)) * GAME_RELOAD_MULT
+	vPowCost: Size * 7 * decay(pow(LEVEL_GAIN_CURVE,Level), 125)
+	vRange: (300 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+
+	Provides: ImpartForce with
+		Delay[vDelay],
+		Force[vForce],
+		PowCost[vPowCost],
+		Range[vRange],
+		Duration[4]
+
+	Requires:
+		To Run:
+			Control[10 * Size]
+
+	Hints: Local/Attraction[vForce], Power[-4 * vPowCost], Local/Range[vRange], Local/Delay[vDelay], Local/Duration[4]
+
+	
+System: Interdictor
+	Name: #SS_INTERDICTOR_NAME
+	Description: #SS_INTERDICTOR_DESC
+	Appearance: Repulsor
+	Explosion: subsystem_destroyed
+
+	Tags: Interdictor, Tool:Interdictor, SpecWeapon, ECM, SafeTool			//was Support
+	Tied To: Gravitics 12
+
+	Available: ((Techs.Gravitics.Level >= 12) || Traits.remnants) && not(Traits.religious)
+	Level: Techs.Gravitics.Level
+
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 60 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+	Costs: Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[100 * Size * pow(SUBS_COST_CRV, Level)]
+
+	vPowCost: Size * 7 * decay(pow(LEVEL_GAIN_CURVE,Level), 125)
+	vRange: (300 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vForce: Size * 700 * (2 - decay(pow(LEVEL_GAIN_CURVE,Level),35)) * GAME_THRUST_MULT
+
+	Provides: MatchVelocity with
+		Delay[5],
+		PowCost[vPowCost],
+		Range[vRange],
+		Duration[5],
+		Force[vForce]
+
+	Requires:
+		To Run:
+			Control[10 * Size]
+
+	Hints: Power[-5 * vPowCost], Local/Range[vRange], Local/Delay[5], Local/Duration[5]

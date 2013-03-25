@@ -1,0 +1,26 @@
+uniform sampler2D texture;
+uniform float cycle, under_attack;
+
+//Tex channels:
+//red: empire color mult
+//green: glow blend
+//blue: alpha
+
+void main() {
+  // Use red for empire color
+  vec3 color = texture2D(texture, gl_TexCoord[0].xy).rgb;
+  float x = color.g * under_attack;
+  
+  if(color.b + x == 0.0)
+	discard;
+
+  if(x == 0.0) {
+    gl_FragColor = vec4(gl_Color.rgb * color.r, color.b * gl_Color.a);
+    return;
+  }
+  
+  float alpha = pow(min(cycle, 1.0 - cycle) * 1.8, 2.0);
+  vec4 fragCol = mix(vec4(gl_Color.rgb * color.r, color.b), vec4(1.0, 0.65, 0.0, 1.0), color.g * alpha);
+  fragCol.a *= gl_Color.a;
+  gl_FragColor = fragCol;
+}

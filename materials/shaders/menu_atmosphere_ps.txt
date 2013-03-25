@@ -1,0 +1,172 @@
+uniform sampler2D texture;
+
+const vec4 atmosphereDiffuseCol = vec4(0.37,0.37,1.0,1.0);
+
+varying vec3 normal, light, light2;
+varying vec4 pos;
+varying float dist, dist2;
+
+//planetRim is the (normal dot view) value corresponding to the edge of the planet on the atmosphere's model
+const float planetRim = 0.215;
+
+//Relative thickness of the bright portion of the atmospheric rim
+const float atmosSpread = 1.05;
+
+//End of the specular glow overtop the planet, where the atmosphere takes over completely
+const float glowFade = 0.4;
+
+//Higher values use more of the star's color farther from the edges
+const float starColorStrength = 0.33;
+
+//Higher is lighter shadowing
+const float shadowStr = 2.0;
+
+const float shadowDist = 0.005;
+
+vec4 fadeAtmosGlare(float NdL, vec4 lightColor) {
+	float inv = 1.0 - NdL;
+	
+	float lightIntensity = max(lightColor.r, max(lightColor.g, lightColor.b));
+	
+	return (lightColor * inv) + (atmosphereDiffuseCol * (NdL * lightIntensity));
+}
+
+void main() {
+  vec4 color = gl_FrontMaterial.diffuse;
+  vec4 matspec = gl_FrontMaterial.specular;
+  float shininess = gl_FrontMaterial.shininess;
+
+  vec3 n = normalize(normal);
+  vec3 l = normalize(light);
+  vec3 l2 = normalize(light2);
+  vec3 r = normalize(-reflect(l, n));
+  vec3 r2 = normalize(-reflect(l2, n));
+  vec3 v = normalize(-pos.xyz);
+
+  float ndv = max( dot(n, v), 0.0 );
+  
+  if(ndv < 0.01)
+	discard;
+
+  if(ndv < planetRim) { //Rendering the atmospheric rim around the planet
+    vec4 specular = vec4(0.0,0.0,0.0,0.0);
+    //if (shininess != 0.0) {
+	  { //Light 0
+      float rDv = dot(r,v);
+	  if(rDv > 0.0) {
+	    vec4 lightspec = fadeAtmosGlare(pow(1.0 - max(-dot(v, l),0.0), starColorStrength), gl_LightSource[0].specular);
+		
+	    float falloff = 1.0 / (1.0 + (gl_LightSource[0].quadraticAttenuation * dist * dist));
+		specular += lightspec * (pow(max(0.0, rDv), shininess) * falloff);
+	  }
+	  }
+	  
+	  { //Light 1
+	  //float rDv = dot(r2,v);
+	  //if(rDv > 0.0) {
+	  //  vec4 lightspec = fadeAtmosGlare(pow(1.0 - max(-dot(v, l2),0.0), starColorStrength), gl_LightSource[1].specular);
+		
+	  //  float falloff = 1.0 / (1.0 + (gl_LightSource[1].quadraticAttenuation * dist2 * dist2));
+      //  specular += lightspec * (pow(max(0.0, rDv), shininess) * falloff);
+	  //}
+	  }
+
+	  //Closeness toward the rim of the planet
+      float pctTowardRim = ndv / planetRim;
+      pctTowardRim = pctTowardRim * pctTowardRim;
+  
+      specular *= matspec;
+      specular *= pow(atmosSpread * pctTowardRim, 2.5);
+  
+      float brightestChannel = max(specular.r, max(specular.g, specular.b));
+	  float intensity = brightestChannel * pctTowardRim;
+  
+      if(intensity > 1.0 / 255.0) {   
+        gl_FragColor = specular / min(brightestChannel, 1.0);
+        gl_FragColor.a = intensity;
+      }
+      else {
+        //gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);
+		discard;
+      }
+    //}
+  }
+  else { //Rendering overtop the planet
+    float falloff = 1.0 / (1.0 + (gl_LightSource[0].quadraticAttenuation * dist * dist));
+	float nDl = dot(n,light);
+    float nl = max(0.0,  nDl);
+    float intensity = nl * falloff;
+
+    vec4 diffuse = (gl_LightSource[0].diffuse * intensity) + gl_LightModel.ambient * gl_FrontMaterial.ambient;
+
+    float falloff2 = 1.0 / (1.0 + (gl_LightSource[1].quadraticAttenuation * dist2 * dist2));
+	float nDl2 = dot(n,light2);
+    float nl2 = max(0.0, dot(n, light2));
+    float intensity2 = nl2 * falloff2;
+
+    diffuse = color * (diffuse + (gl_LightSource[1].diffuse * intensity2));
+    diffuse.a = color.a;
+
+    vec4 specular = vec4(0.0,0.0,0.0,0.0);
+    //if (shininess != 0.0) {
+	  { //Light 0
+		float rDv = dot(r,v);
+		if(rDv > 0.0) {
+	      vec4 lightspec = fadeAtmosGlare( pow(1.0 - max(-dot(v, l),0.0), starColorStrength), gl_LightSource[0].specular);
+		  specular += lightspec * (pow(rDv, shininess) * falloff);
+		}
+	  }
+	  
+	  {
+		//float rDv = dot(r2,v);
+		//if(rDv > 0.0) {
+	    //  vec4 lightspec = fadeAtmosGlare( pow(1.0 - max(-dot(v, l2),0.0), starColorStrength), gl_LightSource[1].specular);
+		//  specular += lightspec * (pow(rDv, shininess) * falloff2);
+		//}
+	  }
+  
+      specular *= matspec;
+    //}
+		
+	vec4 atmos = texture2D(texture, gl_TexCoord[0].xy);
+	
+	//Add a shadow to the clouds
+	//vec4 shadow;
+	//if(atmos.a < 1.0 && nDl > -0.5) {
+	//	vec3 off = cross(l, cross(l,n)) * (shadowDist * (2.0 - abs(ndv)));
+	//		off.z *= -1.0;
+	//	shadow = texture2D(texture, gl_TexCoord[0].xy + off.zx);
+	//	shadow.a = min(pow(shadow.a, shadowStr), 1.0 - atmos.a);
+	//}
+	//else {
+	//	shadow.a = 0;
+	//}
+  
+    if(ndv < glowFade) {
+      float glowContrib = 1.0 - ((ndv - planetRim) / (glowFade - planetRim));
+      float specIntensity = min(max(specular.r, max(specular.g, specular.b)), 0.9);
+      float atmosContrib = 1.0 - max(min(glowContrib * specIntensity, 1.0), 0.0);
+	  
+      if(atmosContrib < 1.0) {
+        vec4 glow = specular * glowContrib; glow.a = 1.0 - atmosContrib;
+		
+        gl_FragColor = ((diffuse + specular) * atmos);
+		//gl_FragColor.rgb *= atmos.a;
+		//gl_FragColor.a += shadow.a;
+		gl_FragColor *= atmosContrib;
+		gl_FragColor += glow;
+      }
+      else {
+        gl_FragColor = (diffuse + specular) * atmos;
+		//gl_FragColor.rgb *= atmos.a;
+		//gl_FragColor.a += shadow.a;
+      }
+    }
+    else {
+      gl_FragColor = (diffuse + specular) * atmos;
+	  //gl_FragColor.rgb *= atmos.a;
+	  //gl_FragColor.a += shadow.a;
+    }
+
+  }
+}

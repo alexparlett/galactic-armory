@@ -1,0 +1,250 @@
+<?xml version="1.0"?>
+
+<personality>
+	
+
+<!-- Goes to war less often -->
+	
+<var id="ConsiderWarStrengthRatio" value="3" />
+	
+<var id="ConsiderBribeStrengthRatio" value="1" />
+	
+<var id="ConsiderObliterateStrengthRatio" value="6" />
+
+	
+
+<!-- Gets less bored -->
+	
+<var id="BoredomFactor" value="1.02" />
+	
+<var id="BoredomNoBribes" value="8" />
+
+	
+
+<!-- Determines how much ships will be upscaled per level -->
+	
+<var id="ScalingCurve" value="1.3" />	
+
+	
+
+<!-- More technologies to research and unlock -->
+	
+<list id="ResearchTechs" mode="append">
+		
+<li>BeamWeapons</li>
+		
+<li>Missiles</li>
+		
+<li>Shields</li>
+		
+<li>Computers</li>
+		
+<li>WarpPhysics</li>
+		
+<li>Sensors</li>
+	
+</list>
+
+	<list id="LinkTechs">
+		
+<li>Armor</li>
+		
+<li>Missiles</li>
+		
+<li>MegaConstruction</li>
+		
+<li>Chemistry</li>
+		
+<li>Biology</li>
+		
+<li>Computers</li>
+		
+<li>Sociology</li>
+		
+<li>BeamWeapons</li>
+		
+<li>Sensors</li>
+		
+<li>WarpPhysics</li>
+		
+<li>Shields</li>
+	
+</list>
+
+
+<list id="LinkFromTechs">
+		
+<li>ProjWeapons</li>
+		
+<li>ProjWeapons</li>
+		
+<li>ShipConstruction</li>
+		
+<li>Science</li>
+		
+<li>Science</li>
+		
+<li>Biology</li>
+		
+<li>Biology</li>
+		
+<li>EnergyPhysics</li>
+		
+<li>EnergyPhysics</li>
+		
+<li>ShipSystems</li>
+		
+<li>EnergyPhysics</li>
+	
+</list>
+	
+	
+
+<list id="Traits">
+<li>longevity</li>      
+<li>dextrous</li>		
+<li>euphoric</li>		
+<li>efficient</li>		
+<li>efficient_rec</li>		
+<li>economical</li>			
+<li>bustling</li>		
+<li>colonialism</li>		
+<li>entrenchment</li>		
+<li>natural_research</li>			
+<li>planet_defense</li>		
+<li>shieldtech</li>		
+<li>goodbiology</li>		
+<li>randtech</li>			
+<li>ultra_dense</li>		
+<li>efficient_energy</li>		
+<li>adv_warhead</li>		
+<li>super_rail</li>		
+<li>defensive_targetting</li>		
+</list>	
+
+<!-- Layouts -->	
+	
+<layouts>
+		
+<obsolete name="Tanker C"/>
+		
+<obsolete name="Scout C"/>
+		
+<obsolete name="Military Outpost C"/>
+		
+		
+
+<!-- Fighter Line -->
+		
+<design name="Wyvern-class Fighter" file="Layouts/DefenderErudite/Wyvern-class Fighter" goal="Fighter" replaces="Fighter" autoscale="false" />
+
+		
+<design name="Gambit-class Fighter" file="Layouts/DefenderErudite/Gambit-class Fighter" goal="Fighter" replaces="Wyvern-class Fighter" autoscale="false" />
+
+		
+<design name="Desperado-class Fighter" file="Layouts/DefenderErudite/Desperado-class Fighter" goal="Fighter" autoscale="false" />
+
+		
+
+<!-- Destroyer Line -->
+		
+<design name="Lux-class Destroyer" file="Layouts/DefenderErudite/Lux-class Destroyer" goal="Combat" />
+		
+<design name="Ray-class Destroyer" file="Layouts/DefenderErudite/Ray-class Destroyer" goal="Combat" />
+		
+<design name="Burst-class Destroyer" file="Layouts/DefenderErudite/Burst-class Destroyer" goal="Combat" />
+
+		
+
+<!-- Cruiser Line -->
+		
+<default name="Guardian-class Cruiser" file="Layouts/DefenderErudite/Guardian-class Cruiser" goal="Combat" />
+		
+<design name="Crusader-class Cruiser" file="Layouts/DefenderErudite/Crusader-class Cruiser" goal="Combat" />
+		
+<design name="Emperor-class Cruiser" file="Layouts/DefenderErudite/Emperor-class Cruiser" goal="Combat" />
+
+		
+
+<!-- Capital Ship Line -->
+		
+<default name="Beacon-class Capital Ship" file="Layouts/DefenderErudite/Beacon-class Capital Ship" goal="Leader"  />
+		
+<design name="Deliverance-class Capital Ship" file="Layouts/DefenderErudite/Deliverance-class Capital Ship" goal="Leader" />
+		
+<design name="Revelation-class Capital Ship" file="Layouts/DefenderErudite/Revelation-class Capital Ship" goal="Leader" />
+		
+		
+
+<!-- Carrier Line -->
+		
+<design name="Savior-class Carrier" file="Layouts/DefenderErudite/Savior-class Carrier" goal="Carrier" strikecraft="Wyvern-class Fighter" />
+
+		
+<design name="Zwischenzug-class Carrier" file="Layouts/DefenderErudite/Zwischenzug-class Carrier" goal="Carrier" replaces="Savior-class Carrier" strikecraft="Gambit-class Fighter" />
+
+
+<design name="Zeitnot-class Carrier" file="Layouts/DefenderErudite/Zeitnot-class Carrier" goal="Carrier" replaces="Zwischenzug-class Carrier" strikecraft="Desperado-class Fighter" />
+
+
+
+<!-- Battle Cruiser Line -->
+		
+<design name="Caissa-class Battle Cruiser" file="Layouts/DefenderErudite/Caissa-class Battle Cruiser" goal="CombatSpecialized" />
+		
+<design name="J'adoube-class Battle Cruiser" file="Layouts/DefenderErudite/J'adoube-class Battle Cruiser" goal="CombatSpecialized" replaces="Caissa-class Battle Cruiser" />
+		
+<design name="Prophylaxis-class Battle Cruiser" file="Layouts/DefenderErudite/Prophylaxis-class Battle Cruiser" goal="CombatSpecialized" replaces="J'adoube-class Battle Cruiser" />
+
+		
+
+<!-- Battleship Line -->
+		
+<design name="Judgement-class Battleship" file="Layouts/DefenderErudite/Judgement-class Battleship" goal="Leader" minTime="60" />
+		
+<design name="Ragnarok-class Battleship" file="Layouts/DefenderErudite/Ragnarok-class Battleship" goal="Leader" />
+		
+		
+
+<!-- Megaship Line -->
+		
+<design name="Protector-class Megaship" file="Layouts/DefenderErudite/Protector-class Megaship" goal="Leader" minTime="120" />
+
+		
+
+<!-- Orbital Defenses -->
+		
+<default name="Defensive Bulwark" file="Layouts/DefenderErudite/Defensive Bulwark" goal="StaticDefense" />
+		
+<design name="Skyward Fortress" file="Layouts/DefenderErudite/Skyward Fortress" goal="StaticDefense" minTime="60" />
+
+		
+<design name="Black Widow" file="Layouts/DefenderErudite/Black Widow" goal="StaticDefense" minTime="100" />
+
+
+
+		<!-- Industrial Vessels -->
+		<design name="Orbital Electronics Factory" file="Layouts/Default/Orbital Electronics Factory" goal="Miner" autoscale="false"  />
+		<design name="Orbital Advanced Parts Factory" file="Layouts/Default/Orbital Advanced Parts Factory" goal="Miner" autoscale="false"  />		
+		<design name="Orbital Metal Factory" file="Layouts/Default/Orbital Metal Factory" goal="Miner" autoscale="false" />
+	
+		<!-- Ringworld -->
+		<design name="Ringworld" file="Layouts/Default/Ringworld" goal="Ringworld" autoscale="false" />
+</layouts>
+
+</personality>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

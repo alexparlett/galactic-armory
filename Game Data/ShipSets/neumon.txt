@@ -1,0 +1,90 @@
+tag JumpGate {
+	Sprite = 13
+	Model = neumon_jumpgate
+}
+
+tag RemnantSuperWeapon {
+	Sprite = 14
+	Model = neumon_superweapon
+}
+
+tag RemnantSWGreen {
+	Sprite = 15
+	Model = green_neumon_superweapon
+}
+
+if class == ColonyShip {
+	Sprite = 12
+	Model = neumon_colonizer
+}
+
+if (class == Carrier) || (class == Transport) {
+	Sprite = 11
+	Model = neumon_carrier
+}
+
+if class == Cargo {
+	Sprite = 8
+	Model = neumon_freighter
+}
+
+if (class == Station) || (class == CivStation) {
+	if scale <= 1 {
+		Sprite = 9
+		Model = neumon_satellite
+	}
+	Sprite = 10
+	Model = neumon_station
+}
+
+if scale <= 0.25 {
+	Sprite = 0
+	Model = neumon_drone
+}
+tag FighterHull {
+	Sprite = 1
+	Model = neumon_fighter
+}
+
+tag BomberHull {
+	Sprite = 1
+	Model = neumon_fighter
+}
+
+tag LightHull {
+	Sprite = 2
+	Model = neumon_tiny
+}
+
+tag SpinalHull {
+	Sprite = 3
+	Model = neumon_small
+}
+
+tag HeavyHull {
+	Sprite = 4
+	Model = neumon_medium
+}
+
+tag MediumHull {
+	Sprite = 5
+	Model = neumon_large
+}
+
+tag MegaHull {
+	Sprite = 6
+	Model = neumon_verylarge
+}
+
+tag GargantuanHull {
+	Sprite = 7
+	Model = neumon_huge
+}
+
+tag StealthHull {
+	Sprite = 2
+	Model = neumon_tiny
+}
+
+Sprite = 5
+Model = neumon_large

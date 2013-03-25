@@ -1,0 +1,50 @@
+﻿<?xml version="1.0"?>
+<settings scale="25" name="Comet" />
+<subSystems>
+	<subSystem name="LightHull" x="-0.984375" y="-0.078125" scale="1" link="-7" />
+	<subSystem name="VASIMRThruster" x="-1.726563" y="-2.398438" scale=".5" link="-1" />
+	<subSystem name="ZeroPointGenerator" x="-0.65625" y="-0.703125" scale=".625" link="-10" />
+	<subSystem name="GatlingTurret" x="2.070313" y="-2.085938" scale=".375" link="-1" />
+	<subSystem name="AutocannonBattery" x="2.085938" y="2.070313" scale=".375" link="-1" />
+	<subSystem name="IntegratedConstruction" x="-1.53125" y="-0.09375" scale="1" link="0" />
+	<subSystem name="AmmoStorage" x=".21875" y="-0.234375" scale="2" link="-1" />
+	<subSystem name="FuelCell" x="-1.140625" y="-0.71875" scale=".25" link="-1" />
+	<subSystem name="QuantumCompressor" x=".203125" y="-0.84375" scale="1.5" link="2" />
+	<subSystem name="AmmoFabricator" x="-0.632813" y=".539063" scale=".375" link="-1" />
+	<subSystem name="Capacitor" x="-1.15625" y=".734375" scale=".125" link="-1" />
+	<subSystem name="ArmorMount" x="-2.703125" y="-0.671875" scale="1" link="-1" />
+	<subSystem name="ArmorMount" x="-2.734375" y="-0.078125" scale="1" link="-1" />
+	<subSystem name="ArmorMount" x="-2.75" y=".5" scale="1" link="-1" />
+	<subSystem name="ReactArmor" x=".054688" y="-2.414063" scale="3.25" link="-1" />
+	<subSystem name="TwinHeavyRailgun" x="2.554688" y="-0.023438" scale="2.125" link="-1" />
+	<subSystem name="GraviticAccelerator" x="2.53125" y="-1.265625" scale="1" link="-1" />
+	<subSystem name="ThermalPenetrator" x="2.515625" y="1.203125" scale="1" link="-1" />
+	<subSystem name="AdvancedAICore" x=".226563" y=".820313" scale=".875" link="-1" />
+	<subSystem name="RepairBay" x="-0.726563" y="-0.070313" scale=".375" link="-1" />
+	<subSystem name="ArmorMount" x="-2.140625" y="-0.078125" scale="1" link="-1" />
+	<subSystem name="PowerArmor" x=".109375" y="2.453125" scale="2.75" link="-1" />
+	<subSystem name="PointDefense" x="1.109375" y="-1.109375" scale=".25" link="-1" />
+	<subSystem name="AutocannonBattery" x="1.078125" y="1.125" scale=".25" link="-1" />
+	<subSystem name="VASIMRThruster" x="-1.882813" y="2.210938" scale=".5" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Ammo:0.200000" />
+	<order desc="Fetch:Fuel:0.200000" />
+	<order desc="Defend" />
+</orders>
+

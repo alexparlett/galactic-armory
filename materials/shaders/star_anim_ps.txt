@@ -1,0 +1,15 @@
+uniform sampler2D texture;
+uniform float cycle;
+
+const float maxVariance = 0.030; //should be kept low
+const float deviationCycles = 4.0; //How much variation is based on base color
+
+const float circleRads = 6.28318531; //2 * pi
+
+void main() {
+	vec4 tc = texture2D(texture, gl_TexCoord[0].xy);
+	tc.rgb -= 0.5 + (maxVariance * sin(cycle * circleRads) * cos(tc.r * (circleRads * deviationCycles)) );
+	tc.rgb *= 2.0;
+	tc.a = 0.0;
+	gl_FragColor = (gl_FrontMaterial.diffuse * gl_Color.a) + tc;
+}

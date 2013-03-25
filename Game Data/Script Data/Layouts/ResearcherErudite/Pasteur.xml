@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<settings scale="8" name="Pasteur" />
+<subSystems>
+	<subSystem name="MediumHull" x=".203125" y="-0.125" scale="1" link="-1" />
+	<subSystem name="IntegratedCommandCenter" x="-0.0625" y="-1.03125" scale=".25" link="-10" />
+	<subSystem name="NaniteRepair" x=".742188" y="1.273438" scale=".5" link="-1" />
+	<subSystem name="ShieldedAntimatterGen" x="-0.179688" y=".742188" scale=".75" link="-9" />
+	<subSystem name="FuelCell" x=".078125" y="1.890625" scale=".25" link="-1" />
+	<subSystem name="FuelCell" x="-0.03125" y="-1.875" scale=".25" link="-1" />
+	<subSystem name="VASIMRThruster" x="-0.18645" y="-2.703526" scale="1.5" link="-1" />
+	<subSystem name="Bulkhead" x="-0.492188" y=".492188" scale="1" link="3" />
+	<subSystem name="Bulkhead" x="-0.445313" y="-0.820313" scale="1" link="1" />
+	<subSystem name="ReactArmor" x=".6875" y="-2.625" scale="1.5" link="-1" />
+	<subSystem name="PowerArmor" x=".921875" y="2.546875" scale="1.5" link="-1" />
+	<subSystem name="ShieldGen" x="-1.671875" y="-0.109375" scale="2" link="-1" />
+	<subSystem name="ShieldCharger" x="-0.765625" y="-0.203125" scale="1" link="-1" />
+	<subSystem name="Firestorm" x="2.484375" y=".375" scale="2.25" link="-1" />
+	<subSystem name="ParticleCannon" x="2.40625" y="-0.75" scale="2.25" link="-17" />
+	<subSystem name="CoolantSys" x="1.695313" y="-1.304688" scale=".5" link="14" />
+	<subSystem name="QuantumBattery" x=".5" y="-1.546875" scale=".25" link="-1" />
+	<subSystem name="VASIMRThruster" x=".09375" y="2.703125" scale="1.5" link="-1" />
+	<subSystem name="Attractor" x="1.242188" y="-0.179688" scale=".75" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.200000" />
+	<order desc="Defend" />
+</orders>
+

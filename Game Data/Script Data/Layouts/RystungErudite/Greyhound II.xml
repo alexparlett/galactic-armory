@@ -1,0 +1,42 @@
+﻿<?xml version="1.0"?>
+<settings scale="1" name="Greyhound II" />
+<subSystems>
+	<subSystem name="Computer" x=".882813" y="-0.070313" scale=".875" link="-1" />
+	<subSystem name="FuelCell" x="-0.328125" y="-0.125" scale="3" link="-1" />
+	<subSystem name="RepairTool" x="1.859375" y="-1.40625" scale="4" link="-10" />
+	<subSystem name="BussardRamjet" x="-1.444214" y="-1.86126" scale="3.75" link="-1" />
+	<subSystem name="BussardRamjet" x="-1.468845" y="1.841884" scale="3.75" link="-1" />
+	<subSystem name="Armor" x="-0.03125" y="2.640625" scale="1" link="-1" />
+	<subSystem name="Armor" x="-0.0625" y="-2.640625" scale="1" link="-1" />
+	<subSystem name="RepairTool" x="1.90625" y="1.3125" scale="4" link="-11" />
+	<subSystem name="ExternalMount" x=".6875" y="-1.484375" scale="1" link="2" />
+	<subSystem name="ExternalMount" x=".671875" y="1.359375" scale="1" link="7" />
+	<subSystem name="FusionGen" x="-1.476563" y="-0.132813" scale=".5" link="-1" />
+	<subSystem name="LightHull" x="-2.28125" y="-0.109375" scale="1" link="-1" />
+	<subSystem name="RamScoop" x="-2.601563" y="-1.007813" scale="1.125" link="-1" />
+	<subSystem name="RepairBay" x="-2.578125" y=".875" scale="1" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+        <order desc="Fetch:Ammo:0.200000" />
+	<order desc="Fetch:Fuel:0.200000" />
+	<order desc="Work:Repairer" />
+</ai>
+<orders>
+	<order desc="Fetch:Ammo:0.200000" />
+	<order desc="Fetch:Fuel:0.200000" />
+	<order desc="Work:Repairer" />
+</orders>
+

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0"?>
+<settings scale="6" name="Copernicus" />
+<subSystems>
+	<subSystem name="MediumHull" x="-0.296875" y="-0.046875" scale="1" link="-1" />
+	<subSystem name="CrewQuarters" x=".367188" y="-0.054688" scale=".5" link="-1" />
+	<subSystem name="Bridge" x=".953125" y="-0.046875" scale=".625" link="-1" />
+	<subSystem name="LifeSupport" x=".171875" y=".5625" scale=".125" link="-1" />
+	<subSystem name="PowerGen" x=".039063" y="-0.789063" scale=".75" link="-1" />
+	<subSystem name="FuelCell" x=".125" y="1.640625" scale="2" link="-1" />
+	<subSystem name="Armor" x=".90625" y="-2.671875" scale="1" link="-1" />
+	<subSystem name="Armor" x="1.0625" y="2.5625" scale="1" link="-1" />
+	<subSystem name="ShieldGen" x="-1.429688" y="-0.085938" scale="1.25" link="-1" />
+	<subSystem name="Laser" x="2.3125" y="0" scale="4" link="-1" />
+	<subSystem name="Heatsink" x="1.234375" y="1.359375" scale=".25" link="-1" />
+	<subSystem name="Thruster" x=".015625" y="-2.71875" scale="1.5" link="-1" />
+	<subSystem name="FuelCell" x=".09375" y="-1.71875" scale="2" link="-1" />
+	<subSystem name="Thruster" x=".203125" y="2.6875" scale="1.5" link="-1" />
+	<subSystem name="ShieldCharger" x="-0.820313" y="-0.039063" scale=".5" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="true" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+

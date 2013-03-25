@@ -1,0 +1,24 @@
+﻿<?xml version="1.0"?>
+<settings scale="3500" name="#SH_Remnant Zero Point Field Generator" />
+<subSystems>
+	<subSystem name="ZeroPointField" x=".046875" y=".046875" scale="1" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="false" />
+	<allowTargets ships="true" planets="false" />
+	<depositTargets ships="false" planets="false" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="false" planets="false" stations="false" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Defend" />
+</orders>
+

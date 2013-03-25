@@ -1,0 +1,28 @@
+const float rad = 0.85;
+const float size = 0.30;
+
+const float innerRad = rad - size;
+const float outerRad = rad + size;
+
+uniform sampler2D texture;
+uniform float cycle;
+uniform float under_attack;
+
+void main() {
+  vec4 fragCol = texture2D(texture, gl_TexCoord[0].xy) * gl_Color;
+  if(under_attack == 0.0) {
+	gl_FragColor = fragCol;
+	return;
+  }
+  
+  float distance = length(gl_TexCoord[1].xy);
+  if(distance < innerRad || distance > outerRad) {
+	gl_FragColor = fragCol;
+    return;
+  }
+
+  vec4 glowColor = vec4(1.0, 0.65, 0.0, 0.5);
+  glowColor.a = pow(min(cycle, 1.0 - cycle) * 1.2, 2.0) * (1.0 - 2.0 * (abs(distance - rad) / size)) * gl_Color.a;
+
+  gl_FragColor = mix(glowColor, fragCol, fragCol.a);
+}

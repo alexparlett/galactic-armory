@@ -1,0 +1,39 @@
+﻿<?xml version="1.0"?>
+<settings scale="4" name="Ammo Carrier II" />
+<subSystems>
+	<subSystem name="TankerHull" x="1.453125" y="-0.046875" scale="1" link="-1" />
+	<subSystem name="AmmoStorage" x="-1.25" y="-0.15625" scale="4" link="-9" />
+	<subSystem name="AmmoStorage" x="-0.179688" y="-0.132813" scale="1.25" link="-1" />
+	<subSystem name="Computer" x=".59375" y="-0.078125" scale=".25" link="-1" />
+	<subSystem name="Capacitor" x="1.21875" y="-0.671875" scale=".25" link="-1" />
+	<subSystem name="Thruster" x="-2.375" y="-1.484375" scale="1" link="-1" />
+	<subSystem name="Thruster" x="-2.484375" y="1.34375" scale="1" link="-1" />
+	<subSystem name="QuantumCompressor" x="-2.28125" y="-0.140625" scale="1.75" link="1" />
+	<subSystem name="FusionGen" x=".617188" y="-0.710938" scale=".5" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="true" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="false" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+        <order desc="Supply:Fuel:0.400000" />
+	<order desc="Supply:Ammo:0.500000" />
+	<order desc="Fetch:Fuel:0.200000" />
+	<order desc="Fetch:Ammo:0.200000" />
+</ai>
+<orders>
+	<order desc="Supply:Fuel:0.400000" />
+	<order desc="Supply:Ammo:0.500000" />
+	<order desc="Fetch:Fuel:0.200000" />
+	<order desc="Fetch:Ammo:0.200000" />
+</orders>
+

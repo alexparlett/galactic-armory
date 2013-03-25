@@ -1,0 +1,55 @@
+﻿<?xml version="1.0"?>
+<settings scale="30" name="Impending Doom IV" />
+<subSystems>
+	<subSystem name="Capacitor" x="-2" y="-0.828125" scale=".25" link="-1" />
+	<subSystem name="Firestorm" x="1.460938" y="1.117188" scale=".5" link="-1" />
+	<subSystem name="RamScoop" x=".203125" y=".390625" scale=".125" link="-1" />
+	<subSystem name="MediumHull" x="1.078125" y=".078125" scale="1" link="-1" />
+	<subSystem name="AdvancedAICore" x="-0.1875" y="-0.09375" scale=".25" link="-1" />
+	<subSystem name="NaniteRepair" x="-1.335938" y="-0.835938" scale=".375" link="-1" />
+	<subSystem name="NaniteRepair" x="-1.351563" y=".726563" scale=".375" link="-1" />
+	<subSystem name="BussardRamjet" x="-2.648438" y="-0.085938" scale="1.25" link="-1" />
+	<subSystem name="HyperRailgun" x="1.921875" y="2.015625" scale="1" link="-1" />
+	<subSystem name="LargeMissileRack" x="1.75" y="-0.046875" scale="1" link="-1" />
+	<subSystem name="HyperRailgun" x="1.859375" y="-2.015625" scale="1" link="-20" />
+	<subSystem name="HyperRailgun" x="-0.078125" y="-2.734375" scale="1" link="-1" />
+	<subSystem name="HyperRailgun" x="-0.046875" y="2.78125" scale="1" link="-1" />
+	<subSystem name="Railgun" x="-1.046875" y="2.6875" scale=".5" link="-1" />
+	<subSystem name="Railgun" x="2.921875" y=".03125" scale=".5" link="-1" />
+	<subSystem name="Railgun" x=".875" y="-2.359375" scale=".5" link="-1" />
+	<subSystem name="Railgun" x="1" y="2.515625" scale=".5" link="-1" />
+	<subSystem name="Railgun" x="-0.984375" y="-2.703125" scale=".5" link="-1" />
+	<subSystem name="MultiRack" x="1.414063" y="-1.460938" scale=".5" link="10" />
+	<subSystem name="Capacitor" x="-1.96875" y=".765625" scale=".25" link="-1" />
+	<subSystem name="ShieldedAntimatterGen" x="-1.601563" y="-0.101563" scale=".75" link="-1" />
+	<subSystem name="AmmoStorage" x="-0.734375" y="-0.078125" scale="1" link="-1" />
+	<subSystem name="ShieldGen" x="-0.0625" y="-1.03125" scale="1" link="-25" />
+	<subSystem name="ShieldHardener" x="-0.40625" y="-1.296875" scale=".25" link="22" />
+	<subSystem name="AmmoFabricator" x="-0.476563" y=".914063" scale=".375" link="-1" />
+	<subSystem name="PowerArmor" x="-1.895595" y="-1.802369" scale="2" link="-1" />
+	<subSystem name="PowerArmor" x="-1.859375" y="1.84375" scale="2" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="JoinFleet:60000.000000:true" />
+	<order desc="Fetch:Fuel:0.480000" />
+	<order desc="Fetch:Ammo:0.480000" />
+	<order desc="Defend" />
+	<order desc="Work:EnterStargate" />
+	<order desc="Work:EnterStargate" />
+</orders>
+

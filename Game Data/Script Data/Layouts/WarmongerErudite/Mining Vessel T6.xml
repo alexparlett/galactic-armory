@@ -1,0 +1,36 @@
+﻿<?xml version="1.0"?>
+<settings scale="24" name="Mining Vessel T6" />
+<subSystems>
+	<subSystem name="MiningLaser" x="2.53125" y="0" scale="2" link="-1" />
+	<subSystem name="PolypropellantThruster" x="-2.5625" y="-1.109375" scale=".5" link="-1" />
+	<subSystem name="FusionGen" x="-1.15625" y="0" scale=".75" link="-1" />
+	<subSystem name="Computer" x="1.210938" y=".085938" scale=".75" link="-1" />
+	<subSystem name="IonThruster" x="-2.53125" y=".046875" scale="2" link="-1" />
+	<subSystem name="PolypropellantThruster" x="-2.546875" y="1.203125" scale=".5" link="-1" />
+	<subSystem name="LightHull" x=".1875" y=".0625" scale="1" link="-1" />
+	<subSystem name="Refinery" x=".546875" y="-1.453125" scale="4" link="-1" />
+	<subSystem name="Exporter" x=".296875" y="1.296875" scale="2" link="-1" />
+	<subSystem name="BigFuelCell" x="-1.195313" y="-1.195313" scale="1.125" link="-1" />
+	<subSystem name="BigFuelCell" x="-1.195313" y="1.054688" scale="1.125" link="-1" />
+	<subSystem name="RamScoop" x="-2.203125" y=".046875" scale="1.25" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="true" />
+	<allowFetch flag="true" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="0" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Work:Miner" />
+</orders>
+

@@ -1,0 +1,214 @@
+#forceHighQTextures on
+#makeMipMaps off
+
+SpriteBank: terrakin_shipset
+ Texture: ~/Images/Ships/terrakin_shipset.png
+ AutoTile: rowmajor, 67, 55
+
+#forceHighQTextures off
+#makeMipMaps on
+
+
+Material: terrakin_large_low
+ Defer: Low
+ Texture: ~/Images/Ships/terrakin_large.png
+ SpecularFactor: 12
+ Specular: 666
+ FlagOn: NormalizeNorms
+
+Material: terrakin_large
+ Defer: Low
+ Texture: ~/Images/Ships/terrakin_large.png
+ SpecularFactor: 12
+ Specular: 666
+#if shaders
+ Texture2: ~/Images/Ships/terrakin_large_glow.png
+ Texture3: ~/Images/Ships/terrakin_large_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: terrakin_medium_low
+ Defer: High
+ Texture: ~/Images/Ships/terrakin_medium.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+
+Material: terrakin_medium
+ Defer: High
+ Texture: ~/Images/Ships/terrakin_medium.png
+ SpecularFactor: 12
+ Specular: 666
+#if shaders
+ Texture2: ~/Images/Ships/terrakin_medium_glow.png
+ Texture3: ~/Images/Ships/terrakin_medium_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: terrakin_station_low
+ Defer: High
+ Texture: ~/Images/Ships/terrakin_spacestation.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+
+Material: terrakin_station
+ Defer: High
+ Texture: ~/Images/Ships/terrakin_spacestation.png
+#if shaders
+ Texture2: ~/Images/Ships/terrakin_spacestation_glow.png
+ Texture3: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLights
+ FlagOff: Lighting
+ SpecularFactor: 12
+ Specular: 888
+#else
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+#end
+
+Material: terrakin_colonizer
+ Defer: High
+ Texture: ~/Images/Ships/terrakin_colonizer.png
+ SpecularFactor: 12
+ Specular: 888
+#if shaders
+ Texture2: ~/Images/Ships/terrakin_colonizer_glow.png
+ Texture3: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLights
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: terrakin_huge_low
+ Defer: Low
+ Texture: ~/Images/Ships/terrakin_huge.png
+ SpecularFactor: 12
+ FlagOn: NormalizeNorms
+
+Material: terrakin_huge
+ Defer: Low
+ Texture: ~/Images/Ships/terrakin_huge.png
+ SpecularFactor: 12
+ Specular: 555
+#if shaders
+ Texture2: ~/Images/Ships/terrakin_huge_glow.png
+ Texture3: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLights
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: terrakin_small_low
+ Defer: Medium
+ Texture: ~/Images/Ships/terrakin_small.png
+ SpecularFactor: 12
+ Specular: 666
+
+Material: terrakin_small
+ Defer: Medium
+ Texture: ~/Images/Ships/terrakin_small.png
+ SpecularFactor: 12
+ Specular: 666
+#if shaders
+ Texture2: ~/Images/Ships/terrakin_small_glow.png
+ Texture3: ~/Images/Ships/terrakin_small_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: terrakin_tiny_low
+ Defer: Medium
+ Texture: ~/Images/Ships/terrakin_tiny.png
+ SpecularFactor: 12
+ Specular: 666
+ FlagOn: NormalizeNorms
+
+Material: terrakin_tiny
+ Defer: Medium
+ Texture: ~/Images/Ships/terrakin_tiny.png
+ SpecularFactor: 12
+ Specular: 666
+#if shaders
+ Texture2: ~/Images/Ships/terrakin_tiny_glow.png
+ Texture3: ~/Images/Ships/terrakin_tiny_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: terrakin_hauler_low
+ Defer: Medium
+ Texture: ~/Images/Ships/terrakin_freighter2.png
+ SpecularFactor: 12
+ FlagOn: NormalizeNorms
+
+Material: terrakin_hauler
+ Defer: Medium
+ Texture: ~/Images/Ships/terrakin_freighter2.png
+#if shaders
+ Texture2: ~/Images/Ships/terrakin_freighter2_glow.png
+ Texture3: ~/Images/Ships/terrakin_freighter2_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ SpecularFactor: 12
+ Specular: 666
+#else
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+#end
+
+Material: terrakin_carrier_low
+ Defer: Low
+ Texture: ~/Images/Ships/terrakin_carrier.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 6
+ Specular: ccc
+
+Material: terrakin_carrier
+ Defer: Low
+ Texture: ~/Images/Ships/terrakin_carrier.png
+ SpecularFactor: 6
+ Specular: ccc
+#if shaders
+ Texture2: ~/Images/Ships/terrakin_carrier_glow.png
+ Texture3: ~/Images/Ships/terrakin_carrier_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: terrakin_gargantuan_low
+ Defer: Low
+ Texture: ~/Images/Ships/terrakin_huge.png
+ SpecularFactor: 12
+ FlagOn: NormalizeNorms
+
+Material: terrakin_gargantuan
+ Defer: Low
+ Texture: ~/Images/Ships/terrakin_huge.png
+ SpecularFactor: 12
+ Specular: 555
+#if shaders
+ Texture2: ~/Images/Ships/terrakin_huge_glow.png
+ Texture3: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLights
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end

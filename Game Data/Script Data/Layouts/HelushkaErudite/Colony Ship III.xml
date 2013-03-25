@@ -1,0 +1,35 @@
+﻿<?xml version="1.0"?>
+<settings scale="15" name="Colony Ship III" />
+<subSystems>
+	<subSystem name="MediumHull" x=".453125" y="-0.078125" scale="1" link="-1" />
+	<subSystem name="LifeSupport" x=".109375" y="1.71875" scale="3" link="-1" />
+	<subSystem name="Colonizer" x=".078125" y="-2.328125" scale="4" link="-6" />
+	<subSystem name="IntegratedCommandCenter" x="1.40625" y="-0.0625" scale=".125" link="-1" />
+	<subSystem name="ExternalMount" x=".140625" y="-1.4375" scale="1" link="2" />
+	<subSystem name="AntiMatterGen" x="-0.796875" y="-0.046875" scale="1.75" link="-1" />
+	<subSystem name="FuelCell" x="1.054688" y=".570313" scale=".5" link="-1" />
+	<subSystem name="AntimatterRocket" x="-2.125" y="-1.25" scale="3" link="-1" />
+	<subSystem name="AntimatterRocket" x="-2.140625" y="1.21875" scale="3" link="-1" />
+	<subSystem name="MagnetoPlasmaThruster" x="-2.507813" y="-0.023438" scale="2.5" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="true" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="false" planets="true" />
+	<depositTargets ships="false" planets="false" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="0" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="false" planets="true" stations="false" />
+	<dockMode mode="2" />
+	<carrierMode mode="0" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Colonize" />
+	<order desc="AutoDock" />
+</orders>
+

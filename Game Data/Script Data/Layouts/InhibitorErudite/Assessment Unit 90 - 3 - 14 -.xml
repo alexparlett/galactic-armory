@@ -1,0 +1,42 @@
+﻿<?xml version="1.0"?>
+<settings scale="30" name="Assessment Unit 90 - 3 - 14 -" />
+<subSystems>
+	<subSystem name="Computer" x=".359375" y="-0.078125" scale=".75" link="-1" />
+	<subSystem name="FuelCell" x="-0.046875" y="2.140625" scale="1" link="-1" />
+	<subSystem name="FuelCell" x="-0.171875" y="-2.109375" scale="1" link="-1" />
+	<subSystem name="ShieldGen" x="-1.769599" y=".11093" scale="1.125" link="-13" />
+	<subSystem name="Capacitor" x=".421875" y="-0.078125" scale=".25" link="-1" />
+	<subSystem name="MediumHull" x="-0.46875" y=".03125" scale="1" link="-1" />
+	<subSystem name="FusionGen" x="-0.09375" y="-0.0625" scale=".75" link="-1" />
+	<subSystem name="ReactArmor" x="-2.078125" y="1.5625" scale="2" link="-1" />
+	<subSystem name="ReactArmor" x="-2.140625" y="-1.484375" scale="2" link="-1" />
+	<subSystem name="IonCannon" x="2.3125" y="-0.03125" scale="4" link="-12" />
+	<subSystem name="CoolantSys" x="1.453125" y="-0.078125" scale=".25" link="9" />
+	<subSystem name="ShieldHardener" x="-1.515625" y=".125" scale="1" link="3" />
+	<subSystem name="ShieldCharger" x="-0.475415" y=".211295" scale="1" link="-1" />
+	<subSystem name="IonThruster" x="-0.703125" y="2.171875" scale="2" link="-1" />
+	<subSystem name="IonThruster" x="-0.78125" y="-2.125" scale="2" link="-1" />
+</subSystems>
+<ai>
+	<targetScale low="20" hi="9999999" forced="false" />
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="false" />
+	<depositTargets ships="false" planets="false" stations="false" />
+	<multiTarget flag="false" />
+	<engagementRange value="110" />
+	<defendRange value="40000" />
+	<defaultStance value="0" />
+	<dockTargets ships="false" planets="false" stations="false" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Defend" />
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Fetch:Ammo:0.480000" />
+	<order desc="AutoExplore:true:true" />
+</orders>
+

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0"?>
+<settings scale="20" name="Skyward Fortress" />
+<subSystems>
+	<subSystem name="Armor" x=".515625" y="-2.5625" scale="2" link="-1" />
+	<subSystem name="Armor" x="-0.390625" y="-2.515625" scale="2" link="-1" />
+	<subSystem name="Armor" x="-0.40625" y="2.578125" scale="2" link="-1" />
+	<subSystem name="StationHull" x="-0.703125" y=".046875" scale="1" link="-10" />
+	<subSystem name="Armor" x="-1.390625" y="2.203125" scale="2" link="-1" />
+	<subSystem name="Laser" x="-2.3125" y=".03125" scale="4" link="-15" />
+	<subSystem name="AntiMatterGen" x="1.078125" y="-1.265625" scale="1" link="-1" />
+	<subSystem name="ShieldGen" x=".296875" y="-0.203125" scale="4" link="-1" />
+	<subSystem name="ShieldHardener" x=".015625" y=".671875" scale="2" link="3" />
+	<subSystem name="Computer" x="-0.242188" y="-0.335938" scale="2.125" link="-1" />
+	<subSystem name="RamScoop" x=".6875" y=".375" scale="1" link="-1" />
+	<subSystem name="GatlingLaser" x="1.796875" y="1.546875" scale="2.5" link="-14" />
+	<subSystem name="MultiRack" x="1.296875" y="1.046875" scale="1" link="11" />
+	<subSystem name="ExternalMount" x="-1.890625" y="-0.25" scale="1" link="5" />
+	<subSystem name="PlasmaThrower" x="2.296875" y="-0.34375" scale="4" link="-17" />
+	<subSystem name="ExternalMount" x="2.609375" y="-0.921875" scale="1" link="14" />
+	<subSystem name="PFW" x="-1.429106" y="-1.832984" scale="4" link="-19" />
+	<subSystem name="ExternalMount" x="-1.328125" y="-1.515625" scale="1" link="16" />
+	<subSystem name="Heatsink" x="-0.867188" y=".632813" scale=".375" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="true" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="false" />
+	<depositTargets ships="false" planets="true" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Defend" />
+</orders>
+

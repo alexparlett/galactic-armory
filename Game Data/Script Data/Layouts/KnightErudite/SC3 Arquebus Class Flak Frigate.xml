@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<settings scale="30" name="SC3 Arquebus Class Flak Frigate" />
+<subSystems>
+	<subSystem name="MediumHull" x="-1.40625" y="-0.140625" scale="1" link="-5" />
+	<subSystem name="AmmoStorage" x="-1.203125" y="-1.015625" scale="1" link="-1" />
+	<subSystem name="FuelCell" x="-2.039063" y="-0.976563" scale=".5" link="-1" />
+	<subSystem name="Bulkhead" x="-0.835938" y="-0.179688" scale="1" link="0" />
+	<subSystem name="MultiRack" x="1.953125" y="-0.078125" scale="2.25" link="14" />
+	<subSystem name="GatlingLaser" x="1.875" y="-1.390625" scale="1" link="-1" />
+	<subSystem name="PointDefense" x="1.96875" y="1.25" scale="1" link="-1" />
+	<subSystem name="Heatsink" x="-0.203125" y="-0.109375" scale=".25" link="-1" />
+	<subSystem name="AmmoFabricator" x="-0.335938" y="-0.867188" scale=".5" link="-1" />
+	<subSystem name="Firestorm" x=".632813" y="-0.023438" scale="1.25" link="-1" />
+	<subSystem name="IntegratedCommandCenter" x=".28125" y="-1.078125" scale=".25" link="-1" />
+	<subSystem name="ShieldGen" x="-1.148438" y=".710938" scale="1.25" link="-17" />
+	<subSystem name="ShieldedAntimatterGen" x="-1.664063" y="-0.148438" scale=".75" link="-1" />
+	<subSystem name="VASIMRThruster" x="-2.625" y="-0.109375" scale="2" link="-1" />
+	<subSystem name="GraviticAccelerator" x="2.78125" y="-0.03125" scale="1" link="-6" />
+	<subSystem name="ShieldHardener" x="-1.914063" y=".789063" scale=".5" link="11" />
+	<subSystem name="NanoArmor" x=".125" y="-2.609375" scale="2" link="-1" />
+	<subSystem name="NanoArmor" x=".265625" y="2.59375" scale="2" link="-1" />
+	<subSystem name="ShieldCharger" x="-0.304688" y=".648438" scale=".75" link="-1" />
+</subSystems>
+<ai>
+	<targetScale low="0" hi="10" forced="false" />
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="false" />
+	<depositTargets ships="false" planets="true" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="163" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="JoinFleet:-1.000000:true" />
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Defend" />
+</orders>
+

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0"?>
+<settings scale=".65" name="Bomber T6" />
+<subSystems>
+	<subSystem name="Cockpit" x=".265625" y=".015625" scale=".25" link="-1" />
+	<subSystem name="FuelCell" x="-0.703125" y="-0.953125" scale="1.5" link="-1" />
+	<subSystem name="FighterTorpedo" x="2.046875" y=".046875" scale="4" link="-1" />
+	<subSystem name="Armor" x="-0.046875" y="-2.609375" scale="2" link="-1" />
+	<subSystem name="BomberHull" x=".53125" y="1.375" scale="1" link="-1" />
+	<subSystem name="FuelCell" x="-0.703125" y="1.046875" scale="1.5" link="-1" />
+	<subSystem name="Capacitor" x="-0.546875" y=".078125" scale=".25" link="-1" />
+	<subSystem name="FusionGen" x="-0.953125" y=".046875" scale=".75" link="-1" />
+	<subSystem name="IonThruster" x="-2.210938" y="-0.710938" scale="3.875" link="-1" />
+	<subSystem name="IonThruster" x="-2.210938" y=".789063" scale="3.875" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="true" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="139" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Defend" />
+</orders>
+

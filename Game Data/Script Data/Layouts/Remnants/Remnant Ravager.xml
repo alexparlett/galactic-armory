@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<settings scale="2" name="Remnant Ravager" />
+<subSystems>
+	<subSystem name="FuelCell" x="-0.21875" y=".140625" scale=".25" link="-1" />
+	<subSystem name="Bulkhead" x=".765625" y="-0.859375" scale="1" link="8" />
+	<subSystem name="Bulkhead" x="-0.203125" y=".03125" scale=".5" link="0" />
+	<subSystem name="StealthHull" x=".046875" y="-1.6875" scale="1" link="-1" />
+	<subSystem name="TwinParticleCannon" x="2.140625" y="-1.125" scale="3.25" link="-1" />
+	<subSystem name="TwinParticleCannon" x="2.125" y="1.140625" scale="3.25" link="-1" />
+	<subSystem name="QuantumBattery" x=".171875" y=".765625" scale=".25" link="-1" />
+	<subSystem name="Bulkhead" x=".375" y=".71875" scale=".5" link="6" />
+	<subSystem name="ShieldedAntimatterGen" x=".71875" y="-0.140625" scale="1.5" link="-1" />
+	<subSystem name="AntimatterRocket" x="-2.375" y="-0.796875" scale="2.25" link="-1" />
+	<subSystem name="AntimatterRocket" x="-2.359375" y=".8125" scale="2.25" link="-1" />
+	<subSystem name="AdvancedAICore" x=".703125" y="-0.09375" scale=".5" link="-1" />
+	<subSystem name="ReactArmor" x="-1.686679" y="-2.28014" scale="1" link="-1" />
+	<subSystem name="ReactArmor" x="-1.578125" y="2.28125" scale="1" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="1" />
+	<carrierMode mode="0" />
+</ai>
+

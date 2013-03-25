@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<settings scale="12" name="Leibniz" />
+<subSystems>
+	<subSystem name="HeavyHull" x=".21875" y="-0.03125" scale="1" link="-1" />
+	<subSystem name="IntegratedCommandCenter" x="-0.359375" y="0" scale=".25" link="-8" />
+	<subSystem name="AntiMatterGen" x="-1.140625" y="-0.015625" scale=".75" link="-9" />
+	<subSystem name="Capacitor" x=".015625" y="-0.9375" scale=".25" link="-1" />
+	<subSystem name="Capacitor" x="2.4375" y="-0.203125" scale=".25" link="-1" />
+	<subSystem name="MagnetoPlasmaThruster" x=".101563" y="2.679688" scale="1.625" link="-1" />
+	<subSystem name="Bulkhead" x="-0.453125" y=".3125" scale=".5" link="1" />
+	<subSystem name="Bulkhead" x="-1.101563" y=".132813" scale="1" link="2" />
+	<subSystem name="ReactArmor" x=".96875" y="2.515625" scale="1.5" link="-1" />
+	<subSystem name="SoakArmor" x=".875" y="-2.578125" scale="1.5" link="-1" />
+	<subSystem name="PowerArmor" x="-2.71875" y=".109375" scale="1.5" link="-1" />
+	<subSystem name="ShieldGen" x="-1.8125" y=".078125" scale="1.5" link="-1" />
+	<subSystem name="ShieldCharger" x=".054688" y=".851563" scale=".5" link="-1" />
+	<subSystem name="FuelCell" x=".070313" y="1.914063" scale=".5" link="-1" />
+	<subSystem name="FuelCell" x=".007813" y="-2.007813" scale=".5" link="-1" />
+	<subSystem name="PlasmaBeam" x="2.382813" y="-0.101563" scale="3.5" link="-18" />
+	<subSystem name="CoolantSys" x="1.5625" y="-0.984375" scale="1" link="15" />
+	<subSystem name="Heatsink" x="1.054688" y=".085938" scale=".5" link="-1" />
+	<subSystem name="MagnetoPlasmaThruster" x="-0.023438" y="-2.695313" scale="1.625" link="-1" />
+	<subSystem name="PowerVampire" x="1.492188" y="1.085938" scale=".75" link="-1" />
+</subSystems>
+<ai>
+	<targetScale low="4" hi="9999999" forced="false" />
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.200000" />
+	<order desc="Defend" />
+</orders>
+

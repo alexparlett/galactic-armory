@@ -1,0 +1,52 @@
+﻿<?xml version="1.0"?>
+<settings scale="10" name="Jackal-class Destroyer" />
+<subSystems>
+	<subSystem name="MediumHull" x="0" y="0" scale="1" link="-21" />
+	<subSystem name="Bridge" x="-0.929688" y="-0.335938" scale=".5" link="-26" />
+	<subSystem name="CrewQuarters" x="-0.914063" y=".507813" scale=".5" link="-27" />
+	<subSystem name="LifeSupport" x="-1.015625" y=".109375" scale=".125" link="-22" />
+	<subSystem name="Thruster" x="-2.632813" y="-0.367188" scale=".5" link="-1" />
+	<subSystem name="Thruster" x="-2.828125" y=".046875" scale="1" link="-1" />
+	<subSystem name="AmmoStorage" x="-1.460938" y=".460938" scale=".5" link="-1" />
+	<subSystem name="FuelCell" x="-1.976563" y=".648438" scale=".5" link="-1" />
+	<subSystem name="FuelCell" x="-1.921875" y=".109375" scale="1" link="-1" />
+	<subSystem name="FuelCell" x="-1.945313" y="-0.414063" scale=".5" link="-1" />
+	<subSystem name="FuelCell" x="-1.6875" y=".078125" scale=".25" link="-1" />
+	<subSystem name="PowerGen" x="-0.395564" y=".111252" scale=".25" link="-28" />
+	<subSystem name="AmmoStorage" x="-1.507813" y="-0.195313" scale=".5" link="-1" />
+	<subSystem name="Armor" x=".210143" y="-2.608249" scale="2" link="-1" />
+	<subSystem name="Thruster" x="-2.625" y=".484375" scale=".25" link="-1" />
+	<subSystem name="Railgun" x="1.53125" y="-0.078125" scale="2.75" link="-20" />
+	<subSystem name="Railgun" x="2.5625" y="-0.046875" scale="2.25" link="-24" />
+	<subSystem name="Thruster" x="-2.398438" y=".070313" scale=".75" link="-1" />
+	<subSystem name="CoolantSys" x="1.195313" y="-0.851563" scale=".875" link="15" />
+	<subSystem name="Bulkhead" x="-0.018542" y="-0.525358" scale="1.5" link="0" />
+	<subSystem name="Bulkhead" x="-0.692236" y=".111252" scale=".25" link="3" />
+	<subSystem name="Capacitor" x="-1.953125" y=".109375" scale=".25" link="-1" />
+	<subSystem name="CoolantSys" x="2.695313" y="-0.929688" scale=".875" link="16" />
+	<subSystem name="Armor" x=".135664" y="2.626948" scale="2" link="-1" />
+	<subSystem name="Bulkhead" x="-1.032174" y="-0.822031" scale=".625" link="1" />
+	<subSystem name="Bulkhead" x="-0.686056" y="1.019813" scale=".625" link="2" />
+	<subSystem name="Bulkhead" x="-0.080349" y=".129794" scale=".5" link="11" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Defend" />
+</orders>
+

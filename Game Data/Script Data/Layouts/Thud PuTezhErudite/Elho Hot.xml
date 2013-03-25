@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<settings scale="30" name="Elho Hot" />
+<subSystems>
+	<subSystem name="SpinalMountHull" x=".90625" y=".671875" scale="1" link="12" />
+	<subSystem name="FusionGen" x="-0.148438" y="-0.179688" scale=".75" link="-1" />
+	<subSystem name="InterceptorMissile" x="1.15625" y="-0.15625" scale=".25" link="-27" />
+	<subSystem name="RepairBay" x="-1.476563" y="-1.101563" scale=".5" link="-1" />
+	<subSystem name="RepairTool" x="-0.09375" y=".59375" scale=".25" link="-1" />
+	<subSystem name="FuelCell" x="-0.609375" y=".40625" scale=".25" link="-1" />
+	<subSystem name="Bulkhead" x="-0.976563" y="-0.148438" scale=".5" link="18" />
+	<subSystem name="ArmorMount" x="-0.820313" y="-1.664063" scale=".5" link="-1" />
+	<subSystem name="ArmorMount" x="-0.648438" y="1.289063" scale=".5" link="-1" />
+	<subSystem name="Armor" x="-1.671875" y="-2.25" scale="1" link="-1" />
+	<subSystem name="Armor" x="-1.75" y="2.171875" scale="1" link="-1" />
+	<subSystem name="VASIMRThruster" x="-2.820313" y="-0.148438" scale=".875" link="-1" />
+	<subSystem name="FusionTorpedoBay" x="2.0625" y="1.0625" scale="4" link="-2" />
+	<subSystem name="IntegratedCommandCenter" x="-0.625" y="-0.703125" scale=".125" link="-1" />
+	<subSystem name="MissileRack" x="-0.132813" y="2.773438" scale=".25" link="-17" />
+	<subSystem name="CoolantSys" x="-0.148438" y="2.304688" scale=".375" link="14" />
+	<subSystem name="ExternalMount" x=".84375" y="-1" scale="1" link="17" />
+	<subSystem name="ClusterMissile" x="2.046875" y="-1.109375" scale="4" link="-18" />
+	<subSystem name="AmmoStorage" x="-1.484375" y="-0.109375" scale="1" link="-8" />
+	<subSystem name="MatterGen" x="-1.5" y=".78125" scale=".25" link="-1" />
+	<subSystem name="NanoArmor" x="1.15625" y="-2.546875" scale="1" link="-1" />
+	<subSystem name="NanoArmor" x="1.140625" y="2.46875" scale="1" link="-1" />
+	<subSystem name="LargeMissileRack" x="-0.039063" y="-2.773438" scale="1" link="-25" />
+	<subSystem name="ExtendedMagazine" x="-0.078125" y="-2.21875" scale=".25" link="22" />
+	<subSystem name="AdvancedAICore" x="-0.125" y="-0.90625" scale=".25" link="-1" />
+	<subSystem name="CoolantSys" x=".695313" y="-0.132813" scale=".375" link="2" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Defend" />
+</orders>
+

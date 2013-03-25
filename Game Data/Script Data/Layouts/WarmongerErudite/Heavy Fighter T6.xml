@@ -1,0 +1,36 @@
+﻿<?xml version="1.0"?>
+<settings scale=".6" name="Heavy Fighter T6" />
+<subSystems>
+	<subSystem name="Cockpit" x=".773438" y=".023438" scale=".5" link="-1" />
+	<subSystem name="FuelCell" x="-0.703125" y="-0.953125" scale="1" link="-1" />
+	<subSystem name="FighterHull" x=".28125" y="-0.84375" scale="1" link="-1" />
+	<subSystem name="SoakArmor" x="-0.046875" y="-2.8125" scale="1" link="-1" />
+	<subSystem name="DualPlasmaBlaster" x="2.297838" y=".047541" scale="3" link="-1" />
+	<subSystem name="FighterRockets" x="1.299467" y="1.299467" scale="1.25" link="-1" />
+	<subSystem name="FighterRockets" x="1.299467" y="-1.225513" scale="1.25" link="-1" />
+	<subSystem name="IonThruster" x="-2.21332" y="-0.723687" scale="3" link="-1" />
+	<subSystem name="IonThruster" x="-2.203125" y=".796875" scale="3" link="-1" />
+	<subSystem name="FusionGen" x="-0.703125" y=".046875" scale="1" link="-1" />
+	<subSystem name="FuelCell" x="-0.703125" y="1.046875" scale="1" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="true" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="0" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Defend" />
+</orders>
+

@@ -1,0 +1,665 @@
+<?xml version="1.0"?>
+
+<traits>
+	<category id="biology" name="#RTC_BIOLOGY_NAME" desc="#RTC_BIOLOGY_DESC">
+		<trait id="terraform" name="#RT_TERRAFORM_NAME" desc="#RT_TERRAFORM_DESC" flavor="#RT_TERRAFORM_FLAVOR" cost="0">
+			<tag id="planet_remove_conditions" /> <!-- Implemented in planet.as -->
+		</trait>
+
+		<trait id="highmetabolism" name="#RT_HIGHMETABOLISM_NAME" desc="#RT_HIGHMETABOLISM_DESC" flavor="#RT_HIGHMETABOLISM_FLAVOR" cost="-1">
+			<tag id="fast_consumption" /> <!-- Implemented in planet.as -->
+			<tag id="fast_reproduction" /> <!-- Implemented in planet.as -->
+			<conflict id="longevity"/>
+		</trait>
+		
+		<trait id="longevity"
+			name="Longevity"
+			flavor="A very long lifespan and slow metabolism causes very low food consumption. Reproduction rates are lowered at the same time."
+			desc="Reduces food consumption by 50%. Reduces reproduction rate by 33%."
+			cost="0">
+			<conflict id="highmetabolism"/>
+			<tag id="low_consume"/>
+			<tag id="low_reproduction"/>	<!-- Implemented in planet.as -->
+		</trait>		
+
+		<trait id="dextrous" name="#RT_DEXTROUS_NAME" desc="#RT_DEXTROUS_DESC" flavor="#RT_DEXTROUS_FLAVOR" cost="2">
+			<hook type="alter" func="Traits::increaseRepair" arg0="1.33" />
+			<conflict id="clumsy" />
+		</trait>
+		
+		<trait id="clumsy"
+			name="Clumsy"
+			flavor="Cursed with poor motor control, you race struggles to repair damage and restore systems to peak condition."
+			desc="Repair Rates are reduced by 33%"
+			cost="-2">
+			<hook type="alter" func="Traits::increaseRepair" arg0="0.66" />
+			<conflict id="dextrous" />
+		</trait>
+
+		<trait id="euphoric" name="#RT_EUPHORIC_NAME" desc="#RT_EUPHORIC_DESC" flavor="#RT_EUPHORIC_FLAVOR" cost="1">
+			<conflict id="eusocial" />
+			<conflict id="depressed" />
+			<tag id="low_luxuries_consumption" /> <!-- Implemented in planet.as -->
+		</trait>
+
+		<trait id="depressed" name="#RT_DEPRESSED_NAME" desc="#RT_DEPRESSED_DESC" flavor="#RT_DEPRESSED_FLAVOR" cost="-1">
+			<conflict id="euphoric" />
+			<conflict id="eusocial" />
+			<tag id="high_luxuries_consumption" /> <!-- Implemented in planet.as -->
+		</trait>
+	</category>
+
+	<category id="society" name="#RTC_SOCIETY_NAME" desc="#RTC_SOCIETY_DESC">
+		<trait id="capitalism" name="#RT_CAPITALISM_NAME" desc="#RT_CAPITALISM_DESC" flavor="#RT_CAPITALISM_FLAVOR" cost="0">
+			<conflict id="eusocial" />
+			<hook type="alter" func="Traits::increaseMiningRate" arg0="1.5" />
+			<tag id="lossy_mining" /> <!-- Implemented in Economy.as -->
+		</trait>
+
+		<trait id="slavery" name="#RT_SLAVERY_NAME" desc="#RT_SLAVERY_DESC" flavor="#RT_SLAVERY_FLAVOR" cost="1">
+			<hook type="alter" func="Traits::increaseLaborGen" arg0="2" />
+			<tag id="double_pop_labor" /> <!-- Implemented in planet.as -->
+			<conflict id="lazy"/>
+		</trait>
+		
+		<trait id="lazy"
+			name="Sedentary Population"
+			flavor="Your population has poor work ethics, it takes two people working to equal the output of a standard galactic worker."
+			desc="Halves all labor generation"
+			cost="-1">
+			<hook type="alter" func="Traits::increaseLaborGen" arg0="0.5" />
+			<tag id="half_pop_labor" />
+			<conflict id="slavery"/>
+		</trait>
+
+		<trait id="eusocial" name="#RT_EUSOCIAL_NAME" desc="#RT_EUSOCIAL_DESC" flavor="#RT_EUSOCIAL_FLAVOR" cost="-1">
+			<conflict id="capitalism" />
+			<conflict id="depressed" />
+			<conflict id="euphoric" />
+			<tag id="forever_indifferent" /> <!-- Implemented in planet.as / Available: / map_generation.as -->
+		</trait>
+	</category>
+
+	<category id="mentality" name="#RTC_MENTALITY_NAME" desc="#RTC_MENTALITY_DESC">
+		<trait id="rigid" name="#RT_RIGID_NAME" desc="#RT_RIGID_DESC" flavor="#RT_RIGID_FLAVOR" cost="-1">
+			<tag id="disable_civil_acts" /> <!-- Implemented in planet.as -->
+		</trait>
+
+		<trait id="efficient" name="#RT_EFFICIENT_NAME" desc="#RT_EFFICIENT_DESC" flavor="#RT_EFFICIENT_FLAVOR" cost="1">
+			<hook type="alter" func="Traits::increaseCargoSpace" arg0="3" />
+			<conflict id="inefficient"/>
+		</trait>
+		
+		<trait id="inefficient"
+			name="Inefficient"
+			flavor="Your people tend to have an unorganized approach to cargo storage, which reduces the amount of goods that can be stored in a given amount of space."
+			desc="Cargo Storage is reduced to a third of its original space"
+			cost="-1">
+			<hook type="alter" func="Traits::increaseCargoSpace" arg0="0.33" />
+			<conflict id="efficient" />
+		</trait>
+
+		<trait id="scorchedearth" name="#RT_SCORCHEDEARTH_NAME" desc="#RT_SCORCHEDEARTH_DESC" flavor="#RT_SCORCHEDEARTH_FLAVOR" cost="2">
+			<tag id="planet_clear_on_lost" /> <!-- Implemented in planet.as -->
+		</trait>
+
+		<trait id="badlogistics" name="#RT_BADLOGISTICS_NAME" desc="#RT_BADLOGISTICS_DESC" flavor="#RT_BADLOGISTICS_FLAVOR" cost="-1">
+			<hook type="alter" func="Traits::increaseBuildCost" arg0="1.10" />
+			<conflict id="efficient_rec"/>
+		</trait>
+
+		<trait id="efficient_rec"
+			name="Efficient Recycling"
+			flavor="Efficient recycling techniques save resources, making construction less expensive."
+			desc="Reduces all construction costs by 10%."
+			cost="1">
+			<conflict id="badlogistics"/>
+			<hook type="alter" func="Traits::increaseBuildCost" arg0="0.9" /> <!-- Implemented in Traits.as -->
+		</trait>		
+		
+		<trait id="aiparanoid" name="#RT_AIPARANOID_NAME" desc="#RT_AIPARANOID_DESC" flavor="#RT_AIPARANOID_FLAVOR" cost="-1">
+			<tag id="no_computers" /> <!-- Implemented in Available: -->
+			<conflict id="needscomputers" />
+		</trait>
+		
+		<trait id="needscomputers"
+					name="Computer-dependent Society"
+					desc="Unlocks Computers at game start; Bridge, ICC, Cockpit and Crew Quarters unavailable."
+					flavor="Your society has grown dependent on computers and machines for everyday tasks. Because of this, all spaceships must be controlled by a computer."
+					cost="0">
+			<tag id="automated" /> <!-- Implemented in Available:/Level and empire_ai: -->
+			<conflict id="aiparanoid" />
+		</trait>		
+		
+		<trait id="cannon_fodder"
+			name="Cannon Fodder Doctrine"
+			flavor="Because your people view both soldiers and weapons as disposable assets, ships are usually both cheaper and weaker."
+			desc="Decreased HP and Cost for Armor, Shields and Hulls "
+			cost="-1">
+			<hook type="alter" func="GATraits::cannonFodder" arg0="0.75" /> <!-- Implemented in GATraits.as -->
+			<tag id="cannon_fodder"/>
+			<conflict id="ultra_dense"/>
+		</trait>
+		
+		<trait id="antimatphobia"
+					name="Antimatter Phobia"
+					desc="Cannot use antimatter-based technologies." 
+					flavor="Due to the way your people think, the nature of Antimatter is perceived as something utterly alien, entirely prohibiting any research or practical use of it." 
+					cost="-2">
+			<tag id="no_antimatter" /> <!-- Implemented in Available: -->
+		</trait>
+		
+		<trait id="nanodisaster" 
+					name="Nanotech Disaster" 
+					desc="Cannot use nanomachine-based technologies." 
+					flavor="A horrible worldwide disaster in the past caused by advanced nanotechnology has left your people with intense fear of all kinds of nanomachines." 
+					cost="-2">
+			<tag id="no_nanotech" /> <!-- Implemented in Available: -->
+		</trait>		
+		
+		<trait id="religious" 
+					name="Highly Religious" 
+					desc="Cannot use subsystems like DSM, Jump Drive, Attractor, Mass Driver, etc."
+					flavor="Your population has been worshipping ancient gods for millenia, so the manipulation of space-time is forbidden as it is considered a 'crime against the gods'." 
+					cost="-3">
+			<tag id="religious" /> <!-- Implemented in Available: -->
+			<conflict id="no_overkill"/>
+		</trait>
+
+		<trait id="codeofhonor" 
+					name="Code of Honor"
+					desc="Cannot use indirect weapons as well as armor-/shield-piercing weaponry."
+					flavor="Your race's strong desire for high ideals, even in war, gave birth to a strict 'Code of Honor', prohibiting the use of 'honorless' weapons."
+					cost="-3">
+			<tag id="code_of_honor" /> <!-- Implemented in Available: -->
+			<conflict id="enhanced_weapons"/>
+			<conflict id="abhor_mass_murder" />			
+		</trait>				
+
+		<trait id="no_ballistics"
+			name="No Ballistic Weapons"
+			flavor="Ballistic weapons are considered crude and primitive by your people, so use of them is impossible."
+			desc="Ballistic Weapons can not be used."
+			cost="-3">
+			<tag id="no_ballistics"/> <!-- Implented in Available -->
+			<conflict id="hard_project"/>
+			<conflict id="soft_project" />
+			<conflict id="super_rail"/>
+			<conflict id="weak_rail"/>
+			<conflict id="no_energy"/>
+			<conflict id="no_missile"/>
+		</trait>
+
+		<trait id="no_energy"
+			name="No Energy Weapons"
+			flavor="Energy Weapons are considered too complex and error-prone by your people, so they can not be used."
+			desc="Energy Weapons can not be used."
+			cost="-3">
+			<tag id="no_energy"/> <!-- Implemented in Available -->
+			<conflict id="efficient_energy"/>
+			<conflict id="sophis_laser"/>	
+			<conflict id="poor_crystals"/>		
+			<conflict id="poor_conversion"/>	
+			<conflict id="no_missile"/>
+			<conflict id="no_ballistics"/>
+		</trait>
+
+		<trait id="no_missile"
+			name="No Missile Weapons"
+			flavor="Self-propelled weapons are considered inefficient and unreliable by your people, so they can not be fielded."
+			desc="Missile Weapons can not be used."
+			cost="-3">
+			<tag id="no_missile"/> <!-- Implemented in Available -->
+			<conflict id="adv_warhead"/>
+			<conflict id="imp_torps"/>		
+			<conflict id="dumb_torps" />
+			<conflict id="poor_warhead" />			
+			<conflict id="no_ballistics"/>
+			<conflict id="no_energy"/>
+			</trait>
+
+		<trait id="no_overkill"
+			name="No Overkill"
+			flavor="Your race does everything in moderation. In consequence, overkill is frowned upon, prohibiting the use of superweapons."
+			desc="Superweapons can not be used."
+			cost="-2">
+			<tag id="no_overkill"/> <!-- Implemented in Available -->
+			<conflict id="religious"/>
+		</trait>
+
+		<trait id="wastefulness"
+			name="Wastefulness"
+			flavor="Due to an overabundance of planetary resources, your people never had to learn what scarcity means, so wastefulness is common."
+			desc="25% more fuel and ammo used"
+			cost="-1">
+			<hook type="alter" func="GATraits::resourceUsage" arg0="1.25"/> <!-- Implented in GATraits.as -->
+			<conflict id="economical"/>
+		</trait>
+
+		<trait id="economical"
+			name="Economical"
+			flavor="Prolonged phases of resource shortage has made your people more economical, reducing the consumption of ammunition and fuel."
+			desc="25% less fuel and ammo used"
+			cost="1">
+			<hook type="alter" func="GATraits::resourceUsage" arg0="0.75"/>	<!-- Implented in GATraits.as -->		
+			<conflict id="wastefulness"/>
+		</trait>		
+	</category>
+
+	<category id="background" name="#RTC_BACKGROUND_NAME" desc="#RTC_BACKGROUND_DESC">
+		<trait id="developed" name="#RT_DEVELOPED_NAME" desc="#RT_DEVELOPED_DESC" flavor="#RT_DEVELOPED_FLAVOR" cost="2">
+			<conflict id="fledgling" />
+			<tag id="second_planet" /> <!-- Implemented in map_generation.as -->
+		</trait>
+
+		<trait id="bustling" name="#RT_BUSTLING_NAME" desc="#RT_BUSTLING_DESC" flavor="#RT_BUSTLING_FLAVOR" cost="3">
+			<conflict id="fledgling" />
+			<tag id="larger_homeworld" /> <!-- Implemented in map_generation.as -->
+		</trait>
+
+		<trait id="fledgling" name="#RT_FLEDGLING_NAME" desc="#RT_FLEDGLING_DESC" flavor="#RT_FLEDGLING_FLAVOR" cost="-2">
+			<conflict id="bustling" />
+			<conflict id="developed" />
+			<tag id="empty_homeworld" /> <!-- Implemented in map_generation.as -->
+		</trait>
+
+		<trait id="stripmined" name="#RT_STRIPMINED_NAME" desc="#RT_STRIPMINED_DESC" flavor="#RT_STRIPMINED_FLAVOR" cost="1">
+			<tag id="mined_homeworld" /> <!-- Implemented in map_generation.as -->
+		</trait>
+
+		<trait id="indebted" name="#RT_INDEBTED_NAME" desc="#RT_INDEBTED_DESC" flavor="#RT_INDEBTED_FLAVOR" cost="-2">
+			<tag id="half_exports" /> 
+		</trait>
+		
+		<trait id="colonialism"
+			name="Colonialism"
+			flavor="Even in the pre-spaceflight era, your race exhibited a constant need for expansion and growth, so colonizing new worlds is slightly easier."
+			desc="Increases the number of structures built when a planet is colonized"
+			cost="1">
+			<hook type="alter" func="GATraits::alterStructures" arg0="1.5" /> <!-- Implemented in GATraits.as -->
+			<conflict id="communal" />
+		</trait>
+		
+		<trait id="communal"
+			name="Communal"
+			flavor="Your race is a very communal species, they do not like to be seperated from the bulk of their homeworld's population. People willing to settle new worlds are rare."
+			desc="Decreases the number of structures when a planet is colonized"
+			cost="-1">
+			<hook type="alter" func="GATraits::alterStructures" arg0="0.5" />
+			<conflict id="colonialism" />
+		</trait>
+
+		<trait id="violent_his"
+			name="Violent History"
+			flavor="Due to a long history of violence and war, your people have learned how to maximize the damage potential of offensive weaponry."
+			desc="Adds 10% damage to most offensive weapons"
+			cost="3">
+			<hook type="alter" func="GATraits::alterDamage" arg0="1.1" /> <!-- Implemented in GATraits.as -->
+			<conflict id="pacifist_his" />
+		</trait>
+		
+		<trait id="pacifist_his"
+			name="Pacifist Species"
+			flavor="Due to a history of peace and prosperity, your people have never focused on weapons technology until encountering other races in space."
+			desc="Reduces the damage of most offensive weapons by 10%"
+			cost="-3">
+			<hook type ="alter" func="GATraits::alterDamage" arg0="0.9" />
+			<conflict id="violent_his" />
+		</trait>
+
+		<trait id="entrenchment"
+			name="Entrenchment"
+			flavor="Prolonged periods of time spent in war and constant bombardment made your people adapt to these circumstances, making them hard to kill."
+			desc="Increases planetary Damage Resistance by 33%"
+			cost="1">
+			<hook type="alter" func="GATraits::alterDR" arg0="1.33" />
+		</trait>
+
+		<trait id="natural_research"
+			name="Natural Researchers"
+			flavor="Your people are naturally inquisitive, so experimenting and researching is easy for them, reducing the overall research cost."
+			desc="Halves cost of research academies"
+			cost="1">
+			<hook type="alter" func="GATraits::alterBuildCost" arg0="0.5" /> <!-- Implemented in GATraits.as -->
+			<conflict id="poor_research" />
+		</trait>
+		
+		<trait id="poor_research"
+			name="Poor Researchers"
+			flavor="Your people are naturally non-intuitive. Experimenting, research and leaps of logic are hard for them to bring to conclusion."
+			desc="Doubles the cost of research academies"
+			cost="-1">
+			<hook type="alter" func="GATraits::alterBuildCost" arg0="2" />
+			<conflict id="natural_research"/>
+		</trait>
+
+		<trait id="planet_defense"
+			name="Planetary Defense Program"
+			flavor="The constant threat of incoming asteroids and comets in pre-spaceflight times gave rise to a large-scale planetary defense program."
+			desc="Unlocks Planetary Defenses. Increases their damage by 20%."
+			cost="1">
+			<tag id="planet_defense"/> <!-- Implemented in Available: -->
+			<hook type="alter" func="GATraits::planetDamage" arg0="1.2"/> <!--Implemented in GATraits.as -->
+		</trait>		
+	</category>
+
+	<category id="technology" name="#RTC_TECHNOLOGY_NAME" desc="#RTC_TECHNOLOGY_DESC">
+		<trait id="shieldtech" name="#RT_SHIELDTECH_NAME" desc="#RT_SHIELDTECH_DESC" flavor="#RT_SHIELDTECH_FLAVOR" cost="1">
+			<hook type="apply" func="Traits::levelShields" arg0="1" />
+			<hook type="alter" func="subSysAlterations::increaseShieldAbsorption" arg0="0.15" />
+		</trait>
+
+		<trait id="enginetech" name="#RT_ENGINETECH_NAME" desc="#RT_ENGINETECH_DESC" flavor="#RT_ENGINETECH_FLAVOR" cost="1">
+			<hook type="alter" func="Traits::improveEngines" arg0="1.5" arg1="1.33" />
+			<conflict id="low_impulse" />
+		</trait>
+		
+		<trait id="low_impulse"
+			name="Low-impulse Engines"
+			flavor="Your spaceflight research is focused around very fuel-efficient engines. On the downside, these engines produces much less thrust."
+			desc="Decreases Thrust by 33% and Fuel Consumption by 50%"
+			cost="0">
+			<hook type="alter" func="Traits::improveEngines" arg0="0.66" arg1="0.5" /> <!-- Implemented in Traits.as -->
+			<conflict id="enginetech" />
+		</trait>		
+
+		<trait id="goodbiology" name="#RT_GOODBIOLOGY_NAME" desc="#RT_GOODBIOLOGY_DESC" flavor="#RT_GOODBIOLOGY_FLAVOR" cost="1">
+			<hook type="apply" func="Traits::levelBiology" arg0="2" />
+		</trait>
+
+		<trait id="randtech" name="#RT_RANDTECH_NAME" desc="#RT_RANDTECH_DESC" flavor="#RT_RANDTECH_FLAVOR" cost="1">
+			<hook type="apply" func="Traits::addRandomTech" arg0="3" />
+		</trait>
+
+		<trait id="jumpdrives" name="#RT_JUMPDRIVE_NAME" desc="#RT_JUMPDRIVE_DESC" flavor="#RT_JUMPDRIVE_FLAVOR" cost="2">
+			<tag id="start_jumpdrives" /> <!-- Implemented in Available:/Level: -->
+		</trait>
+		
+		<trait id="lightweight"
+			name="Lightweight Construction"
+			flavor="Your people's philosophy behind designing ships is 'make it lighter'. Lightweight alloys and more efficient design allow more agile ships."
+			desc="Mass of all subsystems is reduced by 33%"
+			cost="2">
+			<hook type="alter" func="GATraits::lowerMass" arg0="0.66" /> <!--Implemented in GATraits.as -->
+			<conflict id="ultra_dense" />
+			<conflict id="heavyweight" />			
+		</trait>
+		
+		<trait id="heavyweight"
+			name="Heavy Alloys"
+			flavor="Your people's production methods mean that it takes more metal for the same protection other races enjoy."
+			desc="Mass of all subsystems is increased by 33%"
+			cost="-2">
+			<hook type="alter" func="GATraits::lowerMass" arg0="1.33" />
+			<conflict id="ultra_dense" />
+			<conflict id="lightweight" />
+		</trait>
+		
+		<trait id="ultra_dense"
+			name="Ultra-Dense Alloys"
+			flavor="An extremely rare ore found on your homeworld allows to strengthen metal alloys considerably. However, mass increases greatly with this."
+			desc="Increases Armor and Hull HP by 25%, Mass by 50%."
+			cost="2">
+			<hook  type="alter" func="GATraits::ultraDense" arg0="1.25" arg1="1.5" /> <!--Implemented in GATraits.as -->
+			<conflict id="cannon_fodder" />
+			<conflict id="lightweight" />	
+			<conflict id="heavyweight" />
+		</trait>
+		
+		<trait id="fine_tuned"
+			name="Fine-tuned Sensors"
+			flavor="A focus on making sensors and targetting computers more efficient created weapons that easily outrange the enemy."
+			desc="Increases weapon range by 15%"
+			cost="1">
+			<hook type="alter" func="GATraits::increaseRange" arg0="1.15" /> <!--Implemented in GATraits.as -->
+			<conflict id="poorly_tuned" />
+		</trait>
+		
+		<trait id="poorly_tuned"
+			name="Poorly-tuned Sensors"
+			flavor="Your race has a poor approach to quality on sensors and targetting computers. This effects the range at which your weapons can acquire targets."
+			desc="Decreases weapon range by 15%"
+			cost="-1">
+			<hook type="alter" func="GATraits::increaseRange" arg0="0.85" />
+			<conflict id="fine_tuned" />
+		</trait>
+		
+		<trait id="enhanced_weapons"
+			name="Weapons of Mass Destruction"
+			flavor="Due to a dangerous combination of sciences, ingenuity and cruelty your race is highly skilled in creating deadly weapons of mass destruction."
+			desc="Adds 15% damage to various AoE Weapons"
+			cost="2">
+			<hook type="alter" func="GATraits::mwdDamage" arg0="1.15" /> <!--Implemented in GATraits.as -->
+			<conflict id="codeofhonor" />
+			<conflict id="abhor_mass_murder" />
+		</trait>
+		
+		<trait id="abhor_mass_murder"
+			name="Poor Fragmentation Patterns"
+			flavor="Poor fragmentation patterns and low yield lead to weak warheads, lowering the efficiency of weapons of mass destruction."
+			desc="Decreases the damage of various AoE Weapons by 15%"
+			cost="-2">
+			<hook type="alter" func="GATraits::mwdDamage" arg0="0.85" />
+			<conflict id="codeofhonor" />
+			<conflict id="enhanced_weapons" />
+		</trait>
+
+		<trait id="efficient_energy"
+			name="Efficient Energy Conversion"
+			flavor="Due to a profound understanding of physics, your people have developed and perfected efficient energy weaponry in pre-spaceflight times."
+			desc="Unlocks Energy Weapons, Increases Damage by 15%"
+			cost="3">
+			<hook type="apply" func="GATraits::levelEnergyWeapons" arg0="1" /> <!--Implemented in GATraits.as -->
+			<hook type="alter" func="GATraits::increaseEnergyDamage" arg0="1.15" /> <!--Implemented in GATraits.as -->
+			<conflict id="sophis_laser"/>
+			<conflict id="no_energy" />
+			<conflict id="poor_crystals"/>		
+			<conflict id="poor_conversion"/>				
+		</trait>
+		
+		<trait id="poor_conversion"
+			name="Poor Energy Conversion"
+			flavor="The method used to convert energy into weaponized forms by your race is extremely inefficent. This lowers the damage output of Energy Weapons."
+			desc="Decreases Damage by 15%"
+			cost="-2">
+			<hook type="alter" func="GATraits::increaseEnergyDamage" arg0="0.85" />
+			<conflict id="no_energy" />
+			<conflict id="efficient_energy" />			
+			<conflict id="sophis_laser"/>
+			<conflict id="poor_crystals"/>
+		</trait>			
+
+		<trait id="sophis_laser"
+			name="Sophisticated Laser Lenses"
+			flavor="Rare minerals found on your homeworld have beneficial properties when used for lenses, making laser weapons more powerful."
+			desc="Unlocks Lasers, Increases Range by 10%, Damage by 20%"
+			cost="2">
+			<hook type="alter" func="GATraits::improveEnergyWeapons" arg0="1.1" arg1="1.2" /> <!--Implemented in GATraits.as -->
+			<tag id="sophis_laser" /> <!-- Implemented in Available -->
+			<conflict id="no_energy" />
+			<conflict id="efficient_energy" />
+			<conflict id="poor_crystals"/>		
+			<conflict id="poor_conversion"/>			
+		</trait>
+		
+		<trait id="poor_crystals"
+			name="Weak Focusing Crystals"
+			flavor="The crystals used in your laser weapons are prone to cracking at high energy outputs. Due to this laser output is lowered."
+			desc="Decreases Range by 10%, Damage by 20%"
+			cost="-1">
+			<hook type="alter" func="GATraits::improveEnergyWeapons" arg0="0.9" arg1="0.8" />
+			<conflict id="no_energy" />
+			<conflict id="efficient_energy" />			
+			<conflict id="sophis_laser"/>
+			<conflict id="poor_conversion"/>
+		</trait>
+		
+		<trait id="adv_warhead"
+			name="Advanced Warheads"
+			flavor="The development of highly sophisticated warheads has lead to an increase in damage potential of self-propelled guided weapons."
+			desc="Unlocks Missile Research, Increases damage by 15%"
+			cost="3">
+			<hook type="apply" func="GATraits::levelMissileWeapons" arg0="1" /> <!--Implemented in GATraits.as -->
+			<hook type="alter" func="GATraits::increaseMissileDamage" arg0="1.15" /> <!--Implemented in GATraits.as -->			
+			<conflict id="no_missile" />
+			<conflict id="imp_torps" />
+			<conflict id="dumb_torps" />	
+			<conflict id="poor_warhead" />
+		</trait>
+		
+		<trait id="poor_warhead"
+			name="Poor Warheads"
+			flavor="The chemical agents used in your warheads have a weak explosive potential leading to a decrease in damage potential of self-propelled guided weapons."
+			desc="Decreases missile weapon damage by 15%"
+			cost="-2">
+			<hook type="apply" func="GATraits::increaseMissileDamage" arg0="0.85" />
+			<conflict id="adv_warhead" />
+			<conflict id="no_missile" />
+			<conflict id="dumb_torps" />
+			<conflict id="imp_torps" />
+		</trait>			
+
+		<trait id="imp_torps"
+			name="Improved Torpedo Launchers"
+			flavor="Instead of overwhelming the enemy with large missile salvos, focusing on torpedo technology seeks to disable targets with one hit."
+			desc="Unlocks Torpedos, Increases Range by 10%, Damage by 20%"
+			cost="2">
+			<hook type="alter" func="GATraits::improveTorpedos" arg0="1.1" arg1="1.2" /> <!--Implemented in GATraits.as -->
+			<tag id="imp_torps" /> <!-- Implemented in Available -->
+			<conflict id="adv_warhead" />
+			<conflict id="no_missile" />
+			<conflict id="dumb_torps" />
+			<conflict id="poor_warhead" />			
+		</trait>
+		
+		<trait id="dumb_torps"
+			name="Poor Torpedo Guidance"
+			flavor="Your Torepdo's inbuilt guidance systems are suspectible to Electronic Counter Measures. This causes them to often explode short of their target or on a heavily armored point."
+			desc="Reduces Torpedo Range by 10%, Damage by 20%"
+			cost="-1">
+			<hook type="alter" func="GATraits::improveTorpedos" arg0="0.9" arg1="0.8" />
+			<conflict id="adv_warhead" />
+			<conflict id="no_missile" />
+			<conflict id="imp_torps" />
+			<conflict id="poor_warhead" />			
+		</trait>
+
+		<trait id="hard_project"
+			name="Hardened Projectiles"
+			flavor="By hardening ballistic projectiles, armor can be pierced more easily, significantly increasing the amount of damage dealt per hit."
+			desc="Increases Ballistic Weapons by 1, Increases Damage by 15%"
+			cost="3">
+			<hook type="apply" func="GATraits::levelProjectileWeapons" arg0="1" /> <!--Implemented in GATraits.as -->
+			<hook type="alter" func="GATraits::increaseBallisticDamage" arg0="1.15"/> <!--Implemented in GATraits.as -->
+			<conflict id="no_ballistics"/>
+			<conflict id="super_rail" />
+			<conflict id="weak_rail" />
+			<conflict id="soft_project" />
+		</trait>
+		
+		<trait id="soft_project"
+			name="Weakened Projectiles"
+			flavor="Your manufacturing processes produce weak alloys for which the primary use is Projectile Casings. This decreases the damage caused per hit."
+			desc="Decreases Ballistic Damage by 15%"
+			cost="-2">
+			<hook type="alter" func="GATraits::increaseBallisticDamage" arg0="0.85"/>
+			<conflict id="hard_project"/>
+			<conflict id="no_ballistics" />
+			<conflict id="super_rail"/>
+			<conflict id="weak_rail"/>
+		</trait>
+
+		<trait id="super_rail"
+			name="Superior Rail Mechanism"
+			flavor="A strict focus on railguns and their firing mechanism allows higher muzzle velocity and increased precision."
+			desc="Unlocks Twin Railgun, Increases Railgun Damage by 20%, range by 10%"
+			cost="2">
+			<hook type="alter" func="GATraits::improveBallistics" arg0="1.1" arg1="1.2" /> <!--Implemented in GATraits.as -->
+			<tag id="super_rail" /> <!-- Implemented in Available -->
+			<conflict id="no_ballistics" />
+			<conflict id="hard_project" />
+			<conflict id="weak_rail"/>
+			<conflict id="soft_project"/>
+		</trait>
+		
+		<trait id="weak_rail"
+			name="Weak Magnetics"
+			flavor="Your scientists have trouble creating strong electromagnets, causing your railguns to fire slower and with reduced accuracy."
+			desc="Decreases Railgun Damage by 20%, range by 10%"
+			cost="-1">
+			<hook type="alter" func="GATraits::improveBallistics" arg0="0.9" arg1="0.8" />
+			<conflict id="super_rail"/>
+			<conflict id="no_ballistics"/>
+		</trait>
+
+		<trait id="defensive_targetting"
+			name="Defensive Targetting Computers"
+			flavor="More sophisticated defensive targetting computers allow better targetting algorithms, effectively improving point defense efficiency."
+			desc="Unlocks PD, increases efficiency by 33%, damage by 20%"
+			cost="2">
+			<hook type="alter" func="GATraits::improvePointDefense" arg0="1.33" arg1="1.2" /> <!--Implemented in GATraits.as -->
+			<tag id="defensive_targetting" /> <!-- Implemented in Available -->
+			<conflict id="poor_point_defense"/>
+		</trait>
+		
+		<trait id="poor_point_defense"
+			name="Manually Controlled Point Defense"
+			flavor="Your ship's point defenses are manually controlled by defensive weapons operators instead of computers, which decreases their effectivity"
+			desc="Decreases PD efficency by 33%, damage by 20%"
+			cost="-2">
+			<hook type="alter" func="GATraits::improvePointDefense" arg0="0.66" arg1="0.8" />
+			<conflict id="defensive_targetting"/>
+		</trait>
+		
+		<trait id="adaptive_bombs"
+			name="Adaptive Bombs"
+			flavor="Adaptive bomb warheads fine-tune themselves for the target planet's conditions, increasing their damage potential."
+			desc="Increases damage of anti-surface weapons by 20%"
+			cost="2">
+			<hook type="alter" func="GATraits::increaseBombDamage" arg0="1.2"/> <!--Implemented in GATraits.as -->
+			<conflict id="poor_bombs" />
+		</trait>
+
+		<trait id="poor_bombs"
+			name="Weak Bomb Casings"
+			flavor="Your race has a limited knowledge of shielding bombs from entry into a planet's atmosphere, decreasing their damage potential."
+			desc="Decreases damage of anti-surface weapons by 20%"
+			cost="-1">
+			<hook type="alter" func="GATraits::increaseBombDamage" arg0="0.8"/>
+			<conflict id="adaptive_bombs" />
+		</trait>
+	</category>
+
+	<!-- Special traits that cannot be chosen by players -->
+	<trait id="remnants" /> <!-- Controls remnant technology -->
+	<trait id="ai_help" />	<!-- Helps AI at the beginning through the new and rough economy ;) -->
+
+	<!-- Traits that have been removed for now -->
+	<trait id="nobank" name="#RT_NOBANK_NAME" desc="Only goods and luxuries can be traded via Galactic Bank; resource production +33%." flavor="#RT_NOBANK_FLAVOR" cost="-2">
+		<conflict id="indebted" />
+		<hook type="alter" func="GATraits::increaseProduction" arg0="1.33" />							<!-- was 1.33 before -->
+		<tag id="no_bank" /> <!-- Implemented in planet.as / BasicEffects.as / Available:  -->
+	</trait>
+	
+	<!--- Metalbolism: Constructing ANYTHING causes everyone to die :( -->
+	<trait id="metalbolism" name="#RT_METALBOLISM_NAME" desc="#RT_METALBOLISM_DESC" flavor="#RT_METALBOLISM_FLAVOR" cost="0">
+		<tag id="no_food" /> <!-- Implemented in planet.as / BasicEffects.as / map_generation.as / Available: -->
+		<tag id="consume_metals" /> <!-- Implemented in planet.as / BasicEffects.as / map_generation.as -->
+	</trait>
+	
+	<!--- Cant Implement, impossible to delay tick event --->
+	<trait id = "red_tape"
+		name = "Red Tape"
+		flavor = "Inefficient bureaucracy slows down the implementation of changes, making sudden policy changes impossible."
+		desc = "Civil Acts take 30 seconds to come into effect"
+		cost = "1">
+		<conflict id="rigid"/>
+		<tag id="red_tape"/> <!-- Impossible too implement / planet.as -->
+	</trait>	
+
+	<!-- Breaks all the default designs :/ -->
+	<trait id="badcontractors" name="#RT_BADCONTRACTORS_NAME" desc="#RT_BADCONTRACTORS_DESC" flavor="#RT_BADCONTRACTORS_FLAVOR" cost="-2">
+		<hook type="alter" func="Traits::decreaseSpace" arg0="1" />
+	</trait>
+</traits>
+

@@ -1,0 +1,85 @@
+if class == ColonyShip {
+	Sprite = 12
+	Model = neumon_colonizer_blue
+}
+
+tag RemnantSuperWeapon {
+	Sprite = 14
+	Model = neumon_superweapon
+}
+
+tag RemnantSWGreen {
+	Sprite = 15
+	Model = green_neumon_superweapon
+}
+
+if (class == Carrier) || (class == Transport) {
+	Sprite = 11
+	Model = neumon_carrier_blue
+}
+
+if class == Cargo {
+	Sprite = 8
+	Model = neumon_freighter_blue
+}
+
+if (class == Station) || (class == CivStation) {
+	if scale <= 1 {
+		Sprite = 9
+		Model = neumon_satellite_blue
+	}
+	Sprite = 10
+	Model = neumon_station_blue
+}
+
+if scale <= 0.25 {
+	Sprite = 0
+	Model = neumon_drone_blue
+}
+tag FighterHull {
+	Sprite = 1
+	Model = neumon_fighter_blue
+}
+
+tag BomberHull {
+	Sprite = 1
+	Model = neumon_fighter_blue
+}
+
+tag LightHull {
+	Sprite = 2
+	Model = neumon_tiny_blue
+}
+
+tag SpinalHull {
+	Sprite = 3
+	Model = neumon_small_blue
+}
+
+tag HeavyHull {
+	Sprite = 4
+	Model = neumon_medium_blue
+}
+
+tag MediumHull {
+	Sprite = 5
+	Model = neumon_large_blue
+}
+
+tag MegaHull {
+	Sprite = 6
+	Model = neumon_verylarge_blue
+}
+
+tag GargantuanHull {
+	Sprite = 7
+	Model = neumon_huge_blue
+}
+
+tag StealthHull {
+	Sprite = 2
+	Model = neumon_tiny_blue
+}
+
+Sprite = 5
+Model = neumon_large_blue

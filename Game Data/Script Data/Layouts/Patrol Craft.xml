@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<settings scale="1" name="Patrol Craft" />
+<subSystems>
+	<subSystem name="BomberHull" x="-0.83417" y=".042415" scale="1" link="-1" />
+	<subSystem name="Cockpit" x=".106039" y=".035346" scale=".75" link="-1" />
+	<subSystem name="FighterChaingun" x="2.325779" y=".063623" scale="4" link="-1" />
+	<subSystem name="FighterChaingun" x="-2.359142" y=".068981" scale="4" link="-1" />
+	<subSystem name="BussardRamjet" x=".035346" y="-1.548163" scale="3.625" link="-1" />
+	<subSystem name="BussardRamjet" x=".134315" y="1.519886" scale="3.625" link="-1" />
+	<subSystem name="Armor" x="1.187632" y="-0.777616" scale=".5" link="-1" />
+	<subSystem name="Armor" x="1.187632" y=".791755" scale=".5" link="-1" />
+	<subSystem name="Armor" x="-1.173494" y=".805893" scale=".5" link="-1" />
+	<subSystem name="Armor" x="-1.201771" y="-0.805893" scale=".5" link="-1" />
+</subSystems>
+<ai>
+	<targetScale low=".1" hi="9999999" forced="true" />
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="false" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="20" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="false" planets="true" stations="false" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Ammo:0.400000" />
+	<order desc="Defend" />
+</orders>
+

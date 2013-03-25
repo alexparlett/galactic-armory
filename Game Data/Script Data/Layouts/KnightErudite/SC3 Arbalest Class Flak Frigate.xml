@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<settings scale="24" name="SC3 Arbalest Class Flak Frigate" />
+<subSystems>
+	<subSystem name="MediumHull" x="-0.765625" y="-0.078125" scale="1" link="-7" />
+	<subSystem name="FuelCell" x="-1.664063" y="-0.867188" scale="1.25" link="-1" />
+	<subSystem name="AmmoStorage" x="-1.625" y="-0.03125" scale="1" link="-1" />
+	<subSystem name="FuelCell" x="-1.679688" y=".664063" scale="1.25" link="-1" />
+	<subSystem name="Armor" x="-0.21875" y="-2.578125" scale="2" link="-1" />
+	<subSystem name="Bulkhead" x="-0.179688" y="-0.070313" scale="1" link="0" />
+	<subSystem name="MultiRack" x=".96875" y="-0.03125" scale="2.25" link="17" />
+	<subSystem name="Armor" x="-0.109375" y="2.359375" scale="2" link="-1" />
+	<subSystem name="GatlingLaser" x="2.234375" y="-1.03125" scale="1" link="-1" />
+	<subSystem name="PointDefense" x="2.1875" y=".984375" scale="1" link="-1" />
+	<subSystem name="Heatsink" x="-0.109375" y=".453125" scale=".125" link="-1" />
+	<subSystem name="MagnetoPlasmaThruster" x="-2.614954" y="-0.061892" scale="2" link="-1" />
+	<subSystem name="FusionGen" x="-0.789063" y="-0.679688" scale=".75" link="-1" />
+	<subSystem name="AmmoFabricator" x=".164063" y="-0.789063" scale=".5" link="-1" />
+	<subSystem name="Firestorm" x="2.757813" y="-0.085938" scale="1.25" link="-1" />
+	<subSystem name="IntegratedCommandCenter" x=".1875" y=".921875" scale=".25" link="-1" />
+	<subSystem name="ShieldGen" x="-0.789063" y=".539063" scale=".875" link="-1" />
+	<subSystem name="TwinRailgun" x="1.757813" y="-0.039063" scale=".75" link="-8" />
+</subSystems>
+<ai>
+	<targetScale low="0" hi="10" forced="false" />
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="false" />
+	<depositTargets ships="false" planets="true" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="163" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="JoinFleet:-1.000000:true" />
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Defend" />
+</orders>
+

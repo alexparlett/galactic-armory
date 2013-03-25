@@ -1,0 +1,364 @@
+#forceHighQTextures on
+#makeMipMaps off
+
+SpriteBank: neumon_shipset
+ Texture: ../../Images/Ships/neumon_shipset_ext.png
+ AutoTile: rowmajor, 67, 55
+
+#forceHighQTextures off
+#makeMipMaps on
+
+
+Material: neumon_drone_low
+ Defer: High
+ Texture: ~/Images/Ships/neumon_texture1.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ 
+Material: neumon_drone
+ Defer: High
+ Texture: ~/Images/Ships/neumon_texture1.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ~/Images/Ships/neumon_texture1_glow.png
+ Texture3: ~/Images/Ships/neumon_texture1_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+
+Material: neumon_fighter_low
+ Defer: High
+ Texture: ~/Images/Ships/neumon_texture1.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ 
+Material: neumon_fighter
+ Defer: High
+ Texture: ~/Images/Ships/neumon_texture1.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ~/Images/Ships/neumon_texture1_glow.png
+ Texture3: ~/Images/Ships/neumon_texture1_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+
+Material: neumon_freighter_low
+ Defer: High
+ Texture: ~/Images/Ships/neumon_texture1.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ 
+Material: neumon_freighter
+ Defer: High
+ Texture: ~/Images/Ships/neumon_texture1.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ~/Images/Ships/neumon_texture1_glow.png
+ Texture3: ~/Images/Ships/neumon_texture1_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+ 
+
+Material: neumon_colonizer_low
+Defer: High
+ Texture: ~/Images/Ships/neumon_texture4.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+
+Material: neumon_colonizer
+ Defer: High
+ Texture: ~/Images/Ships/neumon_texture4.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ~/Images/Ships/neumon_texture4_glow.png
+ Texture3: ~/Images/Ships/neumon_texture4_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+
+ 
+Material: neumon_carrier_low
+ Defer: High
+ Texture: ~/Images/Ships/neumon_texture2.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666 
+ 
+ 
+Material: neumon_carrier
+ Defer: High
+ Texture: ~/Images/Ships/neumon_texture2.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ~/Images/Ships/neumon_texture2_glow.png
+ Texture3: ~/Images/Ships/neumon_texture2_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+ 
+ 
+Material: neumon_tiny_low
+ Defer: High
+ Texture: ~/Images/Ships/neumon_texture3.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+
+Material: neumon_tiny
+ Defer: High
+ Texture: ~/Images/Ships/neumon_texture3.png
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ~/Images/Ships/neumon_texture3_glow.png
+ Texture3: ~/Images/Ships/neumon_texture2_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+ 
+ 
+ Material: neumon_small_low
+ Defer: High
+ Texture: ~/Images/Ships/neumon_texture3.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ 
+ Material: neumon_small
+  Defer: High
+ Texture: ~/Images/Ships/neumon_texture3.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ~/Images/Ships/neumon_texture3_glow.png
+ Texture3: ~/Images/Ships/neumon_texture2_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+ 
+ 
+ Material: neumon_medium_low
+ Defer: High
+ Texture: ~/Images/Ships/neumon_texture3.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ 
+ Material: neumon_medium
+  Defer: High
+ Texture: ~/Images/Ships/neumon_texture3.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ~/Images/Ships/neumon_texture3_glow.png
+ Texture3: ~/Images/Ships/neumon_texture2_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+ 
+ 
+ Material: neumon_large_low
+ Defer: High
+ Texture: ~/Images/Ships/neumon_texture2.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ 
+ Material: neumon_large
+  Defer: High
+ Texture: ~/Images/Ships/neumon_texture2.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ~/Images/Ships/neumon_texture2_glow.png
+ Texture3: ~/Images/Ships/neumon_texture2_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+ 
+ Material: neumon_verylarge_low
+ Defer: High
+ Texture: ~/Images/Ships/neumon_texture2.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ 
+Material: neumon_verylarge
+ Defer: High
+ Texture: ~/Images/Ships/neumon_texture2.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ~/Images/Ships/neumon_texture2_glow.png
+ Texture3: ~/Images/Ships/neumon_texture2_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+ 
+ Material: neumon_huge_low
+ Defer: High
+ Texture: ~/Images/Ships/neumon_texture2.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ 
+Material: neumon_huge
+ Defer: High
+ Texture: ~/Images/Ships/neumon_texture2.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ~/Images/Ships/neumon_texture2_glow.png
+ Texture3: ~/Images/Ships/neumon_texture2_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+ 
+  Material: neumon_satellite_low
+ Defer: High
+ Texture: ~/Images/Ships/neumon_texture4.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ 
+ Material: neumon_satellite
+  Defer: High
+ Texture: ~/Images/Ships/neumon_texture4.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ~/Images/Ships/neumon_texture4_glow.png
+ Texture3: ~/Images/Ships/neumon_texture4_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+ 
+ 
+  Material: neumon_station_low
+ Defer: High
+ Texture: ~/Images/Ships/neumon_texture4.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ 
+ Material: neumon_station
+  Defer: High
+ Texture: ~/Images/Ships/neumon_texture4.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ~/Images/Ships/neumon_texture4_glow.png
+ Texture3: ~/Images/Ships/neumon_texture4_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+
+ Material: neumon_jumpgate
+  Defer: High
+ Texture: ~/Images/Ships/neumon_texture2.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/JumpGlow.png
+ Texture3: ../../Images/Ships/no_marks.png 
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+
+ Material: neumon_superweapon
+  Defer: High
+ Texture: ../../Images/Ships/SuperWeaponBase.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 1
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/SuperWeaponGlow.png
+ Texture3: ../../Images/Ships/no_marks.png 
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+ 
+ Material: green_neumon_superweapon
+  Defer: High
+ Texture: ../../Images/Ships/SuperWeaponBase.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 1
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/SuperWeaponGlowGreen.png
+ Texture3: ../../Images/Ships/no_marks.png 
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end

@@ -1,0 +1,7944 @@
+Beta Caeli
+Groombridge
+Alpha Ceti
+Beta Brahe
+Beta Chandrasekhar
+Epsilon Krueger
+Gamma Sculptoris
+Kappa Draconis
+Delta Librae
+Epsilon Ariestis
+Gamma Krueger
+Theta Crateris
+Delta Brahe
+Vela
+Alpha Hyginus
+Delta Lyncis
+Beta Piscium
+Gamma Fornacis
+Rigel
+Zeta Serpentis
+Gamma Gruis
+Theta Chamaeleonis
+Beta Vulpeculae
+Delta Aquilae
+Theta Horologii
+Beta Mersenne
+Beta Lyncis
+Eta Fornacis
+Beta Klystron
+Epsilon Arae
+Beta Wolf
+Alpha Apodis
+Alpha Klystron
+Alpha Volantis
+Delta Crateris
+Xi Draconis
+Almagest
+Gamma Crateris
+Beta Apodis
+Delta Vulpeculae
+Delta Arietis
+Gamma Eridani
+Beta Aquarii
+Delta Cygnus
+Beta Tauri
+Eta Orionis
+Eta Librae
+Gamma Apodis
+Alpha Persei
+Gamma Leonis
+Capella
+Beta Raynet
+Epsilon Muscae
+Beta Indi
+Gamma Scuti
+Beta Doradus
+Lambda Horologii
+Delta Circini
+Alpha Cygnus
+Alpha Raynet
+Gamma Tucanae
+Eta Draconis
+Gamma Telescopii
+Alpha Copernicus
+Alpha Leonis
+Mu Draconis
+Epsilon Cassiopeiae
+Alpha Saurus
+Alpha Mira
+Epilson Fornacis
+Delta Giclas
+Beta Pictoris
+Alpha Arietis
+Gamma Caeli
+Squidi Alpha
+Gorno Epsilon
+Iota Persei
+Eta Giclas
+Gamma Horologii
+Zeta Chamaeleonis
+Betelgeuse
+Delta Antliae
+Beta Bootis
+Beta Lalande
+Delta Sextantis
+Alpha Herculis
+Deneb
+Delta Muscae
+Alpha Andromedae
+Gamma Lentilis
+Hyperion
+Gamma Illuminati
+Beta Corvi
+Mu Orionis
+Beta Draconis
+Beta Leporis
+Delta Lipi
+Beta Hyades
+Alpha Wolf
+Alpha Eridani
+Zeta Gruis
+Alpha Sagittae
+Zeta Aquarii
+Beta Gruis
+Beta Aquilae
+Gamma Arietis
+Beta Puppis
+Beta Andromedae
+Epsilon Circini
+Delta Aquarii
+Beta Hydrae
+Alpha Lentilis
+Gamma Ptolemae
+Gamma Sagittarii
+Beta Mensae
+Beta Librae
+Epsilon Caeli
+Delta Lalande
+Epsilon Chandrasekhar
+Beta Ptolemae
+Metis
+Gamma Chamaeleonis
+Delta Arae
+Epsilon Ceti
+Gamma Mensae
+Beta Krueger
+Epsilon Camelopardalis
+Zeta Muscae
+Alpha Ptolemae
+Zeta Hyades
+Alpha Sextantis
+Beta Arae
+Alpha Tauri
+Alpha Normae
+Theta Serpentis
+Alpha Trianguli
+Delta Persei
+Epsilon Vulpeculae
+Gamma Antliae
+Iota Chamaeleonis
+Lambda Draconis
+Gamma Muscae
+Beta Monocerotis
+Delta Volantis
+Eta Vulpeculae
+Gamma Cancri
+Alpher Olber
+Beta Illuminati
+Delta Mira
+Alpha Leporis
+Gamma Carinae
+Alpha Kepler
+Beta Ceti
+Antares
+Gamma Copernicus
+Gamma Orionis
+Beta Scorpii
+Lamdba Hyades
+Iota Camelopardalis
+Eta Aquarii
+Canopus
+Beta Centauri
+Beta Sagittae
+Gamma Brahe
+Delta Hyades
+Gamma Bootis
+Delta Corvi
+Zeta Krueger
+Zeeman
+Gamma Cygnus
+Arcturus
+Beta Copernicus
+Zeta Horologii
+Beta Trianguli
+Gamma Ceti
+Algol
+Iota Hyades
+Zeta Ptolemae
+Beta Hygines
+Epsilon Draconis
+Gamma Reticulii
+Epsilon Aquilae
+Beta Maksutov
+Epsilon Normae
+Gamma Raynet
+Gamma Columbae
+Alpha Serpentis
+Beta Equulei
+Iota Serpentis
+Alpha Caeli
+Delta Apodis
+Pollux
+Epsilon Bootis
+Gamma Phoenicis
+Zeta Crateris
+Alpha Lacertae
+Theta Orionis
+Alpha Crateris
+Alpha Monocerotis
+Aldebaran
+Beta Sculptoris
+Alpha Vulpeculae
+Beta Cancri
+Zeta Corvi
+Alpha Giclas
+Epsilon Brahe
+Epsilon Orionis
+Delta Cancri
+Beta Crucis
+Epsilon Scorpii
+Alpha Pictoris
+Gamma Olber
+Zeta Volantis
+Epsilon Horologii
+Gamma Ophiuchi
+Alpha Geminorum
+Beta Scuti
+Alpha Mersenne
+Alpha Lacaille
+Nu Draconis
+Alpha Equulei
+Gamma Leporis
+Gamma Pictoris
+Theta Giclas
+Epsilon Antliae
+Beta Cerenkov
+Beta Mira
+Alpha Mensae
+Alpha Circini
+Theta Illuminati
+Alpha Columbae
+Gamma Geminorum
+Gamma Chandrasekhar
+Delta Crucis
+Eta Hyades
+Gamma Tauri
+Beta Camelopardalis
+Gamma Vulpeculae
+Eta Gruis
+Beta Telescopii
+Delta Virginis
+Beta Lyrae
+Delta Fornacis
+Epsilon Centauri
+Theta Hyades
+Gamma Lacaille
+Delta Bootis
+Gamma Lyncis
+Gamma Virginis
+Epsilon Corvi
+Menkar
+Alpha Illuminati
+Beta Gorno
+Alpha Aquarii
+Gamma Puppis
+Alpha Horologii
+Delta Centauri
+Beta Circini
+Delta Chandrasekhar
+Zeta Lyncis
+Zeta Brahe
+Delta Sagittarii
+Delta Krueger
+Organon
+Alpha Corvi
+Beta Luyten
+Alpha Indi
+Zeta Librae
+Delta Lentilis
+Beta Leonis
+Delta Cassiopeiae
+Beta Olber
+Zeta Scorpii
+Zeta Illuminati
+Delta Camelopardalis
+Eta Bootis
+Delta Ceti
+Beta Giclas
+Alpha Cancri
+Alpha Lalande
+Beta Muscae
+Delta Vitalis
+Zeta Tauri
+Beta Persei
+Alpha Doradus
+Gamma Trianguli
+Gamma Sagittae
+Beta Saurus
+Beta Columbae
+Alpha Scuti
+Beta Pegasi
+Beta Horologii
+Kappa Orionis
+Alpha Antliae
+Epsilon Scuti
+Gamma Mira
+Gamma Cassiopeiae
+Gamma Piscium
+Epsilon Hyades
+Alpha Piscium
+Alpha Virginis
+Zeta Persei
+Zeta Vulpeculae
+Zeta Giclas
+Gamma Luyten
+Alpha Chamaeleonis
+Gamma Serpentis
+Delta Scorpii
+Gamma Lipi
+Eta Serpentis
+Beta Virginis
+Zeta Draconis
+Alpha Carinae
+Epsilon Gruis
+Alpha Lyrae
+Beta Reticulii
+Gamma Arae
+Gamma Lalande
+Delta Horologii
+Eta Ptolemae
+Beta Cassiopeiae
+Gamma Librae
+Epsilon Cygnus
+Beta Crateris
+Gamma Scorpii
+Eta Volantis
+Beta Lacertae
+Zeta Circini
+Gamma Sextantis
+Beta Delphini
+Alpha Chandrasekhar
+Bellatrix
+Delta Serpentis
+Epsilon Aquarii
+Delta Tauri
+Delta Chamaeleonis
+Alpha Brahe
+Gamma Kepler
+Eta Horologii
+Alpha Crucis
+Eta Crateris
+Epsilon Lipi
+Epsilon Giclas
+Betal Vitalis
+Iota Draconis
+Beta Ophiuchi
+Alpha Krueger
+Gamma Arianni
+Gamma Aurigae
+Beta Cygnus
+Epsilon Librae
+Beta Kepler
+Epsilon Persei
+Alpha Pyxidis
+Eta Lyncis
+Iota Orionis
+Alpha Phoenicis
+Epsilon Lyncis
+Zeta Ceti
+Zeta Camelopardalis
+Beta Pavonis
+Alpha Fornacis
+Epsilon Tauri
+Gamma Aquarii
+Beta Volantis
+Beta Capricorni
+Delta Normae
+Delta Sculptoris
+Epsilon Crateris
+Alpha Gorno
+Achernar
+Alpha Cassiopeiae
+Sirius
+Alpha Lipi
+Theta Draconis
+Alpha Octantis
+Gamma Hyades
+Altair
+Alpha Delphini
+Eta Corvi
+Alpha Muscae
+Epsilon Illuminati
+Alpha Orionis
+Gamma Giclas
+Alpha Cephei
+Squidi Gamma
+Alpha Centauri
+Delta Pictoris
+Zeta Normae
+Beta Antliae
+Microscopii
+Gamma Pyxidis
+Zeta Fornacis
+Fomalhaut
+Eta Illuminati
+Zeta Sextantis
+Alpha Scorpii
+Beta Chamaeleonis
+Regulus
+Kappa Horologii
+Delta Caeli
+Zeta Antliae
+Gamma Vitalis
+Beta Carinae
+Alpha Camelopardalis
+Beta Serpentis
+Gamma Corvi
+Squidi Beta
+Eta Ceti
+Eta Camelopardalis
+Alcor
+Beta Phoenicis
+Alpha Vitalis
+Beta Lentilis
+Delta Aurigae
+Eta Persei
+Alpha Gruis
+Alpha Velorum
+Alpha Lyncis
+Alpha Cerenkov
+Alpha Reticulii
+Alpha Hydrae
+Alpha Aquilae
+Alpha Hyades
+Alpha Bootis
+Zeta Oionis
+Alpha Sculptoris
+Zeta Bootis
+Gamma Centauri
+Delta Geminorum
+Beta Herculis
+Delta Scuti
+Gamma Saurus
+Kappa Hyades
+Epsilon Ptolemae
+Delta Draconis
+Theta Lyncis
+Delta Piscium
+Alpha Draconis
+Lambda Orionis
+Gamma Gorno
+Beta Velorum
+Kappa Chamaeleonis
+Beta Aurigae
+Mizar
+Beta Cephei
+Beta Tucanae
+Alpha Librae
+Vega
+Delta Gorno
+Gamma Circini
+Gamma Aquilae
+Theta Camelopardalis
+Beta Sextantis
+Alpha Ophiuchi
+Gamma Persei
+Beta Pyxidis
+Epsilon Sculptoris
+Gamma Volantis
+Delta Gruis
+Iota Horologii
+Zeta Scuti
+Delta Reticulii
+Alpha Pegasi
+Alpha Aurigae
+Gamma Hydrae
+Alpha Pavonis
+Beta Normae
+Gamma Normae
+Gamma Capricorni
+Beta Geminorum
+Alpha Telescopii
+Epsilon Volantis
+Alpha Maksutov
+Alpha Luyten
+Beta Arietis
+Beta Orionis
+Epsilon Serpentis
+Eta Chamaeleonis
+Epsilon Sextantis
+Beta Fornacis
+Beta Sagittarii
+Beta Lipi
+Delta Illuminati
+Beta Octantis
+Epsilon Chamaeleonis
+Alpha Puppis
+Beta Lacaille
+Procyon
+Gamma Draconis
+Alpha Sagittarii
+Alpha Arianni
+Alpha Tucanae
+Beta Eridani
+Theta Persei
+Zeta Centauri
+Delta Orionis
+Alpha Arae
+Alpha Capricorni
+Gamma Crucis
+Beta Arianni
+Gamma Camelopardalis
+Delta Ptolemae
+Abon
+Abor
+Abren
+Abrteme
+Abydos
+Acamar
+Acelloria
+Acer
+Acetiol
+Achenar
+Achernar
+Acheron
+Achilles
+Achird
+Achodoxenth
+Aclil
+Acrab
+Acrux
+Acubens
+Adama
+Adamantia
+Adara
+Adege
+Adelia
+Adereu
+Adhafera
+Adhara
+Adhil
+Adrantis
+Aeagd
+Aeclethe
+Aegeus
+Aegis
+Aeiotacu
+Aeleutheai
+Aelk
+Aenala
+Aenembo
+Aenenemaete
+Aeomaro
+Aeonia
+Aereragd
+Aeridor
+Aerius
+Aerntea
+Aerophe
+Aerosic
+Aescilar
+Aese
+Aestheuses
+Aethilular
+Aeuse
+Aeusi
+Aeustho
+Aeusti
+Aeusu
+Agaeroleusi
+Agaleaga
+Agane
+Agdithon
+Agena
+Agoit
+Agorotuiau
+Ahriman
+Aialesau
+Aianu
+Aianyle
+Aiar
+Aicheuscai
+Aicymeus
+Ailal
+Aimomipust
+Aimusmaphia
+Ain
+Ain al Rami
+Aipherop
+Airia
+Aison
+Aite
+Aitrege
+Aitungorgimatu
+Aiusteotht
+Al Anz
+Al Dagor
+Al Fawaris
+Al Giedi
+Al Rai
+Al Kaphrah
+Al Nair
+Al Niyat
+Al Thalimain
+Aladfar
+Alamak
+Alang
+Alangur
+Alathfar
+Albaldah
+Albali
+Albireo
+Alchiba
+Alcinous
+Alcneumet
+Alcor
+Alcyone
+Aldebaran
+Alderaan
+Alderamin
+Alderan
+Aldhafera
+Aldhanab
+Aldhibah
+Aldiba
+Aldra
+Alegria
+Aleli
+Alemegaeus
+Alenil
+Alesor
+Aleus
+Aleustendia
+Aleususip
+Aleuthal
+Alexandria
+Alexus
+Alfard
+Alfecca Meridiana
+Alfirk
+Algedi
+Algenib
+Algieba
+Algol
+Algorab
+Algore
+Alhena
+Aliarug
+Alichon
+Aliot
+Alioth
+Alis
+Alisa
+Alkaid
+Alkal
+Alkalurops
+Alkes
+Alkogwetheron
+Alkurah
+Alkurhah
+Allaind
+Allele
+Alluria
+Almaak
+Almach
+Almagest
+Alnair
+Alnath
+Alnilam
+Alnitah
+Alnitak
+Alniyat
+Alpha Andromedae
+Alpha Antliae
+Alpha Apodis
+Alpha Aquarii
+Alpha Aquilae
+Alpha Arae
+Alpha Arianni
+Alpha Arietis
+Alpha Aurigae
+Alpha Bootis
+Alpha Brahe
+Alpha Caeli
+Alpha Camelopardalis
+Alpha Cancri
+Alpha Capricorni
+Alpha Carinae
+Alpha Cassiopeiae
+Alpha Centauri
+Alpha Cephei
+Alpha Cerenkov
+Alpha Ceti
+Alpha Chamaeleonis
+Alpha Chandrasekhar
+Alpha Circini
+Alpha Columbae
+Alpha Copernicus
+Alpha Corvi
+Alpha Crateris
+Alpha Crucis
+Alpha Cygnus
+Alpha Delphini
+Alpha Doradus
+Alpha Draconis
+Alpha Equulei
+Alpha Eridani
+Alpha Fornacis
+Alpha Geminorum
+Alpha Giclas
+Alpha Gorno
+Alpha Gruis
+Alpha Herculis
+Alpha Horologii
+Alpha Hyades
+Alpha Hydrae
+Alpha Hyginus
+Alpha Illuminati
+Alpha Indi
+Alpha Kepler
+Alpha Klystron
+Alpha Krueger
+Alpha Lacaille
+Alpha Lacertae
+Alpha Lalande
+Alpha Lentilis
+Alpha Leonis
+Alpha Leporis
+Alpha Librae
+Alpha Lipi
+Alpha Luyten
+Alpha Lyncis
+Alpha Lyrae
+Alpha Maksutov
+Alpha Mensae
+Alpha Mersenne
+Alpha Mira
+Alpha Monocerotis
+Alpha Muscae
+Alpha Normae
+Alpha Octantis
+Alpha Ophiuchi
+Alpha Orionis
+Alpha Pavonis
+Alpha Pegasi
+Alpha Persei
+Alpha Phoenicis
+Alpha Pictoris
+Alpha Piscium
+Alpha Ptolemae
+Alpha Puppis
+Alpha Pyxidis
+Alpha Raynet
+Alpha Reticuli
+Alpha Sagittae
+Alpha Sagittarii
+Alpha Saurus
+Alpha Scorpii
+Alpha Sculptoris
+Alpha Scuti
+Alpha Serpentis
+Alpha Sextantis
+Alpha Tauri
+Alpha Telescopii
+Alpha Trianguli
+Alpha Tucanae
+Alpha Velorum
+Alpha Virginis
+Alpha Vitalis
+Alpha Volantis
+Alpha Vulpeculae
+Alpha Wolf
+Alphard
+Alphecca
+Alphecka
+Alphekka
+Alpher Olber
+Alpheratz
+Alrai
+Alrakis
+Alrinairo
+Alrischa
+Alrisha
+Alsafi
+Alschain
+Alsciaukat
+Alshain
+Alshat
+Alsuhail
+Altair
+Altais
+Altarf
+Alterf
+Alteron
+Altros
+Aludra
+Alula Australis
+Alula Borealis
+Alume
+Alundra
+Aluro
+Alva
+Alviseg
+Alwaid
+Alya
+Alybrt
+Alyl
+Alylyl
+Alynteiscia
+Alysaenec
+Alysusy
+Alyt
+Alzir
+Alzirr
+Amabes
+Amasmon
+Amazon
+Amazonia
+Amber
+Ambiusce
+Ambrosia
+Amcor
+Amelcl
+Amelist
+Amerp
+Amet
+Ameusi
+Amimbic
+Amotha
+Amwra
+Anabonas
+Anacreon
+Aname
+Anaropum
+Anastasio
+Anathuth
+Anaxis
+Anayeth
+Ance
+Ancha
+Ancros
+Andelalau
+Anderson
+Andersona
+Andoria
+Andraxia
+Andromeda
+Anelis
+Anernaryp
+Anes
+Anesesar
+Anesial
+Anesite
+Anessia
+Anethrop
+Angetenar
+Angi
+Angilir
+Angius
+Angoli
+Aniaiu
+Anilamiu
+Anilea
+Anim
+Anjuna
+Ankaa
+Ankra
+Anolo
+Anser
+Antaeodi
+Antara
+Antares
+Anter
+Anth
+Antha
+Antila
+Antra
+Antusca
+Anute
+Aparyse
+Apeori
+Aphrodite
+Apollo
+Aquarii
+Aquarius
+Aquila
+Aquilae
+Araun
+Arazgwethi
+Arcabe
+Arcadius
+Archon
+Arcturus
+Areg
+Arenes
+Areoliti
+Arer
+Ares
+Areson
+Areulemusot
+Areus
+Areusi
+Areusisi
+Argelia
+Arginiar
+Argo Navis
+Argon
+Argos
+Argui
+Argus
+Ariaeulidi
+Ariastala
+Aries
+Aril
+Arisil
+Arkab
+Arkab Posterior
+Arkab Prior
+Arklite
+Arm
+Arma
+Armorchalaur
+Arneb
+Arnhem
+Arnoicanthy
+Aroceusi
+Arodiant
+Arontice
+Aror
+Arorcathi
+Aroriri
+Arorotha
+Arotamoteus
+Arotu
+Arotugo
+Aroumar
+Arphyrtaich
+Arrakis
+Artemis
+Artenabo
+Arthamus
+Arthas
+Artheu
+Artus
+Arumemus
+Arus
+Arvani
+Arylal
+Aryn
+Aryphar
+Asabe
+Asalemary
+Asama
+Asamaiab
+Ascella
+Asctheus
+Asellus Australis
+Asellus Borealis
+Asellus Primus
+Asellus Secondus
+Asellus Secundus
+Asellus Tertius
+Asgard
+Ashen
+Asherah
+Ashlesha
+Ashur
+Asia
+Asimov
+Asinusace
+Asioteusma
+Asip
+Askella
+Aslund
+Asole
+Asolus
+Aspidiske
+Asta
+Astara
+Astaroth
+Astarte
+Astas
+Asterion
+Asterope
+Astomei
+Astoria
+Astra
+Asus
+Asusic
+Asusipytalo
+Asya
+Atabio
+Atemara
+Athaia
+Athena
+Atherodrchel
+Atheutar
+Athi
+Athmae
+Atho
+Athobet
+Athodiad
+Athos
+Atik
+Atlan
+Atlantis
+Atlas
+Atreides
+Atria
+Atriya
+Atrus
+Atugbert
+Atund
+Atusicyl
+Atutundu
+Atutututurc
+Augiar
+Aularo
+Auliaugugona
+Aulorotu
+Aunarunglunth
+Aungroba
+Aunilall
+Aunimia
+Aurchi
+Aurelian
+Auriarn
+Aurigae
+Aurora
+Aurortu
+Aurtor
+Ausearth
+Ausestil
+Ausidisonid
+Ausion
+Austusat
+Ausym
+Ausyse
+Authialim
+Auturogon
+Auva
+Avalon
+Avanaulaithm
+Avangir
+Avavathan
+Avignon
+Avior
+Avitus
+Axeisthesen
+Axel
+Axeth
+Axyme
+Axymesit
+Azaleh
+Azelfafage
+Azha
+Azmidiske
+Azurium
+Baba
+Babalkava
+Babarma
+Babiaero
+Bader
+Baei
+Bael
+Bagau
+Baham
+Baiaus
+Baidel
+Baikal
+Baiko
+Bailavarin
+Baircazgordr
+Bairglab
+Bajor
+Bakathi
+Baku
+Balanal
+Baland
+Balder
+Balernusol
+Balilild
+Balisassab
+Baltar
+Balthar
+Balu
+Balulagilodu
+Balustai
+Balys
+Bamaul
+Bamordugodr
+Bana
+Banar
+Bandetur
+Bandogo
+Bandulialdurca
+Banfield
+Bangia
+Banguartungo
+Bano
+Bardula
+Bargmann
+Barictr
+Baridiaro
+Bariuseli
+Barkon
+Barnard's Star
+Barnards
+Bars
+Bart
+Barton
+Baruri
+Barusaerga
+Bascisote
+Bashir
+Basiaega
+Basontho
+Basor
+Bass
+Bastho
+Bastion
+Baten Kaitos
+Bathangi
+Batting
+Batu
+Batugori
+Batususcylv
+Baug
+Baugli
+Baugo
+Bauiaurchun
+Baula
+Baularor
+Baulauiturgotu
+Baungu
+Bauri
+Bautugba
+Bavanauau
+Baxent
+Baylon
+Bazgling
+Bear
+Becrux
+Bedica
+Begalar
+Beganenyi
+Beganoim
+Begle
+Beguth
+Beid
+Beioneil
+Beis
+Beisia
+Beithei
+Beldun
+Bele
+Belecuteg
+Beleia
+Belendisecy
+Belircarglkat
+Belkan
+Bellatrix
+Beltania
+Beluso
+Bemenorag
+Bempon
+Benachra
+Benegargo
+Benei
+Benetnasch
+Beni
+Beno
+Benterip
+Benthar
+Benthiseici
+Benu
+Benuler
+Benzar
+Beobet
+Beoerus
+Beoronu
+Bepha
+Bepym
+Beraeron
+Bere
+Bereo
+Berialetho
+Beriax
+Berillia
+Berith
+Berod
+Beroroturgurir
+Bers
+Bersallis
+Bertheusian
+Beryl
+Besaliolit
+Bese
+Besisere
+Besitemalod
+Beta Andromedae
+Beta Antliae
+Beta Apodis
+Beta Aquarii
+Beta Aquilae
+Beta Arae
+Beta Arianni
+Beta Arietis
+Beta Aurigae
+Beta Bootis
+Beta Brahe
+Beta Caeli
+Beta Camelopardalis
+Beta Cancri
+Beta Capricorni
+Beta Carinae
+Beta Cassiopeiae
+Beta Centauri
+Beta Cephei
+Beta Cerenkov
+Beta Ceti
+Beta Chamaeleonis
+Beta Chandrasekhar
+Beta Circini
+Beta Columbae
+Beta Copernicus
+Beta Corvi
+Beta Crateris
+Beta Crucis
+Beta Cygnus
+Beta Delphini
+Beta Doradus
+Beta Draconis
+Beta Equulei
+Beta Eridani
+Beta Fornacis
+Beta Geminorum
+Beta Giclas
+Beta Gorno
+Beta Gruis
+Beta Herculis
+Beta Horologii
+Beta Hyades
+Beta Hydrae
+Beta Hygines
+Beta Illuminati
+Beta Indi
+Beta Kepler
+Beta Klystron
+Beta Krueger
+Beta Lacaille
+Beta Lacertae
+Beta Lalande
+Beta Lentilis
+Beta Leonis
+Beta Leporis
+Beta Librae
+Beta Lipi
+Beta Luyten
+Beta Lyncis
+Beta Lyrae
+Beta Maksutov
+Beta Mensae
+Beta Mersenne
+Beta Mira
+Beta Monocerotis
+Beta Muscae
+Beta Normae
+Beta Octantis
+Beta Olber
+Beta Ophiuchi
+Beta Orionis
+Beta Pavonis
+Beta Pegasi
+Beta Persei
+Beta Phoenicis
+Beta Pictoris
+Beta Piscium
+Beta Ptolemae
+Beta Puppis
+Beta Pyxidis
+Beta Raynet
+Beta Reticuli
+Beta Sagittae
+Beta Sagittarii
+Beta Saurus
+Beta Scorpii
+Beta Sculptoris
+Beta Scuti
+Beta Serpentis
+Beta Sextantis
+Beta Tauri
+Beta Telescopii
+Beta Trianguli
+Beta Tucanae
+Beta Velorum
+Beta Virginis
+Beta Volantis
+Beta Vulpeculae
+Beta Wolf
+Betal Vitalis
+Betalo
+Betazed
+Betelgeuse
+Betha
+Bethavavar
+Bethmorg
+Betria
+Betulkant
+Beus
+Beusapho
+Beuse
+Beusid
+Beusinoner
+Beusthare
+Bevora
+Bharani
+Bia
+Bialeiabia
+Biaresmusus
+Biarich
+Biary
+Bicalism
+Bicarpator
+Bicontapo
+Bidimeneteu
+Bidonolyb
+Bigo
+Bilbo
+Bilylus
+Bilysmoneri
+Bimusmale
+Birdun
+Bisaneusae
+Biselami
+Bisiclaemes
+Bitalidi
+Biulusisa
+Biusai
+Biussole
+Blake
+Blast
+Bogardus
+Boiduso
+Bolcelia
+Boleul
+Bonch
+Bond
+Boneon
+Bones
+Bonthophan
+Bontuntu
+Bootis
+Bophau
+Boreal
+Borin
+Boro
+Boron
+Botasypi
+Botein
+Botha
+Boxeusiso
+Brabame
+Brachium
+Bralusel
+Brandia
+Brax
+Braxius
+Breari
+Breen
+Breich
+Breka
+Breliso
+Brem
+Bremenemus
+Brendor
+Brentalia
+Brerise
+Bresidi
+Bresuseono
+Brethyssmpe
+Breusisen
+Brgacam
+Brgaleos
+Brianesam
+Brianiu
+Bricnaiusi
+Brindle
+Bris
+Briscorte
+Bristo
+Brisu
+Britanion
+Brmatarntr
+Brmboleu
+Brmon
+Brnd
+Brneica
+Brnila
+Brnoneste
+Brnusicr
+Brocolisaro
+Brodie
+Broiamep
+Brole
+Bron
+Bronor
+Bropeus
+Broreus
+Brotry
+Brpa
+Brph
+Brpradon
+Brpro
+Brsal
+Brseusta
+Brsomest
+Brstareo
+Brsy
+Brtaitheomo
+Brten
+Brtesari
+Brth
+Brthecar
+Brtheian
+Brthesi
+Brutus
+Bryant
+Brycit
+Brylalor
+Brymithi
+Bullwinkle
+Bunda
+Bundy
+Bynar
+Byss
+Cabaetul
+Cabanchalini
+Cabelort
+Cabrea
+Cachen
+Cacry
+Caeli
+Caelle
+Caer
+Caernaven
+Caerylus
+Caesar
+Caeust
+Cagagago
+Cago
+Cai
+Cako
+Cakorgu
+Cal Seti
+Calamari
+Calar
+Calder
+Caldera
+Caledonia
+Cali
+Caliban
+Calinor
+Calisis
+Calisocy
+Calix
+Callau
+Callisto
+Calth
+Calulala
+Calx
+Calyn
+Camath
+Cambria
+Camea
+Camelot
+Camician
+Campos
+Cancer
+Cangri
+Canil
+Cannon
+Canopus
+Cantemel
+Canth
+Cantuinglde
+Capella
+Caph
+Capra
+Caprica
+Capricorn
+Capro Core
+Carbonia
+Card
+Cardassia
+Carelare
+Carelia
+Carestia
+Careumes
+Carida
+Cariel
+Carina
+Carinia
+Carinus
+Carnak
+Carnia
+Carnori
+Caro
+Carorn
+Carot
+Cart
+Cartanen
+Cartasia
+Carter
+Carus
+Carusi
+Caryia
+Cascerius
+Casia
+Casial
+Casol
+Caspar
+Casperia
+Cassandra
+Cassiopeia
+Cassius
+Cassu
+Casterteus
+Castor
+Casym
+Cathar
+Cathmo
+Catug
+Catuthul
+Cauauirobago
+Caugia
+Cauginan
+Caugorong
+Cauril
+Cazglanaethair
+Cebalrai
+Cegoly
+Ceid
+Celaeno
+Celen
+Celestia
+Celia
+Celsia
+Celsius
+Celviae
+Cemi
+Cemu
+Ceneic
+Centares
+Centauri
+Centaurus
+Centhegr
+Cepheus
+Cerberus
+Cerea
+Ceres
+Cerisa
+Ceroni
+Cesario
+Cest
+Cestus
+Cete
+Ceti
+Ceus
+Ceusa
+Ceusia
+Ceususio
+Chab
+Chabartu
+Chaen
+Chako
+Chalna
+Chamete
+Chanali
+Chandra
+Chandrila
+Chara
+Charazg
+Charg
+Charon
+Charulal
+Chathau
+Chathmo
+Chatuli
+Chaugonalinazg
+Chebychev
+Cheico
+Cheis
+Chel
+Cheleb
+Cheli
+Chelia
+Chemaneusth
+Chemeu
+Chenouse
+Cheoicrs
+Cher
+Cherolyt
+Cheron
+Cherpy
+Cherryh
+Chertan
+Cheunam
+Cheus
+Cheusalu
+Cheususal
+Chiaglimela
+Chioca
+Chipis
+Chiron
+Chit
+Chitra
+Chmaelil
+Chmag
+Chmir
+Chmmr
+Chmmri
+Chobruth
+Chocall
+Cholvicothe
+Chomeusanae
+Chonyla
+Chorenec
+Choreusym
+Chort
+Chow
+Chrnola
+Chronos
+Chulak
+Chur
+Chus
+Chusona
+Chyc
+Chymole
+Chype
+Chys
+Chysmalylc
+Chyt
+Ciamus
+Ciamusus
+Cianus
+Cidili
+Cimmeria
+Cioc
+Cioch
+Cioi
+Cionegodous
+Cisenaer
+Ciseoers
+Cisi
+Cisuste
+Ciusa
+Ciusi
+Clair
+Clarke
+Clemone
+Clesonimas
+Cliaeu
+Cliai
+Clic
+Clio
+Clymor
+Clymusenani
+Clytia
+Cneg
+Cnerocamar
+Cnetheota
+Cneuma
+Cobra
+Cobrs
+Codionemusi
+Colenden
+Coleraeuria
+Conomodithy
+Conroe
+Coorq
+Copaeliorin
+Cophanorm
+Cophus
+Copusaiart
+Cor Caroli
+Coral
+Cordelia
+Corellia
+Corelsha
+Coriana
+Coridan
+Coriolis
+Coritharisi
+Corolia
+Corona
+Coronelono
+Coronusea
+Corsica
+Coruscant
+Corusloth
+Corvan
+Corvia
+Corvus
+Cove
+Crarithtid
+Craryru
+Cras
+Crateris
+Cremamone
+Cremor
+Crevas
+Crnoneisio
+Cron
+Crteg
+Crth
+Crux
+Crygal
+Crylarsi
+Ctartusoren
+Ctau
+Ctemusmoleg
+Cthegaryr
+Cthiathe
+Cthidich
+Cthil
+Ctobial
+Ctreu
+Cunetusemus
+Cursa
+Cuscusal
+Cusi
+Cuso
+Cusoph
+Cust
+Custhasu
+Cybr
+Cycl
+Cygnet
+Cygni
+Cygnus
+Cyisteto
+Cylag
+Cylaia
+Cylicymo
+Cylon
+Cylous
+Cylousic
+Cymartae
+Cymusi
+Cysi
+Cysithe
+Cysusycem
+Cyter
+Cythetialyl
+Dabascarne
+Daberg
+Dabih
+Dabileusear
+Dadisipiar
+Daedra
+Daeu
+Dagon
+Dagre
+Daicalu
+Daioneso
+Dakala
+Dakara
+Dakor
+Dalas
+Dalentego
+Dalios
+Dalmax
+DalNalten
+Dalors
+Daltron
+Dalu
+Damegae
+Damona
+Danesm
+Dannan
+Dantooine
+Danula
+Danwe
+Daran
+Dariametheo
+Darnolea
+Daroisist
+Dartho
+Darusmnonis
+Dasastalimp
+Dastaiusame
+Dasus
+Dathomir
+Dawkins
+Dea
+Deaciop
+Dealu
+Deamenor
+Decami
+Decius
+Decrux
+Dedorg
+Degi
+Degorororiama
+Degrirororc
+Degurorchet
+Deimos
+Deja
+Delaya
+Deld
+Delmak
+Delphia
+Delphinis
+Delta Antliae
+Delta Apodis
+Delta Aquarii
+Delta Aquilae
+Delta Arae
+Delta Arietis
+Delta Aurigae
+Delta Bootis
+Delta Brahe
+Delta Caeli
+Delta Camelopardalis
+Delta Cancri
+Delta Cassiopeiae
+Delta Centauri
+Delta Ceti
+Delta Chamaeleonis
+Delta Chandrasekhar
+Delta Circini
+Delta Corvi
+Delta Crateris
+Delta Crucis
+Delta Cygnus
+Delta Draconis
+Delta Fornacis
+Delta Geminorum
+Delta Giclas
+Delta Gorno
+Delta Gruis
+Delta Horologii
+Delta Hyades
+Delta Illuminati
+Delta Krueger
+Delta Lalande
+Delta Lentilis
+Delta Librae
+Delta Lipi
+Delta Lyncis
+Delta Mira
+Delta Muscae
+Delta Normae
+Delta Orionis
+Delta Persei
+Delta Pictoris
+Delta Piscium
+Delta Ptolemae
+Delta Reticuli
+Delta Sagittarii
+Delta Scorpii
+Delta Sculptoris
+Delta Scuti
+Delta Serpentis
+Delta Sextantis
+Delta Tauri
+Delta Virginis
+Delta Vitalis
+Delta Volantis
+Delta Vulpeculae
+Delvia
+Demeter
+Denbra
+Deneb
+Deneb Algedi
+Deneb Dulfim
+Deneb el Okab
+Deneb Kaitos
+Deneb Kaitos Shemali
+Denebola
+Deneva
+Deni
+Dephas
+Deralia
+Derda
+Dergo
+Deridex
+Deriusary
+Dermm
+Dero
+Derolan
+Derona
+Derus
+Deryt
+Desia
+Despayre
+Dessaiyan
+Dester
+Destrillion
+Desymu
+Deteci
+Dethallaunglil
+Dethau
+Detu
+Detun
+Deturgollir
+Deuserneame
+Deusiomus
+Devaron
+Devidia
+Devoa
+Devra
+Dheneb
+Diabrno
+Diadem
+Diage
+Dialuse
+Diamb
+Dian
+Dianth
+Dianusod
+Diany
+Diar
+Diareon
+Diaro
+Diatar
+Diausenthe
+Dicheg
+Dichontal
+Dichuton
+Dicrioes
+Dicrsst
+Dictarpone
+Dicymus
+Didi
+Didiaeso
+Didiolle
+Didocl
+Didotusiu
+Didurgo
+Dilch
+Dilesust
+Dilitho
+Dilthi
+Dilworth
+Dilyth
+Dimust
+Dinicy
+Diocheoi
+Dioprt
+Diph
+Diphda
+Diphes
+Dipi
+Dipisila
+Disa
+Disadilc
+Disanone
+Disc
+Disiusesse
+Dismu
+Disocerga
+Dist
+Disth
+Disthytidi
+Disy
+Disyid
+Dith
+Dithol
+Ditla
+Diulic
+Diulidaiusi
+Diumbia
+Dius
+Diusar
+Diuse
+Diuste
+Diusu
+Djin
+Dnoces
+Dobeusa
+Doco
+Docr
+Docril
+Docustonusi
+Doego
+Doil
+Dolasali
+Dolegausea
+Doliaram
+Dolis
+Dolisione
+Dolus
+Dolusimeau
+Dolymeu
+Dolymionesu
+Domemus
+Domitian
+Domu
+Done
+Doneoenemal
+Donesmarus
+Donet
+Doneu
+Dono
+Donopheo
+Donteiasmu
+Dontha
+Donylyr
+Donymet
+Donyphi
+Dopelu
+Dordui
+Dorethitiph
+Doreusm
+Dorir
+Doriria
+Dornaturturd
+Dorona
+Doronisus
+Dororing
+Dorotunduro
+Dosa
+Doteser
+Dotrth
+Dotusau
+Doxymi
+Draconis
+Draken
+Drall
+Drayan
+Draycon
+Draylon
+Drdurng
+Drema
+Drendor
+Drenth
+Dreon
+Dresden
+Drginago
+Drgind
+Drgrcan
+Drgugothava
+Drgurobarugoth
+Drir
+Drogo
+Drogu
+Drogunthi
+Drondol
+Dropek
+Dror
+Drthatun
+Drthmmak
+Dryad
+Drynn
+Dschubba
+Dsiban
+Duamond
+Duazgog
+Dubhe
+Dubrillion
+Duffy
+Dugli
+Dugoro
+Dugwethi
+Duhr
+Dujpiboonpol
+Dulcac
+Dulkoturotugob
+Dundro
+Dune
+Dunglrgiaia
+Duni
+Durandal
+Durchilithu
+Durchmerorca
+Durenia
+Durilu
+Durin
+Durina
+Duriratha
+Durongithmaugo
+Durormog
+Durornal
+Durothu
+Durt
+Dusc
+Dusct
+Duse
+Dusid
+Dusitusisi
+Dusiusis
+Dusm
+Dusmus
+Duso
+Dusochae
+Dusoiasi
+Dussarocys
+Dussusutass
+Dustheici
+Dusthinu
+Dususiphia
+Dusyipa
+Eaeu
+Eagle
+Ealatus
+Ealego
+Ealor
+Eamalesia
+Earopenio
+Ecaes
+Ed Asich
+Edasich
+Eden
+Ederoelol
+Edessa
+Edial
+Edoliale
+Edora
+Edowin
+Efreeti
+Egaeidonusc
+Egaicta
+Eganeluseal
+Egdaro
+Egear
+Egeneg
+Eglalor
+Eglin
+Eglkaur
+Eglrcatundrm
+Eglulr
+Egoi
+Egongoth
+Egothauaungor
+Egotuthmi
+Egrarym
+Egryme
+Egurth
+Egwenaugor
+Eiarisi
+Eidolon
+Eimoxys
+Eipp
+Eisiasidic
+Eistusys
+Eiuse
+Eivrea
+Ekos
+Elaman
+Elangotugrdro
+Elas
+Elau
+Elauirgl
+Elaundo
+Elaysia
+Elba
+Eldon
+Eldrtu
+Electra
+Eleniu
+Eleria
+Elestater
+Elga
+Elinae
+Elir
+Elmuthalleth
+Elnath
+Elrgurm
+Elrood
+Eltanin
+Eltar
+Elunth
+Elvia
+Elyl
+Elylectarod
+Elymuleus
+Elyon
+Elysimuth
+Elyth
+Embor
+Emila
+Emilia
+Emoni
+Empaiaph
+Empress
+Emusemego
+Emusot
+Emustentri
+Emusus
+Enalainamego
+Enalia
+Enandrgit
+Enara
+Enautugo
+Enavaro
+Endi
+Endolan
+Endovan
+Eneg
+Enenenes
+Eneraiteu
+Eneron
+Enesastab
+Enesi
+Engo
+Engonduangori
+Engothe
+Engul
+Enianer
+Enif
+Enigma
+Enilazgbalk
+Enobranox
+Enort
+Enrea
+Enta
+Enteurt
+Enthe
+Enusian
+Envy
+Enyo
+Eocasi
+Eocoiorp
+Eoeu
+Eolal
+Eomauses
+Eoniu
+Eonthyr
+Eonu
+Eonul
+Eortasi
+Eos
+Ephyly
+Epilson Fornacis
+Episol
+Epona
+Epsilon
+Epsilon Antliae
+Epsilon Aquarii
+Epsilon Aquilae
+Epsilon Arae
+Epsilon Ariestis
+Epsilon Bootis
+Epsilon Brahe
+Epsilon Caeli
+Epsilon Camelopardalis
+Epsilon Cassiopeiae
+Epsilon Centauri
+Epsilon Ceti
+Epsilon Chamaeleonis
+Epsilon Chandrasekhar
+Epsilon Circini
+Epsilon Corvi
+Epsilon Crateris
+Epsilon Cygnus
+Epsilon Draconis
+Epsilon Giclas
+Epsilon Gruis
+Epsilon Horologii
+Epsilon Hyades
+Epsilon Illuminati
+Epsilon Krueger
+Epsilon Librae
+Epsilon Lipi
+Epsilon Lyncis
+Epsilon Muscae
+Epsilon Normae
+Epsilon Orionis
+Epsilon Persei
+Epsilon Ptolemae
+Epsilon Scorpii
+Epsilon Sculptoris
+Epsilon Scuti
+Epsilon Serpentis
+Epsilon Sextantis
+Epsilon Tauri
+Epsilon Volantis
+Epsilon Vulpeculae
+Eraele
+Eragonia
+Eraliuso
+Erarita
+Erasabo
+Eraur
+Erea
+Ereusynea
+Erga
+Ergonesio
+Eriaissa
+Eriati
+Ericl
+Eridani
+Erilenel
+Erionus
+Erisi
+Erisseteaga
+Erius
+Ermpphor
+Erngor
+Eron
+Erongot
+Erosi
+Eroth
+Erotiva
+Errai
+Ersisc
+Ersone
+Ersylus
+Ertetin
+Ertheusonus
+Erthi
+Ertich
+Ertrustiu
+Eruildu
+Eryilca
+Erynia
+Erythrea
+Esalacn
+Esan
+Escalon
+Escenemei
+Esceorer
+Escocemu
+Escythia
+Esem
+Eseon
+Eserymort
+Esiaron
+Esiasi
+Esidusip
+Esilym
+Esmegryl
+Esonesci
+Esonthin
+Esosia
+Esoteus
+Esperia
+Essel
+Essowyn
+Estaeolym
+Esthel
+Esthusi
+Esul
+Esuna
+Esurtiaeg
+Esus
+Esuseiu
+Esyrilei
+Eta Aquarii
+Eta Bootis
+Eta Camelopardalis
+Eta Cassiopea
+Eta Ceti
+Eta Chamaeleonis
+Eta Corvi
+Eta Crateris
+Eta Draconis
+Eta Fornacis
+Eta Giclas
+Eta Gruis
+Eta Horologii
+Eta Hyades
+Eta Illuminati
+Eta Librae
+Eta Lyncis
+Eta Orionis
+Eta Persei
+Eta Ptolemae
+Eta Serpentis
+Eta Volantis
+Eta Vulpeculae
+Etamin
+Etanthym
+Etapesocus
+Etaphre
+Etaso
+Eteg
+Eteusiuse
+Etha
+Ethauglilro
+Etheiliais
+Ethimetharodu
+Ethraruse
+Ethuia
+Ethyistaler
+Etna
+Etocast
+Etoch
+Etoeto
+Etoss
+Etruria
+Etuagong
+Etuathathmo
+Etugoror
+Etuld
+Etulkorol
+Eturgllrchet
+Eturondu
+Eturong
+Eturorc
+Eugenius
+Eula
+Eulenermus
+Euli
+Eunegal
+Eurasia
+Eurgd
+Euronda
+Europa
+Euroul
+Euryisip
+Eusaleneno
+Eusaler
+Eusantarort
+Eusapi
+Eusaxesi
+Eusctesel
+Eusesumaesi
+Euseusust
+Eusi
+Eusia
+Eusiaritheu
+Eusidusi
+Eusisma
+Eusit
+Eusius
+Eusmab
+Eusmom
+Eusmusta
+Eusos
+Eussei
+Eustherp
+Eusuly
+Eusynt
+Eusypol
+Eutetada
+Evenstar
+Exanel
+Excalbia
+Exhale
+Exo
+Expel
+Exquivan
+Eyron
+Ezalor
+Fabar
+Fabemo
+Fabocnab
+Fabonanessa
+Fabre
+Fabregasti
+Fabri
+Fabrumaroe
+Facai
+Facaxe
+Fadioet
+Faec
+Faegramusi
+Faegu
+Faele
+Faeloct
+Faely
+Faeo
+Faeot
+Faeothenoc
+Faeseteus
+Faesono
+Faesor
+Faestulusa
+Faethazgr
+Faeust
+Faeustelun
+Faeusteusa
+Faeusthia
+Fagaeu
+Fagara
+Fagorch
+Fagrtesmat
+Faguriavaur
+Faiaeu
+Faianca
+Faianisim
+Faicapam
+Failisio
+Faindetuingber
+Faisi
+Faiusa
+Fakalimogla
+Fakobeg
+Falaget
+Falalra
+Falcon
+Fale
+Falegdomol
+Faleist
+Falel
+Falem
+Faleola
+Falest
+Faleus
+Faleuscicus
+Fali
+Faliaeon
+Faliamer
+Falicalis
+Falindel
+Faliore
+Falist
+Faliuta
+Fall
+Fallamutheu
+Fallatu
+Fallyth
+Falnath
+Falo
+Falonthe
+Falorntulkath
+Falrorch
+Falvisa
+Falybona
+Falyphaeu
+Falyrend
+Falys
+Falyth
+Fama
+Famaphesori
+Famarch
+Famarphyt
+Fameraisei
+Familia
+Fammau
+Famoc
+Fampher
+Famuse
+Famuson
+Fana
+Fanamocymes
+Fanau
+Fanaulkot
+Fancauana
+Fancluseust
+Fanduron
+Faneagatei
+Fanes
+Fanesc
+Fanesenone
+Fanesiause
+Faneumeu
+Faneusmert
+Fanglia
+Fangwel
+Fani
+Fanol
+Fanon
+Fanonistane
+Fanoxeaicrm
+Fantaroc
+Fanth
+Fanusiam
+Fanusmn
+Fanyceuss
+Fanysiagoeu
+Fapaneu
+Faprely
+Faraentem
+Faralilv
+Faramir
+Farathylest
+Farchma
+Fare
+Faregai
+Farel
+Farelia
+Fareo
+Farglaethangwe
+Fari
+Faril
+Farilaka
+Farisassi
+Farius
+Farni
+Faro
+Faroclu
+Farodo
+Faroon
+Faroritu
+Farorono
+Farorth
+Farosiprseu
+Farpoint
+Farpythu
+Farsclor
+Farsiaiceis
+Farthesusth
+Farti
+Farto
+Farusoliae
+Farybau
+Faryi
+Fasabeu
+Fasameo
+Fasaustusm
+Fasctu
+Fase
+Fasegad
+Faseite
+Fasertha
+Fasescoce
+Fasi
+Fasia
+Fasilepener
+Fasisuse
+Fasmaror
+Fasorthic
+Fasseae
+Fassythi
+Fastheisam
+Fastreophon
+Fasymasu
+Fata
+Fatabaneryl
+Fatamul
+Fatet
+Fatha
+Fathaet
+Fathalymag
+Fathaug
+Fathea
+Fatheia
+Fathetes
+Fathil
+Fathus
+Fato
+Fatulili
+Faua
+Fauanarcat
+Faugor
+Faulaia
+Fauliri
+Faurargbathela
+Faurcan
+Faxe
+Faxer
+Faxym
+Fazg
+Fazgo
+Feist
+Felicia
+Fenris
+Ferenginar
+Ferion
+Fermento
+Feronia
+Fiala
+Filthor
+Filtreus
+Fineria
+Fivel
+Flavia
+Fleming
+Florin
+Florya
+Flynn
+Fomalhaut
+Fordus
+Fornacis
+Fornax
+Freja
+Fresia
+Frey
+Freya
+Frigg
+Frodo
+Froggynar
+Frost
+Frostia
+Fum al Samakah
+Furan
+Furax
+Furud
+Fusion
+Gabe
+Gabenea
+Gabi
+Gabio
+Gabriel
+Gabrthi
+Gacax
+Gace
+Gach
+Gache
+Gachidus
+Gaciom
+Gacrux
+Gadip
+Gadortali
+Gaelcypoly
+Gaelia
+Gaem
+Gaeoliai
+Gaer
+Gaes
+Gaeta
+Gaeu
+Gaeussaeaul
+Gaeusse
+Gagete
+Gagondiano
+Gagori
+Gagramano
+Gaia
+Gaiausatus
+Gail
+Gailea
+Gailyi
+Gainymusil
+Gaiuscheusy
+Gaiussu
+Gala
+Galactica
+Galador
+Galas
+Galax
+Galedorimes
+Galerius
+Galeutau
+Gali
+Galic
+Galidraan
+Gallienus
+Gallus
+Galo
+Galon
+Galor
+Gamaphia
+Gambra
+Gambrinus
+Gamgee
+Gamma Alpha
+Gamma Antliae
+Gamma Apodis
+Gamma Aquarii
+Gamma Aquilae
+Gamma Arae
+Gamma Arianni
+Gamma Arietis
+Gamma Aurigae
+Gamma Bootis
+Gamma Brahe
+Gamma Caeli
+Gamma Camelopardalis
+Gamma Cancri
+Gamma Capricorni
+Gamma Carinae
+Gamma Cassiopeiae
+Gamma Centauri
+Gamma Ceti
+Gamma Chamaeleonis
+Gamma Chandrasekhar
+Gamma Circini
+Gamma Columbae
+Gamma Copernicus
+Gamma Corvi
+Gamma Crateris
+Gamma Crucis
+Gamma Cygnus
+Gamma Draconis
+Gamma Eridani
+Gamma Fornacis
+Gamma Geminorum
+Gamma Giclas
+Gamma Gorno
+Gamma Gruis
+Gamma Horologii
+Gamma Hyades
+Gamma Hydrae
+Gamma Illuminati
+Gamma Kepler
+Gamma Krueger
+Gamma Lacaille
+Gamma Lalande
+Gamma Lentilis
+Gamma Leonis
+Gamma Leporis
+Gamma Librae
+Gamma Lipi
+Gamma Luyten
+Gamma Lyncis
+Gamma Mensae
+Gamma Mira
+Gamma Muscae
+Gamma Normae
+Gamma Olber
+Gamma Ophiuchi
+Gamma Orionis
+Gamma Persei
+Gamma Phoenicis
+Gamma Pictoris
+Gamma Piscium
+Gamma Ptolemae
+Gamma Puppis
+Gamma Pyxidis
+Gamma Raynet
+Gamma Reticuli
+Gamma Sagittae
+Gamma Sagittarii
+Gamma Saurus
+Gamma Scorpii
+Gamma Sculptoris
+Gamma Scuti
+Gamma Serpentis
+Gamma Sextantis
+Gamma Tauri
+Gamma Telescopii
+Gamma Theta
+Gamma Trianguli
+Gamma Tucanae
+Gamma Virginis
+Gamma Vitalis
+Gamma Volantis
+Gamma Vulpeculae
+Gamo
+Gamobrs
+Gamu
+Ganath
+Ganceusmo
+Gandalf
+Ganethes
+Ganeus
+Gani
+Ganoluso
+Ganontaist
+Gant
+Gantae
+Ganthaes
+Ganthodo
+Gantuste
+Ganusa
+Ganusareai
+Ganymede
+Garalemus
+Garban
+Garcia
+Garegei
+Gareniag
+Gareronthal
+Gareuso
+Garioli
+Garne
+Garnet
+Garnet Star
+Garocaxyiae
+Garon
+Garornth
+Garphusy
+Garstho
+Gartaem
+Garthel
+Garyce
+Gasaeure
+Gasagaly
+Gasan
+Gasic
+Gasicra
+Gasstes
+Gast
+Gasul
+Gasuro
+Gatap
+Gathonenar
+Gathuste
+Gatioremu
+Gatria
+Gauss
+Gaust
+Gausus
+Gaxytes
+Gbanangortunau
+Gbaund
+Gdabemeu
+Gdaessi
+Gdar
+Gdaxymo
+Gdial
+Gdiarany
+Gdiclusi
+Gdisascyl
+Gdisi
+Gdistoph
+Gditaeriseo
+Gditesia
+Gdomus
+Gdonemers
+Gdononene
+Gdotormi
+Gdus
+Gduseme
+Gduset
+Gegabeusth
+Gegrn
+Geiane
+Gellymusici
+Gemini
+Geminorum
+Gemulon
+Genesia
+Geoi
+Gepoxypeon
+Gerenia
+Gerer
+Gerica
+Gerona
+Geseic
+Gession
+Gestrntitis
+Gestron
+Gesusiuseu
+Geta
+Geus
+Geusa
+Geusi
+Geusileuseu
+Geusonthr
+Geustu
+Geususi
+Ghoul
+Gianfar
+Giatuiang
+Giavaturgbauau
+Giedi
+Gienah Cygni
+Gienah Ghurab
+Gienah Gurab
+Giennah
+Gilatug
+Gildor
+Giloringi
+Gilrax
+Gimble
+Girgbaur
+Girgl
+Girtab
+Gladstone
+Glaerchmava
+Glangwe
+Glarna
+Glarthun
+Glila
+Glim
+Glindegogurn
+Glirg
+Gllrurirgu
+Gloom
+Glrtuil
+Glunirt
+Gocalerid
+Gochusitae
+Gocl
+Gocussa
+Godidi
+Goentheu
+Goeu
+Goeusce
+Goeusisy
+Goiasth
+Goichu
+Goitha
+Golinaldert
+Golyc
+Golyncethe
+Gombonemei
+Gomeisa
+Gomesa
+Gomicary
+Gonaiobr
+Gonandunguan
+Gondi
+Goneo
+Goneus
+Goneusia
+Goni
+Goniaerius
+Gonio
+Gonius
+Gonoille
+Gonopor
+Gonorel
+Gonth
+Gonthisust
+Gonusaliat
+Gonusth
+Gonythegoi
+Gopa
+Gopheridis
+Goralis
+Gorath
+Gorch
+Gordon
+Gorgodu
+Gorgonea
+Gorgonea Quarta
+Gorgonea Secunda
+Gorgonea Tertia
+Gorgorora
+Gorgotugweglld
+Gori
+Gorilot
+Gorn
+Gorno Epsilon
+Goro
+Gorog
+Goror
+Gororgo
+Gorpa
+Gorta
+Gosaip
+Gosiclen
+Gothusou
+Gotoche
+Gounaropolous
+Gouryler
+Gousus
+Graertel
+Graffias
+Grafias
+Gralghar
+Grallial
+Grassias
+Gravlex
+Grei
+Grendel
+Grendell
+Grertheusus
+Grese
+Greu
+Grgorgut
+Gril
+Grizzly
+Grniamus
+Groci
+Groli
+Grompro
+Groom
+Groombridge
+Grorca
+Grorgas
+Groxyllu
+Grpis
+Grscausi
+Grsth
+Grtalam
+Grtari
+Grthegre
+Grtu
+Gruis
+Grul
+Grumium
+Grur
+Grusel
+Grusia
+Grymesa
+Grymothylys
+Guintha
+Gulazglo
+Gurglrothegot
+Gurgorori
+Gwegl
+Gwetha
+Gwynhyffar
+Gygax
+Haber
+Hadar
+Hades
+Hadir
+Hadrian
+Haedi
+Haedus
+Haesont
+Haethang
+Haetul
+Haeula
+Haiame
+Hairotha
+Haitheniaru
+Haldus
+Haliceole
+Halo
+Haloesthar
+Halymusi
+Hamal
+Hambor
+Hammer
+Hanaroneuss
+Hand
+Handendr
+Handooine
+Haneust
+Hang
+Hangl
+Hanglil
+Hangut
+Hard
+Hareuniabi
+Hargon
+Haria
+Harithal
+Harniusial
+Haro
+Harogo
+Harold
+Haror
+Haroro
+Harorole
+Harper
+Haru
+Hassaleh
+Hasta
+Hatch
+Hatcher
+Hatheceon
+Hathor
+Hathrox
+Hathun
+Hatriax
+Hauli
+Haulin
+Haunduliruri
+Haura
+Haurcamorogot
+Hausent
+Hausinis
+Hauturirtu
+Haven
+Hazgi
+Hazgorch
+Head of Hydrus
+Heaster
+Hebridan
+Hecate
+Hechasas
+Hector
+Hegdust
+Hegoleal
+Hegoly
+Hegrpr
+Heiaenia
+Heiaerm
+Heicllcyb
+Heidathecar
+Heilop
+Heinlein
+Heis
+Heiustheus
+Heka
+Helaulul
+Helemiuso
+Heleutheame
+Hellion
+Helorg
+Helusonu
+Helusousus
+Hemess
+Hemetasc
+Hemni
+Henaismile
+Henesicai
+Henisc
+Hente
+Henthet
+Heodoem
+Heoi
+Heolamam
+Heonel
+Heonic
+Heor
+Hephestus
+Hephonac
+Hepip
+Hera
+Herbert
+Hercules
+Hercuron
+Hereal
+Hermes
+Herone
+Hertrpytheu
+Hesar
+Hese
+Hesipylo
+Hesisiarae
+Hesius
+Hesmel
+Hesmus
+Hesperidium
+Hestasepo
+Hestia
+Hesusis
+Hetascro
+Hethi
+Heul
+Heumesor
+Heur
+Heureti
+Heuro
+Heus
+Heuse
+Heusido
+Heusimesic
+Heususeris
+Hevia
+Heze
+Hiadopylymu
+Hiaesiae
+Hiaetabi
+Hianon
+Hiarpole
+Hiartaga
+Hiasamon
+Hiastalchy
+Hiat
+Hicymursod
+Hidiamearon
+Hido
+Hidodascrth
+Hidorusthi
+Hienlein
+Hiflheim
+Hilera
+Hilnor
+Himalaya
+Himasmactus
+Himeg
+Himoe
+Himuron
+Hina
+Hincan
+Hinch
+Hinildugoth
+Hinra
+Hioc
+Hiocly
+Hiot
+Hipicort
+Hirglil
+Hirirg
+Hirndog
+Hisa
+Hisandone
+Hisarae
+Hisipego
+Hisst
+Histocaeus
+Hitamus
+Hites
+Hiusalvi
+Hiusmunese
+Hiusoru
+Hiust
+Hmalogwegorca
+Hmangl
+Hmangwe
+Hmegroringugu
+Hmetha
+Hmetulil
+Hmetulur
+Hmoban
+Hocritis
+Hocyrteni
+Hoedus
+Hoedus I
+Hoedus II
+Hoemona
+Hoerscneust
+Holag
+Holeusil
+Holimber
+Holisiodanc
+Holmes
+Homam
+Hone
+Honedustase
+Honi
+Honicen
+Honiu
+Honola
+Hopelusi
+Hopiamorelu
+Horath
+Horiaissiai
+Hortesusaiu
+Horus
+Hoth
+Hotherseuss
+Hough
+Hreu
+Hreusen
+Hrialymu
+Hric
+Hrin
+Hritony
+Hrssaeia
+Htabrtaryle
+Htethyth
+Hthe
+Hthoxer
+Htoesci
+Huiriri
+Huld
+Humpagr
+Hunaturo
+Hurchel
+Huri
+Husch
+Huseiona
+Husis
+Husiut
+Husobari
+Husteus
+Hustumo
+Hustusaga
+Hyadea
+Hyadum
+Hyadum I
+Hyadum II
+Hybicaleni
+Hybroleleso
+Hydra
+Hydri
+Hydrobius
+Hydrus
+Hyipeorelu
+Hyldemoer
+Hylo
+Hylu
+Hymbestaio
+Hymeisia
+Hymo
+Hyperia
+Hyperion
+Hypnos
+Hyralan
+Hytasi
+Hythicarto
+Hythuse
+Iabeuscha
+Iabota
+Iabrt
+Iacal
+Iaelar
+Iaem
+Iaend
+Iaergal
+Iaeteus
+Iaeu
+Iaglk
+Iagru
+Iaipem
+Ialaeroneu
+Iales
+Iali
+Ialisyb
+Ialusist
+Ialy
+Iamaene
+Iandontusu
+Ianepesuso
+Iangori
+Ianiariscia
+Iari
+Iario
+Iarip
+Iarta
+Iartho
+Iary
+Iasa
+Iasais
+Iaseatha
+Iasicr
+Iasthoph
+Iastil
+Iastusar
+Iasust
+Iasytho
+Iatathisiae
+Iateleoss
+Iaurodu
+Iausoemel
+Iava
+Iberia
+Iblis
+Icaisom
+Icalurus
+Icarus
+Icelalerpe
+Iceouscasu
+Icere
+Iceusoti
+Iche
+Ichesth
+Icheussaer
+Ichilyc
+Icisobon
+Icistusit
+Icliclylia
+Iclycic
+Iclysari
+Icne
+Icoclicym
+Icolemesco
+Icolly
+Iconthrorus
+Icor
+Icriamegdid
+Icrs
+Icruscet
+Icteas
+Icth
+Icti
+Ictususm
+Icycalu
+Icyl
+Icyliat
+Idae
+Idalisea
+Idasti
+Idilc
+Idipodot
+Idopid
+Idoumerone
+Idus
+Idusore
+Idusteagae
+Ikaryia
+Ilandu
+Ilanoeo
+Ilaraen
+Ilargla
+Ilaturgwegin
+Ildaria
+Ileia
+Ileormeu
+Iles
+Ilest
+Iletet
+Iletha
+Ileulusi
+Ileusa
+Ilgani
+Ilia
+Iliand
+Ilinaurc
+Ilindu
+Iliontethai
+Ilirinth
+Ilistertaes
+Ilistri
+Ilitasisu
+Ilkongon
+Illingol
+Illort
+Illvima
+Illyrica
+Ilochon
+Iloglil
+Ilon
+Ilona
+Ilune
+Ilusathe
+Ilvialo
+Ilyntusmaus
+Imbari
+Imenobei
+Imescac
+Imeseri
+Imethmo
+Imme
+Imperia
+Imperius
+Imuso
+Inairandriait
+Inakatut
+Indi
+Indigo
+Indortu
+Indrgb
+Indrgo
+Indui
+Indurduiloro
+Ineg
+Inelul
+Inert
+Inferno
+Ingind
+Inglaka
+Inglor
+Ingogu
+Ingrnininae
+Iningorg
+Inthangrthe
+Invernia
+Ioilu
+Ioiorthaer
+Ioledusyt
+Ioluscyseo
+Iomesiche
+Ioneateusme
+Ionthausac
+Ionthereocl
+Iore
+Ioroemon
+Iororali
+Iorphy
+Iota Camelopardalis
+Iota Chamaeleonis
+Iota Draconis
+Iota Horologii
+Iota Hyades
+Iota Orionis
+Iota Persei
+Iota Serpentis
+Iotalyli
+Ioxeicni
+Ipegamusali
+Ipero
+Ipha
+Iphet
+Iphononasy
+Iphtholia
+Ipicymi
+Ipiorophis
+Ipure
+Ircau
+Ircha
+Irchirdu
+Irdro
+Ireland
+Irginarm
+Irgorngl
+Iria
+Iridium
+Iridonia
+Irilunc
+Irimabetulugrm
+Iris
+Iritugb
+Irkenova
+Irmorillorako
+Ironduazgia
+Irorot
+Irortuana
+Iruthaimmet
+Isaleriona
+Isalyresae
+Isarel
+Isartab
+Isersiste
+Isesictama
+Isesonet
+Ishanna
+Ishikawa
+Isia
+Isiad
+Isiaeusalce
+Isime
+Isiph
+Isis
+Isiussa
+Isiustuster
+Iskalon
+Ismbroxylus
+Ismeist
+Isoice
+Isst
+Istendi
+Isteniu
+Isteustu
+Isthe
+Istvaan
+Isymocrmamo
+Itaed
+Itag
+Italia
+Italica
+Itarcea
+Iteabron
+Itegrterym
+Itepisym
+Iterocher
+Ithaca
+Ithaualkan
+Ithe
+Ithmama
+Ithmilror
+Ithor
+Ithrsusc
+Ithulatu
+Itoronim
+Its
+Itulilal
+Itur
+Itzar
+Iunde
+Iusanars
+Iuscesteust
+Iusenonth
+Iuseri
+Iusialit
+Iusialulont
+Iusiar
+Iusisa
+Iusma
+Iustis
+Iususeonust
+Iusythi
+Iversonia
+Ivey
+Izar
+Izdar
+Jabbah
+Jackson
+Jam
+Jandooine
+Janus
+Japhan
+Jaros
+Jason
+Jefion
+Jertix
+Jerux
+Jethanis
+Jhelom
+Jih
+Jinx
+Jiraya
+Jobegaro
+Jobene
+Joboly
+Jobr
+Jobrusi
+Joca
+Jocanenisi
+Joce
+Jocelesa
+Jocesiamolo
+Jocethi
+Jocheles
+Jocheu
+Jochian
+Jocho
+Jochonymn
+Joci
+Jociala
+Jocic
+Joco
+Jococagdai
+Joctiss
+Jocusiaxe
+Jodi
+Jodipoct
+Jodonen
+Jodoreo
+Jodou
+Jodusi
+Joeli
+Joerocheisu
+Joesa
+Joesassis
+Joeseiami
+Joeusartai
+Joiambo
+Joiariceone
+Joicheumu
+Joimiasthr
+Joipeo
+Joiprt
+Joisiserabr
+Joitus
+Jolaiusa
+Jolcarope
+Jolcylymia
+Jole
+Joleaneu
+Joleaniciph
+Joledoth
+Jolem
+Jolenec
+Joleroth
+Joleu
+Joleus
+Joleusimen
+Joliama
+Jollymia
+Jolu
+Joluseulaly
+Jolyre
+Jolyte
+Joma
+Jomatiaiolc
+Jomeusiondi
+Jomn
+Jomoce
+Jomonia
+Jomoraletia
+Jomusasu
+Jomust
+Jonaiar
+Jonaidius
+Jonal
+Jonalusorel
+Jonan
+Jonantas
+Jonasae
+Jondamo
+Jondi
+Jone
+Joneas
+Jonel
+Jonelan
+Jonenan
+Jonenarncu
+Jonenthe
+Joneon
+Jonest
+Joneu
+Joneuse
+Joni
+Jonia
+Joniabat
+Joniacheont
+Jonime
+Jonis
+Jono
+Jonon
+Jont
+Jontara
+Jontemust
+Jontesissia
+Jonth
+Jonthei
+Jonthism
+Jonthyrasel
+Jonu
+Jonus
+Jonusil
+Jonust
+Jonymas
+Jonyth
+Jonytim
+Jopaser
+Jopeau
+Joph
+Jopheu
+Jophisea
+Jopor
+Jopos
+Jopphoth
+Jopr
+Jopraus
+Joprtharicy
+Joprtian
+Joregeu
+Jorel
+Joren
+Jores
+Joreu
+Joreumallc
+Joriara
+Joricrga
+Jornelopeg
+Joron
+Joronido
+Jortus
+Jorusaleg
+Jory
+Jorybo
+Joryreoc
+Jossthia
+Jost
+Jostactar
+Jote
+Joteist
+Jotenymus
+Joteres
+Jotesio
+Joth
+Jothialy
+Jotho
+Jotunheim
+Jotusionar
+Jotusthteo
+Jourysagopi
+Jous
+Jousiuseusc
+Joust
+Jovian
+Joxem
+Joxenado
+Joxeu
+Joxyler
+Joxyp
+Joxyphas
+Joxytenthiu
+Julian
+Julietta
+Juno
+Ka
+Kabal
+Kabatris
+Kabuki
+Kade
+Kaelon
+Kaeturd
+Kaffaljidhm
+Kaffaljidhma
+Kaglilalae
+Kagoturgoba
+Kaia
+Kailor
+Kaimmegl
+Kajam
+Kaka
+Kakart
+Kakat
+Kakor
+Kakorndror
+Kakorth
+Kalandra
+Kalau
+Kalderon
+Kaldorgi
+Kaldra
+Kaled
+Kalee
+Kalessia
+Kalgan
+Kaliro
+Kalla
+Kalord
+Kamber
+Kanaloa
+Kang
+Kangorna
+Kanopus
+Kappa Chamaeleonis
+Kappa Draconis
+Kappa Horologii
+Kappa Hyades
+Kappa Orionis
+Karel
+Karemma
+Karma
+Karn
+Karnak
+Karnaugh
+Karol
+Karsch
+Kartia
+Kartika
+Kastor
+Kastra
+Kataan
+Katarr
+Katurus
+Kaundunchazgw
+Kauria
+Kaus Australis
+Kaus Borealis
+Kaus Medius
+Kaus Meridionalis
+Kavaeluririndr
+Kavatu
+Kebechet
+Keid
+Kejim
+Kelchase
+Keldon
+Kelowna
+Kelva
+Kephrone
+Kerchen
+Keres
+Keri
+Kesprytt
+Kessari
+Kessel
+Kessik
+Khabar
+Kheb
+Khitomer
+Kievi
+Kildor
+Kilika
+Kilrah
+Kindar
+Kinnison
+Kitalpha
+Kiva
+Klaestron
+Klatooine
+Kloe
+Klonoa
+Knox
+Kobau
+Kobol
+Kocab
+Kochab
+Kochera
+Kolaz
+Konazgo
+Kondun
+Konea
+Konec
+Konglaba
+Kongo
+Kooriva
+Kora
+Koraal
+Koraurgo
+Kordu
+Kordurca
+Kore
+Korgunirin
+Korida
+Korin
+Korirc
+Koritul
+Korm
+Kornephoros
+Korogl
+Korogor
+Korolev
+Koronor
+Kororn
+Korriban
+Korsunia
+Korugodu
+Kothaia
+Kothela
+Kotu
+Kotul
+Krac
+Kraicy
+Kral
+Kralusu
+Kramema
+Kran
+Kranestho
+Krantrnella
+Krar
+Krarthysic
+Kratos
+Kraxeisyth
+Kraz
+Kreg
+Kregda
+Krei
+Kreinoulat
+Krelesum
+Krem
+Kreme
+Krentusereu
+Kreonene
+Kreoro
+Kreorsto
+Kreradaseno
+Krererena
+Kreroryt
+Kres
+Kresarsonc
+Kreso
+Kresus
+Kreulcteus
+Kreuleomon
+Kreurorusu
+Kreus
+Kreusil
+Kreustheus
+Kreutone
+Krgaen
+Krgas
+Krgasil
+Krgatia
+Krgdon
+Krgent
+Krgesiau
+Krgranthea
+Kria
+Kriadiaiar
+Kriaem
+Krialeil
+Krialonth
+Krian
+Krianiumust
+Krias
+Kriat
+Kriatan
+Kric
+Kricaen
+Kriditec
+Kriliceurte
+Krily
+Krilytenego
+Krimusm
+Krios
+Kriphyt
+Kris
+Krise
+Krish
+Krisicon
+Kriston
+Krit
+Kritae
+Krithemo
+Kriumusu
+Krmusolu
+Krnaeroi
+Krndit
+Krnop
+Krnt
+Krnti
+Kroc
+Krocamemu
+Krochen
+Kroclia
+Krodanaxybe
+Krododonis
+Krodu
+Kroeusa
+Kroll
+Kromeitu
+Kron
+Krona
+Kronarpe
+Kronde
+Kronisia
+Krono
+Kronoch
+Krononusus
+Kronos
+Kronthegeth
+Krontu
+Kronu
+Kronyc
+Kropheg
+Kropidu
+Kroril
+Krort
+Krorteanu
+Krota
+Krotasesia
+Kroteus
+Krothilylus
+Krou
+Krousic
+Krousus
+Kroxy
+Krpe
+Krpese
+Krphas
+Krphast
+Krpr
+Krsaicyst
+Krsc
+Krsicnacic
+Krsisusiaem
+Krsitonot
+Krsius
+Krsoti
+Krsysondagr
+Krtadaliso
+Krtalysenu
+Krtambit
+Krtar
+Krtaus
+Krteiom
+Krtenteisas
+Krth
+Krtha
+Krthe
+Krther
+Krthest
+Krtheusi
+Krthialias
+Krthisisil
+Krthole
+Krthrnonono
+Krtht
+Krthy
+Krthymu
+Krtipotho
+Krtororio
+Krtu
+Krtus
+Krtusamareo
+Krtuscn
+Krusidi
+Krusippaeth
+Krusita
+Kryc
+Krychrop
+Kryi
+Kryidastusi
+Kryiuso
+Krylyiceria
+Krym
+Krymp
+Kryn
+Kryo
+Krypton
+Kryscaeu
+Kryseta
+Krysiu
+Kryste
+Krysythe
+Kryt
+Krytaesor
+Ksora
+Ktaria
+Kullat Nunu
+Kuma
+Kupe
+Kures
+Kuroda
+Kwilas
+Kylae
+Kynarth
+Kythanil
+La Superba
+Labrtusu
+Lacaille
+Lacerta
+Lacroix
+Laes
+Lagaidus
+Lagoon
+Laipalusaus
+Lakoraun
+Lakorituilir
+Lala
+Lalande
+Lalaz
+Lales
+Lalirog
+Laliussu
+Lambda Draconis
+Lambda Horologii
+Lambda Orionis
+Lamdba Hyades
+Lanatuil
+Lancelot
+Landola
+Landris
+Lanes
+Langondor
+Langorcamath
+Langoria
+Langot
+Lani
+Lanilesth
+Lanthra
+Lantur
+Lanx Australis
+Lapra
+Laran
+Laren
+Lares
+Largo
+Largor
+Laroron
+Lasctena
+Lasic
+Lasidia
+Lasitus
+Lassiurt
+Lathet
+Lathetu
+Latugrca
+Laturath
+Laula
+Laurdu
+Laurirt
+Lava
+Lave
+Laxe
+Lazgll
+Lazglrgoro
+Lcaeiustal
+Lcaesthusc
+Lcamusichi
+Lchur
+Lcleartron
+Lcolelis
+Lcoponele
+Lcytharurol
+Ldelord
+Ldori
+Ldurgo
+Lecipheper
+Lecithy
+Leda
+Ledonia
+Leesti
+Legadisil
+Legale
+Leganar
+Legd
+Legenais
+Leiaga
+Leim
+Lelege
+Lellu
+Lelopicasus
+Lely
+Lema
+Lemetei
+Lemeuse
+Lemner
+Lemusiusa
+Lenarthonal
+Lengara
+Lenth
+Lentichopy
+Lentz
+Leoea
+Leonis
+Lepaleli
+Leporis
+Lepusich
+Leria
+Lerimustha
+Lern
+Leroip
+Lerononti
+Leronoph
+Leropha
+Lerpiathyl
+Lertha
+Lesal
+Lesath
+Lese
+Lesiarotera
+Lesididisil
+Lesinyst
+Lesste
+Lesthoth
+Leteo
+Lethyl
+Leto
+Letona
+Leullyno
+Leus
+Leusa
+Leusaegr
+Leusargol
+Leusasi
+Leusen
+Leusiau
+Leusona
+Leusset
+Levinius
+Liadartheus
+Liae
+Lialia
+Liallus
+Liam
+Lianamer
+Liandra
+Liangba
+Liarargodr
+Liarassi
+Liargo
+Liariru
+Liaruseu
+Lias
+Liaugu
+Liazg
+Libra
+Licareusysa
+Licilu
+Licite
+Liclidopym
+Ligon
+Ligos
+Lilaz
+Liletesi
+Lilimm
+Lilinithaulo
+Lilioid
+Lilisth
+Lilith
+Lilulepe
+Liluthax
+Lilymeg
+Lilynesena
+Limbo
+Lina
+Lingindu
+Linon
+Lioniususe
+Lir
+Lirarorir
+Lircandur
+Lirgl
+Liri
+Lirina
+Lisam
+Liscorod
+Lise
+Liseast
+Liseni
+Lisiset
+Lismeu
+Lisoesa
+Lisstus
+Liteu
+Lith
+Liuleaei
+Liulv
+Liusise
+Liustianu
+Liusust
+Lkargo
+Lkorotuturngul
+Locn
+Lodurmorglaug
+Loki
+Lolesi
+Lolyso
+Lomax
+Lonanid
+Lones
+Longinus
+Loph
+Lorelei
+Loren
+Lorina
+Loriul
+Lorn
+Lorulir
+Lothar
+Lrgurothmort
+Lrorororothan
+Lucida
+Lucida Anseris
+Lugh
+Luglauro
+Lulustaial
+Lulyreu
+Lumon
+Lundra
+Luronau
+Luronest
+Lurontusiu
+Luronusous
+Lusas
+Luscan
+Lusceu
+Luscheusc
+Luscisil
+Lusegareusi
+Lusemasthe
+Lusesiusiag
+Lusi
+Lusia
+Lusil
+Lusioneu
+Lusiun
+Lusoth
+Lusth
+Lustusus
+Lusu
+Lususi
+Lusybrsor
+Lusyt
+Luyten
+Luyten's Star
+Lviarorera
+Lvida
+Lvimimataly
+Lybrisiapyt
+Lycas
+Lyinal
+Lylceust
+Lyle
+Lylesm
+Lyleulus
+Lylysyiteiu
+Lymaelus
+Lymarsego
+Lymasthe
+Lymbr
+Lymeurel
+Lymne
+Lymut
+Lynthust
+Lynx
+Lyph
+Lypyno
+Lyra
+Lyraleiol
+Lysal
+Lysia
+Lysian
+Lysmict
+Lystena
+Lystore
+Lytaetas
+Lyteus
+Lythes
+Lythisicusu
+Lythisth
+Lytir
+Lyton
+Lytu
+Maasym
+Macedonia
+Macom
+Macrinus
+Maea
+Maelandund
+Maelstrom
+Maen
+Maeror
+Maertha
+Maerythort
+Maestro
+Maeusasm
+Magica
+Magincia
+Mahasim
+Maia
+Maiangwegird
+Mairora
+Malalus
+Maldoran
+Mali
+Maliu
+Mall
+Malugrogu
+Malvasia
+Malvax
+Mamba
+Mambra
+Mameosid
+Mammog
+Mamom
+Mamorona
+Manan
+Mancysthi
+Mane
+Manen
+Manglalri
+Mangogw
+Mangorg
+Manguath
+Mann
+Mano
+Manol
+Mantha
+Manticore
+Maresyma
+Marfak
+Marfark
+Marfic
+Marfik
+Marilyn
+Mariposa
+Maritul
+Markab
+Markus
+Marlonia
+Marm
+Marondam
+Maroon
+Marpis
+Marsack
+Marshall
+Martasa
+Martin
+Martu
+Martzia
+Marva
+Masada
+Maso
+Mastariusia
+Masym
+Mataline
+Matar
+Maturglaurmmob
+Matusist
+Maulinag
+Mauralus
+Maurcamingo
+Maurcaualaurau
+Maurth
+Mavala
+Maxeme
+Maxeusiamb
+Maxia
+Maximinus
+Mazglu
+Mbanu
+Mbarorntusi
+Mbelceclu
+Mber
+Mbis
+Mboreg
+McConnell
+Meal
+Meaneo
+Mebsuta
+Mecenustit
+Media
+Medodane
+Medop
+Medusa
+Meersman
+Megaioreun
+Meganaenar
+Megbako
+Megdial
+Meglar
+Megodallyt
+Megoe
+Megolesstha
+Megrez
+Megugl
+Megwe
+Megwengi
+Meicodoca
+Meissa
+Meisst
+Mekbuda
+Melakaeth
+Melanor
+Melaro
+Melava
+Melen
+Mellurat
+Melnos
+Mema
+Membr
+Memes
+Memoision
+Mencar
+Menchan
+Menchib
+Mend
+Menenicy
+Meneter
+Menkab
+Menkalinan
+Menkar
+Menkent
+Menkib
+Meoec
+Meolai
+Meole
+Meolysus
+Meonone
+Meorete
+Meosil
+Meoumemotho
+Merach
+Merak
+Merepysthit
+Meresm
+Mereuscta
+Merga
+Merhax
+Meriadoc
+Meridian
+Merisi
+Merlin
+Mernica
+Merope
+Meroru
+Merseneus
+Mertugogla
+Mesaen
+Mesalina
+Mesaly
+Mesam
+Mesarthim
+Mesernos
+Mesissis
+Mesoi
+Mestho
+Metallah
+Metalorn
+Metapope
+Meth
+Methariril
+Methi
+Methuss
+Metis
+Metunal
+Meturob
+Meus
+Meusi
+Meusmus
+Meustei
+Miaeusicr
+Mialyc
+Miam
+Miamaern
+Miaplacidus
+Miarm
+Miarorit
+Miasma
+Miavaugurm
+Miceial
+Microscopii
+Midgard
+Mididolc
+Midilel
+Migor
+Mikah
+Mikus
+Milamber
+Miletrmus
+Milka
+Milymneton
+Mimosa
+Minangin
+Minbar
+Minchir
+Mindragon
+Minelava
+Mingb
+Minitu
+Minkar
+Minnaver
+Minoc
+Minos
+Mintaka
+Mintor
+Mira
+Mirach
+Miram
+Mirc
+Mirfak
+Mirial
+Mirolainandong
+Mirphak
+Mirzam
+Misam
+Misandria
+Misicype
+Misusero
+Misusyt
+Mithorodino
+Mitugiargli
+Mitula
+Miusanenimi
+Miutho
+Mizar
+Mnesth
+Mnisobry
+Mnopposs
+Mobazgo
+Mobeno
+Mocen
+Moda
+Modulkau
+Modurodothanch
+Moega
+Moer
+Mogo
+Mogwegla
+Molison
+Moneus
+Monisita
+Monollim
+Monteg
+Monumus
+Morath
+Mordred
+Morellia
+Morgocio
+Moriaili
+Morit
+Mormegil
+Mormo
+Moroba
+Morolung
+Morondorot
+Mororngla
+Morser
+Mortha
+Moruliri
+Motamonus
+Mothallah
+Mothava
+Mothei
+Motic
+Moturiarcaen
+Mpearenas
+Mphiad
+Mphothio
+Mphusymo
+Mpily
+Mpisuscal
+Mprthe
+Mu Draconis
+Mu Orionis
+Mufrid
+Mules
+Muliphein
+Muliphen
+Mulortetal
+Muly
+Mumn
+Munene
+Muphrid
+Muresylyl
+Muri
+Muro
+Murololym
+Murratz
+Murtheripe
+Murzim
+Musa
+Musal
+Musaseopop
+Musaseusai
+Muscida
+Muse
+Musei
+Muselego
+Muses
+Musetiul
+Museusa
+Musiamararg
+Musiausc
+Musicasiari
+Musicthy
+Musilusice
+Musiusonoli
+Musolone
+Musoma
+Musonale
+Musseo
+Must
+Mustaioryss
+Musthyman
+Mususysta
+Musymiant
+Musymu
+Musyrym
+Mycoon
+Myrkr
+Nabar
+Nabep
+Naboo
+Nacythor
+Nadon
+Naegw
+Naelolk
+Naesc
+Naeust
+Nagbal
+Nagi
+Nahax
+Nahmi
+Nainath
+Nair al Saif
+Naix
+Najmanowicz
+Nakkar
+Nalanusal
+Nalatuli
+Nalctho
+Nalenenegre
+Nali
+Nalithon
+Naltor
+Nam Chorios
+Namdil
+Name
+Nanobr
+Nanoleli
+Nantaeu
+Naos
+Narendra
+Nargrast
+Narilei
+Narita
+Narm
+Narn
+Narnia
+Naro
+Narogl
+Naronim
+Narsicon
+Narth
+Narvath
+Nasatusa
+Nasesol
+Nash
+Nashira
+Nasu
+Nasya
+Nasystiusyp
+Natesi
+Nath
+Nathot
+Nathugli
+Natugl
+Naugingoril
+Naulimmogi
+Naungrc
+Nausica
+Nausicaa
+Navi
+Naxos
+Nazgbarc
+Ncabegimorcala
+Ncae
+Ncammironimorc
+Ncat
+Ncharurc
+Nconyril
+Ncope
+Ndellandunglar
+Ndiondanu
+Ndithionc
+Ndiususe
+Ndonea
+Ndoro
+Ndoth
+Ndrinthangling
+Ndrtula
+Ndulias
+Ndullotunau
+Ndurgbe
+Ndusthem
+Neare
+Neasybas
+Nebulon
+Necro
+Necros
+Necteu
+Nedi
+Nedu
+Negach
+Negailiu
+Negdid
+Negduron
+Negoleus
+Neim
+Neis
+Neisalylegr
+Neit
+Neith
+Nekkar
+Nelesar
+Neleus
+Neli
+Nelicale
+Nelisi
+Nelli
+Nelsonia
+Nelvaan
+Nelvana
+Nemb
+Nemedo
+Nemesia
+Nencus
+Nentht
+Neobelly
+Neocabiusoc
+Neoisia
+Neol
+Neona
+Ner Gal
+Nera
+Neraeus
+Neraicisusi
+Neriataeg
+Nermoci
+Neroeus
+Nerolesatae
+Neru
+Nerva
+Nervala
+Nervalla
+Nerys
+Nesaeu
+Nesalec
+Neserthasu
+Neshmet
+Nesoreus
+Nesro
+Nessit
+Nestasici
+Nestor
+Nesus
+Nesusthyl
+Netamuserth
+Neth
+Netriar
+Neus
+Neuse
+Neusi
+Neusil
+Neusisegei
+Neusmeu
+Neuso
+Neusor
+Neusth
+Nexus
+Ngba
+Ngbaur
+Ngialangwelura
+Ngianden
+Nginde
+Nglardu
+Ngli
+Nglin
+Nglkorth
+Ngllrormodug
+Nglo
+Ngloturo
+Ngobav
+Ngodrg
+Ngogr
+Ngon
+Ngondurobal
+Ngor
+Ngordo
+Ngorind
+Ngoronde
+Ngothaulurirtu
+Ngothauru
+Ngotugor
+Ngotur
+Ngrodur
+Nguarilanan
+Ngul
+Ngurtula
+Niaedust
+Niaio
+Niandusi
+Niaresan
+Niaruse
+Niau
+Niausite
+Nibelung
+Nice
+Nictelvi
+Nicysictr
+Nide
+Nidileasthe
+Nidili
+Nidisteg
+Nigel
+Nihal
+Nike
+Nilba
+Nildil
+Nilesisi
+Nilialole
+Nilithanau
+Nilor
+Nim Drovis
+Nimba
+Nimbus
+Nimetha
+Nimmala
+Ningai
+Nioneuscype
+Niopegrsion
+Nippoeri
+Nirar
+Nirauan
+Nisemesi
+Nishaya
+Nisocamith
+Niste
+Nitegemete
+Nius
+Niusaneoene
+Niususiarnd
+Nivea
+Nivek
+Niven
+Nochy
+Nodus Secundus
+Noesicho
+Nolca
+Noldor
+Nolobrimic
+Nolusal
+Nonape
+Noneras
+Nontamasete
+Nonu
+Nonyryb
+Nophaloi
+Norcadia
+Nornemobriu
+Nortia
+Nortuse
+Norusar
+Noshay
+Nosontri
+Nosuste
+Notricem
+Nousisar
+Nousylv
+Nova Rigel
+Novaria
+Novax
+Ntalylia
+Ntan
+Ntane
+Ntanthe
+Ntea
+Ntelitesia
+Ntem
+Nteneonen
+Nteropal
+Ntertull
+Ntesaryprt
+Ntest
+Nteu
+Nteuseis
+Ntha
+Nthaeus
+Nthararinal
+Nthethe
+Ntheuson
+Ntheusus
+Nthisici
+Ntho
+Nththit
+Nthyleli
+Ntopis
+Ntorn
+Ntuiat
+Ntulith
+Nturin
+Ntusteteom
+Ntusym
+Nu Draconis
+Nubia
+Nugent
+Nulerodor
+Nunki
+Nurthi
+Nusa
+Nusakan
+Nusane
+Nusasusc
+Nusianeus
+Nusiset
+Nusiu
+Nusiuste
+Nusmus
+Nususybri
+Nylaest
+Nymore
+Nyquist
+Nyria
+Nyrvona
+Nysarthi
+Obae
+Obarc
+Obau
+Obeleume
+Obenateus
+Oberan
+Obia
+Oblivion
+Ocaiamae
+Ocamim
+Ocampa
+Oceania
+Ochesius
+Ochoa
+Ocia
+Ocistear
+Ocisteus
+Ocnes
+Ocrmoneta
+Ocrtarusu
+Octavia
+Ocympho
+Ocyphoni
+Odantali
+Odausiare
+Odelaur
+Odin
+Odiusarpral
+Ododol
+Odrcabetui
+Odulla
+Odus
+Odysseus
+Oela
+Oelemuse
+Oenoncip
+Oeutais
+Oglir
+Oglitha
+Ogllil
+Oglo
+Ogonthi
+Ogormiru
+Oiadusei
+Oiais
+Oialv
+Oicamus
+Oict
+Oicy
+Oidegr
+Oilcry
+Oiusanalus
+Oiusth
+Okul
+Olaic
+Olam
+Olei
+Olelo
+Oleolam
+Olesia
+Olesu
+Oletrianart
+Oliae
+Olian
+Olianaeu
+Olic
+Olilymo
+Oliriruri
+Olisth
+Olon
+Olusm
+Olybrius
+Olyiaicymer
+Olylus
+Olyrtheusyl
+Omapelli
+Omartid
+Omekla
+Omelidische
+Omusemeuso
+Omusmus
+Onagaero
+Onaing
+Onana
+Onapophiphu
+Onaristhu
+Onas
+Onaun
+Onausus
+Oncrpa
+Oncuselc
+Onderon
+Ondrnab
+Onei
+Oneial
+Onend
+Oneren
+Oneriarus
+Onern
+Onerust
+Onescio
+Onesiu
+Onesse
+Onesthompr
+Onete
+Onetei
+Oneticyl
+Oneus
+Oneustun
+Oneusythe
+Ongitul
+Ongiturg
+Ongoritulde
+Oniandal
+Onic
+Onidic
+Onilearych
+Onism
+Onithus
+Onoiaca
+Onol
+Onolion
+Onorp
+Onorsthryre
+Onot
+Ontal
+Ontarmu
+Onte
+Ontelyme
+Onthist
+Ontita
+Onton
+Onusaes
+Onusia
+Onusid
+Onusisusmi
+Onythias
+Onyx
+Opep
+Opete
+Ophiuchi
+Ophiucus
+Opicertemi
+Opim
+Oplin
+Oponausopo
+Oponeon
+Oprostian
+Oracetecanc
+Oral
+Orauldo
+Orausi
+Orban
+Orca
+Oredtes
+Orellius
+Orestes
+Oreusiso
+Organia
+Organon
+Organtrix
+Orgilr
+Orgla
+Orgodurodotha
+Orial
+Oriang
+Orias
+Oring
+Oringo
+Orion
+Orionis
+Orirgo
+Oris
+Orlando
+Ormazd
+Ornara
+Ornia
+Orniaia
+Ornon
+Ororothe
+Orot
+Orothia
+Oroturgoliruro
+Orpet
+Orpideusu
+Orsaph
+Orsha
+Ortely
+Ortemole
+Orteusu
+Orth
+Orther
+Ortulodr
+Orurgul
+Orus
+Oruthaet
+Orymio
+Oryne
+Oryp
+Orys
+Orysulybodi
+Osiris
+Osole
+Osprey
+Ostho
+Otal
+Oteo
+Othabal
+Othala
+Othathir
+Othaula
+Othaur
+Othediat
+Othephop
+Othero
+Otho
+Othrent
+Othta
+Othurithuang
+Otulia
+Otulinarch
+Otuna
+Otunin
+Oturchirori
+Ouleseru
+Ousepys
+Ousiteniorp
+Oussuson
+Oususth
+Oxesis
+Oxetemedo
+Ozeum
+Pacifica
+Pact
+Pagan
+Pakled
+Paladin
+Palain Seven
+Palel
+Pallas
+Palmax
+Pamar
+Pameusanis
+Pandaros
+Panea
+Panetae
+Panidab
+Panistho
+Panora
+Parada
+Paradan
+Paradia
+Paradron
+Paragon
+Parallax
+Paranid
+Paridias
+Paris
+Parorseust
+Pasthel
+Patiasidast
+Patrickus
+Patroklos
+Pavonis
+Paws
+Pax
+Pax Atlar
+Peacock
+Peale
+Peciusceu
+Pegasus
+Pegdeorone
+Peiomusary
+Pelagon
+Peleus
+Pelia
+Pemet
+Pemuti
+Penelope
+Penen
+Penesmuson
+Peneus
+Pent
+Pentakor
+Penthara
+Peregrin
+Pereth
+Peri
+Perihellion
+Perillia
+Pern
+Pero
+Perondiu
+Perseus
+Perthol
+Pertinax
+Pertus
+Pery
+Pesct
+Pesulist
+Pesy
+Pete
+Peti
+Petone
+Petroni
+Peunthteusy
+Peuseaeu
+Phabidoleo
+Phabrothe
+Phact
+Phad
+Phaet
+Phaeton
+Phalanx
+Phalylc
+Phamenichou
+Phare
+Pharmusust
+Phecda
+Phego
+Phei
+Pheilegonae
+Phelersar
+Phelli
+Phelob
+Phemom
+Pheneuso
+Phepuste
+Pher
+Pherasi
+Pherkad
+Pherkad Minor
+Pherkard
+Phetartesmo
+Phethe
+Pheur
+Pheusu
+Pheususeu
+Pheusy
+Phialeusi
+Phica
+Phis
+Phism
+Phit
+Phiusthym
+Phobe
+Phobos
+Phodereusa
+Phoenicis
+Phoenix
+Phoep
+Pholmegaut
+Phonae
+Phoneo
+Phonesen
+Phontare
+Phoriathi
+Phoris
+Phort
+Phricyllale
+Phte
+Phti
+Phumon
+Phusa
+Phuselen
+Phusisithe
+Phyllidi
+Phymonotam
+Phynen
+Phyph
+Phyr
+Phyt
+Piamonane
+Pian
+Piarelv
+Piasial
+Piastheusus
+Piers
+Pilis
+Pimachota
+Pine
+Pinra
+Pioiali
+Pipioriaeus
+Pippen
+Pipycaul
+Pist
+Piteusther
+Pithra
+Pkhedock
+Pleione
+Pocotetaep
+Poegatusus
+Polaris
+Polaris Australis
+Poldeukes
+Polep
+Poliae
+Polimar
+Pollack
+Pollux
+Pomu
+Pomusaneu
+Ponch
+Ponesa
+Poni
+Poniab
+Ponil
+Ponorusi
+Poph
+Popim
+Popril
+Poprs
+Poraeust
+Poral
+Porgri
+Poror
+Porrima
+Pory
+Posalusi
+Poseidon
+Poth
+Powell
+Praecipua
+Praxis
+Prea
+Prely
+Premeas
+Preneuscly
+Preseronu
+Prgoneusaic
+Prgoneut
+Priam
+Prica
+Pricano
+Prima Giedi
+Primus
+Prisaseu
+Pristhon
+Prnen
+Probus
+Proctor
+Procyon
+Prometheus
+Pronimen
+Propus
+Proton
+Proxima Centauri
+Prstusess
+Prymeoli
+Psilon
+Pulcherrima
+Purero
+Pusen
+Pusi
+Pusianeus
+Pusist
+Puss
+Pybelaroniu
+Pybollum
+Pyic
+Pyli
+Pymusachal
+Pynesth
+Pypiale
+Pyriael
+Pyris
+Pyrphiau
+Pysolo
+Pythoxympa
+Pytusan
+Qetesh
+Qibil
+Qualor
+Quanta
+Quatra
+Quatrale
+Quea
+Quebeth
+Quendor
+Quess
+Questia
+Questor
+Quiberon
+Quilden
+Quimera
+Quintessa
+Quirinus
+Quistis
+Qvazir
+Qward
+Rabanusiai
+Racymus
+Radagast
+Raearici
+Raemus
+Raeromusaus
+Raesth
+Ragaseno
+Ragnarok
+Raian
+Raix
+Rakal
+Ramantis
+Rambke
+Ramzed
+Rana
+Rancora
+Rand
+Rane
+Rante
+Raphael
+Raraboneax
+Rargo
+Rarusme
+Ras Algethi
+Ras Alhague
+Ras Elased Australis
+Ras Elased Borealis
+Rasalas
+Rasalgethi
+Rasalhague
+Rasenthu
+Rashon
+Rastaban
+Rastan
+Rathra
+Raugllit
+Raulkororor
+Raus
+Rave
+Raxis
+Razdiel
+Rcaelaro
+Rcakongurog
+Rcarurogu
+Rcaruthimaluro
+Rcat
+Rcauglaroring
+Rchathag
+Rdor
+Rdurmotur
+Reaper
+Reax
+Reaxis
+Rebe
+Redna
+Regalus
+Regor
+Regulax
+Regulus
+Reicly
+Reiner
+Relva
+Remus
+Renaroc
+Reneusiceg
+Renus
+Reominer
+Reorte
+Repsol
+Republica
+Rerenul
+Rereta
+Rerialylers
+Rernid
+Reruma
+Resanthi
+Reses
+Resesic
+Resic
+Residia
+Resmusu
+Rest
+Retalia
+Reulyluseg
+Reus
+Reusaret
+Reusimo
+Revanna
+Revelle
+Rexia
+Rgla
+Rglag
+Rgonorephon
+Rgont
+Rgorugor
+Rhampora
+Rhasta
+Rhea
+Rhodia
+Riabr
+Riacni
+Riaergoli
+Riag
+Riale
+Riamanidisu
+Riar
+Riaressis
+Riaroi
+Riaxe
+Riccio
+Ricemiarar
+Riditemeta
+Riedquat
+Rigel
+Rigel Kentaurus
+Rigil Kentaurus
+Rijl Al Awwa
+Rijndael
+Rilax
+Rimest
+Rimindor
+Rimus
+Ringog
+Ringorc
+Ringwen
+Rinindur
+Rior
+Ripenoth
+Riph
+Rircha
+Rirgor
+Rirind
+Riro
+Risa
+Risarnid
+Risiarthy
+Ritas
+Ritatu
+Ritho
+Ritugonang
+Ritule
+Riturin
+Ritususip
+Riusc
+Riusimnc
+Rmar
+Rmintuli
+Rmiparoni
+Rmocriusisu
+Rndu
+Rneg
+Rnerersico
+Rnesor
+Rneuse
+Rnglarg
+Rnoilegda
+Rnusthesonu
+Rnyt
+Robei
+Roceusil
+Rochos
+Rocis
+Rodorirgord
+Roduringugogil
+Roeum
+Rogan
+Rogoth
+Rohan
+Roialch
+Roimini
+Roinerus
+Rolau
+Rolchegeal
+Roleus
+Rolid
+Rolidus
+Rolothu
+Rolu
+Romeo
+Romeruse
+Romulus
+Ronaert
+Ronaisi
+Roneice
+Ronene
+Rong
+Rongororir
+Ronicen
+Roniscy
+Rontaneabrt
+Ronth
+Ronu
+Ronuso
+Rony
+Roona
+Roosevelt
+Rorithabena
+Rorndrir
+Rorornd
+Rorsilei
+Rorthar
+Rorust
+Rosalind
+Ross 154
+Rosu
+Rotanev
+Roteori
+Rothanglatuiai
+Rothone
+Roturgi
+Roustu
+Roxe
+Roxymermar
+Rpaeusic
+Rpheus
+Rporp
+Rprtha
+Rprym
+Rsilones
+Rsimu
+Rsip
+Rsonutherus
+Rsus
+Rsusiphyth
+Rsylcanuse
+Rtale
+Rtan
+Rtaususi
+Rtemo
+Rtere
+Rteu
+Rteuseunt
+Rthaeth
+Rthar
+Rthaugll
+Rtheae
+Rthecrialis
+Rtheusegai
+Rthia
+Rthochic
+Rthtit
+Rtort
+Rturtur
+Ruchba
+Ruchbah
+Rugilor
+Rukbat
+Rukh
+Rurecl
+Rusas
+Rusaso
+Ruse
+Ruseustet
+Rusiadorpa
+Rusius
+Russamus
+Russom
+Rususyp
+Rutan
+Ruth
+Rutia
+Ryche
+Ryle
+Rylere
+Rylysitho
+Rymegaeu
+Rymelaia
+Rymemiam
+Rymoro
+Rynaiusyct
+Rynthonant
+Rysitheu
+Rytar
+Rytelidia
+Rythar
+Saba
+Saben
+Sabik
+Sadachbia
+Sadalach
+Sadalachbia
+Sadalbari
+Sadalmelik
+Sadalsuud
+Sadatoni
+Sadira
+Sadoc
+Sadr
+Saeiacr
+Saeiusathe
+Saestu
+Saeusis
+Sagittarius
+Saharia
+Saiph
+Sakazgw
+Sakura
+Salacia
+Salar
+Salaul
+Salcle
+Salerno
+Salilrmog
+Salimmaulk
+Salinn
+Salitha
+Salko
+Salm
+Saln
+Salrg
+Salycr
+Salysiocy
+Samab
+Samilavamam
+Samms
+Samol
+Sanangor
+Sander
+Sane
+Sangloroba
+Sanglrnd
+Sanglu
+Sani
+Saphrona
+Sapphire
+Sarax
+Sareusolus
+Sargas
+Sargbath
+Sarge
+Sarin
+Sarir
+Sarita
+Sarniasus
+Saron
+Sarona
+Sarororgongor
+Sarpeidon
+Sarturm
+Sarys
+Sasegaxeli
+Sasin
+Sasthis
+Satasiche
+Sateda
+Satori
+Satun
+Satur
+Satyr
+Sauagu
+Saugothe
+Saulk
+Sauriarmet
+Sauro
+Sauron
+Saurton
+Sausumun
+Savamazgorind
+Savazgo
+Sazglalar
+Sazgull
+Scaiusta
+Scalos
+Scart
+Scasus
+Sceptrum
+Scheat
+Schedar
+Scheddi
+Schultz
+Scorpius
+Scotui
+Scususylyl
+Scutum
+Scwa
+Scyrica
+Sebastian
+Secunda Giedi
+Sedustagdus
+Segaryc
+Segin
+Seginus
+Sego
+Segonuri
+Segresoneus
+Seisero
+Seisiaitery
+Seisypheane
+Selay
+Selertis
+Selim
+Seliostr
+Selkis
+Semachyt
+Semele
+Semo
+Semuleai
+Senemena
+Senialu
+Senit
+Senusiu
+Senym
+Seoph
+Sepulchre
+Serm
+Sernustion
+Sero
+Serol
+Serolycesio
+Seronia
+Serpens
+Sertan
+Sertheusata
+Sesilopri
+Seso
+Sesonoliae
+Sesyles
+Setae
+Seus
+Seuse
+Seutaeus
+Severus
+Shaetheturdel
+Shaglkogornau
+Shaina
+Shalim
+Shallot
+Shalorililaull
+Sham
+Shanazar
+Shangrila
+Shanguri
+Shaplr
+Sharatan
+Shard
+Shardia
+Shariatugorgrd
+Sharilot
+Sharlin
+Shau
+Shaula
+Shaurmor
+Shazgor
+Shedir
+Shedire
+Shegb
+Sheliak
+Sheninaurol
+Shenirug
+Sheratan
+Sherian
+Sherorau
+Shin
+Shindu
+Shini
+Shiralea
+Shiva
+Shmethingo
+Shmiriaegia
+Shmmingolrg
+Shomma
+Shrue
+Shug
+Shugar
+Shuma
+Shungor
+Shurimodurutur
+Shuturi
+Shya
+Sial
+Siale
+Sialesicei
+Sialv
+Sialyle
+Siane
+Siapyl
+Siarilyl
+Siars
+Siase
+Siasteus
+Siasuroniar
+Siasuseleag
+Siatax
+Siathal
+Siau
+Siblia
+Sibrus
+Sice
+Sidal
+Sidas
+Sidiagasmu
+Sidialy
+Sidiu
+Siduro
+Sigon
+Silec
+Silesia
+Sileth
+Silicon
+Silisanus
+Silnra
+Silusiar
+Sily
+Simak
+Sina
+Sioch
+Sion
+Siori
+Siphe
+Sipples
+Sipythoxy
+Sirah
+Sirius
+Sischyrt
+Sissi
+Sisteustoth
+Sithylc
+Sitlet
+Situla
+Siur
+Siusiodicis
+Sivil
+Skaarj
+Skadj
+Skara Brae
+Skat
+Skowbo
+Slepur
+Slier
+Smarsa
+Smbestha
+Smeicita
+Smesus
+Smiae
+Smis
+Smistantaba
+Sobek-Re
+Sodi
+Soethycheth
+Sohoha
+Soholia
+Sol
+Solace
+Solaria
+Solaris
+Solip
+Sollis
+Soma
+Sonc
+Sonimusi
+Sopho
+Soprano
+Sora
+Sore
+Soresmus
+Soththr
+Soussmpanth
+Spathiwa
+Spectre
+Speradon
+Spica
+Spira
+Split
+Squidi Alpha
+Squidi Beta
+Squidi Gamma
+Staban
+Stabe
+Stace
+Staer
+Stakoron
+Stanala
+Starbuck
+Stasacich
+Steiaruson
+Stelcnelad
+Stepheare
+Steran
+Steril
+Sterope II
+Stesanal
+Stetalod
+Stetholes
+Steusich
+Steusu
+Sthaiarego
+Sthas
+Stheioneu
+Sthemar
+Sthene
+Sthenelos
+Sther
+Sthianarthe
+Sthiclilym
+Sthiu
+Stho
+Sthodiar
+Sthoxy
+Sthrtu
+Sthuss
+Sthy
+Stidic
+Stidus
+Stier
+Stilvisa
+Stitoc
+Stonatem
+Storegamese
+Strife
+Stygian
+Styris
+Styx
+Sualocin
+Subra
+Suhail
+Suhail al Muhlif
+Sulafat
+Sulereust
+Susan
+Suschia
+Susega
+Susei
+Susenermous
+Susiare
+Susonampege
+Susoticy
+Sussipo
+Sustaeur
+Sustaro
+Susthetiado
+Sustheusi
+Suston
+Sustustu
+Susum
+Susususa
+Sven
+Swan
+Sycl
+Syrma
+Sytia
+Tabe
+Tabit
+Tacicic
+Tacitus
+Taclymu
+Tadipi
+Taeneu
+Taer
+Tagamabilyl
+Tagd
+Tagocheo
+Tagonono
+Taidorsu
+Taimusmalc
+Taisiacher
+Takron
+Talarina
+Talaxia
+Talega
+Talitha
+Talitha Australis
+Talitha Borealis
+Tall
+Tallara
+Tallor
+Talos
+Talynom
+Tamaran
+Tamo
+Tampolyr
+Taneale
+Tanecarsi
+Tanes
+Tanesanysit
+Tania Australis
+Tania Borealis
+Tanith
+Tankara
+Tantalus
+Taralon
+Tarazed
+Tarazet
+Tareno
+Taresia
+Taresis
+Tarill
+Tarkalia
+Taro
+Tarochon
+Taron
+Tarp
+Tarsus
+Tarthea
+Taschoent
+Tasmax
+Tathor
+Tatratac
+Tau Ceti
+Taurine
+Taurus
+Tausth
+Taygeta
+Tealyial
+Tedia
+Tegmen
+Tejat Posterior
+Tejat Prior
+Teladi
+Telaedoc
+Telana
+Telanor
+Telaria
+Telemachus
+Teleris
+Tellar
+Telustal
+Temalus
+Temeum
+Tenarius
+Tenasa
+Tendriss
+Tenebrae
+Teneiasamop
+Teniph
+Tenu
+Tepasar
+Terais
+Teranor
+Terareusy
+Teratia
+Terax
+Terebellum
+Terfin
+Teriagr
+Terlina
+Terminus
+Teroleoc
+Terranova
+Tersau
+Tertusal
+Terumasy
+Terus
+Teruted
+Teryche
+Terym
+Tesisealust
+Tesla
+Tesoneus
+Tessen
+Tesshana
+Testes
+Tethys
+Teumuso
+Teus
+Teuse
+Teuseg
+Teuseususil
+Teusil
+Teusul
+Thabi
+Thabit
+Thaelc
+Thaerthuth
+Thagluna
+Thaiam
+Thaiane
+Thakor
+Thalassa
+Thalax
+Thalla
+Thalnos
+Thalrg
+Thanatos
+Thanilau
+Thareica
+Tharin
+Tharkos
+Tharot
+Tharsis
+Thas
+Thaturirordugb
+Thatuturingu
+Thaungl
+Thaurmma
+Thebes
+Theemim
+Theemin
+Theia
+Theluan
+Themolit
+Thenango
+Thenara
+Thend
+Thenitega
+Thenussap
+Theriast
+Therilin
+Therpho
+Therthy
+Thes
+Theses
+Thesthe
+Theta Camelopardalis
+Theta Chamaeleonis
+Theta Crateris
+Theta Draconis
+Theta Giclas
+Theta Horologii
+Theta Hyades
+Theta Illuminati
+Theta Iota
+Theta Lyncis
+Theta Orionis
+Theta Persei
+Theta Serpentis
+Thetis
+Thetul
+Theust
+Thielbahr
+Thimaet
+Thindor
+Thingo
+Thiolus
+Thiphe
+This
+Thites
+Thithirmindrn
+Thiu
+Thmathendungo
+Thmingo
+Thoba
+Thocelyma
+Thoctisai
+Thoe
+Tholia
+Thon
+Thonephea
+Thop
+Thopiocrn
+Thorax
+Thori
+Thorical
+Thork
+Thornax
+Thrace
+Thren
+Thrme
+Thronte
+Throraris
+Throthgard
+Thrta
+Thrtrmno
+Thtagreru
+Thtoroer
+Thuban
+Thugolrogot
+Thuirtha
+Thulicyth
+Thumar
+Thunau
+Thur
+Thurion
+Thusisus
+Thutusic
+Thybeg
+Thybri
+Thypeuser
+Thytaisu
+Thytathe
+Tiaess
+Tianonul
+Tibal
+Tiberius
+Tiburon
+Tichyloxe
+Ticytosamol
+Tien Kuan
+Tilonus
+Timbol
+Tisanen
+Tiscarpyb
+Tisicym
+Titan
+Titania
+Tith
+Titus
+Tiusta
+Tochy
+Todaiatus
+Toen
+Toioli
+Toliman
+Tollana
+Toneris
+Toporo
+Tora
+Torcularis Septemtrionalis
+Torcularis Septentrionalis
+Tore
+Torenoneut
+Torga
+Torona
+Tort
+Touchstone
+Toulon
+Towne
+Trantor
+Trauth
+Trax
+Traxex
+Trenor
+Triac
+Triad
+Trill
+Trinsic
+Triskelion
+Tristan
+Trok
+Trostk
+Troy
+Trthe
+Tseen Kee
+Tsih
+Tuagoglinat
+Tuai
+Tuandrcagia
+Tuglath
+Tugweri
+Tuiningorcan
+Tuirgin
+Tulagul
+Tulakongw
+Tulangur
+Tulatha
+Tulavangbaung
+Tuldrgoriaiau
+Tumet
+Tunabako
+Tunaur
+Tundroro
+Tundulugl
+Tundurgonir
+Turais
+Turcabaing
+Turdurmaug
+Tureis
+Turinche
+Turirn
+Turirni
+Turituia
+Turon
+Turormegluro
+Turotur
+Turthe
+Turtul
+Tusamuso
+Tusesic
+Tusiar
+Tusic
+Tusimerelle
+Tusteis
+Tustor
+Tutungu
+Tycho
+Tydeus
+Tykoski
+Tyl
+Typhon
+Tyr
+Tyra
+Tyrann
+Tyrol
+Tzuphay
+Uauluthilung
+Uazgon
+Ucarine
+Udesia
+Uglaldugimanau
+Ugoguldurgorca
+Ugorgrinal
+Ugorim
+Ugorngilanglia
+Ugortu
+Ugula
+Ugurcangl
+Uilkorit
+Uimobelkobaun
+Uinch
+Ukea
+Ulael
+Ulangoro
+Ulanisasth
+Ularualkor
+Ulaugorongurca
+Ulenusym
+Ulerea
+Uleryth
+Ulesusi
+Uliammaluru
+Ulilat
+Ulimor
+Ulin
+Ulindun
+Ulingld
+Ulinin
+Ulirglli
+Ulisiume
+Ulitur
+Ulkaeg
+Ullirori
+Ullit
+Ullvitr
+Ulmath
+Ulock
+Ulror
+Ulruront
+Ultima
+Ulusisis
+Ulysteus
+Umelulicheg
+Umemus
+Umera
+Umere
+Umeria
+Umesanumele
+Umod
+Umuma
+Umusasusaro
+Umuseous
+Umusiari
+Unanitur
+Unavaul
+Uneg
+Uneiaedo
+Ungorch
+Unicorn
+Unicron
+Unin
+Uninitriulu
+Unthmor
+Untho
+Unthytho
+Unuk
+Unukalhai
+Unuror
+Uphally
+Ural
+Urania
+Urasia
+Urazgo
+Urcango
+Urduiaz
+Uremaler
+Urial
+Uriaphor
+Uriel
+Urinather
+Uriolisi
+Urirol
+Urisapai
+Urnardugo
+Urnaulat
+Uroi
+Uronarordrca
+Uroraugi
+Urorc
+Urorgwe
+Urotugon
+Ursa
+Urthugr
+Urtuland
+Ururuauthab
+Uryler
+Usabasemu
+Usabropo
+Usae
+Usaiteiano
+Usal
+Usalytanod
+Usamiutheso
+Usan
+Usana
+Usanabi
+Usanidiano
+Usanthe
+Usar
+Usaris
+Usarn
+Usaronyb
+Usartabe
+Usarthr
+Usase
+Usasusiat
+Usatech
+Usatemu
+Uscaery
+Uscaia
+Usch
+Usci
+Uscicadus
+Uscip
+Usclu
+Uscnamni
+Usctoxe
+Uscusur
+Usega
+Usegasa
+Usegor
+Usenic
+User
+Usera
+Userio
+Users
+Usesca
+Usess
+Usesth
+Uset
+Useu
+Useusesiph
+Useusisthe
+Useusoempop
+Usia
+Usiadicy
+Usial
+Usiari
+Usiaru
+Usiasaesur
+Usiasonalus
+Usicax
+Usich
+Usichy
+Usicr
+Usict
+Usidorilu
+Usidususe
+Usil
+Usilas
+Usilerth
+Usileta
+Usilusmonac
+Usio
+Usiobaleul
+Usioraegre
+Usiory
+Usip
+Usipaia
+Usiparoelit
+Usipote
+Usisa
+Usisc
+Usiscta
+Usisi
+Usisisth
+Usissen
+Usist
+Usistale
+Usistiai
+Usite
+Usitheot
+Usiu
+Usiurtonc
+Usius
+Usiustarth
+Usiusu
+Usmagaem
+Usmeondal
+Usmeseu
+Usmolel
+Usmusthaely
+Usmustus
+Usmusuth
+Usone
+Usoneophym
+Usoniarolu
+Usor
+Usorte
+Usoth
+Usotumotha
+Usoxeuri
+Ussae
+Ussi
+Ussorag
+Ussurum
+Usta
+Ustaeusche
+Ustamanusil
+Ustaryc
+Ustasin
+Ustasy
+Ustaul
+Ustega
+Usteithil
+Usteophis
+Ustereg
+Ustethor
+Ustha
+Usthata
+Usthegae
+Ustherthys
+Usthin
+Ustholol
+Ustilus
+Ustit
+Ustiusia
+Uston
+Ustrothy
+Ustusiuran
+Usus
+Ususaia
+Ususaralu
+Ususian
+Usustherant
+Ususthesid
+Ususti
+Usymaeurido
+Usymusophe
+Usyprere
+Usytheo
+Utathesidon
+Utenta
+Uterolus
+Uthor
+Utopia
+Utosero
+Uturang
+Vabargbar
+Vabathurot
+Vackhar
+Vadris
+Vaegongoro
+Vaeldra
+Vaelo
+Vaetha
+Vaethan
+Vaetharing
+Vaetuan
+Vaetula
+Vaetulaz
+Vaguaet
+Vairo
+Vakau
+Vala
+Valakis
+Valal
+Valdri
+Vale
+Valek
+Valens
+Valerian
+Valerius
+Valkorth
+Valkyrie
+Valorurnalorc
+Valtam
+Vamin
+Vammakoriaurir
+Van Maanen's star
+Vanal
+Vandor
+Vanga
+Vangond
+Vangras
+Vanthend
+Vantul
+Vantulimmort
+Varadia
+Varaulaurcalra
+Varcand
+Vargellar
+Vargonan
+Varinilalarg
+Varirg
+Varnus
+Varobaulrith
+Varothungldr
+Varturinazgo
+Varuna
+Vath
+Vathan
+Vathana
+Vatua
+Vatur
+Vaturi
+Vaturorgot
+Vauglalanab
+Vauglandorc
+Vaugu
+Vaugungoglror
+Vaul
+Vaulaug
+Vaunautha
+Vauravavaugot
+Vaurcatu
+Vauri
+Vauroth
+Vaurthul
+Vavang
+Vavaundelitha
+Vazgithabaetur
+Vazglrortugoro
+Vazgulaurn
+Vega
+Vela
+Velara
+Veles
+Velex
+Velorum
+Vendel
+Ventax
+Vequess
+Verelge
+Veridian
+Verinox
+Vertigo
+Vertilia
+Verva
+Vesper
+Vesta
+Viababr
+Viacaban
+Viadaria
+Viadope
+Viae
+Viaeceusil
+Viaedon
+Viaenthe
+Viaeonarane
+Viaeornith
+Viaeusote
+Viaia
+Viaiabaraus
+Viale
+Vialend
+Vialial
+Vialiate
+Vialica
+Vialipeus
+Vialorn
+Viame
+Viamesth
+Vian
+Vianai
+Vianus
+Viar
+Viaraboemei
+Viare
+Viario
+Viarp
+Viartusc
+Viast
+Viasusolyl
+Viausiar
+Viax
+Vicalus
+Vicar
+Vice
+Vicegol
+Vicha
+Vichit
+Vichrphon
+Vichyberysi
+Vicialli
+Vicionicesa
+Vicis
+Vicisiaga
+Viclasust
+Vicli
+Vico
+Viconear
+Victhymi
+Vicymo
+Vicyth
+Vidasisiuso
+Vidia
+Vidiae
+Vidituse
+Vidus
+Vigrel
+Vile
+Vilel
+Vilemasmus
+Vilemomo
+Vilentei
+Vilescheil
+Vileu
+Vilidon
+Vilisemus
+Viliusemo
+Vill
+Vilmor
+Vilymeus
+Vilytaer
+Vilytatanei
+Vima
+Vimb
+Vime
+Vimea
+Vimerones
+Vimes
+Vimpr
+Vinal
+Vincax
+Vindemiatrix
+Vinge
+Vinnatrix
+Vino
+Vioetust
+Viola
+Violente
+Viomuteleus
+Vionoc
+Vionodi
+Vior
+Viotaem
+Viothaxer
+Viousmemel
+Vipelcheit
+Viphtho
+Vipias
+Viporg
+Vipyr
+Virgil
+Virgo
+Viria
+Visaeti
+Visaiodoen
+Visallaipo
+Visapil
+Visax
+Viscas
+Visclusurs
+Vise
+Viseaiatand
+Visear
+Viseli
+Visemocrsi
+Vises
+Viseuloial
+Visi
+Visiaimpoi
+Visiais
+Visialei
+Visiars
+Visichymi
+Visid
+Visinian
+Visip
+Visipr
+Visistel
+Visisyst
+Visitham
+Visiusa
+Visiuse
+Visma
+Vismo
+Viso
+Visoeus
+Visona
+Visop
+Visoropym
+Visoxy
+Vissy
+Vista
+Vistaeos
+Vistalce
+Visteu
+Visuroi
+Visusel
+Visys
+Vitelel
+Vitellius
+Viteno
+Vith
+Vithal
+Vithan
+Vithesasis
+Vitia
+Viton
+Viule
+Viulias
+Vius
+Viusa
+Viusaeuso
+Viusi
+Viusm
+Viusomeopr
+Viusonces
+Viusoni
+Viuste
+Viususel
+Viusynthel
+Vizier
+Vizzard
+Volcania
+Volnar
+Vorad
+Vorash
+Vorcol
+Vortex
+Voth
+Vox
+Vulcan
+Vulpecula
+Vyro
+Wake
+Walex
+Walleye
+Ward
+Wardell
+Wasat
+Wazn
+Weber
+Wegba
+Wegbego
+Wegber
+Wegiaugoturgo
+Wegldorgot
+Wegliri
+Wegol
+Wegothaurondu
+Wegurtunam
+Wegweturthi
+Wei
+Welakondr
+Welakor
+Welalliriavan
+Welauglroturor
+Weld
+Weldrir
+Weliail
+Welilorol
+Welir
+Welirori
+Welkan
+Welkard
+Welortu
+Welrth
+Welshra
+Welsya
+Weltax
+Weluglang
+Weluror
+Wena
+Wenalrg
+Wenamarc
+Wenango
+Wench
+Wenchazgrmab
+Wengotha
+Wergogi
+Wergor
+Wergorip
+Weri
+Weriq
+Weror
+Werori
+Werorongrg
+Wesnoth
+West
+Westerfeld
+Weth
+Wetha
+Wethaelkor
+Wetharcavae
+Wethaugr
+Wethencalka
+Wetheth
+Wethimm
+Wetulk
+Wetungo
+Weturo
+Wetutug
+Wezen
+Wezn
+Wiken
+Wila
+Wilea
+Wilson
+Winyor
+Wlody
+Wodan
+Wolf 359
+Woolley
+Wrax
+Xa Fel
+Xanadu
+Xandar
+Xanthras
+Xantoras
+Xasica
+Xeasceses
+Xeclycys
+Xegai
+Xegathy
+Xegerut
+Xegoridione
+Xegoro
+Xeia
+Xeianeu
+Xeiarsicic
+Xeicat
+Xeicia
+Xeisy
+Xeiu
+Xeiusianim
+Xelabaly
+Xelcl
+Xeliodo
+Xeliopyl
+Xelobant
+Xelon
+Xelvipha
+Xelym
+Xelynto
+Xelytemesmu
+Xema
+Xemal
+Xememe
+Xemereusisi
+Xemurari
+Xena
+Xenae
+Xenagrus
+Xenene
+Xeneniu
+Xenia
+Xenicusicth
+Xenise
+Xeniso
+Xenon
+Xenonitall
+Xent
+Xenthuso
+Xenylcar
+Xeolc
+Xeon
+Xeoniagae
+Xeopopoc
+Xeorgor
+Xeretatel
+Xereusiamem
+Xeri
+Xeriani
+Xeriol
+Xernem
+Xero
+Xeronarn
+Xerondar
+Xerosus
+Xerpeuscen
+Xersc
+Xersth
+Xertae
+Xery
+Xesac
+Xeseaismeu
+Xeseola
+Xesessisil
+Xeseur
+Xesodoususe
+Xeson
+Xesonus
+Xessc
+Xesteg
+Xesther
+Xesus
+Xesusu
+Xetastarel
+Xeter
+Xeth
+Xethel
+Xetinasoic
+Xeumbriar
+Xeuriusi
+Xeusabeu
+Xeusalyt
+Xeusaryi
+Xeuscoe
+Xeuse
+Xeusesesolv
+Xeusi
+Xeusia
+Xeusileusai
+Xeusist
+Xeusmemiop
+Xeustas
+Xi Draconis
+Xiria
+Xoth
+Xybar
+Xybesi
+Xybesoneuso
+Xybru
+Xyclasim
+Xyia
+Xyiane
+Xyilagon
+Xyilusa
+Xyipa
+Xyison
+Xylacus
+Xylarnd
+Xylchona
+Xylcteres
+Xyle
+Xylec
+Xyleistaga
+Xylel
+Xyliasa
+Xylioum
+Xylitop
+Xyllenise
+Xylundota
+Xylusthus
+Xylusti
+Xylymissa
+Xylyses
+Xymeoprade
+Xymerel
+Xymerto
+Xymiastheu
+Xymicon
+Xymiuliu
+Xymoialet
+Xymothusamu
+Xymu
+Xymuse
+Xymusi
+Xymusus
+Xymusys
+Xyniol
+Xynis
+Xynousas
+Xynth
+Xypel
+Xypeseus
+Xypheroc
+Xypreau
+Xypusth
+Xyra
+Xyreodon
+Xyrm
+Xyronconyth
+Xysaeusily
+Xysaroni
+Xyschrs
+Xyserolaroe
+Xysetiando
+Xysi
+Xysicyb
+Xysipra
+Xysise
+Xysissecro
+Xysmid
+Xysocusian
+Xysoeso
+Xysstheonet
+Xyste
+Xytaet
+Xytal
+Xyteit
+Xyteleg
+Xytenidu
+Xyter
+Xythesth
+Xythia
+Xythusipo
+Xytusasip
+Yadel
+Yaila
+Yalara
+Yarnak
+Yasha
+Yath
+Yavannah
+Ybaeny
+Ybaeo
+Ybal
+Ybeoxymiod
+Ybertasc
+Ybila
+Ybralctido
+Ybrsus
+Ybrylemicte
+Ychegepa
+Ycheloremeu
+Ychelusi
+Ycholon
+Ychusi
+Ycicypha
+Ycnce
+Yctreusteus
+Ycyna
+Yed Posterior
+Yed Prior
+Yesensky
+Yeth
+Yew
+Yggdradill
+Yiathiuses
+Yidusipylar
+Yildun
+Yima
+Yindor
+Yiple
+Yisenam
+Yithel
+Ylab
+Ylalel
+Ylama
+Ylarn
+Ylcaneuson
+Ylcereu
+Yledorer
+Ylela
+Yleleicesm
+Yleonemu
+Yler
+Ylesia
+Yleus
+Yleusae
+Yleusmpysiu
+Yleusu
+Yleususi
+Yliallis
+Yliaphe
+Ylidu
+Ylilia
+Yliscianum
+Ylistra
+Ylisylvi
+Yliusm
+Ylona
+Ylot
+Ylus
+Ylusar
+Ylusethe
+Ylusis
+Ylusoxy
+Ylvionelem
+Ylymom
+Ylymuseu
+Ylysitid
+Ylyso
+Ylyth
+Ylytharesia
+Ymabicasi
+Ymaeg
+Ymaes
+Ymaeusic
+Ymag
+Ymalc
+Ymama
+Ymame
+Ymanic
+Ymarisoleu
+Ymascynu
+Ymasyseneio
+Ymbellvim
+Ymbist
+Ymegabiate
+Ymegei
+Ymeiaro
+Ymemesusil
+Ymemeusis
+Ymenteu
+Ymeoxy
+Ymepox
+Ymerernu
+Ymeri
+Ymesan
+Ymessi
+Ymesth
+Ymeumpe
+Ymeus
+Ymeusenen
+Ymeusym
+Ymialy
+Ymias
+Ymir
+Ymiusususo
+Ymod
+Ymolus
+Ymonus
+Ymoropasym
+Ympe
+Ymus
+Ymusascndia
+Ymusesora
+Ymusseg
+Ymussen
+Ymusylic
+Ymusymu
+Ynaph
+Yncu
+Ynealyne
+Ynelianeuso
+Yneusu
+Ynosurthere
+Ynth
+Yona
+Yoria
+Ypemilyraro
+Ypepeanche
+Yphymala
+Ypont
+Ypybrep
+Ypytelus
+Yragarn
+Yragr
+Yreia
+Yrerususio
+Yret
+Yrgab
+Yriaeste
+Yridian
+Yridocrt
+Yrora
+Yrstai
+Yrtetus
+Yrusanoron
+Yrustenon
+Ysagoe
+Ysalim
+Ysan
+Yschaloesis
+Ysctabr
+Ysegor
+Ysen
+Yseumeri
+Ysiono
+Ysisarsile
+Ysisioi
+Ysith
+Ysiuso
+Ysmusa
+Ysmuson
+Ysocysa
+Ysolusta
+Ysolyr
+Ystai
+Ysteares
+Ystesusu
+Ysth
+Ysusago
+Ysusal
+Ysust
+Ysymelel
+Ysymothor
+Ytadoi
+Ytaialusa
+Ytambo
+Ytan
+Ytanteneus
+Ytasodi
+Ytesi
+Ytesus
+Yteunon
+Ytheg
+Ytheunel
+Ythis
+Ythisia
+Ythitheryl
+Ythocaen
+Ythoro
+Ythy
+Ytil
+Ytipimag
+Ytoneia
+Ytusius
+Zachort
+Zahn
+Zalank
+Zalda
+Zalkon
+Zaloris
+Zalr
+Zambdari
+Zaniah
+Zantax
+Zantor
+Zaonce
+Zaoth
+Zaria
+Zaurak
+Zavijah
+Zavijava
+Zayra
+Zeab
+Zeaemaru
+Zearausmba
+Zeary
+Zeasion
+Zeausy
+Zecio
+Zecnori
+Zecnybi
+Zectusethi
+Zediaeus
+Zedocys
+Zedusaly
+Zeeman
+Zegaerta
+Zegali
+Zegarod
+Zegary
+Zegdia
+Zegoe
+Zegopheteo
+Zeia
+Zeialet
+Zeicochosia
+Zeidarthi
+Zeilyliag
+Zeimuni
+Zeiochar
+Zeip
+Zeistustaro
+Zelant
+Zelcaeorta
+Zelcl
+Zelda
+Zelearicrth
+Zelenola
+Zeleol
+Zelic
+Zelil
+Zelisi
+Zelliou
+Zelonas
+Zelos
+Zelustenith
+Zelviseg
+Zelviususe
+Zelyb
+Zelyc
+Zembosia
+Zembrsu
+Zemeuss
+Zemnopan
+Zemnt
+Zenal
+Zenalcema
+Zenariaia
+Zenarus
+Zencern
+Zenego
+Zenephonthi
+Zenislev
+Zenith
+Zeno
+Zenonen
+Zenot
+Zentar
+Zentet
+Zenthaelei
+Zenthar
+Zenthy
+Zenthyceus
+Zentor
+Zenusmes
+Zenusymbega
+Zenylia
+Zenymne
+Zeocythiara
+Zeodalen
+Zeodo
+Zeodurthon
+Zeoimonese
+Zeon
+Zeoncoria
+Zeotesthu
+Zeothei
+Zeprop
+Zerab
+Zerae
+Zere
+Zeregre
+Zereisiusis
+Zerele
+Zereli
+Zereurthy
+Zereustho
+Zergon
+Zeri
+Zericobe
+Zermaranth
+Zero
+Zeront
+Zeror
+Zerox
+Zertaea
+Zerteme
+Zerth
+Zerthoca
+Zerylclle
+Zeryp
+Zesa
+Zesaenc
+Zesarp
+Zese
+Zeserido
+Zesi
+Zesiaele
+Zesicarousi
+Zesimonerge
+Zesin
+Zesion
+Zesis
+Zesisu
+Zesithegdia
+Zesm
+Zesmalle
+Zesmu
+Zeso
+Zesoeon
+Zesomer
+Zesone
+Zessos
+Zestenop
+Zesth
+Zestheu
+Zestrodu
+Zesusmo
+Zesyles
+Zeta Antliae
+Zeta Aquarii
+Zeta Bootis
+Zeta Brahe
+Zeta Camelopardalis
+Zeta Centauri
+Zeta Ceti
+Zeta Chamaeleonis
+Zeta Circini
+Zeta Corvi
+Zeta Crateris
+Zeta Draconis
+Zeta Fornacis
+Zeta Giclas
+Zeta Gruis
+Zeta Horologii
+Zeta Hyades
+Zeta Illuminati
+Zeta Krueger
+Zeta Librae
+Zeta Lyncis
+Zeta Muscae
+Zeta Normae
+Zeta Oionis
+Zeta Persei
+Zeta Ptolemae
+Zeta Reticulii
+Zeta Scorpii
+Zeta Scuti
+Zeta Serpentis
+Zeta Sextantis
+Zeta Tauri
+Zeta Volantis
+Zeta Vulpeculae
+Zetap
+Zetar
+Zetec
+Zeteio
+Zeteole
+Zetesyb
+Zeteu
+Zeth
+Zethassi
+Zethear
+Zethem
+Zethoicorn
+Zethonemec
+Zethonusce
+Zetor
+Zeul
+Zeulymesy
+Zeum
+Zeumu
+Zeureu
+Zeus
+Zeusantu
+Zeusch
+Zeusctusod
+Zeusei
+Zeusi
+Zeusicth
+Zeusisa
+Zeusissthi
+Zeusmoryru
+Zeuso
+Zeuson
+Zeusoneane
+Zeussusme
+Zeuste
+Zeusththa
+Zeustrorga
+Zibal
+Zilpha
+Zilr
+Zinthor
+Zion
+Zorak
+Zoranel
+Zosma
+Zuben Elakrab
+Zuben Elakribi
+Zuben Elgenubi
+Zuben Elschemali
+Zuben el Akrab
+Zuben el Akribi
+Zubenelgenubi
+Zubeneschamali
+Zuria
+Zyrtec
+Albos
+Aikon
+Aldana
+Apaon
+Alko
+Ayzaa
+Bilak
+Beilo
+Bokor
+Baek
+Bufros
+Bulioa
+Cevros
+Curil
+Cwen
+Cillan
+Canzat
+Clow
+Ditri
+Daxil
+Daol
+Derm
+Dupont
+Daer
+Emoal
+Eyloa
+Ezek
+Epok
+Elaz
+Eura
+Foais
+Faite
+Floak
+Famiz
+Famzl
+Faeir
+Gisto
+Galil
+Gima
+Greak
+Garak
+Gulta
+Hennon
+Hilti
+Haol
+Heaok
+Hator
+Hewaz
+Istar
+Imaz
+Irk
+Iema
+Ipal
+Icam
+Joali
+Julate
+Jealo
+Jirk
+Joro
+Jerta
+Knoll
+Kipola
+Kalco
+Kuwil
+Kilo
+Kampaca
+Limoa
+Liza
+Lune
+Lamio
+Lista
+Lurae
+Mazza
+Mostru
+Mestra
+Malck
+Mroa
+Mewea
+Nindo
+Neerka
+Nemo
+Nandez
+Npoa
+Nutut
+Otrae
+Olo
+Opomo
+Ozlo
+Oqua
+Ojaz
+Pilok
+Paque
+Perik
+Pakz
+Pila
+Peark
+Quiq
+Queese
+Quilo
+Qcam
+Qada
+Qimto
+Rlac
+Ruckea
+Rimman
+Rloal
+Razma
+Rutak
+Stiria
+Salica
+Srela
+Sempa
+Sigan
+Sporak
+Timo
+Taimon
+Tenin
+Tilk
+Tamz
+Teran
+Uvas
+Ulao
+Uza
+Uralo
+Umpo
+Uyaeo
+Vilo
+Vaize
+Volm
+Viknal
+Vear
+Voual
+Wilmax
+Wopax
+Wanley
+Wozly
+Walze
+Wualo
+Ximlaw
+Xalim
+Xupow
+Xillo
+Xean
+Xopoko
+Yiri
+Yaitik
+Yanfi
+Yerla
+Yanzit
+Yonpo
+Zofau
+Zia
+Zerz
+Zayla
+Zuarte
+Znaik
+Ansion
+Bespin
+Bos Pity
+Cato Neimoidia
+Dagobah
+Endor
+Felucia
+Geonosis
+Iego
+Kamino
+Kashyyyk
+Malastare
+Mustafar
+Mygeeto
+Nar Shaddaa
+Ord Mantell
+Polis Massa
+Saleucami
+Subterrel
+Tatooine
+Tund
+Utapau
+Yavin

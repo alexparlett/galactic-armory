@@ -1,0 +1,67 @@
+uniform sampler2D rt;
+uniform float hPixelStep, vPixelStep;
+
+//Dist3-Dist1 will be counted 4x
+//Dist0 will be counted once
+const float dist3_wt = 0.20/4.0, dist2_wt = 0.30/4.0, dist1_wt = 0.50/4.0, dist0_wt = 1.0;
+
+const float weights[] = { 0.30, 0.25, 0.20, 0.15, 0.10, 0.05 };
+
+const float bloomPower = 1.9;
+const float bloomStrength = 0.3;
+const float bloomBase = 2.2;
+
+vec3 bloomStep(vec2 point, float weight) {
+	return texture2D(rt, point).rgb * weight;
+}
+
+vec3 bloomDir(vec2 from, vec2 offset) {
+	vec3 ret;
+	
+	from += offset;
+	ret = bloomStep(from, weights[0]);
+	from += offset;
+	ret += bloomStep(from, weights[1]);
+	from += offset;
+	ret += bloomStep(from, weights[2]);
+	from += offset;
+	ret += bloomStep(from, weights[3]);
+	from += offset;
+	ret += bloomStep(from, weights[4]);
+	from += offset;
+	ret += bloomStep(from, weights[5]);
+	
+	return ret;
+}
+
+vec3 bloomCorners(vec2 from, float hOffset, float vOffset) {
+	vec3 ret;
+	ret = bloomStep(from + vec2(hOffset, 0.0), 0.25);
+	ret += bloomStep(from + vec2(-hOffset, 0.0), 0.25);
+	ret += bloomStep(from + vec2(0.0, vOffset), 0.25);
+	ret += bloomStep(from + vec2(0.0, -vOffset), 0.25);
+	return ret;
+}
+
+void main() {
+	vec2 center = gl_TexCoord[0].xy;
+	vec4 col = dist0_wt * texture2D(rt, center);
+	
+	vec3 bloom;
+	
+	//Uncomment to see bloom only
+	//col = vec4(0.0,0.0,0.0,0.0);
+	
+	//Horizontal bloom
+	bloom = bloomDir(center, vec2(hPixelStep, 0.0));
+	bloom += bloomDir(center, vec2(-hPixelStep, 0.0));	
+	//col.rgb += pow(bloom / bloomBase, bloomPower) * bloomStrength;
+	
+	//Vertical bloom
+	bloom += bloomDir(center, vec2(0.0, vPixelStep));
+	bloom += bloomDir(center, vec2(0.0, -vPixelStep));
+	
+	col.rgb += pow(bloom / bloomBase, bloomPower) * bloomStrength;
+	
+	gl_FragColor = col;
+}

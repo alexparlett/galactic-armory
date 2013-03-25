@@ -1,0 +1,23 @@
+varying vec4 pos;
+varying vec3 normal, light, light2;
+varying float dist, dist2;
+
+void main()
+{ 
+	normal = normalize(gl_NormalMatrix * gl_Normal);
+	pos = gl_ModelViewMatrix * gl_Vertex;
+	
+	vec4 lpos = gl_LightSource[0].position;
+	vec4 lpos2 = gl_LightSource[1].position;
+	vec4 s = normalize(lpos-pos);
+	vec4 s2 = normalize(lpos2-pos);
+
+	light = s.xyz;
+	light2 = s2.xyz;
+	
+	dist = distance(pos, lpos);
+	dist2 = distance(pos, lpos2);
+	
+	gl_TexCoord[0] = gl_TextureMatrix[0] * gl_MultiTexCoord0;
+	gl_Position = ftransform();
+} 

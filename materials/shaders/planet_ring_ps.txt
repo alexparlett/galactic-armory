@@ -1,0 +1,74 @@
+const int nLightCount = 2;
+
+uniform sampler2D gradient, noise;
+
+varying vec3 normal;
+varying vec4 pos;
+varying vec3 light[nLightCount];
+varying float dist[nLightCount];
+
+const float innerRad = 1.0 * 1.2;
+const float outerRad = 2.0 * 1.2;
+
+const float innerFade = 0.05;
+const float outerFade = 0.95;
+
+const float noiseSplit = 0.3;
+
+const float minAlpha = 4.0 / 256.0;
+
+void main() {
+	float radius = smoothstep(innerRad,outerRad,length(gl_TexCoord[0].xy));
+
+	vec4 color = gl_FrontMaterial.diffuse;
+
+	vec4 texSamp = texture2D(gradient, vec2( 0, radius));
+
+	if(radius > outerFade)
+		texSamp.a *= 1.0 - smoothstep(outerFade,1.0,radius);
+	else if(radius < innerFade)
+		texSamp.a *= smoothstep(0.0,innerFade,radius);
+
+	if(texSamp.a < minAlpha)
+	discard;
+
+	vec4 noiseSamp = texture2D(noise, gl_TexCoord[0].xy);
+
+	texSamp.a *= (1.0 - noiseSplit + (noiseSamp.b * 2.0 * noiseSplit));
+	if(texSamp.a < minAlpha)
+		discard;
+
+	texSamp.rgb *= (1.0 - noiseSplit + (noiseSamp.g * 2.0 * noiseSplit));
+
+	vec4 matspec = gl_FrontMaterial.specular * texSamp.a;
+	float shininess = gl_FrontMaterial.shininess;
+
+	vec3 n = normalize(normal);
+	vec3 v = normalize(-pos.xyz);
+
+	vec4 diffuse = gl_LightModel.ambient;
+	diffuse.a = 1.0;
+
+	vec4 specular = vec4(0.0,0.0,0.0,0.0);
+	if(nLightCount > 0) {
+		const int i = 0;
+		float falloff = 1.0 / (1.0 + (gl_LightSource[i].quadraticAttenuation * dist[i] * dist[i]));
+		float intensity = max(0.0, dot(n, light[i])) * falloff;
+		
+		diffuse.rgb += gl_LightSource[i].diffuse.rgb * intensity;
+		
+		vec3 r = normalize(-reflect(normalize(light[i]), n));
+		specular.rgb += gl_LightSource[i].specular.rgb * (pow(max(0.0, dot(r, v)), shininess) * falloff);
+	}
+	if(nLightCount > 1) {
+		const int i = 1;
+		float falloff = 1.0 / (1.0 + (gl_LightSource[i].quadraticAttenuation * dist[i] * dist[i]));
+		float intensity = max(0.0, dot(n, light[i])) * falloff;
+		
+		diffuse.rgb += gl_LightSource[i].diffuse.rgb * intensity;
+		
+		vec3 r = normalize(-reflect(normalize(light[i]), n));
+		specular.rgb += gl_LightSource[i].specular.rgb * (pow(max(0.0, dot(r, v)), shininess) * falloff);
+	}
+	gl_FragColor = ((diffuse * color) * texSamp) + (specular * matspec);
+}

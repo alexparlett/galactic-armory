@@ -1,0 +1,652 @@
+//================
+//Sub System Icons
+//================
+
+#makeMipMaps off
+
+
+Material: GenericSubSys
+ Defer: Required
+ Texture: ~/Images/SubSystems/generic_subsystem.png
+
+Material: BoardingParty
+ Defer: Required
+ Texture: ~/Images/SubSystems/boarding_party.png
+
+Material: ArmorPlate
+ Defer: Required
+ Texture: ~/Images/SubSystems/armor_plate_unit.png
+
+Material: AblativePlate
+ Defer: Required
+ Texture: ~/Images/SubSystems/armor_ablative_unit.png
+
+Material: PoweredArmor
+ Defer: Required
+ Texture: ~/Images/SubSystems/powered_armor.png
+
+Material: ReactiveArmor
+ Defer: Required
+ Texture: ~/Images/SubSystems/reactive_armor.png
+
+Material: Bulkhead
+ Defer: Required
+ Texture: ~/Images/SubSystems/bulkhead.png
+
+Material: ExternalMount
+ Defer: Required
+ Texture: ~/Images/SubSystems/externalmount.png
+
+ Material: LightHull
+ Defer: Required
+ Texture: ~/Images/Subsystems/light_hull_icon2.png
+
+Material: MediumHull
+ Defer: Required
+ Texture: ~/Images/SubSystems/standard_hull_icon2.png
+
+Material: HeavyHull
+ Defer: Required
+ Texture: ~/Images/SubSystems/heavy_hull_icon2.png
+
+Material: StealthHull
+ Defer: Required
+ Texture: ~/Images/SubSystems/stealth_hull_icon_2.png
+
+Material: ProjectileGun
+ Defer: Required
+ Texture: ~/Images/SubSystems/Projectile_Gun.png
+
+Material: CoolantSystem
+ Defer: Required
+ Texture: ~/Images/SubSystems/Coolant_System.png
+
+Material: MiningLaser
+ Defer: Required
+ Texture: ~/Images/SubSystems/mining_laser.png
+
+Material: FlakTurret
+ Defer: Required
+ Texture: ~/Images/SubSystems/flak.png
+
+Material: RailGun
+ Defer: Required
+ Texture: ~/Images/SubSystems/Rail_Gun.png
+
+Material: Artillery
+ Defer: Required
+ Texture: ~/Images/SubSystems/Artillery.png
+
+Material: LaserGun
+ Defer: Required
+ Texture: ~/Images/SubSystems/Laser_Gun.png
+
+Material: ShortLaser
+ Defer: Required
+ Texture: ~/Images/SubSystems/Short_Laser.png
+
+Material: PlasmaGun
+ Defer: Required
+ Texture: ~/Images/SubSystems/Plasma_Gun.png
+
+Material: PlasmaThrower
+ Defer: Required
+ Texture: ~/Images/SubSystems/Plasma_Thrower.png
+
+Material: MuonCannon
+ Defer: Required
+ Texture: ~/Images/SubSystems/Muon_Cannon.png
+
+Material: ReverseInductor
+ Defer: Required
+ Texture: ~/Images/SubSystems/reverse_inductor.png
+
+Material: MissileRack
+ Defer: Required
+ Texture: ~/Images/SubSystems/Missile_Rack.png
+
+Material: TorpedoBay
+ Defer: Required
+ Texture: ~/Images/SubSystems/Torpedo.png
+
+Material: DSM
+ Defer: Required
+ Texture: ~/Images/SubSystems/directed_spatial_fold_manipulator.png
+
+Material: Analyzer
+ Defer: Required
+ Texture: ~/Images/SubSystems/Analyzer.png
+
+Material: Repairtool
+ Defer: Required
+ Texture: ~/Images/SubSystems/repair_tool.png
+
+Material: Salvager
+ Defer: Required
+ Texture: ~/Images/SubSystems/salvager.png
+
+Material: Bridge
+ Defer: Required
+ Texture: ~/Images/SubSystems/bridge.png
+
+Material: CrewQuarters
+ Defer: Required
+ Texture: ~/Images/SubSystems/crew_quarters.png
+
+Material: Storage
+ Defer: Required
+ Texture: ~/Images/SubSystems/basic_cargo_unit2.png
+
+Material: RepairBay
+ Defer: Required
+ Texture: ~/Images/SubSystems/repair_bay.png
+
+Material: ShipBay
+ Defer: Required
+ Texture: ~/Images/SubSystems/ship_bay.png
+
+Material: ThrusterRocket
+ Defer: Required
+ Texture: ~/Images/SubSystems/Thruster_Rocket.png
+
+Material: ThrusterIon
+ Defer: Required
+ Texture: ~/Images/SubSystems/Thruster_Ion.png
+
+Material: Ammocache
+ Defer: Required
+ Texture: ~/Images/Subsystems/ammo_cache.png
+
+Material: ConstructionBay
+ Defer: Required
+ Texture: ~/Images/Subsystems/construction_bay.png
+
+Material: BussardRamscoop
+ Defer: Required
+ Texture: ~/Images/Subsystems/bussard_ramscoop.png
+
+Material: BussardRamjet
+ Defer: Required
+ Texture: ~/Images/Subsystems/bussard_ramjet.png
+
+Material: ShieldGenerator
+ Defer: Required
+ Texture: ~/Images/SubSystems/shield_generator.png
+
+Material: ShieldHardener
+ Defer: Required
+ Texture: ~/Images/SubSystems/shield_hardener.png
+
+Material: NuclearReactor
+ Defer: Required
+ Texture: ~/Images/SubSystems/nuclear_reactor.png
+
+Material: FusionGenerator
+ Defer: Required
+ Texture: ~/Images/SubSystems/fusion_generator.png
+
+Material: AntimatterGenerator
+ Defer: Required
+ Texture: ~/Images/SubSystems/antimatter_generator.png
+
+Material: CPU
+ Defer: Required
+ Texture: ~/Images/SubSystems/computer_core_icon_2.png
+
+Material: FuelCell
+ Defer: Required
+ Texture: ~/Images/SubSystems/fuel_cell_icon_2.png
+
+Material: FuelCell_Fusion
+ Defer: Required
+ Texture: ~/Images/SubSystems/fuel_cell_icon.png
+
+Material: Capacitor
+ Defer: Required
+ Texture: ~/Images/SubSystems/capacitor.png
+
+Material: LifeSupport
+ Defer: Required
+ Texture: ~/Images/SubSystems/life_support.png
+
+Material: SolarPanel
+ Defer: Required
+ Texture: ~/Images/SubSystems/solar_panel.png
+
+Material: ColonyModule
+ Defer: Required
+ Texture: ~/Images/SubSystems/colonizer.png
+
+Material: QuantumCompressor
+ Defer: Required
+ Texture: ~/Images/SubSystems/quantum_compressor_icon.png
+
+Material: StealthFieldGenerator
+ Defer: Required
+ Texture: ~/Images/SubSystems/stealth_field_generator.png
+
+Material: Jumpdrive
+ Defer: Required
+ Texture: ~/Images/SubSystems/jump_drive.png
+
+Material: Nanoarmor
+ Defer: Required
+ Texture: ~/Images/SubSystems/nano_armor.png
+
+Material: TargetingArray
+ Defer: Required
+ Texture: ~/Images/SubSystems/targeting_array.png
+
+Material: QuantumComputerCore
+ Defer: Required
+ Texture: ~/Images/SubSystems/quantum_computer_core.png
+
+Material: MetFab
+ Defer: Required 
+ Texture: ~/Images/SubSystems/met_fab.png
+
+Material: ElecFab
+ Defer: Required 
+ Texture: ~/Images/SubSystems/elc_fab.png
+
+Material: AdvFab
+ Defer: Required 
+ Texture: ~/Images/SubSystems/adv_fab.png
+
+Material: AmmoFab
+ Defer: Required 
+ Texture: ~/Images/SubSystems/ammo_fab.png
+
+Material: Repulsor
+ Defer: Required 
+ Texture: ~/Images/SubSystems/repulsor.png
+
+Material: SubSysOverlay
+ Defer: Required
+ Texture: ~/Images/SubSystems/subsys_overlay.png
+
+Material: AmmoFabricator
+ Texture: Images/SubSystems/ammo_fabricator.png
+
+Material: IonCannon
+ Texture: Images/SubSystems/ion_cannon.png
+
+Material: ParticleCannon
+ Texture: Images/SubSystems/particle_cannon.png
+
+Material: PlasmaGunCyan
+ Texture: Images/SubSystems/plasma_gun_cyan.png
+
+Material: PlasmaThrowerGreen
+ Texture: Images/SubSystems/plasma_thrower_green.png
+
+Material: MegaStructureHull
+ Texture: Images/SubSystems/megastructure_hull.png
+
+Material: SpinalMountHull
+ Texture: Images/SubSystems/spinal_mount_hull.png
+
+Material: GargantuanHull
+ Texture: Images/SubSystems/gargantuan_hull.png
+
+Material: AutoCannon
+ Texture: Images/SubSystems/autocannon_battery.png
+
+Material: PhasedRailgun
+ Texture: Images/SubSystems/phased_railgun.png
+
+Material: HeavyRailgun
+ Texture: Images/SubSystems/heavy_railgun.png
+
+Material: OversizeModification
+ Texture: Images/SubSystems/oversize_placeholder.png
+
+Material: TorpedoLauncher
+ Texture: Images/SubSystems/torp_launcher.png
+
+Material: NaniteTorpedoLauncher
+ Texture: Images/SubSystems/nanite_torpedo.png
+
+Material: FusionTorpedoLauncher
+ Texture: Images/SubSystems/fusion_torpedo.png
+
+Material: DamageBooster
+ Texture: Images/SubSystems/damage_booster.png
+
+Material: MassMount
+ Texture: Images/SubSystems/mass_mount.png
+
+Material: MPDThruster
+ Texture: Images/SubSystems/mpd_thruster.png
+
+Material: VASIMR
+ Texture: Images/SubSystems/VASIMR.png
+
+Material: PolypropellantThruster
+ Texture: Images/SubSystems/poly_thruster.png
+
+Material: AntimatterRocket
+ Texture: Images/SubSystems/antimatter_rocket.png
+
+Material: CarrierHull
+ Texture: Images/SubSystems/carrier_hull.png
+
+Material: ShieldEmitter
+ Texture: Images/SubSystems/shield_emitter.png
+
+Material: ArmorMount
+ Texture: Images/SubSystems/armor_mount.png
+
+Material: NaniteRepair
+ Texture: Images/SubSystems/nanite_repair_unit.png
+
+Material: AntimatterProjector
+ Texture: Images/SubSystems/antimatter_projector.png
+
+Material: PFWeapon
+ Texture: Images/SubSystems/pfweapon.png
+ 
+Material: FighterAdvBomb
+ Texture: Images/SubSystems/fighter_advbomb.png
+ 
+Material: FighterPFW
+ Texture: Images/SubSystems/fighter_pfw.png
+ 
+Material: FighterPrecBomb
+ Texture: Images/SubSystems/fighter_precision_bomb.png
+ 
+Material: FighterChaingun
+ Texture: Images/SubSystems/fighter_chaingun.png
+ 
+Material: FighterLaser
+ Texture: Images/SubSystems/fighter_laser.png
+ 
+Material: FighterTorpedo
+ Texture: Images/SubSystems/fighter_torpedo.png
+ 
+Material: FighterRockets
+ Texture: Images/SubSystems/fighter_rockets.png
+
+Material: Firestorm
+ Texture: Images/SubSystems/firestorm.png
+ 
+Material: AAMissile
+ Texture: Images/SubSystems/aa_missile.png
+ 
+Material: Superlaser
+ Texture: Images/SubSystems/superlaser2.png
+ 
+Material: TRayEmitter
+ Texture: Images/SubSystems/t-ray_emitter.png
+ 
+Material: XRayLaser
+ Texture: Images/SubSystems/x-ray_laser.png
+ 
+Material: HeavyBomb
+ Texture: Images/SubSystems/bomber_heavy_bomb.png
+ 
+Material: EMPBomb
+ Texture: Images/SubSystems/bomber_emp_bomb.png
+ 
+Material: AdvancedAICore
+ Texture: Images/SubSystems/acc.png
+ 
+Material: Fighter
+ Texture: Images/SubSystems/fighter.png
+ 
+Material: Bomber
+ Texture: Images/SubSystems/bomber.png
+ 
+Material: ShieldArmor
+ Texture: Images/SubSystems/shield_armor.png
+ 
+Material: ShieldedAntimatterGen
+ Texture: Images/SubSystems/shielded_antimatter_gen.png
+ 
+Material: ZeroPointGenerator
+ Texture: Images/SubSystems/zero_point_generator.png
+ 
+Material: TankerHull
+ Texture: Images/SubSystems/tanker_hull.png
+ 
+Material: HaulerHull
+ Texture: Images/SubSystems/hauler_hull.png
+ 
+Material: IntegratedCommandCenter
+ Texture: Images/SubSystems/icc.png
+ 
+Material: Cockpit
+ Texture: Images/SubSystems/fbcockpit.png
+ 
+Material: BomberHeavyTorpedo
+ Texture: Images/SubSystems/bomber_heavy_torpedo.png
+ 
+Material: HeavyTorpedo
+ Texture: Images/SubSystems/heavy_torpedo.png
+
+Material: LargeMissileRack
+ Texture: Images/SubSystems/large_missile_rack.png
+ 
+Material: MegaMissileRack
+ Texture: Images/SubSystems/mega_missile_rack.png
+ 
+Material: RepairFacilities
+ Texture: Images/SubSystems/repair_facilities.png
+ 
+Material: PulsedShieldCharger
+ Texture: Images/SubSystems/pulsed_shield_charger.png
+ 
+Material: DualPlasmaBlaster
+ Texture: Images/SubSystems/dual_plasma_blaster.png
+
+Material: MetalRefinery
+ Texture: Images/SubSystems/metal_fabricator.png
+
+Material: ElectronicsFabricator
+ Texture: Images/SubSystems/electronics_fabricator.png
+
+Material: AdvPartsAssembler
+ Texture: Images/SubSystems/adv_parts_fabricator.png
+ 
+Material: ExportBayMetal
+ Texture: Images/SubSystems/export_bay.png 
+
+Material: ExportBayElecs
+ Texture: Images/SubSystems/export_bay.png 
+ 
+Material: ExportBayParts
+ Texture: Images/SubSystems/export_bay.png 
+ 
+Material: ExportBay
+ Texture: Images/SubSystems/export_bay.png 
+ 
+Material: QuantumBattery
+ Texture: Images/SubSystems/quantum_battery.png
+ 
+Material: BoardingDefense
+ Texture: Images/SubSystems/boarding_defense.png
+ 
+Material: MatterGenerator
+ Texture: Images/SubSystems/mass_fabricator.png
+ 
+Material: OverLaser
+ Texture: Images/SubSystems/overcharged_laser.png
+ 
+Material: GAArtillery
+ Texture: Images/SubSystems/artillery.png
+ 
+Material: StationHull
+ Texture: Images/SubSystems/station_hull.png
+ 
+Material: GraviticAccelerator
+ Texture: Images/SubSystems/gravitic_accelerator.png
+ 
+Material: AntiSurfaceWarhead
+ Texture: Images/SubSystems/anti_surface_warhead.png
+ 
+Material: FighterBomberASW
+ Texture: Images/SubSystems/fighterbomber_anti_surface_warhead.png
+ 
+Material: PlanetBuster
+ Texture: Images/SubSystems/planet_buster.png
+
+Material: BioWarhead
+ Texture: Images/SubSystems/bio_warhead.png
+ 
+Material: SunKiller
+ Texture: Images/SubSystems/sun_killer.png
+
+Material: Fortress
+ Texture: Images/SubSystems/fortress_hull.png
+
+Material: GatlingLaser
+ Texture: Images/SubSystems/pulsed_laser.png
+
+Material: GatlingTurret
+ Texture: Images/SubSystems/gatling_turret.png
+ 
+Material: ExtendedMagazine
+ Texture: Images/SubSystems/extended_magazine.png
+ 
+Material: TwinRailgun
+ Texture: Images/SubSystems/twin_turret_railgun.png 
+ 
+Material: TwinHeavyRailgun
+ Texture: Images/SubSystems/twin_heavy_railgun.png
+ 
+Material: TwinPlasmaThrower
+ Texture: Images/SubSystems/twin_plasma_turret.png
+ 
+Material: TwinParticleCannon
+ Texture: Images/SubSystems/twin_particle_turret.png
+ 
+Material: PointDefense
+ Texture: Images/SubSystems/point_defense.png
+
+Material: ShieldCharger
+ Texture: Images/SubSystems/shield_charger.png 
+
+Material: ShieldBomb
+ Texture: Images/SubSystems/shield_bomb.png 
+
+Material: MothershipHull
+ Texture: Images/SubSystems/mothership_hull.png
+
+Material: TwinMuonCannon
+ Texture: Images/SubSystems/twin_muon_turret.png
+ 
+Material: HDFuelStorage
+ Texture: Images/SubSystems/hd_fuel_storage.png
+ 
+Material: HDAmmoStorage
+ Texture: Images/SubSystems/hd_ammo_storage.png
+ 
+Material: MassDriver
+ Texture: Images/SubSystems/mass_driver.png
+
+Material: MassDriverLight
+ Texture: Images/SubSystems/mass_driver_light.png
+ 
+Material: AsteroidCollector
+ Texture: Images/SubSystems/asteroid_collector.png
+
+Material: FusionCutter
+ Texture: Images/SubSystems/fusion_cutter.png
+ 
+Material: FusionLance
+ Texture: Images/SubSystems/fusion_lance.png
+ 
+Material: Heatsink
+ Texture: Images/SubSystems/heatsink.png
+ 
+Material: AntimatterCannon
+ Texture: Images/SubSystems/antimatter_cannon.png
+ 
+Material: InterceptorMissile
+ Texture: Images/SubSystems/interceptor_missile.png
+ 
+Material: ClusterMissile
+ Texture: Images/SubSystems/cluster_missile.png
+
+Material: TachyonBlaster
+ Texture: Images/SubSystems/tachyon_blaster.png
+ 
+Material: CargoMetal
+ Texture: Images/SubSystems/cargo_metal.png
+ 
+Material: CargoElec
+ Texture: Images/SubSystems/cargo_elec.png
+ 
+Material: CargoAdvParts
+ Texture: Images/SubSystems/cargo_advparts.png
+
+Material: GeneralBuilding
+ Texture: Images/SubSystems/general_building.png 
+ 
+Material: AMConverter
+ Texture: Images/SubSystems/am_converter.png
+ 
+Material: PMod
+ Texture: Images/SubSystems/precision_mod.png
+ 
+Material: DefenseBuilding
+ Texture: Images/SubSystems/defensive_building.png
+ 
+Material: HCell
+ Texture: Images/SubSystems/H_Cell.png
+ 
+Material: H3Refinery
+ Texture: Images/SubSystems/H3Refinery.png
+ 
+Material: H3Beam
+ Texture: Images/SubSystems/oreprocessor.png
+
+Material: Stargate
+ Texture: Images/SubSystems/stargate.png
+ 
+Material: CargoOre
+ Texture: Images/SubSystems/cargo_ore.png
+ 
+Material: IntegratedConstruction
+ Texture: Images/SubSystems/integrated_construction.png
+ 
+Material: WaveEmitter
+ Texture: Images/SubSystems/wave_emitter.png
+ 
+Material: TeraTorpedo
+ Texture: Images/SubSystems/terahertz_torpedo.png
+ 
+Material: EMPMissiles
+ Texture: Images/SubSystems/emp_missiles.png
+ 
+Material: PhasedMissiles
+ Texture: Images/SubSystems/phased_missiles.png
+
+Material: FighterOverchargeLaser
+ Texture: Images/SubSystems/fighter_high_energy_laser.png
+ 
+Material: FighterParticleCannon
+ Texture: Images/SubSystems/fighter_particle_cannon.png 
+ 
+Material: RemnantIonCannon
+ Texture: Images/SubSystems/unknown_superweapon.png 
+ 
+Material: RemnantSpatGen
+ Texture: Images/SubSystems/remnant_superweapon.png 
+ 
+Material: RemnantZPFGen
+ Texture: Images/SubSystems/remnant_superweapon2.png 
+ 
+Material: JumpBridge
+ Texture: Images/SubSystems/jumpbridge.png 
+ 
+Material: AmmoImporter
+ Texture: Images/SubSystems/ammo_bay.png
+ 
+Material: ElectronicCounterMeasures
+ Defer: Required
+ Texture: Images/SubSystems/ecm.png
+ 
+Material: ECMHull
+ Defer: Required
+ Texture: Images/SubSystems/ecm_hull.png

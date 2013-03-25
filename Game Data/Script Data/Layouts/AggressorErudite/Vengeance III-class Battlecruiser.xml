@@ -1,0 +1,54 @@
+﻿<?xml version="1.0"?>
+<settings scale="160" name="Vengeance III-class Battlecruiser" />
+<subSystems>
+	<subSystem name="CrewQuarters" x=".125" y="-0.1875" scale=".75" link="-12" />
+	<subSystem name="Bridge" x=".328125" y=".609375" scale=".75" link="-13" />
+	<subSystem name="LifeSupport" x="-0.890625" y=".578125" scale=".25" link="-10" />
+	<subSystem name="AmmoStorage" x="1.4375" y=".265625" scale="1" link="-1" />
+	<subSystem name="FuelCell" x="-0.140625" y="-0.046875" scale=".5" link="-1" />
+	<subSystem name="RepairBay" x=".6875" y="-0.078125" scale=".5" link="-1" />
+	<subSystem name="CoolantSys" x="2.171875" y=".6875" scale=".25" link="27" />
+	<subSystem name="Capacitor" x=".40625" y="-0.078125" scale=".25" link="-1" />
+	<subSystem name="Bulkhead" x="-1.056897" y=".574804" scale=".5" link="2" />
+	<subSystem name="Bulkhead" x="-0.377022" y=".871477" scale=".75" link="15" />
+	<subSystem name="Bulkhead" x=".030904" y="-0.698417" scale=".5" link="0" />
+	<subSystem name="Bulkhead" x=".339938" y="1.019813" scale=".5" link="1" />
+	<subSystem name="MissileRack" x="-0.921875" y="-1" scale=".75" link="-1" />
+	<subSystem name="MissileRack" x="-0.9375" y="1.359375" scale=".75" link="-1" />
+	<subSystem name="BoardingParty" x="-0.921875" y="-0.109375" scale=".5" link="-1" />
+	<subSystem name="FusionGen" x="-0.1875" y=".40625" scale="1.5" link="-11" />
+	<subSystem name="VASIMRThruster" x="-2.609375" y=".09375" scale="1.75" link="-1" />
+	<subSystem name="VASIMRThruster" x="-2.359375" y="1.375" scale=".5" link="-1" />
+	<subSystem name="VASIMRThruster" x="-2.296875" y="-1.171875" scale=".5" link="-1" />
+	<subSystem name="PowerArmor" x="-0.21875" y="-2.453125" scale="2.5" link="-1" />
+	<subSystem name="PowerArmor" x="-0.0625" y="2.4375" scale="2.5" link="-1" />
+	<subSystem name="MegastructureHull" x=".140625" y=".0625" scale="1" link="-1" />
+	<subSystem name="AmmoFabricator" x="1.515625" y="-0.34375" scale="1" link="-1" />
+	<subSystem name="HyperRailgun" x="1.640625" y="1.578125" scale=".25" link="-28" />
+	<subSystem name="HyperRailgun" x="1.65625" y="-1.5" scale=".25" link="-27" />
+	<subSystem name="MultiRack" x="1.171875" y="-1.53125" scale="1" link="24" />
+	<subSystem name="MultiRack" x="1.171875" y="1.546875" scale="1" link="23" />
+	<subSystem name="HyperRailgun" x="2.53125" y="0" scale="2" link="-8" />
+</subSystems>
+<ai>
+	<targetScale low="1" hi="9999999" forced="false" />
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="0" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Defend" />
+</orders>
+

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<settings scale=".4" name="Pirate Bandit" />
+<subSystems>
+	<subSystem name="PowerGen" x="-0.953125" y=".046875" scale="1" link="-3" />
+	<subSystem name="Bulkhead" x="-0.703125" y=".046875" scale="1" link="0" />
+	<subSystem name="PolypropellantThruster" x="-1.132038" y="2.310597" scale="2.25" link="-1" />
+	<subSystem name="PolypropellantThruster" x="-1.169107" y="-2.292064" scale="2.25" link="-1" />
+	<subSystem name="Bulkhead" x="-2.640528" y="0" scale="1" link="10" />
+	<subSystem name="FighterHull" x="1.296875" y=".046875" scale="1" link="-1" />
+	<subSystem name="Bulkhead" x=".275773" y=".027577" scale="2" link="9" />
+	<subSystem name="SoakArmor" x=".125" y="-2.765625" scale="1" link="-1" />
+	<subSystem name="FighterRockets" x="2.328125" y="0" scale="4" link="-1" />
+	<subSystem name="Cockpit" x=".279221" y=".031025" scale=".75" link="-8" />
+	<subSystem name="BigFuelCell" x="-2.202738" y=".051708" scale="2.75" link="-6" />
+</subSystems>
+<ai>
+	<orbit flag="true" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="false" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="0" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Defend" />
+</orders>
+

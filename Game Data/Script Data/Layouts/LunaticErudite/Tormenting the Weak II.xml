@@ -1,0 +1,53 @@
+﻿<?xml version="1.0"?>
+<settings scale="30" name="Tormenting the Weak II" />
+<subSystems>
+	<subSystem name="MediumHull" x="-1.765625" y=".078125" scale="1" link="-20" />
+	<subSystem name="CrewQuarters" x="-1.585938" y="-0.648438" scale=".375" link="-26" />
+	<subSystem name="LifeSupport" x=".53125" y="-0.484375" scale=".125" link="-25" />
+	<subSystem name="FuelCell" x="-0.65625" y="-1.359375" scale="1.5" link="-18" />
+	<subSystem name="PowerGen" x="-0.710938" y=".039063" scale=".75" link="-24" />
+	<subSystem name="FuelCell" x="-0.71875" y="1.546875" scale="1.5" link="-19" />
+	<subSystem name="Bridge" x=".554688" y=".007813" scale=".375" link="-1" />
+	<subSystem name="FlakTurret" x="1.25" y=".046875" scale="1" link="-1" />
+	<subSystem name="Armor" x="-1.9375" y="-1.65625" scale="2" link="-1" />
+	<subSystem name="Armor" x="-1.734375" y="-1.96875" scale="2" link="-1" />
+	<subSystem name="AmmoStorage" x=".039063" y=".039063" scale="1.875" link="-23" />
+	<subSystem name="Railgun" x=".609375" y="-2.125" scale="1" link="-15" />
+	<subSystem name="Railgun" x=".5625" y="2.3125" scale="1" link="-22" />
+	<subSystem name="CoolantSys" x=".007813" y="-2.117188" scale=".5" link="11" />
+	<subSystem name="PolypropellantThruster" x="-2.71875" y=".09375" scale="1.5" link="-1" />
+	<subSystem name="MuonCannon" x="3.046875" y="-0.046875" scale=".25" link="-21" />
+	<subSystem name="QuantumCompressor" x="0" y="-1.234375" scale=".25" link="3" />
+	<subSystem name="QuantumCompressor" x="-0.0625" y="1.53125" scale=".25" link="5" />
+	<subSystem name="Bulkhead" x="-1.405115" y=".031694" scale="1" link="0" />
+	<subSystem name="MultiRack" x="2.40625" y="0" scale="1.5" link="15" />
+	<subSystem name="CoolantSys" x=".101563" y="2.664063" scale=".5" link="12" />
+	<subSystem name="Bulkhead" x=".078125" y=".671875" scale=".5" link="10" />
+	<subSystem name="Bulkhead" x="-0.796875" y=".53125" scale=".5" link="4" />
+	<subSystem name="Bulkhead" x=".681428" y="-0.81877" scale=".25" link="2" />
+	<subSystem name="Bulkhead" x="-1.320596" y="-0.718404" scale=".25" link="1" />
+</subSystems>
+<ai>
+	<targetScale low="0" hi="20" forced="false" />
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="JoinFleet:-1.000000:false" />
+	<order desc="Fetch:Fuel:0.200000" />
+	<order desc="Fetch:Ammo:0.200000" />
+	<order desc="Defend" />
+	<order desc="Work:EnterStargate" />
+</orders>
+

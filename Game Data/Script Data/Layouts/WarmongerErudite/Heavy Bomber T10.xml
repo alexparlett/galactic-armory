@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<settings scale=".9" name="Heavy Bomber T10" />
+<subSystems>
+	<subSystem name="FuelCell" x="-0.703125" y="-0.953125" scale="1" link="-12" />
+	<subSystem name="BomberHull" x=".34375" y=".109375" scale="1" link="-1" />
+	<subSystem name="VASIMRThruster" x="-2.3125" y=".078125" scale="4" link="-1" />
+	<subSystem name="VASIMRThruster" x="-2.054688" y="-1.523438" scale="2.125" link="-1" />
+	<subSystem name="VASIMRThruster" x="-1.851563" y="1.773438" scale="2.125" link="-1" />
+	<subSystem name="BomberHeavyTorpedo" x="2.3125" y=".015625" scale="4" link="-1" />
+	<subSystem name="Computer" x=".28125" y=".03125" scale=".25" link="-1" />
+	<subSystem name="FusionGen" x="-0.703125" y=".046875" scale="1" link="-1" />
+	<subSystem name="FuelCell" x="-0.703125" y="1.03125" scale="1" link="-13" />
+	<subSystem name="ReactArmor" x=".03125" y="-2.609375" scale="2" link="-1" />
+	<subSystem name="Bulkhead" x="-0.703125" y="-1.359375" scale=".5" link="0" />
+	<subSystem name="Bulkhead" x="-0.703125" y="1.328125" scale=".5" link="8" />
+</subSystems>
+<ai>
+	<orbit flag="true" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="251" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Defend" />
+</orders>
+

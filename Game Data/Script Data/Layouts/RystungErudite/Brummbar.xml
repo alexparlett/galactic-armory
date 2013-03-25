@@ -1,0 +1,49 @@
+﻿<?xml version="1.0"?>
+<settings scale="8" name="Brummbar" />
+<subSystems>
+	<subSystem name="Computer" x="-0.640625" y="-0.078125" scale="1" link="-1" />
+	<subSystem name="FuelCell" x=".164063" y="-0.570313" scale=".875" link="-1" />
+	<subSystem name="AmmoStorage" x="-0.998371" y="-0.005282" scale="2.25" link="-24" />
+	<subSystem name="HeavyHull" x=".140625" y="-0.03125" scale="1" link="-20" />
+	<subSystem name="PointDefense" x="1.054688" y="-0.164063" scale=".5" link="-1" />
+	<subSystem name="FusionGen" x=".242188" y=".429688" scale=".875" link="-1" />
+	<subSystem name="RepairBay" x="-0.242188" y="-1.335938" scale=".375" link="-1" />
+	<subSystem name="SoakArmor" x="-2.328125" y="-1.296875" scale="1.75" link="-1" />
+	<subSystem name="SoakArmor" x="-2.338555" y="1.269944" scale="1.75" link="-1" />
+	<subSystem name="Capacitor" x="-0.5625" y=".609375" scale=".25" link="-1" />
+	<subSystem name="ReactArmor" x=".5285" y="-2.518145" scale="2.25" link="-1" />
+	<subSystem name="ReactArmor" x=".572909" y="2.508415" scale="2.25" link="-1" />
+	<subSystem name="AmmoFabricator" x=".664063" y="-1.101563" scale=".375" link="-1" />
+	<subSystem name="ArmorMount" x="-1.109375" y="-1.21875" scale="1" link="-1" />
+	<subSystem name="MagnetoPlasmaThruster" x="-1.3645" y="-2.341357" scale="1.5" link="-1" />
+	<subSystem name="HyperRailgun" x="2.429897" y="1.098736" scale="1.25" link="-21" />
+	<subSystem name="HyperRailgun" x="2.208037" y="-1.405115" scale="1.25" link="-1" />
+	<subSystem name="CoolantSys" x="1.546875" y="-1.75" scale="1" link="17" />
+	<subSystem name="IntegratedConstruction" x="-0.296875" y="-0.046875" scale="1" link="3" />
+	<subSystem name="OversizeMount" x="1.546875" y="1.140625" scale="1" link="15" />
+	<subSystem name="HyperRailgun" x="2.78125" y="-0.21875" scale=".25" link="-1" />
+	<subSystem name="MultiRack" x="2.101563" y="-0.148438" scale="1" link="21" />
+	<subSystem name="QuantumCompressor" x="-1.898438" y=".023438" scale=".75" link="2" />
+	<subSystem name="ArmorMount" x="-1.078125" y="1.21875" scale="1" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="true" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Defend" />
+</orders>
+

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0"?>
+<settings scale=".4" name="Shining Light" />
+<subSystems>
+	<subSystem name="FuelCell" x="-0.1875" y="-1.234375" scale="1.25" link="-1" />
+	<subSystem name="PowerGen" x="-0.9375" y="0" scale=".75" link="-1" />
+	<subSystem name="FighterHull" x=".03125" y="-0.015625" scale="1" link="-1" />
+	<subSystem name="Cockpit" x=".28125" y="-0.03125" scale=".5" link="-1" />
+	<subSystem name="FuelCell" x="-0.1875" y="1.171875" scale="1.5" link="-1" />
+	<subSystem name="Armor" x="-1.078125" y="-2.5" scale="1" link="-1" />
+	<subSystem name="PolypropellantThruster" x="-2.078125" y="1.03125" scale="4" link="-1" />
+	<subSystem name="PolypropellantThruster" x="-2.03125" y="-1.0625" scale="4" link="-1" />
+	<subSystem name="FighterLaser" x="2.5" y="0" scale="2.75" link="-1" />
+	<subSystem name="Capacitor" x="-0.84375" y="-0.71875" scale=".25" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="true" />
+	<allowFetch flag="false" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="false" />
+</ai>

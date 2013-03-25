@@ -1,0 +1,44 @@
+﻿<?xml version="1.0"?>
+<settings scale="25" name="Impending Doom II" />
+<subSystems>
+	<subSystem name="SpinalMountHull" x="1.03125" y="-0.09375" scale="1" link="5" />
+	<subSystem name="IonThruster" x="-2.5" y="-0.9375" scale="1" link="-1" />
+	<subSystem name="IonThruster" x="-2.484375" y=".46875" scale="1" link="-1" />
+	<subSystem name="Computer" x=".125" y="-0.375" scale=".625" link="-1" />
+	<subSystem name="FusionGen" x="-1.679688" y="-0.335938" scale=".75" link="-1" />
+	<subSystem name="ClusterMissile" x="2.3125" y="-0.203125" scale="4" link="-2" />
+	<subSystem name="BigFuelCell" x="-0.726563" y="-0.898438" scale=".875" link="-1" />
+	<subSystem name="BigAmmoStorage" x="-0.75" y=".15625" scale="1" link="-1" />
+	<subSystem name="ShieldGen" x=".203125" y="-1.21875" scale="1" link="-1" />
+	<subSystem name="ShieldCharger" x=".148438" y=".898438" scale=".5" link="-1" />
+	<subSystem name="TorpedoBay" x="1.382813" y="-1.445313" scale=".5" link="-1" />
+	<subSystem name="TorpedoBay" x="1.460938" y="1.351563" scale=".5" link="-1" />
+	<subSystem name="MissileRack" x="2.335938" y="-1.664063" scale=".5" link="-1" />
+	<subSystem name="BoardingDefense" x=".15625" y=".203125" scale=".25" link="-1" />
+	<subSystem name="Railgun" x="2.601563" y="1.398438" scale=".5" link="-1" />
+	<subSystem name="Armor" x=".734375" y="-2.53125" scale="1.5" link="-1" />
+	<subSystem name="Armor" x=".8125" y="2.375" scale="1.5" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="JoinFleet:30000.000000:true" />
+	<order desc="Fetch:Fuel:0.200000" />
+	<order desc="Fetch:Ammo:0.200000" />
+	<order desc="Defend" />
+	<order desc="Work:EnterStargate" />
+</orders>
+

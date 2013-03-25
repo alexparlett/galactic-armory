@@ -1,0 +1,24 @@
+Name:	MatterCreation
+	Value: Amount
+
+	Tick:	remnant_ai::MatterCreation
+	
+Name: IonCannonActive
+	Value: Damage
+	
+	OnActive: GASuperWeapons::IonCannonFire
+
+Name: ZPTriggerEvent
+	Value: Rate
+
+	OnActive: GASuperWeapons::ZPDrainTrigger
+
+Name: ZPTriggeredEvent
+	Value: Rate
+	Value: AoE_Range
+
+	OnActive: GASuperWeapons::ZPDrainTriggered
+
+Name: SpatialGenActive
+
+	OnActive: GASuperWeapons::SpatialDmg	

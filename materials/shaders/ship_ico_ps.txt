@@ -1,0 +1,118 @@
+//R channel = grayscale color
+//B channel = pixel type
+//A channel = transparency
+uniform sampler2D texture;
+uniform vec4 shields, damage;
+
+//const float hp1 = 239.0/255.0, hp2 = 230.0/255.0, hp3 = 217.0/255.0, hp4 = 204.0/255.0, hp5 = 191.0/255.0;
+//const float shield1 = 128.0/255.0, shield2 = 115.0/255.0, shield3 = 102.0/255.0, shield4 = 89.0/255.0, shield5 = 77.0/255.0;
+
+const float hp1 = 253.0/255.0, hp2 = 238.0/255.0, hp3 = 228.0/255.0, hp4 = 218.0/255.0, hp5 = 208.0/255.0;
+const float shield1 = 145.0/255.0, shield2 = 135.0/255.0, shield3 = 125.0/255.0, shield4 = 115.0/255.0, shield5 = 105.0/255.0;
+
+vec3 mergeCols(float pct, vec3 from, vec3 to) {
+	return (from * pct) + (to * (1 - pct));
+}
+
+void main() {
+	vec4 sample = texture2D(texture, gl_TexCoord[0].xy);
+	if(sample.a < 0.01)
+		discard;
+	
+	vec4 col = gl_FrontMaterial.diffuse * gl_Color * sample.r;
+	
+	//Pick the render mode via binary search
+	if(sample.b != 0.0 && sample.g != 1.0) {
+		if(sample.b < hp5) {
+			//Shields
+			if(sample.b > shield3) {
+				if(sample.b > shield2) {
+					//Any shields at all (Shield 1)
+					if(shields.x > 0.0)
+						col.rgb = mergeCols(sample.g, col.rgb, vec3( 82.0/255.0, 65.0/255.0, 102.0/255.0 ));
+					else
+						discard;
+				}
+				else {
+					//Shields > 20% (Shield 2)
+					if(shields.y > 0.0 && shields.x/shields.y > 0.20)
+						col.rgb = mergeCols(sample.g, col.rgb, vec3( 94.0/255.0, 59.0/255.0, 133.0/255.0 ));
+					else
+						discard;
+				}
+			}
+			else {
+				if(sample.b > shield5) {
+					if(sample.b > shield4) {
+						//Shields > 40% (Shield 3)
+						if(shields.y > 0.0 && shields.x/shields.y > 0.40)
+							col.rgb = mergeCols(sample.g, col.rgb, vec3( 106.0/255.0, 34.0/255.0, 186.0/255.0 ));
+						else
+							discard;
+					}
+					else {
+						//Shields > 60% (Shield 4)
+						if(shields.y > 0.0 && shields.x/shields.y > 0.60)
+							col.rgb = mergeCols(sample.g, col.rgb, vec3( 158.0/255.0, 5.0/255.0, 255.0/255.0 ));
+						else
+							discard;
+					}
+				}
+				else {
+					//Shields > 80% (Shield 5)
+					if(shields.y > 0.0 && shields.x/shields.y > 0.80)
+						col.rgb = mergeCols(sample.g, col.rgb, vec3( 176.0/255.0, 5.0/255.0, 255.0/255.0 ));
+					else
+						discard;
+				}
+			}
+		}
+		else {
+			//Health
+			if(sample.b > hp3) {
+				if(sample.b > hp2) {
+					//Any hp (HP 1)
+					if(damage.x > 0.0)
+						col.rgb = mergeCols(sample.g, col.rgb, vec3( 193.0/255.0, 110.0/255.0, 28.0/255.0 ));
+					else
+						discard;
+				}
+				else {
+					//HP > 20% (HP 2)
+					if(damage.x/damage.y < 0.80 && damage.x > 0.0)
+						col.rgb = mergeCols(sample.g, col.rgb, vec3( 193.0/255.0, 191.0/255.0, 28.0/255.0 ));
+					else
+						discard;
+				}
+			}
+			else {
+				if(sample.b > hp5) {
+					if(sample.b > hp4) {
+						//HP > 40% (HP 3)
+						if(damage.x/damage.y < 0.60 && damage.x > 0.0)
+							col.rgb = mergeCols(sample.g, col.rgb, vec3( 144.0/255.0, 193.0/255.0, 28.0/255.0 ));
+						else
+							discard;
+					}
+					else {
+						//HP > 60% (HP 4)
+						if(damage.x/damage.y < 0.40 && damage.x > 0.0)
+							col.rgb = mergeCols(sample.g, col.rgb, vec3( 44.0/255.0, 193.0/255.0, 28.0/255.0 ));
+						else
+							discard;
+					}
+				}
+				else {
+					//HP > 80% (HP 5)
+					if(damage.x/damage.y < 0.20 && damage.x > 0.0)
+						col.rgb = mergeCols(sample.g, col.rgb, vec3( 20.0/255.0, 210.0/255.0, 0.0/255.0 ));
+					else
+						discard;
+				}
+			}
+		}
+	}
+	
+	gl_FragColor = col;
+	gl_FragColor.a *= sample.a;
+}

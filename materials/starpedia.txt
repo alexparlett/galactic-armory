@@ -1,0 +1,5 @@
+Material: sp_homepage_GA
+ Texture: Images/Stellarpedia/gettingstarted.png
+ 
+Material: blueprint1
+ Texture: Images/Stellarpedia/blueprint1.png

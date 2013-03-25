@@ -1,0 +1,53 @@
+﻿<?xml version="1.0"?>
+<settings scale="30" name="Tiger II" />
+<subSystems>
+	<subSystem name="MediumHull" x=".515625" y="-0.984375" scale="1" link="-9" />
+	<subSystem name="VASIMRThruster" x="-0.570313" y="-2.914063" scale=".5" link="-1" />
+	<subSystem name="ZeroPointGenerator" x="-0.445313" y=".960938" scale="1.25" link="-1" />
+	<subSystem name="FuelCell" x="-0.53125" y="-1.015625" scale=".125" link="-1" />
+	<subSystem name="AmmoStorage" x="-0.390625" y="-0.046875" scale="2" link="-25" />
+	<subSystem name="MultiRack" x="2.476563" y="-0.039063" scale="1.25" link="13" />
+	<subSystem name="CoolantSys" x=".875" y="0" scale="1" link="14" />
+	<subSystem name="IntegratedConstruction" x=".21875" y="-1.3125" scale="1" link="0" />
+	<subSystem name="ArmorMount" x="-2.796875" y="-0.140625" scale="1" link="-1" />
+	<subSystem name="ArmorMount" x="-2.75" y=".65625" scale="1" link="-1" />
+	<subSystem name="ArmorMount" x="-2.657719" y="-0.948075" scale="1" link="-1" />
+	<subSystem name="PowerArmor" x="-2.0625" y="1.078125" scale="4" link="-1" />
+	<subSystem name="Capacitor" x="-1.015625" y="-0.953125" scale=".125" link="-1" />
+	<subSystem name="TwinHeavyRailgun" x="1.421875" y=".015625" scale="1" link="-7" />
+	<subSystem name="AdvancedAICore" x=".382813" y=".695313" scale=".5" link="-8" />
+	<subSystem name="GraviticAccelerator" x="2.507813" y="1.070313" scale=".75" link="-1" />
+	<subSystem name="ThermalPenetrator" x="3.015625" y="-0.078125" scale=".25" link="-1" />
+	<subSystem name="ArmorMount" x="-2.453125" y="-0.109375" scale="1" link="-1" />
+	<subSystem name="AntimatterCannon" x="2.578125" y="-1.109375" scale=".25" link="-1" />
+	<subSystem name="GraviticAccelerator" x="1.84375" y="-0.90625" scale=".25" link="-1" />
+	<subSystem name="AMConverter" x="-1.171875" y=".5625" scale=".25" link="-1" />
+	<subSystem name="ArmorMount" x="-2.0625" y="-0.109375" scale="1" link="-1" />
+	<subSystem name="ShieldArmor" x="-1.955116" y="-1.25686" scale="4" link="-1" />
+	<subSystem name="QuantumCompressor" x="-0.8125" y="-0.515625" scale=".25" link="4" />
+	<subSystem name="MatterGen" x="-0.859375" y="-1.5625" scale=".25" link="-1" />
+	<subSystem name="NaniteRepair" x="-0.945313" y="1.304688" scale=".25" link="-1" />
+	<subSystem name="VASIMRThruster" x="-0.867188" y="2.835938" scale=".5" link="-1" />
+	<subSystem name="ShieldArmor" x="-2.796875" y="-0.109375" scale="1" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Ammo:0.200000" />
+	<order desc="Fetch:Fuel:0.200000" />
+	<order desc="Defend" />
+</orders>
+

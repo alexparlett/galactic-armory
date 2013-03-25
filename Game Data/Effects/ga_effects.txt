@@ -1,0 +1,522 @@
+Name:	fakePower
+
+	OnConstruct:	GABasicEffects::startEmergencyPower
+	OnActive:		GABasicEffects::addEmergencyPower
+	OnDeactive:		GABasicEffects::removeEmergencyPower
+
+Name:	GABankExport
+	Value: Amount
+	Value: Mode
+
+	Tick:	BasicEffects::BankExport
+
+Name: AutomatedJumpEvent
+
+	Tick: JumpDrive::autoJump
+	
+Name: GAJumpDriveEvent
+
+	OnConstruct: JumpDrive::checkJumpSetting
+
+Name: DestroyLinked
+
+	OnDestruct: Combat::DestroyLinked
+
+Name: TeraTorpedoEvent
+	Value: Damage
+	
+	OnActive: GACombatWeapons::TeraTorpedoDmg
+
+Name: PhasedMissileEvent
+	Value: Damage
+	
+	OnActive: GACombatWeapons::PhasedMissileDmg
+
+Name: EMPDamageTrigger
+	Value: Damage
+	
+	OnActive: GACombatWeapons::EMPAreaDamageTrigger
+	
+Name: TriggeredEMPAreaDamage
+	Value: Damage
+	Value: AoE_Range
+	
+	OnActive: GACombatWeapons::EMPAreaDamageTriggered
+
+Name: PlanetRegen
+	
+	Tick: GABasicEffects::PlanetRegen
+
+Name: HeliocideDmg
+	Value: Damage
+	Value: Cost
+	
+	Tick: GACombatWeapons::HeliocideDmg
+
+Name: SelfHealing
+	Value: Rate
+	
+	Tick: GABasicEffects::SelfHealing
+
+Name: BankImport
+	Value: Rate
+
+   OnConstruct: GABasicEffects::importdockBuilt
+   OnDestruct: GABasicEffects::importdockDestroyed
+   Tick: GABasicEffects::BankImport
+
+Name:   OreStorage
+   Value: Amount
+
+   Once: AddAmount(0, "Ore")
+   OnConstruct:   AddMax(Amount, "Ore")
+   OnDestruct:      SubMax(Amount, "Ore")
+
+
+Name: StargateLinkEvent
+
+	OnDeactive: JumpDrive::createLink
+	
+Name: StargateJumpEvent
+
+	OnDeactive: JumpDrive::GateJump
+
+Name:	RefineH3
+	Value: Rate
+	Value: H3CostPer
+
+	Tick: GABasicEffects::convertH3
+
+Name: H3Storage
+	Value: Amount
+
+	Once: AddAmount(0, "H3")
+	OnConstruct:	AddMax(Amount, "H3")
+	OnDestruct:		SubMax(Amount, "H3")
+
+Name: ScoopH3
+	Value: Rate
+	Value: PowCost
+	
+	Tick:	GABasicEffects::ScoopH3	
+
+Name: Heatsink
+	Value: Amount
+	
+	Once: AddAmount(0, "Heatsink")
+	OnConstruct:	AddMax(Amount, "Heatsink")
+	OnDestruct:		SubMax(Amount, "Heatsink")
+	
+Name: ReleaseHeat
+	Value: Rate
+
+	Once: AddAmount(0, "Overheated")
+	OnConstruct: AddMax(1, "Overheated")
+	OnDestruct:	SubMax(1, "Overheated")
+	Tick: GABasicEffects::ReleaseHeat
+
+Name: GAHullSoak
+	Value: ReceivePct
+	Value: DmgAlter
+	
+	OnGlobalDamage: GACombatDefense::DealHullDamage
+	OnDestruct: Death
+	
+Name: GASoakDamage
+	Value: Amount
+	
+	OnDamage: Skip
+	OnGlobalDamage:	GACombatDefense::SoakDamage
+
+Name: GAReactDamage
+	Value: Amount
+	Value: AbsorbPct
+	
+	OnDamage: Skip
+	OnGlobalDamage:	GACombatDefense::ReactDamage
+
+Name:	GAProjectileDmg
+	Value: Damage
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minHitChance
+	
+	OnActive:	GACombatWeapons::ProjDamage
+	
+Name:	GAProjPierceDamage
+	Value: Damage
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minHitChance
+	
+	OnActive:	GACombatWeapons::ProjPierceDamage
+	
+Name: ProjWeaponDmg
+	Value: Damage
+	
+	OnActive: 	GACombatWeapons::ProjWeaponDamage
+	
+Name: LargeBombDmg
+	Value: Damage
+	
+	OnActive: 	GACombatWeapons::LargeBombDamage
+	
+Name: PFWDmg
+	Value: Damage
+	Value: Cost
+	Value: wasteHeat
+	
+	Tick:	GACombatWeapons::PFWDamage
+	
+Name:	MegaEnergyDmg
+	Value: Damage
+	Value: Cost
+	Value: wasteHeat
+	
+	Tick:	GACombatWeapons::MegaEnergyDamage
+	
+Name:	GAEnergyDmg
+	Value: Damage
+	Value: Cost
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+	
+	Tick:	GACombatWeapons::EnergyDamage
+	
+Name:	GAEnergyDmgCrit
+	Value: Damage
+	Value: Cost
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+	
+	Tick:	GACombatWeapons::EnergyDamageCrit
+	
+Name:	GAPhasedEnergyDmg
+	Value: Damage
+	Value: Cost
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+	
+	Tick:	GACombatWeapons::PhasedDamage
+
+Name: TRayDmg
+	Value: Damage
+	Value: Cost
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+	
+	Tick:	GACombatWeapons::TRayDamage
+	
+Name: TRayBomb
+	Value: Damage
+	
+	Tick:	GACombatWeapons::TRayBombDamage
+	
+Name: ParticleDmg
+	Value: Damage
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: minHitChance
+	Value: wasteHeat
+	
+	OnActive:	GACombatWeapons::ParticleDamage
+	
+Name: WaveDmg
+	Value: Damage
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: minHitChance
+	Value: wasteHeat
+	
+	OnActive:	GACombatWeapons::WaveDamage	
+
+Name:	GADoT
+	Value: Damage
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: minHitChance
+	Value: wasteHeat
+	
+	Tick: GACombatWeapons::DoT
+	
+Name:	NaniteDoT
+	Value: Damage
+	
+	Tick: GACombatWeapons::NaniteDoT
+	
+Name: LongRangeLaserDmg
+	Value: Damage
+	Value: Cost
+	Value: VisibleTime
+	
+	Tick:	GACombatWeapons::LongRangeLaserDamage
+
+Name:	ParticleEnergyDmg
+	Value: Damage
+	Value: Cost
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+	
+	Tick:	GACombatWeapons::ParticleEnergyDamage
+
+Name: ArmorPiercingDmg
+	Value: Damage
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minHitChance
+	
+	Tick:	GACombatWeapons::ArmorPiercingDamage
+	
+//Deals damage in two parts: Upon impact, deals [FrontDamage]; Over time, deals [DoTDamage]/second
+Name:	GAPlasmaDmg
+	Value: FrontDamage
+	Value: DoTDamage
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+	
+	OnActive: GACombatWeapons::PlasmaFrontDamage
+	Tick:	GACombatWeapons::PlasmaDoTDamage
+
+Name:	TachyonDmg
+	Value: Damage
+	Value: Cost
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+	
+	OnActive:	GACombatWeapons::EnergyDamageInstant
+	
+Name: AntimatterThrust
+	Value: Amount
+	Value: PowCost
+	
+	OnActive:	IncSpeed(Amount)
+	OnDeactive:	DecSpeed(Amount)
+	
+Name: GAMoveDodge
+	Value: HitMod
+	
+	OnGlobalDamage:	GACombatDefense::DodgeHitMod
+	
+Name: GAShields
+	Value: Amount
+	Value: Absorption
+
+	OnActive:	AddMax(Amount, "Shields")
+	OnDeactive:	SubMax(Amount, "Shields")
+	OnGlobalDamage:	GACombatDefense::ShieldSoak
+
+Name: ShieldArmor
+	Value: Amount
+	Value: Absorption
+	Value: CollapseTime
+
+	OnActive:	AddMax(Amount, "ShieldArmor")
+	OnDeactive:	SubMax(Amount, "ShieldArmor")
+	OnGlobalDamage:	GACombatDefense::ShieldArmorSoak
+
+Name: GAShieldRegen
+	Value: Rate
+	Value: Cost
+	
+	Tick:	GACombatDefense::ShieldRegen
+
+Name: ShieldArmorRegen
+	Value: Rate
+	Value: Cost
+	
+	Tick:	GACombatDefense::ShieldArmorRegen
+	
+Name: PointDefense
+	Value: Effectivity
+	
+	OnActive: 	GACombatDefense::AddPDEffectivity 	//AddMax(Effectivity, "PDEffectivity")
+	OnDeactive: GACombatDefense::SubPDEffectivity 	//SubMax(Effectivity, "PDEffectivity")
+
+Name: HasRepair
+	Value: Amount
+	
+	Once: 		AddAmount(Amount, "HasRepair")
+	OnActive:	AddMax(Amount, "HasRepair")
+	
+Name: HasDelRepair
+	Value: Amount
+	
+	Once: GARepair::HasDelRepair
+	
+Name: DelayedRepairManpower
+	Value: Rate
+	Value: MetalCost
+	
+	Tick: GARepair::DelayedShipRepairManpower
+	
+Name: RepairMachines
+	Value: Rate
+	Value: MetalCost
+	
+	Tick: GARepair::ShipRepairMachines
+	
+Name: AmmoFab
+	Value: Rate
+	Value: MetalCost
+
+	Tick: GABasicEffects::FabricateAmmo
+	
+Name: AmmoImport
+	Value: Rate
+	
+	Tick: GABasicEffects::ImportAmmo
+	
+Name: AsteroidCollect
+	Value: Rate
+
+	Tick: GABasicEffects::CollectAsteroids
+	
+Name:	AsteroidStorage
+	Value: Amount
+
+	Once: AddAmount(Amount, "Asteroids")
+	OnConstruct:	AddMax(Amount, "Asteroids")
+	OnDestruct:		SubMax(Amount, "Asteroids")
+
+Name: ArmorPoints
+	Value: Amount
+
+	Once:		AddAmount(Amount, "ArmorPoints")
+	OnActive:	AddMax(Amount, "ArmorPoints")
+	OnDeactive:	SubMax(Amount, "ArmorPoints")
+
+Name: ShieldEmitters
+	Value: Amount
+
+	Once:		AddAmount(Amount, "ShieldEmitters")
+	OnActive:	AddMax(Amount, "ShieldEmitters")
+	OnDeactive:	SubMax(Amount, "ShieldEmitters")
+	
+Name: ExternalMounts
+	Value: Amount
+
+	Once:		AddAmount(Amount, "ExternalMounts")
+	OnActive:	AddMax(Amount, "ExternalMounts")
+	OnDeactive:	SubMax(Amount, "ExternalMounts")
+
+Name: AntimatterGeneration
+	Value: Amount
+
+	Once:		AddAmount(Amount, "AntimatterGeneration")
+	OnActive:	AddMax(Amount, "AntimatterGeneration")
+	OnDeactive:	SubMax(Amount, "AntimatterGeneration")	
+	
+Name: AntiFighterDmg
+	Value: Damage
+	Value: Cost
+	
+	OnActive:	GACombatWeapons::AntiFighterDamage
+	
+Name: TriggeredAreaDamage
+	Value: AoE_Damage
+	Value: AoE_Range
+
+	OnActive: GACombatWeapons::AreaDamageTriggered
+	
+Name: AreaDamageTrigger
+	Value: Damage
+
+	OnActive: GACombatWeapons::AreaDamageTrigger
+	
+Name: DSMDamage
+	Value: Damage
+	Value: wasteHeat
+
+	OnActive: GACombatWeapons::AreaDamageTriggerHeat
+	
+Name: TriggeredParticleAreaDamage
+	Value: AoE_Damage
+	Value: AoE_Range
+
+	OnActive: GACombatWeapons::ParticleAreaDamageTriggered
+	
+Name: ParticleAreaDamageTrigger
+	Value: Damage
+	Value: wasteHeat
+
+	OnActive: GACombatWeapons::ParticleAreaDamageTriggerHeat
+	
+Name: TriggeredPFWAreaDamage
+	Value: AoE_Damage
+	Value: AoE_Range
+
+	OnActive: GACombatWeapons::PFWAreaDamageTriggered
+	
+Name: PFWAreaDamageTrigger
+	Value: Damage
+
+	OnActive: GACombatWeapons::PFWAreaDamageTrigger
+
+Name: ArmorPotential
+	Value: Amount
+
+	Once: AddAmount(Amount, "Armor Potential")
+	OnActive:	AddMax(Amount, "Armor Potential")
+	OnDeactive:		SubMax(Amount, "Armor Potential")
+
+Name:	NBCDmg
+	Value: Damage
+	
+	Tick: GACombatWeapons::NBCDamage
+	
+Name:	GABoard
+	Value: Troops
+	
+	Tick: GABoarding::BoardTick
+	
+Name:	AICapitalSupport
+	Value: Metals
+	Value: Electronics
+	Value: AdvParts
+	Value: Food
+	
+	Tick:	GAStructureEffects::AIPlanetCapitalTick
+	
+//Name:	star_damage
+//	Tick:	GACombatWeapons::StarDamage
+
+Name:	SelfDestruct
+	
+	OnActive: AddMax(1, "hasSelfDestruct")  //just for adding information to the mouse overlay
+	OnDeactive: Death
+	OnDestruct: Death
+	
+//Do not work (yet)
+Name:	SetVisible
+	Value: Time
+	
+	Tick: GABasicEffects::SetVisible
+
+Name:	SetInvisible
+	
+	Once: 		GABasicEffects::SetInvisibleOnce
+	OnActive:	AddMax(1, "VisibilityTimer")
+	Tick:	GABasicEffects::SetInvisible
+	
+Name: TerraForm
+   Value: Amount
+  
+   OnConstruct:   GAStructureEffects::IncreaseSlots
+   OnDestruct:    GAStructureEffects::DecreaseSlots 

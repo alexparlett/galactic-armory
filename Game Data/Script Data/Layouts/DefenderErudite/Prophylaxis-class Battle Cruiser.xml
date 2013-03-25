@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<settings scale="30" name="Prophylaxis-class Battle Cruiser" />
+<subSystems>
+	<subSystem name="Computer" x="-0.007813" y="-0.085938" scale=".875" link="-1" />
+	<subSystem name="BigAmmoStorage" x="-0.398438" y="-0.148438" scale="1.25" link="-7" />
+	<subSystem name="ShieldGen" x="-0.945313" y="-1.164063" scale="1.25" link="-1" />
+	<subSystem name="ShieldCharger" x="-0.929688" y="1.070313" scale=".75" link="-1" />
+	<subSystem name="Bulkhead" x="-2.164063" y="-0.117188" scale="1" link="12" />
+	<subSystem name="Bulkhead" x="-0.414063" y=".351563" scale=".75" link="1" />
+	<subSystem name="SpinalMountHull" x="1.671875" y="-0.1875" scale="1" link="10" />
+	<subSystem name="AmmoFabricator" x="-1.585938" y=".507813" scale=".75" link="-1" />
+	<subSystem name="ReactArmor" x="-0.046449" y="-2.709549" scale="1.5" link="-1" />
+	<subSystem name="ReactArmor" x=".015625" y="2.703125" scale="1.5" link="-1" />
+	<subSystem name="Artillery" x="2.515625" y="-0.203125" scale="2" link="-8" />
+	<subSystem name="FuelCell" x="-1.40625" y="-0.140625" scale=".25" link="-1" />
+	<subSystem name="ShieldedAntimatterGen" x="-2.117188" y="-0.195313" scale=".5" link="-6" />
+	<subSystem name="AntimatterProjector" x=".921875" y="1.0625" scale=".25" link="-16" />
+	<subSystem name="MultiRack" x=".328125" y="1.125" scale="1" link="13" />
+	<subSystem name="Heatsink" x=".75" y="-0.421875" scale=".25" link="-1" />
+	<subSystem name="VASIMRThruster" x="-2.507813" y="-1.148438" scale=".5" link="-1" />
+	<subSystem name="VASIMRThruster" x="-2.539063" y="1.054688" scale=".5" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Ammo:0.200000" />
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Defend" />
+</orders>
+

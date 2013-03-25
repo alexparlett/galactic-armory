@@ -1,0 +1,37 @@
+﻿<?xml version="1.0"?>
+<settings scale="1" name="Defense Satellite" />
+<subSystems>
+	<subSystem name="StationHull" x="-0.015625" y="-0.21875" scale="1" link="-12" />
+	<subSystem name="SolarPowerGen" x="-0.023438" y="-2.398438" scale="3.25" link="-14" />
+	<subSystem name="AmmoStorage" x="-0.046875" y=".953125" scale="4" link="-1" />
+	<subSystem name="Railgun" x="-2.5" y="0" scale="2.75" link="-8" />
+	<subSystem name="Railgun" x="2.453125" y=".0625" scale="3" link="-7" />
+	<subSystem name="CoolantSys" x="1.898438" y=".820313" scale=".75" link="4" />
+	<subSystem name="CoolantSys" x="-2.101563" y=".851563" scale=".75" link="3" />
+	<subSystem name="AmmoStorage" x=".710938" y="-0.039063" scale=".5" link="-1" />
+	<subSystem name="Armor" x="0" y="2.3125" scale="4" link="-1" />
+	<subSystem name="Computer" x="-0.835938" y="-0.257813" scale=".875" link="-13" />
+	<subSystem name="Bulkhead" x="-0.0625" y="-0.9375" scale="1" link="0" />
+	<subSystem name="Bulkhead" x="-1.257813" y="-0.773438" scale=".875" link="9" />
+	<subSystem name="Bulkhead" x=".735501" y="-1.81094" scale="1.875" link="1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="true" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="false" />
+	<depositTargets ships="false" planets="true" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Defend" />
+</orders>
+

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0"?>
+<settings scale="12" name="Cancer IV-class Cruiser" />
+<subSystems>
+	<subSystem name="CrewQuarters" x="-0.968653" y="-0.472261" scale=".375" link="-1" />
+	<subSystem name="Bridge" x="-1.471939" y="-0.217171" scale=".375" link="-1" />
+	<subSystem name="LifeSupport" x="-1.475387" y=".779059" scale=".125" link="-1" />
+	<subSystem name="FuelCell" x="1.527094" y=".031025" scale=".75" link="-1" />
+	<subSystem name="FuelCell" x="1.030703" y=".031025" scale=".75" link="-1" />
+	<subSystem name="RepairBay" x="-0.723905" y="1.523647" scale=".5" link="-1" />
+	<subSystem name="Capacitor" x="-1.475387" y="1.275451" scale=".25" link="-1" />
+	<subSystem name="HeavyHull" x="-0.220618" y="-0.723905" scale="1" link="-1" />
+	<subSystem name="Bulkhead" x="-0.222505" y=".024723" scale="1" link="13" />
+	<subSystem name="ReactArmor" x="-1.220296" y="-1.475387" scale="4" link="-1" />
+	<subSystem name="SoakArmor" x=".275773" y="-2.219974" scale="2" link="-1" />
+	<subSystem name="MagnetoPlasmaThruster" x="-2.453125" y=".671875" scale="2" link="-1" />
+	<subSystem name="MagnetoPlasmaThruster" x="-2.5" y="-0.796875" scale="2" link="-1" />
+	<subSystem name="AntiMatterGen" x=".027577" y=".027577" scale=".5" link="-10" />
+	<subSystem name="PFW" x="1.726563" y=".726563" scale=".5" link="-18" />
+	<subSystem name="MuonCannon" x="1.710938" y="-0.664063" scale=".5" link="-19" />
+	<subSystem name="MultiRack" x="1.275451" y="1.027256" scale="1.5" link="14" />
+	<subSystem name="MultiRack" x="1.275451" y="-0.9721" scale="1.5" link="15" />
+	<subSystem name="ShieldGen" x="-0.9721" y="1.027256" scale=".5" link="-1" />
+	<subSystem name="AmmoStorage" x="-0.958312" y=".25509" scale="1" link="-1" />
+	<subSystem name="Heatsink" x="-0.217171" y=".782506" scale=".375" link="-1" />
+</subSystems>
+<ai>
+	<targetScale low="1" hi="9999999" forced="false" />
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="0" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Defend" />
+</orders>
+

@@ -1,0 +1,31 @@
+uniform sampler2D texture[2];
+uniform float cycle;
+
+uniform float uv1x, uv1y, uv2x, uv2y;
+
+const float maxVariance = 0.030; //should be kept low
+const float deviationCycles = 3.25; //How much variation is based on base color
+
+const float circleRads = 6.28318531; //2 * pi
+
+const float noise1Base = 0.84, noise1Range = 0.25;
+const float noise2Base = 0.90, noise2Range = 0.2;
+
+void main() {
+	vec4 tc = texture2D(texture[0], gl_TexCoord[0].xy);
+	
+	vec2 noiseCoord = gl_TexCoord[0].xy * 4.0;
+	vec2 noise2Coord = noiseCoord + vec2( uv2x * -1.0, uv2y );
+	noiseCoord += vec2( uv1x, uv1y );
+	
+	float diff;
+	diff =	noise1Base + (texture2D(texture[1], noiseCoord).r * noise1Range);
+	diff *=	noise2Base + (texture2D(texture[1], noise2Coord).g * noise2Range);
+	diff -=	1.0;
+	
+	tc.rgb -= 0.5 + (maxVariance * sin(cycle * circleRads) * cos(tc.r * (circleRads * deviationCycles)) ) + diff;
+	tc.rgb *= 2.0;
+	tc.a = 0.0;
+	
+	gl_FragColor = (gl_FrontMaterial.diffuse * gl_Color.a) + tc;
+}

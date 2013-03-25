@@ -1,0 +1,106 @@
+//CONTROLS/INTERFACE
+Control-click when building ships or structures to pick how many to build.
+Shift-click when building ships or structures to add five to the queue at a time.
+You can set queued technologies to repeat when finished, moving them to the end of the queue.
+Press 'P' to add an object to the pinned object list on the left. Control-click their icon to remove them.
+You can click most messages in the message bar to zoom to the mentioned object or system.
+Hold alt while hovering over a ship to display a ring indicating its maximum weapons range.
+Hold shift while resizing a sub system to change the size by smaller increments.
+You can rename planets and other objects by clicking on the pencil icon next to their name.
+You can reveal the effects of a planet's condition by hovering over it in the Planet Window.
+Any ship can serve as a mobile fuel supply if you allow it in the AI settings of the Blueprint Window.
+Hold alt while giving a move order to lock the vertical component to the system plane.
+Double right click and drag to adjust the vertical component while giving a move order.
+You can also activate the 3D cursor by holding control while dragging the right mouse button for a move order.
+
+//ORDERS
+Hold control when giving an attack order to force weapons to be fired that normally would not be. You may also attack your own ships this way.
+Hold shift when giving orders to chain them together. These orders will happen when the ship has nothing else to do.
+Press 'X' with multiple ships selected to send each to a different unexplored system.
+You can select multiple systems at a time when you issue an Auto-Colonize order.
+You will need to force attack unowned objects such as stars to harm them - Hold control when giving the attack order.
+When you manually dock or undock ships, they will forfeit their docking automation. Right click and select "Automatically Dock" to refresh it.
+
+//TECH
+Megaconstruction research reduces the cost of building large ships, and a few levels is useful for all empires.
+Be careful when improving planetary structures, as their construction cost will increase with technology. Make sure your economy is ready for it.
+When you level up a technology, you also get bonus progress in a random link. Level technologies up before branching out to save time.
+Levelling a technology significantly improves related sub systems; they become 35% more effective each level.
+Technologies double in cost every time they are levelled. Be careful not to waste too much time on high levels of tech too early in the game.
+
+//SHIPS
+Pick the right scale for the job. Big ships are wasteful against small ships, and small ships have trouble damaging large ships.
+If you find your ships are running out of ammo, build some Ammo Depots on planets in their system.
+Keep your fleets up to date; You can retrofit old designs for a fraction of the new and old price of the hull.
+Don't be fooled by how small larger ships look. A capital ship may only look slightly larger than a cruiser, but it is much stronger.
+You may scuttle your ships at a planet to regain some of the resources put into building the ship.
+Constructing squads of Fighter-class ships locally is a good first defense against enemy incursions or pirate raids.
+
+//SUBSYSTEMS
+Advanced power generators explode violently when destroyed, damaging nearby friends and foes alike.
+Larger guns do more damage, but fire more slowly. Use big guns to puncture armor, and small weapons to defeat small, defenseless targets.
+Shields allow some hits to pass through as they are weakened. Don't forget to add armor to protect against such shots.
+Armor reduces the damage a ship takes per hit, making it very effective against small weapons and beams.
+Crewed ships give a small amount of free repair every tick; add a Repair Bay to keep your ship in top shape even in the middle of combat!
+Beams hit a target multiple times throughout their duration. This makes them weak against armor, but makes piercing shields more likely.
+You can place as much armor as you want on a design, but each plate slows the ship down and makes it more expensive.
+Stations cannot refuel themselves, making Solar Panels and Bussard Ram Scoops a solid investment for long-lived defenses.
+Flak Turrets are highly effective at killing swarms of smaller ships, but do very little to protect against similarly-sized targets.
+Weapons are alternatives to each other -- DPS is not the only factor to consider when selecting armaments for your ships.
+Ships without crews can be taken over easily with boarding pods. Boarding Defenses provide some protection against this tactic.
+Combat ships docked in a ShipBay are automatically deployed when enemies are detected and dock back at their carrier when no enemies remain.
+Some weapons come with their own limited ammunition supply but for longer engagements make sure to include an Ammo Cache!
+
+
+//PLANETS
+Planet governors will build structures suited to their goal, and replace unsuitable structures if no slots are left.
+You can set planets to repeat their build queue. Completed constructions will be moved to the end of the queue to be built again.
+Each planet can have one or two special conditions that affect its structures. Check the planet window for details after colonizing a world.
+By default, planets will use their space ports to maintain their resources at 50% capacity. You can change this in the Civil Acts screen.
+
+//ECONOMY
+Space Ports may provide some fuel, but a large fleet needs to be supplied by a Fuel Depot.
+Unlike most resources, Goods and Luxuries don't need space ports to move around the empire.
+Goods keep your people from becoming unhappy, but luxuries are necessary to make them happy.
+The happier a population is, the faster they produce labor and resources.
+Keep track of your empire's resources in the top left. If something is low, set a planet's governor to focus on that resource.
+Planets continue to produce metal when they run out of ore, but at a much slower rate (20%).
+Planets with a larger population produce more resources, but also consume more goods and luxuries.
+
+//GENERAL GAMEPLAY
+Pirates prey on weak systems with wealthy economies; this can be exploited to your advantage!
+Remnants are very powerful compared to other Empires in the game's beginning.  Keep them in mind as you expand or you might lose many colonists!
+Check your Galactic Bank as you expand your empire; if you're short in Goods or Luxuries you may be straining your Empire's economy.
+Colonizing worlds with smaller colony ships allows you to capture planets faster but the less slots a colony has the more vulnerable it is to destruction.
+Destroying a star causes a wave of destruction to burst from it in a shockwave; the larger the star, the more damage dealt to objects in the system.
+
+//EMPIRE
+The resource focus and mandate civil acts can help you direct your economic output in case of shortages.
+Be vigilant! Peace Agreements with no duration are permanent and cannot be revoked.
+
+//MISC
+Check out starruler.blind-mind.com for regular patches!
+You can chat with other players by pressing 'T' in single player.
+If you have any questions about the game, feel free to open the IRC chat from the escape menu and ask.
+
+//GALACTIC ARMORY
+Energy weapons cause a build-up of excess heat. Use larger power supplies or heatsinks to counter this.
+The maximum and effective range of projectiles is dependent on their speed. As size and tech level increase, so does their velocity.
+Those moons aren't just for show. If Realistic Systems Generation is enabled, habitable moons increase the amount of planet slots.
+Beam weapons lose damage over range because of dispersion. Maximum damage will only be dealt within their effective range.
+Ballistic and energy projectile weapons do not always hit their target beyond their effective range.
+Point Defense only protects the ship it is mounted on.
+All ship repairs cost metal, the only exception being Nano Armor.
+Superweapons need to be fired manually.
+Ship construction cost increases with tech level, so take care of your economy.
+Mining asteroids is extremely important. Don't rely on planetary resources alone!
+The Import Dock subsystem needs a stable economy. Build more space ports if your Import Trade value is too low.
+Add orbital resource facilities (i.e. fuel, ammunition) to your planets to boost your overall economic output!
+Extended Magazines can be added to various burst-fire weapons such as missile racks to increase the size of their volley.
+Spinal Mount and Gargantuan Hulls can be linked to a weapon - or other subsystem - to boost their durability, range and damage at the cost of reloading time.
+Fighter and Bomber hulls can and should be scaled up like other ships as their maximum scale increases with technology.
+To link Remnant Jump Gates, capture at least 2 using boarding parties, then select one of them, right-click on another one you own and select "Link Jump Gate".
+To use Remnant Jump Gates that have been linked together, select your ships, right-click on the nearest gate and select "Use Jump Bridge"
+Researching metallurgy, chemistry and ship construction reduces the mass of all subsystems.
+Antimatter Engines and Weapons need surplus antimatter to run. Either use an Antimatter Generator of sufficient size or install an AM Converter to supply them.
+While area-of-effect weapons like Fusion Torpedo and Artillery can hit multiple targets at once, be aware of collateral damage to your own ships and planets.

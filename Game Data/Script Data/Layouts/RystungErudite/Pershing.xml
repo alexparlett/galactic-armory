@@ -1,0 +1,53 @@
+﻿<?xml version="1.0"?>
+<settings scale="20" name="Pershing" />
+<subSystems>
+	<subSystem name="MediumHull" x="-0.828125" y="-0.078125" scale="1" link="-16" />
+	<subSystem name="VASIMRThruster" x="-0.892723" y="-2.625346" scale="1.125" link="-1" />
+	<subSystem name="ZeroPointGenerator" x=".632813" y="-0.898438" scale=".5" link="-1" />
+	<subSystem name="Computer" x="-0.171875" y="-0.03125" scale=".625" link="-1" />
+	<subSystem name="FuelCell" x="-0.984375" y="-0.734375" scale=".25" link="-1" />
+	<subSystem name="HyperRailgun" x="1.578125" y="0" scale="1" link="-13" />
+	<subSystem name="HyperRailgun" x="2.773438" y="-0.039063" scale=".5" link="-1" />
+	<subSystem name="AutocannonBattery" x="1.257813" y="-0.976563" scale=".375" link="-1" />
+	<subSystem name="GatlingTurret" x="1.492188" y=".992188" scale=".375" link="-1" />
+	<subSystem name="FusionTorpedoBay" x="2.6875" y="-0.84375" scale="1" link="-14" />
+	<subSystem name="TorpedoBay" x="2.75" y=".609375" scale=".25" link="-15" />
+	<subSystem name="CoolantSys" x=".765625" y="-0.03125" scale="1" link="5" />
+	<subSystem name="CoolantSys" x="2.125" y="-1.171875" scale="1" link="9" />
+	<subSystem name="CoolantSys" x="2.390625" y="1.09375" scale="1" link="10" />
+	<subSystem name="IntegratedConstruction" x="-1.203125" y="-0.078125" scale="1" link="0" />
+	<subSystem name="AmmoStorage" x="-0.078125" y="-0.96875" scale="1.75" link="-21" />
+	<subSystem name="AmmoStorage" x="-0.03125" y=".921875" scale="1.75" link="-22" />
+	<subSystem name="Capacitor" x="-1.421875" y="-0.65625" scale=".125" link="-1" />
+	<subSystem name="AmmoFabricator" x=".726563" y=".835938" scale=".5" link="-1" />
+	<subSystem name="QuantumCompressor" x="-0.085938" y="-1.554688" scale=".25" link="15" />
+	<subSystem name="QuantumCompressor" x="-0.039063" y="1.632813" scale=".25" link="16" />
+	<subSystem name="BoardingDefense" x="-0.890625" y=".65625" scale=".25" link="-1" />
+	<subSystem name="ArmorMount" x="-2.760262" y="-0.654977" scale="1" link="-1" />
+	<subSystem name="ArmorMount" x="-2.78125" y=".328125" scale="1" link="-1" />
+	<subSystem name="ArmorMount" x="-2.109375" y="-0.125" scale="1" link="-1" />
+	<subSystem name="PowerArmor" x="-1.828125" y="-1.65625" scale="3" link="-1" />
+	<subSystem name="ReactArmor" x="-1.9375" y="1.28125" scale="4" link="-1" />
+	<subSystem name="VASIMRThruster" x="-0.866996" y="2.653533" scale="1.125" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Ammo:0.200000" />
+	<order desc="Fetch:Fuel:0.200000" />
+	<order desc="Defend" />
+</orders>
+

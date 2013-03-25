@@ -1,0 +1,34 @@
+﻿<?xml version="1.0"?>
+<settings scale="8" name="Repair Vessel T4" />
+<subSystems>
+	<subSystem name="FuelCell" x="-1.289063" y="-0.914063" scale="1.625" link="-1" />
+	<subSystem name="PowerGen" x="-0.679688" y=".101563" scale=".5" link="-1" />
+	<subSystem name="CrewQuarters" x=".007813" y=".976563" scale=".5" link="-1" />
+	<subSystem name="Bridge" x="-0.335938" y="-0.882813" scale=".5" link="-1" />
+	<subSystem name="LifeSupport" x=".40625" y="-0.84375" scale=".125" link="-1" />
+	<subSystem name="MediumHull" x=".390625" y=".0625" scale="1" link="-1" />
+	<subSystem name="FuelCell" x="-1.335938" y="1.039063" scale="1.625" link="-1" />
+	<subSystem name="RepairTool" x="2.03125" y="1" scale="4" link="-1" />
+	<subSystem name="RepairTool" x="2.03125" y="-1.0625" scale="4" link="-1" />
+	<subSystem name="Thruster" x="-2.554688" y=".039063" scale="2.125" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="true" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="60000001064960" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Work:Repairer" />
+</orders>
+

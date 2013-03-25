@@ -1,0 +1,50 @@
+﻿<?xml version="1.0"?>
+<settings scale="10" name="Assimilator Unit 76 - 1 - 59 -" />
+<subSystems>
+	<subSystem name="BoardingParty" x="2.773438" y="-0.132813" scale="1.25" link="-1" />
+	<subSystem name="LightHull" x="-1.125" y=".75" scale="1" link="-1" />
+	<subSystem name="Computer" x=".929688" y="-0.117188" scale=".875" link="-15" />
+	<subSystem name="LifeSupport" x="-0.242188" y="-0.148438" scale="2.125" link="-1" />
+	<subSystem name="Capacitor" x="-0.804688" y="-1.117188" scale=".375" link="-1" />
+	<subSystem name="PowerGen" x="-0.101563" y=".992188" scale=".75" link="-1" />
+	<subSystem name="BigFuelCell" x="-1.875" y="-0.078125" scale="1" link="-11" />
+	<subSystem name="Thruster" x="-2.6875" y="-0.625" scale="1" link="-1" />
+	<subSystem name="Thruster" x="-2.703125" y=".5" scale="1" link="-1" />
+	<subSystem name="QuantumCompressor" x="-1.578125" y="-0.484375" scale=".625" link="6" />
+	<subSystem name="XRayLaser" x="1.664063" y="-1.695313" scale="1.25" link="-19" />
+	<subSystem name="XRayLaser" x="1.679688" y="1.320313" scale="1.25" link="-16" />
+	<subSystem name="Heatsink" x="1.804688" y="-0.117188" scale=".5" link="-1" />
+	<subSystem name="BackupPower" x=".78125" y=".328125" scale=".25" link="2" />
+	<subSystem name="BackupPower" x="1.070313" y="1.414063" scale=".375" link="11" />
+	<subSystem name="XRayLaser" x=".734375" y="2.40625" scale="1" link="-21" />
+	<subSystem name="XRayLaser" x=".578125" y="-2.671875" scale="1" link="-20" />
+	<subSystem name="BackupPower" x="1.070313" y="-1.617188" scale=".375" link="10" />
+	<subSystem name="BackupPower" x="-0.046875" y="-2.734375" scale=".25" link="16" />
+	<subSystem name="BackupPower" x=".15625" y="2.484375" scale=".25" link="15" />
+	<subSystem name="ShieldGen" x=".289063" y="-1.148438" scale=".5" link="-1" />
+	<subSystem name="Armor" x="-1.109375" y="-2.390625" scale="1" link="-1" />
+	<subSystem name="Armor" x="-0.953125" y="2.421875" scale="1" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="JoinFleet:-1.000000:true" />
+	<order desc="Fetch:Fuel:0.300000" />
+	<order desc="Defend" />
+	<order desc="Work:BoardingParty" />
+	<order desc="Work:EnterStargate" />
+</orders>
+

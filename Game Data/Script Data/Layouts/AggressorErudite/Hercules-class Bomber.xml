@@ -1,0 +1,37 @@
+﻿<?xml version="1.0"?>
+<settings scale="1" name="Hercules-class Bomber" />
+<subSystems>
+	<subSystem name="FuelCell" x="-1.125" y="-1.234375" scale="1.5" link="-1" />
+	<subSystem name="Thruster" x="-2.296875" y="-1.125" scale="2.375" link="-1" />
+	<subSystem name="FighterHull" x="-0.5625" y="-0.09375" scale="1" link="-1" />
+	<subSystem name="Armor" x="1.765625" y="-0.09375" scale="1" link="-1" />
+	<subSystem name="Bulkhead" x=".519178" y=".024723" scale="1" link="6" />
+	<subSystem name="FighterChaingun" x="2.609375" y="-0.140625" scale="2" link="-1" />
+	<subSystem name="Cockpit" x=".851563" y="-0.070313" scale=".75" link="-6" />
+	<subSystem name="Thruster" x="-2.296875" y="1.125" scale="2.375" link="-1" />
+	<subSystem name="FuelCell" x="-1.09375" y="1.140625" scale="1.5" link="-1" />
+	<subSystem name="FighterRockets" x="1.516753" y="-1.034149" scale="2" link="-1" />
+	<subSystem name="FighterRockets" x="1.606379" y=".765271" scale="2" link="-1" />
+</subSystems>
+<ai>
+	<targetScale low="1" hi="9999999" forced="false" />
+	<orbit flag="true" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="1" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Defend" />
+</orders>
+

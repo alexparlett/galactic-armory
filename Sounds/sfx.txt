@@ -1,0 +1,169 @@
+Sound: confirm
+	File: confirm.wav
+
+Sound: deny
+	File: deny.wav
+
+Sound: queue_finish
+	File: queue_finish.wav
+
+Sound: new_treaty
+	File: new_treaty.wav
+
+Sound: laser
+	File: new_laser4.ogg
+	Volume: 0.225
+
+Sound: msg_notify
+	File: msg_notify.ogg
+	Volume: 0.25
+
+Sound: ship_explosion
+	File: ship_explosion.ogg
+	Volume: 1
+
+Sound: attack_warn
+	File: attack_warn.ogg
+
+Sound: button_clk
+	File: button_clk.ogg
+	Volume: 0.1
+
+Sound: ship_rumble
+	File: ship_rumble.ogg
+	Volume: 1
+
+Sound: railgun
+	File: railgun1.ogg
+	Volume: 0.350
+
+Sound: mining_laser
+	File: mining_laser.ogg
+	Volume: 0.25
+
+Sound: sensor_sweep
+	File: sensor_sweep.ogg
+
+Sound: gatling
+	File: gatling_cannon.ogg
+	Volume: 0.2
+
+Sound: plasma_thrower
+	File: plasma_thrower3.ogg
+	Volume: 0.500
+
+Sound: jumpboom
+	File: jumpdrive2.ogg
+	Volume: 0.166
+
+Sound: autocannon
+	File: autocannon4.ogg
+	Volume: 0.250
+
+Sound: ion_beam
+	File: ion_beam.ogg
+	Volume: 0.275
+
+Sound: particle_cannon
+	File: particle_cannon.ogg
+	Volume: 0.250
+
+Sound: hyper_railgun
+	File: hyper_railgun.ogg
+	Volume: 0.400
+
+Sound: artillery
+	File: artillery.ogg
+	Volume: 0.500
+
+Sound: torpedo
+	File: torpedo.ogg
+	Volume: 0.300
+
+Sound: missile
+	File: missile.ogg
+	Volume: 0.333
+
+Sound: chaingun_salvo
+	File: chaingun_salvo.ogg
+	Volume: 0.167
+
+Sound: bomb_release
+	File: bomb_release.ogg
+	Volume: 0.333
+
+Sound: superlaser
+	File: superlaser2.ogg
+	Volume: 0.333
+
+Sound: fighterlaser
+	File: fighterlaser.ogg
+	Volume: 0.275
+
+Sound: flakfire
+	File: flakfire_mk3.ogg
+	Volume: 0.167
+
+Sound: dsfm
+	File: DSFM.ogg
+	Volume: 0.333
+
+Sound: pfw
+	File: PFW.ogg
+	Volume: 0.333
+	
+Sound: antimatter_beam
+	File: antimatter_beam.ogg
+	Volume: 0.333
+
+Sound: redlaser
+	File: redlaser.ogg
+	Volume: 0.275
+	
+Sound: gravitic_accelerator
+	File: gravitic_accelerator.ogg
+	Volume: 0.300
+
+Sound: gatlinglaser
+	File: gatlinglaser.ogg
+	Volume: 0.333
+	
+Sound: gatlinggun
+	File: gatlinggun.ogg
+	Volume: 0.25
+	
+Sound: wave_emitter
+	File: wave_emitter.ogg
+	Volume: 0.200
+
+Sound: impact_artillery
+	File: impact_artillery.ogg
+	Volume: 0.12
+
+Sound: impact_explosive
+	File: impact_explosive.ogg
+	Volume: 0.12
+
+Sound: impact_kinetic
+	File: impact_kinetic.ogg
+	Volume: 0.12
+
+Sound: impact_particle
+	File: impact_particle.ogg
+	Volume: 0.12
+
+Sound: impact_emp
+	File: impact_EMP.ogg
+	Volume: 0.12
+
+Sound: impact_plasma
+	File: impact_plasma.ogg
+	Volume: 0.15
+
+Sound: impact_salvo
+	File: impact_salvo.ogg
+	Volume: 0.12
+
+Sound: impact_large_bomb
+	File: impact_large_bomb.ogg
+	Volume: 0.2

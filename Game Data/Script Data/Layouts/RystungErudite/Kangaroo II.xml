@@ -1,0 +1,44 @@
+﻿<?xml version="1.0"?>
+<settings scale="20" name="Kangaroo II" />
+<subSystems>
+	<subSystem name="MediumHull" x="-0.0625" y=".984375" scale="1" link="-1" />
+	<subSystem name="ShipBay" x="-2.056778" y="-1.082515" scale="4" link="-15" />
+	<subSystem name="AmmoStorage" x="-0.0625" y="-1.234375" scale="1" link="-1" />
+	<subSystem name="FuelCell" x=".109375" y="-0.171875" scale="2" link="-1" />
+	<subSystem name="BussardRamjet" x="-0.822967" y="-2.437846" scale="2.25" link="-1" />
+	<subSystem name="BussardRamjet" x="-0.875" y="2.40625" scale="2.25" link="-1" />
+	<subSystem name="Computer" x="1.203125" y="-0.0625" scale=".625" link="-1" />
+	<subSystem name="MultiRack" x="2.070313" y="-0.117188" scale="1.125" link="11" />
+	<subSystem name="ShipBay" x="-2.109375" y=".984375" scale="4" link="-16" />
+	<subSystem name="Armor" x=".6875" y="-2.328125" scale="2" link="-1" />
+	<subSystem name="Armor" x=".84375" y="2.3125" scale="2" link="-1" />
+	<subSystem name="TwinRailgun" x="2.8125" y="-0.125" scale="1" link="-9" />
+	<subSystem name="FusionGen" x="-0.882813" y="-0.070313" scale=".75" link="-1" />
+	<subSystem name="ExternalMount" x="-1.140625" y="-1.0625" scale="1" link="1" />
+	<subSystem name="ExternalMount" x="-1.1875" y="1" scale="1" link="8" />
+	<subSystem name="RepairBay" x="1.375" y="-1.0625" scale="1" link="-1" />
+	<subSystem name="RepairTool" x="1.421875" y="1.109375" scale="1" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="true" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Ammo:0.200000" />
+	<order desc="Fetch:Fuel:0.200000" />
+	<order desc="AutoUnDock" />
+	<order desc="Replenish" />
+	<order desc="Defend" />
+</orders>
+

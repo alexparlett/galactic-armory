@@ -1,0 +1,34 @@
+﻿<?xml version="1.0"?>
+<settings scale="15" name="Colony Ship II" />
+<subSystems>
+	<subSystem name="MediumHull" x=".453125" y="-0.078125" scale="1" link="-1" />
+	<subSystem name="LifeSupport" x=".109375" y="1.71875" scale="3" link="-1" />
+	<subSystem name="Colonizer" x=".078125" y="-2.328125" scale="4" link="-10" />
+	<subSystem name="BigFuelCell" x="1.875" y=".203125" scale="2.25" link="-1" />
+	<subSystem name="IntegratedCommandCenter" x="-0.578125" y=".40625" scale=".125" link="-1" />
+	<subSystem name="FusionGen" x="-1.101563" y="-0.039063" scale=".75" link="-1" />
+	<subSystem name="MagnetoPlasmaThruster" x="-2.195313" y="-0.835938" scale="3.875" link="-1" />
+	<subSystem name="MagnetoPlasmaThruster" x="-2.085938" y="1.054688" scale="3.875" link="-1" />
+	<subSystem name="ExternalMount" x=".140625" y="-1.4375" scale="1" link="2" />
+</subSystems>
+<ai>
+	<orbit flag="true" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="false" planets="true" />
+	<depositTargets ships="false" planets="false" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="0" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="false" planets="true" stations="false" />
+	<dockMode mode="2" />
+	<carrierMode mode="0" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Colonize" />
+	<order desc="AutoDock" />
+</orders>
+

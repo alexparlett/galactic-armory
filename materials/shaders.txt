@@ -1,0 +1,213 @@
+//No lighting model, multiplies the result by: material's diffuse color, vertex's color, fade level based on the normal (edge = opaque, center = black)
+Shader: Shield
+ Program: shaders/shield_vs.txt, shaders/shield_ps.txt, Add
+ Variable: tex texture = 0
+ Variable: float time = time
+
+Shader: StarAnim
+ Program: shaders/star_anim_vs.txt, shaders/star_anim_ps.txt, Solid
+ Variable: tex texture = 0
+ Variable: float cycle = time_cycle 15.0
+
+Shader: StarAnimHigh
+ Program: shaders/star_anim_vs.txt, shaders/star_anim_high_ps.txt, Solidx3
+ Variable: tex2 texture = 0, 1
+ Variable: float cycle = time_cycle 15.0
+ Variable: float uv1x = time_cycle 19.0
+ Variable: float uv1y = time_cycle 13.7
+ Variable: float uv2x = time_cycle 24.34
+ Variable: float uv2y = time_cycle 14.71
+
+Shader: CoronaAnim
+ Program: shaders/corona_anim_vs.txt, shaders/corona_anim_ps.txt, Add
+ Variable: tex corona = 0
+ Variable: float time = time_cycle 41.3
+ Variable: float timeOffset = obj_rand
+ 
+Shader: CoronaAnimOld
+ Program: shaders/corona_anim_old_vs.txt, shaders/corona_anim_old_ps.txt, Add
+ Variable: tex corona = 0
+ Variable: float frame = time_cycle 10.7
+ Variable: float frameOffset = obj_rand
+ 
+Shader: AnimatedBullet
+ Program: shaders/corona_anim_old_vs.txt, shaders/corona_anim_old_ps.txt, Add
+ Variable: tex corona = 0
+ Variable: float frame = time_cycle 0.3
+ Variable: float frameOffset = obj_rand
+ 
+Shader: AnimatedExplosion
+ Program: shaders/explosion_vs.txt, shaders/explosion_ps.txt, Add
+ Variable: tex corona = 0
+ Variable: float frame = time_cycle 4.0
+ Variable: float frameOffset = obj_rand
+
+Shader: CometTail
+ Program: shaders/comet_tail_vs.txt, shaders/comet_tail_ps.txt, Add
+ Variable: tex texture = 0
+ Variable: float cycle = time_cycle 60.0
+
+//Produces a perfect gradient circle
+Shader: RangeRing
+ Program: shaders/range_ring_vs.txt, shaders/range_ring_ps.txt, Alpha
+
+//Draws a plane grid
+Shader: PlaneDisc
+ Program: shaders/plane_disc_vs.txt, shaders/plane_info_ps.txt, Alpha
+ Variable: float radius = obj_radius
+ Variable: float camDist = system_dist
+ Variable: float visible = system_visible
+ Variable: vec3 planeColor = plane_color
+ Variable: float cycle = real_time_cycle 2.5
+ Variable: float under_attack = obj_under_attack
+ Variable: float emp2_startrad = empire2_startrad;
+ Variable: float emp3_startrad = empire3_startrad;
+ Variable: float emp4_startrad = empire4_startrad;
+ Variable: float emp1_endrad = empire1_endrad;
+ Variable: float emp2_endrad = empire2_endrad;
+ Variable: float emp3_endrad = empire3_endrad;
+ Variable: float emp4_endrad = empire4_endrad;
+ Variable: vec3 emp1_col = empire1_color;
+ Variable: vec3 emp2_col = empire2_color;
+ Variable: vec3 emp3_col = empire3_color;
+ Variable: vec3 emp4_col = empire4_color;
+
+Shader: PlaneGrid
+ Program: shaders/plane_disc_vs.txt, shaders/plane_disc_ps.txt, Alpha
+ Variable: float radius = obj_radius
+
+//Does not use a lighting model, instead uses DiffuseColor as a multiplier for the texture's color
+Shader: Colored
+ Program: shaders/colored_vs.txt, shaders/colored_ps.txt, Alpha
+ Variable: tex texture = 0
+
+Shader: AdditiveColored
+ Program: shaders/colored_vs.txt, shaders/colored_ps.txt, Add
+ Variable: tex texture = 0
+
+Shader: SolidColored
+ Program: shaders/colored_vs.txt, shaders/colored_ps.txt
+ Variable: tex texture = 0
+
+Shader: SignedColored
+ Program: shaders/signed_colored_vs.txt, shaders/signed_colored_ps.txt, Add
+ Variable: tex texture = 0
+
+Shader: SolidSignedColored
+ Program: shaders/signed_colored_vs.txt, shaders/signed_colored_ps.txt, Solid
+ Variable: tex texture = 0
+
+Shader: SignedVertexColored
+ Program: shaders/signed_vertex_colored_vs.txt, shaders/signed_vertex_colored_ps.txt, Add
+ Variable: tex texture = 0
+
+Shader: AttackGlow
+ Program: shaders/attack_glow_vs.txt, shaders/attack_glow_ps.txt, Alpha
+ Variable: tex texture = 0
+ Variable: float cycle = real_time_cycle 2.0
+ Variable: float under_attack = obj_under_attack
+
+Shader: DistantIcon
+ Program: shaders/distant_icon_vs.txt, shaders/distant_icon_ps.txt, Alpha
+ Variable: tex texture = 0
+ Variable: float cycle = real_time_cycle 2.0
+ Variable: float under_attack = obj_under_attack
+
+//Ship Icon special: Colors regions based on ship data
+Shader: ShipIco
+ Program: shaders/ship_ico_vs.txt, shaders/ship_ico_ps.txt, Alpha
+ Variable: tex texture = 0
+ Variable: vec4 shields = state, Shields
+ Variable: vec4 damage = state, Damage
+
+Shader: DiffuseSpecGlow
+ Program: shaders/spec_glow_vs.txt, shaders/spec_glow_ps.txt, Solidx3
+ Variable: tex diffuseRGBspecA = 0
+ Variable: tex glowMap = 1
+
+//Animated pulse cycling every second
+Shader: PulsedBeam
+ Program: shaders/pulse_beam_vs.txt, shaders/pulse_beam_ps.txt, Add
+ Variable: tex texture = 0
+ Variable: float time = time_second
+
+Shader: PulsedBeamFast
+ Program: shaders/pulse_beam_vs.txt, shaders/pulse_beam_ps.txt, Add
+ Variable: tex texture = 0
+ Variable: float time = time_cycle 0.2
+ 
+//Detailed beam, moving in a reverse direction
+Shader: DetailedBeam
+ Program: shaders/laser_vs.txt, shaders/laser_ps.txt, Add
+ Variable: tex beam = 0
+ Variable: tex detail = 1
+ Variable: float time = time_cycle 0.1
+
+//Smooth lighting via Lambertian lighting model
+Shader: SmoothLit
+ Program: shaders/smooth_light_vs.txt, shaders/smooth_light_ps.txt, Solid
+ Variable: tex diffuseRGBspecA = 0
+
+Shader: Atmosphere
+ Program: shaders/atmosphere_vs.txt, shaders/atmosphere_ps.txt, Alpha
+ Variable: tex texture = 0
+ Variable: vec4 atmosphereDiffuseCol = 0.37, 0.37, 1.0, 1.0 //Mostly blue
+
+Shader: GasPlanetLighting
+ Program: shaders/gas_glow_vs.txt, shaders/gas_glow_ps.txt, Solid
+ Variable: tex diffuseRGBspecA = 0
+
+Shader: GlowPlanetLow
+ Program: shaders/smooth_light_vs.txt, shaders/glow_planet_low_ps.txt, Solid
+ Variable: tex diffuseRGBglowA = 0
+
+Shader: GlowPlanet
+ Program: shaders/smooth_light_vs.txt, shaders/glow_planet_ps.txt, Solidx3
+ Variable: tex diffuseRGBglowA = 0
+ Variable: tex diffNoise = 1
+ Variable: float uv1x = time_cycle 14.0
+ Variable: float uv1y = time_cycle 11.4
+ Variable: float uv2x = time_cycle 10.7
+ Variable: float uv2y = time_cycle 11.23
+
+//Applies a selective specular highlight only where water exists, and where dark, applies a lightmap to simulate a populated planet (city lights)
+Shader: CityLights
+ Program: shaders/city_lights_vs.txt, shaders/city_lights_ps.txt, Solidx3
+ Variable: tex diffuseRGBspecA = 0
+ Variable: tex nightTime = 1
+ Variable: vec4 workers = state, Workers
+
+
+Shader: PlanetRing
+ Program: shaders/planet_ring_vs.txt, shaders/planet_ring_ps.txt, Alpha
+ Variable: tex gradient = 0
+ Variable: tex noise = 1
+
+ 
+Shader: ShipLights
+ Program: shaders/ship_glow_vs.txt, shaders/ship_glow_ps.txt, Solidx3
+ Variable: tex diffuseRGBspecA = 0
+ Variable: tex glowMap = 1
+ Variable: tex wear = 2
+ Variable: float time = time_second
+ Variable: vec4 powerLevel = state, Power
+ Variable: vec4 damageLevel = state, Damage
+ Variable: vec4 epowerLevel = state, ePow
+ 
+Shader: ShipLightsMarks
+ Program: shaders/ship_glow_vs.txt, shaders/ship_glow_marks_ps.txt, Solidx3
+ Variable: tex diffuseRGBspecA = 0
+ Variable: tex glowMap = 1
+ Variable: tex marks = 2
+ Variable: tex wear = 3
+ Variable: float time = time_cycle 5.0
+ Variable: vec4 powerLevel = state, Power
+ Variable: vec4 damageLevel = state, Damage
+ Variable: vec3 empireColor = empire_color
+ Variable: vec4 epowerLevel = state, ePow
+
+//Does billboarding calculations in the vertex shader, rather than in the program
+Shader: AutoBillboard
+ Program: shaders/auto_billboard_vs.txt, shaders/auto_billboard_ps.txt, Alpha
+ Variable: vec3 up = up
+ Variable: tex texture = 0

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<settings scale="2" name="Multigun Corvette IV" />
+<subSystems>
+	<subSystem name="CrewQuarters" x="-1.723582" y="-0.9721" scale=".5" link="-1" />
+	<subSystem name="LifeSupport" x="-0.9721" y=".523969" scale=".25" link="-1" />
+	<subSystem name="Bridge" x="-1.723582" y="-0.220618" scale=".5" link="-1" />
+	<subSystem name="FuelCell" x="-2.216527" y="-0.217171" scale=".75" link="-1" />
+	<subSystem name="AmmoStorage" x="-0.9721" y="-0.220618" scale="2.5" link="-1" />
+	<subSystem name="ReactArmor" x=".275773" y="-2.219974" scale="4" link="-1" />
+	<subSystem name="HeavyHull" x="2.275129" y="-0.220618" scale="1" link="-1" />
+	<subSystem name="AmmoFabricator" x="-0.9721" y="-1.723582" scale=".5" link="-1" />
+	<subSystem name="AutocannonBattery" x=".782506" y="-0.720457" scale="1.25" link="-1" />
+	<subSystem name="AutocannonBattery" x=".782506" y=".031025" scale="1.25" link="-1" />
+	<subSystem name="AutocannonBattery" x="-0.220618" y=".523969" scale="1" link="-1" />
+	<subSystem name="AutocannonBattery" x="-0.220618" y="-1.220296" scale="1" link="-1" />
+	<subSystem name="TwinRailgun" x="-0.082732" y="-0.324033" scale="1" link="-1" />
+	<subSystem name="SoakArmor" x="-0.723905" y="1.523647" scale="2" link="-1" />
+	<subSystem name="MagnetoPlasmaThruster" x="-2.830396" y="-0.185938" scale="1" link="-1" />
+	<subSystem name="MagnetoPlasmaThruster" x="-2.72326" y="-0.848003" scale=".5" link="-1" />
+	<subSystem name="MagnetoPlasmaThruster" x="-2.623292" y=".472262" scale=".75" link="-1" />
+	<subSystem name="ShieldedAntimatterGen" x="1.49607" y="-0.372294" scale=".25" link="-1" />
+	<subSystem name="ShieldGen" x="1.989015" y="-0.375741" scale=".75" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>

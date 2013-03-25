@@ -1,0 +1,39 @@
+﻿<?xml version="1.0"?>
+<settings scale="8" name="Aristotle" />
+<subSystems>
+	<subSystem name="Bridge" x=".375" y=".421875" scale=".625" link="-1" />
+	<subSystem name="CrewQuarters" x=".359375" y="-0.71875" scale=".625" link="-1" />
+	<subSystem name="LifeSupport" x=".53125" y="-0.1875" scale=".125" link="-1" />
+	<subSystem name="MediumHull" x="-0.515625" y="-0.125" scale="1" link="-1" />
+	<subSystem name="PowerGen" x="0" y="-0.1875" scale=".625" link="-1" />
+	<subSystem name="FuelCell" x=".078125" y="1.59375" scale="2.25" link="-1" />
+	<subSystem name="Thruster" x=".15625" y="2.703125" scale="1.5" link="-1" />
+	<subSystem name="Armor" x=".609375" y="-2.6875" scale="1" link="-1" />
+	<subSystem name="Armor" x=".859375" y="2.671875" scale="1" link="-1" />
+	<subSystem name="ShieldGen" x="-1.710938" y="-0.070313" scale="1.25" link="-1" />
+	<subSystem name="FlakTurret" x="1.59375" y="-0.109375" scale="3" link="-1" />
+	<subSystem name="ShortLaser" x="2.828125" y="-0.1875" scale="1" link="-1" />
+	<subSystem name="FuelCell" x="-0.03125" y="-1.671875" scale="2.25" link="-1" />
+	<subSystem name="Thruster" x="-0.140625" y="-2.71875" scale="1.5" link="-1" />
+	<subSystem name="ShieldCharger" x="-1.125" y="-0.140625" scale=".25" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="true" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.200000" />
+	<order desc="Defend" />
+</orders>
+

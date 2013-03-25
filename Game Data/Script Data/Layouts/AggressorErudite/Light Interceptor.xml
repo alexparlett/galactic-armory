@@ -1,0 +1,37 @@
+﻿<?xml version="1.0"?>
+<settings scale=".3" name="Light Interceptor" />
+<subSystems>
+	<subSystem name="FighterHull" x="-0.475709" y=".027577" scale="1" link="-1" />
+	<subSystem name="FuelCell" x=".21875" y="-1.03125" scale="1" link="-1" />
+	<subSystem name="FuelCell" x=".25" y="1.03125" scale="1" link="-1" />
+	<subSystem name="Armor" x="2.026933" y=".027577" scale="1" link="-1" />
+	<subSystem name="Cockpit" x=".527416" y=".031025" scale=".75" link="-12" />
+	<subSystem name="PolypropellantThruster" x="-2.078125" y="1" scale="1.5" link="-1" />
+	<subSystem name="PolypropellantThruster" x="-2.0625" y="-1" scale="1.5" link="-1" />
+	<subSystem name="PolypropellantThruster" x="-1.502964" y="-0.006894" scale="2" link="-1" />
+	<subSystem name="FighterAAMissile" x="0" y="2.375" scale="3.5" link="-1" />
+	<subSystem name="FighterAAMissile" x=".03125" y="-2.375" scale="3.5" link="-1" />
+	<subSystem name="Bulkhead" x=".686056" y=".030904" scale=".5" link="4" />
+</subSystems>
+<ai>
+	<targetScale low="0" hi="1" forced="true" />
+	<orbit flag="true" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="false" />
+	<depositTargets ships="false" planets="true" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Defend" />
+</orders>
+

@@ -1,0 +1,54 @@
+uniform float frame;
+uniform float frameOffset;
+
+varying float secondFramePct;
+
+//Position of the end of frames in the range of 0-1.
+const float frame1End = 0.15;
+const float frame2End = 0.4;
+const float frame3End = 0.65;
+const float frame4End = 0.9;
+
+//We need to know how long of a tail the last frame has to make the transitions smooth
+const float invLastFrame = 1.0 - frame4End;
+
+void main() {
+	gl_FrontColor = gl_Color;
+	gl_BackColor = gl_Color;
+	
+	float tFrame = frame + frameOffset;
+	if(tFrame > 1.0)
+		tFrame -= 1.0;
+
+	gl_TexCoord[0] = gl_MultiTexCoord0 * 0.5;
+	gl_TexCoord[1] = gl_TexCoord[0];
+	
+	if(tFrame < frame3End) {
+		if(tFrame < frame1End) {
+			secondFramePct = (tFrame + invLastFrame) / (frame1End + invLastFrame);
+			gl_TexCoord[0].xy += vec2(0.5,0.5); //gl_TexCoord[1].xy += vec2(0.0,0.0);
+		}
+		else if(tFrame < frame2End) {
+			secondFramePct = (tFrame - frame1End) / (frame2End - frame1End);
+			gl_TexCoord[1].xy += vec2(0.5,0.0); //gl_TexCoord[0] .xy += vec2(0.0,0.0);
+		}
+		else {
+			secondFramePct = (tFrame - frame2End) / (frame3End - frame2End);
+			gl_TexCoord[0].xy += vec2(0.5,0.0); gl_TexCoord[1].xy += vec2(0.0,0.5);
+		}
+	}
+	else {
+		if(tFrame < frame4End) {
+			//This step is backwards from the others, because [1] += 0.5,0.5 seems to get clipped for some reason
+			secondFramePct = 1.0 - ((tFrame - frame3End) / (frame4End - frame3End));
+			gl_TexCoord[1].xy += vec2(0.0,0.5);
+			gl_TexCoord[0].xy += vec2(0.5,0.5);
+		}
+		else {
+			secondFramePct = (tFrame - frame4End) / (frame1End + invLastFrame);
+			gl_TexCoord[0].xy += vec2(0.5,0.5);// gl_TexCoord[1].xy += vec2(0.0,0.0);
+		}
+	}
+
+	gl_Position = ftransform();
+}

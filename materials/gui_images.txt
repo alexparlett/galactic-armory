@@ -1,0 +1,32 @@
+// =======
+// Sprite Banks
+// =======
+
+SpriteBank: new_layout_icons
+ Texture: Images/GUI/layout_icons.png
+ AutoTile: ColMajor, 19, 19
+ 
+// =======
+// ObjPanel Icons
+// =======
+
+Material: roid_icon
+ Texture: Images/GUI/roid_icon.png
+ 
+Material: temp_icon
+ Texture: Images/GUI/temp_icon.png
+
+Material: troops_icon
+ Texture: Images/GUI/troops_icon.png
+ 
+Material: helium_icon
+ Texture: Images/GUI/helium_icon.png
+ 
+Material: new_ticker_bg
+ Texture: Images/GUI/new_ticker.png
+
+Material: lock_gui
+ Texture: Images/GUI/lock_gui.png
+
+Material: unlock_gui
+ Texture: Images/GUI/unlock_gui.png

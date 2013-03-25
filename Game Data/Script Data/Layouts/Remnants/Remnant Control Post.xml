@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<settings scale="256" name="Remnant Control Post" />
+<subSystems>
+	<subSystem name="CommandHull" x=".046875" y=".046875" scale="1" link="-1" />
+	<subSystem name="AdvancedAICore" x="1.390625" y=".09375" scale=".75" link="-1" />
+	<subSystem name="ZeroPointGenerator" x=".03125" y="1.03125" scale=".75" link="-1" />
+	<subSystem name="QuantumBattery" x="-0.96875" y=".03125" scale=".25" link="-1" />
+	<subSystem name="PowerArmor" x="-2.015625" y="-1.65625" scale="2" link="-1" />
+	<subSystem name="ReactArmor" x="1.875" y="1.8125" scale="2" link="-1" />
+	<subSystem name="SoakArmor" x="-2.078125" y="1.5625" scale="2" link="-1" />
+	<subSystem name="NanoArmor" x="1.8125" y="-1.859375" scale="2" link="-1" />
+	<subSystem name="ShieldGen" x="-0.703125" y="2.046875" scale="1.5" link="-1" />
+	<subSystem name="ShieldGen" x=".546875" y="-2.203125" scale="1.5" link="-1" />
+	<subSystem name="ShieldCharger" x="-0.703125" y="-2.203125" scale="1" link="-1" />
+	<subSystem name="ShieldCharger" x=".546875" y="2.046875" scale="1" link="-1" />
+	<subSystem name="ConstructionBay" x="1.796875" y=".046875" scale="4" link="-1" />
+	<subSystem name="RepairFacilities" x="-2.203125" y=".046875" scale="2" link="-1" />
+	<subSystem name="Bulkhead" x="-1.203125" y=".046875" scale=".5" link="3" />
+	<subSystem name="Bulkhead" x=".296875" y="1.046875" scale="1" link="2" />
+	<subSystem name="NaniteRepair" x="-0.953125" y="-0.703125" scale=".5" link="-1" />
+	<subSystem name="NaniteRepair" x="-0.953125" y=".796875" scale=".5" link="-1" />
+	<subSystem name="Bulkhead" x="2.3125" y=".03125" scale="2" link="12" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Work:Repairer" />
+</orders>
+

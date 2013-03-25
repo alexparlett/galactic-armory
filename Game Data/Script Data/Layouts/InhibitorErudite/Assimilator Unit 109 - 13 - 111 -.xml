@@ -1,0 +1,47 @@
+﻿<?xml version="1.0"?>
+<settings scale="30" name="Assimilator Unit 109 - 13 - 111 -" />
+<subSystems>
+	<subSystem name="BoardingParty" x="2.523438" y="-0.085938" scale="2.625" link="-1" />
+	<subSystem name="Computer" x=".703125" y="-0.15625" scale="1" link="-1" />
+	<subSystem name="LifeSupport" x="-0.453125" y="-0.171875" scale=".625" link="-1" />
+	<subSystem name="Capacitor" x=".109375" y="-0.125" scale=".25" link="-1" />
+	<subSystem name="ShieldGen" x="-0.859375" y="-1.078125" scale="1" link="-16" />
+	<subSystem name="PFW" x="1.742188" y="-1.632813" scale="1.25" link="-1" />
+	<subSystem name="PFW" x=".679688" y="2.320313" scale=".875" link="-1" />
+	<subSystem name="LightHull" x="-2.25" y="-0.15625" scale="1" link="-1" />
+	<subSystem name="PFW" x="1.726563" y="1.304688" scale="1.25" link="-1" />
+	<subSystem name="PFW" x=".445313" y="-2.460938" scale=".875" link="-1" />
+	<subSystem name="FuelCell" x="-1.289063" y="-0.117188" scale=".375" link="-1" />
+	<subSystem name="Heatsink" x="1.445313" y="-0.132813" scale=".75" link="-1" />
+	<subSystem name="ReactArmor" x="-0.859375" y="-2.59375" scale="1" link="-1" />
+	<subSystem name="ReactArmor" x="-0.875" y="2.328125" scale="1" link="-1" />
+	<subSystem name="ShieldHardener" x="-0.859375" y="-1.609375" scale=".625" link="4" />
+	<subSystem name="ShieldedAntimatterGen" x="-0.875" y=".78125" scale="1" link="-1" />
+	<subSystem name="AntimatterProjector" x=".5625" y="-1.359375" scale="1" link="-1" />
+	<subSystem name="AntimatterProjector" x=".609375" y="1.15625" scale="1" link="-1" />
+	<subSystem name="VASIMRThruster" x="-2.585938" y="-1.132813" scale=".75" link="-1" />
+	<subSystem name="VASIMRThruster" x="-2.679688" y=".914063" scale=".75" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="JoinFleet:-1.000000:true" />
+	<order desc="Fetch:Fuel:0.300000" />
+	<order desc="Defend" />
+	<order desc="Work:BoardingParty" />
+	<order desc="Work:EnterStargate" />
+</orders>
+

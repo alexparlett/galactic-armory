@@ -1,0 +1,369 @@
+#forceHighQTextures on
+#makeMipMaps off
+
+SpriteBank: hiigaran_Shipset
+ Texture: ../../Images/Ships/HW2/hiigaran_Shipset.png
+ AutoTile: rowmajor, 55, 55
+
+#forceHighQTextures off
+#makeMipMaps on
+
+Material: hiigaran_large_low
+ Defer: Low
+ Texture: ../../Images/Ships/HW2/hiigaran_large.png
+ SpecularFactor: 12
+ Specular: 666
+ FlagOn: NormalizeNorms
+
+Material: hiigaran_large
+ Defer: Low
+ Texture: ../../Images/Ships/HW2/hiigaran_large.png
+ SpecularFactor: 12
+ Specular: 666
+#if shaders
+ Texture2: ../../Images/Ships/HW2/hiigaran_large_glow.png
+ Texture3: ../../Images/Ships/HW2/hiigaran_large_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+
+Material: hiigaran_fighter_low
+ Defer: Low
+ Texture: ../../Images/Ships/HW2/hiigaran_fighter.png
+ SpecularFactor: 12
+ Specular: 666
+ FlagOn: NormalizeNorms
+
+Material: hiigaran_fighter
+ Defer: Low
+ Texture: ../../Images/Ships/HW2/hiigaran_fighter.png
+ SpecularFactor: 12
+ Specular: 666
+#if shaders
+ Texture2: ../../Images/Ships/HW2/hiigaran_fighter_glow.png
+ Texture3: ../../Images/Ships/HW2/hiigaran_fighter_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: hiigaran_medium_low
+ Defer: High
+ Texture: ../../Images/Ships/HW2/hiigaran_medium.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+
+Material: hiigaran_medium
+ Defer: High
+ Texture: ../../Images/Ships/HW2/hiigaran_medium.png
+ SpecularFactor: 12
+ Specular: 666
+#if shaders
+ Texture2: ../../Images/Ships/HW2/hiigaran_medium_glow.png
+ Texture3: ../../Images/Ships/HW2/hiigaran_medium_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: hiigaran_station_low
+ Defer: High
+ Texture: ../../Images/Ships/HW2/hiigaran_spacestation_LOD.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+
+Material: hiigaran_station
+ Defer: High
+ Texture: ../../Images/Ships/HW2/hiigaran_spacestation.png
+#if shaders
+ Texture2: ../../Images/Ships/HW2/hiigaran_spacestation_glow.png
+ Texture3: ../../Images/Ships/HW2/hiigaran_spacestation_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ SpecularFactor: 12
+ Specular: 888
+#else
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+#end
+
+Material: hiigaran_colonizer
+ Defer: High
+ Texture: ../../Images/Ships/HW2/hiigaran_colonizer.png
+ SpecularFactor: 12
+ Specular: 888
+#if shaders
+ Texture2: ../../Images/Ships/HW2/hiigaran_colonizer_glow.png
+ Texture3: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLights
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: hiigaran_huge_low
+ Defer: Low
+ Texture: ../../Images/Ships/HW2/hiigaran_huge.png
+ SpecularFactor: 12
+ FlagOn: NormalizeNorms
+
+Material: hiigaran_huge
+ Defer: Low
+ Texture: ../../Images/Ships/HW2/hiigaran_huge.png
+ SpecularFactor: 12
+ Specular: 555
+#if shaders
+ Texture2: ../../Images/Ships/HW2/hiigaran_huge_glow.png
+ Texture3: ../../Images/Ships/HW2/hiigaran_huge_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: hiigaran_small_low
+ Defer: Medium
+ Texture: ../../Images/Ships/HW2/hiigaran_small.png
+ SpecularFactor: 12
+ Specular: 666
+
+Material: hiigaran_small
+ Defer: Medium
+ Texture: ../../Images/Ships/HW2/hiigaran_small.png
+ SpecularFactor: 12
+ Specular: 666
+#if shaders
+ Texture2: ../../Images/Ships/HW2/hiigaran_small_glow.png
+ Texture3: ../../Images/Ships/HW2/hiigaran_small_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: hiigaran_tiny_low
+ Defer: Medium
+ Texture: ../../Images/Ships/HW2/hiigaran_tiny.png
+ SpecularFactor: 12
+ Specular: 666
+ FlagOn: NormalizeNorms
+
+Material: hiigaran_tiny
+ Defer: Medium
+ Texture: ../../Images/Ships/HW2/hiigaran_tiny.png
+ SpecularFactor: 12
+ Specular: 666
+#if shaders
+ Texture2: ../../Images/Ships/HW2/hiigaran_tiny_glow.png
+ Texture3: ../../Images/Ships/HW2/hiigaran_tiny_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: hiigaran_hauler_low
+ Defer: Medium
+ Texture: ../../Images/Ships/HW2/hiigaran_freighter2.png
+ SpecularFactor: 12
+ FlagOn: NormalizeNorms
+
+Material: hiigaran_hauler
+ Defer: Medium
+ Texture: ../../Images/Ships/HW2/hiigaran_freighter2.png
+#if shaders
+ Texture2: ../../Images/Ships/HW2/hiigaran_freighter2_glow.png
+ Texture3: ../../Images/Ships/HW2/hiigaran_freighter2_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ SpecularFactor: 12
+ Specular: 666
+#else
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+#end
+
+Material: hiigaran_carrier_low
+ Defer: Low
+ Texture: ../../Images/Ships/HW2/hiigaran_carrier.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 6
+ Specular: ccc
+
+Material: hiigaran_carrier
+ Defer: Low
+ Texture: ../../Images/Ships/HW2/hiigaran_carrier.png
+ SpecularFactor: 6
+ Specular: ccc
+#if shaders
+ Texture2: ../../Images/Ships/HW2/hiigaran_carrier_glow.png
+ Texture3: ../../Images/Ships/HW2/hiigaran_carrier_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: hiigaran_verylarge_low
+ Defer: Low
+ Texture: ../../Images/Ships/HW2/hiigaran_verylarge.png
+ SpecularFactor: 12
+ Specular: 666
+ FlagOn: NormalizeNorms
+
+Material: hiigaran_verylarge
+ Defer: Low
+ Texture: ../../Images/Ships/HW2/hiigaran_verylarge.png
+ SpecularFactor: 12
+ Specular: 666
+#if shaders
+ Texture2: ../../Images/Ships/HW2/hiigaran_verylarge_glow.png
+ Texture3: ../../Images/Ships/HW2/hiigaran_verylarge_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: hiigaran_station_trade
+ Defer: High
+ Texture: ../../Images/Ships/HW2/hiigaran_station_trade.png
+#if shaders
+ Texture2: ../../Images/Ships/HW2/hiigaran_station_trade_glow.png
+ Texture3: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLights
+ FlagOff: Lighting
+ SpecularFactor: 12
+ Specular: 888
+#else
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+#end
+
+ Material: hgn_Satellite
+ Defer: High
+ Texture: ../../Images/Ships/HW2/hgn_Satellite.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 42
+ Specular: dbdbe4
+ #if shaders
+ Texture2: ../../Images/Ships/HW2/hgn_Satellite_glow.png
+ Texture3: ../../Images/Ships/HW2/hgn_Satellite_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else 
+ FlagOn: NormalizeNorms
+ #end
+ 
+Material: hgn_Probe
+ Defer: High
+ Texture: ../../Images/Ships/HW2/hgn_Probe.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 42
+ Specular: dbdbe4
+ #if shaders
+ Texture2: ../../Images/Ships/HW2/hgn_Probe_glow.png
+ Texture3: ../../Images/Ships/HW2/hgn_Probe_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else 
+ FlagOn: NormalizeNorms
+ #end
+ 
+ 
+ Material: hgn_Fighter
+ Defer: High
+ Texture: ../../Images/Ships/HW2/hgn_Fighter.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 42
+ Specular: dbdbe4
+ #if shaders
+ Texture2: ../../Images/Ships/HW2/hgn_Fighter_glow.png
+ Texture3: ../../Images/Ships/HW2/hgn_Fighter_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else 
+ FlagOn: NormalizeNorms
+ #end
+ 
+ 
+ Material: hgn_Bomber
+ Defer: High
+ Texture: ../../Images/Ships/HW2/hgn_Bomber.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 42
+ Specular: dbdbe4
+ #if shaders
+ Texture2: ../../Images/Ships/HW2/hgn_Bomber_glow.png
+ Texture3: ../../Images/Ships/HW2/hgn_Bomber_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else 
+ FlagOn: NormalizeNorms
+ #end
+ 
+Material: hgn_Juggernaut
+ Defer: High
+ Texture: ../../Images/Ships/HW2/hgn_Juggernaut.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 42
+ Specular: dbdbe4
+ #if shaders
+ Texture2: ../../Images/Ships/HW2/hgn_Juggernaut_glow.png
+ Texture3: ../../Images/Ships/HW2/hgn_Juggernaut_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+ 
+Material: hgn_Huge
+ Defer: High
+ Texture: ../../Images/Ships/HW2/hgn_Mothership.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 42
+ Specular: dbdbe4
+ #if shaders
+ Texture2: ../../Images/Ships/HW2/hgn_Mothership_glow.png
+ Texture3: ../../Images/Ships/HW2/hgn_Mothership_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+ 
+Material: hgn_Frigate
+ Defer: High
+ Texture: ../../Images/Ships/HW2/hgn_Frigate.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 42
+ Specular: dbdbe4
+ #if shaders
+ Texture2: ../../Images/Ships/HW2/hgn_Frigate_glow.png
+ Texture3: ../../Images/Ships/HW2/hgn_Frigate_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end

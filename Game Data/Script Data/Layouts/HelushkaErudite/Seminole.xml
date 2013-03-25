@@ -1,0 +1,58 @@
+﻿<?xml version="1.0"?>
+<settings scale="20" name="Seminole" />
+<subSystems>
+	<subSystem name="HeavyHull" x=".328125" y="-0.171875" scale="1" link="-12" />
+	<subSystem name="ShieldGen" x="-1.757813" y="-0.789063" scale=".5" link="-20" />
+	<subSystem name="ShieldCharger" x="-1.945313" y="-0.148438" scale=".5" link="-1" />
+	<subSystem name="Heatsink" x="1.023438" y=".429688" scale=".5" link="-1" />
+	<subSystem name="SoakArmor" x="1.390625" y="-2.4375" scale="1" link="-1" />
+	<subSystem name="SoakArmor" x="1.421875" y="2.421875" scale="1" link="-1" />
+	<subSystem name="Armor" x="-2.15625" y="-2.046875" scale=".25" link="-1" />
+	<subSystem name="Armor" x="-2.03125" y="2.078125" scale=".25" link="-1" />
+	<subSystem name="IntegratedCommandCenter" x="1.03125" y="-0.6875" scale=".125" link="-1" />
+	<subSystem name="GatlingLaser" x="2.710938" y="-1.148438" scale=".5" link="-31" />
+	<subSystem name="IntegratedConstruction" x="-0.203125" y="-0.171875" scale="1" link="0" />
+	<subSystem name="CoolantSys" x="2.210938" y=".835938" scale=".5" link="27" />
+	<subSystem name="NanoArmor" x="-1.195313" y="2.367188" scale=".75" link="-1" />
+	<subSystem name="NanoArmor" x="-1.460938" y="-2.320313" scale=".75" link="-1" />
+	<subSystem name="ShieldedAntimatterGen" x="-1.179688" y="-0.117188" scale="1.375" link="-1" />
+	<subSystem name="AntimatterRocket" x="-2.385898" y="-1.018087" scale="2.125" link="-1" />
+	<subSystem name="AntimatterRocket" x="-2.500834" y=".689084" scale="2.125" link="-1" />
+	<subSystem name="ShieldGen" x="-1.882813" y=".601563" scale=".5" link="-21" />
+	<subSystem name="PulsedShieldCharger" x="-1.484375" y="-1.125" scale=".25" link="1" />
+	<subSystem name="ShieldHardener" x="-1.609375" y=".84375" scale=".25" link="17" />
+	<subSystem name="FuelCell" x="-1.078125" y="-0.84375" scale=".125" link="-1" />
+	<subSystem name="RepairBay" x="-1.054688" y=".679688" scale=".375" link="-1" />
+	<subSystem name="TwinParticleCannon" x="0" y="2.615686" scale="2" link="-26" />
+	<subSystem name="FusionCutter" x="2.703125" y="-0.15625" scale="1.5" link="-30" />
+	<subSystem name="ExternalMount" x="0" y="1.65625" scale="1" link="22" />
+	<subSystem name="AntimatterProjector" x="0" y="-2.615686" scale="2" link="-28" />
+	<subSystem name="ExternalMount" x=".046875" y="-1.75" scale="1" link="25" />
+	<subSystem name="FusionCutter" x="2.742188" y=".835938" scale=".5" link="-13" />
+	<subSystem name="OversizeMount" x="1.828125" y="-0.140625" scale="1" link="23" />
+	<subSystem name="DamageSys" x="2.210938" y="-1.085938" scale=".375" link="9" />
+	<subSystem name="ReactArmor" x="1.96875" y="-1.953125" scale="1" link="-1" />
+	<subSystem name="ReactArmor" x="1.984375" y="1.953125" scale="1" link="-1" />
+	<subSystem name="ArmorMount" x="1.023438" y="-1.351563" scale=".375" link="-1" />
+	<subSystem name="ArmorMount" x="1.023438" y="1.398438" scale=".375" link="-1" />
+	<subSystem name="AdvancedAICore" x="1.078125" y="-0.21875" scale=".125" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Defend" />
+</orders>
+

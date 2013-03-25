@@ -1,0 +1,47 @@
+﻿<?xml version="1.0"?>
+<settings scale="34" name="SC4 Longsword Class Destroyer" />
+<subSystems>
+	<subSystem name="FuelCell" x="-1.679688" y="-0.757813" scale="1.25" link="-1" />
+	<subSystem name="Railgun" x="2.328125" y="-0.015625" scale="4" link="-12" />
+	<subSystem name="PowerGen" x="-0.726563" y="-0.429688" scale=".75" link="-21" />
+	<subSystem name="FuelCell" x="-1.664063" y=".726563" scale="1.25" link="-1" />
+	<subSystem name="AmmoStorage" x="-1.75" y="-0.09375" scale="1" link="-1" />
+	<subSystem name="Bulkhead" x=".073953" y=".052824" scale="1" link="7" />
+	<subSystem name="Armor" x="-1.5" y="-2.078125" scale="2" link="-1" />
+	<subSystem name="LightHull" x=".734375" y=".0625" scale="1" link="-7" />
+	<subSystem name="AutocannonBattery" x=".0625" y="2.78125" scale="1" link="-1" />
+	<subSystem name="AutocannonBattery" x=".015625" y="-2.78125" scale="1" link="-1" />
+	<subSystem name="CoolantSys" x="1.640625" y="-0.03125" scale=".5" link="1" />
+	<subSystem name="ShieldGen" x="-0.734375" y=".515625" scale="1" link="-19" />
+	<subSystem name="RamScoop" x="-2.617188" y=".085938" scale=".5" link="-1" />
+	<subSystem name="MagnetoPlasmaThruster" x="-2.578125" y="-0.453125" scale="1" link="-1" />
+	<subSystem name="MagnetoPlasmaThruster" x="-2.640625" y=".671875" scale="1" link="-1" />
+	<subSystem name="IntegratedCommandCenter" x=".078125" y="-0.671875" scale=".25" link="-20" />
+	<subSystem name="AmmoFabricator" x=".117188" y=".851563" scale=".5" link="-1" />
+	<subSystem name="ShieldHardener" x="-0.71875" y="1.03125" scale=".25" link="11" />
+	<subSystem name="Bulkhead" x=".311661" y="-0.892723" scale=".25" link="15" />
+	<subSystem name="Bulkhead" x="-0.517674" y="-0.771228" scale=".25" link="2" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="false" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="133" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="JoinFleet:-1.000000:true" />
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Defend" />
+	<order desc="Work:EnterStargate" />
+</orders>
+

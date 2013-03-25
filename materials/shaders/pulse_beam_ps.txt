@@ -1,0 +1,19 @@
+uniform sampler2D texture;
+uniform float time;
+
+const float glowWidth = 0.05;
+
+void main() {
+	gl_FragColor.rgb = (gl_FrontMaterial.diffuse * gl_Color * texture2D(texture, gl_TexCoord[0].xy)).rgb;
+	
+	float alphaBoost = abs(gl_TexCoord[0].x - time);
+	if(alphaBoost > 0.5) {
+		alphaBoost = abs(alphaBoost - 1.0);
+	}
+	
+	if(alphaBoost < glowWidth) {
+		float brightness = max(gl_FragColor.r, max(gl_FragColor.g, gl_FragColor.b));
+		
+		gl_FragColor.rgb *= pow(brightness, alphaBoost / glowWidth) / brightness;
+	}
+}

@@ -1,0 +1,485 @@
+//    Variables Used
+//
+//////////////////////////
+//
+//    vDamage - All Types of Damage
+//    vDelay - Reload Time
+//    vDeviation
+//    vPowCost - Power Costs
+//    vRange - Weapons Range ONLY! Not used for AoE Effect Range
+//    vEffectiveRange - Effective Range
+//    vMinDmg - Lowest Damage
+//    vWasteHeat - Heat Needed
+//    vAoE_Range - Range AoE Weapons Effect
+//    vRequiredCharge - Charge needed for Charge to Fire
+//    vSpeed - Weapon Speed
+//     vMinHit - Minimum Hit Chance
+//     vAccuracy - Hit Chance
+//
+//////////////////////////
+
+System: Railgun
+    Name: #SS_RAILGUN_NAME
+    Description: #SS_RAILGUN_DESC
+    Appearance: RailGun
+	Explosion: subsystem_destroyed
+
+    Available: Techs.ProjWeapons.Level > 0 && not(Traits.no_ballistics)
+    Level: Techs.ProjWeapons.Level
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    
+    Tags: Weapon, ProjWeapon, Railgun
+    Tied To: ProjWeapons 1
+    
+    Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[Size * 25]
+    Complexity: 1
+    
+    vDamage: Size * 50 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT                            //was Size * 40
+    vDelay: 2.5 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+    vDeviation: 0.1
+    vRange: (200 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+    vSpeed: vRange * 0.33 * BALLISTIC_PROJ_FACTOR                                                                                //was progress(70,2*LEVEL_GAIN_CURVE,Level) * min((1 + Size / 5000), 3)
+    vEffectiveRange: 0.5
+    vMinHit: 0.33
+    vAmmoUse: 1 * Size
+
+    Provides: ProjWeapon with Damage[vDamage], Delay[vDelay], AmmoUse[vAmmoUse],
+        Range[vRange], Speed[vSpeed], Deviation[vDeviation], effectiveRangeFactor[vEffectiveRange], minHitChance[vMinHit]
+    
+    Provides: AmmoStorage with Amount[Size * 25]
+
+    Requires:
+        To Run:
+            Control[10 * Size]
+
+    Hints: Alpha[vDamage], Ammo[Size * 25], AmmoUse[-1 * vAmmoUse / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay], Local/EffRange[vEffectiveRange * vRange], Local/MinHit[vMinHit]
+
+System: TwinRailgun
+    Name: #SS_TWINRAILGUN_NAME
+    Description: #SS_TWINRAILGUN_DESC
+    Appearance: TwinRailgun
+	Explosion: subsystem_destroyed
+
+    Available: Techs.ProjWeapons.Level > 3 || Traits.super_rail && not(Traits.no_ballistics)
+    Level: Techs.ProjWeapons.Level
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 160 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    
+    Tags: Weapon, ProjWeapon, Railgun, ClipWeapon
+    Tied To: ProjWeapons 4
+    
+    Costs: Metals[400 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size], Ammo[Size * 25]
+    Complexity: 2
+    
+    vBurst: 2
+    vDelay: 2.5 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * 2 * GAME_RELOAD_MULT
+    vDamage: Size * 50 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT                            //was Size * 40
+    vShotDelay: 0.2
+    vTotalDelay: (vShotDelay * vBurst) + vDelay
+    vRange: (200 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+    vSpeed: vRange * 0.33 * BALLISTIC_PROJ_FACTOR                                                                                    //was progress(70,2*LEVEL_GAIN_CURVE,Level) * min((1 + Size / 5000), 3)
+    vEffectiveRange: 0.5
+    vMinHit: 0.33
+    vAmmoUse: 1 * Size
+
+    Provides: TwinProjWeapon with Damage[vDamage], ShotDelay[vShotDelay],
+        Delay[vDelay], ClipSize[vBurst], AmmoUse[vAmmoUse], Range[vRange], Speed[vSpeed], effectiveRangeFactor[vEffectiveRange], minHitChance[vMinHit]
+    
+    Provides: AmmoStorage with Amount[Size * 25]
+
+    Requires:
+        To Run:
+            Control[15 * Size]
+
+    Hints: Alpha[vDamage * vBurst], Ammo[Size * 25], AmmoUse[(-1 * vAmmoUse * vBurst) / vTotalDelay], DPS[(vDamage * vBurst) / vTotalDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay], Local/EffRange[vEffectiveRange * vRange], Local/MinHit[vMinHit]
+
+
+System: MuonCannon
+    Name: #SS_MUONCANNON_NAME
+    Description: #SS_MUONCANNON_DESC
+    Appearance: MuonCannon
+	Explosion: subsystem_destroyed
+
+    Available: (Techs.ParticlePhysics.Level > 0) && not(Traits.code_of_honor) && not(Traits.no_ballistics)
+    Level: Techs.ParticlePhysics.Level
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: 100 * Size * pow(HEALTH_CURVE,HPLevel) * HEALTH_MULT
+    Mass: 80 * Size
+    
+    Tags: Weapon, ProjWeapon
+    Tied To: ParticlePhysics 1
+    
+    Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[Size * 10]
+    Complexity: 1
+    
+    vDamage: Size * 64 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT
+    vDelay: 4 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+    vDeviation: 0.15
+    vRange: (200 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+    vSpeed: vRange * 0.33 * BALLISTIC_PROJ_FACTOR
+    vAmmoUse: 1 * Size
+    vEffectiveRange: 0.5
+    vMinHit: 0.33
+
+    Provides: MuonWeapon with Damage[vDamage], Delay[vDelay], AmmoUse[vAmmoUse],
+        Range[vRange], Speed[vSpeed], Deviation[vDeviation], effectiveRangeFactor[vEffectiveRange], minHitChance[vMinHit]
+    
+    Provides: AmmoStorage with Amount[Size * 10]
+    
+    Consumes:
+        To Run:
+            Power[10 * Size]
+
+    Requires:
+        To Run:
+            Control[10 * Size]
+
+    Hints: Alpha[vDamage], Ammo[Size * 10], AmmoUse[-1 * vAmmoUse / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]    
+    
+    
+System: Artillery
+    Name: #SS_ARTILLERY_NAME
+    Description: #SS_ARTILLERY_DESC
+    Appearance: GAArtillery
+	Explosion: subsystem_destroyed
+
+    Available: Techs.ProjWeapons.Level > 1 && not(Traits.no_ballistics)
+    Level: Techs.ProjWeapons.Level
+    Size: if(Object.Scale >= 10, Scale * 2, ((Scale * 2) + (20 / Object.Scale)))
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 150 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 150 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    
+    Tags: Weapon, ProjWeapon, Require:StationOrSpinalMount, Artillery
+    Tied To: ProjWeapons 2
+    
+    Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[Size * 30]
+    Complexity: 1
+    
+    vDamage: Size * 150 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT                            //was Size * 100
+    vAoE_Range: min((Size/100) + (32 + sqrt(Size)), (128 * (1 + (Level * 0.05))))                                                                                                //was min(8 + ((Size / 8) * 0.5 * pow(LEVEL_GAIN_CURVE, Level)), 50)
+    vDelay: 10 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+    vDeviation: 0.05
+    vRange: (450 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+    vSpeed: vRange * .25 * BALLISTIC_PROJ_FACTOR
+    vAmmoUse: Size * 10
+    
+    Provides: ArtilleryWeaponTrigger with Damage[vDamage], AoE_Range[vAoE_Range], Delay[vDelay], AmmoUse[vAmmoUse],
+        Range[vRange], Speed[vSpeed], Deviation[vDeviation]
+    
+    Triggerable: AreaDamage: AreaDamageTriggered with AoE_Damage[vDamage], AoE_Range[vAoE_Range]
+    
+    Provides: AmmoStorage with Amount[Size * 30]
+
+    Requires:
+        To Run:
+            Control[35 * Size]
+
+    Hints: Alpha[vDamage], Ammo[Size * 30], AmmoUse[-1 * vAmmoUse / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/MinRange[vRange * 0.1], Local/DMGperShot[vDamage], Local/AoERange[vAoE_Range], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]
+
+System: AntimatterCannon
+    Name: #SS_AMCANNON_NAME
+    Description: #SS_AMCANNON_DESC
+    Appearance: AntimatterCannon
+	Explosion: subsystem_destroyed
+
+    Available: (((Techs.ProjWeapons.Level > 11) && (Techs.EnergyPhysics.Level > 11) && (Techs.ParticlePhysics.Level > 11) || Traits.remnants) && not(Traits.no_antimatter) && not(Traits.no_ballistics)
+
+    Level: floor((Techs.BeamWeapons.Level / 3) + (Techs.ParticlePhysics.Level / 3) + (Techs.EnergyPhysics.Level / 3))
+    Size: max(5, Scale)
+        
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 150 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 150 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    
+    Tags: Weapon, ProjWeapon, WMD
+    Tied To: ProjWeapons 12, EnergyPhysics 12, ParticlePhysics 12
+    
+    Costs: Metals[150 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[7 * Size], Ammo[Size * 30]
+    Complexity: 3
+    
+    vDamage: Size * 72 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT
+    vAoE_Range: min((Size/100) + (25 + sqrt(Size)), (75 * (1 + (Level * 0.05))))                                                                                            //was min(8 + ((Size / 8) * 0.5 * pow(LEVEL_GAIN_CURVE, Level)), 50)
+    vDelay: 3 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+    vDeviation: 0.2
+    vRange: (165 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+    vSpeed: vRange * .33 * BALLISTIC_PROJ_FACTOR
+    vAmmoUse: Size * 5
+    
+    Provides: AntimatterBulletTrigger with Damage[vDamage], AoE_Range[vAoE_Range], Delay[vDelay], AmmoUse[vAmmoUse],
+        Range[vRange], Speed[vSpeed], Deviation[vDeviation]
+    
+    Triggerable: AreaDamage: AreaDamageTriggered with AoE_Damage[vDamage], AoE_Range[vAoE_Range]
+    
+    Provides: AmmoStorage with Amount[Size * 30]
+
+    Consumes:
+        To Run:
+            Power[30 * Size]    
+    
+    Requires:
+        To Run:
+            Control[30 * Size], AntimatterGeneration[Size]            
+            
+    Hints: Alpha[vDamage], Ammo[Size * 30], AmmoUse[(-1 * vAmmoUse) / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/MinRange[vAoE_Range], Local/DMGperShot[vDamage], Local/AoERange[vAoE_Range], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]
+    
+System: HyperRailgun
+    Name: #SS_HYPERRAILGUN_NAME
+    Description: #SS_HYPERRAILGUN_DESC
+    Appearance: HeavyRailgun
+	Explosion: subsystem_destroyed
+
+    Available: (Techs.ProjWeapons.Level > 7) || Traits.remnants && not(Traits.no_ballistics)
+    Level: (Techs.ProjWeapons.Level)
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 200 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 160 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    
+    Tags: Weapon, ProjWeapon, Railgun, WMD
+    Tied To: ProjWeapons 8
+    
+    Costs: Metals[300 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[40 * Size * pow(SUBS_COST_CRV, Level)], Labr[8 * Size], Ammo[Size * 25]
+    Complexity: 3
+    
+    vDamage: Size * 95 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT                    //was 80
+    vDelay: 4.5 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+    vDeviation: 0.1
+    vRange: (300 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+    vSpeed: vRange * 0.33 * BALLISTIC_PROJ_FACTOR                                                //was progress(100,2*LEVEL_GAIN_CURVE,Level) * min((1 + Size / 5000), 4)
+    vEffectiveRange: 0.5
+    vMinHit: 0.33
+    vAmmoUse: 4 * Size
+
+    Provides: HyperBullet with Damage[vDamage], Delay[vDelay], AmmoUse[vAmmoUse],
+        Range[vRange], Speed[vSpeed], Deviation[vDeviation], effectiveRangeFactor[vEffectiveRange], minHitChance[vMinHit]
+    
+    Provides: AmmoStorage with Amount[Size * 25]
+
+    Requires:
+        To Run:
+            Control[20 * Size]
+
+    Hints: Alpha[vDamage], Ammo[Size * 25], AmmoUse[-1 * vAmmoUse / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay], Local/EffRange[vEffectiveRange * vRange], Local/MinHit[vMinHit]
+
+System: TwinHeavyRailgun
+    Name: #SS_TWINHEAVYRAILGUN_NAME
+    Description: #SS_TWINHEAVYRAILGUN_DESC
+    Appearance: TwinHeavyRailgun
+	Explosion: subsystem_destroyed
+
+    Available: (Techs.ProjWeapons.Level > 10) || Traits.remnants && not(Traits.no_ballistics)
+    Level: (Techs.ProjWeapons.Level)
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 160 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 320 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    
+    Tags: Weapon, ProjWeapon, Railgun, ClipWeapon
+    Tied To: ProjWeapons 11
+    
+    Costs: Metals[600 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[80 * Size * pow(SUBS_COST_CRV, Level)], Labr[16 * Size], Ammo[Size * 25]
+    Complexity: 6
+    
+    vBurst: 2
+    vDelay: 4.5 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * 2 * GAME_RELOAD_MULT
+    vDamage: Size * 95 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT                        //was 80
+    vShotDelay: 0.2
+    vTotalDelay: (vShotDelay * vBurst) + vDelay
+    vRange: (300 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+    vSpeed: vRange * 0.33 * BALLISTIC_PROJ_FACTOR                                                //was progress(100,2*LEVEL_GAIN_CURVE,Level) * min((1 + Size / 5000), 4)
+    vEffectiveRange: 0.5
+    vMinHit: 0.33
+    vAmmoUse: Size * 4
+
+    Provides: TwinHyperBullet with Damage[vDamage], ShotDelay[vShotDelay],
+        Delay[vDelay], ClipSize[vBurst], AmmoUse[vAmmoUse], Range[vRange], Speed[vSpeed], effectiveRangeFactor[vEffectiveRange], minHitChance[vMinHit]
+    
+    Provides: AmmoStorage with Amount[Size * 25]
+
+    Requires:
+        To Run:
+            Control[30 * Size]
+
+    Hints: Alpha[vDamage * vBurst], Ammo[Size * 25], AmmoUse[(-1 * vAmmoUse * vBurst) / vTotalDelay], DPS[(vDamage * vBurst) / vTotalDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay], Local/EffRange[vEffectiveRange * vRange], Local/MinHit[vMinHit]
+
+System: GraviticAccelerator
+    Name: #SS_GRAVACCELERATOR_NAME
+    Description: #SS_GRAVACCELERATOR_DESC
+    Appearance: GraviticAccelerator
+	Explosion: subsystem_destroyed
+
+    Available: ((Techs.ProjWeapons.Level > 9) && (Techs.Gravitics.Level > 7)) || Traits.remnants && not(Traits.no_ballistics)
+    Level: floor(weight(Techs.ProjWeapons.Level, 0.3, Techs.Gravitics.Level, 0.7))
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 200 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    
+    Tags: Weapon, ProjWeapon
+    Tied To: ProjWeapons 10, Gravitics 8
+    
+    Costs: Metals[300 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[40 * Size * pow(SUBS_COST_CRV, Level)], Labr[8 * Size], Ammo[Size * 10]
+    Complexity: 2.5
+    
+    vDamage: Size * 125 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT                            //was 120
+    vDelay: 7 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+    vDeviation: 0.1
+    vRange: (250 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+    vEffectiveRange: 1
+    vMinHit: 1
+    vAmmoUse: 0.25 * Size
+
+    Provides: RelativisticWeapon with Damage[vDamage], Delay[vDelay], AmmoUse[vAmmoUse],
+        Range[vRange], Deviation[vDeviation], effectiveRangeFactor[vEffectiveRange], minHitChance[vMinHit]
+    
+    Provides: AmmoStorage with Amount[Size * 10]
+
+    Requires:
+        To Run:
+            Control[20 * Size]
+    
+    Consumes:
+        To Run:
+            Power[Size * 40]
+
+    Hints: Alpha[vDamage], Ammo[Size * 10], AmmoUse[-1 * vAmmoUse / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/AmmoperShot[-1 * vAmmoUse], Local/Delay[vDelay]
+    
+
+System: AutocannonBattery
+    Name: #SS_AUTOCANBATT_NAME
+    Description: #SS_AUTOCANBATT_DESC
+    Appearance: AutoCannon
+	Explosion: subsystem_destroyed
+	
+	Available: Techs.ProjWeapons.Level > 2 && not(Traits.no_ballistics)
+    Level: Techs.ProjWeapons.Level
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    
+    Tags: Weapon, ProjWeapon
+    Tied To: ProjWeapons 3
+    
+    Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[Size * 25]
+    Complexity: 1.25
+    
+    vBurst: 4
+    vDelay: 2 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+    vDamage: Size * 15 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT
+    vShotDelay: 0.1
+    vTotalDelay: (vShotDelay * vBurst) + vDelay
+    vRange: (160 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+    vSpeed: vRange * 0.33 * BALLISTIC_PROJ_FACTOR                                                                                    //was progress(70,2*LEVEL_GAIN_CURVE,Level) * min((1 + Size / 5000), 3)
+    vEffectiveRange: 0.5
+    vMinHit: 0.33
+    vAmmoUse: 0.5 * Size
+
+    Provides: ProjWeapon2 with Damage[vDamage], ShotDelay[vShotDelay],
+        Delay[vDelay], ClipSize[vBurst], AmmoUse[vAmmoUse], Range[vRange], Speed[vSpeed], effectiveRangeFactor[vEffectiveRange], minHitChance[vMinHit]
+    
+    Provides: AmmoStorage with Amount[Size * 25]
+
+    Requires:
+        To Run:
+            Control[10 * Size]
+
+    Hints: Alpha[vDamage * vBurst], Ammo[Size * 25], AmmoUse[(-1 * vAmmoUse * vBurst) / vTotalDelay], DPS[(vDamage * vBurst) / vTotalDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay], Local/EffRange[vEffectiveRange * vRange], Local/MinHit[vMinHit]
+
+
+System: GatlingTurret
+    Name: #SS_GATLINGTURRET_NAME
+    Description: #SS_GATLINGTURRET_DESC
+    Appearance: GatlingTurret
+	Explosion: subsystem_destroyed
+
+    Available: (Techs.ProjWeapons.Level > 4) || Traits.remnants && not(Traits.no_ballistics)
+    Level: Techs.ProjWeapons.Level
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    
+    Tags: Weapon, ProjWeapon, PDWeap, Extendable, ClipWeapon
+    Tied To: ProjWeapons 5
+    
+    Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[Size * 25]
+    Complexity: 1.25
+    
+    vClip: 120                                //was min(floor(3 * Size),60)
+    vDelay: (6) * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+    vDamage: 2.5 * Size * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT                            //was 1.5
+    vShotDelay: 0.1
+    vTotalDelay: (vShotDelay * vClip) + vDelay
+    vRange: (120 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+    vSpeed: vRange * 0.8 * BALLISTIC_PROJ_FACTOR                                                                    //was progress(50,2*LEVEL_GAIN_CURVE,Level) * min((1 + Size / 5000), 2)
+    vEffectiveRange: 0.75
+    vMinHit: 0.33
+    vAmmoUse: 0.1 * Size
+    
+    vEffectivity: (Scale / Object.Scale) / 20
+    
+    Provides: PointDefense with Effectivity[vEffectivity]
+    
+    Provides: GatlingGun with 
+        Damage[vDamage], ShotDelay[vShotDelay],
+        Delay[vDelay], ClipSize[vClip], AmmoUse[vAmmoUse], Range[vRange], Speed[vSpeed], effectiveRangeFactor[vEffectiveRange], minHitChance[vMinHit]
+    
+    
+    Provides: AmmoStorage with Amount[Size * 25]
+
+    Requires:
+        To Run:
+            Control[10 * Size]
+
+    Hints: Alpha[vDamage * vClip], Ammo[Size * 25], AmmoUse[(-1 * vAmmoUse) / vShotDelay], DPS[(vDamage * vClip)/ vTotalDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vTotalDelay], Local/ClipDelay[vDelay], Local/Clip[vClip], PointDefense[vEffectivity], Local/EffRange[vEffectiveRange * vRange], Local/MinHit[vMinHit]
+        
+
+System: ThermalPenetrator
+    Name: #SS_THERMPENET_NAME
+    Description: #SS_THERMPENET_DESC
+    Appearance: PhasedRailgun
+	Explosion: subsystem_destroyed
+	
+    Available: (((Techs.WarpPhysics.Level > 6) && (Techs.ProjWeapons.Level > 9)) || Traits.remnants) && not(Traits.code_of_honor) && not(Traits.no_ballistics)
+    Level: floor(weight(Techs.WarpPhysics.Level, 0.4, Techs.ProjWeapons.Level, 0.6))
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    
+    Tags: Weapon, ProjWeapon
+    Tied To: ProjWeapons 10, WarpPhysics 7
+    
+    Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[Size * 25]
+    Complexity: 2.75
+    
+    vDamage: Size * 40 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT        //was Size * 24
+    vDelay: 2.5 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+    vDeviation: 0.1
+    vRange: (200 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+    vSpeed: vRange * 0.33 * BALLISTIC_PROJ_FACTOR                                                                                    //was progress(60,2*LEVEL_GAIN_CURVE,Level) * min((1 + Size / 5000), 3)
+    vEffectiveRange: 0.5
+    vMinHit: 0.33
+    vAmmoUse: 4 * Size
+    
+    Provides: PhasedBullet with Damage[vDamage], Delay[vDelay], AmmoUse[vAmmoUse],    Range[vRange], Speed[vSpeed], Deviation[vDeviation], effectiveRangeFactor[vEffectiveRange], minHitChance[vMinHit]
+    
+    Provides: AmmoStorage with Amount[Size * 25]
+
+    Consumes:
+        To Run:
+            Power[20 * Size]
+    
+    Requires:
+        To Run:
+            Control[25 * Size]
+
+    Hints: Alpha[vDamage], Ammo[Size * 25], AmmoUse[-1 * vAmmoUse / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay], Local/EffRange[vEffectiveRange * vRange], Local/MinHit[vMinHit]

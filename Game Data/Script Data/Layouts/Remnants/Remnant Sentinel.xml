@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<settings scale="64" name="Remnant Sentinel" />
+<subSystems>
+	<subSystem name="FuelCell" x="-0.5625" y="-1.234375" scale=".25" link="-1" />
+	<subSystem name="ShieldGen" x=".359375" y="1.578125" scale="1.75" link="-1" />
+	<subSystem name="ShieldCharger" x="1.6875" y="1" scale="1" link="-1" />
+	<subSystem name="NanoArmor" x="-1.640625" y="2.03125" scale="2" link="-1" />
+	<subSystem name="PFW" x="2.8125" y="-0.015625" scale="1" link="-1" />
+	<subSystem name="PlasmaBeam" x="-0.03125" y="-2.8125" scale="1" link="-1" />
+	<subSystem name="PlasmaBeam" x="1.8125" y="-2.140625" scale="1" link="-1" />
+	<subSystem name="PlasmaBeam" x="1.765625" y="2.125" scale="1" link="-1" />
+	<subSystem name="PlasmaBeam" x="-0.0625" y="2.828125" scale="1" link="-1" />
+	<subSystem name="MultiRack" x="2.328125" y="-0.078125" scale=".5" link="4" />
+	<subSystem name="AdvancedAICore" x="-0.125" y="-0.203125" scale=".5" link="-1" />
+	<subSystem name="ShieldedAntimatterGen" x="-0.203125" y="-0.203125" scale="1" link="-1" />
+	<subSystem name="MatterGen" x="1.09375" y="-0.859375" scale=".25" link="-1" />
+	<subSystem name="QuantumBattery" x="-0.765625" y=".890625" scale=".25" link="-1" />
+	<subSystem name="NaniteRepair" x=".234375" y="-1.09375" scale=".25" link="-1" />
+	<subSystem name="MediumHull" x="1.0625" y="0" scale="1" link="-1" />
+	<subSystem name="Bulkhead" x="-0.953125" y="-0.203125" scale="1" link="11" />
+	<subSystem name="AntimatterRocket" x="-2.515625" y="-0.25" scale="2.5" link="-1" />
+	<subSystem name="NanoArmor" x="-1.58524" y="-2.118734" scale="2" link="-1" />
+	<subSystem name="NaniteRepair" x=".515625" y=".625" scale=".25" link="-1" />
+	<subSystem name="Heatsink" x="-2.40625" y="-0.234375" scale=".5" link="-1" />
+</subSystems>
+<ai>
+	<targetScale low=".3" hi="9999999" forced="true" />
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="0" />
+</ai>
+

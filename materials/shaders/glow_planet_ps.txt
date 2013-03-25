@@ -1,0 +1,52 @@
+//Applies a glow to the diffuse portion of the texture according to the alpha channel
+//Used for laval planets
+//Note: uses smooth_light_vs.txt as the vertex program
+
+const int nLightCount = 2;
+
+uniform sampler2D diffuseRGBglowA, diffNoise;
+uniform float uv1x, uv1y, uv2x, uv2y;
+
+varying vec3 normal;
+varying vec4 pos;
+varying vec3 light[nLightCount];
+varying float dist[nLightCount];
+
+void main() {
+	vec4 color = gl_FrontMaterial.diffuse, texSamp = texture2D(diffuseRGBglowA, gl_TexCoord[0].xy);
+
+	vec3 n = normalize(normal);
+	vec3 v = normalize(-pos.xyz);
+
+	vec4 diffuse = vec4(0.0,0.0,0.0,1.0);
+  
+	{
+		const int i = 0;
+		float falloff = 1.0 / (1.0 + (gl_LightSource[i].quadraticAttenuation * dist[i] * dist[i]));
+		float nl = max(0.0, dot(n, light[i]));
+		float intensity = nl * falloff;
+		
+		diffuse.rgb += gl_LightSource[i].diffuse.rgb * intensity;
+	}
+	{
+		const int i = 1;
+		float falloff = 1.0 / (1.0 + (gl_LightSource[i].quadraticAttenuation * dist[i] * dist[i]));
+		float nl = max(0.0, dot(n, light[i]));
+		float intensity = nl * falloff;
+		
+		diffuse.rgb += gl_LightSource[i].diffuse.rgb * intensity;
+	}
+	
+	if(texSamp.a > 0.02) { //Significant glow
+		vec2 noiseCoord = gl_TexCoord[0].xy * 4.0;
+		vec2 noise2Coord = noiseCoord + vec2( uv2x * -1.0, uv2y );
+		noiseCoord += vec2( uv1x, uv1y );
+		
+		float glow = texSamp.a * (0.85 + (texture2D(diffNoise, noiseCoord).b * 0.42)) * (0.85 + (texture2D(diffNoise, noise2Coord).r * 0.32));
+		
+		gl_FragColor.rgb = max((diffuse.rgb * color.rgb) * texSamp.rgb, texSamp.rgb * glow);
+	}
+	else {
+		gl_FragColor.rgb = diffuse.rgb * color.rgb * texSamp.rgb;
+	}
+}

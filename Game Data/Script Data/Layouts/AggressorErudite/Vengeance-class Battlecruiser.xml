@@ -1,0 +1,54 @@
+﻿<?xml version="1.0"?>
+<settings scale="10" name="Vengeance-class Battlecruiser" />
+<subSystems>
+	<subSystem name="CrewQuarters" x="-1.398438" y="-0.289063" scale=".375" link="-19" />
+	<subSystem name="Bridge" x="-1.429688" y=".648438" scale=".5" link="-20" />
+	<subSystem name="LifeSupport" x="-1.390625" y=".140625" scale=".125" link="-18" />
+	<subSystem name="PowerGen" x="-1.875" y=".4375" scale=".25" link="-1" />
+	<subSystem name="Thruster" x="-2.53125" y=".140625" scale="1" link="-1" />
+	<subSystem name="Thruster" x="-2.75" y=".125" scale="1.25" link="-1" />
+	<subSystem name="AmmoStorage" x="-1.890625" y=".15625" scale="1.5" link="-1" />
+	<subSystem name="FuelCell" x="-2.242188" y=".085938" scale=".75" link="-1" />
+	<subSystem name="FuelCell" x="-2.101563" y=".117188" scale=".5" link="-1" />
+	<subSystem name="FuelCell" x="-1.921875" y=".15625" scale=".25" link="-1" />
+	<subSystem name="Armor" x=".055626" y="2.453732" scale="3" link="-1" />
+	<subSystem name="Thruster" x="-2.28125" y=".109375" scale=".25" link="-1" />
+	<subSystem name="RepairBay" x="-1.898438" y=".148438" scale=".5" link="-1" />
+	<subSystem name="CoolantSys" x=".5" y=".625" scale=".625" link="21" />
+	<subSystem name="Capacitor" x="-1.875" y="-0.171875" scale=".25" link="-1" />
+	<subSystem name="HeavyHull" x="-0.578125" y=".171875" scale="1" link="-1" />
+	<subSystem name="Bulkhead" x="-1.131065" y=".166878" scale=".5" link="2" />
+	<subSystem name="Bulkhead" x="-1.131065" y="-0.339937" scale=".5" link="0" />
+	<subSystem name="Bulkhead" x="-1.106342" y=".760224" scale=".5" link="1" />
+	<subSystem name="Armor" x=".228685" y="-2.453732" scale="3" link="-1" />
+	<subSystem name="CoolantSys" x="1.429688" y="-0.445313" scale=".375" link="22" />
+	<subSystem name="TwinRailgun" x=".53125" y=".09375" scale="2" link="-15" />
+	<subSystem name="TwinRailgun" x="1.4375" y=".03125" scale="1.5" link="-22" />
+	<subSystem name="AutocannonBattery" x="2.132813" y="-0.242188" scale=".5" link="-28" />
+	<subSystem name="FlakTurret" x="2.664063" y=".101563" scale=".5" link="-1" />
+	<subSystem name="MuonCannon" x="2.101563" y=".445313" scale=".5" link="-29" />
+	<subSystem name="CoolantSys" x="2.15625" y="-0.53125" scale=".25" link="23" />
+	<subSystem name="CoolantSys" x="2.109375" y=".6875" scale=".25" link="25" />
+</subSystems>
+<ai>
+	<targetScale low="1" hi="9999999" forced="false" />
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="0" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Defend" />
+</orders>
+

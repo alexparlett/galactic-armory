@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<settings scale="3" name="Mojave" />
+<subSystems>
+	<subSystem name="HeavyHull" x=".296875" y="-0.21875" scale="1" link="-22" />
+	<subSystem name="BigFuelCell" x="-1.039063" y=".242188" scale=".875" link="-8" />
+	<subSystem name="XRayLaser" x=".015471" y="-2.661082" scale="1.75" link="-26" />
+	<subSystem name="ShieldGen" x="-1.867188" y="-0.101563" scale="1.25" link="-23" />
+	<subSystem name="ShieldCharger" x="-1.625" y=".4375" scale=".25" link="-1" />
+	<subSystem name="Heatsink" x=".960938" y="-0.304688" scale=".75" link="-1" />
+	<subSystem name="Bulkhead" x="-0.671875" y=".328125" scale=".5" link="1" />
+	<subSystem name="SoakArmor" x="1.390625" y="-2.4375" scale="1" link="-1" />
+	<subSystem name="SoakArmor" x="1.703125" y="2.140625" scale="1" link="-1" />
+	<subSystem name="Armor" x="-2.15625" y="-2.046875" scale=".25" link="-1" />
+	<subSystem name="Armor" x="-2.03125" y="2.078125" scale=".25" link="-1" />
+	<subSystem name="Armor" x="2.03125" y="-1.953125" scale="1" link="-1" />
+	<subSystem name="Armor" x="2.296875" y="1.625" scale="1" link="-1" />
+	<subSystem name="IntegratedCommandCenter" x=".414063" y="-0.804688" scale=".375" link="-1" />
+	<subSystem name="BoardingDefense" x=".03125" y="-0.40625" scale=".25" link="-1" />
+	<subSystem name="PlasmaThrower" x="2.65625" y="-0.15625" scale="1.75" link="-27" />
+	<subSystem name="GatlingLaser" x="2.1875" y="-1.109375" scale=".625" link="-1" />
+	<subSystem name="AntiMatterGen" x="-0.992188" y="-0.695313" scale=".75" link="-24" />
+	<subSystem name="MagnetoPlasmaThruster" x="-2.43049" y="-1.083658" scale="1.75" link="-1" />
+	<subSystem name="MagnetoPlasmaThruster" x="-2.515625" y=".859375" scale="1.75" link="-1" />
+	<subSystem name="IntegratedConstruction" x=".3125" y=".34375" scale="1" link="0" />
+	<subSystem name="ShieldHardener" x="-1.640625" y="-0.78125" scale=".25" link="3" />
+	<subSystem name="Bulkhead" x="-0.6875" y="-0.703125" scale=".5" link="17" />
+	<subSystem name="PFW" x=".117188" y="2.773438" scale="1.25" link="-28" />
+	<subSystem name="CoolantSys" x=".023438" y="-1.898438" scale=".5" link="2" />
+	<subSystem name="CoolantSys" x="2.226563" y=".414063" scale=".75" link="15" />
+	<subSystem name="DamageSys" x=".109375" y="2.109375" scale=".625" link="23" />
+	<subSystem name="NanoArmor" x="-1.195313" y="2.367188" scale=".75" link="-1" />
+	<subSystem name="NanoArmor" x="-1.460938" y="-2.320313" scale=".75" link="-1" />
+	<subSystem name="Capacitor" x="-0.453125" y="-0.21875" scale=".25" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+

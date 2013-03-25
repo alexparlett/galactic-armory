@@ -1,0 +1,33 @@
+﻿<?xml version="1.0"?>
+<settings scale=".05" name="Scout" />
+<subSystems>
+	<subSystem name="Thruster" x="-2.3125" y=".03125" scale="4" link="-1" />
+	<subSystem name="FighterHull" x="2.546875" y=".046875" scale="1" link="-1" />
+	<subSystem name="Thruster" x="-1.671875" y="-1.890625" scale="2.25" link="-1" />
+	<subSystem name="Thruster" x="-1.703125" y="1.796875" scale="2.25" link="-1" />
+	<subSystem name="Cockpit" x="1.296875" y=".046875" scale="1" link="-1" />
+	<subSystem name="BigFuelCell" x="-0.203125" y="-0.953125" scale="2.75" link="-1" />
+	<subSystem name="BigFuelCell" x="-0.203125" y=".796875" scale="2.75" link="-1" />
+</subSystems>
+<ai>
+	<targetScale low="0" hi="0" forced="false" />
+	<targetDamage low="1" hi="1" forced="false" />
+	<orbit flag="true" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="false" planets="false" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="0" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="AutoExplore:true:false" />
+</orders>
+

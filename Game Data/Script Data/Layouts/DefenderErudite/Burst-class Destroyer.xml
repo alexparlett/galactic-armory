@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<settings scale="6" name="Burst-class Destroyer" />
+<subSystems>
+	<subSystem name="FuelCell" x="-0.953125" y=".796875" scale="1" link="-1" />
+	<subSystem name="ShieldGen" x="1.046875" y="-0.703125" scale="1" link="-10" />
+	<subSystem name="ShieldCharger" x="1.046875" y=".796875" scale="1" link="-1" />
+	<subSystem name="FusionGen" x="-0.953125" y="-0.046875" scale=".75" link="-9" />
+	<subSystem name="Computer" x=".195313" y="-0.085938" scale=".875" link="-1" />
+	<subSystem name="ReactArmor" x="-2.203125" y="1.296875" scale="2" link="-1" />
+	<subSystem name="ReactArmor" x="-2.171875" y="-1.4375" scale="2" link="-1" />
+	<subSystem name="Bulkhead" x="-0.9375" y="-0.078125" scale=".5" link="3" />
+	<subSystem name="ShieldHardener" x="1.046875" y="-0.703125" scale=".5" link="1" />
+	<subSystem name="GatlingLaser" x=".046875" y="-1.203125" scale="1" link="-1" />
+	<subSystem name="GatlingLaser" x=".046875" y="1.046875" scale="1" link="-1" />
+	<subSystem name="FuelCell" x="-0.953125" y="-0.953125" scale="1" link="-1" />
+	<subSystem name="MediumHull" x="-0.234375" y="-0.03125" scale="1" link="-1" />
+	<subSystem name="RepairBay" x="-1.875" y="-0.015625" scale="1" link="-1" />
+	<subSystem name="OversizeMount" x="1.6875" y=".046875" scale=".5" link="16" />
+	<subSystem name="MagnetoPlasmaThruster" x="-2.615686" y="0" scale="2" link="-1" />
+	<subSystem name="ParticleCannon" x="2.530666" y=".099996" scale="2.5" link="-16" />
+	<subSystem name="Heatsink" x=".703125" y=".046875" scale=".625" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="138" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Defend" />
+</orders>
+

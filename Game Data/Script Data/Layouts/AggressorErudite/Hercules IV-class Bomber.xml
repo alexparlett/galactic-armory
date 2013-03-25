@@ -1,0 +1,39 @@
+﻿<?xml version="1.0"?>
+<settings scale="1" name="Hercules IV-class Bomber" />
+<subSystems>
+	<subSystem name="FuelCell" x="-0.453125" y="-1.5" scale="1" link="-1" />
+	<subSystem name="Armor" x=".1875" y="-2.59375" scale="2" link="-1" />
+	<subSystem name="Bulkhead" x="1.063078" y=".791128" scale="1" link="4" />
+	<subSystem name="Capacitor" x=".09375" y="-0.0625" scale=".25" link="-1" />
+	<subSystem name="Cockpit" x=".640625" y=".828125" scale=".75" link="-4" />
+	<subSystem name="FuelCell" x="-0.5" y="1.765625" scale="1" link="-1" />
+	<subSystem name="BomberHull" x=".125" y=".75" scale="1" link="-1" />
+	<subSystem name="MagnetoPlasmaThruster" x="-2.21875" y=".984375" scale="1" link="-1" />
+	<subSystem name="MagnetoPlasmaThruster" x="-2.21875" y="-1.015625" scale="1" link="-1" />
+	<subSystem name="MagnetoPlasmaThruster" x="-2.484375" y="0" scale="2.75" link="-1" />
+	<subSystem name="HeavyBomb" x="1.890625" y="-0.859375" scale="3.75" link="-1" />
+	<subSystem name="HeavyBomb" x="1.46875" y="-1.375" scale="3.75" link="-1" />
+	<subSystem name="FusionGen" x=".475709" y="-0.075838" scale=".25" link="-1" />
+</subSystems>
+<ai>
+	<targetScale low="1" hi="9999999" forced="false" />
+	<orbit flag="true" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Defend" />
+</orders>
+

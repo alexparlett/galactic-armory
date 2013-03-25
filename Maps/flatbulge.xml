@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<map name="Flat Bulge Galaxy">
+	<columns positions="8,228" widths="206,206" />
+
+	<input tag="#NGM_Systems" setting="SYSTEM_COUNT" type="integer" min="1" default="150" pos="0,0" />
+	<spin tag="#NGM_Spacing" setting="MAP_SYSTEM_SPACING" type="integer" min="1000" max="30000" default="5000" step="500" digits="0" pos="1,0"/>
+	<checkbox tag="#NGM_SpaceObjects" setting="MAP_ODDITIES" off="0" on="1" default="on" pos="0,1" />
+	<checkbox tag="#NGM_BalancedStart" setting="MAP_BALANCED_START" off="0" on="1" default="off" pos="0,2" />
+</map>

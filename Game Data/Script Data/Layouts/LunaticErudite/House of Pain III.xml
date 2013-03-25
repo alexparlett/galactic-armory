@@ -1,0 +1,57 @@
+﻿<?xml version="1.0"?>
+<settings scale="30" name="House of Pain III" />
+<subSystems>
+	<subSystem name="StationHull" x=".109375" y="-0.40625" scale="1" link="-9" />
+	<subSystem name="FlakTurret" x="1.6875" y="2.109375" scale="1.5" link="-1" />
+	<subSystem name="MissileRack" x="0" y="2.3125" scale="4" link="-11" />
+	<subSystem name="Railgun" x="-2.436139" y="-0.323791" scale="3" link="-7" />
+	<subSystem name="Capacitor" x=".71875" y="-1.28125" scale=".25" link="-1" />
+	<subSystem name="CoolantSys" x="-2.679688" y=".648438" scale="1.25" link="3" />
+	<subSystem name="BigAmmoStorage" x="-1" y="-0.375" scale="2" link="-15" />
+	<subSystem name="IntegratedConstruction" x=".09375" y="-0.84375" scale="1" link="0" />
+	<subSystem name="FuelCell" x="-0.380332" y="-0.285249" scale=".125" link="-1" />
+	<subSystem name="ExternalMount" x="-0.015625" y="1.171875" scale="1" link="2" />
+	<subSystem name="PointDefense" x="2.679688" y="-0.695313" scale="1.25" link="-1" />
+	<subSystem name="HyperRailgun" x=".078125" y="-2.328125" scale="4" link="-14" />
+	<subSystem name="ExternalMount" x="1.03125" y="-2.640625" scale="1" link="11" />
+	<subSystem name="Bulkhead" x="-1.039063" y="-1.023438" scale="1" link="6" />
+	<subSystem name="AmmoFabricator" x="-1.328125" y=".890625" scale="1" link="-1" />
+	<subSystem name="ReactArmor" x="-1.445313" y="-1.695313" scale="1.25" link="-1" />
+	<subSystem name="ReactArmor" x="1.585938" y="-1.554688" scale="1.25" link="-1" />
+	<subSystem name="ReactArmor" x="-2.271188" y="1.573554" scale="1.25" link="-1" />
+	<subSystem name="ReactArmor" x="-1.742059" y="2.144668" scale="1.25" link="-1" />
+	<subSystem name="ReactArmor" x="1.817829" y="-2.080833" scale="1.25" link="-1" />
+	<subSystem name="ReactArmor" x="2.273438" y="-1.570313" scale="1.25" link="-1" />
+	<subSystem name="ReactArmor" x="-1.273438" y="-2.304688" scale="1.25" link="-1" />
+	<subSystem name="ReactArmor" x="-2.070313" y="-1.835938" scale="1.25" link="-1" />
+	<subSystem name="AdvancedAICore" x=".0625" y=".078125" scale=".25" link="-1" />
+	<subSystem name="ShieldedAntimatterGen" x=".945313" y="-0.601563" scale=".75" link="-1" />
+	<subSystem name="FusionTorpedoBay" x="2.796875" y=".359375" scale="1" link="-1" />
+	<subSystem name="ShieldGen" x="1.796875" y="-0.1875" scale="1" link="-31" />
+	<subSystem name="ShieldGen" x="2.453125" y="1.359375" scale="1" link="-32" />
+	<subSystem name="ShieldCharger" x="1.109375" y="1.25" scale="1" link="-1" />
+	<subSystem name="PulsedShieldCharger" x="1.296875" y=".125" scale="1" link="26" />
+	<subSystem name="ShieldHardener" x="1.945313" y=".929688" scale=".5" link="27" />
+</subSystems>
+<ai>
+	<targetDamage low="1" hi="1" forced="false" />
+	<orbit flag="true" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="false" planets="false" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="0" />
+</ai>
+<orders>
+	<order desc="Fetch:Ammo:0.480000" />
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="AutoExplore:true:false" />
+</orders>
+

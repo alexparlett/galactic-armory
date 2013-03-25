@@ -1,0 +1,53 @@
+const float midRad = 0.98;
+const float outerRad = 0.99;
+
+const float gridWidth = 7.0;
+const float gridSize = 1000.0;
+
+const float subGridWidth = 3.5;
+const float subGridSize = 250.0;
+
+const float subsubGridWidth = 0.775;
+const float subsubGridSize = 50.0;
+
+uniform float radius;
+
+void main() {
+	float distance = length(gl_TexCoord[0].xy);
+
+	if(distance >= outerRad)
+		discard;
+
+	gl_FragColor.rgb = gl_Color.rgb;
+	
+	if(distance > midRad) {
+		gl_FragColor.a = gl_Color.a * 2.0;
+		return;
+	}
+
+	vec2 absCoords = gl_TexCoord[0].xy * radius;
+	vec2 gridPos = abs(mod(absCoords, gridSize));
+	gridPos = min(gridPos, gridSize - gridPos);
+
+	// Main grid alpha
+	if(gridPos.x <= gridWidth || gridPos.y <= gridWidth) {
+		gl_FragColor.a = gl_Color.a * 2.0;
+		return;
+	}
+	
+	vec2 subGridPos = abs(mod(absCoords, subGridSize));
+	subGridPos = min(subGridPos, subGridSize - subGridPos);
+	if(subGridPos.x <= subGridWidth || subGridPos.y <= subGridWidth) {
+		gl_FragColor.a = gl_Color.a * 1.8;
+		return;
+	}
+	
+	vec2 subsubGridPos = abs(mod(absCoords, subsubGridSize));
+	subsubGridPos = min(subsubGridPos, subsubGridSize - subsubGridPos);
+	if(subsubGridPos.x <= subsubGridWidth || subsubGridPos.y <= subsubGridWidth) {
+		gl_FragColor.a = gl_Color.a * 1.5;
+		return;
+	}
+	
+	gl_FragColor.a = gl_Color.a;
+}

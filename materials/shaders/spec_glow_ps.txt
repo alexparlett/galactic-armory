@@ -1,0 +1,74 @@
+const int nLightCount = 2;
+
+const float minLightLevel = 0.1;
+const float mll2 = minLightLevel * 2.0;
+
+uniform sampler2D diffuseRGBspecA, glowMap;
+
+varying vec3 normal;
+varying vec4 pos;
+varying vec3 light[nLightCount];
+varying float dist[nLightCount];
+
+void main() {
+  vec4 color = gl_FrontMaterial.diffuse, texSamp = texture2D(diffuseRGBspecA, gl_TexCoord[0].xy);
+  vec4 matspec = gl_FrontMaterial.specular * texSamp.a;
+  float shininess = gl_FrontMaterial.shininess;
+  
+  vec3 n = normalize(normal);
+  vec3 v = normalize(-pos.xyz);
+  
+  vec4 diffuse = gl_LightModel.ambient * gl_FrontMaterial.ambient;
+  
+  if(shininess != 0.0) {
+	vec4 specular = vec4(0.0,0.0,0.0,0.0);
+	if(nLightCount > 0) {
+		const int i = 0;
+		float falloff = 1.0 / (1.0 + (gl_LightSource[i].quadraticAttenuation * dist[i] * dist[i]));
+		float nl = max(0.0, dot(n, light[i]));
+		float intensity = nl * falloff;
+		
+		diffuse.rgb += gl_LightSource[i].diffuse.rgb * intensity;
+		
+		vec3 r = normalize(-reflect(normalize(light[i]), n));
+		specular.rgb += gl_LightSource[i].specular.rgb * (pow(max(0.0, dot(r, v)), shininess) * falloff);
+	}
+	if(nLightCount > 1) {
+		const int i = 1;
+		float falloff = 1.0 / (1.0 + (gl_LightSource[i].quadraticAttenuation * dist[i] * dist[i]));
+		float nl = max(0.0, dot(n, light[i]));
+		float intensity = nl * falloff;
+		
+		diffuse.rgb += gl_LightSource[i].diffuse.rgb * intensity;
+		
+		vec3 r = normalize(-reflect(normalize(light[i]), n));
+		specular.rgb += gl_LightSource[i].specular.rgb * (pow(max(0.0, dot(r, v)), shininess) * falloff);
+	}
+
+	//Apply glow to the diffuse result
+	gl_FragColor = max((diffuse * color) + (specular * matspec), texture2D(glowMap, gl_TexCoord[0].xy));	
+	gl_FragColor *= texSamp;
+  }
+  else {
+	if(nLightCount > 0) {
+		const int i = 0;
+		float falloff = 1.0 / (1.0 + (gl_LightSource[i].quadraticAttenuation * dist[i] * dist[i]));
+		float nl = max(0.0, dot(n, light[i]));
+		float intensity = nl * falloff;
+		
+		diffuse.rgb += gl_LightSource[i].diffuse.rgb * intensity;
+	}
+	if(nLightCount > 1) {
+		const int i = 1;
+		float falloff = 1.0 / (1.0 + (gl_LightSource[i].quadraticAttenuation * dist[i] * dist[i]));
+		float nl = max(0.0, dot(n, light[i]));
+		float intensity = nl * falloff;
+		
+		diffuse.rgb += gl_LightSource[i].diffuse.rgb * intensity;
+	}
+	
+	//Apply glow to the diffuse result
+	gl_FragColor = max(diffuse * color, texture2D(glowMap, gl_TexCoord[0].xy));	
+	gl_FragColor *= texSamp;
+  }
+}

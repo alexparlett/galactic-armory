@@ -1,0 +1,53 @@
+﻿<?xml version="1.0"?>
+<settings scale="30" name="Terrapin" />
+<subSystems>
+	<subSystem name="FuelCell" x=".65625" y=".53125" scale=".125" link="-1" />
+	<subSystem name="Computer" x="1.164063" y="-0.039063" scale=".75" link="-1" />
+	<subSystem name="ExternalMount" x=".390625" y="-1.390625" scale="1" link="5" />
+	<subSystem name="ExternalMount" x=".546875" y="1.359375" scale="1" link="8" />
+	<subSystem name="RepairBay" x="-0.445313" y="-0.960938" scale=".375" link="-1" />
+	<subSystem name="RepairTool" x="1.359375" y="-1.890625" scale="4" link="-4" />
+	<subSystem name="ZeroPointGenerator" x="-1.117188" y=".945313" scale=".375" link="-1" />
+	<subSystem name="CarrierHull" x="-0.015625" y="-0.078125" scale="1" link="-15" />
+	<subSystem name="FusionTorpedoBay" x="1.4375" y="1.8125" scale="4" link="-5" />
+	<subSystem name="CoolantSys" x="2.101563" y="-0.085938" scale=".75" link="10" />
+	<subSystem name="ThermalPenetrator" x="2.828125" y="-0.09375" scale="1" link="-11" />
+	<subSystem name="AutocannonBattery" x="2.742188" y="-1.039063" scale=".5" link="-1" />
+	<subSystem name="GraviticAccelerator" x="2.835938" y=".914063" scale=".5" link="-1" />
+	<subSystem name="IntegratedConstruction" x="-0.546875" y="-0.046875" scale="1" link="7" />
+	<subSystem name="AmmoFabricator" x="-0.453125" y=".796875" scale=".25" link="-1" />
+	<subSystem name="PowerArmor" x="-0.28125" y="-2.703125" scale="1" link="-1" />
+	<subSystem name="PowerArmor" x="-0.15625" y="2.65625" scale="1" link="-1" />
+	<subSystem name="ArmorMount" x="-2.813355" y="-0.217608" scale="1" link="-1" />
+	<subSystem name="ArmorMount" x="-2.831305" y=".290783" scale="1" link="-1" />
+	<subSystem name="ArmorMount" x="-2.40625" y="-0.015625" scale="1" link="-1" />
+	<subSystem name="ReactArmor" x="-2.359375" y="-1.359375" scale="1.5" link="-1" />
+	<subSystem name="ReactArmor" x="-2.359375" y="1.34375" scale="1.5" link="-1" />
+	<subSystem name="VASIMRThruster" x="-1.681281" y="-2.192638" scale="1.25" link="-1" />
+	<subSystem name="VASIMRThruster" x="-1.629269" y="2.231558" scale="1.25" link="-1" />
+	<subSystem name="BigAmmoStorage" x="-1.289063" y="-1.039063" scale="1.375" link="-27" />
+	<subSystem name="QuantumCompressor" x="-1.539063" y="-0.445313" scale=".5" link="24" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="true" />
+	<allowDeposit flag="true" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Ammo:0.200000" />
+	<order desc="Fetch:Fuel:0.200000" />
+	<order desc="AutoUnDock" />
+	<order desc="Replenish" />
+	<order desc="Defend" />
+</orders>
+

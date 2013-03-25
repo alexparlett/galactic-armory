@@ -1,0 +1,208 @@
+<?xml version="1.0"?>
+
+<personality>
+	
+
+<!-- Determines how much ships will be upscaled per level -->
+	
+<var id="ScalingCurve" value="1.3" />
+
+	
+<list id="ResearchTechs" mode="append">
+		
+<li>BeamWeapons</li>
+		
+<li>Sensors</li>
+		
+<li>Shields</li>
+		
+<li>Computers</li>
+	
+</list>
+
+	
+<list id="LinkTechs" mode="append">
+		
+<li>BeamWeapons</li>
+		
+<li>Shields</li>
+		
+<li>Sensors</li>
+		
+<li>Computers</li>
+	
+</list>
+
+	
+<list id="LinkFromTechs" mode="append">
+		
+<li>EnergyPhysics</li> 
+
+<!-- To BeamWeapons -->
+		
+<li>EnergyPhysics</li> 
+
+<!-- To Shields -->
+		
+<li>EnergyPhysics</li> 
+
+<!-- To Sensors -->
+		
+<li>Biology</li> 
+
+<!-- To Computers -->
+	
+</list>
+	
+	
+<list id="WarPriorityTechs">
+		
+<li>BeamWeapons</li>
+		
+<li>Armor</li>
+		
+<li>Materials</li>
+		
+<li>Shields</li>
+	
+</list>
+
+	
+
+<list id="Traits">
+<li>longevity</li>      
+<li>dextrous</li>		
+<li>euphoric</li>		
+<li>efficient</li>		
+<li>efficient_rec</li>		
+<li>economical</li>			
+<li>bustling</li>		
+<li>colonialism</li>		
+<li>violent_his</li>		
+<li>entrenchment</li>		
+<li>natural_research</li>			
+<li>planet_defense</li>		
+<li>shieldtech</li>		
+<li>goodbiology</li>		
+<li>randtech</li>			
+<li>lightweight</li>		
+<li>fine_tuned</li>		
+<li>efficient_energy</li>		
+<li>super_rail</li>		
+<li>defensive_targetting</li>		
+</list>
+
+<layouts>
+		
+<obsolete name="Scout C"/>
+		
+<obsolete name="Colony Ship C"/>
+		
+<obsolete name="Tanker C"/>
+		
+<obsolete name="Repair Drone C"/>
+		
+<obsolete name="Repair Vessel C"/>
+		
+
+<!-- This uses a bigger colony ship by default -->
+		
+<default name="Colony Ship XL" file="Layouts/ResearcherErudite/Colony Ship XL" goal="Expand" autoscale="false" replaces="Colony Ship C" />
+
+		
+
+<!-- Strike Craft -->
+		
+<design name="Kepler" file="Layouts/ResearcherErudite/Kepler" goal="Fighter" autoscale="false" />
+		
+<design name="Darwin" file="Layouts/ResearcherErudite/Darwin" goal="Fighter" autoscale="false" />
+		
+<design name="Curie" file="Layouts/ResearcherErudite/Curie" goal="Fighter" replaces="Darwin" autoscale="false" />
+		
+		
+
+<!-- Laser Line -->
+		
+<design name="Copernicus" file="Layouts/ResearcherErudite/Copernicus" goal="Combat" />
+		
+<design name="Galileo" file="Layouts/ResearcherErudite/Galileo" goal="Combat" replaces="Copernicus" />
+		
+<design name="Newton" file="Layouts/ResearcherErudite/Newton" goal="Combat" replaces="Galileo" />
+		
+<design name="Faraday" file="Layouts/ResearcherErudite/Faraday" goal="Combat" replaces="Newton" />
+		
+<design name="Fermi" file="Layouts/ResearcherErudite/Fermi" goal="Combat" replaces="Faraday" />
+
+		
+
+<!-- Flak + Guns Line -->
+		
+<design name="Aristotle" file="Layouts/ResearcherErudite/Aristotle" goal="CombatSpecialized" />
+		
+<design name="Archimedes" file="Layouts/ResearcherErudite/Archimedes" goal="CombatSpecialized" replaces="Aristotle" />
+		
+<design name="Bohr" file="Layouts/ResearcherErudite/Bohr" goal="CombatSpecialized" replaces="Archimedes" />
+		
+<design name="Pasteur" file="Layouts/ResearcherErudite/Pasteur" goal="CombatSpecialized" replaces="Bohr" />
+		
+<design name="Freud" file="Layouts/ResearcherErudite/Freud" goal="CombatSpecialized" replaces="Pasteur" />
+
+		
+
+<!-- Leader Line -->
+		
+<design name="Euclid" file="Layouts/ResearcherErudite/Euclid" goal="Leader" />
+		
+<design name="Euler" file="Layouts/ResearcherErudite/Euler" goal="Leader" replaces="Euclid" />
+		
+<design name="Leibniz" file="Layouts/ResearcherErudite/Leibniz" goal="Leader" replaces="Euler" />
+		
+<design name="Heisenberg" file="Layouts/ResearcherErudite/Heisenberg" goal="Leader" replaces="Leibniz" />
+		
+<design name="Maxwell" file="Layouts/ResearcherErudite/Maxwell" goal="Leader" replaces="Heisenberg" />
+
+		
+
+<!-- Large Alpha ship -->
+		
+<design name="Einstein" file="Layouts/ResearcherErudite/Einstein" goal="Combat" minTime="60" />
+		
+<design name="Gauss" file="Layouts/ResearcherErudite/Gauss" goal="Combat" replaces="Einstein" />
+		
+<design name="Planck" file="Layouts/ResearcherErudite/Planck" goal="Combat" replaces="Gauss" />
+		
+		
+
+<!-- Carrier Line -->
+		
+<design name="Neumann" file="Layouts/ResearcherErudite/Neumann" goal="Carrier" strikecraft="Kepler" minTime="60" replaces="Carrier" />
+		
+<design name="Von Neumann" file="Layouts/ResearcherErudite/Von Neumann" goal="Carrier" strikecraft="Kepler" minTime="60" replaces="Neumann" />
+		
+		
+
+<!-- Defences -->
+		
+<design name="Dirac" file="Layouts/ResearcherErudite/Dirac" goal="StaticDefense" />
+		
+<design name="Hubble" file="Layouts/ResearcherErudite/Hubble" goal="Station" replaces="Dirac"/>
+
+		
+
+<!-- Other ships -->
+		
+<design name="Tesla" file="Layouts/ResearcherErudite/Tesla" goal="Leader" minTime="30" />
+		
+	
+
+
+		<!-- Industrial Vessels -->
+		<design name="Orbital Electronics Factory" file="Layouts/Default/Orbital Electronics Factory" goal="Miner" autoscale="false"  />
+		<design name="Orbital Advanced Parts Factory" file="Layouts/Default/Orbital Advanced Parts Factory" goal="Miner" autoscale="false"  />		
+		<design name="Orbital Metal Factory" file="Layouts/Default/Orbital Metal Factory" goal="Miner" autoscale="false" />
+	
+		<!-- Ringworld -->
+		<design name="Ringworld" file="Layouts/Default/Ringworld" goal="Ringworld" autoscale="false" />
+</layouts>
+
+</personality>

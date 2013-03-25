@@ -1,0 +1,99 @@
+if class == ColonyShip {
+    Sprite = 11
+	Model = vaygr_colonizer
+}
+
+tag RemnantSuperWeapon {
+	Sprite = 14
+	Model = neumon_superweapon
+}
+
+tag RemnantSWGreen {
+	Sprite = 15
+	Model = green_neumon_superweapon
+}
+
+tag MothershipHull {
+	Sprite = 12
+	Model = vaygr_carrier
+}
+
+if (class == Carrier) || (class == Transport) {
+    Sprite = 12
+	Model = vaygr_carrier
+}
+
+if class == Cargo {
+   Sprite = 8
+	Model = vaygr_freighter
+}
+
+
+tag Salvager {
+   Sprite = 8
+   Model = vaygr_freighter
+}
+
+
+if (class == Station) || (class == CivStation) {
+	if scale <= 10 {
+		Sprite = 9
+		Model = vaygr_satellite
+	}
+	Sprite = 10
+	Model =  hiigaran_station
+}
+	
+
+if scale <= 0.25 {
+Sprite = 0
+	Model = vaygr_drone
+}
+
+tag FighterHull {
+Sprite = 1
+	Model = vaygr_fighter
+}
+
+tag BomberHull {
+Sprite = 2
+	Model = vaygr_tiny
+}
+
+tag LightHull {
+Sprite = 3
+	Model = vaygr_small
+}
+
+tag MediumHull {
+Sprite = 4
+	Model = vaygr_medium
+}
+
+tag SpinalHull {
+Sprite = 4
+	Model = vaygr_medium
+}
+
+tag MegaHull {
+Sprite = 6
+	Model = vaygr_verylarge
+}
+
+tag GargantuanHull {
+Sprite = 7
+	Model = vaygr_huge
+}
+
+tag HeavyHull {
+Sprite = 5
+	Model = vaygr_large
+}
+
+tag StealthHull {
+Sprite = 2
+	Model = vaygr_tiny
+}
+
+Sprite = 4
+Model = vaygr_medium

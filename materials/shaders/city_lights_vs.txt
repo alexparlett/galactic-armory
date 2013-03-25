@@ -1,0 +1,30 @@
+const int nLightCount = 2;
+
+varying vec4 pos;
+varying vec3 normal;
+varying vec3 light[nLightCount];
+varying float dist[nLightCount];
+
+void main()
+{
+	normal = normalize(gl_NormalMatrix * gl_Normal);
+	pos = gl_ModelViewMatrix * gl_Vertex;
+
+	if(nLightCount > 0) {
+		const int i = 0;
+		vec4 lpos = gl_LightSource[i].position;
+		dist[i] = distance(pos, lpos);
+		vec4 s = (lpos-pos) / dist[i];
+		light[i] = s.xyz;
+	}
+	if(nLightCount > 1) {
+		const int i = 1;
+		vec4 lpos = gl_LightSource[i].position;
+		dist[i] = distance(pos, lpos);
+		vec4 s = (lpos-pos) / dist[i];
+		light[i] = s.xyz;
+	}
+	
+	gl_TexCoord[0] = gl_TextureMatrix[0] * gl_MultiTexCoord0;		
+	gl_Position = ftransform();
+} 

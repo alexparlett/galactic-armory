@@ -1,0 +1,50 @@
+﻿<?xml version="1.0"?>
+<settings scale="30" name="Xenocide Unit 1024 - 6 - 8 -" />
+<subSystems>
+	<subSystem name="RamScoop" x="-2.65625" y=".078125" scale=".25" link="-1" />
+	<subSystem name="AdvancedAICore" x="-0.632813" y=".007813" scale=".375" link="-1" />
+	<subSystem name="MediumHull" x=".765625" y="-0.125" scale="1" link="-1" />
+	<subSystem name="QuantumBattery" x="-1.5" y=".265625" scale=".25" link="-1" />
+	<subSystem name="QuantumBattery" x="-1.03125" y="-0.859375" scale=".25" link="-1" />
+	<subSystem name="NBCWeapon" x=".703125" y=".984375" scale=".5" link="-1" />
+	<subSystem name="AmmoFabricator" x="-0.070313" y="-0.398438" scale=".5" link="-1" />
+	<subSystem name="AmmoStorage" x=".25" y=".28125" scale=".25" link="-1" />
+	<subSystem name="CoolantSys" x="2" y="1.359375" scale=".25" link="16" />
+	<subSystem name="CoolantSys" x="1.8125" y="-1.5" scale=".25" link="15" />
+	<subSystem name="NBCWeapon" x=".71875" y="-0.96875" scale=".5" link="-1" />
+	<subSystem name="Firestorm" x="-1.789063" y="1.023438" scale=".75" link="-1" />
+	<subSystem name="Firestorm" x="-1.804688" y="-1.023438" scale=".75" link="-1" />
+	<subSystem name="ShieldedAntimatterGen" x="-0.890625" y="-0.125" scale="1.75" link="-1" />
+	<subSystem name="Heatsink" x="-1.8125" y="-0.09375" scale="1" link="-1" />
+	<subSystem name="TwinParticleCannon" x="2.328125" y="-1.59375" scale="1" link="-11" />
+	<subSystem name="TwinParticleCannon" x="2.46875" y="1.34375" scale="1" link="-10" />
+	<subSystem name="GatlingLaser" x=".984375" y="1.609375" scale=".25" link="-1" />
+	<subSystem name="GatlingLaser" x="1.03125" y="-1.59375" scale=".25" link="-1" />
+	<subSystem name="FusionCutter" x="2.351235" y="-0.147437" scale="3.75" link="-1" />
+	<subSystem name="AntimatterRocket" x="-2.710938" y="-0.789063" scale=".5" link="-1" />
+	<subSystem name="AntimatterRocket" x="-2.585938" y="1.054688" scale=".5" link="-1" />
+	<subSystem name="ShieldArmor" x="-0.78125" y="-2.390625" scale="2" link="-1" />
+	<subSystem name="ShieldArmor" x="-0.65625" y="2.140625" scale="2" link="-1" />
+</subSystems>
+<ai>
+	<targetScale low="100" hi="9999999" forced="false" />
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="false" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="0" />
+	<defendRange value="0" />
+	<defaultStance value="0" />
+	<dockTargets ships="false" planets="false" stations="false" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="JoinFleet:75000.000000:true" />
+	<order desc="Defend" />
+	<order desc="Work:EnterStargate" />
+</orders>
+

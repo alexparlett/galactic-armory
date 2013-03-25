@@ -1,0 +1,431 @@
+//	Variables Used
+//
+//////////////////////////
+//
+//	vDamage - All Types of Damage
+//	vDelay - Reload Time
+//	vDeviation
+//	vPowCost - Power Costs
+//	vRange - Weapons Range ONLY! Not used for AoE Effect Range
+//	vEffectiveRange - Effective Range
+//	vMinDmg - Lowest Damage
+//	vWasteHeat - Heat Needed
+//	vAoE_Range - Range AoE Weapons Effect
+//	vRequiredCharge - Charge needed for Charge to Fire
+//	vSpeed - Weapon Speed
+// 	vMinHit - Minimum Hit Chance
+// 	vAccuracy - Hit Chance
+//
+//////////////////////////
+System: BackupPower
+	Name: #SS_BACKUPPOWER_NAME
+	Description: #SS_BACKUPPOWER_DESC
+	Appearance: NuclearReactor
+	Explosion: subsys_powerexplode lasting 0.35
+	
+	Tags: Link
+	Tied To: EnergyPhysics 1
+
+	Available: Techs.EnergyPhysics.Level > 0
+	Level: Techs.EnergyPhysics.Level
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 50 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[5 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 0.4
+	
+	Alters: subSysAlterations::reducePowerNeeds[Size * 40 * pow(LEVEL_GAIN_CURVE, Level)]
+	
+	Provides: fakePower
+
+	Requires:
+		To Run: Control[2 * Size]
+		
+	Hints: Local/BackupPower[Size * 40 * pow(LEVEL_GAIN_CURVE, Level)]
+
+System: QuantumComputer
+	Name: #SS_QUANTUMCOMP_NAME
+	Description: #SS_QUANTUMCOMP_DESC
+	Appearance: QuantumComputerCore
+	Explosion: electrical_spark
+	
+	Tags: Link
+	Tied To: Computers 5, Science 2
+
+	Available: (((Techs.Computers.Level >= 5) && (Techs.Science.Level > 1)) || Traits.remnants) && not(Traits.no_computers)
+	Level: Techs.Computers.Level
+	Size: Scale	/ 2
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 15 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 75 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+	Costs: Metals[50 * Size * pow(SUBS_COST_CRV, Level)], Electronics[600 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[200 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 10
+
+	Tick Rate: 1
+
+	Alters: subSysAlterations::reduceControlReq[Size * 75 * pow(LEVEL_GAIN_CURVE, Level)]
+
+	Consumes:
+		To Run: Power[10 * Size]
+
+	Hints: Local/ReduceControl[Size * 75 * pow(LEVEL_GAIN_CURVE, Level)]
+
+System: QuantumCompressor
+	Name: #SS_SPACESAVER_NAME
+	Description: #SS_SPACESAVER_DESC
+	Appearance: QuantumCompressor
+	Explosion: electrical_spark
+	
+	Tags: Link
+	Tied To: Cargo 3, WarpPhysics 3
+
+	Available: ((Techs.Cargo.Level > 2) && (Techs.WarpPhysics.Level > 2)) && not(Traits.religious)
+	Level: floor(weight(Techs.Cargo.Level, 0.25, Techs.WarpPhysics.Level, 0.75))
+	Size: Scale	
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 15 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+	Costs: Metals[50 * Size * pow(SUBS_COST_CRV, Level)], Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[180 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 10
+	
+	Tick Rate: 1
+
+	Alters: GASubSysAlterations::increaseCargoSpace[Size][5 - 3*decay(pow(LEVEL_GAIN_CURVE,Level),30)]
+
+	Consumes:
+		To Run: Power[25 * Size]
+
+	Hints: Local/IncreaseSpace[5 - 3*decay(pow(LEVEL_GAIN_CURVE,Level),30)]
+
+System: ExternalMount
+	Name: #SS_EXTERNALMOUNT_NAME
+	Description: #SS_EXTERNALMOUNT_DESC
+	Appearance: ExternalMount
+	Explosion: small_explosion lasting 0.5
+
+	Tags: NegatesSpace, IgnoresScale, Link
+	Tied To: ShipConstruction 4
+
+	Available: Techs.ShipConstruction.Level >= 4
+	Level: 1
+	Size: Object.Scale
+	Mass: 40 * Size
+
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: 30 * Size * pow(HEALTH_CURVE,HPLevel) * HEALTH_MULT
+
+	Costs: Metals[Size * 275 * pow(SUBS_COST_CRV, Level)]
+	Alters: subSysAlterations::dummyAlter
+
+	PreDamageOrder: -8
+	Provides: DamageRedirection
+	Provides: DestroyLinked
+	
+	Requires:
+		To Run:
+			ExternalMounts[1]
+
+System: IntegratedConstruction
+	Name: #SS_INTEGRATEDCONSTRUCTION_NAME
+	Description: #SS_INTEGRATEDCONSTRUCTION_DESC
+	Appearance: IntegratedConstruction
+	Explosion: ship_explode centered lasting 1.5	
+	
+	Tags: Link, IgnoresScale
+	Tied To: ShipConstruction 6, ShipSystems 6
+	
+	Available: ((Techs.ShipConstruction.Level > 5) && (Techs.ShipSystems.Level > 5)) || Traits.remnants
+	Level: floor(weight(Techs.ShipConstruction.Level, 0.5, Techs.ShipSystems.Level, 0.5))
+	
+	Size: Object.Scale
+	
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 30 * Size * pow(HEALTH_CURVE, HPLevel)
+	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Costs: Metals[600 * Size * pow(SUBS_COST_CRV, Level)], Electronics[300 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[150 * Size * pow(SUBS_COST_CRV, Level)], Labr[50 * Size]
+	Complexity: 10
+	
+	vHullSpaceBonus: Size * 3
+		
+	Alters: GASubSysAlterations::alterSpaceAmount[vHullSpaceBonus]
+	
+	Provides: ExplodesShip	
+	Triggerable: Detonation: ShipExplosion with Damage[Size * 100 * GAME_DAMAGE_MULT], Accuracy[0.5], Range[sqrt(Size) * 3]
+	
+	Hints: Local/IncreaseSize[2], Local/SelfDestruct[Durability * 5 * GAME_DAMAGE_MULT], Local/NovaRange[sqrt(Size) * 3]
+
+System: CoolantSys
+	Name: #SS_COOLANT_NAME
+	Description: #SS_COOLANT_DESC
+	Appearance: CoolantSystem
+	Explosion: subsystem_destroyed
+
+	Tags: Link
+	Tied To: EnergyPhysics 1
+
+	Available: Techs.EnergyPhysics.Level > 0
+	Level: Techs.EnergyPhysics.Level
+	Size: max((Scale / 2), (Scale/Object.Scale * SS_MIN_SCALE))
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 30 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 100 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+	Costs: Metals[300 * Size * pow(SUBS_COST_CRV, Level)], Electronics[10 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size]
+	Complexity: 0.5
+
+	vDelayFactor: 1 / (1 + (0.75 * Scale/Object.Scale))
+	vPenalty: (1/vDelayFactor)^1.4					//was (1 + (Scale/Object.Scale)) + (...)
+
+	vPenalty_ammo: vPenalty * vDelayFactor
+	vHeatFactor: 1 / (sqrt(1 + (Scale/Object.Scale)))
+
+	Alters: GASubSysAlterations::coolantSystem[vDelayFactor][vPenalty][vPenalty_ammo][vHeatFactor]						//was subSysAlterations::alterFiringDelay
+
+	Consumes:
+		To Run:
+			Power[Size * 15 * (Scale / Object.Scale) * (0.5 + decay(pow(LEVEL_GAIN_CURVE,Level), 10))]
+
+	Requires:
+		To Run: Control[Size * 10 * (Scale / Object.Scale) * (0.5 + decay(pow(LEVEL_GAIN_CURVE,Level), 10))]
+
+	Hints: Local/FireSpeedUp[1 / vDelayFactor], Local/CostPenalty[vPenalty], Local/HeatFactor[vHeatFactor]
+
+
+System: AimBot
+	Name: #SS_AIMBOT_NAME
+	Description: #SS_AIMBOT_DESC
+	Appearance: TargetingArray
+	Explosion: subsystem_destroyed
+
+	Tags: Link
+	Tied To: Computers 1, Sensors 1
+	
+	Available: (Techs.Computers.Level > 0) && (Techs.Sensors.Level > 0)
+	Level: floor(weight(Techs.Computers.Level, 0.5, Techs.Sensors.Level, 0.5))
+	Size: Scale / 2
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 25 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 100 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[100 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[70 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size]
+	Complexity: 1.1
+
+	vRangeUp: 1 + ((Scale/Object.Scale) / 3) * (2 - decay(pow(LEVEL_GAIN_CURVE, Level-1), 50))		//was 2 - decay(pow(LEVEL_GAIN_CURVE,Level) + 5, 20)
+
+	Alters: GASubSysAlterations::improveAllRange[Scale][vRangeUp]
+
+	Consumes:
+		To Run:
+			Power[Size * 20]
+	
+	Requires:
+		To Run: Control[Size * 30]
+
+	Hints: Local/RangeUp[vRangeUp]
+	
+System: PrecisionMod
+	Name: #SS_PMOD_NAME
+	Description: #SS_PMOD_DESC
+	Appearance: PMod
+	Explosion: subsystem_destroyed
+
+	Tags: Link
+	Tied To: Sensors 5
+	
+	Available: Techs.Sensors.Level > 4 || Traits.remnants
+	Level: Techs.Sensors.Level
+
+	Size: Scale / 2
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 25 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 100 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Costs: Metals[30 * Size * pow(SUBS_COST_CRV, Level)], Electronics[150 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[100 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size]
+	Complexity: 1.4
+
+	vDamageUp: 1.0 / (1 + (0.25 * (Scale/Object.Scale)))
+	vDelayFactor: 1
+	vRangeUp: 1 + (Scale/Object.Scale) * (2 - decay(pow(LEVEL_GAIN_CURVE, Level-1), 50))				//was 1.5 + (0.5 * (Scale/Object.Scale))
+	vBonusHP: 1
+	vAmmoUseUp: 1 + (0.25 * (Scale/Object.Scale))
+	vPowCostUp: 1 + (0.25 * (Scale/Object.Scale))
+	vWasteHeatUp: 1 + (0.25 * (Scale/Object.Scale))
+
+	Alters: GASubSysAlterations::improveAll[Scale][vRangeUp][vDelayFactor][vBonusHP][vDamageUp][vAmmoUseUp][vPowCostUp][vWasteHeatUp]
+
+	Consumes:
+		To Run:
+			Power[Size * 50 * (Scale / Object.Scale) * (0.5 + decay(pow(LEVEL_GAIN_CURVE,Level), 10))]
+	
+	Requires:
+		To Run: Control[Size * 40 * (sqrt(Scale / Object.Scale))]
+	
+	Hints: Local/RangeUp[vRangeUp], Local/DamageMultiplier[vDamageUp], Local/AmmoUseMultiplier[vAmmoUseUp], Local/PowCostMultiplier[vPowCostUp], Local/HeatFactor[vWasteHeatUp]
+
+System: MultiRack
+	Name: #SS_MULTIRACK_NAME
+	Description: #SS_MULTIRACK_DESC
+	Appearance: MiningLaser
+	Explosion: subsystem_destroyed
+
+	Tags: Link
+	Tied To: ShipSystems 1
+	
+	Available: Techs.ShipSystems.Level > 0
+	Level: Techs.ShipSystems.Level
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 50 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Costs: Metals[150 * Size * pow(SUBS_COST_CRV, Level)], Electronics[5 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 0.5
+	vRangeModifier: 0.90
+
+	Alters: GASubSysAlterations::makeRapidMount[Size][vRangeModifier]		//was [4 - (2 * decay(pow(LEVEL_GAIN_CURVE,Level),25))][Size]
+	
+	Requires:
+		To Run: Control[Size * 10 * (sqrt(Scale / Object.Scale))]
+		
+
+System: OversizeMount
+	Name: #SS_OVRSIZMOUNT_NAME
+	Description: #SS_OVRSIZMOUNT_DESC
+	Appearance: OversizeModification	
+	Explosion: subsystem_destroyed
+
+	Tags: Link
+	Tied To: MegaConstruction 6, ShipSystems 6
+	
+	Available: ((Techs.MegaConstruction.Level > 5) && (Techs.ShipSystems.Level > 5)) || Traits.remnants
+	Level: floor((Techs.ShipSystems.Level - 2) + (Techs.MegaConstruction.Level / 5))
+
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 150 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 100 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Costs: Metals[300 * Size * pow(SUBS_COST_CRV, Level)], Electronics[150 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[75 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size]
+	Complexity: 4.0
+
+	//Tick Rate: 1
+	
+	vDamageUp: 1 + (0.5 * (Scale/Object.Scale))
+	vDelayFactor: 1 + (0.25 * (Scale/Object.Scale))
+	vRangeUp: 1 + (0.4 * (Scale/Object.Scale))
+	vBonusHP: Size * (1 + (0.25 * (Scale/Object.Scale))) * pow(LEVEL_GAIN_CURVE, Level)
+	vAmmoUseUp: 1 + (0.5 * (Scale/Object.Scale))
+	vPowCostUp: 1 + (0.5 * (Scale/Object.Scale))
+	vWasteHeatUp: 1 + (0.5 * (Scale/Object.Scale))
+
+	Alters: GASubSysAlterations::improveAll[Scale][vRangeUp][vDelayFactor][vBonusHP][vDamageUp][vAmmoUseUp][vPowCostUp][vWasteHeatUp]
+
+	Consumes:
+		To Run:
+			Power[Size * 50 * (Scale / Object.Scale) * (0.5 + decay(pow(LEVEL_GAIN_CURVE,Level), 10))]
+	
+	Requires:
+		To Run: Control[Size * 50 * (sqrt(Scale / Object.Scale))]
+	
+	Hints: Local/FireSpeedUp[1 / vDelayFactor], Local/RangeUp[vRangeUp], Local/DamageMultiplier[vDamageUp], Local/BonusHP[vBonusHP], Local/AmmoUseMultiplier[vAmmoUseUp], Local/PowCostMultiplier[vPowCostUp], Local/HeatFactor[vWasteHeatUp]
+
+
+System: MassMount
+	Name: #SS_MASSMOUNT_NAME
+	Description: #SS_MASSMOUNT_DESC
+	Appearance: MassMount
+	Explosion: subsystem_destroyed
+
+	Tags: Link, Require:HugeHull
+	Tied To: ShipSystems 9
+	
+	Available: (Techs.ShipSystems.Level > 8) || Traits.remnants
+	Level: Techs.ShipSystems.Level - 3
+
+	Size: Scale																//was if(Object.Scale >= 100, Scale, 0)
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 150 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], Electronics[7 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[30 * Size * pow(SUBS_COST_CRV, Level)], Labr[12 * Size]
+	Complexity: 2.5
+	vRangeModifier: 0.85
+
+	Alters: GASubSysAlterations::makeRapidMount[Size * 1.66][vRangeModifier]
+	
+	Requires:
+		To Run: Control[Size * 60 * (sqrt(Scale / Object.Scale))]
+
+
+System: ExtendedMagazine
+	Name: #SS_EXMAG_NAME
+	Description: #SS_EXMAG_DESC
+	Appearance: ExtendedMagazine
+	Explosion: subsystem_destroyed
+
+	Tags: Link
+	Tied To: ShipSystems 7
+	
+	Available: (Techs.ShipSystems.Level > 6) || Traits.remnants
+	Size: Scale
+	Level: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 30 * Size * pow(HEALTH_CURVE,Level)
+	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Costs: Metals[150 * Size * pow(SUBS_COST_CRV, Level)], Electronics[5 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 1
+	
+	vMagExtension: 1 + (0.25 * floor((Scale / Object.Scale) / 0.25))
+	
+	Alters: GASubSysAlterations::alterClipSize[vMagExtension]
+
+	Consumes:
+		To Run:
+			Power[Size * 20]							//was Size * 10
+	
+	Requires:
+		To Run: Control[Size * 5]
+	
+	Hints: Local/MagExtension[vMagExtension]
+		
+		
+System: DamageSys
+	Name: #SS_DAMAGESYS_NAME
+	Description: #SS_DAMAGESYS_DESC
+	Appearance: DamageBooster	
+	Explosion: subsystem_destroyed
+
+	Tags: Link
+	Tied To: ShipSystems 6
+	
+	Available: (Techs.ShipSystems.Level > 5) || Traits.remnants
+	Level: Techs.ShipSystems.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 30 * Size * pow(HEALTH_CURVE, HPLevel)
+	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Costs: Metals[150 * Size * pow(SUBS_COST_CRV, Level)], Electronics[5 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 1.5
+	
+	vDamageUp: 1 + (0.5 * (Scale/Object.Scale))
+	vAmmoUseUp: 1 + (0.5 * (Scale/Object.Scale))
+	vPowCostUp: 1 + (0.5 * (Scale/Object.Scale))
+	vWasteHeatUp: 1 + (0.5 * (Scale/Object.Scale))
+
+	Alters: GASubSysAlterations::alterDamage[vDamageUp][vAmmoUseUp][vPowCostUp][vWasteHeatUp]
+
+	Consumes:
+		To Run:
+			Power[Size * 10 * (Scale / Object.Scale) * (0.5 + decay(pow(LEVEL_GAIN_CURVE,Level), 10))]
+	
+	Requires:
+		To Run: Control[Size * 30 * (sqrt(Scale / Object.Scale))]
+	
+	Hints: Local/DamageMultiplier[vDamageUp], Local/AmmoUseMultiplier[vAmmoUseUp], Local/PowCostMultiplier[vPowCostUp], Local/HeatFactor[vWasteHeatUp]		

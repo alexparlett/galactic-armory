@@ -1,0 +1,88 @@
+
+const float twoPi = 6.28318531;
+
+uniform vec4 powerLevel, damageLevel, epowerLevel;
+uniform vec3 empireColor;
+uniform float time;
+
+const int nLightCount = 2;
+
+uniform sampler2D diffuseRGBspecA, glowMap, marks, wear;
+
+varying vec3 normal;
+varying vec4 pos;
+varying vec3 light[nLightCount];
+varying float dist[nLightCount];
+
+void applyGlow() {
+	vec4 glow = texture2D(glowMap, gl_TexCoord[0].xy);
+	float pctPower = (powerLevel.x + epowerLevel.x) / (powerLevel.y + epowerLevel.y +0.0001);
+    //float powerFlux = (sin(time * twoPi) + 0.666) / 2.0; // Unused due to change in lights glow method
+	gl_FragColor.rgb = max(glow.rgb * pctPower * 2.0, gl_FragColor.rgb);
+}
+
+void applyDamage() {
+	vec4 dam = texture2D(wear, gl_TexCoord[0].xy);	
+	float pctDamage = damageLevel.x / damageLevel.y;
+	if(pctDamage > 0.1) {
+		gl_FragColor.rgb = max(dam.rgb * pctDamage * 1.5, gl_FragColor.rgb);
+	}	
+}
+
+void main() {
+	vec4 color = gl_FrontMaterial.diffuse;
+	vec4 texSamp = texture2D(diffuseRGBspecA, gl_TexCoord[0].xy);
+
+	//Apply empire marks
+	vec4 markSample = texture2D(marks, gl_TexCoord[0].xy);
+	if(markSample.a != 0.0) {
+		//if(markSample.a == 1.0) {
+		//	texSamp.rgb = empireColor * markSample.rgb;
+		//}
+		//else {
+			texSamp.rgb *= 1.0 - markSample.a;
+			texSamp.rgb += empireColor * markSample.rgb * markSample.a;
+		//}
+	}
+
+	vec4 matspec = gl_FrontMaterial.specular * texSamp.a;
+	float shininess = gl_FrontMaterial.shininess * (0.5 + texSamp.a);
+
+	vec3 n = normalize(normal);
+	vec3 v = normalize(-pos.xyz);
+
+	vec4 diffuse = gl_LightModel.ambient * gl_FrontMaterial.ambient;
+  
+	vec4 specular = vec4(0.0,0.0,0.0,0.0);
+	//if(nLightCount > 0)
+	{
+		const int i = 0;
+		float falloff = 1.0 / (1.0 + (gl_LightSource[i].quadraticAttenuation * dist[i] * dist[i]));
+		float nl = max(0.0, dot(n, light[i]));
+		float intensity = nl * falloff;
+		
+		diffuse.rgb += gl_LightSource[i].diffuse.rgb * intensity;
+		
+		vec3 r = normalize(-reflect(normalize(light[i]), n));
+		specular.rgb += gl_LightSource[i].specular.rgb * (pow(max(0.0, dot(r, v)), shininess) * falloff);
+	}
+	//if(nLightCount > 1)
+	{
+		const int i = 1;
+		float falloff = 1.0 / (1.0 + (gl_LightSource[i].quadraticAttenuation * dist[i] * dist[i]));
+		float nl = max(0.0, dot(n, light[i]));
+		float intensity = nl * falloff;
+		
+		diffuse.rgb += gl_LightSource[i].diffuse.rgb * intensity;
+		
+		vec3 r = normalize(-reflect(normalize(light[i]), n));
+		specular.rgb += gl_LightSource[i].specular.rgb * (pow(max(0.0, dot(r, v)), shininess) * falloff);
+	}
+
+	gl_FragColor = diffuse * color;	
+	gl_FragColor *= texSamp;
+	gl_FragColor += specular * matspec;
+
+	applyGlow();
+	applyDamage();
+}

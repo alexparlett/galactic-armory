@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<settings scale="10" name="Battlecruiser T8" />
+<subSystems>
+	<subSystem name="Bulkhead" x="-1.515625" y="-0.734375" scale=".5" link="15" />
+	<subSystem name="RepairBay" x="-0.414063" y="-1.351563" scale=".875" link="-1" />
+	<subSystem name="ShieldGen" x=".328125" y=".484375" scale="1" link="-8" />
+	<subSystem name="ShieldCharger" x=".453125" y="-1.40625" scale=".5" link="-1" />
+	<subSystem name="Capacitor" x="-2.03125" y="1" scale=".25" link="-1" />
+	<subSystem name="Computer" x="-0.554688" y=".585938" scale=".875" link="-9" />
+	<subSystem name="ShieldHardener" x=".125" y=".921875" scale=".5" link="2" />
+	<subSystem name="Bulkhead" x="-0.640625" y="1.0625" scale=".5" link="5" />
+	<subSystem name="CoolantSys" x="1.265625" y="-1.734375" scale=".25" link="22" />
+	<subSystem name="CoolantSys" x="-0.375" y="-2.1875" scale=".25" link="23" />
+	<subSystem name="CoolantSys" x="1.25" y="1.953125" scale=".25" link="20" />
+	<subSystem name="CoolantSys" x="-0.390625" y="2.25" scale=".25" link="21" />
+	<subSystem name="AmmoStorage" x=".28125" y="-0.453125" scale=".5" link="-1" />
+	<subSystem name="LightHull" x=".609375" y="-0.484375" scale="1" link="-1" />
+	<subSystem name="MagnetoPlasmaThruster" x="-2.59375" y="0" scale="2" link="-1" />
+	<subSystem name="AntiMatterGen" x="-1.5625" y="-0.34375" scale=".5" link="-2" />
+	<subSystem name="MagnetoPlasmaThruster" x="-2.640625" y="1.15625" scale=".75" link="-1" />
+	<subSystem name="MagnetoPlasmaThruster" x="-2.625" y="-1.03125" scale=".75" link="-1" />
+	<subSystem name="PowerArmor" x="-1.65625" y="-1.84375" scale="2" link="-1" />
+	<subSystem name="RamScoop" x="-1.398438" y=".539063" scale=".5" link="-1" />
+	<subSystem name="HyperRailgun" x="1.453125" y="2.40625" scale="1" link="-12" />
+	<subSystem name="HyperRailgun" x="-0.21875" y="2.78125" scale="1" link="-13" />
+	<subSystem name="HyperRailgun" x="1.53125" y="-2.21875" scale="1" link="-10" />
+	<subSystem name="HyperRailgun" x="-0.21875" y="-2.71875" scale="1" link="-11" />
+	<subSystem name="AmmoFabricator" x="-0.515625" y="-0.265625" scale="1" link="-1" />
+	<subSystem name="GraviticAccelerator" x="2.5" y="-0.328125" scale="1" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="false" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Defend" />
+</orders>
+

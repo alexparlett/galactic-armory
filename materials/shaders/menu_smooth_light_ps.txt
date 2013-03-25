@@ -1,0 +1,32 @@
+const int nLightCount = 1;
+
+uniform sampler2D diffuseRGBspecA;
+
+varying vec3 normal;
+varying vec4 pos;
+varying vec3 light[nLightCount];
+varying float dist[nLightCount];
+
+void main() {
+	vec4 color = gl_FrontMaterial.diffuse, texSamp = texture2D(diffuseRGBspecA, gl_TexCoord[0].xy);
+	vec4 matspec = gl_FrontMaterial.specular * texSamp.a;
+	float shininess = gl_FrontMaterial.shininess;
+
+	vec3 n = normalize(normal);
+	vec3 v = normalize(-pos.xyz);
+
+	vec4 diffuse = gl_LightModel.ambient;
+  
+	vec4 specular = vec4(0.0,0.0,0.0,0.0);
+	if(nLightCount > 0) {
+		const int i = 0;
+		float falloff = 1.0 / (1.0 + (gl_LightSource[i].quadraticAttenuation * dist[i] * dist[i]));
+		float intensity = max(0.0, dot(n, light[i])) * falloff;
+		
+		diffuse.rgb += gl_LightSource[i].diffuse.rgb * intensity;
+		
+		vec3 r = normalize(-reflect(normalize(light[i]), n));
+		specular.rgb += gl_LightSource[i].specular.rgb * (pow(max(0.0, dot(r, v)), shininess) * intensity);
+	}
+	gl_FragColor = ((diffuse * color) + (specular * matspec)) * texSamp;
+}

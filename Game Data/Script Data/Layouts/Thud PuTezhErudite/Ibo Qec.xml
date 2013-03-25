@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<settings scale="15" name="Ibo Qec" />
+<subSystems>
+	<subSystem name="SpinalMountHull" x=".65625" y="0" scale="1" link="8" />
+	<subSystem name="BussardRamjet" x="-2.578125" y="-0.0625" scale="2" link="-1" />
+	<subSystem name="LifeSupport" x=".09375" y=".5625" scale=".125" link="-1" />
+	<subSystem name="CrewQuarters" x="-0.351563" y="-0.164063" scale=".75" link="-1" />
+	<subSystem name="Bridge" x=".34375" y="-0.765625" scale=".25" link="-1" />
+	<subSystem name="FusionGen" x="-0.828125" y="-0.75" scale=".25" link="-1" />
+	<subSystem name="RamScoop" x="-2.367188" y="-1.210938" scale=".5" link="-1" />
+	<subSystem name="RamScoop" x="-2.226563" y="1.195313" scale=".5" link="-1" />
+	<subSystem name="MissileRack" x="1.953125" y="-0.078125" scale="4" link="-2" />
+	<subSystem name="InterceptorMissile" x="1.757813" y="-1.476563" scale=".375" link="-1" />
+	<subSystem name="ClusterMissile" x="1.789063" y="1.382813" scale=".5" link="-1" />
+	<subSystem name="BigAmmoStorage" x="-1.28125" y="-0.046875" scale="1" link="-18" />
+	<subSystem name="AmmoFabricator" x="-1.46875" y="-0.84375" scale=".25" link="-1" />
+	<subSystem name="RepairBay" x="-0.273438" y="-1.445313" scale=".5" link="-1" />
+	<subSystem name="RepairTool" x="-0.148438" y="1.382813" scale=".5" link="-1" />
+	<subSystem name="FuelCell" x="-1.492188" y=".945313" scale=".5" link="-1" />
+	<subSystem name="Bulkhead" x="-0.882813" y=".429688" scale="1" link="11" />
+	<subSystem name="ArmorMount" x="-0.265625" y="-2.15625" scale=".25" link="-1" />
+	<subSystem name="ArmorMount" x="-0.125" y="2.21875" scale=".25" link="-1" />
+	<subSystem name="Armor" x=".875" y="-1.515625" scale="1" link="-1" />
+	<subSystem name="Armor" x=".9375" y="1.359375" scale="1" link="-1" />
+	<subSystem name="Armor" x="-1.929688" y="-2.007813" scale=".75" link="-1" />
+	<subSystem name="Armor" x="-1.742188" y="2.164063" scale=".75" link="-1" />
+</subSystems>
+<ai>
+	<orbit flag="false" />
+	<allowFetch flag="false" />
+	<allowDeposit flag="false" />
+	<allowSupply flag="true" />
+	<allowTargets ships="true" planets="true" />
+	<depositTargets ships="false" planets="true" stations="true" />
+	<multiTarget flag="true" />
+	<engagementRange value="-1" />
+	<defendRange value="-1" />
+	<defaultStance value="0" />
+	<dockTargets ships="true" planets="true" stations="true" />
+	<dockMode mode="0" />
+	<carrierMode mode="6" />
+</ai>
+<orders>
+	<order desc="Fetch:Fuel:0.250000" />
+	<order desc="Fetch:Ammo:0.250000" />
+	<order desc="Defend" />
+</orders>

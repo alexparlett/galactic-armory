@@ -1,0 +1,85 @@
+if class == ColonyShip {
+	Sprite = 11
+	Model = terrakin_colonizer
+}
+
+tag RemnantSuperWeapon {
+	Sprite = 14
+	Model = neumon_superweapon
+}
+
+tag RemnantSWGreen {
+	Sprite = 15
+	Model = green_neumon_superweapon
+}
+
+if (class == Carrier) || (class == Transport) {
+	Sprite = 12
+	Model = terrakin_carrier
+}
+
+if class == Cargo {
+	Sprite = 8
+	Model = terrakin_hauler
+}
+
+if (class == Station) || (class == CivStation) {
+	if scale <= 1 {
+		Sprite = 9
+		Model = terrakin_satellite
+	}
+	Sprite = 10
+	Model = terrakin_station
+}
+
+if scale <= 0.25 {
+	Sprite = 0
+	Model = terrakin_drone
+}
+tag FighterHull {
+	Sprite = 1
+	Model = terrakin_fighter
+}
+
+tag BomberHull {
+	Sprite = 1
+	Model = terrakin_fighter
+}
+
+tag LightHull {
+	Sprite = 2
+	Model = terrakin_tiny
+}
+
+tag SpinalHull {
+	Sprite = 3
+	Model = terrakin_small
+}
+
+tag MediumHull {
+	Sprite = 4
+	Model = terrakin_medium
+}
+
+tag HeavyHull {
+	Sprite = 5
+	Model = terrakin_large
+}
+
+tag MegaHull {
+	Sprite = 6
+	Model = terrakin_verylarge
+}
+
+tag GargantuanHull {
+	Sprite = 7
+	Model = terrakin_huge
+}
+
+tag StealthHull {
+	Sprite = 2
+	Model = terrakin_tiny
+}
+
+Sprite = 4
+Model = terrakin_medium
