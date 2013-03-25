@@ -197,7 +197,7 @@ void ScoopH3(Event@ evt, float Rate, float PowCost) {
 float CanHarvest(const Object@ src, const Object@ trg, const Effector@ eff) {
 	const Empire@ emp = trg.getOwner();
 	if(trg.toStar() !is null || trg.toPlanet() !is null) {
-		if(emp is null || emp.isValid() == false)
+		if(emp is null || !emp.isValid())
 			return 1.f;
 	}
 	return 0.f;

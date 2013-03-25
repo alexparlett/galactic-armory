@@ -1,8 +1,11 @@
 uniform sampler2D texture;
+uniform float under_attack;
 
-varying vec3 normal, pos;
+varying vec3 normal;
 
 void main() {
-	float opacity = 1.0 - abs(dot(normalize(normal), normalize(pos)));
+	float opacity = 1.0 - abs(normalize(normal));
+	opacity *= 0.25 + (0.75 * under_attack);
+	
 	gl_FragColor.rgba = gl_FrontMaterial.diffuse * gl_Color * texture2D(texture, gl_TexCoord[0].xy) * opacity;
 }

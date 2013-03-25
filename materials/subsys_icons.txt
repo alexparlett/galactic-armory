@@ -650,3 +650,7 @@ Material: ElectronicCounterMeasures
 Material: ECMHull
  Defer: Required
  Texture: Images/SubSystems/ecm_hull.png
+ 
+Material: AssaultCannon
+ Defer: Required
+ Texture: Images/SubSystems/assault_cannon.png

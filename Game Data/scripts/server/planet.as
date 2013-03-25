@@ -18,17 +18,12 @@ const string@ strAlwaysHappy = "always_happy", strPlanetRemoveConditions = "plan
 const string@ strLowLuxuries = "low_luxuries_consumption", strHighLuxuries = "high_luxuries_consumption";
 const string@ strDoubleLabor = "double_pop_labor", strHalfLabor ="half_pop_labor", strIndifferent = "forever_indifferent";
 const string@ strHalfExports = "half_exports", strH3FuelGen = "H3FuelG";
-const string@ strAutoGov = "AutoGov";
 
 const string@ strPosition = "position", strRotation = "rotation";
 const double million = 1000000.0;
 const double c_e = 2.71828183;
 
 ObjectFlag objImprovement = objUser03, setImpPause = objSetting00;;
-
-//Governor Globals.
-float lastUpdate = 0.f;
-const float updateTimer = 300.f;
 
 //Conversion rates when working with no resources (scales down from 1 to this value as the value/max ratio declines)
 const float deadOreRate = 0.2f;
@@ -137,6 +132,8 @@ void popEcoInit(Event@ evt) {
 	evt.obj.getState(strMineOpt);
 	evt.obj.getState(strElcGenOpt);
 	evt.obj.getState(strAdvGenOpt);
+
+	print("Planet Initialized");
 }
 
 float modifyEcoRate(float rate, ecoMode type, ecoMode rateMode, ecoMode typeMode) {

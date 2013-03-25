@@ -14,6 +14,8 @@ void initSpecialSystems() {
 	@specialSystems[3] = SpatialGen;
 	@specialSystems[4] = IonCanon;
 	@specialSystems[5] = ZeroPoint;
+
+	print("Special Systems Initialized");
 	
 }
 
@@ -193,6 +195,10 @@ System@ makeUnstableStar(Galaxy@ Glx, vector pos) {
 	starDesc.Brightness = 5;
 	Star@ star = makeStar(sys, 1.5f);
 	starDesc.StarColor = Color(0);
+	
+	Effect starEffect("SelfHealing");
+	starEffect.set("Rate", 100000000.f);		
+	star.toObject().addTimedEffect(starEffect, pow(10, 35), 0.f, star.toObject(), null, null, TEF_None);	
 
 	Object@ obj = star.toObject();
 
@@ -225,6 +231,10 @@ System@ makeNeutronStar(Galaxy@ Glx, vector pos) {
 	starDesc.Brightness = 14;
 	Star@ star = makeStar(sys, 0.5f);
 	starDesc.StarColor = Color(0);
+	
+	Effect starEffect("SelfHealing");
+	starEffect.set("Rate", 100000000.f);		
+	star.toObject().addTimedEffect(starEffect, pow(10, 35), 0.f, star.toObject(), null, null, TEF_None);		
 
 	State@ damage = star.toObject().getState(strDmg);
 	damage.max = rand(1,20) * 1000000.f * 1000000.f;

@@ -582,7 +582,7 @@ class ObjectInfoWindow : ScriptedGuiHandler {
 			}
 			else {
 				int ind = getPlanetIconIndex(obj.toPlanet().getPhysicalType());
-				icon.setSprites("planet_icons", ind, ind, ind);
+				icon.setSprites("planet_icons_new", ind, ind, ind);
 				icon.setSize(dim2di(55, 55));
 			}
 		}
@@ -855,8 +855,11 @@ class ObjectInfoWindow : ScriptedGuiHandler {
 		float range = obj.getDefendRange();
 		if (hulled !is null) {
 			Fleet@ fl = hulled.getFleet();
-			if (fl !is null)
-				range = fl.getCommander().getDefendRange();
+			if (fl !is null) {
+				Object@ comm = fl.getCommander();
+				if(comm !is null)
+					range = comm.getDefendRange();
+			}
 		}
 		
 		string@ text = "";
@@ -1326,7 +1329,9 @@ void setDR(float range) {
 	if (@obj != null) {
 		Fleet@ fl = obj.getFleet();
 		if (@fl != null) {
-			fl.getCommander().setDefendRange(range);
+			Object@ comm = fl.getCommander();
+			if(comm !is null)
+				comm.setDefendRange(range);
 			return;
 		}
 	}
@@ -1385,7 +1390,8 @@ bool stButtonPressed(const GUIEvent@ evt) {
 		if (@obj != null) {
 			Fleet@ fl = obj.getFleet();
 			if (@fl != null) {
-				if (fl.getCommander().uid == lastSelected.uid) {
+				Object@ comm = fl.getCommander();
+				if (comm !is null && comm.uid == lastSelected.uid) {
 					lastSelected.setStance(stance);
 
 					uint cnt = fl.getMemberCount();

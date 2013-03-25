@@ -37,7 +37,7 @@ System: FighterRockets
 		To Run:
 			Control[10 * Size]
 	
-	Hints: Alpha[vDamage * vClip], Ammo[vAmmoStorage], AmmoUse[(-0.5 * Size * vClip) / vTotalDelay], DPS[(vDamage * vClip) / vTotalDelay], Local/DMGperShot[vDamage], Local/Range[vRange], Local/Delay[vTotalDelay], Local/ClipDelay[vClipDelay], Local/Clip[vClip], Local/AmmoperShot[0.5 * Size]
+	Hints: 	Alpha[vDamage * vClip], Ammo[vAmmoStorage], AmmoUse[(-0.5 * Size * vClip) / vTotalDelay],DPS[(vDamage * vClip) / vTotalDelay],Local/DMGperShot[vDamage], Local/Range[vRange], Local/Delay[vTotalDelay],Local/ClipDelay[vClipDelay], Local/Clip[vClip],Local/AmmoperShot[0.5 * Size]
 
 
 System: FighterTorpedo

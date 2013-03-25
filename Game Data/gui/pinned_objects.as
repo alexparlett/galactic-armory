@@ -42,7 +42,7 @@ interface pin {
 	bool update(float tick, uint visualIndex);
 	
 	//Removes the related elements from the interface
-	void remove();
+	void removePin();
 
 	//Save the pin
 	void save(XMLWriter@ xml);
@@ -98,7 +98,7 @@ class planetPin : pin {
 			}
 			else {
 				int ind = getPlanetIconIndex(object.toPlanet().getPhysicalType());
-				icon.setSprites("planet_icons", ind, ind, ind);
+				icon.setSprites("planet_icons_new", ind, ind, ind);
 			}
 		}
 		else if (object.toOddity() !is null) {
@@ -262,7 +262,7 @@ class planetPin : pin {
 		return false;
 	}
 	
-	void remove() {
+	void removePin() {
 		icon.remove();
 		panel.remove();
 	}
@@ -408,7 +408,7 @@ void updatePins(float tick) {
 }
 
 void unPin(uint index) {
-	pins[index].remove();
+	pins[index].removePin();
 	@pins[index] = null;
 	for(uint i = index + 1, len = pins.length(); i < len; ++i)
 		@pins[i-1] = @pins[i];

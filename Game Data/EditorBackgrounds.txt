@@ -1,0 +1,8 @@
+Dark Blue: 00001E
+Dark Green: 001E00
+Dark Red: 1E0000
+Blue: 0000F0
+Red: F00000
+Green: 00F000
+Black: 000000
+White: FFFFFF

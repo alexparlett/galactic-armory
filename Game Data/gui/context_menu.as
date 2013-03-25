@@ -2118,7 +2118,7 @@ class ContextFleetOrderActor : SelectedCallback {
 				Fleet@ fl = hulled.getFleet();
 				if (fl !is null) {
 					Object@ comm = fl.getCommander();
-					isMember = comm !is selected && fleets.exists(comm.uid);
+					isMember = comm is null || (comm !is selected && fleets.exists(comm.uid));
 				}
 			}
 

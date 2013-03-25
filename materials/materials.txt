@@ -1166,6 +1166,18 @@ Material: anim_artillery_bullet
  FlagOff: ZWrite
  FlagOff: Lighting
  
+Material: anim_assault_bullet
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedBullet
+ Texture: Images/animated_terahertz_bullet.png
+#else
+ Texture: Images/animated_terahertz_bullet.png
+ RenderMode: Add
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ 
 Material: anim_missile
  Defer: Required
 #if shaders

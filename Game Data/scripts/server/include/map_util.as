@@ -32,15 +32,7 @@ Planet@ makePlanet(System@ sys, int slots, int conditions, float orbit) {
 	Planet@ pl = sys.makePlanet(plDesc);
 	Object@ obj = pl;
 	
-	if (pl.getPhysicalType() == "gas1" ||
-		pl.getPhysicalType() == "gas2" ||
-		pl.getPhysicalType() == "gas3" ||
-		pl.getPhysicalType() == "gas4" ||
-		pl.getPhysicalType() == "gas5" ||
-		pl.getPhysicalType() == "gas6" ||
-		pl.getPhysicalType() == "gas7" ||
-		pl.getPhysicalType() == "gas8" ||
-		pl.getPhysicalType() == "gas9") 
+	if (pl.getPhysicalType().beginsWith("gas")) 
 	{
 		State@ h3 = obj.getState(strH3);
 		h3.max = starDesc.Temperature * randomf(100000,200000);

@@ -435,15 +435,7 @@ void V_createSecondaryPlanet(System@ sys, Empire@ emp) {
 	ore.max = 50000000.f;
 	ore.val = 50000000.f;
 	
-	if (planet.getPhysicalType() == "gas1" ||
-		planet.getPhysicalType() == "gas2" ||
-		planet.getPhysicalType() == "gas3" ||
-		planet.getPhysicalType() == "gas4" ||
-		planet.getPhysicalType() == "gas5" ||
-		planet.getPhysicalType() == "gas6" ||
-		planet.getPhysicalType() == "gas7" ||
-		planet.getPhysicalType() == "gas8" ||
-		planet.getPhysicalType() == "gas9") 
+	if (planet.getPhysicalType().beginsWith("gas")) 
 	{
 		State@ h3 = obj.getState(strH3);
 		h3.max = 50000000.f;
@@ -501,11 +493,11 @@ Planet@ V_makeStandardPlanet(System@ sys, uint plNum, uint plCount) {
 
 		if (tp < 0.15f)
 			type = getRandomType(GasTypes);
-		else if (tp < 0.2f)
+		else if (temp > 30000.f)
 			type = getRandomType(LavaTypes);
-		else if (temp > 19000.f)
+		else if (temp > 17000.f)
 			type = getRandomType(WarmTypes);
-		else if (temp > 7000.f)
+		else if (temp > 5000.f)
 			type = getRandomType(NormalTypes);
 		else
 			type = getRandomType(ColdTypes);
@@ -521,15 +513,7 @@ Planet@ V_makeStandardPlanet(System@ sys, uint plNum, uint plCount) {
 	float strucsp = (V_pctBetween(pRad, minPlanetRadius, maxPlanetRadius) * 0.5f + 0.5f) * maxStructSpace;	
 	pl.setStructureSpace(strucsp);
 	
-	if (pl.getPhysicalType() == "gas1" ||
-		pl.getPhysicalType() == "gas2" ||
-		pl.getPhysicalType() == "gas3" ||
-		pl.getPhysicalType() == "gas4" ||
-		pl.getPhysicalType() == "gas5" ||
-		pl.getPhysicalType() == "gas6" ||
-		pl.getPhysicalType() == "gas7" ||
-		pl.getPhysicalType() == "gas8" ||
-		pl.getPhysicalType() == "gas9") 
+	if (pl.getPhysicalType().beginsWith("gas")) 
 	{
 		State@ h3planet = pl.toObject().getState(strH3);
 		h3planet.max = pVol * 6000.f;
@@ -563,15 +547,7 @@ Planet@ V_makeStandardPlanet(System@ sys, uint plNum, uint plCount) {
 	ore.max = pVol * 6000.f;
 	ore.val = ore.max * (0.5f + randomf(0.5f));
 	
-	if (pl.getPhysicalType() == "gas1" ||
-		pl.getPhysicalType() == "gas2" ||
-		pl.getPhysicalType() == "gas3" ||
-		pl.getPhysicalType() == "gas4" ||
-		pl.getPhysicalType() == "gas5" ||
-		pl.getPhysicalType() == "gas6" ||
-		pl.getPhysicalType() == "gas7" ||
-		pl.getPhysicalType() == "gas8" ||
-		pl.getPhysicalType() == "gas9") 
+	if (pl.getPhysicalType().beginsWith("gas")) 
 	{
 		State@ h3 = planet.getState(strH3);
 		h3.max = starDesc.Temperature * randomf(100000,200000);

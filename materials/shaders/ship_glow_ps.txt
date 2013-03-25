@@ -2,7 +2,6 @@
 const float twoPi = 6.28318531;
 
 uniform vec4 powerLevel, damageLevel, epowerLevel;
-uniform float time;
 
 const int nLightCount = 2;
 
@@ -16,7 +15,6 @@ varying float dist[nLightCount];
 void applyGlow() {
 	vec4 glow = texture2D(glowMap, gl_TexCoord[0].xy);
 	float pctPower = (powerLevel.x + epowerLevel.x) / (powerLevel.y + epowerLevel.y +0.0001);
-    //float powerFlux = (sin(time * twoPi) + 0.666) / 2.0; // Unused due to change in lights glow method
 	gl_FragColor.rgb = max(glow.rgb * pctPower * 2.0, gl_FragColor.rgb);
 }
 

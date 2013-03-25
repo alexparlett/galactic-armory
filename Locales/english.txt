@@ -572,6 +572,9 @@
 #SS_TWINHEAVYRAILGUN_NAME: Twin Railgun (Heavy)
 #SS_TWINHEAVYRAILGUN_DESC: Heavy Twin Railguns function just like their regular counterpart, except they fire in bursts of two shots, at the same damage and range of the single version. Their construction requires significant design changes, which make them vulnerable and heavy as well as reduce their rate of fire.\n#c:green##tab:8#+Very high Alpha\n#c:green##tab:8#+High range\n#c:d00##tab:8#-Very low rate of fire\n#c:d00##tab:8#-High ammo consumption\n#c:d00##tab:8#-Heavy, expensive and not very durable
 
+#SS_ASSAULTCANNON_NAME: Assault Cannon
+#SS_ASSAULTCANNON_DESC: While Heavy and Twin Heavy Railguns offer excellent first-strike capabilities in terms of range and damage per shot, they lack precision. The Assault Cannon is a triple-barreled weapon system designed to reliably deliver tremendous burst damage over large distances. In addition to its precision and damage, its projectiles are very complex, making use of advanced anti-shield technology.\n#c:green##tab:8#++Completely ignores Shields\n#c:green##tab:8#++Precise\n#c:green##tab:8#+High Alpha and range\n#c:d00##tab:8#--Very low rate of fire\n#c:d00##tab:8#-High ammo consumption\n#c:d00##tab:8#-Massive and expensive
+
 #SS_TWINPLASMAGUN_NAME: Twin Plasma Thrower
 #SS_TWINPLASMAGUN_DESC: By reducing the size and amount of non-vital components, Plasma Throwers can be made small enough to be able to install two instead of just one in the same amount of space. They fire 2-shot bursts with regular range and damage at an increased firing delay. While durability is low, cost and mass are increased.\n#c:green##tab:8#+High Alpha\n#c:d00##tab:8#-Low rate of fire\n#c:d00##tab:8#-Draws large amounts of power when firing\n#c:d00##tab:8#-Heavy, expensive and not very durable
 
@@ -1631,9 +1634,6 @@ lightly but decided upon with care.
 #LH_BoardingDefense: Boarding Defense
 #LH_Regen: HP Regeneration/sec
 #LH_RepOther: Ranged Repair/sec
-#LH_Local/Range: Maximum Range
-#LH_Local/MinRange: Minimum Range
-#LH_Local/FuelCost: Fuel Needed To Jump
 #LH_ArmorRegen: Armor HP Gain/sec
 #LH_Shields: Shield Hitpoints
 #LH_ShieldReg: Shield Regen/sec
@@ -1646,8 +1646,12 @@ lightly but decided upon with care.
 #LH_ExternalMounts: Available External Mounts
 #LH_ShieldArmor: Shield Armor Hitpoints
 #LH_ShieldArmorRegen: Shield Armor Regen/sec
-#LH_MetalCost: Metal Cost for Repair/sec
-#LH_AmmoMetalCost: Metal Cost for Ammo/sec
+#LH_MetalCost: Metal Peak Usage/sec
+#LH_RegenCost: Repair Metal Usage/sec
+#LH_ElecsCost: Elecs Peak Usage/sec
+#LH_H3Usage: He3 Peak Usage/sec
+#LH_AdvCost: Adv Parts Peak Usage/sec
+#LH_OreUsage: Ore Peak Usage/sec
 #LH_PointDefense: Point Defense Efficiency
 #LH_WasteHeat: Waste Heat/sec
 #LH_AntimatterGeneration: Antimatter Output (Net)
@@ -1661,7 +1665,11 @@ lightly but decided upon with care.
 #LH_Local/AoERange: Damage Radius
 
 //Local hint names
-#LH_Local/He3perShot: Helium Used
+#LH_Local/Range: Maximum Range
+#LH_Local/MinRange: Minimum Range
+#LH_Local/FuelCost: Fuel Needed To Jump
+#LH_Local/AmmoMetalCost: Metal Cost for Ammo/sec
+#LH_Local/H3Usage: Helium Used
 #LH_Local/HarvestRate: Helium Harvest Rate
 #LH_Local/FuelGen: Helium Refine Rate
 #LH_Local/AddStructs: Structures
@@ -1745,7 +1753,7 @@ lightly but decided upon with care.
 #LET_Export: Saves the layout for use in other games.
 #LET_Import: Loads the saved layout from a previous game.
 
-#LETT_Save: Save the current blueprint, allowing \nyou to start using it.\nShift: Continue editing blueprint.
+#LETT_Save: Save the current blueprint, allowing \nyou to start using it.\nShift: Clear the blueprint.
 #LETT_Clear: Clear the blueprint and start from a blank one.
 #LETT_Export: Export this blueprint into your user profile for use in other games.
 #LETT_Import: Import blueprints from your user profile.\nShift: Import all blueprints.\nShift+Control: Import all blueprints, overwrite existing.
@@ -1845,6 +1853,7 @@ lightly but decided upon with care.
 #LES_Supercapital: Supercapital
 #LES_PlanetBuster: Planet Buster
 
+#LEE_Vamp: No Power Storage, Power Vampire will not operate.
 #LEE_Trade: Insufficient Empire Import Trade
 #LEE_Control: Insufficient Control
 #LEE_H3: Insufficient Helium Storage
@@ -1917,8 +1926,8 @@ lightly but decided upon with care.
 #STT_ExternalMounts: The amount of available External Mount hardpoints. Depends on hull type.
 #STT_ShieldArmor: The amount of force the ship's Shield Armor can withstand before being totally dispersed. Shield Armor has extremely high field density, only letting damage through when almost depleted.
 #STT_ShieldArmorRegen: The amount of Shield Armor strength restored per second.
-#STT_MetalCost: The amount of metal per second that will be drained from the galactic bank when repairs are being conducted.
-#STT_AmmoMetalCost: The amount of metal per second that will be drained from the galactic bank when ammunition is being fabricated.
+#STT_MetalCost: The amount of metal per second that will be used by the ship's stores in fabrication processes.
+#STT_RegenCost: The amount of metal per second that will be drained from the galactic bank when repairs are being performed upon the ship.
 #STT_PointDefense: The average amount of enemy missile-type weapons intercepted per shot. The maximum protection possible is 0.8 (80%).
 #STT_WasteHeat: The excess heat generated by energy weapons. Once the maximum heat threshold has been reached, the ship's energy weapons have to cool down to 50% of maximum heat until they can be fired again.
 #STT_HeatReleaseRate: The maximum amount of excess heat that can be released per second. It is improved by different types of energy supply and heatsinks.
@@ -2365,6 +2374,13 @@ lightly but decided upon with care.
 
 #SWT_BUILD_STRUCT: Builds the chosen structure,\nor opens the menu to choose a structure.
 #SWT_PICK_STRUCT: Chooses another structure to build.
+
+//Planet Types
+#PT_Rock: Gaian Planet
+#PT_Desert: Arean Planet
+#PT_Ice: Tundral Planet
+#PT_Lava: Hephaestian Planet
+#PT_Gas: Jovian Planet
 
 
 //Treaties
@@ -3547,7 +3563,7 @@ lightly but decided upon with care.
 //Resources
 #metals: Metals
 #electronics: Electronics
-#advparts: Adv.Parts
+#advparts: AdvParts
 #advancedparts: Advanced Parts
 #goods: Goods
 #luxuries: Luxuries
@@ -3559,7 +3575,7 @@ lightly but decided upon with care.
 
 #RES_Metals: Metals
 #RES_Electronics: Electronics
-#RES_AdvParts: Adv.Parts
+#RES_AdvParts: AdvParts
 #RES_Food: Food
 #RES_Labr: Labor
 #RES_Ore: Ore

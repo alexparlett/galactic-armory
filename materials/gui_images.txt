@@ -30,3 +30,15 @@ Material: lock_gui
 
 Material: unlock_gui
  Texture: Images/GUI/unlock_gui.png
+ 
+SpriteBank: planet_icons_new
+ Texture: Images/GUI/planet_icons.png
+ AutoTile: ColMajor, 128, 128
+ 
+//Trade Win
+
+Material: trade_planet
+ Texture: ~/Images/GUI/trade_planet.png
+ 
+Material: trade_ship
+ Texture: ~/Images/GUI/trade_ship.png

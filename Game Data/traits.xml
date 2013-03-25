@@ -158,7 +158,7 @@
 		</trait>		
 		
 		<trait id="religious" 
-					name="Highly Religious" 
+					name="Highly Religious"
 					desc="Cannot use subsystems like DSM, Jump Drive, Attractor, Mass Driver, etc."
 					flavor="Your population has been worshipping ancient gods for millenia, so the manipulation of space-time is forbidden as it is considered a 'crime against the gods'." 
 					cost="-3">

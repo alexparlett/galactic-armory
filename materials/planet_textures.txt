@@ -1,3 +1,4 @@
+//Atmosphere
 Material: atmosphere
  Defer: High
  Texture: ~/Images/Planets/atmosphere.png
@@ -40,6 +41,7 @@ Material: atmosphere3
  FlagOn: NormalizeNorms
 #end
 
+//Desert
 Material: planet_desert1_low
  Defer: High
  Texture: ~/Images/planets/Desert1.jpg
@@ -107,7 +109,6 @@ Material: planet_desert2
  FlagOn: NormalizeNorms
 #end
 
-
 Material: planet_desert3_low
  Defer: High
  Texture: ~/Images/planets/Desert3.jpg
@@ -174,7 +175,6 @@ Material: planet_desert4
 #else
  FlagOn: NormalizeNorms
 #end
-
 
 Material: planet_desert5_low
  Defer: High
@@ -377,15 +377,231 @@ Material: planet_desert10
  FlagOn: NormalizeNorms
 #end
 
+Material: planet_desertA_low
+ Texture: Images/Planets/DesertA.jpg
+ FlagOn: NormalizeNorms
 
+Material: planet_desertA_empty
+ Texture: Images/Planets/DesertA.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_desertA
+ Texture: Images/Planets/DesertA.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_desertB_low
+ Texture: Images/Planets/DesertB.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_desertB_empty
+ Texture: Images/Planets/DesertB.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_desertB
+ Texture: Images/Planets/DesertB.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_desertC_low
+ Texture: Images/Planets/DesertC.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_desertC_empty
+ Texture: Images/Planets/DesertC.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_desertC
+ Texture: Images/Planets/DesertC.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_desertD_low
+ Texture: Images/Planets/DesertD.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_desertD_empty
+ Texture: Images/Planets/DesertD.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_desertD
+ Texture: Images/Planets/DesertD.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_desertE_low
+ Texture: Images/Planets/DesertE.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_desertE_empty
+ Texture: Images/Planets/DesertE.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_desertE
+ Texture: Images/Planets/DesertE.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_desertF_low
+ Texture: Images/Planets/DesertF.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_desertF_empty
+ Texture: Images/Planets/DesertF.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_desertF
+ Texture: Images/Planets/DesertF.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_desertG_low
+ Texture: Images/Planets/DesertG.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_desertG_empty
+ Texture: Images/Planets/DesertG.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_desertG
+ Texture: Images/Planets/DesertG.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_desertH_low
+ Texture: Images/Planets/DesertH.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_desertH_empty
+ Texture: Images/Planets/DesertH.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_desertH
+ Texture: Images/Planets/DesertH.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_desertI_low
+ Texture: Images/Planets/DesertI.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_desertI_empty
+ Texture: Images/Planets/DesertI.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_desertI
+ Texture: Images/Planets/DesertI.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+//Rock
 Material: planet_rock1_low
  Defer: High
- Texture: ~/Images/Planets/aqua.png
+ Texture: /Images/Planets/barren_planet.png
  FlagOn: NormalizeNorms
 
 Material: planet_rock1_empty
  Defer: High
- Texture: ~/Images/Planets/aqua.png
+ Texture: /Images/Planets/barren_planet.png
 #if shaders
  RenderMode: SmoothLit
  SpecularFactor: 15
@@ -396,10 +612,10 @@ Material: planet_rock1_empty
 
 Material: planet_rock1
  Defer: High
- Texture: ~/Images/Planets/aqua.png
+ Texture: /Images/Planets/barren_planet.png
 #if shaders
  RenderMode: CityLights
- Texture2: ~/Images/Planets/aqua_lightmap.png
+ Texture2: /Images/Planets/barren_planet_lightmap.png
  SpecularFactor: 15
  FlagOff: Lighting
 #else
@@ -436,12 +652,12 @@ Material: planet_rock2
 
 Material: planet_rock3_low
  Defer: High
- Texture: ~/Images/Planets/cthrough.png
+ Texture: /Images/Planets/red_planet.png
  FlagOn: NormalizeNorms
 
 Material: planet_rock3_empty
  Defer: High
- Texture: ~/Images/Planets/cthrough.png
+ Texture: /Images/Planets/red_planet.png
 #if shaders
  RenderMode: SmoothLit
  SpecularFactor: 3
@@ -452,10 +668,10 @@ Material: planet_rock3_empty
 
 Material: planet_rock3
  Defer: High
- Texture: ~/Images/Planets/cthrough.png
+ Texture: /Images/Planets/red_planet.png
 #if shaders
  RenderMode: CityLights
- Texture2: ~/Images/Planets/cthrough_lightmap.png
+ Texture2: /Images/Planets/red_planet_lightmap.png
  SpecularFactor: 15
  FlagOff: Lighting
 #else
@@ -464,12 +680,12 @@ Material: planet_rock3
 
 Material: planet_rock4_low
  Defer: High
- Texture: ~/Images/Planets/Orange.png
+ Texture: /Images/Planets/barren_rock.png
  FlagOn: NormalizeNorms
 
 Material: planet_rock4_empty
  Defer: High
- Texture: ~/Images/Planets/Orange.png
+ Texture: /Images/Planets/barren_rock.png
 #if shaders
  RenderMode: SmoothLit
  SpecularFactor: 15
@@ -480,10 +696,10 @@ Material: planet_rock4_empty
 
 Material: planet_rock4
  Defer: High
- Texture: ~/Images/Planets/Orange.png
+ Texture: /Images/Planets/barren_rock.png
 #if shaders
  RenderMode: CityLights
- Texture2: ~/Images/Planets/Orange_lightmap.png
+ Texture2: /Images/Planets/barren_rock_lightmap.png
  SpecularFactor: 15
  FlagOff: Lighting
 #else
@@ -590,14 +806,329 @@ Material: planet_rock7_empty
 #end
 
 
+Material: planet_rockA_low
+ Texture: Images/Planets/RockA.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_rockA_empty
+ Defer: High
+ Texture: Images/Planets/RockA.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_rockA
+ Defer: High
+ Texture: Images/Planets/RockA.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_rockB_low
+ Texture: Images/Planets/RockB.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_rockB_empty
+ Defer: High
+ Texture: Images/Planets/RockB.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_rockB
+ Defer: High
+ Texture: Images/Planets/RockB.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_rockC_low
+ Texture: Images/Planets/RockC.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_rockC_empty
+ Defer: High
+ Texture: Images/Planets/RockC.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_rockC
+ Defer: High
+ Texture: Images/Planets/RockC.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_rockD_low
+ Texture: Images/Planets/RockD.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_rockD_empty
+ Defer: High
+ Texture: Images/Planets/RockD.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_rockD
+ Defer: High
+ Texture: Images/Planets/RockD.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_rockE_low
+ Texture: Images/Planets/RockE.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_rockE_empty
+ Defer: High
+ Texture: Images/Planets/RockE.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_rockE
+ Defer: High
+ Texture: Images/Planets/RockE.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_rockF_low
+ Texture: Images/Planets/RockF.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_rockF_empty
+ Defer: High
+ Texture: Images/Planets/RockF.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_rockF
+ Defer: High
+ Texture: Images/Planets/RockF.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_rockG_low
+ Texture: Images/Planets/RockG.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_rockG_empty
+ Defer: High
+ Texture: Images/Planets/RockG.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_rockG
+ Defer: High
+ Texture: Images/Planets/RockG.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_rockH_low
+ Texture: Images/Planets/RockH.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_rockH_empty
+ Defer: High
+ Texture: Images/Planets/RockH.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_rockH
+ Defer: High
+ Texture: Images/Planets/RockH.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_rockI_low
+ Texture: Images/Planets/RockI.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_rockI_empty
+ Defer: High
+ Texture: Images/Planets/RockI.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_rockI
+ Defer: High
+ Texture: Images/Planets/RockI.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+
+Material: planet_rockJ_low
+ Texture: Images/Planets/RockJ.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_rockJ_empty
+ Defer: High
+ Texture: Images/Planets/RockJ.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_rockJ
+ Defer: High
+ Texture: Images/Planets/RockJ.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+
+Material: planet_rockK_low
+ Texture: Images/Planets/RockK.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_rockK_empty
+ Defer: High
+ Texture: Images/Planets/RockK.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_rockK
+ Defer: High
+ Texture: Images/Planets/RockK.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_rockL_low
+ Texture: Images/Planets/RockL.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_rockL_empty
+ Defer: High
+ Texture: Images/Planets/RockL.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_rockL
+ Defer: High
+ Texture: Images/Planets/RockL.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+//Ice
 Material: planet_ice1_low
  Defer: High
- Texture: ~/Images/Planets/artic.png
+ Texture: /Images/Planets/ice_planet.png
  FlagOn: NormalizeNorms
 
 Material: planet_ice1_empty
  Defer: High
- Texture: ~/Images/Planets/artic.png
+ Texture: /Images/Planets/ice_planet.png
 #if shaders
  RenderMode: SmoothLit
  SpecularFactor: 15
@@ -608,16 +1139,125 @@ Material: planet_ice1_empty
 
 Material: planet_ice1
  Defer: High
- Texture: ~/Images/Planets/artic.png
+ Texture: /Images/Planets/ice_planet.png
 #if shaders
  RenderMode: CityLights
- Texture2: ~/Images/Planets/Artic_lightmap.png
+ Texture2: /Images/Planets/ice_planet_lightmap.png
  SpecularFactor: 15
  FlagOff: Lighting
 #else
  FlagOn: NormalizeNorms
 #end
 
+Material: planet_iceA_low
+ Defer: High
+ Texture: Images/Planets/IceA.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_iceA_empty
+ Defer: High
+ Texture: Images/Planets/IceA.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_iceA
+ Defer: High
+ Texture: Images/Planets/IceA.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_iceB_low
+ Defer: High
+ Texture: Images/Planets/IceB.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_iceB_empty
+ Defer: High
+ Texture: Images/Planets/IceB.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_iceB
+ Defer: High
+ Texture: Images/Planets/IceB.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_iceC_low
+ Defer: High
+ Texture: Images/Planets/IceC.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_iceC_empty
+ Defer: High
+ Texture: Images/Planets/IceC.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_iceC
+ Defer: High
+ Texture: Images/Planets/IceC.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_iceD_low
+ Defer: High
+ Texture: Images/Planets/IceD.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_iceD_empty
+ Defer: High
+ Texture: Images/Planets/IceD.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_iceD
+ Defer: High
+ Texture: Images/Planets/IceD.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+//Lava
 Material: planet_lava1_low
  Defer: High
  Texture: ~/Images/Planets/lava1.png
@@ -654,6 +1294,178 @@ Material: planet_lava1
  FlagOn: NormalizeNorms
 #end
 
+Material: planet_lavaA_low
+ Defer: High
+ Texture: Images/Planets/LavaA.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_lavaA_empty
+ Defer: High
+ Texture: Images/Planets/LavaA.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_lavaA
+ Defer: High
+ Texture: Images/Planets/LavaA.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_lavaB_low
+ Defer: High
+ Texture: Images/Planets/LavaB.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_lavaB_empty
+ Defer: High
+ Texture: Images/Planets/LavaB.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_lavaB
+ Defer: High
+ Texture: Images/Planets/LavaB.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_lavaC_low
+ Defer: High
+ Texture: Images/Planets/LavaC.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_lavaC_empty
+ Defer: High
+ Texture: Images/Planets/LavaC.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_lavaC
+ Defer: High
+ Texture: Images/Planets/LavaC.jpg
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_lavaD_low
+ Defer: High
+ Texture: Images/Planets/LavaD.jpg
+#if shaders
+ Texture2: ~/Images/Planets/difference_noise.png
+ RenderMode: GlowPlanetLow
+ SpecularFactor: 0
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_lavaD_empty
+ Defer: High
+ Texture: Images/Planets/LavaD.jpg
+#if shaders
+ Texture2: ~/Images/Planets/difference_noise.png
+ RenderMode: GlowPlanet
+ SpecularFactor: 0
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_lavaD
+ Defer: High
+ Texture: Images/Planets/LavaD.jpg
+#if shaders
+ Texture2: ~/Images/Planets/difference_noise.png
+ RenderMode: GlowPlanet
+ SpecularFactor: 0
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_lavaE_low
+ Defer: High
+ Texture: Images/Planets/LavaE.jpg
+#if shaders
+ Texture2: ~/Images/Planets/difference_noise.png
+ RenderMode: GlowPlanetLow
+ SpecularFactor: 0
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_lavaE_empty
+ Defer: High
+ Texture: Images/Planets/LavaE.jpg
+#if shaders
+ Texture2: ~/Images/Planets/difference_noise.png
+ RenderMode: GlowPlanet
+ SpecularFactor: 0
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_lavaE
+ Defer: High
+ Texture: Images/Planets/LavaE.jpg
+#if shaders
+ Texture2: ~/Images/Planets/difference_noise.png
+ RenderMode: GlowPlanet
+ SpecularFactor: 0
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+//Gas
 Material: planet_gas1_low
  Defer: High
  Texture: ~/Images/Planets/jupitermap.jpg
@@ -673,6 +1485,294 @@ Material: planet_gas1_empty
 Material: planet_gas1
  Defer: High
  Texture: ~/Images/Planets/jupitermap.jpg
+#if shaders
+ RenderMode: GasPlanetLighting
+ SpecularFactor: 2.5
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_gas2_low
+ Texture: Images/Planets/uranus.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_gas2_empty
+ Texture: Images/Planets/uranus.jpg
+#if shaders
+ RenderMode: GasPlanetLighting
+ SpecularFactor: 2.5
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_gas2
+ Texture: Images/Planets/uranus.jpg
+#if shaders
+ RenderMode: GasPlanetLighting
+ SpecularFactor: 2.5
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end 
+
+Material: planet_gas3_low
+ Texture: Images/Planets/saturn.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_gas3_empty
+ Texture: Images/Planets/saturn.jpg
+#if shaders
+ RenderMode: GasPlanetLighting
+ SpecularFactor: 2.5
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_gas3
+ Texture: Images/Planets/saturn.jpg
+#if shaders
+ RenderMode: GasPlanetLighting
+ SpecularFactor: 2.5
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_gas4_low
+ Texture: Images/Planets/saturn.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_gas4_empty
+ Texture: Images/Planets/GasA.jpg
+#if shaders
+ RenderMode: GasPlanetLighting
+ SpecularFactor: 2.5
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_gas4
+ Texture: Images/Planets/GasA.jpg
+#if shaders
+ RenderMode: GasPlanetLighting
+ SpecularFactor: 2.5
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_gas5_low
+ Texture: Images/Planets/GasB.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_gas5_empty
+ Texture: Images/Planets/GasB.jpg
+#if shaders
+ RenderMode: GasPlanetLighting
+ SpecularFactor: 2.5
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_gas5
+ Texture: Images/Planets/GasB.jpg
+#if shaders
+ RenderMode: GasPlanetLighting
+ SpecularFactor: 2.5
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_gas6_low
+ Texture: Images/Planets/GasC.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_gas6_empty
+ Texture: Images/Planets/GasC.jpg
+#if shaders
+ RenderMode: GasPlanetLighting
+ SpecularFactor: 2.5
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_gas6
+ Texture: Images/Planets/GasC.jpg
+#if shaders
+ RenderMode: GasPlanetLighting
+ SpecularFactor: 2.5
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_gas7_low
+ Texture: Images/Planets/GasD.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_gas7_empty
+ Texture: Images/Planets/GasD.jpg
+#if shaders
+ RenderMode: GasPlanetLighting
+ SpecularFactor: 2.5
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_gas7
+ Texture: Images/Planets/GasD.jpg
+#if shaders
+ RenderMode: GasPlanetLighting
+ SpecularFactor: 2.5
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_gas8_low
+ Texture: Images/Planets/GasE.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_gas8_empty
+ Texture: Images/Planets/GasE.jpg
+#if shaders
+ RenderMode: GasPlanetLighting
+ SpecularFactor: 2.5
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_gas8
+ Texture: Images/Planets/GasE.jpg
+#if shaders
+ RenderMode: GasPlanetLighting
+ SpecularFactor: 2.5
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_gas9_low
+ Texture: Images/Planets/GasF.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_gas9_empty
+ Texture: Images/Planets/GasF.jpg
+#if shaders
+ RenderMode: GasPlanetLighting
+ SpecularFactor: 2.5
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_gas9
+ Texture: Images/Planets/GasF.jpg
+#if shaders
+ RenderMode: GasPlanetLighting
+ SpecularFactor: 2.5
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_gas10_low
+ Texture: Images/Planets/GasG.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_gas10_empty
+ Texture: Images/Planets/GasG.jpg
+#if shaders
+ RenderMode: GasPlanetLighting
+ SpecularFactor: 2.5
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_gas10
+ Texture: Images/Planets/GasG.jpg
+#if shaders
+ RenderMode: GasPlanetLighting
+ SpecularFactor: 2.5
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_gas11_low
+ Texture: Images/Planets/GasH.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_gas11_empty
+ Texture: Images/Planets/GasH.jpg
+#if shaders
+ RenderMode: GasPlanetLighting
+ SpecularFactor: 2.5
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_gas11
+ Texture: Images/Planets/GasH.jpg
+#if shaders
+ RenderMode: GasPlanetLighting
+ SpecularFactor: 2.5
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_gas12_low
+ Texture: Images/Planets/GasI.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_gas12_empty
+ Texture: Images/Planets/GasI.jpg
+#if shaders
+ RenderMode: GasPlanetLighting
+ SpecularFactor: 2.5
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_gas12
+ Texture: Images/Planets/GasI.jpg
+#if shaders
+ RenderMode: GasPlanetLighting
+ SpecularFactor: 2.5
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_gas13_low
+ Texture: Images/Planets/GasJ.jpg
+ FlagOn: NormalizeNorms
+
+Material: planet_gas13_empty
+ Texture: Images/Planets/GasJ.jpg
+#if shaders
+ RenderMode: GasPlanetLighting
+ SpecularFactor: 2.5
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: planet_gas13
+ Texture: Images/Planets/GasJ.jpg
 #if shaders
  RenderMode: GasPlanetLighting
  SpecularFactor: 2.5
@@ -735,7 +1835,6 @@ Material: comet
  FlagOn: NormalizeNorms
  FlagOff: Lighting
  
-
 Material: planet_ring_tex0
  Texture: ~/Images/ring_gradient1.png
 #if shaders
@@ -759,7 +1858,6 @@ Material: planet_ring_tex1
 #else
  RenderMode: Alpha
 #end
-
 
 Material: planet_ring_tex2
  Texture: ~/Images/ring_gradient3.png
@@ -796,117 +1894,3 @@ Material: ringworld
 #else
  FlagOn: NormalizeNorms
 #end
-
- Defer: Low
-
-
-
-Material: planet_desertA_low
- Texture: Images/Planets/DesertA.jpg
-#if shaders
- RenderMode: SmoothLit
- SpecularFactor: 15
- FlagOff: Lighting
-#else
- FlagOn: NormalizeNorms
-#end	
-
-Material: planet_desertA_empty
- Texture: Images/Planets/DesertA.jpg
-#if shaders
- RenderMode: SmoothLit
- SpecularFactor: 15
- FlagOff: Lighting
-#else
- FlagOn: NormalizeNorms
-#end
-
-Material: planet_desertA
- Texture: Images/Planets/DesertA.jpg
-#if shaders
- RenderMode: SmoothLit
- SpecularFactor: 15
- FlagOff: Lighting
-#else
- FlagOn: NormalizeNorms
-#end
-
-
-Material: planet_desertB_low
- Texture: Images/Planets/DesertB.jpg
-#if shaders
- RenderMode: SmoothLit
- SpecularFactor: 15
- FlagOff: Lighting
-#else
- FlagOn: NormalizeNorms
-#end
-
-Material: planet_desertB_empty
- Texture: Images/Planets/DesertB.jpg
-#if shaders
- RenderMode: SmoothLit
- SpecularFactor: 15
- FlagOff: Lighting
-#else
- FlagOn: NormalizeNorms
-#end
-
-Material: planet_desertB
- Texture: Images/Planets/DesertB.jpg
-#if shaders
- RenderMode: SmoothLit
- SpecularFactor: 15
- FlagOff: Lighting
-#else
- FlagOn: NormalizeNorms
-#end
-
-Material: planet_gas2_low
- Texture: Images/Planets/uranus.jpg
- FlagOn: NormalizeNorms
-
-Material: planet_gas2_empty
- Texture: Images/Planets/uranus.jpg
-#if shaders
- RenderMode: GasPlanetLighting
- SpecularFactor: 2.5
- FlagOff: Lighting
-#else
- FlagOn: NormalizeNorms
-#end
-
-Material: planet_gas2
- Texture: Images/Planets/uranus.jpg
-#if shaders
- RenderMode: GasPlanetLighting
- SpecularFactor: 2.5
- FlagOff: Lighting
-#else
- FlagOn: NormalizeNorms
-#end 
-
-Material: planet_gas3_low
- Texture: Images/Planets/saturn.jpg
- FlagOn: NormalizeNorms
-
-Material: planet_gas3_empty
- Texture: Images/Planets/saturn.jpg
-#if shaders
- RenderMode: GasPlanetLighting
- SpecularFactor: 2.5
- FlagOff: Lighting
-#else
- FlagOn: NormalizeNorms
-#end
-
-Material: planet_gas3
- Texture: Images/Planets/saturn.jpg
-#if shaders
- RenderMode: GasPlanetLighting
- SpecularFactor: 2.5
- FlagOff: Lighting
-#else
- FlagOn: NormalizeNorms
-#end
-

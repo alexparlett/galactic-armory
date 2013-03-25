@@ -3,6 +3,7 @@ Shader: Shield
  Program: shaders/shield_vs.txt, shaders/shield_ps.txt, Add
  Variable: tex texture = 0
  Variable: float time = time
+ Variable: float under_attack = obj_under_attack 
 
 Shader: StarAnim
  Program: shaders/star_anim_vs.txt, shaders/star_anim_ps.txt, Solid
@@ -11,7 +12,8 @@ Shader: StarAnim
 
 Shader: StarAnimHigh
  Program: shaders/star_anim_vs.txt, shaders/star_anim_high_ps.txt, Solidx3
- Variable: tex2 texture = 0, 1
+ Variable: tex surface = 0
+ Variable: tex noise = 1
  Variable: float cycle = time_cycle 15.0
  Variable: float uv1x = time_cycle 19.0
  Variable: float uv1y = time_cycle 13.7
@@ -58,8 +60,8 @@ Shader: PlaneDisc
  Variable: float camDist = system_dist
  Variable: float visible = system_visible
  Variable: vec3 planeColor = plane_color
+ Variable: vec4 glowColor = glow_color
  Variable: float cycle = real_time_cycle 2.5
- Variable: float under_attack = obj_under_attack
  Variable: float emp2_startrad = empire2_startrad;
  Variable: float emp3_startrad = empire3_startrad;
  Variable: float emp4_startrad = empire4_startrad;
@@ -189,7 +191,6 @@ Shader: ShipLights
  Variable: tex diffuseRGBspecA = 0
  Variable: tex glowMap = 1
  Variable: tex wear = 2
- Variable: float time = time_second
  Variable: vec4 powerLevel = state, Power
  Variable: vec4 damageLevel = state, Damage
  Variable: vec4 epowerLevel = state, ePow
@@ -200,7 +201,6 @@ Shader: ShipLightsMarks
  Variable: tex glowMap = 1
  Variable: tex marks = 2
  Variable: tex wear = 3
- Variable: float time = time_cycle 5.0
  Variable: vec4 powerLevel = state, Power
  Variable: vec4 damageLevel = state, Damage
  Variable: vec3 empireColor = empire_color

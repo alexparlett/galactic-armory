@@ -151,6 +151,14 @@ Name:	GAProjPierceDamage
 	
 	OnActive:	GACombatWeapons::ProjPierceDamage
 	
+Name:	GAShieldPiercingDmg
+	Value: Damage
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minHitChance
+	
+	OnActive:	GACombatWeapons::ShieldPiercingDamage
+	
 Name: ProjWeaponDmg
 	Value: Damage
 	

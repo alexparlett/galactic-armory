@@ -532,6 +532,18 @@ void ArmorPiercingDamage(Event@ evt, float Damage, float Range, float effectiveR
 	}
 }
 
+void ShieldPiercingDamage(Event@ evt, float Damage, float Range, float effectiveRangeFactor, float minHitChance) {
+	
+	float hitchance = rangeMod(evt, Range, Range * effectiveRangeFactor, minHitChance);
+	
+	if(@evt.target != null && @evt.obj != null) {
+		if(randomf(1.f) <= hitchance) {
+			evt.target.playSound("impact_plasma");
+			dealDamage(evt, Damage, DF_Kinetic | DF_ShieldPiercing);
+		}
+	}
+}
+
 float GAPersonPerDamage = 1000.f;
 void NBCDamage(Event@ evt, float Damage) {
 	Planet@ targ = evt.target.toPlanet();

@@ -95,7 +95,7 @@ System: BigFuelCell
 	Durability: GAME_SUBSYS_MULT * 20 * Size * pow(HEALTH_CURVE,HPLevel)
 	Mass: 20 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
 	
-	vFuelStore: Size * 200 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
+	vFuelStore: Size * 400 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
 	
 	Costs: Metals[150 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Fuel[vFuelStore]
 	Complexity: 0.6

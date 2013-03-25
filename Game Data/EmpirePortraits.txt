@@ -2,5 +2,7 @@ Human: Images/Portraits/human.png
 Cyborg: Images/Portraits/cyborg.png
 Slug: Images/Portraits/slug.png
 Cloak: Images/Portraits/cloak.png
+Bug: Images/Portraits/bug.png
+Blobman: Images/Portraits/blobman.png
 Alien1: Images/Portraits/alien1.png
 Android: Images/Portraits/android.png

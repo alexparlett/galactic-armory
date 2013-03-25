@@ -193,7 +193,7 @@ class ResourceGrid {
 		images.resize(n+1);
 		texts.resize(n+1);
 
-		uint y = floor(n / columns);
+		uint y = n / columns;
 		uint x = n % columns;
 
 		pos2di cellOffset(offset.width * x, offset.height * y);
@@ -211,7 +211,7 @@ class ResourceGrid {
 	void reposition() {
 		uint cnt = images.length();
 		for (uint n = 0; n < cnt; ++n) {
-			uint y = floor(n / columns);
+			uint y = n / columns;
 			uint x = n % columns;
 
 			pos2di cellOffset(offset.width * x, offset.height * y);

@@ -8,7 +8,6 @@ const float OneHour = 60.f * 60.f;
 const int MaxSeedPerTick = 5;
 const int MaxSystemSeedPerScan = 5;
 
-const float SeedPerPlanet = 9.f;
 const float SeedPerPlanetAi = 20.f;
 const float DefensePerPlanet = 20.f;
 const float FirstSpawnIncrease = OneHour;
@@ -63,6 +62,8 @@ void init_remnant_ai() {
 		loadDefaults(false);
 		initialized = true;
 	}
+
+	print("Remnant AI Initialized");
 }
 
 void prep_remnant_ai_defaults(Empire@ emp) {
@@ -240,7 +241,7 @@ class SetupTask : Task
 			{
 				Empire@ other = getEmpire(i);
 
-				if (other.ID > 0)
+				if (other.ID > 0  || other.ID == -2)
 					declareWar(emp, other);
 			}
 		}
@@ -280,8 +281,7 @@ class SetupTask : Task
 			// Add remnant technology trait
 			emp.addTrait("remnants");
 
-			if ( data.aiActive )
-				data.addTask( ResearchTask() );
+			data.addTask( ResearchTask() );
 
 			stage = 1;
 			return false;
@@ -599,11 +599,7 @@ class RemnantAIData
 				break;
 			}
 		}
-
-		if ( aiActive )
-		{
-			addTask( ResearchTask() );
-		}
+		addTask( ResearchTask() );
 	}
 	
 	void LoadVariables( XMLReader@ xml )
@@ -733,18 +729,20 @@ class RemnantAIData
 			currTechMod = 0.f;
 			techMod = currTechMod;
 			// Check if we should do raids and seeding
-			seededGalaxy = getGameSetting("GAME_REMNANTS", 0.3f) < 0.001f || getGameSetting("GAME_REMNANTS_ENABLED", 1.f) < 0.5f;
+			seededGalaxy = getGameSetting("GAME_REMNANTS", 0.3f) < 0.001f;
 			angerPerSystem = getGameSetting("GAME_REMNANT_AGRO", 0.1f);
 
-			seedPerPlanet = aiActive ? SeedPerPlanetAi : SeedPerPlanet;
+			seedPerPlanet = SeedPerPlanetAi;
 			defensePerPlanet = DefensePerPlanet;
 			nextSpawnIncrease = vary( FirstSpawnIncrease, TimeVarianceRandomness );
 			
-			nextWaveTime = FirstAttackSpawnInterval + randomf( 15.f );
-			nextWaveSizeMod = nextWaveTime / FirstAttackSpawnInterval;
-			nextWaveIncrease = vary( FirstWaveIncrease, TimeVarianceRandomness );
-			waveSize = BaseAttackSize;
-			waveCount = 1;
+			if(aiActive) {
+				nextWaveTime = FirstAttackSpawnInterval + randomf( 15.f );
+				nextWaveSizeMod = nextWaveTime / FirstAttackSpawnInterval;
+				nextWaveIncrease = vary( FirstWaveIncrease, TimeVarianceRandomness );
+				waveSize = BaseAttackSize;
+				waveCount = 1;
+			}
 			baseResearchRate = BaseResearchRate;
 			nextResearchRateCheck = ResearchRateCheckInterval;
 		}
@@ -1065,7 +1063,8 @@ class RemnantAIData
 
 		seededGalaxy = true;
 		
-		angerPerSystem += ( angerPerSystem * ( sysCnt - ourSystems ) ) / ourSystems;
+		if(ourSystems > 0)
+			angerPerSystem += ( angerPerSystem * ( sysCnt - ourSystems ) ) / ourSystems;
 		
 		if ( log )
 		print("Our systems = " + i_to_s( ourSystems ) + " new system anger value = " + f_to_s( angerPerSystem ));
@@ -1095,6 +1094,10 @@ class RemnantAIData
 	void createRemnantResearchOutpost(System@ sys, RemnantAIData@ data, Empire@ emp) {
 		// Create the star
 		Star@ star = makeStar(sys, 1.f);
+		
+		Effect starEffect("SelfHealing");
+		starEffect.set("Rate", 100000000.f);		
+		star.toObject().addTimedEffect(starEffect, pow(10, 35), 0.f, star.toObject(), null, null, TEF_None);		
 
 		// Create planets
 		float orbit = orbitRadiusFactor * 1.f;
@@ -1122,30 +1125,18 @@ class RemnantAIData
 				++outpost;
 			}
 		}
-		for (uint i = 0; i < 15; ++i) {
-			ShipDesign@ design = data.pickRandomLayout(waveDesigns, GID_Remnant);
-			if (@design == null)
-				break;
-
-			const HullLayout@ buildShip = @emp.getShipLayout(design.className);
-			if (@buildShip == null)
-				break;
-
-			// Calculate a random position in the system
-			float theta = randomf(twoPi);
-			float radius = sys.toObject().radius * randomf(0.4f, 0.8f);
-
-			vector pos = vector(radius * cos(theta), 0, radius * sin(theta));
-
-			HulledObj@ ship = spawnShip(emp, buildShip, sys, pos);
-			ship.toObject().setStance(AIS_Defend);
-		}	
+		
+		addSystem( SystemManager( emp, this, sys, curScale ));		
 	}			
 
 	void createRemnantImperialSeat(System@ sys, RemnantAIData@ data, Empire@ emp) {
 		// Create the star
 		Star@ star = makeStar(sys, 1.f);
 
+		Effect starEffect("SelfHealing");
+		starEffect.set("Rate", 100000000.f);		
+		star.toObject().addTimedEffect(starEffect, pow(10, 35), 0.f, star.toObject(), null, null, TEF_None);		
+		
 		// Create planets
 		float orbit = orbitRadiusFactor * 1.f;
 		uint capital = rand(3);
@@ -1225,6 +1216,8 @@ class RemnantAIData
 				createDefenseRing(data, emp, sys, obj, 75.f, 6);
 			}
 		}
+		
+		addSystem( SystemManager( emp, this, sys, curScale ));		
 	}
 
 	void createDefenseRing(Empire@ emp, const HullLayout@ layout, System@ sys, Object@ obj, float radius, uint amount, float z) {
@@ -1245,6 +1238,10 @@ class RemnantAIData
 		// Create the star
 		Star@ star = makeStar(sys, 2.f);
 
+		Effect starEffect("SelfHealing");
+		starEffect.set("Rate", 100000000.f);		
+		star.toObject().addTimedEffect(starEffect, pow(10, 35), 0.f, star.toObject(), null, null, TEF_None);		
+		
 		// Retrieve layouts
 		const HullLayout@ jumpLay = emp.getShipLayout(localize("#SH_Remnant Jump Bridge"));
 		
@@ -1268,6 +1265,10 @@ class RemnantAIData
 		// Create the star
 		Star@ star = makeStar(sys, 1.f);
 		Object@ starObj = star;
+		
+		Effect starEffect("SelfHealing");
+		starEffect.set("Rate", 100000000.f);		
+		star.toObject().addTimedEffect(starEffect, pow(10, 35), 0.f, star.toObject(), null, null, TEF_None);		
 
 		// Retrieve layouts
 		const HullLayout@ gateLay = emp.getShipLayout(localize("#SH_Remnant Gate Array"));
@@ -1291,25 +1292,7 @@ class RemnantAIData
 			createDefenseRing(emp, defLay, sys, ship, 200.f, 8, 50.f);
 		}
 
-		// Create defense ships
-		for (uint i = 0; i < 6; ++i) {
-			ShipDesign@ design = data.pickRandomLayout(waveDesigns, GID_Remnant);
-			if (@design == null)
-				break;
-
-			const HullLayout@ buildShip = @emp.getShipLayout(design.className);
-			if (@buildShip == null)
-				break;
-
-			// Calculate a random position in the system
-			float theta = randomf(twoPi);
-			float radius = sys.toObject().radius * randomf(0.4f, 0.8f);
-
-			vector pos = vector(radius * cos(theta), 0, radius * sin(theta));
-
-			HulledObj@ ship = spawnShip(emp, buildShip, sys, pos);
-			ship.toObject().setStance(AIS_Defend);
-		}
+		addSystem( SystemManager( emp, this, sys, curScale ));
 	}
 
 	void createSpatialGen(System@ sys, RemnantAIData@ data, Empire@ emp) {
@@ -1331,31 +1314,18 @@ class RemnantAIData
 		createDefenseRing(emp, defLay, sys, ship, 200.f, 8, -50.f);
 		createDefenseRing(emp, defLay, sys, ship, 200.f, 8, 50.f);
 		
-		for (uint i = 0; i < 50; ++i) {
-			ShipDesign@ design = data.pickRandomLayout(waveDesigns, GID_Remnant);
-			if (@design == null)
-				break;
-
-			const HullLayout@ buildShip = @emp.getShipLayout(design.className);
-			if (@buildShip == null)
-				break;
-
-			// Calculate a random position in the system
-			float theta = randomf(twoPi);
-			float radius = sysObj.radius * randomf(0.4f, 0.8f);
-
-			vector spos = vector(radius * cos(theta), 0, radius * sin(theta));
-
-			HulledObj@ ship = spawnShip(emp, buildShip, sys, spos);
-			ship.toObject().setStance(AIS_Defend);
-		}
+		addSystem( SystemManager( emp, this, sys, curScale ));
 	}
 	
 	void createZeroPoint(System@ sys, RemnantAIData@ data, Empire@ emp) {
 		Object@ sysObj = sys;
 		
 		Star@ star = makeStar(sys, 1.5f);	
-		
+
+		Effect starEffect("SelfHealing");
+		starEffect.set("Rate", 100000000.f);		
+		star.toObject().addTimedEffect(starEffect, pow(10, 35), 0.f, star.toObject(), null, null, TEF_None);
+			
 		// Retrieve layouts
 		const HullLayout@ spLay = emp.getShipLayout(localize("#SH_Remnant Zero Point Field Generator"));
 		
@@ -1404,24 +1374,7 @@ class RemnantAIData
 		createDefenseRing(emp, defLay, sys, ship, 200.f, 8, -50.f);
 		createDefenseRing(emp, defLay, sys, ship, 200.f, 8, 50.f);
 		
-		for (uint i = 0; i < 50; ++i) {
-			ShipDesign@ design = data.pickRandomLayout(waveDesigns, GID_Remnant);
-			if (@design == null)
-				break;
-
-			const HullLayout@ buildShip = @emp.getShipLayout(design.className);
-			if (@buildShip == null)
-				break;
-
-			// Calculate a random position in the system
-			float theta = randomf(twoPi);
-			float radius = sysObj.radius * randomf(0.4f, 0.8f);
-
-			vector spos = vector(radius * cos(theta), 0, radius * sin(theta));
-
-			HulledObj@ ship = spawnShip(emp, buildShip, sys, spos);
-			ship.toObject().setStance(AIS_Defend);
-		}
+		addSystem( SystemManager( emp, this, sys, curScale ));
 	}
 	
 	void seedSpecialSystems(Empire@ emp)
@@ -1537,20 +1490,20 @@ class RemnantAIData
 		else
 			systemTick = 0;
 
+		nextSpawnIncrease -= time;
+		if ( nextSpawnIncrease < 0.f )
+			UpdateSpawnSize();
+			
+		nextResearchCheck -= time;
+		if ( nextResearchCheck < 0.f )
+			addTask(ResearchTask());
+		
+		nextResearchRateCheck -= time;
+		if ( nextResearchRateCheck < 0.f )
+			addTask(ResearchRateTask());
+
 		if ( aiActive )
 		{
-			nextSpawnIncrease -= time;
-			if ( nextSpawnIncrease < 0.f )
-				UpdateSpawnSize();
-				
-			nextResearchCheck -= time;
-			if ( nextResearchCheck < 0.f )
-				addTask(ResearchTask());
-			
-			nextResearchRateCheck -= time;
-			if ( nextResearchRateCheck < 0.f )
-				addTask(ResearchRateTask());
-
 			nextWaveIncrease -= time;
 			if ( nextWaveIncrease < 0.f )
 				UpdateWaveSize();
@@ -1558,13 +1511,13 @@ class RemnantAIData
 			nextWaveTime -= time;
 			if ( nextWaveTime < 0.f )
 				SendWaves();
-			
-			if ( currTechMod - techMod > 0.45f )
-				UpdateDesigns( emp );
-			
-			if ( currScaleMod - scaleMod > 0.05f )
-				GenerateDesigns( emp );
 		}
+		
+		if ( currTechMod - techMod > 0.45f )
+			UpdateDesigns( emp );
+		
+		if ( currScaleMod - scaleMod > 0.05f )
+			GenerateDesigns( emp );
 		
 //		ResearchWeb web;
 //		web.prepare(emp);
@@ -1738,9 +1691,6 @@ class SystemManager
 		offStrength = 0.f;
 		picketCount = PicketShipsCount;
 		
-		if ( !data.aiActive )
-			QueueState( SysEnd );
-
 		// print( "Adding manager for " + sys.toObject().getName() + " seed " + f_to_s( strToBuild ));
 		
 		ShipDesign@ command = PickCommandShip( emp, data, strToBuild );

@@ -90,23 +90,14 @@ void registerEmpireData(Empire@ emp) {
 					
 					// Set empire settings
 					emp.setSetting("autoGovern", 0);
-					emp.setSetting("defaultGovernor", 0);					
+					emp.setSetting("defaultGovernor", 0);	
+
+					if(getGameSetting("RES_SHOW_ALL_TECHS", 1) < 0.5f) {
+						LevelTech(emp, "BeamWeapons", 1);
+						LevelTech(emp, "Computers", 1);
+					}					
 					
 					prep_erudite_ai_defaults(emp);
-				}
-				else {
-					if (desc.forAI == "random_basic") {
-						emp.setSetting("Personality", 0.f);
-					}
-					else {
-						float ID = float(persID + basicPersonalities - persDesc.length());
-						emp.setSetting("Personality", ID);
-					}
-
-					print("Registering basic AI for " + emp.getName() + " (" + emp.ID + ")");
-					emp.regScriptData("basic_ai", "EmpireAIData");
-					emp.setSetting("autoGovern", 1);
-					prep_basic_ai_defaults(emp);
 				}
 			}
 		}
@@ -163,6 +154,7 @@ void registerTeam(Empire@ from, Empire@ to, int team) {
 	// Set allied state (bidirectional)
 	from.setAllied(to, true);
 }
+
 
 /* Called for all empires that should start at war with each other */
 void registerHostilities(Empire@ from, Empire@ to) {

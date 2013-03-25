@@ -136,6 +136,10 @@ Sound: wave_emitter
 	File: wave_emitter.ogg
 	Volume: 0.200
 
+Sound: assault_cannon
+	File: assault_cannon.ogg
+	Volume: 0.200
+
 Sound: impact_artillery
 	File: impact_artillery.ogg
 	Volume: 0.12

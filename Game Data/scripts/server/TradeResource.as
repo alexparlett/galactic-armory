@@ -44,8 +44,13 @@ ClauseState Begin(Clause@ clause, Empire@ from, Empire@ to) {
 		return CS_FAILED;
 	
 	//Don't trade backwards (this is done at a higher level)
-	if(clause.getOption(1).toFloat() <= 0)
+	//Don't start the treaty if we don't have enough for even a single second
+	float rate = clause.getOption(1).toFloat();	
+	if(rate <= 0 || from.getStat(res) <= rate * 1.f) {
+		postFailure(to, from, res);
 		return CS_FAILED;
+	}
+	
 	return CS_NOCHANGE;
 }
 
@@ -55,8 +60,8 @@ ClauseState Tick(Clause@ clause, Empire@ from, Empire@ to, double tick) {
 	
 	float consumed = from.consumeStat(res, amt);
 	if(consumed < amt) {
-		//If there wasn't enough, return the amount and fail out
-		from.addStat(res, consumed);
+		//If there wasn't enough, give what we took (prevents abuse of the treaty)
+		to.addStat(res, consumed);
 
 		// Post failure messages
 		postFailure(to, from, res);

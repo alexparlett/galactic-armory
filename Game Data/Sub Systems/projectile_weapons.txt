@@ -67,7 +67,7 @@ System: TwinRailgun
     Level: Techs.ProjWeapons.Level
     Size: Scale
     HPLevel: Techs.Materials.Level-1 As Level
-    Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+    Durability: GAME_SUBSYS_MULT * 80 * Size * pow(HEALTH_CURVE,HPLevel)
     Mass: 160 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
     
     Tags: Weapon, ProjWeapon, Railgun, ClipWeapon
@@ -77,10 +77,10 @@ System: TwinRailgun
     Complexity: 2
     
     vBurst: 2
-    vDelay: 2.5 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * 2 * GAME_RELOAD_MULT
+    vDelay: (2.5 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * 2 * GAME_RELOAD_MULT) - 0.2
     vDamage: Size * 50 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT                            //was Size * 40
     vShotDelay: 0.2
-    vTotalDelay: (vShotDelay * vBurst) + vDelay
+    vTotalDelay: (vShotDelay * (vBurst - 1)) + vDelay
     vRange: (200 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
     vSpeed: vRange * 0.33 * BALLISTIC_PROJ_FACTOR                                                                                    //was progress(70,2*LEVEL_GAIN_CURVE,Level) * min((1 + Size / 5000), 3)
     vEffectiveRange: 0.5
@@ -96,7 +96,7 @@ System: TwinRailgun
         To Run:
             Control[15 * Size]
 
-    Hints: Alpha[vDamage * vBurst], Ammo[Size * 25], AmmoUse[(-1 * vAmmoUse * vBurst) / vTotalDelay], DPS[(vDamage * vBurst) / vTotalDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay], Local/EffRange[vEffectiveRange * vRange], Local/MinHit[vMinHit]
+    Hints: 	Alpha[vDamage * vBurst], Ammo[Size * 25],AmmoUse[(-1 * vAmmoUse * vBurst) / vTotalDelay],DPS[(vDamage * vBurst) / vTotalDelay], Local/Range[vRange], Local/DMGperShot[vDamage],Local/AmmoperShot[-1 * vAmmoUse],Local/ProjSpeed[vSpeed],Local/Delay[vTotalDelay], Local/EffRange[vEffectiveRange * vRange], Local/MinHit[vMinHit],Local/ClipDelay[vDelay],Local/Clip[vBurst] 			
 
 
 System: MuonCannon
@@ -239,7 +239,7 @@ System: HyperRailgun
     Level: (Techs.ProjWeapons.Level)
     Size: Scale
     HPLevel: Techs.Materials.Level-1 As Level
-    Durability: GAME_SUBSYS_MULT * 200 * Size * pow(HEALTH_CURVE,HPLevel)
+    Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
     Mass: 160 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
     
     Tags: Weapon, ProjWeapon, Railgun, WMD
@@ -278,7 +278,7 @@ System: TwinHeavyRailgun
     Level: (Techs.ProjWeapons.Level)
     Size: Scale
     HPLevel: Techs.Materials.Level-1 As Level
-    Durability: GAME_SUBSYS_MULT * 160 * Size * pow(HEALTH_CURVE,HPLevel)
+    Durability: GAME_SUBSYS_MULT * 80 * Size * pow(HEALTH_CURVE,HPLevel)
     Mass: 320 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
     
     Tags: Weapon, ProjWeapon, Railgun, ClipWeapon
@@ -288,10 +288,10 @@ System: TwinHeavyRailgun
     Complexity: 6
     
     vBurst: 2
-    vDelay: 4.5 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * 2 * GAME_RELOAD_MULT
+    vDelay: (4.5 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * 2 * GAME_RELOAD_MULT) - 0.2
     vDamage: Size * 95 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT                        //was 80
     vShotDelay: 0.2
-    vTotalDelay: (vShotDelay * vBurst) + vDelay
+    vTotalDelay: (vShotDelay * (vBurst - 1)) + vDelay
     vRange: (300 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
     vSpeed: vRange * 0.33 * BALLISTIC_PROJ_FACTOR                                                //was progress(100,2*LEVEL_GAIN_CURVE,Level) * min((1 + Size / 5000), 4)
     vEffectiveRange: 0.5
@@ -307,8 +307,51 @@ System: TwinHeavyRailgun
         To Run:
             Control[30 * Size]
 
-    Hints: Alpha[vDamage * vBurst], Ammo[Size * 25], AmmoUse[(-1 * vAmmoUse * vBurst) / vTotalDelay], DPS[(vDamage * vBurst) / vTotalDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay], Local/EffRange[vEffectiveRange * vRange], Local/MinHit[vMinHit]
+    Hints: 	Alpha[vDamage * vBurst], Ammo[Size * 25],AmmoUse[(-1 * vAmmoUse * vBurst) / vTotalDelay],DPS[(vDamage * vBurst) / vTotalDelay],Local/Range[vRange], Local/DMGperShot[vDamage],Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vTotalDelay], Local/EffRange[vEffectiveRange * vRange],Local/MinHit[vMinHit],Local/ClipDelay[vDelay], Local/Clip[vBurst]			
 
+
+System: AssaultCannon
+    Name: #SS_ASSAULTCANNON_NAME
+    Description: #SS_ASSAULTCANNON_DESC
+    Appearance: AssaultCannon
+	Explosion: subsystem_destroyed
+
+    Available: (Techs.ProjWeapons.Level > 13) || Traits.remnants && not(Traits.no_ballistics)
+    Level: (Techs.ProjWeapons.Level)
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 160 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 300 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    
+    Tags: Weapon, ProjWeapon, Railgun, ClipWeapon
+    Tied To: ProjWeapons 14
+    
+    Costs: Metals[540 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[160 * Size * pow(SUBS_COST_CRV, Level)], Labr[20 * Size], Ammo[Size * 30]
+    Complexity: 8
+    
+    vBurst: 3
+    vDelay: 11.0 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+    vDamage: Size * 72 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT                        //was 80
+    vShotDelay: 0.5
+    vTotalDelay: (vShotDelay * (vBurst - 1)) + vDelay
+    vRange: (250 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+    vSpeed: vRange * 0.66 * BALLISTIC_PROJ_FACTOR
+    vEffectiveRange: 0.66
+    vMinHit: 0.66
+    vAmmoUse: Size * 5
+
+    Provides: AssaultWeapon with Damage[vDamage], ShotDelay[vShotDelay],
+        Delay[vDelay], ClipSize[vBurst], AmmoUse[vAmmoUse], Range[vRange], Speed[vSpeed], effectiveRangeFactor[vEffectiveRange], minHitChance[vMinHit]
+    
+    Provides: AmmoStorage with Amount[Size * 30]
+
+    Requires:
+        To Run:
+            Control[40 * Size]
+
+    Hints: 	Alpha[vDamage * vBurst], Ammo[Size * 30],AmmoUse[(-1 * vAmmoUse * vBurst) / vTotalDelay],DPS[(vDamage * vBurst) / vTotalDelay],Local/Range[vRange], Local/DMGperShot[vDamage],Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vTotalDelay], Local/EffRange[vEffectiveRange * vRange],Local/MinHit[vMinHit],Local/ClipDelay[vDelay], Local/Clip[vBurst]
+
+	
 System: GraviticAccelerator
     Name: #SS_GRAVACCELERATOR_NAME
     Description: #SS_GRAVACCELERATOR_DESC
@@ -413,8 +456,8 @@ System: GatlingTurret
     Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[Size * 25]
     Complexity: 1.25
     
-    vClip: 120                                //was min(floor(3 * Size),60)
-    vDelay: (6) * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+    vClip: 60				//was 120
+    vDelay: (3) * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT					//was 6
     vDamage: 2.5 * Size * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT                            //was 1.5
     vShotDelay: 0.1
     vTotalDelay: (vShotDelay * vClip) + vDelay
@@ -439,7 +482,7 @@ System: GatlingTurret
         To Run:
             Control[10 * Size]
 
-    Hints: Alpha[vDamage * vClip], Ammo[Size * 25], AmmoUse[(-1 * vAmmoUse) / vShotDelay], DPS[(vDamage * vClip)/ vTotalDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vTotalDelay], Local/ClipDelay[vDelay], Local/Clip[vClip], PointDefense[vEffectivity], Local/EffRange[vEffectiveRange * vRange], Local/MinHit[vMinHit]
+    Hints: 	Alpha[vDamage * vClip], Ammo[Size * 25], AmmoUse[(-1 * vAmmoUse) / vShotDelay], DPS[(vDamage * vClip)/ vTotalDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/AmmoperShot[-1 * vAmmoUse],  Local/ProjSpeed[vSpeed], Local/Delay[vTotalDelay], Local/ClipDelay[vDelay], Local/Clip[vClip], PointDefense[vEffectivity], Local/EffRange[vEffectiveRange * vRange], Local/MinHit[vMinHit]
         
 
 System: ThermalPenetrator

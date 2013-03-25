@@ -927,6 +927,22 @@ void setMouseOverlayText(Object@ obj) {
 		if (hull.getHull().hasSystemWithTag(strBankAccess))
 			blockaded = curSys.isBlockadedFor(emp);
 	}
+	
+	if(explored) {
+		if(pl !is null) {
+			if(pl.getPhysicalType().beginsWith("ice"))
+				mo_text += combine("\n#c:bee7ee#",localize("#PT_Ice"),"#c#");
+			else if(pl.getPhysicalType().beginsWith("lava"))
+				mo_text += combine("\n#c:ff8a#",localize("#PT_Lava"),"#c#");
+			else if(pl.getPhysicalType().beginsWith("gas"))
+				mo_text += combine("\n#c:cbe5c7#",localize("#PT_Gas"),"#c#");
+			else if(pl.getPhysicalType().beginsWith("desert"))
+				mo_text += combine("\n#c:e7d900#",localize("#PT_Desert"),"#c#");	
+			else if(pl.getPhysicalType().beginsWith("rock"))
+				mo_text += combine("\n#c:12900c#",localize("#PT_Rock"),"#c#");				
+		}
+	}
+
 
 	if (blockaded)
 		mo_text += combine("\n#c:f44#", localize("#MO_Blockade"),"#c#");

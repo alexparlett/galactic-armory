@@ -510,6 +510,9 @@ void ProjDamage(Event@ evt, float Damage) {
 void PopDamage(Event@ evt, float Damage) {
 	Planet@ pl = evt.target;
 	if (pl !is null) {
+		float val = 0.f, max = 0.f, tmp = 0.f;
+		if (evt.target.getStateVals(strShields, val, max, tmp, tmp) && max > 0)
+			Damage *= 1.f - clamp(val / max, 0.f, 1.f);	
 		float killPeople = min(Damage * PersonPerDamage, pl.getPopulation());
 		pl.modPopulation(killPeople * -1.f);
 	}
@@ -543,7 +546,7 @@ void ProjDamage(Event@ evt, float Damage, float Cost) {
 
 void SuckPower(Event@ evt, float Rate) {
 	Object@ targ = evt.target, obj = evt.obj;
-	if(@targ != null) {
+	if(@targ != null && targ.hasState(strPower) && obj.hasState(strPower)) {
 		State@ powTo = obj.getState(strPower), powFrom = targ.getState(strPower);
 		float takeAmt = min(Rate * evt.time, min(powTo.getTotalFreeSpace(obj), powFrom.val));
 		powTo.add(takeAmt,obj); powFrom.val -= takeAmt;

@@ -15,9 +15,9 @@ const float subsubGridSize = 50.0;
 uniform float radius;
 uniform float camDist;
 uniform float visible;
-uniform float under_attack;
 uniform float cycle;
 uniform vec3 planeColor;
+uniform vec4 glowColor;
 
 uniform float emp1_endrad;
 uniform float emp2_endrad;
@@ -124,14 +124,14 @@ vec4 attackGlow(vec4 color, float distance, float bordMult) {
 	if (distance < outerBorder || (distance > innerPipBorder && color.a != 0.0) || distance > 1.0)
 		return color;
 
-	vec4 glowColor = vec4(1.0, 0.65, 0.0, 0.5);
+	vec4 col = glowColor;
 	if (distance > innerPipBorder) {
-		glowColor.a = 0.07 + 0.1 * smoothstep(0.0, 0.5, abs(cycle - 0.5));
-		return glowColor;
+		col.a = 0.07 + 0.1 * smoothstep(0.0, 0.5, abs(cycle - 0.5));
+		return col;
 	}
 	else {
-		glowColor.a = 0.1 + 0.6 * smoothstep(0.0, 0.5, abs(cycle - 0.5));
-		return mix(color, glowColor, glowColor.a);
+		col.a = 0.1 + 0.6 * smoothstep(0.0, 0.5, abs(cycle - 0.5));
+		return mix(color, col, col.a);
 	}
 }
 
@@ -141,7 +141,7 @@ void main() {
 
 	vec4 color = grid(distance, bordMult);
 
-	if (under_attack != 0.0)
+	if (glowColor.a != 0.0)
 		color = attackGlow(color, distance, bordMult);
 
 	if (color.a == 0.0)

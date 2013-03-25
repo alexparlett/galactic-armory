@@ -1067,7 +1067,7 @@ class PlanetWindow : ScriptedGuiHandler {
 		name.setText(obj.getName());
 
 		int ind = getPlanetIconIndex(pl.getPhysicalType());
-		planetIco.setSprites("planet_icons", ind, ind, ind);
+		planetIco.setSprites("planet_icons_new", ind, ind, ind);
 
 		pinImg.setPosition(pos2di(name.getPosition().x + getTextDimension(name.getText(), "stroked_subtitle").width + 7, 7));
 

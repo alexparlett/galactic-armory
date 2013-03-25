@@ -65,13 +65,13 @@ System: PowerVampire
 	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
 	Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
 	
-	Tags: Weapon, SpecWeapon, ECM
+	Tags: Weapon, SpecWeapon, ECM, Vamp
 	Tied To: BeamWeapons 5, EnergyPhysics 5
 	
 	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[35 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[35 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
 	Complexity: 1.8
 	
-	vPowVamp: Size * progress(50, 10, Level)
+	vPowVamp: Size * 30 * (2 - decay(pow(LEVEL_GAIN_CURVE,Level), 50))												//new vanilla formula, was Size * progress(50, 10, Level)
 	vDelay: (1) * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
 	vRange: (90 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
 	
@@ -103,7 +103,7 @@ System: MindSapper
 	Costs: Metals[30 * Size * pow(SUBS_COST_CRV, Level)], Electronics[90 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
 	Complexity: 4
 
-	vConDmg: Size * 10 * pow(LEVEL_GAIN_CURVE, Level)													//was Size * 15
+	vConDmg: 30 * Size * (2 - decay(pow(LEVEL_GAIN_CURVE, Level),50))											//new vanilla formula, was Size * 10 * pow(LEVEL_GAIN_CURVE, Level)													//was Size * 15
 	vDelay: (1) * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
 	vRange: (90 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
 

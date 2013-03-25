@@ -1,4 +1,4 @@
-Name: Galactic Armory 1.9
+Name: Galactic Armory 1.9.1b
 
 Authors:	Galactic Armory Mod Project
 
@@ -28,6 +28,8 @@ Authors:	Galactic Armory Mod Project
 			xilr - Testing
 			orzelek - Remnant AI Mod, testing
 			DwunkyPengy - Modelling, texturing, testing
+			
+			Additional planet textures based on textures created by Landon Lemmon: http://sites.google.com/site/mapsandsuch/home
 
 Derive from: base
 Mod ID: 3

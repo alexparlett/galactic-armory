@@ -1,256 +1,119 @@
 <?xml version="1.0"?>
-
 <personality>
+	<!-- Goes to war less often -->
+	<var id="ConsiderWarStrengthRatio" value="4"/>
+	<var id="ConsiderBribeStrengthRatio" value="1"/>
+	<var id="ConsiderObliterateStrengthRatio" value="8"/>
+	<!-- Gets less bored -->
+	<var id="BoredomFactor" value="1.01"/>
+	<var id="BoredomNoBribes" value="9"/>
+	<!-- Determines how much ships will be upscaled per level -->
+	<var id="ScalingCurve" value="1.3"/>
+	<!-- Race Description -->
+	<race name="Knight" desc="The species codenamed 'Knight' evolved in a strict, caste-based system. The highest caste is the warrior caste, but they also deal in arts, sciences and trading.
 	
-
-<!-- Goes to war less often -->
-	<var id="ConsiderWarStrengthRatio" value="4" />
+	War is seen as a contest, a sports of some sort, even between spacefaring empires. As such a high meaning is placed on fairness and honor in combat; the usage of weapons of mass destruction and weapons that bypass armor or shields is usually frowned upon.
 	
-<var id="ConsiderBribeStrengthRatio" value="1" />
-	
-<var id="ConsiderObliterateStrengthRatio" value="8" />
-
-	
-
-<!-- Gets less bored -->
-	
-<var id="BoredomFactor" value="1.01" />
-	
-<var id="BoredomNoBribes" value="9" />
-
-	
-
-<!-- Determines how much ships will be upscaled per level -->
-	
-<var id="ScalingCurve" value="1.3" />	
-	
-	
-
-<!-- More technologies to research and unlock -->
-	
-<list id="ResearchTechs" mode="append">
-		
-<li>BeamWeapons</li>
-		
-<li>Missiles</li>
-		
-<li>Shields</li>
-		
-<li>Computers</li>
-		
-<li>WarpPhysics</li>
-		
-<li>Sensors</li>
-	
-</list>
-
-	
-<list id="LinkTechs">
-		
-<li>Armor</li>
-		
-<li>Missiles</li>
-		
-<li>MegaConstruction</li>
-		
-<li>Chemistry</li>
-		
-<li>Biology</li>
-		
-<li>Computers</li>
-		
-<li>Sociology</li>
-		
-<li>BeamWeapons</li>
-		
-<li>Sensors</li>
-		
-<li>WarpPhysics</li>
-		
-<li>Shields</li>
-	
-</list>
-
-	
-<list id="LinkFromTechs">
-		
-<li>ProjWeapons</li>
-		
-<li>ProjWeapons</li>
-		
-<li>ShipConstruction</li>
-		
-<li>Science</li>
-		
-<li>Science</li>
-		
-<li>Biology</li>
-		
-<li>Biology</li>
-		
-<li>EnergyPhysics</li>
-		
-<li>EnergyPhysics</li>
-		
-<li>ShipSystems</li>
-		
-<li>EnergyPhysics</li>
-	
-</list>
-	
-	
-
-<list id="Traits">
-<li>highmetabolism</li>
-<li>dextrous</li>		
-<li>slavery</li>		
-<li>eusocial</li>		
-<li>economical</li>			
-<li>bustling</li>		
-<li>colonialism</li>		
-<li>violent_his</li>		
-<li>entrenchment</li>		
-<li>natural_research</li>			
-<li>planet_defense</li>		
-<li>shieldtech</li>		
-<li>goodbiology</li>		
-<li>randtech</li>			
-<li>lightweight</li>		
-<li>fine_tuned</li>		
-<li>efficient_energy</li>		
-<li>super_rail</li>		
-<li>defensive_targetting</li>		
-<li>ai_help</li>		
-</list>	
-
-<!-- Layouts -->	
-
-<layouts>
-		
-<obsolete name="Repair Drone C"/>
-		
-<obsolete name="Repair Vessel C"/>
-		
-<obsolete name="Scout C"/>
-		
-
-<!-- Larger Colony Ship -->
-		
-<default name="Large Colony Ship" file="Layouts/KnightErudite/Large Colony Ship" goal="Expand" autoscale="false" replaces="Colony Ship C" replaces="Colony Ship" />
-
-		
-
-<!-- Ship Class 1: Fighter and Bomber craft -->
-		
-<default name="SC1 Dagger Class Fighter" file="Layouts/KnightErudite/SC1 Dagger Class Fighter" goal="Fighter" autoscale="false" />
-		
-<default name="SC1 Arrow Class Bomber" file="Layouts/KnightErudite/SC1 Arrow Class Bomber" goal="Fighter" autoscale="false" />
-		
-<design name="SC1 Bolt Class Assault Craft" file="Layouts/KnightErudite/SC1 Bolt Class Assault Craft" goal="Fighter" autoscale="false" />
-		
-<design name="SC1 Hammer Class Heavy Bomber" file="Layouts/KnightErudite/SC1 Hammer Class Heavy Bomber" goal="Fighter" autoscale="false" />
-		
-<design name="SC1 Hatchet Class Fighter" file="Layouts/KnightErudite/SC1 Hatchet Class Fighter" goal="Fighter" autoscale="false" />
-		
-<design name="SC1 Boomerang Class Bomber" file="Layouts/KnightErudite/Boomerang Class Bomber" goal="Fighter" autoscale="false" />
-
-		
-
-<!-- Ship Class 2: Corvettes -->
-		
-<default name="SC2 Shortsword Class Corvette" file="Layouts/KnightErudite/SC2 Shortsword Class Corvette" goal="Combat"/>
-		
-		
-<design name="SC2 Stiletto Class Corvette" file="Layouts/KnightErudite/SC2 Stiletto Class Corvette" goal="Combat" replaces="SC2 Shortsword Class Corvette" />
-<design name="SC2 Falchion Class Corvette" file="Layouts/KnightErudite/SC2 Falchion Class Corvette" goal="Combat" replaces="SC2 Stiletto Class Corvette" />
-<design name="SC2 Rondel Class Corvette" file="Layouts/KnightErudite/SC2 Rondel Class Corvette" goal="Combat" replaces="SC2 Falchion Class Corvette" />
-
-<!-- Ship Class 3: Frigates -->
-		
-<default name="SC3 Broadsword Class Frigate" file="Layouts/KnightErudite/SC3 Broadsword Class Frigate" goal="Leader"/>
-		
-
-<default name="SC3 Crossbow Class Flak Frigate" file="Layouts/KnightErudite/SC3 Crossbow Class Flak Frigate" goal="CombatSpecialized"/>
-		
-		
-<design name="SC3 Francesca Class Flak Frigate" file="Layouts/KnightErudite/"SC3 Francesca Class Flak Frigate" goal="CombatSpecialized" replaces="SC3 Crossbow Class Flak Frigate" />
-<design name="SC3 Arbalest Class Flak Frigate" file="Layouts/KnightErudite/SC3 Arbalest Class Flak Frigate" goal="CombatSpecialized" replaces="SC3 Francesca Class Flak Frigate" />
-<design name="SC3 Arquebus Class Flak Frigate" file="Layouts/KnightErudite/SC3 Arquebus Class Flak Frigate" goal="CombatSpecialized" replaces="SC3 Arbalest Class Flak Frigate" />
-
-<!-- Ship Class 4: Destroyers -->
-		
-<design name="SC4 Longsword Class Destroyer" file="Layouts/KnightErudite/SC4 Longsword Class Destroyer" goal="Combat"/>
-		
-<design name="SC4 Saber Class Heavy Destroyer" file="Layouts/KnightErudite/SC4 Saber Class Heavy Destroyer" goal="Leader"/>
-		
-		
-
-<!-- Ship Class 5: Cruisers -->
-		
-<design name="SC5 Scimitar Class Cruiser" file="Layouts/KnightErudite/SC5 Scimitar Class Cruiser" goal="CombatSpecialized"/>
-		
-<design name="SC5 Axe Class Heavy Cruiser" file="Layouts/KnightErudite/SC5 Axe Class Heavy Cruiser" goal="Leader" minTime="60"/>
-		
-		
-
-<!-- Ship Class 6: Battlecruisers and Dreadnoughts -->
-		
-<design name="SC6 Katana Class Battlecruiser" file="Layouts/KnightErudite/SC6 Katana Class Battlecruiser" goal="Combat" minTime="60"/>
-		
-		
-<design name="SC6 Tachi Class Battlecruiser" file="Layouts/KnightErudite/"SC6 Tachi Class Battlecruiser" goal="Combat" minTime="90" replaces="SC6 Katana Class Battlecruiser" />
-<design name="SC6 Kodachi Class Battlecruiser" file="Layouts/KnightErudite/SC6 Kodachi Class Battlecruiser" goal="Combat" minTime="120" replaces="SC6 Tachi Class Battlecruiser" />
-
-
-<!-- Ship Class 7: Battleships and Carriers -->
-		
-<design name="SC7 Claymore Class Battleship" file="Layouts/KnightErudite/SC7 Claymore Class Battleship" goal="Leader" />
-		
-
-<design name="SC7 Ballista Class Carrier" file="Layouts/KnightErudite/SC7 Ballista Class Carrier" goal="Carrier" strikecraft="SC1 Bolt Class Assault Craft" />
-			
-		
-<design name="SC7 Catapult Class Carrier" file="Layouts/KnightErudite/SC7 Catapult Class Carrier" goal="Carrier" strikecraft="SC1 Hammer Class Heavy Bomber" minTime="30" replaces="SC7 Ballista Class Carrier" scalefrom="15" />
-			
-		
-<design name="SC7 Trebuchet Class Carrier" file="Layouts/KnightErudite/SC7 Catapult Class Carrier" goal="Carrier" strikecraft="SC1 Boomerang Class Bomber" minTime="75" replaces="SC7 Catapult Class Carrier" scalefrom="20" />
-			
-		
-
-<!-- Ship Class 8: Super Battleships -->
-		
-<design name="SC8 Excalibur Class Super Battleship" file="Layouts/KnightErudite/SC8 Excalibur Class Super Battleship" goal="Leader" minTime="120" />
-		
-		
-
-<!-- Ship Class 9: Tanker / Ammo  -->
-
-<default name="SC9 Troika Class Tanker" file="Layouts/KnightErudite/SC9 Troika Class Tanker" goal="Tanker"/>
-		
-		
-<design name="SC9 Ratha Class Tanker" file="Layouts/KnightErudite/SC9 Ratha Class Tanker" goal="Tanker" replaces="SC9 Troika Class Tanker" />
-<design name="SC9 Cabriolet Class Tanker" file="Layouts/KnightErudite/SC9 Cabriolet Class Tanker" goal="Tanker" replaces="SC9 Ratha Class Tanker" />
-<design name="SC9 Four-in-the-Hand Class Tanker" file="Layouts/KnightErudite/SC9 Four-in-the-Hand Class Tanker" goal="Tanker" replaces="SC9 Cabriolet Class Tanker" />
-
-<!-- Ship Class X: Experimental Megaships and Superweapons -->
-		
-<design name="SCX Zweihander Class Planetkiller" file="Layouts/KnightErudite/SCX Zweihander Class Planetkiller" goal="Leader" minTime="180" />		
-		
-		
-
-<!-- Orbital Defenses -->
-		
-<default name="Military Outpost" file="Layouts/Default/Military Outpost" goal="StaticDefense" minTime="30" />
-		
-		
-
+	The ships of this species are well-rounded designs equipped with different combinations of ballistic, energy and missile weapons as well as different types of armor and shielding. A tendency to stick to rather conventional technologies has been observed."/>
+	<!-- More technologies to research and unlock -->
+	<list id="ResearchTechs" mode="append">
+		<li>BeamWeapons</li>
+		<li>Missiles</li>
+		<li>Shields</li>
+		<li>Computers</li>
+		<li>WarpPhysics</li>
+		<li>Sensors</li>
+	</list>
+	<list id="LinkTechs">
+		<li>Armor</li>
+		<li>Missiles</li>
+		<li>MegaConstruction</li>
+		<li>Chemistry</li>
+		<li>Biology</li>
+		<li>Computers</li>
+		<li>Sociology</li>
+		<li>BeamWeapons</li>
+		<li>Sensors</li>
+		<li>WarpPhysics</li>
+		<li>Shields</li>
+	</list>
+	<list id="LinkFromTechs">
+		<li>ProjWeapons</li>
+		<li>ProjWeapons</li>
+		<li>ShipConstruction</li>
+		<li>Science</li>
+		<li>Science</li>
+		<li>Biology</li>
+		<li>Biology</li>
+		<li>EnergyPhysics</li>
+		<li>EnergyPhysics</li>
+		<li>ShipSystems</li>
+		<li>EnergyPhysics</li>
+	</list>
+	<list id="Traits">
+		<li>economical</li>
+		<li>bustling</li>
+		<li>colonialism</li>
+		<li>natural_research</li>
+		<li>goodbiology</li>
+		<li>randtech</li>
+		<li>developed</li>		
+	</list>
+	<!-- Layouts -->
+	<layouts>
+		<!-- Larger Colony Ship -->
+		<default name="Large Colony Ship" file="Layouts/KnightErudite/Large Colony Ship" goal="Expand" autoscale="false" replaces="Colony Ship" />
+		<!-- Ship Class 1: Fighters -->
+		<default name="SC1 Dagger Class Fighter" file="Layouts/KnightErudite/SC1 Dagger Class Fighter" goal="Fighter" autoscale="false"/>
+		<design name="SC1 Bolt Class Assault Craft" file="Layouts/KnightErudite/SC1 Bolt Class Assault Craft" replaces="SC1 Dagger Class Fighter" goal="Fighter" autoscale="false"/>
+		<design name="SC1 Lance Class Heavy Fighter" file="Layouts/KnightErudite/SC1 Lance Class Heavy Fighter" replaces="SC1 Bolt Class Assault Craft" goal="Fighter" autoscale="false"/>
+		<!-- Ship Class 1: Bombers -->
+		<default name="SC1 Arrow Class Bomber" file="Layouts/KnightErudite/SC1 Arrow Class Bomber" goal="Fighter" autoscale="false"/>
+		<design name="SC1 Charger Class Bomber" file="Layouts/KnightErudite/SC1 Charger Class Bomber" replaces="SC1 Arrow Class Bomber" goal="Fighter" autoscale="false"/>
+		<design name="SC1 Hammer Class Heavy Bomber" file="Layouts/KnightErudite/SC1 Hammer Class Heavy Bomber" replaces="SC1 Charger Class Bomber" goal="Fighter" autoscale="false"/>
+		<design name="SC1 Boomerang Class Bomber" file="Layouts/KnightErudite/Boomerang Class Bomber" goal="Fighter" replaces="SC1 Hammer Class Heavy Bomber" autoscale="false"/>
+		<!-- Ship Class 2: Corvettes -->
+		<default name="SC2 Shortsword Class Corvette" file="Layouts/KnightErudite/SC2 Shortsword Class Corvette" goal="Combat"/>
+		<design name="SC2 Stiletto Class Corvette" file="Layouts/KnightErudite/SC2 Stiletto Class Corvette" goal="Combat" replaces="SC2 Shortsword Class Corvette"/>
+		<design name="SC2 Falchion Class Corvette" file="Layouts/KnightErudite/SC2 Falchion Class Corvette" goal="Combat" replaces="SC2 Stiletto Class Corvette"/>
+		<design name="SC2 Rondel Class Corvette" file="Layouts/KnightErudite/SC2 Rondel Class Corvette" goal="Combat" replaces="SC2 Falchion Class Corvette"/>
+		<!-- Ship Class 3: Frigates -->
+		<default name="SC3 Broadsword Class Frigate" file="Layouts/KnightErudite/SC3 Broadsword Class Frigate" goal="Leader"/>
+		<default name="SC3 Crossbow Class Flak Frigate" file="Layouts/KnightErudite/SC3 Crossbow Class Flak Frigate" goal="CombatSpecialized"/>
+		<design name="SC3 Francesca Class Flak Frigate" file="Layouts/KnightErudite/SC3 Francesca Class Flak Frigate" goal="CombatSpecialized" replaces="SC3 Crossbow Class Flak Frigate" />
+		<design name="SC3 Arbalest Class Flak Frigate" file="Layouts/KnightErudite/SC3 Arbalest Class Flak Frigate" goal="CombatSpecialized" replaces="SC3 Francesca Class Flak Frigate"/>
+		<design name="SC3 Arquebus Class Flak Frigate" file="Layouts/KnightErudite/SC3 Arquebus Class Flak Frigate" goal="CombatSpecialized" replaces="SC3 Arbalest Class Flak Frigate"/>
+		<!-- Ship Class 4: Destroyers -->
+		<design name="SC4 Longsword Class Destroyer" file="Layouts/KnightErudite/SC4 Longsword Class Destroyer" goal="Combat"/>
+		<design name="SC4 Saber Class Heavy Destroyer" file="Layouts/KnightErudite/SC4 Saber Class Heavy Destroyer" goal="Leader"/>
+		<!-- Ship Class 5: Cruisers -->
+		<design name="SC5 Scimitar Class Cruiser" file="Layouts/KnightErudite/SC5 Scimitar Class Cruiser" goal="CombatSpecialized"/>
+		<design name="SC5 Axe Class Heavy Cruiser" file="Layouts/KnightErudite/SC5 Axe Class Heavy Cruiser" goal="Leader" minTime="60"/>
+		<!-- Ship Class 6: Battlecruisers and Dreadnoughts -->
+		<design name="SC6 Katana Class Battlecruiser" file="Layouts/KnightErudite/SC6 Katana Class Battlecruiser" goal="Combat" minTime="60"/>
+		<design name="SC6 Tachi Class Battlecruiser" file="Layouts/KnightErudite/SC6 Tachi Class Battlecruiser" goal="Combat" minTime="90" replaces="SC6 Katana Class Battlecruiser" />
+		<design name="SC6 Kodachi Class Battlecruiser" file="Layouts/KnightErudite/SC6 Kodachi Class Battlecruiser" goal="Combat" minTime="120" replaces="SC6 Tachi Class Battlecruiser"/>
+		<!-- Ship Class 7: Battleships and Carriers -->
+		<design name="SC7 Claymore Class Battleship" file="Layouts/KnightErudite/SC7 Claymore Class Battleship" goal="Leader"/>
+		<design name="SC7 Ballista Class Carrier" file="Layouts/KnightErudite/SC7 Ballista Class Carrier" goal="Carrier" strikecraft="SC1 Bolt Class Assault Craft"/>
+		<design name="SC7 Catapult Class Carrier" file="Layouts/KnightErudite/SC7 Catapult Class Carrier" goal="Carrier" strikecraft="SC1 Hammer Class Heavy Bomber" minTime="30" replaces="SC7 Ballista Class Carrier" scalefrom="15"/>
+		<design name="SC7 Trebuchet Class Carrier" file="Layouts/KnightErudite/SC7 Catapult Class Carrier" goal="Carrier" strikecraft="SC1 Boomerang Class Bomber" minTime="75" replaces="SC7 Catapult Class Carrier" scalefrom="20"/>
+		<!-- Ship Class 8: Super Battleships -->
+		<design name="SC8 Excalibur Class Super Battleship" file="Layouts/KnightErudite/SC8 Excalibur Class Super Battleship" goal="Leader" minTime="120"/>
+		<!-- Ship Class 9: Tanker / Ammo  -->
+		<default name="SC9 Troika Class Tanker" file="Layouts/KnightErudite/SC9 Troika Class Tanker" goal="Tanker"/>
+		<design name="SC9 Ratha Class Tanker" file="Layouts/KnightErudite/SC9 Ratha Class Tanker" goal="Tanker" replaces="SC9 Troika Class Tanker"/>
+		<design name="SC9 Cabriolet Class Tanker" file="Layouts/KnightErudite/SC9 Cabriolet Class Tanker" goal="Tanker" replaces="SC9 Ratha Class Tanker"/>
+		<design name="SC9 Four-in-the-Hand Class Tanker" file="Layouts/KnightErudite/SC9 Four-in-the-Hand Class Tanker" goal="Tanker" replaces="SC9 Cabriolet Class Tanker"/>
+		<!-- Ship Class X: Experimental Megaships and Superweapons -->
+		<design name="SCX Zweihander Class Planetkiller" file="Layouts/KnightErudite/SCX Zweihander Class Planetkiller" goal="Leader" minTime="180"/>
+		<!-- Orbital Defenses -->
+		<default name="Military Outpost" file="Layouts/Default/Military Outpost" goal="StaticDefense" minTime="30"/>
 		<!-- Industrial Vessels -->
-		<design name="Orbital Electronics Factory" file="Layouts/Default/Orbital Electronics Factory" goal="Miner" autoscale="false"  />
-		<design name="Orbital Advanced Parts Factory" file="Layouts/Default/Orbital Advanced Parts Factory" goal="Miner" autoscale="false"  />		
-		<design name="Orbital Metal Factory" file="Layouts/Default/Orbital Metal Factory" goal="Miner" autoscale="false" />
-	
+		<design name="Orbital Electronics Factory" file="Layouts/Default/Orbital Electronics Factory" goal="Miner" autoscale="false"/>
+		<design name="Orbital Advanced Parts Factory" file="Layouts/Default/Orbital Advanced Parts Factory" goal="Miner" autoscale="false"/>
+		<design name="Orbital Metal Factory" file="Layouts/Default/Orbital Metal Factory" goal="Miner" autoscale="false"/>
 		<!-- Ringworld -->
-		<design name="Ringworld" file="Layouts/Default/Ringworld" goal="Ringworld" autoscale="false" />
-</layouts>
-
+		<design name="Ringworld" file="Layouts/Default/Ringworld" goal="Ringworld" autoscale="false"/>
+	</layouts>
 </personality>

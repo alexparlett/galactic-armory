@@ -193,8 +193,8 @@ class EmpireWindow : ScriptedGuiHandler {
 			// Empire settings
 			@autoParkCheck = GuiCheckBox(false, recti(pos2di(120, 34), dim2di(220, 20)), localize("#EM_ParkText"), topPanel);
 			@autoGovCheck = GuiCheckBox(false, recti(pos2di(120, 56), dim2di(220, 20)), localize("#EM_GovText"), topPanel);
-			@governorCaption = GuiStaticText(recti(pos2di(120, 78), dim2di(110, 20)), localize("#EM_DefaultGov"), false, false, false, topPanel);
-			@governorTypes = GuiComboBox(recti(pos2di(240, 78), dim2di(150, 20)), topPanel);
+			@governorCaption = GuiStaticText(recti(pos2di(120, 78), dim2di(120, 20)), localize("#EM_DefaultGov"), false, false, false, topPanel);
+			@governorTypes = GuiComboBox(recti(pos2di(250, 78), dim2di(140, 20)), topPanel);
 
 			@civilActsButton = Button(recti(pos2di(4, 110), dim2di(160, 18)), localize("#EM_CivilActs"), topPanel);
 			@fleetsButton = Button(recti(pos2di(168, 110), dim2di(160, 18)), localize("#EM_Fleets"), topPanel);
@@ -484,7 +484,6 @@ int PANEL_WIDTH = 342;
 int PANEL_HEIGHT = 70;
 int PANEL_PADDING = 6;
 
-const string@ strPeaceTreaty = "peace";
 class DiplomacyTab : EmpireTab {
 	DiplomacyPanel@[] panels;
 	GuiPanel@ panel;
@@ -621,7 +620,7 @@ class DiplomacyPanel : GuiCallback {
 	EmpireImage@ img;
 	const Empire@ emp;
 	int guiID;
-	bool peace;
+	bool alliance;
 
 	GuiStaticText@ empName;
 	GuiStaticText@ playerName;
@@ -633,7 +632,7 @@ class DiplomacyPanel : GuiCallback {
 
 	DiplomacyPanel(const Empire@ Emp, GuiElement@ parent) {
 		@emp = Emp;
-		peace = false;
+		alliance = false;
 
 		@panel = GuiSkinnable(getSkinnable("EmpirePanel"), recti(0, 0, PANEL_WIDTH, PANEL_HEIGHT), parent);
 		@img = EmpireImage(emp, recti(4, 20, 66, 66), panel);
@@ -757,7 +756,7 @@ class DiplomacyPanel : GuiCallback {
 				clearTreaties();
 			}
 
-			peace = getActiveEmpire().hasTreatyTag(emp, strPeaceTreaty);
+			alliance = getActiveEmpire().isAllied(emp);
 
 			// Update status
 			if (getActiveEmpire().isEnemy(emp)) {
@@ -769,7 +768,7 @@ class DiplomacyPanel : GuiCallback {
 			else {
 				statusIcon.setVisible(false);
 
-				if (peace)
+				if (alliance)
 					panel.setColor(Color(0xffc4ff8f));
 				else
 					panel.setColor(Color(0xffffffff));

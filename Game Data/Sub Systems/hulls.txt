@@ -420,7 +420,7 @@ System: HeliocideHull
 
 	Provides: ShieldEmitters with Amount[2]
 	
-	Hints: Alpha[vHeliocideDamage], Power[-1 * vPowCost], DPS[vHeliocideDamage/ vHeliocideDelay], Local/Range[vHeliocideRange], Local/DMGperShot[vHeliocideDamage], Local/HitsperShot[4], Local/He3perShot[vPowCost], Local/Duration[1], Local/Delay[vHeliocideDelay], Local/DamageReduction[Scale], Local/HullSoak[20], ArmorPoints[2], ShieldEmitters[2], ExternalMounts[3], Local/HullHP[Durability]
+	Hints: Alpha[vHeliocideDamage], Power[-1 * vPowCost], DPS[vHeliocideDamage/ vHeliocideDelay], Local/Range[vHeliocideRange], Local/DMGperShot[vHeliocideDamage], Local/HitsperShot[4], Local/Duration[1], Local/Delay[vHeliocideDelay], Local/DamageReduction[Scale], Local/HullSoak[20], ArmorPoints[2], ShieldEmitters[2], ExternalMounts[3], Local/HullHP[Durability], H3Usage[-1 * (vPowCost/100)]
 	
 
 System: StationHull

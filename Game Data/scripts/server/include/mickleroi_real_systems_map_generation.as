@@ -230,7 +230,7 @@ Planet@ RS_setupStandardHomeworld(System@ sys, Empire@ emp) {
 	
 	//Uncomment to force the homeworld to a specific type
 	//plDesc.setPlanetType( getPlanetTypeID( "rock5" ));
-	plDesc.setPlanetType(getPlanetTypeID("rock"+rand(1, 7)));
+	plDesc.setPlanetType(getPlanetTypeID("rock"+rand(1, 16)));
 	
 	if(makeOddities) {
 		int belts = 0;
@@ -300,13 +300,7 @@ Planet@ RS_setupStandardHomeworld(System@ sys, Empire@ emp) {
 	uint rndm = 0;
 	uint iterat = 0;
 
-	if (pl.getPhysicalType() == "rock1" ||
-			 pl.getPhysicalType() == "rock2" ||
-			 pl.getPhysicalType() == "rock3" ||
-			 pl.getPhysicalType() == "rock4" ||
-			 pl.getPhysicalType() == "rock5" ||
-			 pl.getPhysicalType() == "rock6" ||
-			 pl.getPhysicalType() == "rock7") 
+	if (pl.getPhysicalType().beginsWith("rock")) 
 		{
 		while(iterat < moonhab) {
 			rndm = rand(2, 5);
@@ -453,15 +447,7 @@ void RS_createSecondaryPlanet(System@ sys, Empire@ emp) {
 	// Add moons
 	uint moons = 0;	
 	uint moonhab = 0;
-	if (planet.getPhysicalType() == "gas1" ||
-		planet.getPhysicalType() == "gas2" ||
-		planet.getPhysicalType() == "gas3" ||
-		planet.getPhysicalType() == "gas4" ||
-		planet.getPhysicalType() == "gas5" ||
-		planet.getPhysicalType() == "gas6" ||
-		planet.getPhysicalType() == "gas7" ||
-		planet.getPhysicalType() == "gas8" ||
-		planet.getPhysicalType() == "gas9") 
+	if (planet.getPhysicalType().beginsWith("gas")) 
 	{
 		moons = 1;
 		moonhab = 1;
@@ -492,15 +478,7 @@ void RS_createSecondaryPlanet(System@ sys, Empire@ emp) {
 	uint rndm = 0;
 	uint iterat = 0;
 
-	if (planet.getPhysicalType() == "gas1" ||
-		planet.getPhysicalType() == "gas2" ||
-		planet.getPhysicalType() == "gas3" ||
-		planet.getPhysicalType() == "gas4" ||
-		planet.getPhysicalType() == "gas5" ||
-		planet.getPhysicalType() == "gas6" ||
-		planet.getPhysicalType() == "gas7" ||
-		planet.getPhysicalType() == "gas8" ||
-		planet.getPhysicalType() == "gas9") 
+	if (planet.getPhysicalType().beginsWith("gas")) 
 		{
 		//gas giants always have habitable moons
 		if(moonhab < 1){
@@ -512,8 +490,8 @@ void RS_createSecondaryPlanet(System@ sys, Empire@ emp) {
 			iterat++;
 		}
 	}
-	else if (planet.getPhysicalType() == "lava" ||
-			 planet.getPhysicalType() == "ice") 
+	else if (planet.getPhysicalType().beginsWith("lava") ||
+			 planet.getPhysicalType().beginsWith("ice")) 
 		{
 		while(iterat < moonhab) {
 			rndm = rand(1, 3);
@@ -521,20 +499,8 @@ void RS_createSecondaryPlanet(System@ sys, Empire@ emp) {
 			iterat++;
 		}
 	}
-	else if (planet.getPhysicalType() == "desert1" ||
-			 planet.getPhysicalType() == "desert2" ||
-			 planet.getPhysicalType() == "desert3" ||
-			 planet.getPhysicalType() == "desert4" ||
-			 planet.getPhysicalType() == "desert5" ||
-			 planet.getPhysicalType() == "desert6" ||
-			 planet.getPhysicalType() == "desert7" ||
-			 planet.getPhysicalType() == "rock1" ||
-			 planet.getPhysicalType() == "rock2" ||
-			 planet.getPhysicalType() == "rock3" ||
-			 planet.getPhysicalType() == "rock4" ||
-			 planet.getPhysicalType() == "rock5" ||
-			 planet.getPhysicalType() == "rock6" ||
-			 planet.getPhysicalType() == "rock7") 
+	else if (planet.getPhysicalType().beginsWith("desert") ||
+			 planet.getPhysicalType().beginsWith("rock")) 
 		{
 		while(iterat < moonhab) {
 			rndm = rand(2, 5);
@@ -547,47 +513,24 @@ void RS_createSecondaryPlanet(System@ sys, Empire@ emp) {
 	uint strucsp = 1;
 	//uint strucsp = (RS_pctBetween(pRad, RS_minPlanetRadius, RS_maxPlanetRadius) * 0.5f + 0.5f) * RS_maxStructSpace;
 
-	if (planet.getPhysicalType() == "gas1" ||
-		planet.getPhysicalType() == "gas2" ||
-		planet.getPhysicalType() == "gas3" ||
-		planet.getPhysicalType() == "gas4" ||
-		planet.getPhysicalType() == "gas5" ||
-		planet.getPhysicalType() == "gas6" ||
-		planet.getPhysicalType() == "gas7" ||
-		planet.getPhysicalType() == "gas8" ||
-		planet.getPhysicalType() == "gas9") 
+	if (planet.getPhysicalType().beginsWith("gas")) 
 	{
 		//gas giants only have habitable moons
 		strucsp = moonspc;
 	}
-	else if (planet.getPhysicalType() == "lava") 
+	else if (planet.getPhysicalType().beginsWith("lava")) 
 	{
 		strucsp = rand(4, 7) + moonspc;
 	}
-	else if (planet.getPhysicalType() == "ice") 
+	else if (planet.getPhysicalType().beginsWith("ice")) 
 	{
 		strucsp = rand(5, 9) + moonspc;
 	}
-	else if (planet.getPhysicalType() == "desert1" ||
-			 planet.getPhysicalType() == "desert2" ||
-			 planet.getPhysicalType() == "desert3" ||
-			 planet.getPhysicalType() == "desert4" ||
-			 planet.getPhysicalType() == "desert5" ||
-			 planet.getPhysicalType() == "desert6" ||
-			 planet.getPhysicalType() == "desert7" ||
-			 planet.getPhysicalType() == "desert8" ||
-			 planet.getPhysicalType() == "desert9" ||
-			 planet.getPhysicalType() == "desert10") 
+	else if (planet.getPhysicalType().beginsWith("desert")) 
 	{
 		strucsp = rand(6, 11) + moonspc;
 	}
-	else if (planet.getPhysicalType() == "rock1" ||
-			 planet.getPhysicalType() == "rock2" ||
-			 planet.getPhysicalType() == "rock3" ||
-			 planet.getPhysicalType() == "rock4" ||
-			 planet.getPhysicalType() == "rock5" ||
-			 planet.getPhysicalType() == "rock6" ||
-			 planet.getPhysicalType() == "rock7") 
+	else if (planet.getPhysicalType().beginsWith("rock")) 
 	{
 		//random amount of strucspace between 0 and RS_maxStructSpaceRock
 		//lower amount more likely
@@ -629,15 +572,7 @@ void RS_createSecondaryPlanet(System@ sys, Empire@ emp) {
 	ore.max = 50000000.f;
 	ore.val = 50000000.f;
 	
-	if (planet.getPhysicalType() == "gas1" ||
-		planet.getPhysicalType() == "gas2" ||
-		planet.getPhysicalType() == "gas3" ||
-		planet.getPhysicalType() == "gas4" ||
-		planet.getPhysicalType() == "gas5" ||
-		planet.getPhysicalType() == "gas6" ||
-		planet.getPhysicalType() == "gas7" ||
-		planet.getPhysicalType() == "gas8" ||
-		planet.getPhysicalType() == "gas9") 
+	if (planet.getPhysicalType().beginsWith("gas")) 
 	{
 		State@ h3 = obj.getState(strH3);
 		h3.max = 50000000.f;
@@ -695,9 +630,9 @@ Planet@ RS_makeStandardPlanet(System@ sys, uint plNum, uint plCount) {
 
 		if (tp < 0.15f)
 			type = getRandomType(GasTypes);
-		else if (tp < 0.2f)
+		else if (temp > 30000.f)
 			type = getRandomType(LavaTypes);
-		else if (temp > 19000.f)
+		else if (temp > 17000.f)
 			type = getRandomType(WarmTypes);
 		else if (temp > 5000.f)
 			type = getRandomType(NormalTypes);
@@ -739,15 +674,7 @@ Planet@ RS_makeStandardPlanet(System@ sys, uint plNum, uint plCount) {
 	ore.max = pVol * 6000.f;
 	ore.val = ore.max * (0.5f + randomf(0.5f));
 	
-	if (pl.getPhysicalType() == "gas1" ||
-		pl.getPhysicalType() == "gas2" ||
-		pl.getPhysicalType() == "gas3" ||
-		pl.getPhysicalType() == "gas4" ||
-		pl.getPhysicalType() == "gas5" ||
-		pl.getPhysicalType() == "gas6" ||
-		pl.getPhysicalType() == "gas7" ||
-		pl.getPhysicalType() == "gas8" ||
-		pl.getPhysicalType() == "gas9") 
+	if (pl.getPhysicalType().beginsWith("gas")) 
 	{
 		State@ h3 = planet.getState(strH3);
 		h3.max = starDesc.Temperature * randomf(100000,200000);
@@ -766,15 +693,7 @@ Planet@ RS_makeStandardPlanet(System@ sys, uint plNum, uint plCount) {
 	// Add moons
 	uint moons = 0;	
 	uint moonhab = 0;
-	if (pl.getPhysicalType() == "gas1" ||
-		pl.getPhysicalType() == "gas2" ||
-		pl.getPhysicalType() == "gas3" ||
-		pl.getPhysicalType() == "gas4" ||
-		pl.getPhysicalType() == "gas5" ||
-		pl.getPhysicalType() == "gas6" ||
-		pl.getPhysicalType() == "gas7" ||
-		pl.getPhysicalType() == "gas8" ||
-		pl.getPhysicalType() == "gas9") 
+	if (pl.getPhysicalType().beginsWith("gas")) 
 	{
 		moons = 1;
 		moonhab = 1;
@@ -805,15 +724,7 @@ Planet@ RS_makeStandardPlanet(System@ sys, uint plNum, uint plCount) {
 	uint rndm = 0;
 	uint iterat = 0;
 
-	if (pl.getPhysicalType() == "gas1" ||
-		pl.getPhysicalType() == "gas2" ||
-		pl.getPhysicalType() == "gas3" ||
-		pl.getPhysicalType() == "gas4" ||
-		pl.getPhysicalType() == "gas5" ||
-		pl.getPhysicalType() == "gas6" ||
-		pl.getPhysicalType() == "gas7" ||
-		pl.getPhysicalType() == "gas8" ||
-		pl.getPhysicalType() == "gas9") 
+	if (pl.getPhysicalType().beginsWith("gas")) 
 		{
 		//gas giants always have habitable moons
 		if(moonhab < 1){
@@ -825,8 +736,8 @@ Planet@ RS_makeStandardPlanet(System@ sys, uint plNum, uint plCount) {
 			iterat++;
 		}
 	}
-	else if (pl.getPhysicalType() == "lava" ||
-			 pl.getPhysicalType() == "ice") 
+	else if (pl.getPhysicalType().beginsWith("lava") ||
+			 pl.getPhysicalType().beginsWith("ice")) 
 		{
 		while(iterat < moonhab) {
 			rndm = rand(1, 3);
@@ -834,20 +745,8 @@ Planet@ RS_makeStandardPlanet(System@ sys, uint plNum, uint plCount) {
 			iterat++;
 		}
 	}
-	else if (pl.getPhysicalType() == "desert1" ||
-			 pl.getPhysicalType() == "desert2" ||
-			 pl.getPhysicalType() == "desert3" ||
-			 pl.getPhysicalType() == "desert4" ||
-			 pl.getPhysicalType() == "desert5" ||
-			 pl.getPhysicalType() == "desert6" ||
-			 pl.getPhysicalType() == "desert7" ||
-			 pl.getPhysicalType() == "rock1" ||
-			 pl.getPhysicalType() == "rock2" ||
-			 pl.getPhysicalType() == "rock3" ||
-			 pl.getPhysicalType() == "rock4" ||
-			 pl.getPhysicalType() == "rock5" ||
-			 pl.getPhysicalType() == "rock6" ||
-			 pl.getPhysicalType() == "rock7") 
+	else if (pl.getPhysicalType().beginsWith("desert") ||
+			 pl.getPhysicalType().beginsWith("rock")) 
 		{
 		while(iterat < moonhab) {
 			rndm = rand(2, 5);
@@ -860,50 +759,27 @@ Planet@ RS_makeStandardPlanet(System@ sys, uint plNum, uint plCount) {
 	uint strucsp = 1;
 	//uint strucsp = (RS_pctBetween(pRad, RS_minPlanetRadius, RS_maxPlanetRadius) * 0.5f + 0.5f) * RS_maxStructSpace;
 
-	if (pl.getPhysicalType() == "gas1" ||
-		pl.getPhysicalType() == "gas2" ||
-		pl.getPhysicalType() == "gas3" ||
-		pl.getPhysicalType() == "gas4" ||
-		pl.getPhysicalType() == "gas5" ||
-		pl.getPhysicalType() == "gas6" ||
-		pl.getPhysicalType() == "gas7" ||
-		pl.getPhysicalType() == "gas8" ||
-		pl.getPhysicalType() == "gas9") 
+	if (pl.getPhysicalType().beginsWith("gas")) 
 	{
 		//gas giants only have habitable moons
 		strucsp = moonspc;
 	}
-	else if (pl.getPhysicalType() == "lava") 
+	else if (pl.getPhysicalType().beginsWith("lava")) 
 	{
 		strucsp = rand(4, 7) + moonspc;
 	}
-	else if (pl.getPhysicalType() == "ice") 
+	else if (pl.getPhysicalType().beginsWith("ice")) 
 	{
 		//strucsp = (strucsp / 2);
 		//strucsp = (strucsp + moonspc);
 		strucsp = rand(5, 9) + moonspc;
 	}
-	else if (pl.getPhysicalType() == "desert1" ||
-			 pl.getPhysicalType() == "desert2" ||
-			 pl.getPhysicalType() == "desert3" ||
-			 pl.getPhysicalType() == "desert4" ||
-			 pl.getPhysicalType() == "desert5" ||
-			 pl.getPhysicalType() == "desert6" ||
-			 pl.getPhysicalType() == "desert7" ||
-			 pl.getPhysicalType() == "desert8" ||
-			 pl.getPhysicalType() == "desert9" ||
-			 pl.getPhysicalType() == "desert10") 
+	else if (pl.getPhysicalType().beginsWith("desert")) 
 	{
 		//strucsp = (strucsp + moonspc);
 		strucsp = rand(6, 11) + moonspc;
 	}
-	else if (pl.getPhysicalType() == "rock1" ||
-			 pl.getPhysicalType() == "rock2" ||
-			 pl.getPhysicalType() == "rock3" ||
-			 pl.getPhysicalType() == "rock4" ||
-			 pl.getPhysicalType() == "rock5" ||
-			 pl.getPhysicalType() == "rock6" ||
-			 pl.getPhysicalType() == "rock7") 
+	else if (pl.getPhysicalType().beginsWith("rock")) 
 	{
 		//random amount of strucspace between 0 and RS_maxStructSpaceRock
 		//lower amount more likely

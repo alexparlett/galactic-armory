@@ -84,26 +84,13 @@ float getOrbitRadiusFactor() {
 		return V_getOrbitRadiusFactor();	 
 }
 
-// void initPlanetType(int[]& arr, string@ tag) {
-	// if(getGameSetting("REAL_SYS_BOOL", 1) == 1)
-		// RS_initPlanetType(arr, tag);
-// }
-
-// int getRandomType(int[]& arr) { 
-	// if(getGameSetting("REAL_SYS_BOOL", 1) == 1)
-		// return RS_getRandomType(arr);
-// }
-
-// void initPlanetTypes() {
-	// if(getGameSetting("REAL_SYS_BOOL", 1) == 1)
-		// RS_initPlanetTypes();
-// }
-
 void initMapGeneration() {
 	if(getGameSetting("REAL_SYS_BOOL", 1) == 1)
 		RS_initMapGeneration();
 	else
-		V_initMapGeneration();		
+		V_initMapGeneration();	
+
+	print("Map Generation Initialized");	
 }
 
 float range(float low, float high, float pct) {

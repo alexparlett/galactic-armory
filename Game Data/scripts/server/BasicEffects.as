@@ -78,8 +78,8 @@ void SolarPower(Event@ evt, float Rate, float SurfaceArea) {
 	float canStore = power.getFreeSpace();
 	if(canStore <= 0)
 		return;
-
-	power.val += min(Rate * evt.time * SurfaceArea * 25000.f / min(obj.position.getLengthSQ(), 50.f*50.f), canStore);
+	float add = min(Rate * evt.time * SurfaceArea * 25000.f / max(obj.position.getLengthSQ(), 50.f*50.f), canStore);
+	power.val += add;
 }
 
 void SpeedIfFuel(Event@ evt, float Amount, float Efficiency) {

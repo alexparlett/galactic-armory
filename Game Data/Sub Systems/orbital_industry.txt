@@ -76,7 +76,7 @@ System: Refinery
     Requires:
         To Run: Control[10 * Size]
 
-    Hints: Cargo[vCargoStore], Local/RefineRate[vFabRate]
+    Hints: Cargo[vCargoStore], MetalCost[vFabRate], OreUsage[-1 * vFabRate]
 
 System: ElectsFab
     Name: #SS_ELECTSFAB_NAME
@@ -113,7 +113,7 @@ System: ElectsFab
     Requires:
         To Run: Control[5 * Size]
 
-    Hints: Cargo[vCargoStore], Local/ElectsFabRate[vFabRate]
+    Hints: Cargo[vCargoStore], MetalCost[-1 * vFabRate], ElecsCost[vFabRate]
 
 System: AdvAssembler
     Name: #SS_ADVFAB_NAME
@@ -147,7 +147,10 @@ System: AdvAssembler
     Consumes:
         To Run: Power[10 * Size]
 
-    Hints: Cargo[vCargoStore], Local/AdvFabRate[vFabRate]
+    Requires:
+        To Run: Control[5 * Size]
+
+    Hints: Cargo[vCargoStore], Local/AdvFabRate[vFabRate], MetalCost[-1 * vFabRate], ElecsCost[-1 * vFabRate], AdvCost[vFabRate]
     
 System: AmmoProducer
     Name: #SS_AMMOPRO_NAME
@@ -170,9 +173,9 @@ System: AmmoProducer
    
     Tick Rate: 2
       
-    vAmmoRate: Size * 2 * (2 - (decay(pow(LEVEL_GAIN_CURVE,Level), 35)))                                            //was Level), 25)
-       vAmmoStore: Size * 25 * (2 - decay(pow(LEVEL_GAIN_CURVE, Level), 35))                                //was * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
-    vMetalCost: Size * 0.3 * pow(LEVEL_GAIN_CURVE, Level) * (decay(pow(LEVEL_GAIN_CURVE,Level),25))                        //was Size * 1 * ...
+    vAmmoRate: Size * 2  * (pow(LEVEL_GAIN_CURVE, Level) + RES_BASE_FACT) * RES_GEN_MULT                                  //was Level), 25)
+	vAmmoStore: Size * 25 * (2 - decay(pow(LEVEL_GAIN_CURVE, Level), 35))                                //was * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
+    vMetalCost: 0.5
     
     Provides: AmmoFab with
         Rate[vAmmoRate],
@@ -181,14 +184,13 @@ System: AmmoProducer
     Provides: AmmoStorage with
         Amount[vAmmoStore]
         
-    Requires:
-    To Run:
-    Control[40 * Size]
-         
     Consumes:
-    To Run: Power[40 * Size]                                                                                //was 200 * Size
+    To Run: Power[15 * Size]                                                                                //was 200 * Size
       
-    Hints: Power[-1 * 40 * Size], AmmoUse[vAmmoRate], Ammo[vAmmoStore], AmmoMetalCost[vMetalCost]    
+    Requires:
+        To Run: Control[15 * Size]
+
+    Hints: AmmoUse[vAmmoRate],MetalCost[-1 * vMetalCost * vAmmoRate], Ammo[vAmmoStore]
 
 System: H3Refinery
     Name: #SS_H3REF_NAME
@@ -211,8 +213,8 @@ System: H3Refinery
 
     Tick Rate: 1
     
-    vRate: Size * 2 * (2 - (decay(pow(LEVEL_GAIN_CURVE,Level), 35)))
-    vCost: Size * 0.3 * pow(LEVEL_GAIN_CURVE, Level) * (decay(pow(LEVEL_GAIN_CURVE,Level),25))    
+    vRate: Size * 2 * (pow(LEVEL_GAIN_CURVE, Level) + RES_BASE_FACT) * RES_GEN_MULT 
+    vCost: 2
     
     Provides: RefineH3 with
         Rate[vRate],
@@ -223,9 +225,12 @@ System: H3Refinery
         
     Consumes:
         To Run: 
-            Power[50 * Size]
-        
-    Hints: Fuel[Size * 10], Local/FuelGen[vRate]    
+            Power[15 * Size]
+			
+    Requires:
+        To Run: Control[15 * Size]
+
+    Hints: Fuel[Size * 10], H3Usage[-1 * vCost * vRate], FuelUse[vRate]
 
 System: Exporter
     Name: #SS_EXPORTER_NAME
@@ -454,12 +459,9 @@ System: AmmoFabricator
         
     Requires:
     To Run:
-    Control[40 * Size]
+    Control[10 * Size]
          
-    Consumes:
-    To Run: Power[40 * Size]                                                                                //was 200 * Size
-      
-    Hints: Power[-1 * 40 * Size], AmmoUse[vAmmoRate], Ammo[vAmmoStore]    
+    Hints: AmmoUse[vAmmoRate], Ammo[vAmmoStore]    
 
 System: MiningLaser
     Name: #SS_MININGLASER_NAME
@@ -491,7 +493,7 @@ System: MiningLaser
         To Run:
             Control[10 * Size]
     
-    Hints: Power[-1 * vPowCost], Local/MiningRate[(vRate * vDuration)/vDelay]
+    Hints: Power[-1 * vPowCost], OreUsage[(vRate * vDuration)/vDelay]
     
     
 System: H3Harvester
@@ -524,5 +526,5 @@ System: H3Harvester
     Requires:
         To Run:
             Control[15 * Size]
-    
-    Hints: Power[-1 * vPowCost], Local/HarvestRate[(vRate * vDuration)/vDelay]    
+			
+    Hints: Power[-1 * vPowCost], H3Usage[(vRate * vDuration)/vDelay]

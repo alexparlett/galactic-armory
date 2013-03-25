@@ -17,6 +17,8 @@ void init_erudite_ai() {
 		loadPersonalities();
 		initialized = true;
 	}
+	
+	print("Erudite AI Initialized");
 }
 
 void prep_erudite_ai_defaults(Empire@ emp) {
@@ -153,11 +155,11 @@ float[] varDefaults = {
 	2.f, //BudgetSurplusMultiplier
 
 	0.1f, //ResearchPriorityChance
-	5.f, //ResearchTargetDelay
+	30.f * 60.f, //ResearchTargetDelay
 	0.4f, //ResearchTargetChance
 
 	10.f, //PeaceRatio
-	60.f * 6.f, //MilitaryBlock
+	60.f * 12.f, //MilitaryBlock
 	2.f, //IgnoreMilitaryScale
 	0.8f, //NotableEnemyRatio
 
@@ -252,6 +254,9 @@ string[] varNames = {
 
 	"SystemMaxRetrofitting"
 };
+
+string@ raceName;
+string@ raceDescription;
 
 enum PersonalityFlag {
 	PF_COUNT,
@@ -615,6 +620,9 @@ class Personality {
 					if (name == "var") {
 						loadVariable(xml);
 					}
+					else if(name == "race") {
+						loadRaceDesc(xml);
+					}
 					else if (name == "list") {
 						loadList(xml);
 					}
@@ -671,6 +679,11 @@ class Personality {
 		}
 
 		warning("Error: Unknown personality variable "+varName);
+	}
+	
+	void loadRaceDesc(XMLReader@ xml) {
+		@raceName = xml.getAttributeValue("name");
+		@raceDescription = xml.getAttributeValue("desc");
 	}
 
 	void loadFlag(XMLReader@ xml) {
@@ -1044,6 +1057,10 @@ enum GlobalData {
 	GD_TotalEnemyStrength,
 	GD_TotalEnemies,
 	GD_Boredom,
+	GD_TotalAlliedStrength,
+	GD_TotalAllies,
+	GD_TotalNeutralStrength,
+	GD_TotalNeutrals,
 
 	GD_COUNT,
 };
@@ -1541,6 +1558,10 @@ class EmpireAIData {
 		else {
 			@pers = getPersonality(persID - 1);
 		}
+		
+		emp.setRaceName(raceName);
+		emp.setRaceDescription(raceDescription);
+		
 
 		// Only set certain things at game start
 		if (gameTime < 2.f) {
@@ -2066,8 +2087,8 @@ class EmpireAIData {
 	/* {{{ Diplomacy Handling */
 	void collectDiplomaticData(Empire@ emp) {
 		// Collect data about all enemies
-		float str = 0.f;
-		uint enemyCnt = 0;
+		float estr = 0.f, astr = 0.f, nstr = 0.f;
+		uint enemyCnt = 0, alliedCnt = 0, neutralCnt = 0;
 		uint empCnt = getEmpireCount();
 
 		for (uint i = 0; i < empCnt; ++i) {
@@ -2077,16 +2098,30 @@ class EmpireAIData {
 				continue;
 
 			if (emp.isEnemy(otherEmp)) {
-				str =+ otherEmp.getStat(strStrength);
+				estr =+ otherEmp.getStat(strStrength);
 				++enemyCnt;
+			}
+			else if (emp.isAllied(otherEmp)) {
+				astr =+ otherEmp.getStat(strStrength);
+				++alliedCnt;
+			}
+			else {
+				nstr =+ otherEmp.getStat(strStrength);
+				++neutralCnt;
 			}
 		}
 
-		setGlobal(GD_TotalEnemyStrength, str);
+		setGlobal(GD_TotalEnemyStrength, estr);
 		setGlobal(GD_TotalEnemies, float(enemyCnt));
+		
+		setGlobal(GD_TotalEnemyStrength, astr);
+		setGlobal(GD_TotalEnemies, float(alliedCnt));
+		
+		setGlobal(GD_TotalEnemyStrength, nstr);
+		setGlobal(GD_TotalEnemies, float(neutralCnt));
 
 		// Check if we're at peace
-		peaceTime = str <= 0 || emp.getStat(strStrength) / str > this[PV_PeaceRatio];
+		peaceTime = estr <= 0;
 	}
 
 	void updateRelations(Empire@ emp, float time) {
@@ -2688,19 +2723,62 @@ class ResearchManager {
 		web.prepare(emp);
 		link = -1;
 		double rate = web.getResearchRate();
-		
-		// Focus on priority techs for the first 45 minutes
-		if (web.getItem("Metallurgy").get_level() < 4.f || web.getItem("Economics").get_level() < 4.f) {
-			StringList@ list = cast<StringList>(data[PL_PeacePriorityTechs]);
-			if (logging)
-				warning(emp.getName()+": Peacetime Prior Tech");
-			
-			if(web.isTechVisible("BeamWeapons") && web.getItem("BeamWeapons").get_level() < 1.f)
-				@watchTech = web.getItem("BeamWeapons");
-			else if (web.isTechVisible("Computers") && web.getItem("Computers").get_level() < 1.f)
-				@watchTech = web.getItem("Computers");
-			else
-				@watchTech = getLowestAvailableTech(web, list);
+
+		// Check if we should research a link
+		if ((gameTime > data[PV_ResearchTargetDelay] || rate > pow(10.f, 5.f))
+				&& randomf(1.f) <= data[PV_ResearchTargetChance]) {
+			StringList@ toTechs = cast<StringList>(data[PL_LinkTechs]);
+			uint techs = toTechs.length();
+
+			while (targetTech < techs && isUnlocked(web, toTechs[targetTech]))
+				++targetTech;
+
+			if (targetTech < techs) {
+				StringList@ fromTechs = cast<StringList>(data[PL_LinkFromTechs]);
+				@watchTech = web.getItem(fromTechs[targetTech]);
+
+				if (watchTech !is null) {
+					float progress, cost;
+					float best = -1.f;
+					for (uint i = 0; i < watchTech.descriptor.linkCount; ++i) {
+						watchTech.getLinkLevels(i, progress,cost);
+						if (cost > 0 && progress < cost) {
+							float ratio = progress / cost;
+							if (ratio > best) {
+								best = ratio;
+								link = i;
+							}
+						}
+					}
+				}
+			}
+			else if (logging) {
+				warning(emp.getName()+": Completed target techs");
+			}
+		}
+
+		// Research the lowest available tech
+		if (link < 0) {
+			StringList@ list;
+
+			// There is a chance we pick a priority tech
+			if (randomf(1.f) < data[PV_ResearchPriorityChance]) {
+				if (data.peaceTime) {
+					@list = cast<StringList>(data[PL_PeacePriorityTechs]);
+					if (logging)
+						warning(emp.getName()+": Peacetime Prior Tech");
+				}
+				else {
+					@list = cast<StringList>(data[PL_WarPriorityTechs]);
+					if (logging)
+						warning(emp.getName()+": Wartime Prior Tech");
+				}
+			}
+			else {
+				@list = cast<StringList>(data[PL_ResearchTechs]);
+			}
+
+			@watchTech = getLowestAvailableTech(web, list);
 
 			float level = 0.f, progress = 0.f, cost = 0.f, max = 0.f;
 			watchTech.getLevels(level, progress, cost, max);
@@ -2716,88 +2794,14 @@ class ResearchManager {
 
 			goalLevel = watchTech.level + 1;
 			web.setActiveTech(watchTech.descriptor);
-		} 
-		else {
-			
-			// Check if we should research a link
-			if ((gameTime > data[PV_ResearchTargetDelay] || rate > pow(10.f, 5.f))
-					&& randomf(1.f) <= data[PV_ResearchTargetChance]) {
-				StringList@ toTechs = cast<StringList>(data[PL_LinkTechs]);
-				uint techs = toTechs.length();
+		}
+		else if (watchTech !is null) {
+			goalLevel = -1;
+			web.setActiveTech(watchTech.descriptor, link);
 
-				while (targetTech < techs && isUnlocked(web, toTechs[targetTech]))
-					++targetTech;
-
-				if (targetTech < techs) {
-					StringList@ fromTechs = cast<StringList>(data[PL_LinkFromTechs]);
-					@watchTech = web.getItem(fromTechs[targetTech]);
-
-					if (watchTech !is null) {
-						float progress, cost;
-						float best = -1.f;
-						for (uint i = 0; i < watchTech.descriptor.linkCount; ++i) {
-							watchTech.getLinkLevels(i, progress,cost);
-							if (cost > 0 && progress < cost) {
-								float ratio = progress / cost;
-								if (ratio > best) {
-									best = ratio;
-									link = i;
-								}
-							}
-						}
-					}
-				}
-				else if (logging) {
-					warning(emp.getName()+": Completed target techs");
-				}
-			}
-
-			// Research the lowest available tech
-			if (link < 0) {
-				StringList@ list;
-
-				// There is a chance we pick a priority tech
-				if (randomf(1.f) < data[PV_ResearchPriorityChance]) {
-					if (data.peaceTime) {
-						@list = cast<StringList>(data[PL_PeacePriorityTechs]);
-						if (logging)
-							warning(emp.getName()+": Peacetime Prior Tech");
-					}
-					else {
-						@list = cast<StringList>(data[PL_WarPriorityTechs]);
-						if (logging)
-							warning(emp.getName()+": Wartime Prior Tech");
-					}
-				}
-				else {
-					@list = cast<StringList>(data[PL_ResearchTechs]);
-				}
-
-				@watchTech = getLowestAvailableTech(web, list);
-
-				float level = 0.f, progress = 0.f, cost = 0.f, max = 0.f;
-				watchTech.getLevels(level, progress, cost, max);
-
-				if (rate > 0 && (cost - progress) / rate > 60.f * 60.f * 6.f
-						&& targetTech < data[PL_LinkTechs].length()) {
-					@watchTech = null;
-					return;
-				}
-
-				if (logging)
-					warning(emp.getName()+" picked "+watchTech.descriptor.get_name());
-
-				goalLevel = watchTech.level + 1;
-				web.setActiveTech(watchTech.descriptor);
-			}
-			else if (watchTech !is null) {
-				goalLevel = -1;
-				web.setActiveTech(watchTech.descriptor, link);
-
-				if (logging)
-					warning(emp.getName()+" picked link "+link+" on "+watchTech.descriptor.get_name());
-			}
-		}	
+			if (logging)
+				warning(emp.getName()+" picked link "+link+" on "+watchTech.descriptor.get_name());
+		}
 	}
 
 	void update(EmpireAIData@ data, Empire@ emp, float time) {
@@ -3164,7 +3168,7 @@ class SystemController {
 	float enemyRatio;
 
 	float lastFullUpdate;
-	bool firstTick;
+	bool startTick;
 
 	Timer scoutTimer;
 	Timer expandTimer;
@@ -3226,7 +3230,7 @@ class SystemController {
 		hasNotableEnemies = false;
 		hasEnemyPlanets = false;
 		ringworld = false;
-		firstTick = false;
+		startTick = false;
 		claimedExpansion = false;
 		canExpandExternally = true;
 		priority = OP_Normal;
@@ -3389,8 +3393,8 @@ class SystemController {
 		Object@ sysObj = sys;
 
 		// Check if we should do our first tick
-		if (!firstTick) {
-			firstTick = true;
+		if (!startTick) {
+			startTick = true;
 			firstTick(data, emp);
 		}
 
@@ -3659,9 +3663,9 @@ class SystemController {
 		// Queue military and defenses
 		if (developTimer.tick(time)) {
 			ResourceStatus bottleneck = data.getBottleneck(rf_mtl | rf_elc | rf_adv | rf_ful);
-			// Develop by building haulers in this system if there is more than one owned planet and no enemies			
-            if(!hasNotableEnemies && bottleneck >= RS_Surplus && ownedPlanets > 1) {
-				if (shipsPresent[GID_Trade] < ownedPlanets) {
+			// Develop by building haulers in this system if there is more than one owned planet and no enemies	and bank resources are low.		
+            if(!hasNotableEnemies && bottleneck <= RS_Critical && ownedPlanets > 1) {
+				if (shipsPresent[GID_Trade] < ownedPlanets && gameTime > 60.f * 60.f) {
 					float weight = (ownedPlanets / (shipsPresent[GID_Trade] > 0 ? shipsPresent[GID_Trade]: 1));
 					if (randomf(1.f) < weight)
 						tryBuild(data, data.getRandomLayout(emp, GID_Trade), false);
@@ -3672,24 +3676,17 @@ class SystemController {
 					if (randomf(1.f) < weight)
 						tryBuild(data, data.getRandomLayout(emp, GID_Trade), false);
 				}
-				else if (emp.hasTraitTag("no_bank") && (shipsPresent[GID_Trade] < ownedPlanets * 4)) {
-					float weight = ((ownedPlanets * 2) / (shipsPresent[GID_Trade] > 0 ? shipsPresent[GID_Trade]: 1));
-					if (randomf(1.f) < weight)
-						tryBuild(data, data.getRandomLayout(emp, GID_Trade), false);
-				}
 			}	
 				// Make farmers if there are asteroids
-			if (!hasNotableEnemies && numRoids > 0 && (bottleneck >= RS_Enough || priority >= OP_High) 
-				&& data.getRandomLayout(emp, GID_Miner) !is null) {
-				
+			if (!hasNotableEnemies && numRoids > 0) {
 				float weight = (pow(numRoids, 0.25f) / (shipsPresent[GID_Miner] > 0 ? shipsPresent[GID_Miner]: 1));
 				if (randomf(1.f) < weight) {
-					if(rf_mtl < RS_Low)
-						tryBuild(data, emp.getShipLayout("Orbital Metal Factory"), false);
-					else if (rf_elc < RS_Low)
+					if (data.getResStatus(RT_Electronics) <= RS_Low)
 						tryBuild(data, emp.getShipLayout("Orbital Electronics Factory"), false);
-					else if (rf_adv < RS_Low)
+					else if (data.getResStatus(RT_AdvParts) <= RS_Low)
 						tryBuild(data, emp.getShipLayout("Orbital Advanced Parts Factory"), false);
+					else if (data.getResStatus(RT_Metals) <= RS_Low)
+						tryBuild(data, emp.getShipLayout("Orbital Metal Factory"), false);
 				}		
 			}
 
@@ -3700,7 +3697,7 @@ class SystemController {
 			}
 
 			// Develop defenses on the developing planet
-			if (developing !is null) {
+			if(developing !is null) {
 				float shipbay, shipbayUsed;
 				developing.planet.toObject().getShipBayVals(shipbayUsed, shipbay);
 
@@ -3708,7 +3705,7 @@ class SystemController {
 					&& ((shipbayUsed <= 1.f
 							 && hasNotableEnemies
 							 && (enemyRatio > data[PV_EnemyRatioIgnore]))
-						|| (bottleneck >= RS_Enough && developed))
+						|| (bottleneck >= RS_Enough))
 					&& gameTime > data[PV_MilitaryBlock]
 				) {
 					float offensive = (context.frontline + enemyStrength) / 10 * developing.totalPriority;
@@ -3735,24 +3732,24 @@ class SystemController {
 									developing.buildShip(fighter, min(int(budget), 40), true);
 							}
 						}
+					}
+				}
+				
+				// Develop Defenses
+				if(bottleneck >= RS_Enough && gameTime > data[PV_MilitaryBlock] && developing.defenses < (sqrt(50) * sqrt(developing.planet.getMaxStructureCount())) * (gameTime / (60.f * 60.f))) {
+					float budget = developing.getBuildBudget(data);
+					const HullLayout@ defense = data.getRandomLayout(emp, GID_StaticDefense, budget);
 
-						// Build Defenses
-						else if (developing.defenses < offensive) {
-							float budget = min(developing.getBuildBudget(data), offensive - developing.defenses);
-							const HullLayout@ defense = data.getRandomLayout(emp, GID_StaticDefense, budget);
-
-							if (defense !is null) {
-								budget /= sqr(defense.scale);
-								if (budget > 0)
-									developing.buildShip(defense, min(int(budget), 40), false);
-							}
+					if (defense !is null) {
+						budget /= sqr(defense.scale);
+						if (budget > 0) {
+							developing.buildShip(defense);							
 						}
 					}
 				}
 			}
-			
 			// Develop fleet strength for nearby fleet
-			if (bottleneck >= RS_Enough && developed && gameTime > data[PV_MilitaryBlock]) 
+			if (bottleneck >= RS_Enough && gameTime > data[PV_MilitaryBlock]) 
 			{
 				if (closestFleet !is null && closestFleet.getDistanceFromSQ(sysObj) < data[PV_MaxFleetDist]) {
 					if (data.difficulty >= 3 || closestFleet.sys is sys)
@@ -3770,7 +3767,7 @@ class SystemController {
 					if (id > 0)
 						data.queue(SysFleetBuiltShip(id, this));
 				}
-			}	
+			}				
 		}
 		return false;
 	}
@@ -3832,6 +3829,23 @@ class SystemController {
 			if (!allowQueue && planets[i].inQueue > 0)
 				continue;
 			// If we're using different govs, don't use resource planets	
+			string@ govtype = planets[i].planet.getGovernorType();
+			if ((govtype == "metalworld" ||
+				govtype == "agrarian" ||
+				govtype == "resworld" ||
+				govtype == "fuelworld" ||
+				govtype == "h3fuelworld" ||	
+				govtype == "h3logworld" ||		
+				govtype == "logworld" ||
+				govtype == "ammoworld" ||
+				govtype == "luxworld" ||
+				govtype == "elecworld" ||
+				govtype == "advpartworld" ||
+				govtype == "economic" && scale > 20.f) || 
+				(govtype == "resworld" || 
+				govtype == "luxworld")
+				)
+			continue;
 			float budget = planets[i].getBuildBudget(data);
 			int build = min(maxNum, int(budget / scale));
 
@@ -3857,6 +3871,24 @@ class SystemController {
 		for (uint i = 0; i < cnt; ++i) {
 			if (!allowQueue && planets[i].inQueue > 0)
 				continue;
+			// If we're using different govs, don't use resource planets	
+			string@ govtype = planets[i].planet.getGovernorType();
+			if ((govtype == "metalworld" ||
+				govtype == "agrarian" ||
+				govtype == "resworld" ||
+				govtype == "fuelworld" ||
+				govtype == "h3fuelworld" ||	
+				govtype == "h3logworld" ||		
+				govtype == "logworld" ||
+				govtype == "ammoworld" ||
+				govtype == "luxworld" ||
+				govtype == "elecworld" ||
+				govtype == "advpartworld" ||
+				govtype == "economic" && scale > 20.f) || 
+				(govtype == "resworld" || 
+				govtype == "luxworld")
+				)
+			continue;				
 			int budget = planets[i].getBuildBudget(data) / scale;
 			if (budget > 0)
 				return planets[i].buildShip(layout);
@@ -4240,47 +4272,6 @@ class PlanetController {
 		// Remove this planet if it's in a different system somehow
 		if (obj.getParent() !is sys.sys)
 			return true;
-
-		// Check if we're the home planet
-		if (data.homePlanet is planet && gameTime < 10.0) {
-				@data.homePlanet = planet;
-				priority = OP_High;
-				uint whatsleft = 0;
-				
-				//Prepare homeworld if starting strip mined
-				if (emp.hasTraitTag("mined_homeworld")) {
-					bool savedone = false;
-					PlanetStructureList list;
-					list.prepare(planet);
-					uint totalcount = list.getCount();
-					whatsleft = uint(planet.getMaxStructureCount()) - planet.getStructureCount();
-					for (uint i = 0; i < totalcount; i++) {
-						const subSystemDef@ ismine = list.getStructure(i).get_type();
-						if( @ismine is getSubSystemDefByName("MetalMine")) {
-							if (!savedone) {
-								// Save 1 mine for storage and begin spending
-								savedone = true;
-								planet.buildStructure(getSubSystemDefByName("SpacePort"));
-							} 
-							else {
-								planet.removeStructure(i);
-								whatsleft++;
-							}
-						}
-					}
-					if (whatsleft != 0 ) 
-						for (uint j = 0; j < whatsleft; j++) {
-							switch(rand(3)) {
-							 case 0: planet.buildStructure(getSubSystemDefByName("SpacePort")); break;
-							 case 1: planet.buildStructure(getSubSystemDefByName("SpacePort")); break;
-							 case 2: planet.buildStructure(getSubSystemDefByName("SpacePort")); break;
-							 case 3: planet.buildStructure(getSubSystemDefByName("SciLab")); break;
-							}							
-						}
-				}
-				if(whatsleft == 0)
-					planet.setUseGovernor(true);
-		}
 
 		// Update data
 		developed = planet.getStructureCount() >= uint(planet.getMaxStructureCount()) - 1; //Allow for port rebuilding.
@@ -6244,6 +6235,19 @@ class RelationsManager {
 
 		return max(mtl, max(elc, adv));
 	}
+	
+	//Calculates the expected payout assuming some chance to default at any moment, using our production as a base for the guess
+	float expectedPayout(EmpireAIData@ data, ResourceType type, float rate, float time) {
+		// Integrate production * Chance to default so far over time
+		float production = data.getResData(type, RD_Income) - (data.getResData(type, RD_Expense) * 0.5f);
+		
+		//Don't believe huge numbers
+		if(rate > production * 10.f)
+			rate = production * 10.f;
+		
+		float pRatio = production / (production + rate);
+		return rate * (pow(pRatio, time) - 1.f) / log(pRatio);
+	}
 
 	TreatyDescriptor getTreatyInfo(EmpireAIData@ data, Empire@ emp, Treaty@ treaty) {
 		TreatyDescriptor desc;
@@ -6288,11 +6292,14 @@ class RelationsManager {
 				float requested = clause.getOption(1).toFloat();
 
 				// Get the weight for this resource
-				if (resource >= RT_COUNT || desc.timeout <= 0) {
+				if (resource >= RT_COUNT || (!fromUs && desc.timeout <= 15.f)) {
+					//Very short trade offers seem like a scam, so treat that as invalid
 					desc.type |= TT_Invalid;
 				}
-				else
+				else if(fromUs)
 					pts = getWeightPerUnit(data, emp, resource) * requested * desc.timeout;
+				else //Reduce the weight of the large timeouts and resource counts, on the assumption that they can't really provide the resources
+					pts = getWeightPerUnit(data, emp, resource) * expectedPayout(data, resource, requested, desc.timeout);
 
 				// Make sure we think we have enough to give
 				if (fromUs) {
@@ -6895,4 +6902,3 @@ class RelationsManager {
 	// }}}
 }
 /* }}} */
-

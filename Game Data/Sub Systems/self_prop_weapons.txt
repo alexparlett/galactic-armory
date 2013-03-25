@@ -102,7 +102,7 @@ System: LargeMissileRack
         To Run:
             Control[20 * Size]
     
-    Hints: Alpha[vDamage * vClip], Ammo[Size * 25], AmmoUse[(-1 * vAmmoUse) * vClip / vTotalDelay], DPS[(vDamage * vClip) / vTotalDelay], Local/DMGperShot[vDamage], Local/Range[vRange], Local/Delay[vTotalDelay], Local/ClipDelay[vDelay], Local/Clip[vClip], Local/AmmoperShot[-1 * vAmmoUse]
+    Hints: 	Alpha[vDamage * vClip], Ammo[Size * 25], AmmoUse[(-1 * vAmmoUse) * vClip / vTotalDelay], DPS[(vDamage * vClip) / vTotalDelay], Local/DMGperShot[vDamage], Local/Range[vRange], Local/Delay[vTotalDelay], Local/ClipDelay[vDelay], Local/Clip[vClip], Local/AmmoperShot[-1 * vAmmoUse]
 
 
 System: MegaMissileRack
@@ -160,7 +160,7 @@ System: InterceptorMissile
     Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
     Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
     
-    Tags: Weapon, MissileWeapon, ClipWeapon
+    Tags: Weapon, MissileWeapon
     Tied To: Missiles 3
     
     Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[Size * 25]
@@ -182,7 +182,7 @@ System: InterceptorMissile
         To Run:
             Control[10 * Size]
 
-    Hints: Alpha[vDamage], Ammo[Size * 25], AmmoUse[-1 * vAmmoUse / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]
+    Hints: 	Alpha[vDamage], Ammo[Size * 25], AmmoUse[-1 * vAmmoUse / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]
 
 System: ClusterMissile
     Name: #SS_CLUSTERMISS_NAME
@@ -197,7 +197,7 @@ System: ClusterMissile
     Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
     Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
     
-    Tags: Weapon, MissileWeapon, WMD, ClipWeapon
+    Tags: Weapon, MissileWeapon, WMD
     Tied To: Missiles 6
     
     Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[Size * 25]
@@ -221,7 +221,7 @@ System: ClusterMissile
         To Run:
             Control[10 * Size]
 
-    Hints: Alpha[vDamage], Ammo[Size * 25], AmmoUse[-1 * vAmmoUse / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/MinRange[vRange * 0.1], Local/DMGperShot[vDamage], Local/AoERange[vAoE_Range], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]
+    Hints: 	Alpha[vDamage], Ammo[Size * 25], AmmoUse[-1 * vAmmoUse / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/MinRange[vRange * 0.1], Local/DMGperShot[vDamage], Local/AoERange[vAoE_Range], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]
 
 System: PhasedMissile
     Name: #SS_PHASEDMISS_NAME
@@ -263,7 +263,7 @@ System: PhasedMissile
         To Run:
             Control[10 * Size]
 
-    Hints: Alpha[vDamage * vClip], Ammo[Size * 25], AmmoUse[-1 * vAmmoUse / vDelay], DPS[vDamage * vClip / vTotalDelay], Local/Range[vRange], Local/MinRange[vRange * 0.1], Local/DMGperShot[vDamage], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]
+    Hints: Alpha[vDamage * vClip], Ammo[Size * 25], AmmoUse[-1 * vAmmoUse / vDelay], DPS[vDamage * vClip / vTotalDelay], Local/Range[vRange], Local/MinRange[vRange * 0.1], Local/DMGperShot[vDamage], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vTotalDelay], Local/ClipDelay[vDelay], Local/Clip[vClip]			
     
 System: EMPMissile
     Name: #SS_EMPMISS_NAME
@@ -305,7 +305,7 @@ System: EMPMissile
         To Run:
             Control[10 * Size]
 
-    Hints: Alpha[vDamage * vClip], Ammo[Size * 25], AmmoUse[-1 * vAmmoUse / vDelay], DPS[vDamage * vClip / vTotalDelay], Local/Range[vRange], Local/MinRange[vRange * 0.1], Local/DMGperShot[vDamage], Local/AoERange[vAoE_Range], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]
+    Hints: Alpha[vDamage * vClip], Ammo[Size * 25], AmmoUse[-1 * vAmmoUse / vDelay], DPS[vDamage * vClip / vTotalDelay], Local/Range[vRange], Local/MinRange[vRange * 0.1], Local/DMGperShot[vDamage], Local/AoERange[vAoE_Range], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vTotalDelay], Local/ClipDelay[vDelay], Local/Clip[vClip]			
 
 System: TorpedoBay
     Name: #SS_TORPEDOBAY_NAME

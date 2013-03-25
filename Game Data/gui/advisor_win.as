@@ -247,7 +247,7 @@ class AdvisorWindow : ScriptedGuiHandler {
 
 		if (pl !is null) {
 			int ind = getPlanetIconIndex(pl.getPhysicalType());
-			img.setSprites("planet_icons", ind, ind, ind);
+			img.setSprites("planet_icons_new", ind, ind, ind);
 		}
 	}
 

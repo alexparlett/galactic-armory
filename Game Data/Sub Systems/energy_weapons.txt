@@ -79,10 +79,10 @@ System: TwinPlasmaThrower
 	Complexity: 3
 		
 	vBurst: 2
-	vDelay: 1.2 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * 2 * GAME_RELOAD_MULT
+	vDelay: (1.2 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * 2 * GAME_RELOAD_MULT) - 0.2
 	vDamage: Size * 45 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT
 	vShotDelay: 0.2
-	vTotalDelay: (vShotDelay * vBurst) + vDelay
+	vTotalDelay: (vShotDelay * (vBurst - 1)) + vDelay
 	vRange: (160 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
 	vSpeed: vRange * 0.5 * ENERGY_PROJ_FACTOR
 	vEffectiveRange: 0.5
@@ -98,8 +98,7 @@ System: TwinPlasmaThrower
 		To Run:
 			Control[22 * Size]
 
-	Hints: Alpha[vDamage * vBurst], Power[(-1 * vPowCost * vBurst)/ vTotalDelay], DPS[(vDamage * vBurst) / vTotalDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/Delay[vDelay], Local/ProjSpeed[vSpeed], Local/EffRange[vEffectiveRange * vRange], Local/MinHit[vMinHit], Local/MinDmg[vMinDmg * vDamage], WasteHeat[(vWasteHeat * vBurst) / vTotalDelay]
-
+	Hints: 	Alpha[vDamage * vBurst],Power[(-1 * vPowCost * vBurst)/ vTotalDelay],DPS[(vDamage * vBurst) / vTotalDelay], WasteHeat[(vWasteHeat * vBurst) / vTotalDelay],	Local/Range[vRange], Local/DMGperShot[vDamage], Local/Delay[vTotalDelay],Local/ProjSpeed[vSpeed],Local/EffRange[vEffectiveRange * vRange],			Local/MinHit[vMinHit], Local/MinDmg[vMinDmg * vDamage],	Local/ClipDelay[vDelay],			Local/Clip[vBurst]
 
 System: ParticleCannon
 	Name: #SS_PARTICANNON_NAME
@@ -162,10 +161,10 @@ System: TwinParticleCannon
 	Complexity: 4.5
 	
 	vBurst: 2
-	vDelay: 3.0 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * 2 * GAME_RELOAD_MULT
+	vDelay: (3.0 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * 2 * GAME_RELOAD_MULT) - 0.2
 	vDamage: Size * 80 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT			//was Size * 72
 	vShotDelay: 0.2
-	vTotalDelay: (vShotDelay * vBurst) + vDelay
+	vTotalDelay: (vShotDelay * (vBurst - 1)) + vDelay
 	vRange: (240 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
 	vSpeed: vRange * 0.5 * ENERGY_PROJ_FACTOR
 	vEffectiveRange: 0.5
@@ -181,7 +180,7 @@ System: TwinParticleCannon
 		To Run:
 			Control[30 * Size]
 
-	Hints: Alpha[vDamage * vBurst], Power[(-1 * vPowCost * vBurst) / vTotalDelay], DPS[(vDamage * vBurst) / vTotalDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/Delay[vDelay], Local/ProjSpeed[vSpeed], Local/EffRange[vEffectiveRange * vRange], Local/MinHit[vMinHit], Local/MinDmg[vMinDmg * vDamage], WasteHeat[(vWasteHeat * vBurst) / vTotalDelay]
+	Hints: 	Alpha[vDamage * vBurst],Power[(-1 * vPowCost * vBurst) / vTotalDelay],DPS[(vDamage * vBurst) / vTotalDelay],Local/Range[vRange],Local/DMGperShot[vDamage], Local/Delay[vTotalDelay],Local/ClipDelay[vDelay],Local/Clip[vBurst],Local/ProjSpeed[vSpeed], Local/EffRange[vEffectiveRange * vRange], Local/MinHit[vMinHit],Local/MinDmg[vMinDmg * vDamage],WasteHeat[(vWasteHeat * vBurst) / vTotalDelay]
 	
 
 System: PFW
@@ -393,7 +392,7 @@ System: GatlingLaser
 	Costs: Metals[120 * Size * pow(SUBS_COST_CRV, Level)], Electronics[40 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
 	Complexity: 1.5
 	
-	vDamage: 3 * Size * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT								//was 4
+	vDamage: 4.5 * Size * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT								//was 4
 	vClip: 30								//was 60
 	vDelay: (2) * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
 	vShotDelay: 0.2																					//was 0.25
@@ -416,7 +415,7 @@ System: GatlingLaser
 		To Run:
 			Control[15 * Size]
 	
-	Hints: Alpha[(vDamage * 0.5) * vClip], Power[-1 * vPowCost], DPS[((vDamage * 0.5) * vClip) / vTotalDelay], Local/Range[vRange], Local/DMGperShot[vDamage * 0.5], Local/Delay[vTotalDelay], Local/ClipDelay[vDelay], Local/Clip[vClip], PointDefense[vEffectivity], Local/EffRange[vEffectiveRange * vRange], Local/MinDmg[vMinDmg * vDamage], WasteHeat[(vWasteHeat * 0.5 * vClip)/ vTotalDelay]
+	Hints: 	Alpha[(vDamage * 0.5) * vClip],Power[-1 * vPowCost],DPS[((vDamage * 0.5) * vClip) / vTotalDelay],Local/Range[vRange], Local/DMGperShot[vDamage * 0.5], Local/Delay[vTotalDelay],Local/ClipDelay[vDelay],Local/Clip[vClip],PointDefense[vEffectivity], Local/EffRange[vEffectiveRange * vRange], Local/MinDmg[vMinDmg * vDamage], WasteHeat[(vWasteHeat * 0.5 * vClip)/ vTotalDelay]
 	
 	
 System: TRayEmitter

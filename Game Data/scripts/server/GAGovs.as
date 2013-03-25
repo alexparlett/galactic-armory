@@ -23,6 +23,8 @@ void init() {
 	@yard = getSubSystemDefByName("ShipYard");
 	
 	initialized = true;
+	
+	print("Governors Initialized");
 }
 
 /*

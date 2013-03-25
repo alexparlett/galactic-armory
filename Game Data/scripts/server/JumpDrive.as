@@ -16,7 +16,7 @@ float checkRange(const Object@ src, const Object@ trg, const Effector@ eff) {
 float checkFuel(const Object@ src, const Object@ trg, const Effector@ eff) {
 	const State@ fuel = src.getState(strFuel);
 	
-	if(fuel.val - eff[4] < fuel.max * 0.05f)
+	if(fuel.val - eff[4] < fuel.max * 0.05f || fuel.max <= 0)
 		return 0.f;
 		
 	return 1.f;
@@ -46,16 +46,13 @@ void triggerAutoJump(Object@ obj) {
 void autoJump(Event@ evt) {
 	Object@ obj = evt.target;
 
-	if(obj.getDestination().getLength() >= 0 && obj.getTarget() !is null) {
+	if(obj.getTarget() !is null) {
 		Object@ targ = obj.getTarget();
-		
-		if(targ.toStar() !is null || targ.toPlanet() !is null || targ.toSystem() !is null) {
+
+		if(obj.toHulledObj().canUseToolOn("JumpDrive", targ)) {
 			OrderList orders;
-			if(orders.prepare(obj)) {
-				orders.clearOrders(false);
+			if(orders.prepare(obj))
 				orders.giveUseToolOrder("JumpDrive", targ, true, true, false);
-				orders.prepare(null);
-			}
 		}
 	}
 }

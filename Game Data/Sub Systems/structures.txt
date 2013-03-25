@@ -578,8 +578,6 @@ System: PlanetDefenseNetwork
     Provides: ProjWeapon2 with Damage[vDamage], ShotDelay[vShotDelay],
         Delay[vDelay], ClipSize[vBurst], AmmoUse[0], Range[vRange], Speed[vProjSpeed], effectiveRangeFactor[vEffectiveRange], minHitChance[vMinHit]
 	
-	Provides: PointDefense with Effectivity[vEffectivity]
-
 	Requires:
 		To Run:
 			Workers[vWorkers]
@@ -874,7 +872,7 @@ System: PlanetEngine
 	Description: #SS_PLANETTHRUSTER_DESC
 	Appearance: GeneralBuilding
 	
-	Available: (Techs.Engines.Level > 14) && (Techs.Gravitics.Level > 4) && (Techs.MegaConstruction.Level > 4)
+	Available: (Techs.Engines.Level > 15) && (Techs.Gravitics.Level > 5) && (Techs.MegaConstruction.Level > 5)
 	Level: floor(weight(Techs.Engines.Level, 0.6, Techs.Gravitics.Level, 0.2, Techs.MegaConstruction.Level, 0.2))
 	Size: Scale
 	Durability: 200 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT

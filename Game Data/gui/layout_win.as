@@ -1,18 +1,19 @@
 #include "~/Game Data/gui/include/gui_skin.as"
-#include "~/Game Data/gui/include/dialog.as"
+#include "/include/dialog.as"
 #include "/include/resource_grid.as"
 #include "/include/layout_stats.as"
 #include "~/Game Data/gui/include/accordion.as"
 #include "~/Game Data/gui/include/order_customizer.as"
-#include "~/Game Data/gui/include/layout_import.as"
+#include "/include/layout_import.as"
 #include "~/Game Data/gui/include/layout_viewer.as"
 #include "/include/layout_detailed_stats.as"
 #include "~/Game Data/gui/include/blueprints_sort.as"
 
 import recti makeScreenCenteredRect(const dim2di &in rectSize) from "gui_lib";
-import bool export_layout(const HullLayout@, string@, bool) from "layout_export";
+import bool export_layout(const HullLayout@, string@, string@, bool) from "layout_export";
 import void showSubSystemDetails(uint) from "star_pedia";
 import void anchorToMouse(GuiElement@) from "gui_lib";
+import int findString(string@[], string@) from "GA_gui_lib";
 
 /* {{{ Utilities */
 string@ secondsToTime(int seconds) {
@@ -177,7 +178,7 @@ class LayoutWindowHandle {
 /* }}} */
 /* {{{ Layout Window Script */
 const int TB_HEIGHT = 95;
-const int MIN_WIDTH = 932;
+const int MIN_WIDTH = 982;
 const int MIN_HEIGHT = 543;
 const int MAX_SYSLIST_WIDTH = 200;
 const float unitsPerAU = 1000.f;
@@ -208,6 +209,210 @@ class QueuedLink {
 	int secondary;
 }
 
+string@[] folder_names;
+
+class FolderSelect {
+
+	GuiComboBox@ list;
+
+	FolderSelect(GuiElement@ ele) {
+		@list = GuiComboBox( recti( pos2di(ele.getSize().width - 270, 23), dim2di(118, 26)), ele);
+		list.orphan(true);
+		
+		for(uint i = 0; i < folder_names.length(); ++i)
+			list.addItem(folder_names[i]);
+		list.setSelected(0);
+	}
+	
+	string@ get_value() {
+		return folder_names[list.getSelected()];
+	}	
+	
+	void sync(dim2di size) {
+		list.setPosition(pos2di(size.width - 272, 21));
+	}
+	
+	void update() {
+		list.clear();
+		for(uint i = 0; i < folder_names.length(); i++)
+			list.addItem(folder_names[i]);
+		list.setSelected(0);
+	}		
+};
+
+class FolderCreateHandle {
+	FolderCreate@ script;
+	GuiScripted@ ele;
+
+	FolderCreateHandle(recti Position, LayoutWindow@ win) {
+		@script = FolderCreate(win);
+		@ele = GuiScripted(Position, script, null);
+
+		script.init(ele);
+		script.syncPosition(Position.getSize());
+	}
+
+	void bringToFront(LayoutWindow@ win) {
+		@script.win = @win;
+	
+		ele.bringToFront();
+		setGuiFocus(ele);
+		bindEscapeEvent(ele);
+	}
+
+	void setVisible(bool vis) {
+		ele.setVisible(vis);
+
+		if (vis)
+			bindEscapeEvent(ele);
+		else
+			clearEscapeEvent(ele);
+	}
+
+	bool isVisible() {
+		return ele.isVisible();
+	}
+
+	void update(float time) {
+		script.position = ele.getPosition();
+	}
+
+
+	void remove() {
+		clearEscapeEvent(ele);
+		ele.remove();
+	}
+};
+
+class FolderCreate : ScriptedGuiHandler {
+	DragResizeInfo drag;
+	pos2di position;
+	
+	GuiButton@ add;
+	GuiButton@ delete;
+	GuiButton@ ok;	
+	GuiListBox@ list;
+	GuiButton@ close;
+	GuiEditBox@ edit;
+	
+	LayoutWindow@ win;
+	
+	FolderCreate(LayoutWindow@ win) {
+		@this.win = @win;
+	
+		drag.canResize = false;
+		drag.canMaximize = false;
+	}
+	
+	void init(GuiElement@ ele) {
+		@close = CloseButton(recti(), ele);
+		@list = GuiListBox(recti(pos2di(10, 46), dim2di(230, 195)), true, ele);
+		@edit = GuiEditBox( recti( pos2di( 10, 230), dim2di( 230, 18)), "", true, ele);
+		@add = Button(recti(pos2di(10, 250), dim2di(115,18)), "Add", ele);
+		@delete = Button(recti(pos2di(125, 250), dim2di(115,18)), "Delete", ele);
+		@ok = Button(recti(pos2di(10, 270), dim2di(230,18)), "Done", ele);
+		
+		update();
+	}
+	
+	void syncPosition(dim2di size) {
+		// Close button
+		close.setPosition(pos2di(size.width-30, 0));
+		close.setSize(dim2di(30, 12));	
+		
+		list.setPosition(pos2di(10, 26));
+		edit.setPosition(pos2di(10, 230));
+		add.setPosition(pos2di(10, 250));
+		delete.setPosition(pos2di(125, 250));
+		ok.setPosition(pos2di(10, 270));		
+	}
+
+	void draw(GuiElement@ ele) {
+		ele.toGuiScripted().setAbsoluteClip();
+		const recti absPos = ele.getAbsolutePosition();
+		pos2di topLeft = absPos.UpperLeftCorner;
+		pos2di botRight = absPos.LowerRightCorner;
+		dim2di size = absPos.getSize();
+
+		// Draw top area
+		drawDarkArea(recti(topLeft + pos2di(7, 20), dim2di(size.width-14, size.height - 28)));		
+		drawWindowFrame(absPos);
+		
+	}	
+	
+	void update() {
+		list.clear();
+		for(uint i = 0; i < folder_names.length(); i++)
+			list.addItem(folder_names[i]);
+		list.setSelected(-1);	
+	}
+
+	EventReturn onMouseEvent(GuiElement@ ele, const MouseEvent& evt) {
+		DragResizeEvent re = handleDragResize(ele, evt, drag, 250, 350);
+		if (re != RE_None) {
+			if (re == RE_Resized)
+				syncPosition(ele.getSize());
+			return ER_Absorb;
+		}
+		return ER_Pass;
+	}
+
+	EventReturn onGUIEvent(GuiElement@ ele, const GUIEvent& evt) {
+		if (evt.EventType == GEVT_Focus_Gained && evt.Caller.isAncestor(ele)) {
+			ele.bringToFront();
+			bindEscapeEvent(ele);
+		}
+		else if (evt.EventType == GEVT_Closed) {
+			win.saveFolders();
+			closeFolderWindow(this);
+			return ER_Absorb;
+		}
+		else if (evt.EventType == GEVT_EditBox_Enter_Pressed) {
+			addFolder();
+			return ER_Pass;
+		}
+		else if (evt.EventType == GEVT_Clicked) {
+			if(evt.Caller is add) {
+				addFolder();
+				return ER_Pass;
+			}
+			else if (evt.Caller is delete) {
+				deleteFolder();
+				return ER_Pass;
+			}
+			else if (evt.Caller is ok || evt.Caller is close) {
+				win.saveFolders();
+				closeFolderWindow(this);
+				return ER_Absorb;
+			}
+		}
+		return ER_Pass;
+	}
+
+	EventReturn onKeyEvent(GuiElement@ ele, const KeyEvent& evt) {
+		return ER_Pass;
+	}	
+	
+	void deleteFolder() {
+		if(list.getSelected() > 0) {
+			folder_names.erase(list.getSelected());
+			win.folders.update();
+			update();
+		}
+	}
+	
+	void addFolder() {
+		if(edit.getText().length() > 0 && findString(folder_names,edit.getText()) < 1) {
+			int index = folder_names.length();
+			folder_names.resize(index + 1);
+			@folder_names[index] = edit.getText();	
+			win.folders.update();
+		}
+		edit.setText("");
+		update();	
+	}
+};
+
 class LayoutWindow : ScriptedGuiHandler {
 	DragResizeInfo drag;
 	pos2di position;
@@ -223,6 +428,9 @@ class LayoutWindow : ScriptedGuiHandler {
 
 	float usedSpace;
 	float maxSpace;
+	
+	FolderSelect@ folders;
+	GuiButton@ manageFolders;
 
 	LayoutWindow() {
 		removed = false;
@@ -282,6 +490,9 @@ class LayoutWindow : ScriptedGuiHandler {
 		topPanel.fitChildren();
 
 		@close = CloseButton(recti(), ele);
+		
+		@folders = FolderSelect(ele);
+		@manageFolders = Button(dim2di(117, 23),"Manage Folders", topPanel);
 
 		// Data entries
 		@nameText = GuiStaticText(recti(10, 7, 60, 27), localize("#LE_Name")+":", false, false, false, topPanel);
@@ -352,6 +563,8 @@ class LayoutWindow : ScriptedGuiHandler {
 		initLayoutView(layoutPanel);
 		initSettings(settingsPanel);
 		initStats(statsPanel);
+		
+		updateFolders();
 	}
 
 
@@ -359,6 +572,9 @@ class LayoutWindow : ScriptedGuiHandler {
 		// Close button
 		close.setPosition(pos2di(size.width-30, 0));
 		close.setSize(dim2di(30, 12));
+		
+		manageFolders.setPosition(pos2di(size.width - 278, 30));
+		folders.sync(size);
 
 		// Position top panel
 		topPanel.setPosition(pos2di(7, 19));
@@ -426,6 +642,7 @@ class LayoutWindow : ScriptedGuiHandler {
 		drawVSep(recti(topLeft + pos2di(316, 19), topLeft + pos2di(323, TB_HEIGHT - 20)));
 		drawVSep(recti(topLeft + pos2di(505, 19), topLeft + pos2di(512, TB_HEIGHT - 20)));
 		drawVSep(recti(pos2di(botRight.x-154, topLeft.y+19), pos2di(botRight.x-147, topLeft.y+TB_HEIGHT - 20)));
+		drawVSep(recti(pos2di(botRight.x - 279,topLeft.y+19), pos2di(botRight.x - 273, topLeft.y+TB_HEIGHT - 20)));
 
 
 		// Draw the tabs
@@ -508,9 +725,12 @@ class LayoutWindow : ScriptedGuiHandler {
 				else if (evt.Caller is settingsTab) {
 					switchTab(LT_Settings);
 				}
+				else if (evt.Caller is manageFolders) {
+					toggleFolderWindow(this);
+				}
 				else if (evt.Caller is saveButton) {
 					if (saveLayout()) {
-						if (!shiftKey)
+						if (shiftKey)
 							clearLayout();
 					}
 				}
@@ -535,7 +755,7 @@ class LayoutWindow : ScriptedGuiHandler {
 						MultiImportDialog@ dialog
 							= addMultiImportDialog(localize("#LE_ImportTitle"),
 									localize("#LE_ImportText"), null,
-									"Layouts", ImportCallback(this));
+									folders.get_value(), ImportCallback(this));
 						dialog.ok.setToolTip(localize("#LETT_ImportNow"));
 					}
 				}
@@ -574,7 +794,7 @@ class LayoutWindow : ScriptedGuiHandler {
 			string@ filename = list.getFileName(i);
 			filename = filename.substr(folder.length()+1, filename.length()-folder.length()-5);
 
-			import_layout(this, filename);
+			import_layout(this, folders.get_value(), filename);
 
 			if (!override) {
 				string@ layName = hullEscape(name.getText());
@@ -591,6 +811,45 @@ class LayoutWindow : ScriptedGuiHandler {
 		clearLayout();
 		playSound("confirm");
 	}
+	
+	void updateFolders() {
+		folder_names.resize(1);
+		@folder_names[0] = "Default";
+	
+		XMLReader@ xml = XMLReader("Folders");
+		
+		if(xml !is null) {
+			int count = 1;			
+			while (xml.advance()) {
+				string@ name = xml.getNodeName();
+				switch(xml.getNodeType()) {
+					case XN_Element:
+						if (name == "Folder") {
+							folder_names.resize(count + 1);
+							@folder_names[count] = xml.getAttributeValue("name");
+							count++;
+						}
+					break;
+				}
+			}
+		}
+		
+		folders.update();
+	}
+	
+	void saveFolders() {
+		XMLWriter@ xml = XMLWriter("Folders");
+		
+		xml.createHeader();
+		xml.addLineBreak();
+		xml.addElement("Folders", false);
+		xml.addLineBreak();
+		for(uint i = 1; i < folder_names.length(); i++) {
+			xml.addElement("Folder", true, "name", folder_names[i]);
+			xml.addLineBreak();
+		}
+		xml.closeTag("Folders");
+	}	
 
 	/* }}} */
 	/* {{{ Layout Handling */
@@ -862,7 +1121,7 @@ class LayoutWindow : ScriptedGuiHandler {
 
 
 		string@ shipName = hullEscape(name.getText());
-		bool success = export_layout(layout, shipName, order_customizer.hasChanges);
+		bool success = export_layout(layout, folders.get_value(), shipName, order_customizer.hasChanges);
 		destroyTempHull(layout);
 
 		return success;
@@ -956,8 +1215,10 @@ class LayoutWindow : ScriptedGuiHandler {
 			setError(localize("#LEE_Cargo"), false, false);
 		else if(layout.hasSystemWithTag("Harvester") && stats.getHint("H3Storage") <= 0)
 			setError(localize("#LEE_H3"), false, false);
-		else if(stats.getHint("Local/He3perShot") > stats.getHint("H3Storage"))
+		else if(stats.getHint("H3Usage") > stats.getHint("H3Storage"))
 			setError(localize("#LEE_H3"), false, false);
+		else if(layout.hasSystemWithTag("Vamp") && stats.getHint("Power") <= 0)
+			setError(localize("#LEE_Vamp"), false, false);
 		else
 			clearError();
 
@@ -1391,7 +1652,7 @@ class LayoutWindow : ScriptedGuiHandler {
 		hoveredSubSystemID = 0;
 
 		// Create the accordion
-		@subSystemAccordion = Accordion(recti(), 20, ele);
+		@subSystemAccordion = Accordion(recti(), 16, ele);
 
 		// Lists of sub systems
 		addList(localize("#LE_Hulls"), "Hull", null, ele);
@@ -1418,9 +1679,9 @@ class LayoutWindow : ScriptedGuiHandler {
 		@hullSpace = GuiStaticText(recti(188, 11, 350, 28), localize("#LE_Space")+": 0/0", false, false, false, ele);
 
 		// Mode switch buttons
-		@bothModeButton = ToggleButton(true, recti(), "Both", ele);
+		@bothModeButton = ToggleButton(false, recti(), "Both", ele);
 		@iconModeButton = ToggleButton(false, recti(), "Icons", ele);
-		@textModeButton = ToggleButton(false, recti(), "Text", ele);
+		@textModeButton = ToggleButton(true, recti(), "Text", ele);
 
 		// Sub System Hover Information
 		@sysInfoPanel = GuiPanel( recti(pos2di(183, 7), dim2di(365, 473)), true, SBM_Auto, SBM_Invisible, ele);
@@ -1682,10 +1943,10 @@ class LayoutWindow : ScriptedGuiHandler {
 		switch (evt.EventType) {
 			case GEVT_Clicked: {
 				if (evt.Caller is bothModeButton || evt.Caller is textModeButton || evt.Caller is iconModeButton) {
-					ListMode mode = LM_IconsText;
+					ListMode mode = LM_Text;
 
-					if (evt.Caller is textModeButton)
-						mode = LM_Text;
+					if (evt.Caller is bothModeButton)
+						mode = LM_IconsText;
 					else if (evt.Caller is iconModeButton)
 						mode = LM_Icons;
 
@@ -2466,10 +2727,11 @@ class LayoutWindow : ScriptedGuiHandler {
 	void addOrderToDesign(OrderDescriptor@ ord) {
 		OrderDesc@ desc = generateOrderDesc(ord, null);
 		if (desc !is null) {
+			order_customizer.addOrderToDefaults(desc);
 			order_customizer.addOrderLast(desc);
-			order_customizer.newHull = true;
-			order_customizer.hasChanges = false;
 		}
+		order_customizer.newHull = true;
+		order_customizer.hasChanges = false;
 	}
 
 	void drawSettings(GuiElement@ ele, recti pos) {
@@ -2729,6 +2991,13 @@ class LayoutWindow : ScriptedGuiHandler {
 
 		ai_defaultFighter.setSelected(sel);
 	}
+	
+	void setDefaultFighter(const string@ name) {
+		ai_defaultFighter.clear();
+		ai_defaultFighter.addItem(localize("#LE_None"));
+		ai_defaultFighter.addItem(name);
+		ai_defaultFighter.setSelected(1);
+	}	
 
 	void setDockMode(DockingMode mode) {
 		switch (mode) {
@@ -3068,7 +3337,7 @@ class LayoutWindow : ScriptedGuiHandler {
 	}
 
 	void AddWeaponAsShotDamage(const subSystem@ sys, float& maximum) {
-		float shot = max(sys.getHint("Local/DMGperShot"), sys.getHint("Local/Alpha"));
+		float shot = max(sys.getHint("Local/DMGperShot"), sys.getHint("Alpha"));
 		
 		if(shot <= 0)
 			return;
@@ -3254,7 +3523,7 @@ enum ListMode {
 	LM_Icons,
 };
 
-const ListMode defaultListMode = LM_IconsText;
+ListMode defaultListMode;
 
 class subSysList : ScriptedGuiHandler {
 	GuiScripted@ ele;
@@ -4458,7 +4727,7 @@ class ImportCallback : MultiImportCallback {
 			if (text is null)
 				continue;
 
-			import_layout(win, text);
+			import_layout(win, win.folders.get_value(), text);
 
 			if (shiftKey) {
 				string@ layName = hullEscape(win.name.getText());
@@ -4505,8 +4774,65 @@ class ScaleCallback : ListSelectionCallback {
 };
 /* }}} */
 
+FolderCreateHandle@[] folds;
 LayoutWindowHandle@[] wins;
 dim2di defaultSize;
+
+void createFolderWindow(LayoutWindow@ win) {
+	uint n = folds.length();
+	folds.resize(n+1);
+	@folds[n] = FolderCreateHandle(makeScreenCenteredRect(dim2di(252,300)), win);
+	folds[n].bringToFront(win);
+}
+
+void closeFolderWindow(FolderCreate@ win) {
+	int index = findFolderWindow(win);
+	if (index < 0) return;
+
+	if (folds.length() > 1) {
+		folds[index].remove();
+		folds.erase(index);
+	}
+	else {
+		folds[index].setVisible(false);
+	}
+	setGuiFocus(null);
+}
+
+GuiElement@ getFolderWindow() {
+	if (folds.length() == 0)
+		return null;
+	return folds[0].ele;
+}
+
+void toggleFolderWindow(LayoutWindow@ win) {
+	bool anyVisible = false;
+	for (uint i = 0; i < folds.length(); ++i)
+		if (folds[i].isVisible())
+			anyVisible = true;
+	toggleFolderCreate(!anyVisible, win);
+}
+
+void toggleFolderCreate(bool show, LayoutWindow@ win) {
+	if (folds.length() == 0) {
+		createFolderWindow(win);
+	}
+	else {
+		// Toggle all windows to a particular state
+		for (uint i = 0; i < folds.length(); ++i) {
+			folds[i].setVisible(show);
+			if (show)
+				folds[i].bringToFront(win);
+		}
+	}
+}
+
+int findFolderWindow(FolderCreate@ win) {
+	for (uint i = 0; i < folds.length(); ++i)
+		if (folds[i].script is win)
+			return i;
+	return -1;
+}
 
 void createLayoutWindow() {
 	uint n = wins.length();
@@ -4590,15 +4916,19 @@ void init() {
 	@glowTex = getMaterialTexture("layout_linked_glow");
 	glowTexRect = glowTex.rect;
 
-	minScale = getGameSetting("SS_MIN_SCALE", 0.25f);
+	minScale = getGameSetting("SS_MIN_SCALE", 0.125f);
 	maxScale = getGameSetting("SS_MAX_SCALE", 4.f);
 
 	int xres = getScreenWidth(), yres = getScreenHeight();
 
-	if (xres >= 1028)
-		defaultSize = dim2di(948, 555);
-	else
-		defaultSize = dim2di(932, 555);
+	if (xres >= 1028) {
+		defaultSize = dim2di(1148, 855);
+		defaultListMode = LM_IconsText;
+	}
+	else {
+		defaultSize = dim2di(982, 655); 
+		defaultListMode = LM_Text;
+	}
 
 
 
@@ -4619,5 +4949,5 @@ void init() {
 void tick(float time) {
 	for (uint i = 0; i < wins.length(); ++i)
 		if (wins[i].isVisible())
-			wins[i].update(time);
+			wins[i].update(time);		
 }

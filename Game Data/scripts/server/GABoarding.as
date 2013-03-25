@@ -26,6 +26,8 @@ void takeOver(Object@ obj, Empire@ owner) {
 	State@ fuel = obj.getState(strFuel);
 	if(fuel.max > 0 && fuel.val / fuel.max < 0.1f)
 		fuel.val = fuel.max * 0.1f;
+
+	ship.forceActivate();
 }
 
 void BoardTick(Event@ evt, float Troops) {
@@ -59,14 +61,14 @@ void BoardTick(Event@ evt, float Troops) {
 	if(target.hasState(strShields)){
 		float shieldVal = target.getState(strShields).val;
 		float shieldMax = target.getState(strShields).max;
-		if(shieldVal / shieldMax > 0.5f)
+		if(shieldMax > 0 && shieldVal > 0 && (shieldVal+0.001f) / shieldMax > 0.5f)
 			return;
 	}
 	
 	if(target.hasState(strShieldArmor)){
 		float shieldArmorVal = target.getState(strShieldArmor).val;
 		float shieldArmorMax = target.getState(strShieldArmor).max;
-		if(shieldArmorVal / shieldArmorMax > 0.5f)
+		if(shieldArmorMax > 0 && shieldArmorVal > 0 && (shieldArmorVal+0.001f) / shieldArmorMax > 0.5f)
 			return;
 	}
 	

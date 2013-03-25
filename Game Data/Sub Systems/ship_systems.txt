@@ -440,7 +440,7 @@ System: CrewQuarters
 		To Run:
 			Power[2 * Size], Air[1 * Size]
 	
-	Hints: Crew[vCrewStore], Regen[vCrewRegen], MetalCost[vMetalCost]
+	Hints: Crew[vCrewStore], Regen[vCrewRegen], RegenCost[-1 * vMetalCost]
 
 System: Bridge
 	Name: #SS_BRIDGE_NAME
@@ -553,7 +553,7 @@ System: IntegratedCommandCenter
 		To Run:
 			Power[10 * Size]
 	
-	Hints: Crew[vCrewStore], Regen[vCrewRegen], Control[vControlGen], Air[vAirGen], MetalCost[vMetalCost]
+	Hints: Crew[vCrewStore], Regen[vCrewRegen], Control[vControlGen], Air[vAirGen], RegenCost[-1 * vMetalCost]
 	
 System: Computer
 	Name: #SS_COMPUTER_NAME
@@ -652,7 +652,7 @@ System: RepairBay
 	Requires:
 		To Run: Control[20 * Size]
 
-	Hints: Regen[vRepair], MetalCost[vMetalCost]
+	Hints: Regen[vRepair], RegenCost[-1 * vMetalCost]
 
 System: NaniteRepair
 	Name: #SS_NANITEREPUNIT_NAME
@@ -689,7 +689,7 @@ System: NaniteRepair
 	Consumes:
 		To Run: Power[200 * Size]
 
-	Hints: Regen[vRepair], MetalCost[vMetalCost]
+	Hints: Regen[vRepair], RegenCost[-1 * vMetalCost]
 
 System: Colonizer
 	Name: #SS_COLONIZER_NAME
@@ -752,7 +752,7 @@ System: RepairTool
 		To Run:
 			Control[10 * Size]
 	
-	Hints: RepOther[vRemoteRep], MetalCost[vMetalCost] 
+	Hints: RepOther[vRemoteRep], RegenCost[-1 * vMetalCost] 
 
 System: RepairFacilities
 	Name: #SS_REPAIRFACILITIES_NAME
@@ -784,7 +784,7 @@ System: RepairFacilities
 		To Run:
 			Control[40 * Size]
 	
-	Hints: RepOther[vRemoteRep], MetalCost[vMetalCost]
+	Hints: RepOther[vRemoteRep], RegenCost[-1 * vMetalCost]
 	
 System: Salvager
 	Name: #SS_SALVAGER_NAME
