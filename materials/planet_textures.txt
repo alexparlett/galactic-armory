@@ -710,7 +710,8 @@ Material: planet_rock5
  Defer: High
  Texture: ~/Images/Planets/terran_02.jpg
 #if shaders
- RenderMode: SmoothLit
+ RenderMode: CityLights
+ Texture2: /Images/Planets/terran_02_lightmap.png
  SpecularFactor: 15
  FlagOff: Lighting
 #else
@@ -743,7 +744,8 @@ Material: planet_rock6
  Defer: High
  Texture: ~/Images/Planets/terran_03.jpg
 #if shaders
- RenderMode: SmoothLit
+ RenderMode: CityLights
+ Texture2: /Images/Planets/terran_03_lightmap.png
  SpecularFactor: 15
  FlagOff: Lighting
 #else
@@ -776,7 +778,8 @@ Material: planet_rock7
  Defer: High
  Texture: ~/Images/Planets/terran_04.jpg
 #if shaders
- RenderMode: SmoothLit
+ RenderMode: CityLights
+ Texture2: /Images/Planets/terran_04_lightmap.png
  SpecularFactor: 15
  FlagOff: Lighting
 #else
@@ -825,7 +828,8 @@ Material: planet_rockA
  Defer: High
  Texture: Images/Planets/RockA.jpg
 #if shaders
- RenderMode: SmoothLit
+ RenderMode: CityLights
+ Texture2: /Images/Planets/RockA_lightmap.png
  SpecularFactor: 15
  FlagOff: Lighting
 #else
@@ -851,7 +855,8 @@ Material: planet_rockB
  Defer: High
  Texture: Images/Planets/RockB.jpg
 #if shaders
- RenderMode: SmoothLit
+ RenderMode: CityLights
+ Texture2: /Images/Planets/RockB_lightmap.png
  SpecularFactor: 15
  FlagOff: Lighting
 #else
@@ -877,7 +882,8 @@ Material: planet_rockC
  Defer: High
  Texture: Images/Planets/RockC.jpg
 #if shaders
- RenderMode: SmoothLit
+ RenderMode: CityLights
+ Texture2: /Images/Planets/RockC_lightmap.png
  SpecularFactor: 15
  FlagOff: Lighting
 #else
@@ -903,7 +909,8 @@ Material: planet_rockD
  Defer: High
  Texture: Images/Planets/RockD.jpg
 #if shaders
- RenderMode: SmoothLit
+ RenderMode: CityLights
+ Texture2: /Images/Planets/RockD_lightmap.png
  SpecularFactor: 15
  FlagOff: Lighting
 #else
@@ -929,7 +936,8 @@ Material: planet_rockE
  Defer: High
  Texture: Images/Planets/RockE.jpg
 #if shaders
- RenderMode: SmoothLit
+ RenderMode: CityLights
+ Texture2: /Images/Planets/RockE_lightmap.png
  SpecularFactor: 15
  FlagOff: Lighting
 #else
@@ -955,7 +963,8 @@ Material: planet_rockF
  Defer: High
  Texture: Images/Planets/RockF.jpg
 #if shaders
- RenderMode: SmoothLit
+ RenderMode: CityLights
+ Texture2: /Images/Planets/RockF_lightmap.png
  SpecularFactor: 15
  FlagOff: Lighting
 #else
@@ -981,7 +990,8 @@ Material: planet_rockG
  Defer: High
  Texture: Images/Planets/RockG.jpg
 #if shaders
- RenderMode: SmoothLit
+ RenderMode: CityLights
+ Texture2: /Images/Planets/RockG_lightmap.png
  SpecularFactor: 15
  FlagOff: Lighting
 #else
@@ -1007,7 +1017,8 @@ Material: planet_rockH
  Defer: High
  Texture: Images/Planets/RockH.jpg
 #if shaders
- RenderMode: SmoothLit
+ RenderMode: CityLights
+ Texture2: /Images/Planets/RockH_lightmap.png
  SpecularFactor: 15
  FlagOff: Lighting
 #else
@@ -1033,8 +1044,8 @@ Material: planet_rockI
  Defer: High
  Texture: Images/Planets/RockI.jpg
 #if shaders
- RenderMode: SmoothLit
- SpecularFactor: 15
+ RenderMode: CityLights
+ Texture2: /Images/Planets/RockI_lightmap.png
  FlagOff: Lighting
 #else
  FlagOn: NormalizeNorms
@@ -1060,7 +1071,8 @@ Material: planet_rockJ
  Defer: High
  Texture: Images/Planets/RockJ.jpg
 #if shaders
- RenderMode: SmoothLit
+ RenderMode: CityLights
+ Texture2: /Images/Planets/RockJ_lightmap.png
  SpecularFactor: 15
  FlagOff: Lighting
 #else
@@ -1087,8 +1099,9 @@ Material: planet_rockK
  Defer: High
  Texture: Images/Planets/RockK.jpg
 #if shaders
- RenderMode: SmoothLit
- SpecularFactor: 15
+ RenderMode: CityLights
+ Texture2: /Images/Planets/RockK_lightmap.png
+  SpecularFactor: 15
  FlagOff: Lighting
 #else
  FlagOn: NormalizeNorms
@@ -1113,8 +1126,9 @@ Material: planet_rockL
  Defer: High
  Texture: Images/Planets/RockL.jpg
 #if shaders
- RenderMode: SmoothLit
- SpecularFactor: 15
+ RenderMode: CityLights
+ Texture2: /Images/Planets/RockL_lightmap.png
+  SpecularFactor: 15
  FlagOff: Lighting
 #else
  FlagOn: NormalizeNorms

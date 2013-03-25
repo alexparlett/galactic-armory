@@ -48,7 +48,7 @@ System: BackupPower
 System: QuantumComputer
 	Name: #SS_QUANTUMCOMP_NAME
 	Description: #SS_QUANTUMCOMP_DESC
-	Appearance: QuantumComputerCore
+	Appearance: QuantCompCore
 	Explosion: electrical_spark
 	
 	Tags: Link
@@ -270,7 +270,7 @@ System: PrecisionMod
 System: MultiRack
 	Name: #SS_MULTIRACK_NAME
 	Description: #SS_MULTIRACK_DESC
-	Appearance: MiningLaser
+	Appearance: RackMount
 	Explosion: subsystem_destroyed
 
 	Tags: Link

@@ -919,6 +919,7 @@ void OnNotificationDismiss(notification_icon@ evt) {
 GuiDraggable@ chooseWin;
 GuiExtText@[] empText;
 GuiButton@[] empButton;
+GuiButton@ spectateButton;
 int[] empIDs;
 
 void updateChooseWindow() {
@@ -928,7 +929,7 @@ void updateChooseWindow() {
 
 	// Create window when empire is not valid
 	if (chooseWin is null) {
-		if (isClient() && !getActiveEmpire().isValid())
+		if (isClient() && !getActiveEmpire().isValid() && !choseSpectator)
 			createChooseWindow();
 		return;
 	}
@@ -958,6 +959,17 @@ bool playAsEmpire(const GUIEvent@ evt) {
 				return true;
 			}
 		}
+	}
+	return false;
+}
+
+bool choseSpectator = false;
+bool playAsSpectator(const GUIEvent@ evt) {
+	if (evt.EventType == GEVT_Clicked) {
+		playAsSpectator();
+		destroyChooseWindow();
+		choseSpectator = true;
+		return true;
 	}
 	return false;
 }
@@ -1005,6 +1017,12 @@ void createChooseWindow() {
 
 		y += 24;
 		++realCnt;
+	}
+
+	if(getGameSetting("SV_ALLOW_SPECTATORS", 0.f) > 0.5) {
+		@spectateButton = Button(recti(8, y+1, 128, y + 19), localize("#EM_Spectate"), choosePanel);
+		bindGuiCallback(spectateButton, "playAsSpectator");
+		y += 24;
 	}
 
 	if (y < 300) {
@@ -1097,7 +1115,7 @@ void toggleEmpireWindow() {
 void toggleEmpireWindow(bool show) {
 	// If we're in multiplayer and we don't have a valid empire,
 	// show a dialog to choose one
-	if (show && isClient() && !getActiveEmpire().isValid()) {
+	if (show && isClient() && !getActiveEmpire().isValid() && !choseSpectator) {
 		createChooseWindow();
 		return;
 	}

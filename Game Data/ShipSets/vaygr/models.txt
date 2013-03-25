@@ -81,59 +81,59 @@ Impact Point: line, 0.0023,-0.1719,0.7389, -0.0143,-0.1719,0.1874, 0.0000,-1.000
  
  ParticleSystem:
   Engine: //L: 2500 O: 1000
-   Material: plasmathruster, plasmathruster_back //C: 9496
+   Material: vaygr_thruster, vaygr_thruster_back //C: 9496
    Start:   -0.0025,0.1873,0.6358
    End:     -0.0025,0.1873,1.2358
    Width: 0.08
-   Color: f60
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back //C: 9496
+   Material: vaygr_thruster, vaygr_thruster_back //C: 9496
    Start:   -0.0097,0.1372,0.6373
    End:     -0.0097,0.1372,1.2373
    Width: 0.10
-   Color: f60
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back  //C: 4780
+   Material: vaygr_thruster, vaygr_thruster_back  //C: 4780
    Start:   -0.0004,0.0775,0.6393
    End:     -0.0004,0.0775,1.2393
    Width: 0.15
-   Color: f60
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back  //C: 4780
+   Material: vaygr_thruster, vaygr_thruster_back  //C: 4780
    Start:   0.0479,0.0333,0.6426
    End:     0.0479,0.0333,1.2426
    Width: 0.12
-   Color: f60
+   Color: fff
   Engine: //L: 2500 O: 1000
-   Material: plasmathruster, plasmathruster_back //C: 9496
+   Material: vaygr_thruster, vaygr_thruster_back //C: 9496
    Start:   -0.0542,0.0337,0.6490
    End:     -0.0542,0.0337,1.2490
    Width: 0.12
-   Color: f60
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back //C: 9496
+   Material: vaygr_thruster, vaygr_thruster_back //C: 9496
    Start:   -0.0010,-0.0095,0.6381
    End:     -0.0010,-0.0095,1.2381
    Width: 0.15
-   Color: f60
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back  //C: 4780
+   Material: vaygr_thruster, vaygr_thruster_back  //C: 4780
    Start:   0.0006,-0.0705,0.68339
    End:     0.0006,-0.0705,1.2339
    Width: 0.10
-   Color: f60
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back  //C: 4780
+   Material: vaygr_thruster, vaygr_thruster_back  //C: 4780
    Start:   0.0022,-0.1184,0.6306
    End:     0.0022,-0.1184,1.2306
    Width: 0.08
-   Color: f60   
+   Color: fff   
 EndParticleSystem
  
 
@@ -173,18 +173,18 @@ Impact Point: bank, -0.0239,0.0895,0.5177, 0.0000,1.0000,-0.0000, 60, 0.1203,0.0
  
 ParticleSystem:
   Engine:  //L: 3000  O: 1000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0841,0.0116,0.7260
    End:     0.0841,0.0116,01.4260
    Width: 0.22
-   Color: f60
+   Color: fff
 
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0803,0.0116,0.7260
    End:     -0.0803,0.0116,1.4260
    Width: 0.25
-   Color: f60
+   Color: fff
    
 EndParticleSystem
  
@@ -249,101 +249,101 @@ Model: vaygr_carrier
  
  ParticleSystem:
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0148,0.0766,0.6580
    End:     0.0148,0.0766,1.2280
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0147,0.0774,0.6580
    End:     -0.0147,0.0774,1.2280
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0140,0.0582,0.6580
    End:     0.0140,0.0582,1.2280
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0150,0.0578,0.6580
    End:     -0.0150,0.0578,1.2280
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0150,0.0380,0.6580
    End:     0.0150,0.0380,1.2280
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0143,0.0386,0.6580
    End:     -0.0143,0.0386,1.2280
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0147,0.0161,0.6580
    End:     0.0147,0.0161,1.2280
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0146,0.0154,0.6580
    End:     -0.0146,0.0154,1.2280
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0150,-0.0045,0.6580
    End:     0.0150,-0.0045,1.2280
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0132,-0.0049,0.6580
    End:     -0.0132,-0.0049,1.2280
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0144,-0.0248,0.6580
    End:     0.0144,-0.0248,1.2280
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0144,-0.0231,0.6580
    End:     -0.0144,-0.0231,1.2280
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0153,-0.0431,0.6580
    End:     0.0153,-0.0431,1.2280
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0145,-0.0422,0.6580
    End:     -0.0145,-0.0422,1.2280
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0154,-0.0601,0.6580
    End:     0.0154,-0.0601,1.2280
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0153,-0.0613,0.6580
    End:    -0.0153,-0.0613,1.2280
    Width: 0.06
-   Color: f60
+   Color: fff
    
 EndParticleSystem
  
@@ -500,11 +500,11 @@ Model: vaygr_fighter
  
 ParticleSystem:
   Engine:  //L: 8000 O: 3000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0040,0.0191,0.6048
    End:   	0.0040,0.0191,2.0048
    Width: 0.4
-   Color: f60
+   Color: fff
 EndParticleSystem
  
  
@@ -581,11 +581,11 @@ Impact Point: bank, -0.0027,0.0711,0.8436, -0.0000,-0.0358,0.9994, 45, -0.0541,0
    ParticleSystem:
  
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0014,0.0657,0.5434
    End:     0.0014,0.0657,1.4434
    Width: 0.20
-   Color: f60
+   Color: fff
 
   EndParticleSystem
  
@@ -679,46 +679,46 @@ Firing Point: point, 0.0008,-0.2693,0.6667, 0.0000,-0.9275,0.3738, 45
     ParticleSystem:
 
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0024,0.0592,0.4669
    End:     0.0024,0.0592,1.4669
    Width: 0.16
-   Color: f60
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0003,0.0063,0.4850
    End:     0.0003,0.0063,1.4850
    Width: 0.16
-   Color: f60
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0345,-0.0459,0.4803
    End:     0.0345,-0.0459,1.4803
    Width: 0.26
-   Color: f60
+   Color: fff
 
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0285,-0.0465,0.4820
    End:     -0.0285,-0.0465,1.4820
    Width: 0.26
-   Color: f60
+   Color: fff
 
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0022,-0.1132,0.4850
    End:     0.0022,-0.1132,1.4850
    Width: 0.16
-   Color: f60    
+   Color: fff    
    
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0021,-0.1595,0.4653
    End:     0.0021,-0.1595,1.4653
    Width: 0.16
-   Color: f60   
+   Color: fff   
   EndParticleSystem
  
  //===========================================
@@ -831,39 +831,39 @@ Impact Point: bank, -0.0111,-0.2093,-0.1708, 0.0000,-1.0000,0.0000, 60, 0.0034,-
  
 ParticleSystem:
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0007,0.1287,0.5555
    End:     -0.0007,0.1287,1.2555
    Width: 0.250
-   Color: f60
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0047,0.0791,0.5529
    End:     -0.0047,0.0791,1.2529
    Width: 0.25
-   Color: f60
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0027,0.0237,0.5502
    End:     0.0027,0.0237,1.2502
    Width: 0.25
-   Color: f60
+   Color: fff
 
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0018,-0.0291,0.5527
    End:     -0.0018,-0.0291,1.2527
    Width: 0.25
-   Color: f60
+   Color: fff
 
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0005,-0.0828,0.5555
    End:     -0.0005,-0.0828,1.2555
    Width: 0.25
-   Color: f60   
+   Color: fff   
    
 EndParticleSystem
  
@@ -951,113 +951,113 @@ Model: vaygr_large
 ParticleSystem:
    
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0145,0.0443,0.5117
    End:     0.0145,0.0443,1.0117
    Width: 0.04
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0141,0.0446,0.5117
    End:     -0.0141,0.0446,1.0117
    Width: 0.04
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0156,0.0307,0.5117
    End:     0.0156,0.0307,1.0117
    Width: 0.04
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0150,0.0317,0.5117
    End:     -0.0150,0.0317,1.0117
    Width: 0.04
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0143,0.0166,0.5117
    End:     0.0143,0.0166,1.0117
    Width: 0.04
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0144,0.0179,0.5117
    End:     -0.0144,0.0179,1.0117
    Width: 0.04
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0142,0.0041,0.5117
    End:     0.0142,0.0041,1.0117
    Width: 0.04
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0165,0.0053,0.5117
    End:     -0.0165,0.0053,1.0117
    Width: 0.04
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0149,-0.0089,0.5117
    End:     0.0149,-0.0089,1.0117
    Width: 0.04
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0143,-0.0090,0.5117
    End:     -0.0143,-0.0090,1.0117
    Width: 0.04
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0152,-0.0212,0.5117
    End:     0.0152,-0.0212,1.0117
    Width: 0.04
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0136,-0.0209,0.5117
    End:     -0.0136,-0.0209,1.0117
    Width: 0.04
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0147,-0.0347,0.5117
    End:     0.0147,-0.0347,1.0117
    Width: 0.04
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0142,-0.0346,0.5117
    End:     -0.0142,-0.0346,1.0117
    Width: 0.04
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0154,-0.0478,0.5117
    End:     0.0154,-0.0478,1.0117
    Width: 0.04
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0144,-0.0478,0.5117
    End:    	-0.0144,-0.0478,1.0117
    Width: 0.04
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0145,-0.0615,0.5117
    End:     0.0145,-0.0615,1.0117
    Width: 0.04
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0149,-0.0612,0.5117
    End:    	-0.0149,-0.0612,1.0117
    Width: 0.04
-   Color: f60   
+   Color: fff   
   
 EndParticleSystem
 
@@ -1187,101 +1187,101 @@ Model: vaygr_verylarge
  ParticleSystem:
 
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0090,0.0340,0.6163
    End:     0.0090,0.0340,1.2163
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0066,0.0342,0.6163
    End:     -0.0066,0.0342,1.2163
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0078,0.0215,0.6163
    End:     0.0078,0.0215,1.2163
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0086,0.0216,0.6163
    End:     -0.0086,0.0216,1.2163
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0083,0.0073,0.6163
    End:     0.0083,0.0073,1.2163
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0082,0.0074,0.6163
    End:     -0.0082,0.0074,1.2163
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0079,-0.0077,0.6163
    End:     0.0079,-0.0077,1.2163
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0077,-0.0077,0.6163
    End:     -0.0077,-0.0077,1.2163
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0079,-0.0214,0.6163
    End:     0.0079,-0.0214,1.2163
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0085,-0.0219,0.6163
    End:     -0.0085,-0.0219,1.2163
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0076,-0.0364,0.6163
    End:     0.0076,-0.0364,1.2163
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0076,-0.0364,0.6163
    End:     -0.0076,-0.0364,1.2163
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0080,-0.0488,0.6163
    End:     0.0080,-0.0488,1.2163
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0080,-0.0489,0.6163
    End:     -0.0080,-0.0489,1.2163
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   0.0080,-0.0612,0.6163
    End:     0.0080,-0.0612,1.2163
    Width: 0.06
-   Color: f60
+   Color: fff
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: vaygr_thruster, vaygr_thruster_back
    Start:   -0.0079,-0.0622,0.6163
    End:    	-0.0079,-0.0622,1.2163
    Width: 0.06
-   Color: f60
+   Color: fff
 
 
  EndParticleSystem
@@ -1378,17 +1378,17 @@ Firing Point: line, -0.0017,-0.1668,0.2047, -0.0033,-0.1775,-0.5339, 0.0000,-0.9
  ParticleSystem:
 
     Engine:
-     Material: plasmathruster, plasmathruster_back
+     Material: vaygr_thruster, vaygr_thruster_back
 	 Start:	0.0009,0.0394,0.5240
 	 End:	0.0009,0.0394,1.6240
 	 Width: 0.35
-	 Color: f60
+	 Color: fff
 
     Engine:
-     Material: plasmathruster, plasmathruster_back
+     Material: vaygr_thruster, vaygr_thruster_back
 	 Start:	-0.0020,-0.0325,0.4630
 	 End:	-0.0020,-0.0325,1.6130
 	 Width: 0.35
-	 Color: f60
+	 Color: fff
 
  EndParticleSystem

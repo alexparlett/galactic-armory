@@ -4,7 +4,7 @@ System: SpatialGen
     Appearance: RemnantSpatGen
     Explosion: ship_explode centered lasting 2.5
     
-    Tags: Weapon, Hull, Unobtainable, SpatialGen, Tool:SpatialGen, RemnantSuperWeapon
+    Tags: Weapon, Hull, Unobtainable, SpatialGen, Tool:SpatialGen, RemnantSuperWeapon, SpaceOwned
 
     Available: Traits.remnants
     Level: 1
@@ -21,6 +21,7 @@ System: SpatialGen
     Provides: Power with Rate[pow(10,6)], Cost[0]
     Provides: Capacitance with Amount[pow(10,6)]
     Provides: Repair with Rate[25]
+	Provides: RemnantQuantumEntanglement
     
     Provides: SpatialGen with Range[vRange], ChargeUp[vChargeUp]
 	
@@ -32,7 +33,7 @@ System: RemnantIonCannon
     Appearance: RemnantIonCannon
     Explosion: ship_explode centered lasting 2.5
     
-    Tags: Weapon, Hull, Unobtainable, IonCannon, Tool:IonCannon, RemnantSWGreen
+    Tags: Weapon, Hull, Unobtainable, IonCannon, Tool:IonCannon, RemnantSWGreen, SpaceOwned
 
     Available: Traits.remnants
     Level: 1
@@ -50,6 +51,7 @@ System: RemnantIonCannon
     Provides: Power with Rate[pow(10,6)], Cost[0]
     Provides: Capacitance with Amount[pow(10,6)]
     Provides: Repair with Rate[25]
+	Provides: RemnantQuantumEntanglement
     
     Provides: IonCannon with Damage[vDamage], Range[vRange], Speed[vSpeed]
 
@@ -79,6 +81,7 @@ System: ZeroPointField
     Provides: Power with Rate[pow(10,6)], Cost[0]
     Provides: Capacitance with Amount[pow(10,6)]
     Provides: Repair with Rate[25]
+	Provides: RemnantQuantumEntanglement
     
     Provides: ZPDrainTrigger with Rate[vDrain], Range[vRange], AoE_Range[vAoE_Range], Delay[vDelay], Deviation[vDeviation]
     Triggerable: ZPAreaDrain: ZPDrainTriggered with Rate[vDrain], AoE_Range[vAoE_Range]
@@ -89,7 +92,7 @@ System: Stargate
     Appearance: JumpBridge
     Explosion: ship_explode centered lasting 2.5
     
-    Tags: Stargate, Hull, Unobtainable, EstablishLink, Tool:EstablishLink, JumpGate
+    Tags: Stargate, Hull, Unobtainable, EstablishLink, Tool:EstablishLink, JumpGate, SpaceOwned
 
     Available: Traits.remnants
     Level: 1
@@ -105,6 +108,8 @@ System: Stargate
     Provides: Power with Rate[pow(10,6)], Cost[0]
     Provides: Capacitance with Amount[pow(10,6)]
     Provides: Repair with Rate[25]
+	Provides: RemnantBridgeChargeStorage with Amount[pow(11,7)], Rate[1500]
+	Provides: RemnantQuantumEntanglement
 
     Provides: StargateLink with StargateRange[vStargateRange]
     
@@ -163,6 +168,8 @@ System: CommandHull
         
     Provides: AmmoStorage with
         Amount[vEcoStore * 0.5]
+		
+	Provides: RemnantQuantumEntanglement
 
     Hints: Local/DamageReduction[-1 * Scale], Local/HullSoak[90], ArmorPoints[8], ShieldEmitters[8], Local/HullHP[Durability], Local/CreateMatter[vRate], EcoStore[vEcoStore]
     
@@ -223,7 +230,7 @@ System: RemnantGate
     Durability: 160 * pow(10, 9)
     Mass: 10
 
-    Tags: Weapon, Hull, Unobtainable, Tool:WarpGate, WarpGate, JumpGate
+    Tags: Weapon, Hull, Unobtainable, Tool:WarpGate, WarpGate, JumpGate, SpaceOwned
     
     Costs: Metals[1]
 
@@ -232,6 +239,7 @@ System: RemnantGate
     Provides: Capacitance with Amount[pow(10,6)]
     Provides: Repair with Rate[25]
     Provides: RemnantGateNotification
+	Provides: RemnantQuantumEntanglement
 
     Provides: GateWarp with
         MaxRange[pow(10,12)], RechargeTime[1800],

@@ -83,10 +83,10 @@ Material: hiigaran_station_low
 
 Material: hiigaran_station
  Defer: High
- Texture: ../../Images/Ships/HW2/hiigaran_spacestation.png
+ Texture: ../../Images/Ships/HW2/Spacestation.png
 #if shaders
- Texture2: ../../Images/Ships/HW2/hiigaran_spacestation_glow.png
- Texture3: ../../Images/Ships/HW2/hiigaran_spacestation_marks.png
+ Texture2: ../../Images/Ships/HW2/Spacestation_glowmap.png
+ Texture3: ../../Images/Ships/HW2/Spacestation_marks.png
  Texture4: ../../Images/Ships/wear_marks.png
  RenderMode: ShipLightsMarks
  FlagOff: Lighting

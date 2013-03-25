@@ -27,7 +27,6 @@ bool RS_prepped = false;
 bool RS_balancedStart = false;
 bool RS_specialSystems = true;
 bool RS_tempFalloff = true;
-bool RS_jumpGates = true;
 int RS_specialNum = 40;
 float RS_allyDist = 0.1f;
 float RS_playerDist = 0.4f;
@@ -59,15 +58,19 @@ void RS_initMapGeneration() {
 		RS_allyDist = getGameSetting("MAP_ALLY_DIST", 0.15f);
 		RS_playerDist = getGameSetting("MAP_PLAYER_DIST", 0.45f);
 		RS_tempFalloff = getGameSetting("MAP_TEMP_FALLOFF", 1.f) > 0.5f;
-		RS_jumpGates = getGameSetting("MAP_JUMP_GATES", 1.f) > 0.5f;
 		
-		RS_specialSystems = getGameSetting("MAP_SPECIAL_SYSTEMS",1) != 0.f;
+		RS_specialSystems = getGameSetting("MAP_SPECIAL_SYSTEMS",1) > 0.5f;
 		float specialDens = getGameSetting("MAP_SPECIAL_SYSTEM_DENSITY", 0.025f);
-		if (specialDens <= 0)
-			RS_specialSystems = false;
-		else
-			RS_specialNum = int(round(1.f/specialDens));
-		initSpecialSystems();
+		
+		if(RS_specialSystems)
+		{
+			if (specialDens <= 0)
+				RS_specialSystems = false;
+			else
+				RS_specialNum = int(round(1.f/specialDens));
+				
+			initSpecialSystems();
+		}
 
 		initPlanetTypes();
 		
@@ -201,6 +204,11 @@ Planet@ RS_setupStandardHomeworld(System@ sys, Empire@ emp) {
 	RS_playerPositions.resize(n+1);
 	RS_playerTeams[n] = team;
 	RS_playerPositions[n] = sys.toObject().getPosition();
+	
+	updateLoadScreen(emp.getName()+" born.");
+	
+	if(sys.hasTag("JumpSystem") && RS_balancedStart)
+		sys.removeTag("JumpSystem");
 	
 	Orbit_Desc orbDesc;
 	
@@ -789,7 +797,7 @@ Planet@ RS_makeStandardPlanet(System@ sys, uint plNum, uint plCount) {
 		strucsp = (strucsp + moonspc + pRad);
 	}
 	
-	if(strucsp < 1)
+	if(strucsp <= 1)
 		strucsp = 5;
 	pl.setStructureSpace(strucsp);
 	
@@ -873,24 +881,12 @@ void RS_makeRandomAsteroid(System@ sys, uint rocks) {
 System@ RS_makeRandomSystem(Galaxy@ Glx, vector position, uint sysNum, uint sysCount) {
 	// Create system sysNum/sysCount at position
 	float sysType = randomf(100.f);
-	uint availableGates = 0;	
 	
-	if(sysNum >= 20)
-		availableGates = sysCount / 10;
-	
-	if (RS_specialSystems && RS_specialNum > 0 && sysNum > 0 && sysNum % RS_specialNum == 0) {
+	if (RS_specialSystems && (RS_specialNum > 0 && sysNum > 0 && sysNum % RS_specialNum == 0)) {
 		System@ sys = makeSpecialSystem(Glx, position);
 		if (sys !is null)
 			return sys;
 	}
-	
-	if(RS_jumpGates && availableGates > 0 && gateSystems < availableGates) {
-		System@ system = makeGateSystem(Glx, position);
-		if (system !is null) {
-			++gateSystems;
-			return system;
-		}
-	}	
 	
 	if (sysNum >= 11) {
 		// We can have dead systems when we already

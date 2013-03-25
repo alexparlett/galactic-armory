@@ -53,6 +53,8 @@ const string@ strTerraform = "Terraform";
 
 const float minCheatingResources = 0.f;
 
+//Set this to false to disallow ais from sending peace treaties
+const bool ALLOW_AI_PEACE = true;
 /* }}} */
 /* {{{ Personalities */
 enum PersonalityVariable {
@@ -255,9 +257,6 @@ string[] varNames = {
 	"SystemMaxRetrofitting"
 };
 
-string@ raceName;
-string@ raceDescription;
-
 enum PersonalityFlag {
 	PF_COUNT,
 };
@@ -449,6 +448,8 @@ class Personality {
 	/* {{{ Variables */
 	float[] values;
 	string@[] strValues;
+	string@ raceName;
+	string@ raceDescription;
 
 	float opIndex(PersonalityVariable var) {
 		return values[uint(var)];
@@ -1559,8 +1560,8 @@ class EmpireAIData {
 			@pers = getPersonality(persID - 1);
 		}
 		
-		emp.setRaceName(raceName);
-		emp.setRaceDescription(raceDescription);
+		emp.setRaceName(pers.raceName);
+		emp.setRaceDescription(pers.raceDescription);
 		
 
 		// Only set certain things at game start
@@ -1738,6 +1739,8 @@ class EmpireAIData {
 	}
 
 	bool manages(System@ sys) {
+		if(sys is null)
+			return false;
 		return controlledSystems.exists(sys.toObject().uid);
 	}
 
@@ -1839,6 +1842,8 @@ class EmpireAIData {
 	}
 
 	bool manages(Fleet@ fleet) {
+		if(fleet is null)
+			return false;
 		return controlledFleets.exists(fleet.ID);
 	}
 
@@ -5493,7 +5498,7 @@ class FleetController {
 				const HullLayout@ layout = member.getHull();
 				const HullLayout@ newLayout = layout.getLatestVersion();
 
-				if (layout !is newLayout) {
+				if (layout !is newLayout && layout.metadata != GID_Carrier) {
 					assignRetrofit(data, emp, member);
 					return;
 				}
@@ -6184,7 +6189,7 @@ class RelationsManager {
 							lastProposalType = TT_ThreatForWar;
 						}
 					}
-					else {
+					else if(ALLOW_AI_PEACE) {
 						if (strRatio < data[PV_ConsiderBribeStrengthRatio]) {
 							@proposedTreaty = treaties.getProposedTreaty(other);
 							createPeaceBribe(data, emp, other);

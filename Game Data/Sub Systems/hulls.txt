@@ -386,7 +386,7 @@ System: HeliocideHull
 	Equips To: Hull
 	PreDamageOrder: -2
 
-	Available: (((Techs.ShipConstruction.Level > 14) && (Techs.MegaConstruction.Level > 14) && (Techs.Gravitics.Level > 14) && (Techs.WarpPhysics.Level > 15))) && not(Traits.code_of_honor)
+	Available: (((Techs.ShipConstruction.Level > 14) && (Techs.MegaConstruction.Level > 14) && (Techs.Gravitics.Level > 14) && (Techs.WarpPhysics.Level > 14))) && not(Traits.code_of_honor)
 	Level: floor((Techs.ShipConstruction.Level / 4) + (Techs.MegaConstruction.Level / 4) + (Techs.Gravitics.Level / 4) + (Techs.WarpPhysics.Level / 4))
 	
 	sizePenalty: (1 / 1000) * decay(pow(LEVEL_GAIN_CURVE, Techs.MegaConstruction.Level), 2)
@@ -743,7 +743,7 @@ System: HaulerHull
 	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Electronics[vElec * pow(SUBS_COST_CRV, Level)], AdvParts[vParts * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
 	Complexity: 0.3
 	
-	vCargoStore: Size * 200 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
+	vCargoStore: Size * 100 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
 	vChargeTime: min((10 + (decay(pow(LEVEL_GAIN_CURVE, Level),25) * sqrt(Object.Scale))), 120)
 	vPowCost: 100 * Size
 	
@@ -786,7 +786,7 @@ System: TankerHull
 	vMetal: poly(Size, 350, 50, 16 * sizePenalty)
 	vElec: poly(Size, 125, 10, 3.3 * sizePenalty)
 	vParts: poly(Size,60,4,1.33 * sizePenalty)
-	vFuelStore: Size * 800 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
+	vFuelStore: Size * 400 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
 	
 	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Electronics[vElec * pow(SUBS_COST_CRV, Level)], AdvParts[vParts * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Fuel[vFuelStore]
 	Complexity: 0.3

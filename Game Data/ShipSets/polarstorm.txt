@@ -1,0 +1,85 @@
+if class == ColonyShip {
+	Sprite = 12
+	Model = polarstorm_colonizer
+}
+
+tag RemnantSuperWeapon {
+	Sprite = 14
+	Model = neumon_superweapon
+}
+
+tag RemnantSWGreen {
+	Sprite = 15
+	Model = green_neumon_superweapon
+}
+
+if (class == Carrier) || (class == Transport) {
+	Sprite = 8
+	Model = polarstorm_carrier
+}
+
+if class == Cargo {
+	Sprite = 11
+	Model = polarstorm_hauler
+}
+
+if (class == Station) || (class == CivStation) {
+	if scale <= 1 {
+		Sprite = 9
+		Model = polarstorm_satellite
+	}
+	Sprite = 10
+	Model = polarstorm_station
+}
+
+if scale <= 0.25 {
+	Sprite = 0
+	Model = polarstorm_drone
+}
+tag FighterHull {
+	Sprite = 1
+	Model = polarstorm_fighter
+}
+
+tag BomberHull {
+	Sprite = 2
+	Model = polarstorm_tiny
+}
+
+tag LightHull {
+	Sprite = 3
+	Model = polarstorm_small
+}
+
+tag SpinalHull {
+	Sprite = 5
+	Model = polarstorm_large
+}
+
+tag MediumHull {
+	Sprite = 4
+	Model = polarstorm_medium
+}
+
+tag HeavyHull {
+	Sprite = 5
+	Model = polarstorm_large
+}
+
+tag MegaHull {
+	Sprite = 6
+	Model = polarstorm_verylarge
+}
+
+tag GargantuanHull {
+	Sprite = 7
+	Model = polarstorm_huge
+}
+
+tag StealthHull {
+	Sprite = 2
+	Model = polarstorm_tiny
+}
+
+Sprite = 4
+Model = polarstorm_medium

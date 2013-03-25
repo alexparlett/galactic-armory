@@ -7,9 +7,55 @@
  */
 
 const string@ strVictory = "Victory", strPlanet = "Planet", strShip = "Ship", strTeam = "Team";
+const string@ strDifficulty = "Difficulty", strCheats = "Cheats";
 const float victoryCheckInterval = 1.f;
 float victoryCheckTimer = 0.f;
 bool log = false;
+
+void checkVictoryAchievements() {
+	if(!canAchieve)
+		return;
+
+	float playerTeam = getPlayerEmpire().getSetting(strTeam);
+
+	uint enemyCnt = 0;
+	uint cnt = getEmpireCount();
+	for (uint i = 0; i < cnt; ++i) {
+		Empire@ emp = getEmpire(i);
+
+		if(emp is getPlayerEmpire())
+			continue;
+
+		//Ignore empires in the same team
+		float team = emp.getSetting(strTeam);
+		if(playerTeam > 0.5f && team > 0.5f && abs(playerTeam-team) < 0.5f)
+			continue;
+
+		//Only count empires that are dead
+		if(emp.getStat(strVictory) < 1.5f)
+			continue;
+
+		float diff = emp.getSetting(strDifficulty);
+		float cheats = emp.getSetting(strCheats);
+
+		//Difficulty achievements
+		if(diff == 0.f) {
+			achieve(AID_BEAT_TRIVIAL);
+		}
+		else if(diff == 5.f) {
+			if(cheats == 0.f)
+				achieve(AID_BEAT_HARDEST);
+			else
+				achieve(AID_BEAT_HARDEST_CHEATING);
+		}
+
+		//Track how many enemies we've beaten
+		++enemyCnt;
+	}
+
+	if(enemyCnt >= 7)
+		achieve(AID_BEAT_SEVEN);
+}
 
 void tick(float time) {
 	if (victoryCheckTimer >= victoryCheckInterval) {
@@ -64,6 +110,9 @@ void tick(float time) {
 
 				if (won && hasEnemies) {
 					emp.setStat(strVictory, 1.f);
+
+					if(emp is getPlayerEmpire())
+						checkVictoryAchievements();
 
 					if (log)
 						warning(emp.getName()+" has won the game");

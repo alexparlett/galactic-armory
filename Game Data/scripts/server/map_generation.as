@@ -6,7 +6,6 @@ import void initSpecialSystems() from "special_systems";
 import System@ makeSpecialSystem(Galaxy@, vector) from "special_systems";
 import System@ makeUnstableStar(Galaxy@ Glx, vector pos) from "special_systems";
 import System@ makeNeutronStar(Galaxy@ Glx, vector pos) from "special_systems";
-import System@ makeGateSystem(Galaxy@ Glx, vector pos) from "special_systems";
 // }}}
 
 // Strings

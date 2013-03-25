@@ -23,7 +23,6 @@ bool prepped = false;
 bool balancedStart = false;
 bool specialSystems = true;
 bool tempFalloff = true;
-bool jumpGates = true;
 int specialNum = 40;
 float allyDist = 0.1f;
 float playerDist = 0.4f;
@@ -55,15 +54,19 @@ void V_initMapGeneration() {
 		allyDist = getGameSetting("MAP_ALLY_DIST", 0.15f);
 		playerDist = getGameSetting("MAP_PLAYER_DIST", 0.45f);
 		tempFalloff = getGameSetting("MAP_TEMP_FALLOFF", 1.f) > 0.5f;
-		jumpGates = getGameSetting("MAP_JUMP_GATES", 1.f) > 0.5f;
 
 		specialSystems = getGameSetting("MAP_SPECIAL_SYSTEMS",1) != 0.f;
 		float specialDens = getGameSetting("MAP_SPECIAL_SYSTEM_DENSITY", 0.025f);
-		if (specialDens <= 0)
-			specialSystems = false;
-		else
-			specialNum = int(round(1.f/specialDens));
-		initSpecialSystems();
+		
+		if(specialSystems)
+		{
+			if (specialDens <= 0)
+				specialSystems = false;
+			else
+				specialNum = int(round(1.f/specialDens));
+				
+			initSpecialSystems();
+		}
 
 		initPlanetTypes();
 
@@ -197,6 +200,11 @@ Planet@ V_setupStandardHomeworld(System@ sys, Empire@ emp) {
 	playerPositions.resize(n+1);
 	playerTeams[n] = team;
 	playerPositions[n] = sys.toObject().getPosition();
+	
+	updateLoadScreen(emp.getName()+" born.");
+	
+	if(sys.hasTag("JumpSystem") && balancedStart)
+		sys.removeTag("JumpSystem");
 
 	Orbit_Desc orbDesc;
 	
@@ -654,25 +662,12 @@ void V_makeRandomAsteroid(System@ sys, uint rocks) {
 System@ V_makeRandomSystem(Galaxy@ Glx, vector position, uint sysNum, uint sysCount) {
 	// Create system sysNum/sysCount at position
 	float sysType = randomf(100.f);
-	uint availableGates = 0;	
 	
-	if(sysNum >= 20)
-		availableGates = sysCount / 10;;	
-	
-	if (specialSystems && specialNum > 0 && sysNum > 0 && sysNum % specialNum == 0) {
+	if (specialSystems && (specialNum > 0 && sysNum > 0 && sysNum % specialNum == 0)) {
 		System@ sys = makeSpecialSystem(Glx, position);
 		if (sys !is null)
 			return sys;
 	}
-	
-	
-	if(jumpGates && availableGates > 0 && gateSystems < availableGates) {
-		System@ system = makeGateSystem(Glx, position);
-		if (system !is null) {
-			++gateSystems;
-			return system;
-		}
-	}	
 	
 	if (sysNum >= 11) {
 		// We can have dead systems when we already

@@ -332,7 +332,7 @@ System: RamScoop
 	Tick Rate: 2
 	
 	vFuelRate: Size * 0.01 * pow(LEVEL_GAIN_CURVE, Level)
-	vFuelStore: Size * 10 * pow(LEVEL_GAIN_CURVE, Level)
+	vFuelStore: Size * 10 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
 	
 	Provides: FuelStorage with
 		Amount[vFuelStore]
@@ -871,12 +871,13 @@ System: MatterGen
 
 	vMatterRate: Size * (5 - (3 * decay(pow(LEVEL_GAIN_CURVE,Level), 25)))				//was Size * (8 - (4 * ...
 	vPowCost: Size * 200 * decay(pow(LEVEL_GAIN_CURVE,Level),125)							//was Size * 40
+	vStorage: Size * 10 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
 
 	Provides: AmmoStorage with
-		Amount[Size * 10]
+		Amount[vStorage]
 
 	Provides: FuelStorage with
-		Amount[Size * 10]
+		Amount[vStorage]
 	
 	Provides: MatterGeneration with Rate[vMatterRate], PowCost[vPowCost]
 

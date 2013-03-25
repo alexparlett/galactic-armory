@@ -149,7 +149,7 @@ System: MassDriver
 	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
 	Mass: 400 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
 	
-	Tags: Weapon, ProjWeapon, GlobalKiller, Tool:GlobalKiller, Roid
+	Tags: Weapon, SpecWeapon, GlobalKiller, Tool:GlobalKiller, Roid
 	Tied To: ProjWeapons 13, Gravitics 11
 	
 	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]

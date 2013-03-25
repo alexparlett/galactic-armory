@@ -1,4 +1,4 @@
-const string@ strFuel = "Fuel";
+const string@ strFuel = "Fuel", strBridgeCharge = "RemnantBridgeCharge";
 
 float checkRange(const Object@ src, const Object@ trg, const Effector@ eff) {
 	//Can only jump to significant sources of gravity
@@ -14,6 +14,11 @@ float checkRange(const Object@ src, const Object@ trg, const Effector@ eff) {
 }
 
 float checkFuel(const Object@ src, const Object@ trg, const Effector@ eff) {
+	if(!src.hasState(strFuel))
+	{
+		return 0.f;
+	}
+	
 	const State@ fuel = src.getState(strFuel);
 	
 	if(fuel.val - eff[4] < fuel.max * 0.05f || fuel.max <= 0)
@@ -108,14 +113,41 @@ float checkStargate(const Object@ src, const Object@ trg, const Effector@ eff) {
 	if (@stargate !is null){
 		const HullLayout@ stargateHull = stargate.getHull();
 		if (@stargateHull !is null){
-			if(src.getOwner() is trg.getOwner() || src.getOwner().isAllied(trg.getOwner())){	
-				if(stargateHull.hasSystemWithTag(strStargate)){
-					return 1.f;
+			if(stargateHull.hasSystemWithTag(strStargate)){
+				return 1.f;
+			}
+		}
+	}
+	return 0.f;
+}
+
+float checkStargateJump(const Object@ src, const Object@ trg, const Effector@ eff) {
+	const HulledObj@ stargate = trg;
+	if (@stargate !is null){
+		const HullLayout@ stargateHull = stargate.getHull();
+		if (@stargateHull !is null){
+			if(stargateHull.hasSystemWithTag(strStargate)) {
+				const State@ targetID = trg.getState(strStargate);
+				
+				if(@targetID !is null){
+					const Object@ jumpTo = getObjectByID(targetID.val);
+					if (@jumpTo !is null){
+						if(jumpTo.isValid()){
+							float jumpShipScale = src.radius * src.radius;
+							float jumpFromScale = trg.radius * trg.radius;
+							float jumpToScale = jumpTo.radius * jumpTo.radius;
+							if(jumpShipScale <= jumpFromScale){
+								if(jumpShipScale <= jumpToScale){
+									return 1.f;
+								}
+							}
+						}
+					}
 				}
 			}
 		}
 	}
-	return 0;
+	return 0.f;
 }
 
 void createLink(Event@ evt) {
@@ -133,26 +165,39 @@ void GateJump(Event@ evt) {
 		Object@ jumpTo = getObjectByID(targetID.val);
 		if (@jumpTo !is null){
 			if(jumpTo.isValid()){
-				float jumpShipScale = jumpShip.radius * jumpShip.radius;
-				float jumpFromScale = jumpFrom.radius * jumpFrom.radius;
-				float jumpToScale = jumpTo.radius * jumpTo.radius;
-				if(jumpShipScale <= jumpFromScale){
-					if(jumpShipScale <= jumpToScale){
-						doJump(jumpShip, jumpTo);
-						return;
-					}
-					else{
-						jumpShip.getOwner().postMessage("#link:o"+jumpShip.uid+"##c:red#"+jumpShip.getName()+"#c##link#: Aborting stargate jump. End point #link:o"+jumpTo.uid+"##c:red#"+jumpTo.getName()+"#c##link# is too small to pass.");
-						return;
-					}
+				State@ bridgeCharge = evt.target.getState(strBridgeCharge);
+				
+				print(f_to_s(bridgeCharge.val));
+				print(f_to_s(bridgeCharge.max));
+				
+				if(jumpShip.getMass() < bridgeCharge.val) {
+					bridgeCharge.val -= jumpShip.getMass();
+					
+					jumpShip.velocity = vector(0,0,0);
+			
+					clearOrders(jumpShip);
+					doJump(jumpShip, jumpTo);
+					return;
 				}
-				else{
-					jumpShip.getOwner().postMessage("#link:o"+jumpShip.uid+"##c:red#"+jumpShip.getName()+"#c##link#: Aborting stargate jump. Starting point #link:o"+jumpFrom.uid+"##c:red#"+jumpFrom.getName()+"#c##link# is too small to pass.");
+				else {
+					jumpShip.getOwner().postMessage("#link:o"+jumpShip.uid+"##c:red#"+jumpShip.getName()+"#c##link#: Aborting stargate jump. End point #link:o"+jumpTo.uid+"##c:red#"+jumpTo.getName()+"#c##link# not enough energy to transport.");
+					clearOrders(jumpShip);
 					return;
 				}
 			}
+			else{
+				jumpShip.getOwner().postMessage("#link:o"+jumpShip.uid+"##c:red#"+jumpShip.getName()+"#c##link#: Aborting stargate jump. End point #link:o"+jumpTo.uid+"##c:red#"+jumpTo.getName()+"#c##link# has invalid hyperspace coordinates.");
+				clearOrders(jumpShip);
+				return;
+			}
+		}
+		else{
+			clearOrders(jumpShip);
+			jumpShip.getOwner().postMessage("#link:o"+jumpShip.uid+"##c:red#"+jumpShip.getName()+"#c##link#: Aborting stargate jump. Starting point #link:o"+jumpFrom.uid+"##c:red#"+jumpFrom.getName()+"#c##link# has invalid hyperspace coordinates.");
+			return;
 		}
 	}
+	clearOrders(jumpShip);
 	jumpShip.getOwner().postMessage("#link:o"+jumpShip.uid+"##c:red#"+jumpShip.getName()+"#c##link#: Aborting stargate jump. #link:o"+jumpFrom.uid+"##c:red#"+jumpFrom.getName()+"#c##link# has invalid hyperspace coordinates.");	
 }
 

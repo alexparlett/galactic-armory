@@ -1150,6 +1150,12 @@ void setMouseOverlayText(Object@ obj) {
 		mo_text += formatState(obj, "Ammo", localize("#MO_Ammo"), Color(0xffb54f4a), Color(0xffb54f4a), false);
 	}
 	
+	float bcv = 0.f,bcm = 0.f,bco = 0.f;
+	if(obj.getStateVals("RemnantBridgeCharge",bcv,bcm,bco,bco))
+	{
+		mo_text += formatValue(bcv,bcm,"Bridge Charge", Color(0xffa65296), Color(0xffd23323));
+	}
+	
 	// System tags
 	if (sys !is null) {
 		SystemTags tags;
@@ -1408,6 +1414,38 @@ void setMouseOverlayText(Object@ obj) {
 					}
 				}			
 			}
+		}
+	}
+	
+	//Jump Bridge Mouseover
+	if(hull !is null && hull.getHull() !is null) {
+		if(hull.getHull().hasSystemWithTag("Stargate")) {
+			float obs = 0.f, uid = 0.f;
+			obj.getStateVals("Stargate",uid,obs,obs,obs);
+		
+			if(uid > 0.f) 
+			{
+				Object@ gate = getObjectByID(int(round(uid)));
+				
+				if(gate !is null)
+				{
+					mo_text += combine("\n", "#c:00dc00#",
+										"Link: "+ gate.getName(), 
+										"\nIn: "+ gate.getCurrentSystem().toObject().getName(),
+										"#c#");
+				}
+				else
+				{
+					mo_text += combine("\n", "#c:dc0000#",
+										"Cannot Connect to: ",gate.getName(), 
+										"#c#");					
+				}
+			}
+			else
+			{
+				mo_text += combine("\n", "#c:dc0000#",
+									"No Link", "#c#");				
+			}		
 		}
 	}
 	

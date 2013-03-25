@@ -3,6 +3,23 @@ string@ strFuel = "Fuel", strFood = "Food", strMetals = "Metals", strElects = "E
 string@ strControl = "Control", strCrew = "Crew", strAmmo = "Ammo", strVisibility = "VisibilityTimer";
 string@ strHeatsink = "Heatsink", strOverheated = "Overheated", strDamageTimer = "DamageTimer";
 string@ strEPow = "ePow";
+string@ strStaticPosition = "StaticPosition";
+
+void StaticCheckPosition(Event@ evt) {
+	Object@ gate = evt.obj;
+	
+	gate.velocity = vector(0, 0, 0);	
+	
+	vector pos = gate.getPosition();
+	
+	float ox = 0.f,oy = 0.f,oz = 0.f,obs = 0.f;
+	gate.getStateVals(strStaticPosition,ox,oy,oz,obs);
+		
+	if(pos.x != ox || pos.y != oy || pos.z != oz) {
+		vector old = vector(ox,oy,oz);
+		gate.position = old;
+	}
+}
 
 void startEmergencyPower(Event@ evt) {
 	Object@ obj = evt.obj;

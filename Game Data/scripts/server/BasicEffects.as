@@ -78,7 +78,7 @@ void SolarPower(Event@ evt, float Rate, float SurfaceArea) {
 	float canStore = power.getFreeSpace();
 	if(canStore <= 0)
 		return;
-	float add = min(Rate * evt.time * SurfaceArea * 25000.f / max(obj.position.getLengthSQ(), 50.f*50.f), canStore);
+	float add = min(Rate * evt.time * SurfaceArea * 25000.f / min(obj.position.getLength(), 50.f*50.f), canStore);
 	power.val += add;
 }
 
@@ -354,6 +354,12 @@ void CapturePlanet(Event@ evt) {
 			@To = targ.getState("AdvParts");
 			if(@From != null && @To != null)
 				To.add(From.getAvailable(), targ);
+
+			if(canAchieve && evt.obj.getOwner() is getPlayerEmpire()) {
+				progressAchievement(AID_PLANETS_SMALL, 1);
+				progressAchievement(AID_PLANETS_MEDIUM, 1);
+				progressAchievement(AID_PLANETS_LARGE, 1);
+			}
 			
 			//state.val1 = colonizerReloadDelay;
 			evt.obj.destroy(true); //Uncomment for non-reusable colony ships
@@ -663,6 +669,9 @@ void CreateRingworld(Event@ evt) {
 		planet.getState("Damage").max = 100000000000.f;
 		
 		StandardTakeover(planet, evt.obj.getOwner(), 25.f);
+
+		if(canAchieve && evt.obj.getOwner() is getPlayerEmpire())
+			achieve(AID_BUILD_RINGWORLD);
 	}
 	evt.obj.destroy(true);
 }

@@ -1,0 +1,214 @@
+#forceHighQTextures on
+#makeMipMaps off
+
+SpriteBank: polarstorm_Shipset
+ Texture: ../../Images/Ships/Polarstorm/polarstorm_shipset.png
+ AutoTile: rowmajor, 55, 55
+
+
+Material: polarstorm_drone
+ Defer: Low
+ Texture: ../../Images/Ships/Polarstorm/drone.png
+ SpecularFactor: 12
+ Specular: 666
+#if shaders
+ Texture2: ../../Images/Ships/Polarstorm/drone_glowmap.png
+ Texture3: ../../Images/Ships/Polarstorm/drone_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+
+Material: polarstorm_fighter
+ Defer: Low
+ Texture: ../../Images/Ships/Polarstorm/fighter.png
+ SpecularFactor: 12
+ Specular: 666
+#if shaders
+ Texture2: ../../Images/Ships/Polarstorm/fighter_glowmap.png
+ Texture3: ../../Images/Ships/Polarstorm/fighter_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+
+Material: polarstorm_tiny
+ Defer: Low
+ Texture: ../../Images/Ships/Polarstorm/tiny.png
+ SpecularFactor: 12
+ Specular: 666
+#if shaders
+ Texture2: ../../Images/Ships/Polarstorm/tiny_glowmap.png
+ Texture3: ../../Images/Ships/Polarstorm/tiny_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+
+Material: polarstorm_small
+ Defer: Low
+ Texture: ../../Images/Ships/Polarstorm/small.png
+ SpecularFactor: 12
+ Specular: 666
+#if shaders
+ Texture2: ../../Images/Ships/Polarstorm/small_glowmap.png
+ Texture3: ../../Images/Ships/Polarstorm/small_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+
+Material: polarstorm_medium
+ Defer: Low
+ Texture: ../../Images/Ships/Polarstorm/medium.png
+ SpecularFactor: 12
+ Specular: 666
+#if shaders
+ Texture2: ../../Images/Ships/Polarstorm/medium_glowmap.png
+ Texture3: ../../Images/Ships/Polarstorm/medium_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+
+Material: polarstorm_large
+ Defer: Low
+ Texture: ../../Images/Ships/Polarstorm/large.png
+ SpecularFactor: 12
+ Specular: 666
+#if shaders
+ Texture2: ../../Images/Ships/Polarstorm/large_glowmap.png
+ Texture3: ../../Images/Ships/Polarstorm/large_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+
+Material: polarstorm_verylarge
+ Defer: Low
+ Texture: ../../Images/Ships/Polarstorm/verylarge.png
+ SpecularFactor: 12
+ Specular: 666
+#if shaders
+ Texture2: ../../Images/Ships/Polarstorm/verylarge_glowmap.png
+ Texture3: ../../Images/Ships/Polarstorm/verylarge_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: polarstorm_huge
+ Defer: Low
+ Texture: ../../Images/Ships/Polarstorm/huge.png
+ SpecularFactor: 12
+ Specular: 666
+#if shaders
+ Texture2: ../../Images/Ships/Polarstorm/huge_glowmap.png
+ Texture3: ../../Images/Ships/Polarstorm/huge_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+
+Material: polarstorm_satellite
+ Defer: Low
+ Texture: ../../Images/Ships/Polarstorm/satellite.png
+ SpecularFactor: 12
+ Specular: 666
+#if shaders
+ Texture2: ../../Images/Ships/Polarstorm/satellite_glowmap.png
+ Texture3: ../../Images/Ships/Polarstorm/satellite_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+
+Material: polarstorm_station
+ Defer: Low
+ Texture: ../../Images/Ships/Polarstorm/station.png
+ SpecularFactor: 12
+ Specular: 666
+#if shaders
+ Texture2: ../../Images/Ships/Polarstorm/station_glowmap.png
+ Texture3: ../../Images/Ships/Polarstorm/station_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+
+Material: polarstorm_carrier
+ Defer: Low
+ Texture: ../../Images/Ships/Polarstorm/carrier.png
+ SpecularFactor: 12
+ Specular: 666
+#if shaders
+ Texture2: ../../Images/Ships/Polarstorm/carrier_glowmap.png
+ Texture3: ../../Images/Ships/Polarstorm/carrier_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+
+
+Material: polarstorm_colonizer
+ Defer: Low
+ Texture: ../../Images/Ships/Polarstorm/colonizer.png
+ SpecularFactor: 12
+ Specular: 666
+#if shaders
+ Texture2: ../../Images/Ships/Polarstorm/colonizer_glowmap.png
+ Texture3: ../../Images/Ships/Polarstorm/colonizer_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+
+Material: polarstorm_hauler
+ Defer: Low
+ Texture: ../../Images/Ships/Polarstorm/hauler.png
+ SpecularFactor: 12
+ Specular: 666
+#if shaders
+ Texture2: ../../Images/Ships/Polarstorm/hauler_glowmap.png
+ Texture3: ../../Images/Ships/Polarstorm/hauler_marks.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end

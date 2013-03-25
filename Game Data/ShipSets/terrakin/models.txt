@@ -62,11 +62,11 @@ Model: terrakin_drone
  
  ParticleSystem:
   Engine:
-   Material:, plasmathruster, plasmathruster_back
+   Material:, terrakin_thruster, terrakin_thruster_back
    Start: 0.0, 0.0, -0.35
    End: 0.0, 0.0, 1.0
    Width: 0.95
-   Color: 00b
+   Color: fff
  EndParticleSystem
 
 
@@ -101,17 +101,17 @@ Model: terrakin_fighter
 
  ParticleSystem:
   Engine:
-   Material:, plasmathruster, plasmathruster_back
+   Material:, terrakin_thruster, terrakin_thruster_back
    Start: 0.0724,-0.0021,0.62
    End: 0.0724, -0.01, 1.3
    Width: 0.25
-   Color: 00b
+   Color: fff
   Engine:
-   Material:, plasmathruster, plasmathruster_back
+   Material:, terrakin_thruster, terrakin_thruster_back
    Start: -0.0733,0.0010,0.62
    End: -0.0733, -0.01, 1.3
    Width: 0.25
-   Color: 00b
+   Color: fff
  EndParticleSystem
 
 //============================================
@@ -152,17 +152,17 @@ Model: terrakin_tiny
  
  ParticleSystem:
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 0.0079,-0.0254,0.58
    End: 0.0079,-0.0254,1.08
    Width: 0.16
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 0.0074,-0.1223,0.58
    End: 0.0074,-0.1223,1.08
    Width: 0.08
-   Color: 00b
+   Color: fff
  EndParticleSystem
 
 
@@ -208,11 +208,11 @@ Model: terrakin_small
  
  ParticleSystem:
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 0.0002,-0.0000,0.6800
    End: 0.0002,-0.0000,1.2500
    Width: 0.25
-   Color: 00b
+   Color: fff
  EndParticleSystem
 
 //============================================
@@ -263,11 +263,11 @@ Model: terrakin_medium
 
  ParticleSystem:
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: -0.0010,-0.035,0.5800
    End: -0.0010,-0.035,1.5000
    Width: 0.25
-   Color: 00b
+   Color: fff
  EndParticleSystem
 
 //============================================
@@ -330,17 +330,17 @@ Model: terrakin_large
  
  ParticleSystem:
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start:	0.0000, 	-0.0070,	0.7591
    End:		0.0000, 	-0.0070,	1.1591
    Width: 0.25
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start:	0.0000,		-0.0760,	0.7454
    End:		0.0000,		-0.0760,	1.1454
    Width: 0.25
-   Color: 00b
+   Color: fff
  EndParticleSystem
  
 //============================================
@@ -397,41 +397,41 @@ Model: terrakin_verylarge
  
  ParticleSystem:
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	0.0005,		0.1146,		0.7591
    End: 	0.0005,		0.1146,		1.1591
    Width: 0.25
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	0.0979,		-0.0518,	0.7591
    End: 	0.0979,		-0.0518,	1.1591
    Width: 0.25
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	-0.0968,	-0.0519,	0.7591
    End: 	-0.0968,	-0.0519,	1.1591
    Width: 0.25
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	-0.0000,	0.0464,		0.7454
    End:		-0.0000,	0.0464,		1.1454
    Width: 0.33
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	0.0370,		-0.0171,	0.7454
    End: 	0.0370,		-0.0171,	1.1454
    Width: 0.33
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	-0.0365,	-0.0176,	0.7454
    End: 	-0.0365,	-0.0176,	1.1454
    Width: 0.33
-   Color: 00b
+   Color: fff
  EndParticleSystem
  
 //============================================
@@ -474,71 +474,71 @@ Model: terrakin_huge
 
  ParticleSystem:
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	-0.0006,	0.0330,		0.9553
    End: 	-0.0006,	0.0330,		1.1553
    Width: 0.14
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	0.0055,		0.0601,		0.9551
    End: 	0.0055,		0.0601,		1.1551
    Width: 0.08
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	-0.0057,	0.0606,		0.9551
    End: 	-0.0057,	0.0606,		1.1551
    Width: 0.08
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	0.0054,		0.0084,		0.9551
    End: 	0.0054,		0.0084,		1.1551
    Width: 0.08
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	-0.0055,	0.0081,		0.9551
    End: 	-0.0055,	0.0081,		1.1551
    Width: 0.08
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	0.0849,		0.0490,		0.6855
    End: 	0.0849,		0.0490,		0.8855
    Width: 0.08
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	0.0933,		0.0295,		0.6855
    End: 	0.0933,		0.0295,		0.8855
    Width: 0.08
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	-0.1050,	0.0370,		0.6092
    End: 	-0.1050,	0.0370,		0.8092
    Width: 0.08
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	-0.1052,	0.0097,		0.6092
    End: 	-0.1052,	0.0097,		0.8092
    Width: 0.08
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	0.0075,		-0.0448,	0.8170
    End: 	0.0075,		-0.0448,	1.0170
    Width: 0.08
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	-0.0076,	-0.0453,	0.8170
    End: 	-0.0076,	-0.0453,	1.0170
    Width: 0.08
-   Color: 00b
+   Color: fff
  EndParticleSystem
 
 //============================================
@@ -597,53 +597,53 @@ Model: terrakin_carrier
 
  ParticleSystem:
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	0.0808,		0.0370,		0.8468 //0.0808,0.0371,0.9268
    End: 	0.0808,		0.0370,		1.1968
    Width: 0.15
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	0.0814,		-0.0219,	0.8467
    End: 	0.0814,		-0.0219,	1.1967
    Width: 0.15
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	0.1401,		-0.0421,	0.6036
    End: 	0.1401,		-0.0421,	0.8036
    Width: 0.07
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	0.1647,		-0.0679,	0.6014
    End: 	0.1647,		-0.0679,	0.8014
    Width: 0.07
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	0.1753,		-0.1038,	0.6005
    End: 	0.1753,		-0.1038,	0.8005
    Width: 0.07
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	-0.0260,	-0.0424,	0.6081
    End: 	-0.0260,	-0.0424,	0.8081
    Width: 0.07
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	-0.0496,	-0.0680,	0.6002
    End: 	-0.0496,	-0.0680,	0.8002
    Width: 0.07
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 	-0.0611,	-0.1039,	0.6012
    End: 	-0.0611,	-0.1039,	0.8012
    Width: 0.07
-   Color: 00b
+   Color: fff
  EndParticleSystem
  
  
@@ -671,23 +671,23 @@ Model: terrakin_colonizer
  
  ParticleSystem:
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: -0.004,-0.008,0.93
    End: -0.004,-0.008,1.185
    Width: 0.07
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 0.0525,0.01625,0.78
    End: 0.0525,0.01625,0.94
    Width: 0.04
-   Color: 00b
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: -0.064,-0.02,0.8
    End: -0.064,-0.02,0.96
    Width: 0.04
-   Color: 00b
+   Color: fff
  EndParticleSystem
 
 //============================================
@@ -730,32 +730,32 @@ Model: terrakin_hauler
 
  ParticleSystem:
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 0.1135,0.0441,0.7392
    End: 0.1135,0.0441,1.2592
    Width: 0.22
-   Color: 00b
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: -0.1135,0.0441,0.7392
    End: -0.1135,0.0441,1.2592
    Width: 0.22
-   Color: 00b
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: -0.0654,-0.0612,0.7223
    End: -0.0654,-0.0612,0.9723
    Width: 0.11
-   Color: 00b
+   Color: fff
 
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: terrakin_thruster, terrakin_thruster_back
    Start: 0.0654,-0.0612,0.7223
    End: 0.0654,-0.0612,0.9723
    Width: 0.11
-   Color: 00b
+   Color: fff
  EndParticleSystem
 
 //============================================

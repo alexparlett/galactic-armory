@@ -5,6 +5,7 @@
 // {{{ Constants
 // Settings
 float orbitRadiusFactor = 200.f;
+bool jumpBridges = true;
 
 // Mathematical
 const float Pi    = 3.14159265f;
@@ -18,8 +19,11 @@ import void setMakeOddities(bool) from "map_generation";
 import System@ makeRandomSystem(Galaxy@, vector, uint, uint) from "map_generation";
 import float makeQuasar(Galaxy@, vector, float) from "map_generation";
 import Planet@ setupStandardHomeworld(System@, Empire@) from "map_generation";
+import bool makeGateSystem(Galaxy@ Glx) from "special_systems";
 
 void prepMap() {
+	jumpBridges = getGameSetting("MAP_JUMP_GATES", 1.f) > 0.5f;
+	
 	initMapGeneration();
 	orbitRadiusFactor = getOrbitRadiusFactor();
 }
@@ -45,6 +49,28 @@ void updateProgress(uint sysIndex, uint sysCount) {
 	if(float(sysIndex + 1) / float(sysCount) > float(nextNoticePct) / 100.f) {
 		updateLoadScreen("  "+localize("#EV_GenMap")+"... " + nextNoticePct + "%");
 		nextNoticePct += noticePctInc;
+	}
+}
+
+float bridgeNoticePctInc = 0;
+float bridgeNextNoticePct = 0;
+void updateBridgeProgress(float gateIndex, float gateCount) {
+	if (bridgeNoticePctInc == 0) {
+		if(gateCount < 50)
+			bridgeNoticePctInc = 50;
+		else if(gateCount < 1000)
+			bridgeNoticePctInc = 25;
+		else if(gateCount < 5000)
+			bridgeNoticePctInc = 10;
+		else
+			bridgeNoticePctInc = 5;
+
+		bridgeNextNoticePct = bridgeNoticePctInc;
+	}
+	
+	if((gateIndex + 1.f) / gateCount > bridgeNextNoticePct / 100.f) {
+		updateLoadScreen(" Building Bridges... "+bridgeNextNoticePct+"%");
+		bridgeNextNoticePct += bridgeNoticePctInc;
 	}
 }
 

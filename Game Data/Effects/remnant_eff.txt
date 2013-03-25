@@ -22,3 +22,16 @@ Name: ZPTriggeredEvent
 Name: SpatialGenActive
 
 	OnActive: GASuperWeapons::SpatialDmg	
+	
+Name: RemnantBridgeChargeStorage
+	Value: Amount
+	Value: Rate
+
+	Once: AddMax(0, "RemnantBridgeCharge")
+	OnConstruct:	AddMax(Amount, "RemnantBridgeCharge", 1)
+	OnDestruct:		SubMax(Amount, "RemnantBridgeCharge")
+	Tick: GenerateNoCargo("RemnantBridgeCharge", Rate)
+	
+Name: RemnantQuantumEntanglement
+
+	Tick: GABasicEffects::StaticCheckPosition

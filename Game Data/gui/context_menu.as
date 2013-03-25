@@ -5,6 +5,11 @@
 import void triggerQueueWin(Object@) from "queue_win";
 import void triggerUndockWin(Object@ obj) from "undock_win";
 import void buildOnAll(System@, const HullLayout@, int) from "build_on_best";
+import void setPlannedGovernor(Planet@ pl, string gov) from "colonize_actions";
+import string@ getPlannedGovernor(Planet@ pl) from "colonize_actions";
+import void setPlannedQueue(Planet@ pl, string queue) from "colonize_actions";
+import string@ getPlannedQueue(Planet@ pl) from "colonize_actions";
+import string@ getAction(Planet@ pl) from "colonize_actions";
 
 /* {{{ Main context menu */
 GuiContextMenu@ menu;
@@ -61,6 +66,7 @@ void triggerContextMenu(Object@ obj) {
 	addSeperatorIfNecessary(menu);
 
 	addGalacticCommands(menu, selObj, clickedObj);
+	addColonizeActions(menu, selObj, clickedObj);
 	addSeperatorIfNecessary(menu);
 
 	addGovernorMenu(menu, selObj, clickedObj);
@@ -989,6 +995,182 @@ void addGovernorMenu(GuiContextMenu@ menu, Object@ from, Object@ to) {
 	GuiContextMenu@ buildStructs = addSubMenu(menu, text, cb);
 }
 /*   }}} */
+/*   {{{ Colonize Action Menu */
+class ColonizeGovernor : ContextCallbackManager {
+	GuiContextMenu@ menu;
+	Planet@ pl;
+	string@[] governors;
+
+	ColonizeGovernor(Planet@ forObj) {
+		@pl = forObj;
+	}
+
+	void init(GuiContextMenu@ Menu) {
+		@menu = Menu;
+
+		// Collect possible governors
+		Empire@ emp = getActiveEmpire();
+		string@ governor = getPlannedGovernor(pl);
+
+		// Add governors
+		int cnt = emp.getBuildListCount();
+		governors.resize(cnt);
+		for (int i = 0; i < cnt; ++i) {
+			// Get build list name
+			string@ name = emp.getBuildList(i);
+			if (name is null)
+				continue;
+
+			// Check if this is selected
+			bool selected = (governor !is null) && (governor == name);
+
+			// Add to list
+			@governors[i] = name;
+
+			// Localize build list
+			string@ text = localize("#PG_"+name);
+			if (text.beginsWith("#"))
+				@text = name;
+
+			// Add item
+			menu.addItem(text, 0, true, false, selected);
+		}
+	}
+
+	GuiContextMenu@ getMenu() {
+		return menu;
+	}
+
+	void add(ContextCallback@ cb) {
+		// Not supported
+	}
+
+	void call(uint i, Object@ clicked) {
+		if (i >= governors.length())
+			return;
+
+		string@ governor = governors[i];
+		setPlannedGovernor(pl, governor);
+	}
+};
+
+string QueueFolder = "Queues";
+class ColonizeQueue : ContextCallbackManager {
+	GuiContextMenu@ menu;
+	Planet@ pl;
+	string@[] queues;
+	XMLList@ list;
+
+	ColonizeQueue(Planet@ forObj, XMLList@ List) {
+		@pl = forObj;
+		@list = List;
+	}
+
+	void init(GuiContextMenu@ Menu) {
+		@menu = Menu;
+
+		// Collect possible queues
+		Empire@ emp = getActiveEmpire();
+		string@ queue = getPlannedQueue(pl);
+
+		// Add queues
+		int cnt = list.getFileCount();
+		queues.resize(cnt);
+		for (int i = 0; i < cnt; ++i) {
+			// Get build list name
+			string@ name = list.getFileName(i);
+			name = name.substr(QueueFolder.length()+1, name.length()-QueueFolder.length()-5);
+
+			// Check if this is selected
+			bool selected = (queue !is null) && (queue == name);
+
+			// Add to list
+			@queues[i] = name;
+
+			// Add item
+			menu.addItem(name, 0, true, false, selected);
+		}
+	}
+
+	GuiContextMenu@ getMenu() {
+		return menu;
+	}
+
+	void add(ContextCallback@ cb) {
+		// Not supported
+	}
+
+	void call(uint i, Object@ clicked) {
+		if (i >= queues.length())
+			return;
+
+		string@ queue = queues[i];
+		setPlannedQueue(pl, queue);
+	}
+};
+
+class ColonizeActions : ContextCallbackManager {
+	GuiContextMenu@ menu;
+	Planet@ pl;
+	string@[] governors;
+	string@[] queues;
+
+	ColonizeActions(Planet@ forObj) {
+		@pl = forObj;
+	}
+
+	void init(GuiContextMenu@ Menu) {
+		@menu = Menu;
+
+		string@ act = getAction(pl);
+
+		if(act is null)
+			menu.addItem(localize("#RM_NoAction"), 0, false, false, false);
+		else
+			menu.addItem(act, 0, false, false, false);
+
+		menu.addItem(null, 0, true, false, false);
+		addSubMenu(menu, localize("#RM_SetGovernor"), ColonizeGovernor(pl));
+
+		XMLList@ list = XMLList(QueueFolder);
+		if(list.getFileCount() != 0)
+			addSubMenu(menu, localize("#RM_LoadQueue"), ColonizeQueue(pl, list));
+	}
+
+	GuiContextMenu@ getMenu() {
+		return menu;
+	}
+
+	void add(ContextCallback@ cb) {
+		// Not supported
+	}
+
+	void call(uint i, Object@ clicked) {
+	}
+};
+
+void addColonizeActions(GuiContextMenu@ menu, Object@ from, Object@ to) {
+	// Check we clicked something sensible
+	if (to is null)
+		return;
+
+	// Can only plan actions on non-owned objects
+	if (to.getOwner().isValid())
+		return;
+
+	// Can only plan actions on planets
+	Planet@ pl = to;
+	if (pl is null)
+		return;
+
+	// Create the callback
+	ColonizeActions@ cb = ColonizeActions(to);
+
+	// Add menu
+	string@ text = localize("#RM_OnColonize");
+	GuiContextMenu@ colonActions = addSubMenu(menu, text, cb);
+}
+/*   }}} */
 /*   {{{ Build Ships */
 class BuildOnSelected : SelectedCallback {
 	const HullLayout@ layout;
@@ -1310,6 +1492,30 @@ void selectType(Object@ clicked, bool military) {
 	}
 }
 
+void selectPlanets(Object@ selected, Object@ to) {
+	//Get the system to select on
+	System@ sys = to;
+	if (to.toStar() !is null)
+		@sys = to.getCurrentSystem();
+
+	if (!shiftKey)
+		selectObject(null);
+
+	SysObjList list;
+	list.prepare(sys);
+
+	uint cnt = list.childCount;
+	for (uint i = 0; i < cnt; ++i) {
+		Object@ obj = list.getChild(i);
+		Planet@ pl = obj;
+
+		if (pl is null)
+			continue;
+
+		addSelectedObject(obj);
+	}
+}
+
 void selectCombat(Object@ clicked) {
 	selectType(clicked, true);
 }
@@ -1361,6 +1567,7 @@ void addSelectionCommands(GuiContextMenu@ menu, Object@ from, Object@ to) {
 
 	// System selection commands
 	if (sys !is null) {
+		addItem(menu, localize("#RM_select_planets"), selectPlanets);
 		addItem(menu, localize("#RM_select_combat"), selectCombat);
 		addItem(menu, localize("#RM_select_civ"), selectCivilian);
 	}
@@ -1478,7 +1685,7 @@ class DockingMenu : ContextCallbackManager {
 					continue;
 
 				const HullLayout@ lay = docked.getHull().getLatestVersion();
-				if (lay is layout) {
+				if (lay is layout || (layout is null && lay.getName() == name)) {
 					@undock[n++] = docked;
 				}
 			}

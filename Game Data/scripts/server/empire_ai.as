@@ -35,7 +35,7 @@ import void prep_erudite_ai_defaults(Empire@ emp) from "erudite_ai";
 #include "/include/empire_lib.as"
 
 bool initialized = false;
-
+float maxAIDifficulty = -1.f;
 import void LevelTech (Empire@ emp, string@ techName, float Level) from "Traits";
 
 /* Called for each empire to register any AI or defaults it might need */
@@ -83,6 +83,19 @@ void registerEmpireData(Empire@ emp) {
 					emp.setSetting("Cheats", 0.f);
 				}
 
+				// Check if this used to be a player,
+				// and give the appropriate difficulty
+				float diff = emp.getSetting("Difficulty");
+				if (diff < 0) {
+					if (maxAIDifficulty >= 0)
+						emp.setSetting("Difficulty", maxAIDifficulty);
+					else
+						emp.setSetting("Difficulty", 3.f);
+				}
+				else if (diff > maxAIDifficulty) {
+					maxAIDifficulty = diff;
+				}
+
 				// Load the correct AI
 				if (desc.forAI == "erudite_ai") {
 					print("Registering erudite AI for " + emp.getName() + " (" + emp.ID + ")");
@@ -106,6 +119,8 @@ void registerEmpireData(Empire@ emp) {
 			emp.setSetting("autoGovern", 1);
 			// And choose a best-fit governor based on planet conditions
 			emp.setSetting("defaultGovernor", -1);
+			// Record that this used to be a player empire
+			emp.setSetting("Difficulty", -1.f);
 			
 			// Create ship layouts
 			if(emp.getShipLayoutCnt() == 0) {

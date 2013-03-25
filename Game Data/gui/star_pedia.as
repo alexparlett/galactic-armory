@@ -391,6 +391,12 @@ void init() {
 	
 	text.setText(str);
 	addCategory("systemtypes", "#SP_Cat_SystemTypes", panel);	
+	
+	@panel = makeFramePanel();
+	@text = makeFittingExtendedText(panel);
+	@str = docText("#doc bridge");
+	text.setText(str);
+	addCategory("doc_bridge", "#doc bridge title", panel);
 
 	// Blueprints
 	@panel = makeFramePanel();

@@ -61,7 +61,7 @@ System: Refinery
     
     Tick Rate: 4
 
-    vCargoStore: Size * 10
+    vCargoStore: Size * 10 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
     vFabRate: Size * 6 * (pow(LEVEL_GAIN_CURVE, Level) + RES_BASE_FACT) * RES_GEN_MULT  // vFabRate gets altered by trait no_bank!
     
     Provides: Cargo with
@@ -98,7 +98,7 @@ System: ElectsFab
     
     Tick Rate: 4
 
-    vCargoStore: Size * 10
+    vCargoStore: Size * 10 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
     vFabRate: Size * 3 * (pow(LEVEL_GAIN_CURVE, Level) + RES_BASE_FACT) * RES_GEN_MULT   // vFabRate gets altered by trait no_bank!
     
     Provides: Cargo with
@@ -135,7 +135,7 @@ System: AdvAssembler
     
     Tick Rate: 4
 
-    vCargoStore: Size * 10
+    vCargoStore: Size * 10 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
     vFabRate: Size * 2 * (pow(LEVEL_GAIN_CURVE, Level) + RES_BASE_FACT) * RES_GEN_MULT   // vFabRate gets altered by trait no_bank!
     
     Provides: Cargo with
@@ -174,7 +174,7 @@ System: AmmoProducer
     Tick Rate: 2
       
     vAmmoRate: Size * 2  * (pow(LEVEL_GAIN_CURVE, Level) + RES_BASE_FACT) * RES_GEN_MULT                                  //was Level), 25)
-	vAmmoStore: Size * 25 * (2 - decay(pow(LEVEL_GAIN_CURVE, Level), 35))                                //was * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
+	vAmmoStore: Size * 10 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
     vMetalCost: 0.5
     
     Provides: AmmoFab with
@@ -215,13 +215,14 @@ System: H3Refinery
     
     vRate: Size * 2 * (pow(LEVEL_GAIN_CURVE, Level) + RES_BASE_FACT) * RES_GEN_MULT 
     vCost: 2
+	vFuelStore: Size * 10 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
     
     Provides: RefineH3 with
         Rate[vRate],
         H3CostPer[vCost]
     
     Provides: FuelStorage with
-        Amount[Size * 10]
+        Amount[vFuelStore]
         
     Consumes:
         To Run: 
@@ -253,7 +254,7 @@ System: Exporter
     
     Tick Rate: 4
 
-    vCargoStore: Size * 10
+    vCargoStore: Size * 10 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
     vRate: Size * 4 * pow(LEVEL_GAIN_CURVE, Level)   // how does this behave when trait no_bank is selected?
     
     Provides: StructAmmoStorage with
@@ -299,7 +300,7 @@ System: MetalExporter
     
     Tick Rate: 4
 
-    vCargoStore: Size * 10
+    vCargoStore: Size * 10 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
     vRate: Size * 1 * pow(LEVEL_GAIN_CURVE, Level)   // how does this behave when trait no_bank is selected?
     
     
@@ -334,7 +335,7 @@ System: ElectsExporter
     
     Tick Rate: 4
 
-    vCargoStore: Size * 10
+    vCargoStore: Size * 10 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
     vRate: Size * 1 * pow(LEVEL_GAIN_CURVE, Level)   // how does this behave when trait no_bank is selected?
     
     Provides: ElecStorage with
@@ -368,7 +369,7 @@ System: PartsExporter
     
     Tick Rate: 4
 
-    vCargoStore: Size * 10
+    vCargoStore: Size * 10 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
     vRate: Size * 1 * pow(LEVEL_GAIN_CURVE, Level)   // how does this behave when trait no_bank is selected?
     
     Provides: AdvPartsStorage with
@@ -402,7 +403,7 @@ System: Importer
     
     Tick Rate: 4
 
-    vCargoStore: Size * 10
+    vCargoStore: Size * 10 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
     vRate: Size * 6 * pow(LEVEL_GAIN_CURVE, Level)
 
     Provides: StructAmmoStorage with
@@ -449,7 +450,7 @@ System: AmmoFabricator
     Tick Rate: 2
       
     vAmmoRate: Size * 2 * (2 - (decay(pow(LEVEL_GAIN_CURVE,Level), 35)))                                            //was Level), 25)
-       vAmmoStore: Size * 25 * (2 - decay(pow(LEVEL_GAIN_CURVE, Level), 35))                                //was * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
+    vAmmoStore: Size * 25 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
 
     Provides: AmmoImport with
         Rate[vAmmoRate]

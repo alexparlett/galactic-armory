@@ -93,10 +93,6 @@ Material: PlasmaThrower
  Defer: Required
  Texture: ~/Images/SubSystems/Plasma_Thrower.png
 
-Material: MuonCannon
- Defer: Required
- Texture: ~/Images/SubSystems/Muon_Cannon.png
-
 Material: ReverseInductor
  Defer: Required
  Texture: ~/Images/SubSystems/reverse_inductor.png
@@ -220,6 +216,10 @@ Material: ColonyModule
 Material: QuantumCompressor
  Defer: Required
  Texture: ~/Images/SubSystems/quantum_compressor_icon.png
+ 
+Material: QuantumComputerCore
+ Defer: Required
+ Texture: ~/Images/SubSystems/quantum_computer_core.png
 
 Material: StealthFieldGenerator
  Defer: Required
@@ -236,10 +236,6 @@ Material: Nanoarmor
 Material: TargetingArray
  Defer: Required
  Texture: ~/Images/SubSystems/targeting_array.png
-
-Material: QuantumComputerCore
- Defer: Required
- Texture: ~/Images/SubSystems/quantum_computer_core.png
 
 Material: MetFab
  Defer: Required 
@@ -274,8 +270,8 @@ Material: IonCannon
 Material: ParticleCannon
  Texture: Images/SubSystems/particle_cannon.png
 
-Material: PlasmaGunCyan
- Texture: Images/SubSystems/plasma_gun_cyan.png
+Material: PlasmaGunGreen
+ Texture: Images/SubSystems/plasma_beam.png
 
 Material: PlasmaThrowerGreen
  Texture: Images/SubSystems/plasma_thrower_green.png
@@ -290,7 +286,7 @@ Material: GargantuanHull
  Texture: Images/SubSystems/gargantuan_hull.png
 
 Material: AutoCannon
- Texture: Images/SubSystems/autocannon_battery.png
+ Texture: Images/SubSystems/autocannon.png
 
 Material: PhasedRailgun
  Texture: Images/SubSystems/phased_railgun.png
@@ -315,6 +311,9 @@ Material: DamageBooster
 
 Material: MassMount
  Texture: Images/SubSystems/mass_mount.png
+ 
+Material: RackMount
+ Texture: Images/SubSystems/rack_mount.png
 
 Material: MPDThruster
  Texture: Images/SubSystems/mpd_thruster.png
@@ -654,3 +653,11 @@ Material: ECMHull
 Material: AssaultCannon
  Defer: Required
  Texture: Images/SubSystems/assault_cannon.png
+ 
+Material: MuonCannon
+ Defer: Required
+ Texture: Images/SubSystems/muon_cannon.png
+
+Material: QuantCompCore
+ Defer: Required
+ Texture: Images/SubSystems/quantum_computer_core.png

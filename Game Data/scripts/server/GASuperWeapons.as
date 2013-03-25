@@ -1,4 +1,4 @@
-const string@ strQuasar = "Quasar", strLastFire = "LastFire", strPower = "Power", strDamage = "Damage";
+const string@ strQuasar = "Quasar", strLastFire = "LastFire", strPower = "Power", strDamage = "Damage", strBridgeCharge="RemnantBridgeCharge";
 
 ObjectFlag objStopHeal = objUser03;
 

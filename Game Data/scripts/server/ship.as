@@ -1,6 +1,15 @@
 // Is called when a ship is first created
-//void onCreate(HulledObj@ ship, Object@ createdAt) {
-//}
+void onCreate(HulledObj@ ship, Object@ createdAt) {
+	if(canAchieve && ship.toObject().getOwner() is getPlayerEmpire()) {
+		float scale = sqr(ship.toObject().radius);
+		if(scale >= 1000.f)
+			achieve(AID_SCALE_SMALL);
+		if(scale >= 10000.f)
+			achieve(AID_SCALE_MEDIUM);
+		if(scale >= 100000.f)
+			achieve(AID_SCALE_LARGE);
+	}
+}
 
 // Is called every tick for a ship
 //void tick(HulledObj@ ship, float time) {

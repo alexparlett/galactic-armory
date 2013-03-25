@@ -743,6 +743,9 @@ bool onDestroy(Planet@ pl, bool silent) {
 			dmg.max = useOre;
 			dmg.val = 0;
 		}
+
+		if(canAchieve)
+			achieve(AID_DEST_PLANET);
 	}
 
 	return false;
@@ -768,6 +771,13 @@ bool onOwnerChange(Planet@ pl, Empire@ from, Empire@ to) {
 			const PlanetCondition@ cond = pl.getCondition(i);
 			if (!cond.constructed && !cond.hasTag("neutrino") && !cond.hasTag("remnant") && !cond.hasTag("homeworld") && !cond.hasTag("improvement") && !cond.hasTag("bombardment"))
 				pl.removeCondition(cond.get_id());
+		}
+	}
+
+	// Check achievements
+	if (canAchieve && to is getPlayerEmpire()) {
+		if(pl.hasCondition("microcline")) {
+			achieve(AID_MICROCLINE);
 		}
 	}
 

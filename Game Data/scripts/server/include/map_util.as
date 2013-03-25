@@ -163,10 +163,3 @@ void makePlanets(System@ sys, float orbit, int planets) {
 		}
 	}
 }
-
-
-
-
-
-
-

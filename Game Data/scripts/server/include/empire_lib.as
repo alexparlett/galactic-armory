@@ -436,6 +436,18 @@ class ShipDesign {
 	const HullLayout@ generateDesign(Empire@ emp, bool aiLogic, float atScale, string@ withName) {
 		if(fromHuman) return null;
 
+		// Alter scale based on game limits
+		float minScale = getGameSetting("LIMIT_MIN_SCALE", 0.f);
+		if (minScale > 0 && atScale < minScale) {
+			atScale = minScale;
+		}
+		else {
+			float maxScale = getGameSetting("LIMIT_MAX_SCALE", 0.f);
+			if (maxScale > 0 && atScale > maxScale) {
+				atScale = maxScale;
+			}
+		}
+
 		// Create hull layout
 		clearActiveHull();
 		setActiveHullScale(atScale);
@@ -489,7 +501,7 @@ class ShipDesign {
 		const HullLayout@ layout = @emp.getShipLayout(withName);
 
 		if (aiLogic && layout !is null)
-			layout.updateThreshold = 30;
+			layout.updateThreshold = 2.f;
 
 		// Mark as a replacement
 		if (replaces !is null && replaces != "") {

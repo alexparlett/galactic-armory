@@ -79,32 +79,32 @@ Impact Point: bank, 0.0000,0.0000,0.9496, 0.0000,0.0000,1.0000, 60, -0.0123,-0.0
  
  ParticleSystem:
   Engine: //L: 2500 O: 1000
-   Material: plasmathruster, plasmathruster_back //C: 9496
+   Material: neumon_thruster, neumon_thruster_back //C: 9496
    Start:   0.0005,		0.0508,		0.7996
    End:     0.0005,		0.0508,		1.2996
    Width: 0.20
-   Color: f40
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back //C: 9496
+   Material: neumon_thruster, neumon_thruster_back //C: 9496
    Start:   0.0004,		-0.0513,	0.7996
    End:     0.0004,		-0.0513,	1.2996
    Width: 0.20
-   Color: f40
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back  //C: 4780
+   Material: neumon_thruster, neumon_thruster_back  //C: 4780
    Start:   0.1476,		0.0008,		0.3280
    End:     0.1476,		0.0008,		0.8280
    Width: 0.20
-   Color: f40
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back  //C: 4780
+   Material: neumon_thruster, neumon_thruster_back  //C: 4780
    Start:   -0.1471,	0.0009,		0.3280
    End:     -0.1471,	0.0009,		0.8280
    Width: 0.20
-   Color: f40
+   Color: fff
 EndParticleSystem
  
 
@@ -148,32 +148,32 @@ Impact Point: bank, -0.0019,-0.0565,0.0366, -0.1933,-0.9811,0.0000, 60, 0.1289,-
  
 ParticleSystem:
   Engine:  //L: 3000  O: 1000
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   0.0026,		0.0833,		0.7400
    End:     0.0026,		0.0833,		1.3400
    Width: 0.22
-   Color: f40
+   Color: fff
 
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   0.2334,		-0.0015,	0.7400
    End:     0.2334,		-0.0015,	1.3400
    Width: 0.22
-   Color: f40
+   Color: fff
 
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   -0.2298,	-0.0012,	0.7400
    End:     -0.2298,	-0.0012,	1.3400
    Width: 0.22
-   Color: f40
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   0.0020,		-0.0821,	0.7400
    End:     0.0020,		-0.0821,	1.3400
    Width: 0.22
-   Color: f40
+   Color: fff
    
 EndParticleSystem
  
@@ -248,32 +248,32 @@ Model: neumon_carrier
  
  ParticleSystem:
   Engine:  //L: 5000 O: 2000
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   0.1488,		0.0878,		0.6781
    End:     0.1488,		0.0878,		1.5781
    Width: 0.24
-   Color: f40
+   Color: fff
 
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   0.1481,		-0.0875,	0.6781
    End:     0.1481,		-0.0875,	1.5781
    Width: 0.24
-   Color: f40
+   Color: fff
 
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   -0.1471,	0.0875,		0.6781
    End:     -0.1471,	0.0875,		1.5781
    Width: 0.24								
-   Color: f40
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   -0.1469,	-0.0869,	0.6781
    End:     -0.1469,	-0.0869,	1.5781
    Width: 0.24
-   Color: f40
+   Color: fff
 EndParticleSystem
  
  
@@ -446,11 +446,11 @@ Model: neumon_fighter
  
 ParticleSystem:
   Engine:  //L: 8000 O: 3000
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   0.0016,		0.0001,		0.4084
    End:     0.0016,		0.0001,		2.0084
    Width: 0.74
-   Color: f40
+   Color: fff
 EndParticleSystem
  
  
@@ -518,25 +518,25 @@ Firing Point: bank, -0.0002,-0.1090,-0.7097, 0.000,0.0000,-1.0000, 40, -0.0389,-
 // Engine fX
    ParticleSystem:
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   0.2385,  0.1011,  0.5800
    End:     0.2385,  0.1011,  1.3015
    Width: 0.33
-   Color: f40
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   0.0025,  -0.0045,  0.6000
    End:     0.0025,  -0.0045,  1.3015
    Width: 0.33
-   Color: f40
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   -0.2385,  0.1011,  0.5800
    End:     -0.2385,  0.1011,  1.3015
    Width: 0.33
-   Color: f40
+   Color: fff
   EndParticleSystem
  
  
@@ -601,32 +601,32 @@ Firing Point: bank, -0.0010,-0.1688,-0.1008, -0.0000,-1.0000,-0.0000, 80, -0.035
  
     ParticleSystem:
   Engine: //L: 4000 O: 1000
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   0.1040,		0.0936,		0.5418
    End:     0.1040,		0.0936,		1.3418
    Width: 0.36
-   Color: f40
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   -0.1025,	0.0929,		0.5418
    End:     -0.1025,	0.0929,		1.3418
    Width: 0.36
-   Color: f40
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   0.1813,		-0.0554,	0.6624
    End:     0.1813,		-0.0554,	1.4924
    Width: 0.36
-   Color: f40
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   -0.1808,	-0.0555,	0.6624
    End:     -0.1808,	-0.0555,	1.4924
    Width: 0.36
-   Color: f40
+   Color: fff
   EndParticleSystem
  
  //===========================================
@@ -685,18 +685,18 @@ Impact Point: bank, -0.0002,-0.1627,-0.0143, 0.0000,-1.0000,-0.0000, 40, 0.0725,
  
 ParticleSystem:
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   0.1869,  0.0042,  0.5233
    End:     0.1869,  0.0042,  1.4533
    Width: 0.38
-   Color: f40
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   -0.1810,  0.0013,  0.5233
    End:     -0.1810,  0.0013,  1.4533
    Width: 0.38
-   Color: f40
+   Color: fff
    
 EndParticleSystem
  
@@ -759,53 +759,53 @@ Model: neumon_large
 ParticleSystem:
 
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   0.2130,  -0.0162,  0.5617 //+200
    End:     0.2130,  -0.0162,  1.3017 //+400
    Width: 0.33
-   Color: f40
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   0.0859,  -0.0898,  0.5617
    End:     0.0859,  -0.0898,  1.3017
    Width: 0.33
-   Color: f40
+   Color: fff
 
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   0.0860,  0.0675,  0.5217
    End:     0.0860,  0.0675,  1.3417
    Width: 0.33
-   Color: f40
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   0.0879,  0.0665,  0.5217
    End:     0.0879,  0.0665,  1.3417
    Width: 0.33
-   Color: f40
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   -0.0834,  -0.0905,  0.5217
    End:     -0.0834,  -0.0905,  1.3417
    Width: 0.33
-   Color: f40
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   -0.0835,  0.0672,  0.5217
    End:     -0.0835,  0.0672,  1.3417
    Width: 0.33
-   Color: f40
+   Color: fff
 
    Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: neumon_thruster, neumon_thruster_back
    Start:   -0.2091,  -0.0147,  0.5617
    End:     -0.2091,  -0.0147,  1.3017
    Width: 0.33
-   Color: f40
+   Color: fff
    
 EndParticleSystem
 
@@ -899,39 +899,39 @@ Model: neumon_verylarge
  
  ParticleSystem:
    Engine:
-     Material: plasmathruster, plasmathruster_back
+     Material: neumon_thruster, neumon_thruster_back
 	 Start:	0.1433,		-0.0567,	0.6083
 	 End:	0.1433,		-0.0567,	1.2083
 	 Width: 0.23
-	 Color: f40
+	 Color: fff
 	 
    Engine:
-     Material: plasmathruster, plasmathruster_back
+     Material: neumon_thruster, neumon_thruster_back
 	 Start:	0.0736,		0.1099,		0.6123
 	 End:	0.0736,		0.1099,		1.2123
 	 Width: 0.23
-	 Color: f40
+	 Color: fff
    
    Engine:
-     Material: plasmathruster, plasmathruster_back
+     Material: neumon_thruster, neumon_thruster_back
 	 Start:	0.0003,		0.0101,		0.6613
 	 End:	0.0003,		0.0101,		1.2123
 	 Width: 0.23
-	 Color: f40
+	 Color: fff
 	 
    Engine:
-     Material: plasmathruster, plasmathruster_back
+     Material: neumon_thruster, neumon_thruster_back
 	 Start:	-0.0721,	0.1099,		0.6123
 	 End:	-0.0721,	0.1099,		1.2123
 	 Width: 0.23
-	 Color: f40
+	 Color: fff
 
    Engine:
-     Material: plasmathruster, plasmathruster_back
+     Material: neumon_thruster, neumon_thruster_back
 	 Start:	-0.1417,	-0.0569,	0.6083
 	 End:	-0.1417,	-0.0569,	1.2083
 	 Width: 0.23
-	 Color: f40
+	 Color: fff
  EndParticleSystem
  
  //===========================================
@@ -1100,39 +1100,39 @@ Firing Point: bank, -0.0477,0.0552,0.5453, -0.8220,0.5695,0.0000, 45, -0.0468,0.
 
  ParticleSystem:
     Engine:
-     Material: plasmathruster, plasmathruster_back
+     Material: neumon_thruster, neumon_thruster_back
 	 Start:	0.0007,		0.0802,		-0.0001
 	 End:	0.0007,		0.0802,		0.4001
 	 Width: 0.18
-	 Color: f40
+	 Color: fff
 	 
     Engine:
-     Material: plasmathruster, plasmathruster_back
+     Material: neumon_thruster, neumon_thruster_back
 	 Start:	0.1944,		-0.0083,	0.3982
 	 End:	0.1944,		-0.0083,	0.7982
 	 Width: 0.18
-	 Color: f40
+	 Color: fff
 
     Engine:
-     Material: plasmathruster, plasmathruster_back
+     Material: neumon_thruster, neumon_thruster_back
 	 Start:	0.0552,		-0.0088,	0.7517
 	 End:	0.0552,		-0.0088,	1.1517
 	 Width: 0.18
-	 Color: f40
+	 Color: fff
 
     Engine:
-     Material: plasmathruster, plasmathruster_back
+     Material: neumon_thruster, neumon_thruster_back
 	 Start:	-0.0546,	-0.0088,	0.7517
 	 End:	-0.0546,	-0.0088,	1.1517
 	 Width: 0.18
-	 Color: f40
+	 Color: fff
 
     Engine:
-     Material: plasmathruster, plasmathruster_back
+     Material: neumon_thruster, neumon_thruster_back
 	 Start:	-0.1932,	-0.0086,	0.3982
 	 End:	-0.1932,	-0.0086,	0.7982
 	 Width: 0.18
-	 Color: f40
+	 Color: fff
  EndParticleSystem
  
  

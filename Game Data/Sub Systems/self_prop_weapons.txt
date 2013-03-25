@@ -310,7 +310,7 @@ System: EMPMissile
 System: TorpedoBay
     Name: #SS_TORPEDOBAY_NAME
     Description: #SS_TORPEDOBAY_DESC
-    Appearance: TorpedoLauncher
+    Appearance: TorpedoBay
 	Explosion: subsystem_destroyed
 
     Available: (Techs.Missiles.Level > 4) || Traits.imp_torps || Traits.remnants && not(Traits.no_missile)

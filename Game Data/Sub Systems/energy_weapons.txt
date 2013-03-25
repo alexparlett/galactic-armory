@@ -579,7 +579,7 @@ System: AntimatterProjector
 System: PlasmaBeam
 	Name: #SS_PLASMABEAM_NAME
 	Description: #SS_PLASMABEAM_DESC
-	Appearance: PlasmaGunCyan
+	Appearance: PlasmaGunGreen
 	Explosion: subsystem_destroyed
 	
 	Tags: Weapon, BeamEnergyWeapon, Require:ThermalManagement

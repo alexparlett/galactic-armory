@@ -1,4 +1,10 @@
 //Sub Systems
+#SS_INVASIONDROP_NAME: Invasion Dropship
+#SS_INVASIONDROP_DESC: The Invasion Dropship allows you to drop troops onto enemy planets to attempt to capture them using ground forces.
+
+#SS_TROOPQUARTERS_NAME: Troop Quarters
+#SS_TROOPQUARTERS_DESC: Troop Quarters provide living and training space for your Invasion Forces while embarked upon their transports.
+
 #SS_PHASEDMISS_NAME: Phased Missile Rack
 #SS_PHASEDMISS_DESC: These missiles come with the unique ability to phase out of regular space, allowing to fly straight through even the thickest armor before exploding deep within the target. On the downside, these missiles are much bulkier than regular missiles, halving the size and damage output of each salvo fired.\n#c:green##tab:8#+ Bypasses armor completely\n#c:d00##tab:8#- 50% less damage compared to missile rack
 
@@ -405,7 +411,7 @@
 #SS_HYPERRAILGUN_DESC: The Heavy Railgun takes the concept of "accelerating chunks of metal by means of electromagnetism and hurling them at your enemy" to a whole new level. Everything is bigger - especially damage, range, and overall cost.\n#c:green##tab:8#+ Exceptional range\n#c:green##tab:8#+ High damage\n#c:d00##tab:8#- Consumes high amounts of ammunition\n#c:d00##tab:8#- Low rate of fire
 
 #SS_AUTOCANBATT_NAME: Autocannon
-#SS_AUTOCANBATT_DESC: The Autocannon is based on the same principles as the standard Railgun, but uses groups of smaller, low-velocity railguns coupled together. The drawbacks for having a high rate of fire are low damage/shot and high ammo consumption.\n#c:green##tab:8#+ Good rate of fire\n#c:green##tab:8#+ High raw damage output\n#c:d00##tab:8#- Low damage per shot\n#c:d00##tab:8#- High ammo consumption
+#SS_AUTOCANBATT_DESC: The Autocannon is based on the same principles as the standard Railgun, but consists of a smaller railgun with an enhanced loading mechanism that enables it to shoot in bursts. The drawbacks for having a high rate of fire are low damage/shot and high ammo consumption.\n#c:green##tab:8#+ Good rate of fire\n#c:green##tab:8#+ High raw damage output\n#c:d00##tab:8#- Low damage per shot\n#c:d00##tab:8#- High ammo consumption
 
 #SS_THERMPENET_NAME: Railgun (Phased)
 #SS_THERMPENET_DESC: The Phased Railgun shoots highly complex projectiles that temporarily enter subspace for a very short amount of time, allowing to bypass armor. \n#c:green##tab:8#+ Completely ignores armor\n#c:green##tab:8#+ Higher range and damage per shot than Phased Energy Beam\n#c:d00##tab:8#- Consumes high amounts of both ammo and energy\n#c:d00##tab:8#- Low DPS for high cost
@@ -593,11 +599,11 @@
 #SS_HDAMMOCACHE_NAME: High Density Ammo Storage
 #SS_HDAMMOCACHE_DESC: These large ammo storages make up in capacity what they lack in durability; they are completely devoid of safety measures like blast containment systems, though, making them dangerous to use.\n#c:green##tab:8#+Double ammo capacity\n#c:d00##tab:8# -Very fragile\n#c:d00##tab:8#- Explodes when destroyed
 
-#SS_MASSDRIVER_NAME: Mass Driver
-#SS_MASSDRIVER_DESC: Though asteroids usually contain ferromagnetic elements, their concentration and distribution is too irregular to allow for them to be fired using electromagnetic railguns. Finally, advances in gravitics make it possible to aim and accelerate them by means of gravitational manipulation.\n#c:green##tab:8#+ Heavy damage on impact\n#c:green##tab:8#+ Slowly generates ammunition\n#c:d00##tab:8#- Does not use regular ammunition\n#c:d00##tab:8#- May only attack planets\n#c:ee0##tab:8#Note: Uses asteroids as ammunition\n#c:ee0##tab:8#Note: Minimum size 100
+#SS_MASSDRIVER_NAME: Large Mass Driver
+#SS_MASSDRIVER_DESC: Though asteroids usually contain ferromagnetic elements, their concentration and distribution is too irregular to allow for them to be fired using electromagnetic railguns. Finally, advances in gravitics make it possible to aim and accelerate them at planets by means of gravitational manipulation.\n#c:green##tab:8#+ Heavy damage on impact\n#c:green##tab:8#+ Slowly generates ammunition\n#c:d00##tab:8#- Does not use regular ammunition\n#c:d00##tab:8#- May only attack planets\n#c:ee0##tab:8#Note: Uses asteroids as ammunition\n#c:ee0##tab:8#Note: Minimum size 100
 
-#SS_MASSDRIVERLIGHT_NAME: Mass Driver (Light)
-#SS_MASSDRIVERLIGHT_DESC: Standard Mass Drivers are engineered towards accelerating asteroids with as much mass as possible. Precision or projectile velocity are only secondary and tertiary concerns. Modified mass drivers are geared towards the opposite: Accelerating smaller chunks of rock to higher speeds. While they are still unreliable at hitting targets at long range, their tremendous impact damage makes more than up for it.\n#c:green##tab:8#+ Heavy Alpha\n#c:green##tab:8#+ Slowly generates ammunition\n#c:d00##tab:8#- Does not use regular ammunition\n#c:d00##tab:8#- Inaccurate\n#c:ee0##tab:8#Note: Uses asteroids as ammunition
+#SS_MASSDRIVERLIGHT_NAME: Mass Driver
+#SS_MASSDRIVERLIGHT_DESC: Mass Drivers are engineered towards accelerating asteroids with as much mass as possible. Precision or projectile velocity are only secondary and tertiary concerns. While they are unreliable at hitting targets at long range, their tremendous impact damage makes more than up for it.\n#c:green##tab:8#+ Heavy Alpha\n#c:green##tab:8#+ Slowly generates ammunition\n#c:d00##tab:8#- Does not use regular ammunition\n#c:d00##tab:8#- Inaccurate\n#c:ee0##tab:8#Note: Uses asteroids as ammunition
 
 #SS_FCUTTER_NAME: Fusion Cutter
 #SS_FCUTTER_DESC: A derivate from the Ion Beam and Laser technologies, the Fusion Cutter combines both techniques with gravitational acceleration. A narrow stream of Helium isotopes is fired at a target, and upon impact, ignited by extremely high-powered laser pulses. The resulting reaction is so strong that it may initiate a short-lived fusion reaction, causing severe damage through consecutive explosions.\n#c:green##tab:8#+ Extremely high damage\n#c:green##tab:8#+ Fires constantly\n#c:d00##tab:8#- Short range\n#c:d00##tab:8#- High amount of excess heat\n#c:ee0##tab:8#Note: Can cause critical hits for 2.5x damage
@@ -977,11 +983,7 @@
 #doc pl note1 title: Structures and Slots
 #doc pl note1 text: In order to make planets useful, you must build #c:09f#structures#c#.\n\nEach planet has a set amount of #c:09f#structure slots#c#, indicating the amount of structures that can be built on it.\n\nPlanets also have a certain amount of slots that can accessed with planetary improvements later in the game to increase the number of available slots.\n\nThe benefits provided by structures range from #c:f90#producing resources#c# to #c:f90#generating research points#c# and #c:f90#housing population#c#.
 #doc pl note2 title: Governors
-#doc pl note2 text: As emperor, you will not be commanding each individual structure to be built. Instead, you can assign #c:0fa#governor types#c# to each planet.\n\nThe planetary governor, when turned on, will #c:f90#automatically build appropriate structures#c#.\n\nGalactic Armory also has a #c:0fa#smart governor#c# setting which manages your planets keeping population, trade and resource production effecient. This however will not maximize the planets effectiveness in deciding whether a city or a production factor would be more effective to build.\n\nThis can be turned on or off via the Empire Window.\n\n\
-
-Galactic Armor also has a setting for #c:0fa#Governors Automatically Update#c#  or #c:0fa#Governor Updates#c# . The first can be triggered off in the empire window, this turns it off for the entire empire. The second can be toggled in the planet window and will allow you to choose whether or not individual planets will use it (note the empire setting has to be turned on for planet toggle to have an effect)\n\n\
-
-This setting will cause governors to periodically check the empire's resources and the planet based resources and see if they wouldn't be more suited using a different governor type.
+#doc pl note2 text: As emperor, you will not be commanding each individual structure to be built. Instead, you can assign #c:0fa#governor types#c# to each planet.\n\nThe planetary governor, when turned on, will #c:f90#automatically build appropriate structures#c#.
 #doc pl note3 title: Population
 #doc pl note3 text: Each planet has the capacity to house an amount of #c:f90#population#c#, depending on the amount of #c:0fa#cities#c# constructed on the planet and your #c:0fa#Sociology#c# technology level.\n\nPopulation is required to run other structures, and having more of it will increase your #c:f90#population work rate#c#, in turn increasing the amount of resources produced on your planet as a whole.
 #doc pl note4 title: Mood
@@ -1022,6 +1024,13 @@ regenerating up to 5, to allow a chance to terraform the planet back up again, t
 #doc sys note3 text: Each system has a grid indicating its xz-plane. The plane is helpful to indicate the height of ships in the system, and can serve as a target to create move orders on.\n\nThe thickest lines on the plane form a 1AU by 1AU grid to aid you in determining distances.
 #doc sys note4 title: Strength Indicators
 #doc sys note4 text: Around the system plane are bars indicating the strength of that empire in the system they encircle.\n\nThe more military you have in a system, the more pips will be displayed in your color.
+
+#doc bridge title: "  Jump Bridge Usage"
+#doc bridge text: #c:09f#Remnant Jump Bridges#c# are structures left behind from a long disappeared empire. They allow the connecting to other #c:09f#Jump Bridges#c# that are visible by your empire and #c:f90#when linked#c# allow travel from the original #c:09f#Jump Bridge#c# to the linked one.
+#doc bridge note0 title: Linking Jump Bridges
+#doc bridge note0 text: To Link a #c:09f#Jump Bridge#c# you must first control the #c:09f#Jump Bridge#c# via taking it over with a #c:f90#Boarding Party#c# equipped vessel. Once successful and you own the #c:09f#Jump Bridge#c# you can then select it, find another #c:09f#Jump Bridge#c# in the Galaxy owned by anyone, right click on it and select #c:f90#"Link Stargate"#c# in a few moments the selected #c:09f#Jump Bridge#c# will be linked to the clicked #c:09f#Jump Bridge#c#. This will be represented by hoving your mouse over the selected #c:09f#Jump Bridge#c# showing the name and system of the link.
+#doc bridge note1 title: Travelling the Bridge Network
+#doc bridge note1 text: To travel through a #c:09f#Jump Bridge#c# there are two things to be aware of, it cannot be bigger than the #c:09f#Jump Bridge#c# with a #c:f90#scale of 3600#c# and the #c:09f#Jump Bridge#c# must have enough charge to transport the vessel. The #c:f90#charge required#c# is equal to the mass of the initiating vessel with the charge being visible by mousing over the #c:09f#Jump Bridge#c#.\n\nIf both these limitations are met you select your vessel, right click on a #c:09f#Jump Bridge#c# with an #c:f90#active link#c# (can be owned by anyone) and click #c:f90#"Enter Stargate"#c# within a few seconds your vessel will disappear and reappear next to the linked #c:09f#Jump Bridge#c#.
 
 #SP_Cat_SystemTypes: "  System Types"
 #SP_SystemTypes_Intro: #c:0d0##font:goodtimes_14#System Types\n#hline##c##font#\nThrough out the galaxy there are various different types of systems, from standard single stars to supernovas to neutrino. Some may even contain relics of past empires.
@@ -2121,10 +2130,6 @@ lightly but decided upon with care.
 #EM_Planets: Planets
 #EM_GovText: New colonies use governors
 #EM_ParkText: New ships park in orbit
-#EM_AutoGovText: Governors Automatically Update
-#EMTT_AutoGovToolTip: Governors will occasionally check the planet and empire\n resources to see if they should switch to something more beneficial.
-#EM_smartGovText: Smart Governors
-#EMTT_smartGovToolTip: Governors will attempt to balance trade, cities and production around what is needed by the planet.
 #EM_AtWar: At War
 #EM_Allies: Allies
 #EM_Dead: EXTINCT
@@ -2164,8 +2169,11 @@ lightly but decided upon with care.
 #TRW_The: "The "
 #TRW_Will: " will:"
 #TRW_OffensiveError: Error: Cannot add an offensive clause in a treaty with existing non-offensive clauses.
+#TRW_OffensiveAlliedError: "Warning: The Empire you are declaring war on or threatening may be in an Alliance with other empires, please check the main diplomacy window carefully for known alliances. \n\nKnown Allies: "
+#TRW_AllianceAlliedError: "Warning: The Empire you are requesting a Mutual Defence Pact with may be involved in an Alliance with other empires, please check the main diplomacy window carefully for known alliances. \n\nKnown Allies: "
 #TRW_NonOffensiveError: Error: Cannot add a non-offensive clause in a treaty with existing offensive clauses.
-#TRW_ConfirmTimeless: Warning: The treaty you are proposing does not have a timeout clause in it. Without a timeout clause, treaties will last until the end of the game. Are you sure you wish to propose this treaty?
+#TRW_ConfirmTimeless: Warning: The treaty you are proposing does not have a timeout clause in it. Without a timeout clause, treaties can only be ended with an End All Clause, do you wish to continue?
+
 
 #OLW_Filter: Filter:
 #OLW_SelectAll: Select All
@@ -2385,11 +2393,11 @@ lightly but decided upon with care.
 
 //Treaties
 #PEACE_CLAUSE: Peace Agreement
-#PEACE_CLAUSE_DESC: Ceases an active war, and prevents future wars for the duration of the agreement.
-#PEACE_CLAUSE_SDESC: Stops and prevents war.
+#PEACE_CLAUSE_DESC: Ceases an active war.
+#PEACE_CLAUSE_SDESC: Stops war.
 
 #WAR_CLAUSE: War Declaration
-#WAR_CLAUSE_DESC: Allows your planets, ships, and other units to engage the target. Ceases and prevents all treaties with the target (except Peace Agreements).
+#WAR_CLAUSE_DESC: Allows your planets, ships, and other units to engage the target. Ceases and prevents all treaties with the target.
 #WAR_CLAUSE_SDESC: Ends treaties.\nAllows combat.
 
 #FAILWAR_CLAUSE: Declare War on Failure
@@ -2425,6 +2433,14 @@ lightly but decided upon with care.
 #FORCEWAR_CLAUSE_DESC: Will request the target to declare war on another empire.
 #FORCEWAR_CLAUSE_SDESC: Request declaring war on another empire.
 
+#PLANET_CLAUSE: Trade Planet
+#PLANET_CLAUSE_DESC: Sends a specific planet to the other empire.
+#PLANET_CLAUSE_SDESC: Sends a planet once.
+
+#SHIP_CLAUSE: Trade Ship
+#SHIP_CLAUSE_DESC: Sends a specific ship to the other empire.
+#SHIP_CLAUSE_SDESC: Sends a ship once.
+
 //Clause Options
 #CO_Amount: Amount
 #CO_Resource: Resource
@@ -2432,6 +2448,8 @@ lightly but decided upon with care.
 #CO_Duration: Duration (seconds)
 #CO_Empire: Empire
 #CO_None: No changeable settings
+#CO_Planet: Planet
+#CO_Ship: Ship
 
 //Civil Acts
 #CA_Title: Civil Acts

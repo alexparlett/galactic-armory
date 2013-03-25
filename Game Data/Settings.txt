@@ -119,3 +119,6 @@ WORK_POP_MULTI: 	1.0
 
 //Disparity in strength for a system to be blockaded
 BLOCKADE_RATIO: 2.0
+
+//Density for Jump Bridges from 0 - 100%
+MAP_BRIDGE_DENSITY: 0.1

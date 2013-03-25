@@ -124,64 +124,21 @@ System@ ZeroPoint(Galaxy@ Glx, vector pos) {
 
 /* {{{ Remnant Jump Gate System */
 vector[] gatePositions;
-uint[] gates;
-System@ makeGateSystem(Galaxy@ Glx, vector pos) {
-	const float minDist = 0.5f;	 //was 0.25f
-	const float maxRad = (sqrt(getGameSetting("SYSTEM_COUNT",150)) * getGameSetting("MAP_SYSTEM_SPACING", 3000.f) * orbitRadiusFactor) / 70.f;
-	const float minRad = 250.f;
-	const float radius = range(minRad, maxRad, pow(randomf(1.f),0.85f)); 
-	const float glxRadius = Glx.toObject().radius;	
-
-	System@ sys = null;
+bool makeGateSystem(Galaxy@ Glx) {
+	System@ sys = getRandomSystem();
 	
-	if(gates.length() > 0) {
-		int redos = 50;
-		int pass = 4;
-		do {
-			float fuzz = 1.f / float(5 - pass);
-			float minGateDist = 1.f * glxRadius;			
-		
-			uint count = gates.length();
-			for(uint i = 0; i < count; ++i) {
-				float otherDist = gatePositions[i].getDistanceFrom(pos);
-				minGateDist = min(minGateDist, otherDist);				
-			}
-			
-			if(minGateDist >  minDist * glxRadius * fuzz) {
-				// Create the main system
-				@sys = makeSystem(Glx, pos, 16.f * orbitRadiusFactor);
-				break;
-			}
-			else {
-				// Create a new location
-				pos = makeRandomVector(radius);
-				continue;
-			}
-			
-			if (pass >= 0 && redos == 1) {
-				redos = 25;
-				pass -= 1;
-			}			
-		} while(redos-- > 0);
-	} else {
-		@sys = makeSystem(Glx, pos, 16.f * orbitRadiusFactor);	
-	}
+	while(sys.hasTag("JumpSystem"))
+		@sys = getRandomSystem();
 	
 	if(sys is null)
-		return null;
-	
-	uint n = gates.length();
-	gatePositions.resize(n+1);
-	gates.resize(n+1);
-	gates[n] = sys.toObject().uid;
-	gatePositions[n] = pos;
+		return false;
 
 	// Add the tag
 	sys.addTag("JumpSystem");
 
 	// Gates and defenses implemented in remnant_ai.as by
 	// checking for "JumpSystem" tag.
-	return sys;
+	return true;
 }
 /* }}} */
 

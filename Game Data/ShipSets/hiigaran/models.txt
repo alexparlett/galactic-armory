@@ -58,29 +58,29 @@ Model: hiigaran_tiny
  
  ParticleSystem:
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	0.0553,-0.0216,0.2157
    End:		0.0553,-0.0216,0.8737
    Width: 0.18
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:	0.0139,-0.0602,0.1835
    End:		0.0139,-0.0602,0.8435
    Width: 0.12
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:	-0.0542,-0.0217,0.2157
    End:		-0.0542,-0.0217,0.8737
    Width: 0.18
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:	-0.0143,-0.0602,0.1835
    End:		-0.0143,-0.0602,0.8435
    Width: 0.12
-   Color: 088
+   Color: fff
  EndParticleSystem
 
 
@@ -120,41 +120,41 @@ Model: hiigaran_small
  
  ParticleSystem:
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	0.1460,0.0536,0.4154
    End: 	0.1460,0.0536,1.2154
    Width: 0.20
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	-0.1347,0.0532,0.4154
    End: 	-0.1347,0.0532,1.2154
    Width: 0.20
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	0.1861,-0.0009,0.4154
    End: 	0.1861,-0.0009,1.2154
    Width: 0.12
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	-0.1710,0.0036,0.4154
    End:		-0.1710,0.0036,1.2154
    Width: 0.12
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	0.1356,-0.0053,0.4154
    End: 	0.1356,-0.0053,1.2154
    Width: 0.12
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	-0.1202,-0.0067,0.4154
    End: 	-0.1202,-0.0067,1.2154
    Width: 0.12
-   Color: 088
+   Color: fff
  EndParticleSystem
 
 //============================================
@@ -205,35 +205,35 @@ Model: hiigaran_medium
 
  ParticleSystem:
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	0.0540,-0.0417,0.4670
    End: 	0.0540,-0.0417,1.2170
    Width: 0.12
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	-0.0550,-0.0413,0.4670
    End: 	-0.0550,-0.0413,1.2170
    Width: 0.12
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	0.0006,-0.0606,0.4588
    End: 	0.0006,-0.0606,1.2088
    Width: 0.10
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	0.0196,-0.0190,0.4784
    End: 	0.0196,-0.0190,1.2284
    Width: 0.08
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	-0.0203,-0.0182,0.4784
    End: 	-0.0203,-0.0182,1.2284
    Width: 0.08
-   Color: 088   
+   Color: fff   
  EndParticleSystem
 
 //============================================
@@ -273,35 +273,35 @@ Model: hiigaran_large
  
  ParticleSystem:
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:	0.0600,-0.0130,0.6224
    End:		0.0600,-0.0130,1.3724
    Width: 0.12
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:	-0.0597,-0.0144,0.6224
    End:		-0.0597,-0.0144,1.3724
    Width: 0.12
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:	-0.0004,-0.0095,0.6079
    End:		-0.0004,-0.0095,1.3579
    Width: 0.12
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:	0.0280,-0.0568,0.6079
    End:		0.0280,-0.0568,1.3579
    Width: 0.12
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:	-0.0288,-0.0561,0.6079
    End:		-0.0288,-0.0561,1.3579
    Width: 0.12
-   Color: 088  
+   Color: fff  
  EndParticleSystem
  
 //============================================
@@ -342,47 +342,47 @@ Model: hiigaran_verylarge
  
  ParticleSystem:
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	0.0684,0.0101,0.6357
    End: 	0.0684,0.0101,1.3857
    Width: 0.12
-   Color: 088  
+   Color: fff  
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	0.0469,0.0427,0.6466
    End: 	0.0469,0.0427,1.3966
    Width: 0.12
-   Color: 088  
+   Color: fff  
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	0.0230,0.0148,0.6357
    End: 	0.0230,0.0148,1.3857
    Width: 0.12
-   Color: 088  
+   Color: fff  
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	0.0005,0.0414,0.6466
    End:		0.0005,0.0414,1.3966
    Width: 0.12
-   Color: 088  
+   Color: fff  
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	-0.0224,0.0115,0.6357
    End: 	-0.0224,0.0115,1.3857
    Width: 0.12
-   Color: 088  
+   Color: fff  
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	-0.0479,0.0415,0.6466
    End: 	-0.0479,0.0415,1.3966
    Width: 0.12
-   Color: 088  
+   Color: fff  
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	-0.0699,0.0095,0.6357
    End: 	-0.0699,0.0095,1.3857
    Width: 0.12
-   Color: 088   
+   Color: fff   
  EndParticleSystem
  
 //============================================
@@ -427,35 +427,35 @@ Model: hiigaran_carrier
  
  ParticleSystem:
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	0.1458,0.0202,0.7056
    End: 	0.1458,0.0202,1.5256
    Width: 0.16
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	0.0815,0.0195,0.7012
    End: 	0.0815,0.0195,1.5312
    Width: 0.16
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	0.0230,0.0200,0.7063
    End: 	0.0230,0.0200,1.5363
    Width: 0.16
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	0.1061,-0.0312,0.6530
    End: 	0.1061,-0.0312,1.5030
    Width: 0.10
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	0.0542,-0.0323,0.6575
    End: 	0.0542,-0.0323,1.5075
    Width: 0.10
-   Color: 088
+   Color: fff
  EndParticleSystem
  
  
@@ -487,41 +487,41 @@ Model: hiigaran_colonizer
  
  ParticleSystem:
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	0.0307,0.0177,0.6512
    End: 	0.0307,0.0177,1.2512
    Width: 0.12
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	-0.0301,0.0167,0.6512
    End: 	-0.0301,0.0167,1.2512
    Width: 0.12
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	0.0681,0.0174,0.6512
    End: 	0.0681,0.0174,1.2512
    Width: 0.12
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	-0.0671,0.0161,0.6512
    End: 	-0.0671,0.0161,1.2512
    Width: 0.12
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	0.1029,0.0126,0.6512
    End: 	0.1029,0.0126,1.2512
    Width: 0.10
-   Color: 088
+   Color: fff
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	-0.1025,0.0130,0.6512
    End:		-0.1025,0.0130,1.2512
    Width: 0.10
-   Color: 088
+   Color: fff
  EndParticleSystem
 
 //============================================
@@ -568,18 +568,18 @@ Model: hiigaran_hauler
 
  ParticleSystem:
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	0.0445,0.0069,0.3897
    End: 	0.0445,0.0069,1.1097
    Width: 0.12
-   Color: 088
+   Color: fff
    
   Engine:
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start: 	-0.0438,0.0070,0.3897
    End: 	-0.0438,0.0070,1.1097
    Width: 0.12
-   Color: 088
+   Color: fff
  EndParticleSystem
 
 //============================================
@@ -724,11 +724,11 @@ Firing Point: point, -0.0002,0.0030,0.2240, 0.0000,0.0000,-1.0000, 360
  
  ParticleSystem:
   Engine:  //L: 4000 O: 1500
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:  0.0132,-0.0008,0.0 
    End:    0.0132,-0.0008,2.0815 
    Width: 0.5
-   Color: 088
+   Color: fff
   EndParticleSystem 
  
  //===========================================
@@ -763,32 +763,32 @@ Firing Point: point, 0.0715,-0.0904,-0.6924, 0.0,-0.0,-1.0, 90
  
 ParticleSystem:
   Engine:  //L: 8000 O: 3000
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:   0.2020,     -0.0199,    0.0 
    End:     0.0016,		0.0001,		2.6084
    Width: 0.25
-   Color: 088
+   Color: fff
    
    Engine:  //L: 8000 O: 3000
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:   -0.1423,-0.0104,   0.0
    End:     -0.1423,-0.0104,	2.6084
    Width: 0.25
-   Color: 088
+   Color: fff
    
    Engine:  //L: 8000 O: 3000
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:   0.2023,-0.0236,  0.10 
    End:     0.2023,-0.0236,	2.0084
    Width: 0.15
-   Color: 088
+   Color: fff
    
    Engine:  //L: 8000 O: 3000
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:   -0.2139,-0.0279,   0.10 
    End:     -0.2139,-0.0279, 2.0084
    Width: 0.15
-   Color: 088
+   Color: fff
    
    
 EndParticleSystem
@@ -834,25 +834,25 @@ Impact Point: line, 0.3549,-0.1025,0.1640, 0.3355,-0.0715,-0.5849, 0.0280,-0.999
 
 ParticleSystem:
   Engine:  //L: 8000 O: 3000
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:   0.0929,-0.0142,-0.3042
    End:     0.0929,-0.0142,1.3042
    Width: 0.25
-   Color: 088
+   Color: fff
    
    Engine:  //L: 8000 O: 3000
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:   -0.0797,-0.0199,-0.3071
    End:     -0.0797,-0.0199,1.3071
    Width: 0.25
-   Color: 088
+   Color: fff
    
    Engine:  //L: 8000 O: 3000
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:   0.0052,-0.0903,-0.22
    End:      0.0052,-0.0903,1.0
    Width: 0.15
-   Color: 088
+   Color: fff
  EndParticleSystem
  
 
@@ -895,40 +895,40 @@ Model: hgn_Frigate
  ParticleSystem:
  //
   Engine:  //L: 8000 O: 3000
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:   0.0645,-0.0236,0.4196
    End:     0.0645,-0.0236,1.5096
    Width: 0.15
-   Color: 088
+   Color: fff
    
    Engine:  //L: 8000 O: 3000
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:   -0.0046,-0.0475,0.4186
    End:     -0.0046,-0.0475,1.5986
    Width: 0.15
-   Color: 088
+   Color: fff
    
     Engine:  //L: 8000 O: 3000
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:   -0.0758,-0.0238,0.4184
    End:     -0.0758,-0.0238,1.5084
    Width: 0.15
-   Color: 088
+   Color: fff
    
  //  
    Engine:  //L: 8000 O: 3000
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:   0.0183,0.0060,0.4536
    End:    0.0183,0.0060,1.3236
    Width: 0.10
-   Color: 088
+   Color: fff
    
    Engine:  //L: 8000 O: 3000
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:   -0.0294,0.0055,0.4532
    End:     -0.0294,0.0055,1.3232
    Width: 0.10
-   Color: 088
+   Color: fff
    
   
   
@@ -987,40 +987,40 @@ Model: hgn_Juggernaut
  ParticleSystem:
  //
   Engine:  //L: 8000 O: 3000
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:   0.0840,0.1297,0.5883
    End:     0.0840,0.1297,1.20
    Width: 0.09
-   Color: 088
+   Color: fff
    
    Engine:  //L: 8000 O: 3000
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:   -0.0806,0.1310,0.5886
    End:     -0.0806,0.1310,1.20
    Width: 0.09
-   Color: 088
+   Color: fff
   // 
     Engine:  //L: 8000 O: 3000
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:   0.0013,0.1052,0.4133
    End:     0.0013,0.1052,1.6133
    Width: 0.15
-   Color: 088
+   Color: fff
    
  //  
    Engine:  //L: 8000 O: 3000
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:   0.0771,0.0410,0.4919
    End:    0.0771,0.0410,1.40
    Width: 0.12
-   Color: 088
+   Color: fff
    
    Engine:  //L: 8000 O: 3000
-   Material: plasmathruster, plasmathruster_back
+   Material: hiigara_thruster, hiigara_thruster_back
    Start:   -0.0740,0.0397,0.4922
    End:     -0.0740,0.0397,1.40
    Width: 0.12
-   Color: 088
+   Color: fff
    
   
   
@@ -1066,80 +1066,80 @@ Impact Point: line, 0.0053,-0.6218,0.0615, -0.0004,0.3928,0.0973, 0,0,1, 60
 
  ParticleSystem:
   Engine:  //L: 4000 O: 1500
-   Material: plasmathruster, plasmathruster_back
-   Start:  0.0000, 0.3422, -0.3402
+   Material: hiigara_thruster, hiigara_thruster_back
+   Start:  0.0000, 0.3422, -0.1402
    End:    0.0000, 0.3422, 0.5902
    Width: 0.1
-   Color: 088
+   Color: fff
    
  
   Engine:  //L: 4000 O: 1500
-   Material: plasmathruster, plasmathruster_back
-   Start:  0.0000, 0.3029, -0.3402
+   Material: hiigara_thruster, hiigara_thruster_back
+   Start:  0.0000, 0.3029, -0.1402
    End:    0.0000, 0.3029, 0.5902
    Width: 0.1
-   Color: 088
+   Color: fff
    
   Engine:  //L: 4000 O: 1500
-   Material: plasmathruster, plasmathruster_back
-   Start:  0.0000, 0.2391 ,-0.3402
+   Material: hiigara_thruster, hiigara_thruster_back
+   Start:  0.0000, 0.2391 ,-0.1402
    End:    0.0000, 0.2391, 0.5902
    Width: 0.15
-   Color: 088
+   Color: fff
    
   
   Engine:  //L: 4000 O: 1500
-   Material: plasmathruster, plasmathruster_back
-   Start:  0.0000, 0.1719, -0.3402
+   Material: hiigara_thruster, hiigara_thruster_back
+   Start:  0.0000, 0.1719, -0.1402
    End:    0.0000, 0.1719, 0.5902
    Width: 0.15
-   Color: 088
+   Color: fff
    
   Engine:  //L: 4000 O: 1500
-   Material: plasmathruster, plasmathruster_back
-   Start:  0.0000, 0.106, -0.3402
+   Material: hiigara_thruster, hiigara_thruster_back
+   Start:  0.0000, 0.106, -0.1402
    End:    0.0000, 0.106, 0.5902
    Width: 0.15
-   Color: 088
+   Color: fff
 
  
   Engine:  //L: 4000 O: 1500
-   Material: plasmathruster, plasmathruster_back
-   Start:  0.0000, -0.3648, -0.3402
+   Material: hiigara_thruster, hiigara_thruster_back
+   Start:  0.0000, -0.3648, -0.1402
    End:    0.0000, -0.3648, 0.5902
    Width: 0.15
-   Color: 088
+   Color: fff
      
   Engine:  //L: 4000 O: 1500
-   Material: plasmathruster, plasmathruster_back
-   Start:  0.0000, -0.4325, -0.3402
+   Material: hiigara_thruster, hiigara_thruster_back
+   Start:  0.0000, -0.4325, -0.1402
    End:    0.0000, -0.4325, 0.5902
    Width: 0.15
-   Color: 088
+   Color: fff
     
   Engine:  //L: 4000 O: 1500
-   Material: plasmathruster, plasmathruster_back
-   Start:  0.0000, -0.5013, -0.3402
+   Material: hiigara_thruster, hiigara_thruster_back
+   Start:  0.0000, -0.5013, -0.1402
    End:    0.0000, -0.5013, 0.5902
    Width: 0.15
-   Color: 088
+   Color: fff
  //// 
  
      
   Engine:  //L: 4000 O: 1500
-   Material: plasmathruster, plasmathruster_back
-   Start:  0.0000, -0.5673, -0.3402
+   Material: hiigara_thruster, hiigara_thruster_back
+   Start:  0.0000, -0.5673, -0.1402
    End:    0.0000, -0.5673, 0.5902
    Width: 0.15
-   Color: 088
+   Color: fff
    
    
   Engine:  //L: 4000 O: 1500
-   Material: plasmathruster, plasmathruster_back
-   Start:  0.0000, -0.6045, -0.3402
+   Material: hiigara_thruster, hiigara_thruster_back
+   Start:  0.0000, -0.6045, -0.1402
    End:    0.0000, -0.6045, 0.5902
    Width: 0.1
-   Color: 088
+   Color: fff
    
 EndParticleSystem 
  
@@ -1249,24 +1249,24 @@ Model: hiigaran_huge
 ParticleSystem:
 
     Engine:
-     Material: plasmathruster, plasmathruster_back
+     Material: vaygr_thruster, vaygr_thruster_back
 	 Start:	-0.0080,0.0707,0.7500
 	 End:	-0.0080,0.0707,1.3500
 	 Width: 0.3
-	 Color: f60
+	 Color: fff
 
     Engine:
-     Material: plasmathruster, plasmathruster_back
+     Material: vaygr_thruster, vaygr_thruster_back
 	 Start:	-0.0080,0.0373,0.7500
 	 End:	-0.0080,0.0373,1.3500
 	 Width: 0.35
-	 Color: f60
+	 Color: fff
 	 
     Engine:
-     Material: plasmathruster, plasmathruster_back
+     Material: vaygr_thruster, vaygr_thruster_back
 	 Start:	-0.0080,-0.0144,0.7500
 	 End:	-0.0080,-0.0144,1.3500
 	 Width: 0.3
-	 Color: f60
+	 Color: fff
 
  EndParticleSystem

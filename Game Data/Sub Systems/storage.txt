@@ -128,7 +128,7 @@ System: AmmoStorage
 	Durability: GAME_SUBSYS_MULT * 120 * Size * pow(HEALTH_CURVE,HPLevel)
 	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
 	
-	vAmmoStore: Size * 100 * (2 - decay(pow(LEVEL_GAIN_CURVE, Level), 35))
+	vAmmoStore: Size * 125 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
 	
 	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], Labr[2 * Size], Ammo[vAmmoStore]
 	Complexity: 0.4
@@ -157,7 +157,7 @@ System: BigAmmoStorage
 	Durability: GAME_SUBSYS_MULT * 30 * Size * pow(HEALTH_CURVE,HPLevel)
 	Mass: 60 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
 	
-	vAmmoStore: Size * 200 * (2 - decay(pow(LEVEL_GAIN_CURVE, Level), 35))
+	vAmmoStore: Size * 250 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
 	
 	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], Labr[2 * Size], Ammo[vAmmoStore]
 	Complexity: 0.6

@@ -313,9 +313,10 @@ float closerRange(const Object@ from, const Object@ to, const Effector@ eff) {
 }
 
 //Deals % damage-per-tick, until the object is repossessed
+const string@ strSpaceOwned = "SpaceOwned";
 void SpaceDamage(Event@ evt, float Damage) {
 	Empire@ owner = evt.target.getOwner();
-	if(@owner != null && owner.isValid()) {
+	if((@owner != null && owner.isValid()) || evt.target.toHulledObj().getHull().hasSystemWithTag(strSpaceOwned)) {
 		evt.state = ESC_DISABLE;
 	}
 	else {
@@ -465,6 +466,9 @@ void QuasarExplode(Event@ evt) {
 
 	Effect dmg("QuasarDamage");
 	dmg.set("Damage", pow(10, 12) * 0.7f);
+
+	if(canAchieve)
+		achieve(AID_DEST_QUASAR);
 
 	uint sysCnt = getSystemCount();
 	for (uint i = 0; i < sysCnt; ++i) {

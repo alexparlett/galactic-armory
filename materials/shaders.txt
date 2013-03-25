@@ -38,6 +38,12 @@ Shader: AnimatedBullet
  Variable: float frame = time_cycle 0.3
  Variable: float frameOffset = obj_rand
  
+Shader: AnimatedThruster
+ Program: shaders/corona_anim_old_vs.txt, shaders/corona_anim_old_ps.txt, Add
+ Variable: tex corona = 0
+ Variable: float frame = time_cycle 2.0
+ Variable: float frameOffset = obj_rand
+ 
 Shader: AnimatedExplosion
  Program: shaders/explosion_vs.txt, shaders/explosion_ps.txt, Add
  Variable: tex corona = 0

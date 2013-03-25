@@ -70,8 +70,8 @@ Effector: EMPMissileTrigger
 	PotentialDamage: Damage * ClipSize
 	
 	PhysicalType: Bullet
-		Material: aamissile
-		GfxSize: 0.4
+		Material: emp_missile
+		GfxSize: 0.2
 		GfxColor: fff
 		Sound: torpedo
 		HitGfx: emp_blast, 0.8
@@ -166,7 +166,7 @@ Effector: SpatialGen
 		GfxSize: 0.75
 		FireGfx: antimatter_boom, 3
 		GfxSize: 10
-		HitGfx: spatial_distortion, 10
+		HitGfx: spatial_distortion, 2.5
 		Sound: dsfm		
 	
 	Range: Range
@@ -201,13 +201,13 @@ Effector: StargateJump
 		FireGfx: jump_charge, 5						//was antimatter_critmass, 8
 		Sound: jumpboom
 		
-	Range: 10
+	Range: 100
 		
 	Causes: StargateJumpEvent lasting 5
 	
 	IsWeapon: false
 	
-	CanAttack: JumpDrive::checkStargate
+	CanAttack: JumpDrive::checkStargateJump
 	OnFire:  Timed(30)
 	Tick: Reload
 	Progress: TimedProgress
@@ -228,7 +228,7 @@ Effector: HyperEnergyWeapon
 	
 	PhysicalType: Beam
 		Material: antimatterbeam
-		GfxSize: 0.2
+		GfxSize: 0.08
 		GfxColor: fff
 		FireGfx: ion_beam_emit, 2.0				//was laser_emit
 		HitGfx: ion_beam_impact, 1.3
@@ -258,7 +258,7 @@ Effector: WideEnergyWeapon
 	
 	PhysicalType: Beam
 		Material: ionbeam
-		GfxSize: 0.25
+		GfxSize: 0.22
 		GfxColor: 0af
 		FireGfx: ion_beam_emit, 3.0			//was laser_emit
 		HitGfx: ion_beam_impact, 2.5
@@ -942,8 +942,8 @@ Effector: GatlingGun
 	PotentialDamage: Damage
 	
 	PhysicalType: Bullet
-		Material: gatling_salvo
-		GfxSize: 0.15
+		Material: magnetic_repeater_bullet				//gatling_salvo
+		GfxSize: 0.12
 		GfxColor: fff
 		HitGfx: autocannon_impact, 0.007
 		Sound: gatlinggun
@@ -1557,7 +1557,7 @@ Effector: ClusterMissileTrigger
 	PotentialDamage: Damage
 	
 	PhysicalType: Bullet
-		Material: torpedo2
+		Material: clustermissile
 		GfxSize: 0.4
 		GfxColor: fff
 		Sound: torpedo
@@ -1701,7 +1701,7 @@ Effector: NaniteTorpedo
 	
 	PhysicalType: Bullet
 		Material: nanite_torpedo
-		GfxSize: 0.15
+		GfxSize: 0.3
 		GfxColor: fff
 		Sound: torpedo
 		HitGfx: nbc_cloud, 5
@@ -1731,7 +1731,7 @@ Effector: FusionTorpedo
 	
 	PhysicalType: Bullet
 		Material: fusion_torpedo
-		GfxSize: 0.20
+		GfxSize: 0.33
 		GfxColor: fff
 		Sound: torpedo
 		HitGfx: violet_gas, 4
@@ -1760,7 +1760,7 @@ Effector: HeavyBomb
 	
 	PhysicalType: Bullet
 		Material: bomb
-		GfxSize: 2
+		GfxSize: 1.2
 		GfxColor: fff
 		Sound: torpedo
 		HitGfx: missile_impact, 0.1					//ship_explode_boom2, 1.0
@@ -2100,7 +2100,7 @@ Effector: ChargeToFireTemplate
 		Material: wave_beam2
 		GfxSize: 0.3
 		GfxColor: da0		//777 - 770
-		HitGfx: rift2, 3.8
+		HitGfx: spatial_distortion, 2.5		//rift2, 3.8
 		Sound: dsfm
 	
 	Causes: DSMDamage lasting 1 with Damage[Damage], wasteHeat[wasteHeat]
@@ -2117,8 +2117,8 @@ Effector: TakePlanet
 	ProjectileSpeed: 20
 	
 	PhysicalType: Bullet
-		Material: rocket
-		GfxSize: 0.75
+		Material: colonizer
+		GfxSize: 0.45
 		GfxColor: fff
 	
 	Causes: CapPlanet lasting 0
@@ -2139,8 +2139,8 @@ Effector: Boarding
 	ProjectileSpeed: 12
 	
 	PhysicalType: Bullet
-		Material: rocket
-		GfxSize: 0.75
+		Material: boardingparty
+		GfxSize: 0.45
 		GfxColor: fff
 		
 	Causes: GABoard lasting 5 with Troops[Troops]

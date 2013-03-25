@@ -1,16 +1,17 @@
-Name: Galactic Armory 1.9.1b
+Name: Galactic Armory 1.9.2
 
 Authors:	Galactic Armory Mod Project
 
 			Core Team:
 			Azalrion - Scripting, testing, UI
 			balancesheet - race profile images & additional art
-			Constellation - Ship blueprints, balancing, data file editing
-			MDK - Scripting, UI
+			cause792 - Modelling, texturing, subsystem art
+			seronis - Scripting, testing
 			Starman001 - Modelling, texturing, testing
-			XTRMNTR2K - Project and QA lead, graphical assets, sound effects, data file editing
+			XTRMNTR2K - Project and QA lead, graphical assets, texturing, sound effects, data file editing
 		
 			Contributors:
+			MDK - Scripting, UI
 			mickleroi - Realistic Systems Mod
 			Tectonic - additional planet textures
 			eRe4s3r - additional subsystem graphics and effects
@@ -28,6 +29,9 @@ Authors:	Galactic Armory Mod Project
 			xilr - Testing
 			orzelek - Remnant AI Mod, testing
 			DwunkyPengy - Modelling, texturing, testing
+			Polarstorm - Polarstorm Shipset models
+			Tyrador - Various graphics and particle effects taken from/based on his Enhanced Galactic Armory Mod: http://forums.blind-mind.com/index.php?topic=5155.0
+			Constellation - Ship blueprints, balancing, data file editing
 			
 			Additional planet textures based on textures created by Landon Lemmon: http://sites.google.com/site/mapsandsuch/home
 

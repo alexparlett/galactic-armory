@@ -577,14 +577,14 @@ Material: torpedo
  FlagOn: Clamp
 
 Material: nanite_torpedo
- Texture: Images/nanite_torpedo.png
+ Texture: Images/Nanite_torpedo_particle.png
  RenderMode: Alpha
  FlagOff: Lighting
  FlagOff: ZWrite
  FlagOn: Clamp
 
 Material: fusion_torpedo
- Texture: Images/fusion_torpedo.png
+ Texture: Images/Fusion_torpedo_particle.png
  RenderMode: Alpha
  FlagOff: Lighting
  FlagOff: ZWrite
@@ -706,7 +706,7 @@ Material: twin_plasma_bullet
  FlagOn: Clamp
  
 Material: bomb
- Texture: Images/bomb.png
+ Texture: Images/heavy_bomb_particle.png
  RenderMode: Alpha
  FlagOff: Lighting
  FlagOff: ZWrite
@@ -719,6 +719,12 @@ Material: aamissile
  FlagOff: ZWrite
  FlagOn: Clamp
 
+Material: emp_missile
+ Texture: Images/EMP_torpedo_particle.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ FlagOn: Clamp 
 
 Material: beam_red
 #if shaders
@@ -802,7 +808,7 @@ Material: beam_darkorange
  
 Material: antimatterbeam
 #if shaders
- Texture: Images/beam_detail_rainbow.png
+ Texture: Images/beam_detail_blue.png
  Texture2: Images/beam.png
  RenderMode: DetailedBeam
 #else
@@ -1094,6 +1100,22 @@ Material: auto_slug
  FlagOff: ZWrite 
  FlagOn: Clamp
  
+Material: colonizer
+ Defer: Low
+ Texture: Images/Colonizer.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ 
+Material: boardingparty
+ Defer: Low
+ Texture: Images/boardingparty.png
+ RenderMode: Alpha
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ 
 Material: anim_plasma_bullet
  Defer: Required
 #if shaders
@@ -1201,7 +1223,158 @@ Material: anim_rocket
 #end
  FlagOff: ZWrite
  FlagOff: Lighting
+ 
+Material: magnetic_repeater_bullet
+ Texture: Images/magnetic_repeater_bullet.png
+ RenderMode: AdditiveColored
+ FlagOff: Lighting
+ FlagOff: ZWrite 
+ FlagOn: Clamp
+ 
+Material: anim_plasmathruster
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedThruster
+ Texture: Images/animated_plasmathruster.png
+#else
+ Texture: Images/animated_plasmathruster.png
+ RenderMode: SignedVertexColored
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting 
 
+Material: anim_plasmathruster_back
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedThruster
+ Texture: Images/animated_plasmathruster_back.png
+#else
+ Texture: Images/animated_plasmathruster_back.png
+ RenderMode: SignedVertexColored
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting 
+
+Material: terrakin_thruster
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedThruster
+ Texture: Images/terrakin_thruster.png
+#else
+ Texture: Images/terrakin_thruster.png
+ RenderMode: SignedVertexColored
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting 
+
+Material: terrakin_thruster_back
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedThruster
+ Texture: Images/terrakin_thruster_back.png
+#else
+ Texture: Images/terrakin_thruster_back.png
+ RenderMode: SignedVertexColored
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting 
+ 
+Material: neumon_thruster
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedThruster
+ Texture: Images/neumon_thruster.png
+#else
+ Texture: Images/neumon_thruster.png
+ RenderMode: SignedVertexColored
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting 
+
+Material: neumon_thruster_back
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedThruster
+ Texture: Images/neumon_thruster_back.png
+#else
+ Texture: Images/neumon_thruster_back.png
+ RenderMode: SignedVertexColored
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: hiigara_thruster
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedThruster
+ Texture: Images/hiigara_thruster.png
+#else
+ Texture: Images/hiigara_thruster.png
+ RenderMode: SignedVertexColored
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting 
+
+Material: hiigara_thruster_back
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedThruster
+ Texture: Images/hiigara_thruster_back.png
+#else
+ Texture: Images/hiigara_thruster_back.png
+ RenderMode: SignedVertexColored
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: vaygr_thruster
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedThruster
+ Texture: Images/vaygr_thruster.png
+#else
+ Texture: Images/vaygr_thruster.png
+ RenderMode: SignedVertexColored
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting 
+
+Material: vaygr_thruster_back
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedThruster
+ Texture: Images/vaygr_thruster_back.png
+#else
+ Texture: Images/vaygr_thruster_back.png
+ RenderMode: SignedVertexColored
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: polarstorm_thruster
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedThruster
+ Texture: Images/polarstorm_thruster.png
+#else
+ Texture: Images/polarstorm_thruster.png
+ RenderMode: SignedVertexColored
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting 
+
+Material: polarstorm_thruster_back
+ Defer: Required
+#if shaders
+ RenderMode: AnimatedThruster
+ Texture: Images/polarstorm_thruster_back.png
+#else
+ Texture: Images/polarstorm_thruster_back.png
+ RenderMode: SignedVertexColored
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ 
 Material: xxxx
  Defer: Low
  Texture: Images/xxx.png

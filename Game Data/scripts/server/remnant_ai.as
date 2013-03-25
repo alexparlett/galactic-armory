@@ -41,6 +41,7 @@ const uint PicketShipsCount = 20;
 const string@ str_RemnantSys = "rSys";
 const string@ str_Victory = "Victory";
 const string@ str_Metals = "Metals", str_Elects = "Electronics", str_AdvParts = "AdvParts", str_Fuel = "Fuel", str_Ammo = "Ammo";
+const string@ strStaticPosition = "StaticPosition";
 
 string[] offensiveTechs =
 {
@@ -702,6 +703,7 @@ class RemnantAIData
 	{
 		log = logging;
 	
+		seededGalaxy = getGameSetting("GAME_REMNANTS_ENABLED", 1.f) < 0.5f;
 		SeedSystemChance = getGameSetting("GAME_REMNANTS", 0.3f);
 		startedSeed = false;
 
@@ -729,7 +731,6 @@ class RemnantAIData
 			currTechMod = 0.f;
 			techMod = currTechMod;
 			// Check if we should do raids and seeding
-			seededGalaxy = getGameSetting("GAME_REMNANTS", 0.3f) < 0.001f;
 			angerPerSystem = getGameSetting("GAME_REMNANT_AGRO", 0.1f);
 
 			seedPerPlanet = SeedPerPlanetAi;
@@ -743,6 +744,7 @@ class RemnantAIData
 				waveSize = BaseAttackSize;
 				waveCount = 1;
 			}
+			
 			baseResearchRate = BaseResearchRate;
 			nextResearchRateCheck = ResearchRateCheckInterval;
 		}
@@ -1233,29 +1235,41 @@ class RemnantAIData
 	}
 
 	void createRemnantJumpSystem(System@ sys, RemnantAIData@ data, Empire@ emp) {
-		Object@ sysObj = sys;
-		
-		// Create the star
-		Star@ star = makeStar(sys, 2.f);
-
-		Effect starEffect("SelfHealing");
-		starEffect.set("Rate", 100000000.f);		
-		star.toObject().addTimedEffect(starEffect, pow(10, 35), 0.f, star.toObject(), null, null, TEF_None);		
-		
 		// Retrieve layouts
 		const HullLayout@ jumpLay = emp.getShipLayout(localize("#SH_Remnant Jump Bridge"));
 		
 		if (jumpLay is null)
 			return;	
 			
-		float angle = 0, angleInc = twoPi / 2.f;
-		float radius = sysObj.radius * 0.3f;
-		for (uint i = 0; i < 2; ++i) {
-			vector pos = vector(radius * cos(angle), 0, radius * sin(angle));
-			angle += angleInc;
+		vector pos;
+		float angleInc = 120.f;
+		float radius = sys.toObject().radius * 0.8f;
+		float angle = 0.f;
+		
+		angle = randomf(angle,angleInc);
+		pos = vector(radius * cos(angle), 0, radius * sin(angle));
 
-			Object@ ship = spawnShip(emp, jumpLay, sys, pos);
-			ship.orbitAround(null);
+		Object@ ship = spawnShip(getEmpireByID(-1), jumpLay, sys, pos);
+		ship.orbitAround(null);
+
+		ship.setStateVals(strStaticPosition,pos.x,pos.y,pos.z,0.f);
+		
+		for(int i = 0; i < 2; i++)
+		{
+			if(randomf(1.00f) > randomf(0.50f,1.00f))
+			{
+				angle = angleInc;
+				angleInc *= i+1;
+				
+				angle = randomf(angle,angleInc);
+			
+				pos = vector(radius * cos(angle), 0, radius * sin(angle));
+
+				Object@ ship = spawnShip(getEmpireByID(-1), jumpLay, sys, pos);
+				ship.orbitAround(null);		
+				
+				ship.setStateVals(strStaticPosition,pos.x,pos.y,pos.z,0.f);
+			}				
 		}
 	}
 
@@ -1284,8 +1298,10 @@ class RemnantAIData
 			vector pos = vector(radius * cos(angle), 0, radius * sin(angle));
 			angle += angleInc;
 
-			Object@ ship = spawnShip(emp, gateLay, sys, pos);
+			Object@ ship = spawnShip(getEmpireByID(-1), gateLay, sys, pos);
 			ship.orbitAround(null);
+			
+			ship.setStateVals(strStaticPosition,pos.x,pos.y,pos.z,0.f);
 
 			createDefenseRing(emp, defLay, sys, ship, 200.f, 18, 0.f);
 			createDefenseRing(emp, defLay, sys, ship, 200.f, 8, -50.f);
@@ -1307,8 +1323,10 @@ class RemnantAIData
 			
 		vector pos = vector(0,0,0);
 		
-		Object@ ship = spawnShip(emp, spatLay, sys, pos);
+		Object@ ship = spawnShip(getEmpireByID(-1), spatLay, sys, pos);
 		ship.orbitAround(null);
+		
+		ship.setStateVals(strStaticPosition,pos.x,pos.y,pos.z,0.f);
 		
 		createDefenseRing(emp, defLay, sys, ship, 200.f, 18, 0.f);
 		createDefenseRing(emp, defLay, sys, ship, 200.f, 8, -50.f);
@@ -1342,6 +1360,8 @@ class RemnantAIData
 			Object@ ship = spawnShip(emp, spLay, sys, pos);
 			ship.setStance(AIS_Defend);
 			ship.orbitAround(null);
+			
+			ship.setStateVals(strStaticPosition,pos.x,pos.y,pos.z,0.f);
 		}		
 		
 		// Create the planets
@@ -1367,8 +1387,10 @@ class RemnantAIData
 			
 		vector pos = vector(0,0,0);
 		
-		Object@ ship = spawnShip(emp, ionLay, sys, pos);
+		Object@ ship = spawnShip(getEmpireByID(-1), ionLay, sys, pos);
 		ship.orbitAround(null);
+		
+		ship.setStateVals(strStaticPosition,pos.x,pos.y,pos.z,0.f);
 		
 		createDefenseRing(emp, defLay, sys, ship, 200.f, 18, 0.f);
 		createDefenseRing(emp, defLay, sys, ship, 200.f, 8, -50.f);
@@ -1394,22 +1416,22 @@ class RemnantAIData
 			if (sys.hasTag(strImperialSeat)) {
 				createRemnantImperialSeat(sys, this, emp);
 			}
-			else if (sys.hasTag(strGateSystem)) {
+			if (sys.hasTag(strGateSystem)) {
 				createRemnantGateSystem(sys, this, emp);
 			}
-			else if (sys.hasTag(strResearchOutpost)) {
+			if (sys.hasTag(strResearchOutpost)) {
 				createRemnantResearchOutpost(sys, this, emp);
 			}
-			else if (sys.hasTag(strJumpSystem)) {
+			if (sys.hasTag(strJumpSystem)) {
 				createRemnantJumpSystem(sys, this, emp);
 			}			
-			else if (sys.hasTag(strSpatialGen)) {
+			if (sys.hasTag(strSpatialGen)) {
 				createSpatialGen(sys, this, emp);
 			}
-			else if (sys.hasTag(strZeroPoint)) {
+			if (sys.hasTag(strZeroPoint)) {
 				createZeroPoint(sys, this, emp);
 			}
-			else if (sys.hasTag(strIonCanon)) {
+			if (sys.hasTag(strIonCanon)) {
 				createIonCanon(sys, this, emp);
 			}
 		}
@@ -1705,6 +1727,8 @@ class SystemManager
 		
 		@commandShip = ship.toObject();
 		commandShip.orbitAround( null );
+		
+		commandShip.setStateVals(strStaticPosition,pos.x,pos.y,pos.z,0.f);
 		
 		system.toObject().setStat( emp, str_RemnantSys, 1.f );
 		

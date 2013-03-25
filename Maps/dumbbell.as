@@ -40,9 +40,22 @@ void makeMap(Galaxy@ Glx) {
 		}
 		
 		System@ sys = makeRandomSystem(Glx, position, sysIndex, sysCount);
-		if(sys.hasTag("JumpSystem"))
-			sysIndex -= 1;
+
 		updateProgress(sysIndex, sysCount);
+	}
+	
+	if(jumpBridges && sysCount >= 20)
+	{
+		float density = getGameSetting("MAP_BRIDGE_DENSITY", 0.1f);
+		float availableGates = float(sysCount) * density;
+		float gateIndex = 0;
+		
+		while(gateIndex < availableGates)
+		{
+			if(makeGateSystem(Glx))
+				gateIndex++;
+			updateBridgeProgress(gateIndex,availableGates);
+		}
 	}
 }
 
