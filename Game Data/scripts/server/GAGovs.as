@@ -1,10 +1,9 @@
 //Globals
 ObjectFlag objImprovement = objUser03, setImpPause = objSetting00;
-float upTime, lastUpdate = 0.f, lastReq = 0.f;
 bool initialized;
 
 //Constants
-const string@ strWorkers = "Workers", strTrade = "Trade";
+const string@ strWorkers = "Workers", strTrade = "Trade", strGovTrade = "GovTrade";
 const string@ strFuel = "Fuel", strAmmo = "Ammo", strFood = "Food";
 const string@ strMtl = "Metals", strElc = "Electronics", strAdv = "AdvParts";
 
@@ -95,14 +94,15 @@ bool checkTrade(Planet@ pl)
 	Object@ obj = pl;
 	Empire@ emp = obj.getOwner();
 	State@ trade = obj.getState(strTrade);	
+	State@ govTrade = obj.getState(strGovTrade);
 
 	PlanetStructureList list;
 	list.prepare(pl);	
 	
 	bool maxed = false;
-	if(gameTime - lastUpdate > 5.f || gameTime <= 30) {
+	if(gameTime - govTrade.val > 5.f || gameTime <= 30) {
 		//Work off an average of the last update and this one
-		float req = (trade.inCargo + lastReq) / 2;
+		float req = (trade.inCargo + govTrade.max) / 2;
 		
 		//Error checking incase it hits halfway through a planet update
 		if(req > trade.max * 10)
@@ -111,8 +111,8 @@ bool checkTrade(Planet@ pl)
 		if(req >= trade.max)
 			maxed = true;
 			
-		lastUpdate = gameTime;
-		lastReq = req;
+		govTrade.val = gameTime;
+		govTrade.max = req;
 	}
 	
 	uint slots = pl.getStructureCount(), structs = list.getCount();		
