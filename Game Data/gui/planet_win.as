@@ -2007,8 +2007,8 @@ class PlanetWindow : ScriptedGuiHandler {
 			updateRate(7, amoAvg+amoGen, 0, -amoExpAvg);
 
 			if (hasMood) {
-				updateRate(4, gudsGen, -gudsCons, gudExpAvg-gudsGen);
-				updateRate(5, luxsGen, -luxsCons, luxExpAvg-luxsGen);
+				updateRate(4, gudsGen, -gudsCons, gudExpAvg);
+				updateRate(5, luxsGen, -luxsCons, luxExpAvg);
 			}
 			else {
 				updateRate(4, 0, 0, 0);

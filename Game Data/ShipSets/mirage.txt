@@ -1,0 +1,93 @@
+if class == ColonyShip {
+    Sprite = 6
+	Model = Mirage_Colonizer
+}
+
+
+tag MothershipHull {
+	Sprite = 16
+	Model = Mirage_Mothership
+}
+
+if (class == Carrier) || (class == Transport) {
+    Sprite = 14
+	Model = Mirage_Carrier
+}
+
+if class == Cargo {
+   Sprite = 7
+	Model = Mirage_freighter
+}
+
+tag TankerHull {
+   Sprite = 8
+	Model = Mirage_Tanker
+}
+
+tag Salvager {
+   Sprite = 7
+   Model = Mirage_freighter
+}
+
+
+if (class == Station) || (class == CivStation) {
+	if scale <= 10 {
+		Sprite = 1
+		Model = Mirage_Satellite
+	}
+	Sprite = 15
+	Model =  Mirage_Station
+}
+
+if scale <= 0.25 {
+Sprite = 0
+	Model = Mirage_Tiny
+}
+
+tag FighterHull {
+Sprite = 2
+	Model = Mirage_Fighter
+}
+
+tag BomberHull {
+Sprite = 3
+	Model = Mirage_Bomber
+}
+
+tag LightHull {
+Sprite = 5
+	Model = Mirage_Small
+}
+
+tag MediumHull {
+Sprite = 10
+	Model = Mirage_Mega
+}
+
+tag SpinalHull {
+Sprite = 9
+	Model = Mirage_Spinal
+}
+
+tag MegaHull {
+Sprite = 12
+	Model = Mirage_Huge
+}
+
+tag GargantuanHull {
+Sprite = 13
+	Model = Mirage_Mega
+}
+
+tag HeavyHull {
+Sprite = 11
+	Model = Mirage_Heavy
+}
+
+tag StealthHull {
+Sprite = 4
+	Model = Mirage_Stealth
+}
+
+Sprite = 13
+	Model = Mirage_Mega

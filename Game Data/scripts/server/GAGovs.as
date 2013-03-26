@@ -58,7 +58,7 @@ bool checkWorkers(Planet@ pl)
 	PlanetStructureList list;
 	list.prepare(pl);	
 	
-	uint slots = pl.getStructureCount(), structs = list.getCount();		
+	uint slots = pl.getMaxStructureCount(), structs = list.getCount();		
 	
 	if(wmax - workers.required < 12.f * mil)
 	{
@@ -100,7 +100,12 @@ bool checkTrade(Planet@ pl)
 	list.prepare(pl);	
 	
 	bool maxed = false;
-	if(gameTime - govTrade.val > 5.f || gameTime <= 30) {
+	
+	if(govTrade.val == 0)
+		govTrade.val = gameTime;
+		
+	if(gameTime - govTrade.val > 90.f) 
+	{
 		//Work off an average of the last update and this one
 		float req = (trade.inCargo + govTrade.max) / 2;
 		
@@ -115,7 +120,7 @@ bool checkTrade(Planet@ pl)
 		govTrade.max = req;
 	}
 	
-	uint slots = pl.getStructureCount(), structs = list.getCount();		
+	uint slots = pl.getMaxStructureCount(), structs = list.getCount();		
 	
 	for(uint i = 0; i < list.getCount(); i++)
 	{	

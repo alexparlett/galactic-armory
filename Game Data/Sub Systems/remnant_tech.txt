@@ -168,8 +168,6 @@ System: CommandHull
         
     Provides: AmmoStorage with
         Amount[vEcoStore * 0.5]
-		
-	Provides: RemnantQuantumEntanglement
 
     Hints: Local/DamageReduction[-1 * Scale], Local/HullSoak[90], ArmorPoints[8], ShieldEmitters[8], Local/HullHP[Durability], Local/CreateMatter[vRate], EcoStore[vEcoStore]
     

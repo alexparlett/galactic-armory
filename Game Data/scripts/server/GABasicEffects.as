@@ -7,18 +7,18 @@ string@ strStaticPosition = "StaticPosition";
 
 void StaticCheckPosition(Event@ evt) {
 	Object@ gate = evt.obj;
-	
-	gate.velocity = vector(0, 0, 0);	
-	
+
 	vector pos = gate.getPosition();
 	
 	float ox = 0.f,oy = 0.f,oz = 0.f,obs = 0.f;
 	gate.getStateVals(strStaticPosition,ox,oy,oz,obs);
 	
-	if(ox <= 0 && oy <= 0 && oz <= 0)
+	if(ox == 0 && oy == 0 && oz == 0 && obs == 0)
 	{
-		game.setStateVals(strStaticPosition,pos.x,pos.y,pos.z,0);
-	} else if(pos.x != ox || pos.y != oy || pos.z != oz) {
+		gate.setStateVals(strStaticPosition,pos.x,pos.y,pos.z,0);
+	} 
+	else if(pos.x != ox || pos.y != oy || pos.z != oz) 
+	{
 		vector old = vector(ox,oy,oz);
 		gate.position = old;
 	}

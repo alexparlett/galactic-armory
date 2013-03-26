@@ -1326,7 +1326,7 @@ class RemnantAIData
 		Object@ ship = spawnShip(getEmpireByID(-1), spatLay, sys, pos);
 		ship.orbitAround(null);
 		
-		ship.setStateVals(strStaticPosition,pos.x,pos.y,pos.z,0.f);
+		ship.setStateVals(strStaticPosition,pos.x,pos.y,pos.z,1.f);
 		
 		createDefenseRing(emp, defLay, sys, ship, 200.f, 18, 0.f);
 		createDefenseRing(emp, defLay, sys, ship, 200.f, 8, -50.f);
@@ -1390,7 +1390,7 @@ class RemnantAIData
 		Object@ ship = spawnShip(getEmpireByID(-1), ionLay, sys, pos);
 		ship.orbitAround(null);
 		
-		ship.setStateVals(strStaticPosition,pos.x,pos.y,pos.z,0.f);
+		ship.setStateVals(strStaticPosition,pos.x,pos.y,pos.z,1.f);
 		
 		createDefenseRing(emp, defLay, sys, ship, 200.f, 18, 0.f);
 		createDefenseRing(emp, defLay, sys, ship, 200.f, 8, -50.f);

@@ -467,27 +467,36 @@ void tick(Planet@ pl, float time) {
 				mtlMode = TradeMode(int(treq));
 				fudMode = TradeMode(int(tcargo));
 			}			
+			
+			tradeRate.inCargo = 0;
 		
 			//emp.getStatStats(strFood, v,i,e,d);	
 			State@ sp_Food = obj.getState(strFood);
 			float foodWeight = getResourceWeight(sp_Food, cargoSpaceLeft, tradeTarget); //float(e/max(i,1.0));
+			tradeRate.inCargo += tradeRequired(sp_Food, cargoSpaceLeft, tradeTarget);
 			
 			State@ sp_Metals = obj.getState(strMtl);
 			float mtlWeight = getResourceWeight(sp_Metals, cargoSpaceLeft, tradeTarget);
+			tradeRate.inCargo += tradeRequired(sp_Metals, cargoSpaceLeft, tradeTarget);
 			
 			State@ sp_Elecs = obj.getState(strElc);
 			float elecWeight = getResourceWeight(sp_Elecs, cargoSpaceLeft, tradeTarget);
+			tradeRate.inCargo += tradeRequired(sp_Elecs, cargoSpaceLeft, tradeTarget);
 			
 			State@ sp_Advs = obj.getState(strAdv);
 			float advWeight = getResourceWeight(sp_Advs, cargoSpaceLeft, tradeTarget);
+			tradeRate.inCargo += tradeRequired(sp_Advs, cargoSpaceLeft, tradeTarget);
 			
 			State@ sp_Ammo = obj.getState(strAmmo);
 			float ammoWeight = getResourceWeight(sp_Ammo, sp_Ammo.getTotalFreeSpace(obj), tradeTarget);
+			tradeRate.inCargo += tradeRequired(sp_Ammo, cargoSpaceLeft, tradeTarget);
 			
 			State@ sp_Fuel = obj.getState(strFuel);
-			float fuelWeight = getResourceWeight(sp_Fuel, sp_Fuel.getTotalFreeSpace(obj), tradeTarget);			
-			
+			float fuelWeight = getResourceWeight(sp_Fuel, sp_Fuel.getTotalFreeSpace(obj), tradeTarget);	
+			tradeRate.inCargo += tradeRequired(sp_Fuel, cargoSpaceLeft, tradeTarget);
+				
 			float totalWeight = abs(foodWeight) + abs(mtlWeight) + abs(elecWeight) + abs(advWeight) + abs(ammoWeight) + abs(fuelWeight);
+			tradeRate.inCargo *= time;
 			
 			if(totalWeight > 0) {
 				advRate.inCargo = tradeResource(emp, obj, sp_Advs, strAdv, tickTrade * advWeight/totalWeight, tradeEff, advMode);
@@ -505,7 +514,6 @@ void tick(Planet@ pl, float time) {
 				foodRate.inCargo = 0;
 				ammoRate.inCargo = 0;
 				fuelRate.inCargo = 0;
-				tradeRate.inCargo = 0;
 			}
 			
 			if(tickTrade > 0) {
@@ -513,45 +521,37 @@ void tick(Planet@ pl, float time) {
 
 				traded = tradeResource(emp, obj, sp_Advs, strAdv, tickTrade * sign(advWeight), tradeEff, advMode);
 				advRate.inCargo += traded;
-				if(advRate.inCargo > 0)
-					tradeRate.inCargo = advRate.inCargo;
+
 				tickTrade -= abs(traded);
 
 				if (tickTrade > 0) {
 					traded = tradeResource(emp, obj, sp_Elecs, strElc, tickTrade * sign(elecWeight), tradeEff, elcMode);
 					elcRate.inCargo += traded;
-					if(elcRate.inCargo > 0)
-						tradeRate.inCargo += elcRate.inCargo;					
+				
 					tickTrade -= abs(traded);
 
 					if (tickTrade > 0) {
 						traded = tradeResource(emp, obj, sp_Metals, strMtl, tickTrade * sign(mtlWeight), tradeEff, mtlMode);
 						mtlRate.inCargo += traded;
-						if(mtlRate.inCargo > 0)
-							tradeRate.inCargo += mtlRate.inCargo;
+						
 						tickTrade -= abs(traded);
 
 						if (tickTrade > 0) {
 							traded = tradeResource(emp, obj, sp_Food, strFood, tickTrade * sign(foodWeight), 1.f, fudMode);
 							foodRate.inCargo += traded;
-							if(foodRate.inCargo > 0)
-								tradeRate.inCargo += foodRate.inCargo;
+
 							tickTrade -= abs(traded);
 						
 							if (tickTrade > 0) {
 								traded = tradeResource(emp, obj, sp_Fuel, strFuel, tickTrade * sign(fuelWeight), tradeEff, fudMode);
 								fuelRate.inCargo += traded;
-								if(fuelRate.inCargo > 0) {
-									tradeRate.inCargo += fuelRate.inCargo;
-								}	
+
 								tickTrade -= abs(traded);
 							
 								if(tickTrade > 0) {
 									traded = tradeResource(emp, obj, sp_Ammo, strAmmo, tickTrade * sign(ammoWeight), tradeEff, mtlMode);
 									ammoRate.inCargo += traded;
-									if(ammoRate.inCargo > 0) {
-										tradeRate.inCargo += ammoRate.inCargo;
-									}	
+	
 									tickTrade -= abs(traded);
 								}	
 							}
@@ -567,7 +567,6 @@ void tick(Planet@ pl, float time) {
 			foodRate.inCargo /= time;
 			ammoRate.inCargo /= time;
 			fuelRate.inCargo /= time;
-			tradeRate.inCargo /= time;
 		}
 		else {
 			tradeRate.required = 0;
@@ -624,6 +623,15 @@ float getResourceWeight(State@ state, float freeCargoSpace, float tradeToPct) {
 		return (-1.f/tradeToPct) * (tradeToPct - pct);
 	else
 		return 0;
+}
+
+float tradeRequired(State@ res, float freeCargoSpace, float tradeTarget)
+{
+	float resAvail = res.val;
+	float resStore = res.max * tradeTarget;
+	float resTrade = resAvail - resStore;
+	
+	return resTrade > 0 ? resTrade : 0.0f;
 }
 
 //Trade a maximal amount of the specified resource. If amount is negative, it will be imported.
