@@ -40,13 +40,6 @@
 //  0-6 float values - These values are passed to the script in the same order they are defined in the effect definition. The argument names don't have to match, but it is suggested.
 //		Note: For now, Functions have to accept the same number of floats as the effect they are referenced by defines, even if they don't use them.
 
-Name:	AmmoStorage
-	Value: Amount
-
-	Once: AddAmount(Amount, "Ammo")
-	OnConstruct:	AddMax(Amount, "Ammo")
-	OnDestruct:		SubMax(Amount, "Ammo")
-
 Name:	DestructsShip
 	OnDestruct: Death
 
@@ -80,76 +73,6 @@ Name:	Damage
 	
 	OnActive:	Combat::dealDamage
 
-//Damage is reduced by [Amount], then applied
-//If damage is reduced below 0, nothing happens
-Name:	SoakDamage
-	Value: Amount
-	
-	OnDamage: Skip
-	OnGlobalDamage:	Combat::SoakDamage
-
-//Takes normal damage up to [Amount]. Damage beyond [Amount] is multiplied by [AbsorbPct] and also applied.
-Name:	ReactDamage
-	Value: Amount
-	Value: AbsorbPct
-	
-	OnDamage: Skip
-	OnGlobalDamage:	Combat::ReactDamage
-	
-Name:	EnergyDmg
-	Value: Damage
-	Value: Cost
-	
-	Tick:	Combat::EnergyDamage
-	
-Name:	PhasedEnergyDmg
-	Value: Damage
-	Value: Cost
-	
-	Tick:	Combat::PhasedDamage
-	
-Name:	star_damage	
-	Tick:	Combat::StarDamage
-
-//Deals damage in two parts: Upon impact, deals [FrontDamage]; Over time, deals [DoTDamage]/second
-Name:	PlasmaDmg
-	Value: FrontDamage
-	Value: DoTDamage
-	
-	OnActive: Combat::PlasmaFrontDamage
-	Tick:	Combat::PlasmaDoTDamage
-	
-Name:	ProjectileDmg
-	Value: Damage
-	Value: Cost
-	
-	OnActive:	Combat::ProjDamage
-
-Name:	ArtilleryDmg
-	Value: Damage
-	
-	OnActive:	Combat::ArtyDamage
-	
-Name:	ProjDamage
-	Value: Damage
-	
-	OnActive:	Combat::ProjDamage
-
-Name:	PopulationDamage
-	Value: Damage
-	
-	OnActive:	Combat::PopDamage
-	
-Name:	ProjPierceDamage
-	Value: Damage
-	
-	OnActive:	Combat::ProjPierceDamage
-	
-Name:	ExplosiveDamage
-	Value: Damage
-	
-	OnActive:	Combat::ExplosiveDamage
-
 Name:	DoT
 	Value: Damage
 	
@@ -175,79 +98,12 @@ Name:	Board
 	Value: Troops
 	
 	Tick: boarding::BoardTick
-	
-Name:	TakePower
-	Value: Rate
-	
-	Tick:	Combat::SuckPower
-
-Name:	Cargo
-	Value: Amount
-
-	OnActive:	AddCargoSpace(Amount)
-	OnDeactive:	SubCargoSpace(Amount)
-
-Name:	ShipStorage
-	Value: Amount
-
-	OnActive:	AddShipSpace(Amount)
-	OnDeactive:	SubShipSpace(Amount)
 
 Name:	SolarPower
 	Value: Efficiency
 	Value: SurfaceArea
 	
 	Tick: BasicEffects::SolarPower
-
-Name:	CollectFuel
-	Value: Rate
-	
-	Tick: GenerateNoCargo("Fuel", Rate)
-
-Name:	MakeBioFuel
-	Value: Rate
-	Value: FoodCostPer
-
-	Tick: ProduceNoCargo("Fuel", "Food", Rate, FoodCostPer)
-
-Name:	MakeAmmo
-	Value: Rate
-	Value: MetalCostPer
-
-	Tick: ProduceNoCargo("Ammo", "Metals", Rate, MetalCostPer)
-
-Name:	FuelStorage
-	Value: Amount
-	
-	Once:			AddAmount(Amount, "Fuel")
-	OnConstruct:	AddMax(Amount, "Fuel")
-	OnDestruct:		SubMax(Amount, "Fuel")
-
-Name:	Propulsion
-	Value: Amount
-	
-	OnActive:	IncSpeed(Amount)
-	OnDeactive:	DecSpeed(Amount)
-
-
-Name:	FuelThrust
-	Value: Amount
-	Value: Efficiency
-	
-	OnActive:	BasicEffects::SpeedIfFuel
-	OnDeactive:	DecSpeed(Amount)
-	Tick:		BasicEffects::FuelThrustCons
-
-
-Name:	IonThrust
-	Value: Amount
-	Value: Efficiency
-	Value: PowCost
-	
-	OnActive:	BasicEffects::SpeedIfFuel
-	OnDeactive:	DecSpeed(Amount)
-	Tick:		BasicEffects::IonThrustCons
-
 
 Name:	Control
 	Value: Amount
@@ -257,21 +113,10 @@ Name:	Control
 
 Name:	CrewQuarters
 	Value: Amount
-	Value: Regen
 
 	Once: AddAmount(Amount, "Crew")
 	OnActive:	AddMax(Amount, "Crew")
 	OnDeactive:		SubMax(Amount, "Crew")
-	Tick:	GenerateNoCargo("Crew", Regen)
-
-Name:	TroopQuarters
-	Value: Amount
-	Value: Regen
-
-	Once: AddAmount(Amount, "Troops")
-	OnActive:	AddMax(Amount, "Troops")
-	OnDeactive:		SubMax(Amount, "Troops")
-	Tick:	GenerateNoCargo("Troops", Regen)
 
 Name:	AirStorage
 	Value: Amount
@@ -284,53 +129,6 @@ Name:	MakeAir
 	Value: Amount
 
 	Tick: GenerateNoCargo("Air", Amount)
-
-Name:	Chameleon
-	Value: HitMod
-	
-	OnGlobalDamage:	Combat::HitMod
-
-Name:	MoveDodge
-	Value: HitMod
-	
-	OnGlobalDamage:	Combat::DodgeHitMod
-
-//Name:	Shields
-//	Value: Rate
-//	Value: Cost
-//	Value: FluxMult
-//
-//	Tick:	ProduceNoCargo("Shields", "Power", Rate, Cost)
-
-//Provides 'leaky' shields: Less damage is absorbed at lower charge%'s
-//	Absorption the absorption% at 100% charge. (e.g. 0.5 would leak 50% of damage at full charge, and get worse. 2 would not leak until less than 50% health)
-Name: Shields
-	Value: Amount
-	Value: Absorption
-
-	OnActive:	AddMax(Amount, "Shields")
-	OnDeactive:	SubMax(Amount, "Shields")
-	OnGlobalDamage:	Combat::ShieldSoak
-
-//Regenerates shields at [Rate]/second, each unit costing [Cost] Power
-Name: ShieldRegen
-	Value: Rate
-	Value: Cost
-	
-	Tick:	Combat::ShieldRegen
-
-Name:	FluxCap
-	Value: Amount
-
-	OnActive:	AddMax(Amount, "Shields")
-	OnDeactive:	SubMax(Amount, "Shields")
-
-Name:	Research
-	Value: Amount
-	
-	OnActive:	IncResearch(Amount)
-	OnOwnerChange: StructureEffects::ChangeResearchOwner
-	OnDeactive:	DecResearch(Amount)
 
 Name:	MineOre
 	Value: Rate
@@ -373,25 +171,6 @@ Name:	Salvage
 	
 	Tick:	BasicEffects::Salvage
 
-Name:	RefineMetal
-	Value: Rate
-	Value: OreCostPer
-	
-	Tick:	Produce("Metals", "Ore", Rate, OreCostPer)
-
-Name:	FabElects
-	Value: Rate
-	Value: MtlCostPer
-	
-	Tick:	Produce("Electronics", "Metals", Rate, MtlCostPer)
-
-Name:	FabAdvParts
-	Value: Rate
-	Value: MtlCostPer
-	Value: ElcCostPer
-	
-	Tick:	BasicEffects::FabricateAdv
-
 //Attempts to capture the target's hull per tick (All other factors ignored, ScanQuality is a % chance from 0-1 to capture the hull per second)
 Name:	Analyze
 	Value: ScanQuality
@@ -409,11 +188,6 @@ Name:	CapPlanet
 	
 	OnActive: BasicEffects::CapturePlanet
 
-Name:	JumpDriveEvent
-	Value: FuelCost
-
-	OnDeactive: JumpDrive::Jump
-
 Name:	RingworldGen
 	
 	Tick: BasicEffects::CreateRingworld
@@ -423,24 +197,6 @@ Name:	MakeStructures
 	
 	OnActive: AddMax(Amount, "MakeStructures")
 	OnDeactive: SubMax(Amount, "MakeStructures")
-
-Name:	MatterGeneration
-	Value: Rate
-	Value: PowCost
-
-	Tick:	BasicEffects::MatterGen
-
-Name:	AddVelocity
-	Value: Force
-	Value: PowCost
-
-	Tick:	Combat::ImpartForce
-
-Name:	InterdictVelocity
-	Value: Force
-	Value: PowCost
-
-	Tick:	Combat::MatchVelocity
 
 Name:	Quasar
 	OnDestruct: Combat::QuasarExplode

@@ -1,0 +1,722 @@
+System: City
+	Name: #SS_CITY_NAME
+	Description: #SS_CITY_DESC
+	Appearance: GeneralBuilding
+
+	Available: Techs.Infra_Root.Level >= 0
+	Level: Techs.Infra_Root.Level
+	
+	Size: Scale
+	Durability: 500 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT
+	Mass: 400 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	
+	Tags: Structure
+	Tied To: Infra_Root 0
+	
+	Costs: Metals[200 * Size * pow(COST_INC_CRV, Level)], Electronics[100 * Size * pow(COST_INC_CRV, Level)], AdvParts[50 * Size * pow(COST_INC_CRV, Level)]
+	Complexity: 2 * STRUCT_COMPLX_MULT
+	
+	vHousing: Size * 2000000 * pow(0.5 + LEVEL_GAIN_CURVE / 2, Level)
+	vDR: pow(LEVEL_GAIN_CURVE, Level) * 2.5 * Size * PLANET_DAMAGERES_MULT
+	
+	Provides: Housing with
+		Amount[vHousing]
+	
+	Provides: DamageResistance with Amount[vDR]
+
+	Hints: Housing[vHousing], DR[vDR], HP[Durability]
+
+
+
+System: MetalMine
+	Name: #SS_METALMINE_NAME
+	Description: #SS_METALMINE_DESC
+	Appearance: GeneralBuilding
+
+	Available: Techs.Infra_Root.Level >= 0
+	Level: Techs.Infra_Root.Level
+	
+	Size: Scale
+	Durability: 500 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT
+	Mass: 500 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	
+	Tags: Structure
+	Tied To: Infra_Root 0
+
+	Costs: Metals[300 * Size * pow(COST_INC_CRV, Level)], Electronics[10 * Size * pow(COST_INC_CRV, Level)], AdvParts[10 * Size * pow(COST_INC_CRV, Level)]
+	Complexity: 5 * STRUCT_COMPLX_MULT
+	
+	vMineRate: Size * 13.67 * (pow(LEVEL_GAIN_CURVE, Level) + RES_BASE_FACT) * RES_GEN_MULT	
+	// To get 10-3-2 metal-elec-advparts with a 4-3-2 ratio of mine-Efact-APfact, the 
+	// coefficient here should be 11, according to theory.  It actually has to be 13.67, as 
+	// of SR 1.1.0.0, GA 1.9.  Why?  I don't know.
+	vMtlStore: Size * 330 * pow(LEVEL_GAIN_CURVE, Level)
+	vWorkers: Size * 800000
+
+	Provides: MineMetals with
+		Rate[vMineRate]
+
+	Provides: MetalStorage with
+		Amount[vMtlStore]
+	
+	Provides: NeedWorkers with
+		Workers[vWorkers]
+	
+	Hints: Mines[vMineRate], MtlStore[vMtlStore], Workers[vWorkers * -1], HP[Durability]
+
+
+System: ElectronicFact
+	Name: #SS_ELECTFACT_NAME
+	Description: #SS_ELECTFACT_DESC
+	Appearance: GeneralBuilding
+
+	Available: Techs.Infra_Root.Level >= 0
+	Level: Techs.Infra_Root.Level
+	
+	Size: Scale
+	Durability: 500 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT
+	Mass: 500 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	
+	Tags: Structure
+	Tied To: Infra_Root 0
+
+	Costs: Metals[200 * Size * pow(COST_INC_CRV, Level)], Electronics[50 * Size * pow(COST_INC_CRV, Level)], AdvParts[25 * Size * pow(COST_INC_CRV, Level)]
+	Complexity: 5 * STRUCT_COMPLX_MULT
+	
+	vElecFab: Size * 3.2 * (pow(LEVEL_GAIN_CURVE, Level) + RES_BASE_FACT) * RES_GEN_MULT
+	vElecStore: Size * 100 * pow(LEVEL_GAIN_CURVE, Level)
+	vWorkers: Size*600000
+
+	Provides: BuildElectronics with
+		Rate[vElecFab]
+
+	Provides: ElecStorage with
+		Amount[vElecStore]
+	
+	Provides: NeedWorkers with
+		Workers[vWorkers]
+	
+	Hints: ElecFab[vElecFab], ElecStore[vElecStore], Workers[vWorkers * -1], HP[Durability]
+
+
+System: AdvPartFact
+	Name: #SS_ADVFACT_NAME
+	Description: #SS_ADVFACT_DESC
+	Appearance: GeneralBuilding
+
+	Available: Techs.Infra_Root.Level >= 0
+	Level: Techs.Infra_Root.Level
+	
+	Size: Scale
+	Durability: 500 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT
+	Mass: 500 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	
+	Tags: Structure
+	Tied To: Infra_Root 0
+
+	Costs: Metals[200 * Size * pow(COST_INC_CRV, Level)], Electronics[75 * Size * pow(COST_INC_CRV, Level)], AdvParts[50 * Size * pow(COST_INC_CRV, Level)]
+	Complexity: 5 * STRUCT_COMPLX_MULT
+	
+	vAdvFab: Size * 2 * (pow(LEVEL_GAIN_CURVE, Level) + RES_BASE_FACT) * RES_GEN_MULT
+	vAdvStore: Size * 65 * pow(LEVEL_GAIN_CURVE, Level)
+	vWorkers: Size * 400000
+
+	Provides: BuildAdvParts with
+		Rate[vAdvFab]
+
+	Provides: AdvPartsStorage with
+		Amount[vAdvStore]
+	
+	Provides: NeedWorkers with
+		Workers[vWorkers]
+	
+	Hints: AdvFab[vAdvFab], AdvStore[vAdvStore], Workers[vWorkers * -1], HP[Durability]
+
+
+System: GoodsFactory
+	Name: #SS_GOODSFACT_NAME
+	Description: #SS_GOODSFACT_DESC
+	Appearance: GeneralBuilding
+
+	Available: Techs.Infra_Root.Level >= 0
+	Level: Techs.Infra_Root.Level
+	
+	Size: Scale
+	Durability: 500 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT
+	Mass: 500 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	
+	Tags: Structure
+	Tied To: Infra_Root 0
+
+	Costs: Metals[200 * Size * pow(COST_INC_CRV, Level)], Electronics[75 * Size * pow(COST_INC_CRV, Level)], AdvParts[35 * Size * pow(COST_INC_CRV, Level)]
+	Complexity: 5 * STRUCT_COMPLX_MULT
+	
+	vWorkers: Size * 800000
+	vGoodsFab: Size * 180 * pow(LEVEL_GAIN_CURVE, Level)		//was Size * 150
+
+	Provides: MakeGoods with
+		Rate[vGoodsFab]
+	
+	Provides: NeedWorkers with
+		Workers[vWorkers]
+	
+	Hints: GoodsFab[vGoodsFab], Workers[vWorkers * -1], HP[Durability]
+
+
+System: LuxsFactory
+	Name: #SS_LUXSFACT_NAME
+	Description: #SS_LUXSFACT_DESC
+	Appearance: GeneralBuilding
+	
+	Available: Techs.Infra_Root.Level >= 0
+	Level: Techs.Infra_Root.Level
+	
+	Size: Scale
+	Durability: 500 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT
+	Mass: 500 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	
+	Tags: Structure
+	Tied To: Infra_Root 0
+
+	Costs: Metals[200 * Size * pow(COST_INC_CRV, Level)], Electronics[75 * Size * pow(COST_INC_CRV, Level)], AdvParts[35 * Size * pow(COST_INC_CRV, Level)]
+	Complexity: 5 * STRUCT_COMPLX_MULT
+	
+	vLuxFab: Size * 18 * pow(LEVEL_GAIN_CURVE, Level)		//was Size * 10
+	vWorkers: Size * 400000
+
+	Provides: MakeLuxuries with
+		Rate[vLuxFab]
+	
+	Provides: NeedWorkers with
+		Workers[vWorkers]
+	
+	Hints: LuxFab[vLuxFab], Workers[vWorkers * -1], HP[Durability]
+
+System: Capital
+	Name: #SS_CAPITAL_NAME
+	Description: #SS_CAPITAL_DESC
+	Appearance: GeneralBuilding
+
+	Tied To: Infra_Root 0
+	
+	Available: Techs.Infra_Root.Level >= 0
+	Level: Techs.Infra_Root.Level
+	
+	Size: Scale
+	Durability: 2000 * Size * PLANET_STRUCT_MULT
+	Mass: 400 * Size
+	
+	Tags: Structure, Unique, Capitol, Unique:Capitol
+	
+	Complexity: 1 * STRUCT_COMPLX_MULT
+	
+	vHousing: Size * 600000
+	vCapitalMetalRate: Size * 5 	//if((Traits.no_bank) != true, 0, Size * 5)
+	vCapitalElecRate: Size * 2.5	//if((Traits.no_bank) != true, 0, Size * 2.5)
+	vCapitalAvdPartsRate: Size * 1	//if((Traits.no_bank) != true, 0, Size * 1)
+	vCapitalFoodRate: Size * 1		//if((Traits.no_bank) != true, 0, Size * 1)
+	vDR: 15 * Size * PLANET_DAMAGERES_MULT
+	vLaborPool: Size * 4 * pow(LEVEL_GAIN_CURVE, Level)
+	vLabor: Size * 1.25 * pow(LEVEL_GAIN_CURVE, Level)
+	vCapitalTrade: Size * 3 * TRADE_RATE_MULT
+	
+	Provides: AutoLabor with
+		Rate[vLabor], Store[vLaborPool]	
+	
+	Provides: Housing with
+		Amount[vHousing]
+		
+	Provides: AmmoStorage with Amount[5000]
+	Provides: FuelStorage with Amount[5000]
+	Provides: FoodStorage with Amount[5000]
+	
+	Provides: MetalStorage with
+		Amount[Size * 600]
+
+	Provides: ElecStorage with
+		Amount[Size * 300]
+
+	Provides: AdvPartsStorage with
+		Amount[Size * 200]
+		
+	Provides: MakeFood with
+		Rate[Size * 0.1]
+	
+	Provides: Repair with Rate[Durability / 120]
+	
+	Provides: PopEconomy
+	
+	Provides: DamageResistance with Amount[vDR]
+
+	//Free (but slow) generation of key resources for AI only (needs trait ai_help)
+	Provides: AICapitalSupport with Metals[vCapitalMetalRate], Electronics[vCapitalElecRate], AdvParts[vCapitalAvdPartsRate], Food[vCapitalFoodRate]
+
+	Provides: Trade with
+		Rate[vCapitalTrade]
+
+	Hints: Housing[vHousing], TradeRate[vCapitalTrade], LaborPool[vLaborPool], LaborGen[vLabor], DR[vDR], HP[Durability]
+
+
+System: GalacticCapital
+	Name: #SS_GLXCAPITAL_NAME
+	Description: #SS_GLXCAPITAL_DESC
+	Appearance: GeneralBuilding
+
+	Tied To: Infra_Root 0
+	
+	Available: Techs.Infra_Root.Level >= 0
+	Level: Techs.Infra_Root.Level
+	
+	Size: Scale
+	Durability: 20000 * Size * PLANET_STRUCT_MULT
+	Mass: 400 * Size
+	
+	Tags: Structure, Unique, NoManualBuild, Capitol, Unique:Capitol, OnHomeWorld
+	
+	Complexity: 1 * STRUCT_COMPLX_MULT
+	vCapitalMetalRate: Size * 50
+	vCapitalElecRate: Size * 25
+	vCapitalAvdPartsRate: Size * 10
+	vCapitalFoodRate: Size * 2
+	vCapitalFuelRate: Size * 10
+	vCapitalAmmoRate: Size * 5
+	vHousing: Size * 2400000
+	vDR: 25 * Size * PLANET_DAMAGERES_MULT
+	vLaborPool: Size * 8 * pow(LEVEL_GAIN_CURVE, Level)
+	vLabor: Size * 1.75 * pow(LEVEL_GAIN_CURVE, Level)
+	
+	Provides: AutoLabor with
+		Rate[vLabor], Store[vLaborPool]	
+		
+	Provides: Housing with
+		Amount[vHousing]
+	
+	Provides: FoodStorage with Amount[20000]
+	Provides: AmmoStorage with Amount[20000]
+	Provides: FuelStorage with Amount[20000]	
+	
+	Provides: MetalStorage with
+		Amount[Size * 3000]
+
+	Provides: ElecStorage with
+		Amount[Size * 1500]
+
+	Provides: AdvPartsStorage with
+		Amount[Size * 1000]
+	
+	Provides: Repair with Rate[Durability / 12]
+	
+	Provides: PopEconomy
+
+	Provides: DamageResistance with Amount[vDR]
+	
+	//Free (but slow) generation of key resources
+	Provides: CapitalSupport with Metals[vCapitalMetalRate], Electronics[vCapitalElecRate], AdvParts[vCapitalAvdPartsRate], Food[vCapitalFoodRate], Fuel[vCapitalFuelRate], Ammo[vCapitalAmmoRate]
+
+	Hints: Housing[vHousing], MtlGen[vCapitalMetalRate], ElecGen[vCapitalElecRate], AdvGen[vCapitalAvdPartsRate], FoodGen[vCapitalFoodRate], FuelGen[vCapitalFuelRate], AmmoGen[vCapitalAmmoRate], LaborPool[vLaborPool], LaborGen[vLabor], DR[vDR], HP[Durability]
+
+
+System: Farm
+	Name: #SS_FARM_NAME
+	Description: #SS_FARM_DESC
+	Appearance: GeneralBuilding
+
+	Available: Techs.Infra_Root.Level >= 0
+	Level: Techs.Infra_Root.Level
+	
+	Size: Scale
+	Durability: 500 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT
+	Mass: 400 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	
+	Tags: Structure, Farm
+	Tied To: Infra_Root 0
+	
+	Costs: Metals[200 * Size * pow(COST_INC_CRV, Level)], Electronics[100 * Size * pow(COST_INC_CRV, Level)], AdvParts[50 * Size * pow(COST_INC_CRV, Level)]
+	Complexity: 1 * STRUCT_COMPLX_MULT
+	
+	vFoodStore: Size * 100 * pow(LEVEL_GAIN_CURVE, Level)
+	vFoodGen: Size * 2.5 * pow(LEVEL_GAIN_CURVE, Level)				//was Size * 1.2
+	vWorkers: Size*600000
+
+	Provides: MakeFood with
+		Rate[vFoodGen]
+	
+	Provides: FoodStorage with
+		Amount[vFoodStore]
+	
+	Provides: NeedWorkers with
+		Workers[vWorkers]
+
+	Hints: Workers[vWorkers * -1], FoodGen[vFoodGen], FoodStore[vFoodStore], HP[Durability]
+
+	
+
+System: HeliumRefinery
+	Name: #SS_HELIUMREFINERY_NAME
+	Description: #SS_HELIUMREFINERY_DESC
+	Appearance: GeneralBuilding
+
+	Available: Techs.Infra_Root.Level >= 0
+	Level: Techs.Infra_Root.Level
+	
+	Size: Scale
+	Durability: 500 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT
+	Mass: 400 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	
+	Tags: Structure
+	Tied To: Infra_Root 0
+	
+	Costs: Metals[200 * Size * pow(COST_INC_CRV, Level)], Electronics[80 * Size * pow(COST_INC_CRV, Level)], AdvParts[80 * Size * pow(COST_INC_CRV, Level)]
+	Complexity: 1 * STRUCT_COMPLX_MULT
+	
+	vWorkers: Size * 600000
+	vFuelRate: Size * 3.2 * (pow(LEVEL_GAIN_CURVE, Level) + RES_BASE_FACT) * RES_GEN_MULT * 0.5
+	vFuelStore: Size * 100 * pow(LEVEL_GAIN_CURVE, Level)
+
+	Provides: RefineHE3 with
+		Rate[vFuelRate]
+		
+	Provides: StructFuelStorage with
+		Amount[vFuelStore]		//was Size * 750 *
+	
+	Requires:
+		To Run:
+			Workers[vWorkers]
+	
+	Hints: Workers[vWorkers * -1], Fuel[vFuelStore], FuelFab[vFuelRate], HP[Durability]
+	
+System: ConstructionBay
+    Name: #SS_BUILDBAY_NAME
+    Description: #SS_BUILDBAY_DESC
+    Appearance: ConstructionBay
+	Explosion: subsystem_destroyed
+    
+    Tags: BuildBay, BuildsShips, PostOrder:Fetch:Metals:0.3, PostOrder:Fetch:Electronics:0.3, PostOrder:Fetch:AdvParts:0.3, PostOrder:Fetch:Fuel:0.3, PostOrder:Fetch:Ammo:0.3, Storage:Resources
+	Tied To: Infra_Root 0
+    
+	Available: Techs.Infra_Root.Level >= 0
+	Level: Techs.Infra_Root.Level
+	
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 10 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 5 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    
+    vEcoStore: Size * 120 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))        //was Size * 40
+    
+    Costs: Metals[20 * Size * pow(SUBS_COST_CRV, Level)], Electronics[5 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[1 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+    Complexity: 0.5
+    
+    Tick Rate: 1
+    
+    Provides: StructAmmoStorage with
+        Amount[vEcoStore * 0.175]
+    
+    Provides: StructFuelStorage with
+        Amount[vEcoStore * 0.175]
+    
+    Provides: AdvPartsStorage with
+        Amount[vEcoStore * 0.175]
+    
+    Provides: ElecStorage with
+        Amount[vEcoStore * 0.175]
+    
+    Provides: MetalStorage with
+        Amount[vEcoStore * 0.3]
+
+    Provides: AutoLabor with
+        Rate[Size * 2 * pow(LEVEL_GAIN_CURVE, Level)], Store[Size * 10 * (2 - decay(pow(LEVEL_GAIN_CURVE,Level),45))]
+
+    Hints: EcoStore[vEcoStore]
+
+System: Refinery
+    Name: #SS_REFINERY_NAME
+    Description: #SS_REFINERY_DESC
+    Appearance: MetalRefinery
+	Explosion: subsystem_destroyed
+    
+    Tags: Deposit:Metals
+	Tied To: Infra_Root 0
+    
+	Available: Techs.Infra_Root.Level >= 0
+	Level: Techs.Infra_Root.Level
+	
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 30 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 15 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+    Costs: Metals[80 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size * pow(SUBS_COST_CRV, Level)]
+    
+    Tick Rate: 4
+
+    vCargoStore: Size * 10 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
+    vFabRate: Size * 6 * (pow(LEVEL_GAIN_CURVE, Level) + RES_BASE_FACT) * RES_GEN_MULT  // vFabRate gets altered by trait no_bank!
+    
+    Provides: Cargo with
+        Amount[vCargoStore]
+
+    Provides: RefineMetal with
+        Rate[vFabRate], OreCostPer[1]
+
+    Consumes:
+        To Run: Power[10 * Size]
+
+    Requires:
+        To Run: Control[10 * Size]
+
+    Hints: Cargo[vCargoStore], MetalCost[vFabRate], OreUsage[-1 * vFabRate]
+
+System: ElectsFab
+    Name: #SS_ELECTSFAB_NAME
+    Description: #SS_ELECTSFAB_DESC
+    Appearance: ElectronicsFabricator
+	Explosion: subsystem_destroyed
+    
+    Tags: Deposit:Electronics
+	Tied To: Infra_Root 0
+    
+	Available: Techs.Infra_Root.Level >= 0
+	Level: Techs.Infra_Root.Level
+	
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 30 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 15 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+    Costs: Metals[80 * Size * pow(SUBS_COST_CRV, Level)], Electronics[60 * Size * pow(SUBS_COST_CRV, Level)], Labr[15 * Size]
+    
+    Tick Rate: 4
+
+    vCargoStore: Size * 10 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
+    vFabRate: Size * 3 * (pow(LEVEL_GAIN_CURVE, Level) + RES_BASE_FACT) * RES_GEN_MULT   // vFabRate gets altered by trait no_bank!
+    
+    Provides: Cargo with
+        Amount[vCargoStore]
+
+    Provides: FabElects with
+        Rate[vFabRate], MtlCostPer[1]
+
+    Consumes:
+        To Run: Power[10 * Size]
+
+    Requires:
+        To Run: Control[5 * Size]
+
+    Hints: Cargo[vCargoStore], MetalCost[-1 * vFabRate], ElecsCost[vFabRate]
+
+System: AdvAssembler
+    Name: #SS_ADVFAB_NAME
+    Description: #SS_ADVFAB_DESC
+    Appearance: AdvPartsAssembler
+	Explosion: subsystem_destroyed
+    
+    Tags: Deposit:AdvParts
+	Tied To: Infra_Root 0
+    
+	Available: Techs.Infra_Root.Level >= 0
+	Level: Techs.Infra_Root.Level
+	
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 30 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 15 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+    Costs: Electronics[60 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[60 * Size * pow(SUBS_COST_CRV, Level)]
+    
+    Tick Rate: 4
+
+    vCargoStore: Size * 10 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
+    vFabRate: Size * 2 * (pow(LEVEL_GAIN_CURVE, Level) + RES_BASE_FACT) * RES_GEN_MULT   // vFabRate gets altered by trait no_bank!
+    
+    Provides: Cargo with
+        Amount[vCargoStore]
+
+    Provides: FabAdvParts with
+        Rate[vFabRate], MtlCostPer[1], ElcCostPer[1]
+
+    Consumes:
+        To Run: Power[10 * Size]
+
+    Requires:
+        To Run: Control[5 * Size]
+
+    Hints: Cargo[vCargoStore], Local/AdvFabRate[vFabRate], MetalCost[-1 * vFabRate], ElecsCost[-1 * vFabRate], AdvCost[vFabRate]
+    
+System: AmmoProducer
+    Name: #SS_AMMOPRO_NAME
+    Description: #SS_AMMOPRO_DESC
+    Appearance: AmmoFabricator
+    Explosion: fuel_cell_explode
+
+	Available: Techs.Infra_Root.Level >= 0
+	Level: Techs.Infra_Root.Level
+	
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 40 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 100 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+    Tags: Deposit:Ammo
+	Tied To: Infra_Root 0
+   
+    Costs: Metals[500 * Size * pow(SUBS_COST_CRV, Level)], Electronics[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[100 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size], Ammo[Size * 25 * (2 - decay(pow(LEVEL_GAIN_CURVE, Level), 35))]
+    Complexity: 10
+   
+    Tick Rate: 2
+      
+    vAmmoRate: Size * 2  * (pow(LEVEL_GAIN_CURVE, Level) + RES_BASE_FACT) * RES_GEN_MULT                                  //was Level), 25)
+	vAmmoStore: Size * 10 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
+    vMetalCost: 0.5
+    
+    Provides: AmmoFab with
+        Rate[vAmmoRate],
+        MetalCost[vMetalCost]
+    
+    Provides: AmmoStorage with
+        Amount[vAmmoStore]
+        
+    Consumes:
+    To Run: Power[15 * Size]                                                                                //was 200 * Size
+      
+    Requires:
+        To Run: Control[15 * Size]
+
+    Hints: AmmoUse[vAmmoRate],MetalCost[-1 * vMetalCost * vAmmoRate], Ammo[vAmmoStore]
+
+System: H3Refinery
+    Name: #SS_H3REF_NAME
+    Description: #SS_H3REF_DESC
+    Appearance: H3Refinery
+    Explosion: subsys_powerexplode lasting 0.5
+    
+    Tags: Deposit:Fuel
+	Tied To: Infra_Root 0
+    
+	Available: Techs.Infra_Root.Level >= 0
+	Level: Techs.Infra_Root.Level
+	
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 20 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 20 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6) * (if(Object.Scale <= 1, 0.5, 1))
+    
+    Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[5 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Fuel[Size * 10]
+    Complexity: 0.6
+
+    Tick Rate: 1
+    
+    vRate: Size * 2 * (pow(LEVEL_GAIN_CURVE, Level) + RES_BASE_FACT) * RES_GEN_MULT 
+    vCost: 2
+	vFuelStore: Size * 10 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
+    
+    Provides: RefineH3 with
+        Rate[vRate],
+        H3CostPer[vCost]
+    
+    Provides: FuelStorage with
+        Amount[vFuelStore]
+        
+    Consumes:
+        To Run: 
+            Power[15 * Size]
+			
+    Requires:
+        To Run: Control[15 * Size]
+
+    Hints: Fuel[Size * 10], H3Usage[-1 * vCost * vRate], FuelUse[vRate]
+	
+System: MiningLaser
+    Name: #SS_MININGLASER_NAME
+    Description: #SS_MININGLASER_DESC
+    Appearance: MiningLaser
+	Explosion: subsystem_destroyed
+    
+    Tags: Miner, Tool:Miner, Work:Miner, Deposit:Ore
+	Tied To: Infra_Root 0
+    
+	Available: Techs.Infra_Root.Level >= 0
+	Level: Techs.Infra_Root.Level
+	
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    
+    Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[40 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[40 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+    Complexity: 1.6
+    
+    vRate: Size * 5 * pow(LEVEL_GAIN_CURVE, Level)
+    vDelay: max(5, 10 * decay(pow(LEVEL_GAIN_CURVE,Level),45)) * GAME_RELOAD_MULT
+    vDuration: 5
+    vPowCost: Size * 40
+    
+    Provides: MiningLaser with Rate[vRate], Delay[vDelay], Duration[vDuration], PowCost[vPowCost]
+
+    Requires:
+        To Run:
+            Control[10 * Size]
+    
+    Hints: Power[-1 * vPowCost], OreUsage[(vRate * vDuration)/vDelay]
+    
+    
+System: H3Harvester
+    Name: #SS_H3HARVESTER_NAME
+    Description: #SS_H3HARVESTER_DESC
+    Appearance: H3Beam
+	Explosion: subsystem_destroyed
+    
+    Tags: Harvester, Tool:Harvester, Work:Harvester
+	Tied To: Infra_Root 0
+    
+	Available: Techs.Infra_Root.Level >= 0
+	Level: Techs.Infra_Root.Level
+    
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)    
+    
+    Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[40 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[40 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+    Complexity: 1.6    
+    
+    vRate: Size * 5 * pow(LEVEL_GAIN_CURVE, Level)
+    vDelay: max(5, 10 * decay(pow(LEVEL_GAIN_CURVE,Level),45)) * GAME_RELOAD_MULT
+    vDuration: 5
+    vPowCost: Size * 60
+    
+    Provides: H3Scoop with Rate[vRate], Delay[vDelay], Duration[vDuration], PowCost[vPowCost]
+
+    Requires:
+        To Run:
+            Control[15 * Size]
+			
+    Hints: Power[-1 * vPowCost], H3Usage[(vRate * vDuration)/vDelay]
+	
+System: HydrogenStorage
+	Name: #SS_HYDSTOR_NAME
+	Description: #SS_HYDSTOR_DESC
+	Appearance: HCell
+	Explosion: fuel_cell_explode
+	
+	Tags: Storage:H3, Storage, CargoBay
+	Tied To: Infra_Root 0
+	
+	Available: Techs.Infra_Root.Level >= 0
+	Level: Techs.Infra_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 20 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 15 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Labr[2 * Size]
+	Complexity: 0.2
+	Tick Rate: 1
+	
+	vCargoStore: Size * 100 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
+	
+	Provides: H3Storage with
+		Amount[vCargoStore]
+	
+	Hints: H3Storage[vCargoStore]

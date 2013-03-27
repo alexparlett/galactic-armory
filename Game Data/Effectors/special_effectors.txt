@@ -1,0 +1,334 @@
+Effector: IonCannon
+	Value: Damage
+	Value: Range
+	Value: Speed
+	
+	PhysicalType: Bullet
+		Material: rkv					//was artillery_shell
+		GfxSize: 0.8
+		GfxColor: fff
+		Sound: artillery
+		HitGfx: planetcracker2, 3.5				//fiery_blast2, 0.75
+		FireGfx: muzzle_flash_arty, 0.15		
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	
+	Causes: IonCannonActive lasting 1 with Damage[Damage]
+
+	CanAttack: GASuperWeapons::checkIC, CanAttack
+	OnFire: Timed(300)
+	Tick: Reload
+	Progress: TimedProgress
+
+Effector: ZPDrainTriggered
+	Value: Rate
+	Value: AoE_Range
+	
+	PhysicalType: AreaOfEffect
+
+	Range: AoE_Range
+	
+	Causes: ZPTriggeredEvent lasting 1 with Rate[Rate], AoE_Range[AoE_Range]
+
+	CanAttack: isShip
+	OnFire: Timed(-1)
+	Tick: Reload
+
+Effector: ZPDrainTrigger
+	Value: Rate
+	Value: Range
+	Value: AoE_Range
+	Value: Delay
+	Value: Deviation
+	
+	PhysicalType: Instant
+		FireGfx: antimatter_boom, 6
+		HitGfx: jump_charge, 3
+
+	Range: Range
+	
+	Causes: ZPTriggerEvent lasting 1 with Rate[Rate]
+
+	AutoAttack: Enemy	
+	CanAttack: isShip
+	OnFire: Timed(Delay, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+
+Effector: SpatialGen
+	Value: Range
+	Value: ChargeUp
+	
+	PhysicalType: Instant
+		GfxSize: 0.75
+		FireGfx: antimatter_boom, 3
+		GfxSize: 10
+		HitGfx: spatial_distortion, 2.5
+		Sound: dsfm		
+	
+	Range: Range
+	
+	Causes: SpatialGenActive lasting ChargeUp
+	
+	CanAttack: GACanAttack::isStar
+	OnFire: TimedShot(ChargeUp, "Power", 1)
+	Tick: Reload
+	Progress: TimedProgress
+
+Effector: MegaEnergyWeapon
+	Value: Damage
+	Value: Delay
+	Value: Duration
+	Value: PowCost
+	Value: Range
+	Value: wasteHeat
+		
+	Range: Range
+	PotentialDamage: Damage * Duration
+	
+	PhysicalType: Beam
+		Material: pulsing_beam_fast					//was superbeam
+		GfxSize: 0.2
+		GfxColor: 0f0
+		FireGfx: particle_ring_contract_green, 8.0						//was laser_emit, 10.0
+		HitGfx: planet_goo2, 9.0			//was antimatter_boom_heavy
+		Sound: superlaser
+	
+	Causes: MegaEnergyDmg lasting Duration with Damage[Damage], Cost[PowCost], wasteHeat[wasteHeat]
+	
+	IsWeapon: false
+	//AutoAttack: GAAutoAttack::BigEnemyShip
+	CanAttack: CanAttack, GACanAttack::checkHeat			//GACanAttack::YesDoIt
+	OnFire: Timed(Delay, 0.1)
+	Tick: Reload	
+	Progress: TimedProgress
+	
+
+Effector: SunStealer
+	Value: Damage
+	Value: Delay
+	Value: Duration
+	Value: PowCost
+	Value: Range
+		
+	Range: Range
+	
+	PhysicalType: Beam
+		Material: pulsing_beam					//was superbeam
+		GfxSize: 0.1
+		GfxColor: 00f
+		FireGfx: laser_emit, 1.0
+		HitGfx: bigbang, 1.0			//was antimatter_boom_heavy
+		Sound: mining_laser
+	
+	Causes: HeliocideDmg lasting Duration with Damage[Damage], Cost[PowCost]
+	
+	IsWeapon: false
+	CanAttack: GACanAttack::isStar, CanAttack
+	OnFire: Timed(Delay, 0.1)
+	Tick: Reload
+	Progress: TimedProgress
+	
+Effector: ImpartForce
+	Value: Delay
+	Value: Force
+	Value: PowCost
+	Value: Range
+	Value: Duration
+	Flag: AlwaysRetarget
+	
+	Range: Range
+	IsWeapon: false
+	
+	PhysicalType: Beam
+		Material: beam
+		GfxSize: 0.25
+		GfxColor: af0
+		FireGfx: laser_emit, 1.0
+		HitGfx: laser_impact, 0.1
+		Sound: laser
+	
+	Causes: AddVelocity lasting Duration with Force[Force], PowCost[PowCost]
+	
+	AutoAttack: Enemy
+	CanAttack: isShip, CanAttack
+	OnFire: Timed(Delay, 0.1)
+	Tick: Reload
+	Progress: TimedProgress
+	
+Effector: MatchVelocity
+	Value: Delay
+	Value: Force
+	Value: PowCost
+	Value: Range
+	Value: Duration
+	Flag: AlwaysRetarget
+	
+	Range: Range
+	IsWeapon: false
+	
+	PhysicalType: Beam
+		Material: beam
+		GfxSize: 0.25
+		GfxColor: af0
+		FireGfx: laser_emit, 1.0
+		HitGfx: laser_impact, 0.1
+		Sound: laser
+	
+	Causes: InterdictVelocity lasting Duration with PowCost[PowCost], Force[Force]
+	
+	AutoAttack: Enemy
+	CanAttack: isShip, CanAttack
+	OnFire: Timed(Delay, 0.1)
+	Tick: Reload
+	Progress: TimedProgress
+
+Effector: Asteroid
+	Value: Damage
+	Value: Delay
+	Value: AsteroidUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	
+	PhysicalType: Bullet
+		Material: asteroid
+		GfxSize: 0.4
+		GfxColor: fff
+		Sound: gravitic_accelerator
+		HitGfx: deep_impact, 0.1
+			
+	Causes: LargeBombDmg lasting 0 with Damage[Damage]				//was GAProjectileDmg
+	
+	AutoAttack: Enemy
+	CanAttack: isPlanet, CanAttack
+	OnFire: TimedShot(Delay, "Asteroids", AsteroidUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+	
+Effector: PlanetBuster
+	Value: Damage
+	Value: Delay
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	
+	PhysicalType: Bullet
+		Material: planetbuster
+		GfxSize: 0.15
+		GfxColor: fff
+		Sound: torpedo
+		HitGfx: planetcracker2, 3.5
+			
+	Causes: LargeBombDmg lasting 0 with Damage[Damage]
+	
+	IsWeapon: false
+	CanAttack: isPlanet, CanAttack
+	OnFire: TimedShot(Delay, "Ammo", AmmoUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress	
+
+
+Effector: ChargeToFireTemplate
+	Value: Damage
+	Value: AoE_Range
+	Value: ReqCharge
+	Value: MaxChargeRate
+	Value: Range
+	Value: wasteHeat
+		
+	Range: Range
+	
+	PhysicalType: Beam
+		Material: wave_beam2
+		GfxSize: 0.3
+		GfxColor: da0		//777 - 770
+		HitGfx: spatial_distortion, 2.5		//rift2, 3.8
+		Sound: dsfm
+	
+	Causes: DSMDamage lasting 1 with Damage[Damage], wasteHeat[wasteHeat]
+	
+	IsWeapon: false
+	//AutoAttack: GAAutoAttack::BigEnemyShip
+	CanAttack: CanAttack, GACanAttack::CheckAoERangeAsMinRange, GACanAttack::checkHeat				//GACanAttack::YesDoIt,
+	OnFire: Charged(ReqCharge)
+	Tick: Combat::ChargeGun
+	Progress: Combat::ChargeProgress
+
+
+Effector: AbsorbPower
+	Value: Rate
+	Value: Delay
+	Value: Duration
+	Value: Range
+	
+	Range: Range
+	
+	PhysicalType: Beam
+		Material: beam_lightning
+		GfxColor: 04f			//was 00f, fff, 09f
+		GfxSize: 0.6
+		Sound: laser
+		HitGfx: lightning_dance, 1.0
+	
+	Causes: TakePower lasting Duration with Rate[Rate]
+	
+	AutoAttack: Enemy, BasicEffects::hasPower
+	CanAttack: CanAttack
+	OnFire: Timed(Delay, 0.1)
+	Tick: Reload
+	Progress: TimedProgress
+
+
+Effector: ResourceDrain
+	Value: Rate
+	Value: Delay
+	Value: Duration
+	
+	Range: 75
+	
+	PhysicalType: Beam
+		Material: beam
+		GfxSize: 1
+		GfxColor: 0ed
+		Sound: mining_laser
+		HitGfx: hot_sparks, 5
+		FireGfx: laser_emit, 5
+	
+	Causes: DrainResource lasting Duration with Rate[Rate]
+	
+	AutoAttack: Enemy
+	CanAttack: isPlanet, CanAttack
+	OnFire: Timed(Delay)
+	Tick: Reload
+	Progress: TimedProgress
+	
+Effector: MindSapper
+	Value: Delay
+	Value: Duration
+	Value: Range
+	Value: Rate
+	
+	PhysicalType: Beam
+		Material: beam
+		GfxColor: 770
+		GfxSize: 0.15
+		Sound: laser
+	
+	Range: Range
+	
+	Causes: NegateControl lasting Duration with Amount[Rate]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, BasicEffects::hasCrew
+	OnFire:  Timed(Delay, 0.1)
+	Tick: Reload
+	Progress: TimedProgress

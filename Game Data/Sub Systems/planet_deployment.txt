@@ -1,0 +1,92 @@
+System: Colonizer
+	Name: #SS_COLONIZER_NAME
+	Description: #SS_COLONIZER_DESC
+	Appearance: ColonyModule
+	Explosion: subsystem_destroyed
+
+	Tags: Colonizer, Tool:Colonizer, Order:Colonize   //Tool
+	Tied To: ShipSystems 1
+	
+	Available: Techs.ShipSystems.Level > 0
+	Level: Techs.ShipSystems.Level
+	Size: max(Scale,15)
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	vStructures: Size / 15
+	vPopulation: 1500 * Size
+	
+	Costs: Metals[50 * Size * pow(SUBS_COST_CRV, Level)], Electronics[12 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[12 * Size * pow(SUBS_COST_CRV, Level)], Workers[vPopulation]
+	Complexity: 1.5
+	
+	Tick Rate: 4
+	
+	Provides: TakePlanet
+	Provides: MakeStructures with Amount[vStructures]
+	Provides: ColonistQuarters with Amount[vPopulation]
+
+	Consumes:
+		To Run: Air[5 * Size * 0.99]
+	
+	Hints: Local/AddStructs[vStructures]
+	
+System: InvasionDrop
+	Name: #SS_INVASIONDROP_NAME
+	Description: #SS_INVASIONDROP_DESC
+	Appearance: BoardingParty
+	
+	Available: Techs.Missiles.Level > 0
+	Level: Techs.Missiles.Level
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 300 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, SpecWeapon, Tool:Invade, Invade, NoModifiers
+	Tied To: Missiles 10
+	
+	vTroops: (2 - decay(Level,50)) * 1500 * Size
+	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size * pow(SUBS_COST_CRV, Level)], GroundForces[vTroops]
+	Complexity: 2
+	
+	Triggerable: PDEffect: PointDefenseTriggered
+	
+	Provides: PlanetInvasion with Troops[vTroops]
+	Provides: TroopQuarters with Amount[vTroops]
+	
+	Requires:
+		To Run:
+			Control[10 * Size], Power[5 * Size], Air[100 * Size]
+	
+	Hints: Troops[vTroops], Local/ProjSpeed[24], Local/Delay[1/.010], Local/Range[100]
+	
+System: SurveyTeam
+	Name: #SS_SURVEYTEAM_NAME
+	Description: #SS_SURVEYTEAM_DESC
+	Appearance: ColonyModule
+	Explosion: subsystem_destroyed
+	
+	Available: Techs.Biology.Level > 1
+	Level: Techs.Biology.Level
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 300 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+		
+	Tags: SurveyTeam, Tool:SurveyTeam, NoModifiers
+	Tied To: Biology 2
+
+	vTeamSize: 30 * Size
+	
+	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size * pow(SUBS_COST_CRV, Level)], GroundForces[vTeamSize]
+	Complexity: 2	
+	
+	Provides: PlanetSurvey with Troops[vTeamSize]
+	Provides: TroopQuarters with Amount[vTeamSize]
+
+	Requires:
+		To Run:
+			Control[10 * Size], Power[5 * Size], Air[100 * Size]
+	
+	Hints: Survey[vTroops]	

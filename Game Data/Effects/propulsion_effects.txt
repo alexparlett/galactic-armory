@@ -1,0 +1,52 @@
+Name: StargateLinkEvent
+
+	OnDeactive: GAJumpBridge::createLink
+	
+Name: StargateJumpEvent
+
+	OnDeactive: GARemnantEvents::GateJump
+	
+Name: AntimatterThrust
+	Value: Amount
+	Value: PowCost
+	
+	OnActive:	IncSpeed(Amount)
+	OnDeactive:	DecSpeed(Amount)
+
+Name: AutomatedJumpEvent
+
+	Tick: JumpDrive::autoJump
+	
+Name: GAJumpDriveEvent
+
+	OnConstruct: JumpDrive::checkJumpSetting
+
+Name:	Propulsion
+	Value: Amount
+	
+	OnActive:	IncSpeed(Amount)
+	OnDeactive:	DecSpeed(Amount)
+
+
+Name:	FuelThrust
+	Value: Amount
+	Value: Efficiency
+	
+	OnActive:	BasicEffects::SpeedIfFuel
+	OnDeactive:	DecSpeed(Amount)
+	Tick:		BasicEffects::FuelThrustCons
+
+
+Name:	IonThrust
+	Value: Amount
+	Value: Efficiency
+	Value: PowCost
+	
+	OnActive:	BasicEffects::SpeedIfFuel
+	OnDeactive:	DecSpeed(Amount)
+	Tick:		BasicEffects::IonThrustCons
+
+Name:	JumpDriveEvent
+	Value: FuelCost
+
+	OnDeactive: JumpDrive::Jump

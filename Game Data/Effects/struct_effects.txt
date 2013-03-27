@@ -2,6 +2,20 @@
 //===========
 //Effect definitions that are use primarily for structures
 
+Name:	Research
+	Value: Amount
+	
+	OnActive:	IncResearch(Amount)
+	OnOwnerChange: StructureEffects::ChangeResearchOwner
+	OnDeactive:	DecResearch(Amount)
+
+Name: Barracks
+	Value: Amount
+
+	Once: AddAmount(0, "GroundForces")
+	OnConstruct:	AddMax(Amount, "GroundForces")
+	OnDestruct:		SubMax(Amount, "GroundForces")
+
 Name: EmpireTrade
 	Value: Amount
 	

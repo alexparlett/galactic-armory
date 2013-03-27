@@ -1,0 +1,153 @@
+Name: PFWDmg
+	Value: Damage
+	Value: Cost
+	Value: wasteHeat
+	
+	Tick:	GACombatWeapons::PFWDamage
+	
+Name:	MegaEnergyDmg
+	Value: Damage
+	Value: Cost
+	Value: wasteHeat
+	
+	Tick:	GACombatWeapons::MegaEnergyDamage
+	
+Name:	GAEnergyDmg
+	Value: Damage
+	Value: Cost
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+	
+	Tick:	GACombatWeapons::EnergyDamage
+	
+Name:	GAEnergyDmgCrit
+	Value: Damage
+	Value: Cost
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+	
+	Tick:	GACombatWeapons::EnergyDamageCrit
+	
+Name:	GAPhasedEnergyDmg
+	Value: Damage
+	Value: Cost
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+	
+	Tick:	GACombatWeapons::PhasedDamage
+
+Name: TRayDmg
+	Value: Damage
+	Value: Cost
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+	
+	Tick:	GACombatWeapons::TRayDamage
+
+Name: ParticleDmg
+	Value: Damage
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: minHitChance
+	Value: wasteHeat
+	
+	OnActive:	GACombatWeapons::ParticleDamage
+	
+Name: WaveDmg
+	Value: Damage
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: minHitChance
+	Value: wasteHeat
+	
+	OnActive:	GACombatWeapons::WaveDamage	
+
+Name:	GADoT
+	Value: Damage
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: minHitChance
+	Value: wasteHeat
+	
+	Tick: GACombatWeapons::DoT
+
+Name: LongRangeLaserDmg
+	Value: Damage
+	Value: Cost
+	Value: VisibleTime
+	
+	Tick:	GACombatWeapons::LongRangeLaserDamage
+
+Name:	ParticleEnergyDmg
+	Value: Damage
+	Value: Cost
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+	
+	Tick:	GACombatWeapons::ParticleEnergyDamage
+
+Name: ArmorPiercingDmg
+	Value: Damage
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minHitChance
+	
+	Tick:	GACombatWeapons::ArmorPiercingDamage
+	
+//Deals damage in two parts: Upon impact, deals [FrontDamage]; Over time, deals [DoTDamage]/second
+Name:	GAPlasmaDmg
+	Value: FrontDamage
+	Value: DoTDamage
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+	
+	OnActive: GACombatWeapons::PlasmaFrontDamage
+	Tick:	GACombatWeapons::PlasmaDoTDamage
+
+Name:	TachyonDmg
+	Value: Damage
+	Value: Cost
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+	
+	OnActive:	GACombatWeapons::EnergyDamageInstant
+	
+Name:	EnergyDmg
+	Value: Damage
+	Value: Cost
+	
+	Tick:	Combat::EnergyDamage
+	
+Name:	PhasedEnergyDmg
+	Value: Damage
+	Value: Cost
+	
+	Tick:	Combat::PhasedDamage
+	
+Name:	star_damage	
+	Tick:	Combat::StarDamage
+
+//Deals damage in two parts: Upon impact, deals [FrontDamage]; Over time, deals [DoTDamage]/second
+Name:	PlasmaDmg
+	Value: FrontDamage
+	Value: DoTDamage
+	
+	OnActive: Combat::PlasmaFrontDamage
+	Tick:	Combat::PlasmaDoTDamage

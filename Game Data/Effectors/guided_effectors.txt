@@ -1,0 +1,617 @@
+Effector: TeraTorpedo
+	Value: Damage
+	Value: Delay
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: tera_torpedo
+		GfxSize: 0.15
+		GfxColor: fff
+		Sound: torpedo
+		HitGfx: torpedo_impact2, 0.75					//ship_explode_boom2, 1.0
+		FireGfx: missile_launch, 0.15
+			
+	Causes: TeraTorpedoEvent lasting 0 with Damage[Damage]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: TimedShot(Delay, "Ammo", AmmoUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+
+Effector: PhasedMissile
+	Value: Damage	
+	Value: ShotDelay
+	Value: Delay
+	Value: ClipSize
+	Value: Range
+	Value: AmmoUse	
+	Value: Speed
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage * ClipSize
+	
+	PhysicalType: Bullet
+		Material: phased_missile
+		GfxSize: 0.5
+		GfxColor: fff
+		Sound: torpedo
+		HitGfx: plasma_burst, 0.2				//laser_impact, 1.0
+		FireGfx: missile_launch, 0.15
+	
+	Causes: PhasedMissileEvent lasting 0 with Damage[Damage]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: MultiPulseCost(ShotDelay, Delay, ClipSize, "Ammo", AmmoUse)
+	Progress: MultiPulseProgress(ShotDelay, Delay)	
+	Tick: Reload
+
+Effector: EMPMissileTrigger
+	Value: Damage	
+	Value: AoE_Range
+	Value: ShotDelay
+	Value: Delay
+	Value: ClipSize
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage * ClipSize
+	
+	PhysicalType: Bullet
+		Material: emp_missile
+		GfxSize: 0.2
+		GfxColor: fff
+		Sound: torpedo
+		HitGfx: emp_blast, 0.8
+	
+	Causes: EMPDamageTrigger lasting 0 with Damage[Damage]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::CheckAoERangeAsMinRange
+	OnFire: MultiPulseCost(ShotDelay, Delay, ClipSize, "Ammo", AmmoUse)
+	Progress: MultiPulseProgress(ShotDelay, Delay)	
+	Tick: Reload
+
+Effector: EMPMissileTriggered
+	Value: Damage
+	Value: AoE_Range
+	
+	Range: AoE_Range
+	
+	PhysicalType: AreaOfEffect
+		FireGfx: basic_explosion
+		GfxSize: 1.5
+   
+	Causes: TriggeredEMPAreaDamage lasting 0 with Damage[Damage], AoE_Range[AoE_Range]
+
+	CanAttack: Any
+	OnFire: Timed(-1)
+	Tick: Reload	
+
+Effector: Torpedo
+	Value: Damage
+	Value: Delay
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: torpedo
+		GfxSize: 0.15
+		GfxColor: fff
+		Sound: torpedo
+		HitGfx: torpedo_impact, 0.75					//ship_explode_boom2, 1.0
+		FireGfx: missile_launch, 0.15
+			
+	Causes: ProjWeaponDmg lasting 0 with Damage[Damage]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: TimedShot(Delay, "Ammo", AmmoUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+
+Effector: HeavyTorpedo
+	Value: Damage
+	Value: Delay
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: heavy_torpedo
+		GfxSize: 0.17
+		GfxColor: fff
+		Sound: torpedo
+		HitGfx: torpedo_impact, 1.0					//ship_explode_boom2, 1.0
+		FireGfx: missile_launch, 0.15
+			
+	Causes: ProjWeaponDmg lasting 0 with Damage[Damage]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: TimedShot(Delay, "Ammo", AmmoUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress	
+	
+Effector: AoETorpedoTrigger
+	Value: Damage
+	Value: AoE_Range
+	Value: Delay
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: fusion_torpedo
+		GfxSize: 0.2
+		GfxColor: fff
+		Sound: torpedo
+		HitGfx: big_warhead_explode, 0.05
+		FireGfx: missile_launch, 0.15
+	
+	Causes: AreaDamageTrigger lasting 0 with Damage[Damage]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::CheckAoERangeAsMinRange
+	OnFire: TimedShot(Delay, "Ammo", AmmoUse, Deviation)
+	Tick: Reload	
+	Progress: TimedProgress
+
+Effector: ClusterMissileTrigger
+	Value: Damage
+	Value: AoE_Range
+	Value: Delay
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: clustermissile
+		GfxSize: 0.4
+		GfxColor: fff
+		Sound: torpedo
+		HitGfx: cluster_explode, 0.05
+		FireGfx: missile_launch, 0.15
+	
+	Causes: AreaDamageTrigger lasting 0 with Damage[Damage]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, Combat::minimumRange
+	OnFire: TimedShot(Delay, "Ammo", AmmoUse, Deviation)
+	Tick: Reload	
+	Progress: TimedProgress	
+	
+Effector: ArmorPiercingBomb
+	Value: Damage
+	Value: Delay
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	Value: effectiveRangeFactor
+	Value: minHitChance
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: bomb
+		GfxSize: 1
+		GfxColor: fff
+		Sound: bomb_release
+		HitGfx: torpedo_impact, 0.6
+	
+	Causes: ArmorPiercingDmg lasting 0 with Damage[Damage], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minHitChance[minHitChance]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: TimedShot(Delay, "Ammo", AmmoUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+
+
+Effector: AdvancedBomb
+	Value: Damage
+	Value: Delay
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	Value: Duration
+	Value: PowerUse
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: bomb
+		GfxSize: 1
+		GfxColor: fff
+		Sound: bomb_release
+		HitGfx: torpedo_impact, 0.6
+	
+	Causes: TRayBomb lasting Duration with Damage[Damage]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: TimedShot(Delay, "Ammo", AmmoUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+
+Effector: AAMissile
+	Value: Damage
+	Value: Delay
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: anim_missile
+		GfxSize: 1.0
+		GfxColor: fff
+		Sound: torpedo
+		HitGfx: missile_impact, 0.15
+			
+	Causes: AntiFighterDmg lasting 0 with Damage[Damage]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: TimedShot(Delay, "Ammo", AmmoUse, Deviation)
+	Tick: Reload	
+	Progress: TimedProgress
+
+Effector: InterceptorMissile
+	Value: Damage
+	Value: Delay
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: anim_missile
+		GfxSize: 0.4
+		GfxColor: fff
+		Sound: torpedo
+		HitGfx: missile_impact, 0.15			//basic_explosion
+		FireGfx: missile_launch, 0.15
+			
+	Causes: AntiFighterDmg lasting 0 with Damage[Damage]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: TimedShot(Delay, "Ammo", AmmoUse, Deviation)
+	Tick: Reload	
+	Progress: TimedProgress
+	
+	
+Effector: NaniteTorpedo
+	Value: Damage
+	Value: Delay
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: nanite_torpedo
+		GfxSize: 0.3
+		GfxColor: fff
+		Sound: torpedo
+		HitGfx: nbc_cloud, 5
+		FireGfx: missile_launch, 0.15
+	
+	Causes: NaniteDoT lasting 4 with Damage[Damage]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: TimedShot(Delay, "Ammo", AmmoUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+
+
+Effector: FusionTorpedo
+	Value: Damage
+	Value: Accuracy
+	Value: Delay
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: fusion_torpedo
+		GfxSize: 0.33
+		GfxColor: fff
+		Sound: torpedo
+		HitGfx: violet_gas, 4
+		FireGfx: missile_launch, 0.15
+			
+	Causes: ChanceDoTAoE lasting 1 with Damage[Damage], Chance[Accuracy]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: TimedShot(Delay, "Ammo", AmmoUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+
+	
+Effector: HeavyBomb
+	Value: Damage
+	Value: Delay
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: bomb
+		GfxSize: 1.2
+		GfxColor: fff
+		Sound: torpedo
+		HitGfx: missile_impact, 0.1					//ship_explode_boom2, 1.0
+			
+	Causes: Damage lasting 0 with Damage[Damage]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: TimedShot(Delay, "Ammo", AmmoUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+
+Effector: EMPBombPFWTrigger
+	Value: Damage
+	Value: AoE_Range
+	Value: Delay
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	
+	PhysicalType: Bullet
+		Material: bomb
+		GfxSize: 1.2
+		GfxColor: fff
+		Sound: torpedo
+		HitGfx: emp_blast, 1.5
+	
+	Causes: PFWAreaDamageTrigger lasting 0 with Damage[Damage]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::CheckAoERangeAsMinRange
+	OnFire: TimedShot(Delay, "Ammo", AmmoUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+
+
+Effector: AntiSurfaceWarhead
+	Value: Damage
+	Value: Delay
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	
+	PhysicalType: Bullet
+		Material: bomb
+		GfxSize: 0.4
+		GfxColor: 6ff
+		Sound: torpedo
+		HitGfx: big_warhead_explode, 0.1				//was fiery_blast
+			
+	Causes: Damage lasting 0 with Damage[Damage]				//was GAProjectileDmg
+	
+	AutoAttack: Enemy
+	CanAttack: isPlanet, CanAttack
+	OnFire: TimedShot(Delay, "Ammo", AmmoUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+
+Effector: NBCWeapon
+	Value: Damage
+	Value: Delay
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	Value: Duration
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	
+	PhysicalType: Bullet
+		Material: bomb
+		GfxSize: 0.4
+		GfxColor: cf0
+		Sound: torpedo
+		HitGfx: nbc_cloud, 3
+			
+	Causes: NBCDmg lasting Duration with Damage[Damage]
+	
+	AutoAttack: Enemy
+	CanAttack: isPlanet, CanAttack
+	OnFire: TimedShot(Delay, "Ammo", AmmoUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+
+Effector: ProjWeaponRack
+	Value: Damage
+	Value: ShotDelay
+	Value: Delay
+	Value: ClipSize
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage * ClipSize
+	
+	PhysicalType: Bullet
+		Material: anim_missile
+		GfxSize: 0.3
+		GfxColor: fff
+		FireGfx: missile_launch, 0.15
+		HitGfx: missile_impact, 0.1
+		Sound: missile
+	
+	Causes: AntiFighterDmg lasting 0 with Damage[Damage]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: MultiPulseCost(ShotDelay, Delay, ClipSize, "Ammo", AmmoUse)
+	Progress: MultiPulseProgress(ShotDelay, Delay)	
+	Tick: Reload
+
+Effector: LargeProjWeaponRack
+	Value: Damage
+	Value: ShotDelay
+	Value: Delay
+	Value: ClipSize
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage * ClipSize
+	
+	PhysicalType: Bullet
+		Material: anim_rocket
+		GfxSize: 0.2
+		GfxColor: fff
+		FireGfx: missile_launch, 0.15
+		HitGfx: missile_impact, 0.1
+		Sound: missile
+	
+	Causes: ProjWeaponDmg lasting 0 with Damage[Damage]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: MultiPulseCost(ShotDelay, Delay, ClipSize, "Ammo", AmmoUse)
+	Progress: MultiPulseProgress(ShotDelay, Delay)	
+	Tick: Reload
+
+Effector: MegaProjWeaponRack
+	Value: Damage
+	Value: ShotDelay
+	Value: Delay
+	Value: ClipSize
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage * ClipSize
+	
+	PhysicalType: Bullet
+		Material: anim_rocket
+		GfxSize: 0.1
+		GfxColor: fff
+		FireGfx: missile_launch, 0.15
+		HitGfx: missile_impact, 0.1
+		Sound: missile
+	
+	Causes: ProjWeaponDmg lasting 0 with Damage[Damage]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: MultiPulseCost(ShotDelay, Delay, ClipSize, "Ammo", AmmoUse)
+	Progress: MultiPulseProgress(ShotDelay, Delay)	
+	Tick: Reload
+
+Effector: ParticleAreaDamageTriggered 
+	Value: AoE_Damage
+	Value: AoE_Range
+	
+	Range: AoE_Range
+	
+	PhysicalType: AreaOfEffect
+		//FireGfx: basic_explosion
+		//GfxSize: 2.0
+   
+	Causes: TriggeredParticleAreaDamage lasting 0 with AoE_Damage[AoE_Damage], AoE_Range[AoE_Range]
+
+	CanAttack: Any
+	OnFire: Timed(-1)
+	Tick: Reload
+
+Effector: PFWAreaDamageTriggered 
+	Value: AoE_Damage
+	Value: AoE_Range
+	
+	Range: AoE_Range
+	
+	PhysicalType: AreaOfEffect
+		FireGfx: basic_explosion
+		GfxSize: 2.0
+   
+	Causes: TriggeredPFWAreaDamage lasting 0 with AoE_Damage[AoE_Damage], AoE_Range[AoE_Range]
+
+	CanAttack: Any
+	OnFire: Timed(-1)
+	Tick: Reload
+	

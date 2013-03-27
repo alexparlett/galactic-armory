@@ -1,0 +1,330 @@
+System: SciLab
+	Name: #SS_SCILAB_NAME
+	Description: #SS_SCILAB_DESC
+	Appearance: GeneralBuilding
+
+	Available: Techs.GenSci_Root.Level >= 0
+	Level: Techs.GenSci_Root.Level
+	Size: Scale
+	Durability: 300 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT
+	Mass: 500 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	
+	Tags: Structure, Research
+	Tied To: GenSci_Root 0
+
+	Costs: Metals[200 * Size * pow(COST_INC_CRV, Level)], Electronics[200 * Size * pow(COST_INC_CRV, Level)], AdvParts[200 * Size * pow(COST_INC_CRV, Level)]
+	Complexity: 10 * STRUCT_COMPLX_MULT
+	
+	vResRate: Size * 20 * pow(RES_GAIN_CURVE, Level)
+	vWorkers: Size * 600000
+
+	Provides: Research with
+		Amount[vResRate]
+	
+	Requires:
+		To Run:
+			Workers[vWorkers]
+	
+	Hints: Research[vResRate], Workers[vWorkers * -1], HP[Durability]
+
+System: Analyzer
+	Name: #SS_ANALYZER_NAME
+	Description: #SS_ANALYZER_DESC
+	Appearance: Analyzer
+	Explosion: subsystem_destroyed
+	
+	Tags: Analyzer, Work:Analyzer, Tool:Analyzer, TimedReload					//was Anaylzer (wrong spelling), Tool
+	Tied To: GenSci_Root 0
+	
+	Available: Techs.GenSci_Root.Level >= 0
+	Level: Techs.GenSci_Root.Level
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 50 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 60 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Costs: Metals[40 * Size * pow(SUBS_COST_CRV, Level)], Electronics[75 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[100 * Size * pow(SUBS_COST_CRV, Level)]
+	Complexity: 2.5
+	
+	Tick Rate: 10
+	
+	vSizeImpact: 0.5 + (0.5 * Object.Scale/Scale)
+	vTechImpact: if(Techs.Sensors.Level > 0, 1, 0.5)
+	vLevelImpact: 0.48 * (1 - decay(pow(LEVEL_GAIN_CURVE, Level),150))
+	
+	vAnalyzeChance: vTechImpact * ( 0.02 + vLevelImpact )^vSizeImpact
+	vPowCost: Size * 15 * decay(pow(LEVEL_GAIN_CURVE,Level),125)
+	
+	Provides: Analyzer with ScanQuality[vAnalyzeChance], PowCost[vPowCost], Delay[10], Duration[5], Range[35 + pow(Object.Size,0.3)]
+
+	Requires:
+		To Run:
+			Control[30 * Size]
+	
+	Hints: Local/AnalysisChance[100 * (1 - (1 - vAnalyzeChance)^5)], Power[-1 * vPowCost * 5 / 10]
+
+System: PowerVampire
+	Name: #SS_POWERVAMP_NAME
+	Description: #SS_POWERVAMP_DESC
+	Appearance: ReverseInductor
+	Explosion: subsystem_destroyed
+	
+	Available: Techs.GenSci_Root.Level >= 0
+	Level: Techs.GenSci_Root.Level
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, SpecWeapon, ECM, Vamp
+	Tied To: GenSci_Root 0
+	
+	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[35 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[35 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 1.8
+	
+	vPowVamp: Size * 30 * (2 - decay(pow(LEVEL_GAIN_CURVE,Level), 50))												//new vanilla formula, was Size * progress(50, 10, Level)
+	vDelay: (1) * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+	vRange: (90 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	
+	Provides: AbsorbPower with Rate[vPowVamp], Delay[vDelay], Duration[1], Range[vRange]
+
+	Requires:
+		To Run:
+			Control[15 * Size]
+	
+	Hints: PowerVamp[vPowVamp / vDelay], Local/Range[vRange], Local/DMGperShot[vPowVamp / 4], Local/HitsperShot[4], Local/Duration[1], Local/Delay[vDelay]
+
+	
+System: MindSapper
+	Name: #SS_MINDSAP_NAME
+	Description: #SS_MINDSAP_DESC
+	Appearance: ReverseInductor
+	Explosion: subsystem_destroyed
+
+	Available: Techs.GenSci_Root.Level >= 0
+	Level: Techs.GenSci_Root.Level
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 20 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, SpecWeapon, ECM
+	Tied To: GenSci_Root 0
+
+	Costs: Metals[30 * Size * pow(SUBS_COST_CRV, Level)], Electronics[90 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 4
+
+	vConDmg: 30 * Size * (2 - decay(pow(LEVEL_GAIN_CURVE, Level),50))											//new vanilla formula, was Size * 10 * pow(LEVEL_GAIN_CURVE, Level)													//was Size * 15
+	vDelay: (1) * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+	vRange: (90 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+
+	Provides: MindSapper with Rate[vConDmg], Delay[vDelay], Duration[1], Range[vRange]
+
+	Consumes:
+		To Run:
+			Power[80 * Size]
+
+	Hints: ControlDmg[vConDmg / vDelay], Local/Range[vRange], Local/DMGperShot[vConDmg / 4], Local/HitsperShot[4], Local/Duration[1], Local/Delay[vDelay]
+
+	
+System: ResourceDrain
+	Name: #SS_RESOURCEDRAIN_NAME
+	Description: #SS_RESOURCEDRAIN_DESC
+	Appearance: MiningLaser
+	Explosion: subsystem_destroyed
+
+	Tags: Weapon, SpecWeapon, ECM
+	Tied To: GenSci_Root 0
+
+	Available: Techs.GenSci_Root.Level >= 0
+	Level: Techs.GenSci_Root.Level
+
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[40 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[40 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 1.6
+	
+	vRate: Size * 10 * pow(LEVEL_GAIN_CURVE, Level)						//was Size * 20
+	vDelay: 15 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+	vDuration: 10
+	vCargoStore: Size * 10 * (2 - decay(pow(LEVEL_GAIN_CURVE,Level), 12))
+	
+	Provides: ResourceDrain with Rate[vRate], Delay[vDelay], Duration[vDuration]
+	
+	Provides: Cargo with
+		Amount[vCargoStore]
+
+	Requires:
+		To Run:
+			Control[10 * Size]
+	
+	Hints: DrainRate[(vRate * vDuration)/vDelay], Cargo[vCargoStore]
+
+	
+System: Repulsor
+	Name: #SS_REPULSOR_NAME
+	Description: #SS_REPULSOR_DESC
+	Appearance: Repulsor
+	Explosion: subsystem_destroyed
+
+	Tags: Repulsor, Tool:Repulsor, SpecWeapon, ECM, SafeTool			//was Support
+	Tied To: GenSci_Root 0
+
+	Available: Techs.GenSci_Root.Level >= 0
+	Level: Techs.GenSci_Root.Level
+
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 60 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+	Costs: Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[100 * Size * pow(SUBS_COST_CRV, Level)]
+
+	// A similarly-sized thruster on the target ship would take 4 seconds to compensate
+	vForce: Size * 4 * 700 * (2 - decay(pow(LEVEL_GAIN_CURVE,Level),35)) * GAME_THRUST_MULT
+	vDelay: max(4, 8 * decay(pow(LEVEL_GAIN_CURVE,Level),45)) * GAME_RELOAD_MULT
+	vPowCost: Size * 25 * decay(pow(LEVEL_GAIN_CURVE,Level), 125)
+	vRange: (300 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+
+	Provides: ImpartForce with
+		Delay[vDelay],
+		Force[vForce],
+		PowCost[vPowCost],
+		Range[vRange],
+		Duration[1]
+
+	Requires:
+		To Run:
+			Control[10 * Size]
+
+	Hints: Local/Repulsion[vForce], Power[-1 * vPowCost], Local/Range[vRange], Local/Delay[vDelay]
+
+	
+System: Attractor
+	Name: #SS_ATTRACTOR_NAME
+	Description: #SS_ATTRACTOR_DESC
+	Appearance: Repulsor
+	Explosion: subsystem_destroyed
+
+	Tags: Attractor, Tool:Attractor, SpecWeapon, ECM, SafeTool					//was Support
+	Tied To: GenSci_Root 0
+
+	Available: Techs.GenSci_Root.Level >= 0
+	Level: Techs.GenSci_Root.Level
+
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 60 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+	Costs: Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[100 * Size * pow(SUBS_COST_CRV, Level)]
+
+	// A similarly-sized thruster on the target ship would take all of its power to compensate
+	vForce: Size * -700 * (2 - decay(pow(LEVEL_GAIN_CURVE,Level),35)) * GAME_THRUST_MULT
+	vDelay: max(5, 10 * decay(pow(LEVEL_GAIN_CURVE,Level),45)) * GAME_RELOAD_MULT
+	vPowCost: Size * 7 * decay(pow(LEVEL_GAIN_CURVE,Level), 125)
+	vRange: (300 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+
+	Provides: ImpartForce with
+		Delay[vDelay],
+		Force[vForce],
+		PowCost[vPowCost],
+		Range[vRange],
+		Duration[4]
+
+	Requires:
+		To Run:
+			Control[10 * Size]
+
+	Hints: Local/Attraction[vForce], Power[-4 * vPowCost], Local/Range[vRange], Local/Delay[vDelay], Local/Duration[4]
+
+	
+System: Interdictor
+	Name: #SS_INTERDICTOR_NAME
+	Description: #SS_INTERDICTOR_DESC
+	Appearance: Repulsor
+	Explosion: subsystem_destroyed
+
+	Tags: Interdictor, Tool:Interdictor, SpecWeapon, ECM, SafeTool			//was Support
+	Tied To: GenSci_Root 0
+
+	Available: Techs.GenSci_Root.Level >= 0
+	Level: Techs.GenSci_Root.Level
+
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 60 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+	Costs: Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[100 * Size * pow(SUBS_COST_CRV, Level)]
+
+	vPowCost: Size * 7 * decay(pow(LEVEL_GAIN_CURVE,Level), 125)
+	vRange: (300 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vForce: Size * 700 * (2 - decay(pow(LEVEL_GAIN_CURVE,Level),35)) * GAME_THRUST_MULT
+
+	Provides: MatchVelocity with
+		Delay[5],
+		PowCost[vPowCost],
+		Range[vRange],
+		Duration[5],
+		Force[vForce]
+
+	Requires:
+		To Run:
+			Control[10 * Size]
+
+	Hints: Power[-5 * vPowCost], Local/Range[vRange], Local/Delay[5], Local/Duration[5]
+
+System: PlanetEngine
+	Name: #SS_PLANETTHRUSTER_NAME
+	Description: #SS_PLANETTHRUSTER_DESC
+	Appearance: GeneralBuilding
+	
+	Available: Techs.GenSci_Root.Level >= 0
+	Level: Techs.GenSci_Root.Level
+	
+	Size: Scale
+	Durability: 200 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT
+	Mass: 250 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	
+	Tags: Structure
+	Tied To: GenSci_Root 0
+
+	Costs: Metals[600 * Size * pow(COST_INC_CRV, Level)], Electronics[500 * Size * pow(COST_INC_CRV, Level)], AdvParts[500 * Size * pow(COST_INC_CRV, Level)], Labr[BLDG_LABR_MULT * 50 * Size]
+	Complexity: 0.2 * STRUCT_COMPLX_MULT
+	
+	vThrust: Size * 0.004 * 1000000000000000 * (2 - decay(pow(LEVEL_GAIN_CURVE,Level),35)) * GAME_THRUST_MULT
+	vWorkers: Size * 1200000
+
+	Provides: Propulsion with
+		Amount[vThrust]
+	
+	Requires:
+		To Run:
+			Workers[vWorkers]
+	
+	Hints: Workers[vWorkers * -1], Thrust[vThrust], HP[Durability]
+
+System: RingworldGen
+	Name: #SS_RINGWORLD_NAME
+	Description: #SS_RINGWORLD_DESC
+	Appearance: QuantumComputerCore
+
+	Tags: IgnoresScale, Hull
+	Tied To: GenSci_Root 0
+
+	Equips To: Hull
+	PreDamageOrder: -2
+
+	Available: Techs.GenSci_Root.Level >= 0
+	Level: Techs.GenSci_Root.Level
+	Size: 0
+	Durability: 1
+	Mass: 20000000
+
+	Costs: Metals[4 * pow(10,9)], Electronics[2 * pow(10,9)], AdvParts[1 * pow(10,9)]
+
+	Provides: RingworldGen

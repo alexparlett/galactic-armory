@@ -1,0 +1,280 @@
+System: FlakTurret
+	Name: #SS_FLAKTURRET_NAME
+	Description: #SS_FLAKTURRET_DESC
+	Appearance: FlakTurret
+	Explosion: subsystem_destroyed
+	
+	Available: Techs.ActiveDef_Root.Level >= 0
+	Level: Techs.ActiveDef_Root.Level
+	
+	Size: max(Scale,1)
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 75 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, Defense, Restrict:FighterBomber, NoModifiers
+	Tied To: ActiveDef_Root 0
+	
+	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[40 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[20 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 1.25
+	
+	vDamage: Size * 20 * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT			//was Size * 10
+	vDelay: 5 * GAME_RELOAD_MULT
+	vRange: (200 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+
+	vEffectivity: (Scale / Object.Scale) / 20
+	
+	Provides: PointDefense with Effectivity[vEffectivity]
+	
+	Provides: AreaHits with
+		Damage[vDamage],
+		Accuracy[0.33],
+		Delay[vDelay],
+		Range[vRange]
+	
+	Consumes:
+		To Run:
+			Power[5 * Size]
+	
+	Requires:
+		To Run:
+			Control[10 * Size]
+	
+	Hints: AoEDmg[0.25 * vDamage / vDelay], Local/Range[vRange], Local/Delay[vDelay], PointDefense[vEffectivity]
+
+
+System: Firestorm
+	Name: #SS_FIRESTORM_NAME
+	Description: #SS_FIRESTORM_DESC
+	Appearance: Firestorm
+	Explosion: subsystem_destroyed
+	
+	Available: Techs.ActiveDef_Root.Level >= 0
+	Level: Techs.ActiveDef_Root.Level
+	
+	Size: max(Scale,1)
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 100 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, Defense, Restrict:FighterBomber, NoModifiers
+	Tied To: ActiveDef_Root 0
+	
+	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], Electronics[40 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[20 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 2.5
+	
+	vDamage: Size * 12 * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT			//was Size * 8
+	vDelay: 3 * GAME_RELOAD_MULT
+	vAccuracy: 0.5												//was min(0.2 + (0.025 * Level), 0.5)				//was min((0.2 + (0.01 * pow(LEVEL_GAIN_CURVE, Level))), 0.5)
+	vRange: (100 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+
+	vEffectivity: (Scale / Object.Scale) / 10					//more efficient than flak and shield bomb
+	
+	Provides: PointDefense with Effectivity[vEffectivity]
+	
+	Provides: AreaHits2 with
+		Damage[vDamage],
+		Accuracy[vAccuracy],
+		Delay[vDelay],
+		Range[vRange]
+	
+	Consumes:
+		To Run:
+			Power[8 * Size]
+	
+	Requires:
+		To Run:
+			Control[20 * Size]
+	
+	Hints: AoEDmg[0.25 * vDamage / vDelay], Local/Range[vRange], Local/Delay[vDelay], PointDefense[vEffectivity]
+	
+System: PlanetDefenseNetwork
+	Name: #SS_PLANETDEFNET_NAME
+	Description: #SS_PLANETDEFNET_DESC
+	Appearance: DefenseBuilding
+
+	Available: Techs.ActiveDef_Root.Level >= 0
+	Level: Techs.ActiveDef_Root.Level
+	
+	Size: Scale
+	Durability: 800 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT
+	Mass: 800 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	
+	Tags: Structure, Weapon
+	Tied To: ActiveDef_Root 0
+	
+	Costs: Metals[200 * Size * pow(COST_INC_CRV, Level)], Electronics[25 * Size * pow(COST_INC_CRV, Level)], AdvParts[25 * Size * pow(COST_INC_CRV, Level)]
+	Complexity: 1 * STRUCT_COMPLX_MULT
+
+	vBurst: 4
+	vDelay: max(0.8, 2 * decay(pow(LEVEL_GAIN_CURVE,Level),50)) * GAME_RELOAD_MULT
+	vDamage: Size * 15 * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT		//was Size * 100
+	vShotDelay: 0.1
+	vTotalDelay: (vShotDelay * vBurst) + vDelay
+	vRange: (20 * (1 + (Level * (0.02 * WEAP_RANGE_CURVE)))) * WEAP_RANGE_MULT * Size
+	vProjSpeed: vRange * 0.5
+	vEffectiveRange: 0.8
+	vMinHit: 0.5
+	vWorkers: Size*300000
+	vEffectivity: (Scale / Object.Scale) / 10	
+
+    Provides: ProjWeapon2 with Damage[vDamage], ShotDelay[vShotDelay],
+        Delay[vDelay], ClipSize[vBurst], AmmoUse[0], Range[vRange], Speed[vProjSpeed], effectiveRangeFactor[vEffectiveRange], minHitChance[vMinHit]
+	
+	Requires:
+		To Run:
+			Workers[vWorkers]
+
+	Hints: Workers[vWorkers * -1], DPS[(vDamage * vBurst) / vTotalDelay], Range[vRange], PointDefense[vEffectivity], HP[Durability]
+	
+System: StealthField
+	Name: #SS_STEALTHFIELD_NAME
+	Description: #SS_STEALTHFIELD_DESC
+	Appearance: ElectronicCounterMeasures				//was StealthFieldGenerator
+	Explosion: subsystem_destroyed
+	
+	Tags: Defense
+	Tied To: ActiveDef_Root 0
+	PreDamageOrder: -12
+	
+	Available: Techs.ActiveDef_Root.Level >= 0
+	Level: Techs.ActiveDef_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 25 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: Size * 50 * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	vHitChance: 1 - (((12 + (Level / 3)) * (Scale / Object.Scale)) * decay(Object.Scale, (pow(LEVEL_GAIN_CURVE, Level)) * 20) / 100)
+	
+	Tick Rate: 4
+	
+	Costs: Metals[200 * progress(Size, 0.05, Level) * pow(SUBS_COST_CRV, Level)], Electronics[15 * progress(Size, 0.05, Level) * pow(SUBS_COST_CRV, Level)], AdvParts[100 * progress(Size, 0.05, Level) * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	
+	Provides: Chameleon with HitMod[vHitChance]									//was [decay(pow(LEVEL_GAIN_CURVE,Level),3) ^ (Size / Object.Size)]
+	
+	Consumes:
+		To Run:
+			Power[Size * 30]
+	
+	Requires:
+		To Run:
+			Control[Size * 5]
+	
+	Hints: Local/MissChance[(vHitChance-1) * -100]
+	
+	
+System: PointDefense
+	Name: #SS_POINTDEFENSE_NAME
+	Description: #SS_POINTDEFENSE_DESC
+	Appearance: PointDefense
+	Explosion: subsystem_destroyed
+	
+	Tags: Defense
+	Tied To: ActiveDef_Root 0
+	
+	Available: Techs.ActiveDef_Root.Level >= 0
+	Level: Techs.ActiveDef_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 50 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: Size * 50 * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[40 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[20 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	
+	vEffectivity: (Scale / Object.Scale) / 5
+	
+	Provides: PointDefense with Effectivity[vEffectivity]
+	
+	Consumes:
+		To Run:
+			Power[Size * 7.5]
+	
+	Requires:
+		To Run:
+			Control[Size * 5]
+	
+	Hints: PointDefense[vEffectivity]
+
+
+System: BoardingDefense
+	Name: #SS_BOARDINGDEFENSE_NAME
+	Description: #SS_BOARDINGDEFENSE_DESC
+
+	Appearance: BoardingDefense
+	Explosion: subsystem_destroyed
+
+	Tags: BoardingDefense, Defense, NoBonusHealth
+	Tied To: ActiveDef_Root 0
+
+	Size: Scale
+	
+	Available: Techs.ActiveDef_Root.Level >= 0
+	Level: Techs.ActiveDef_Root.Level
+	
+	Durability: (2 - decay(Level,50)) * 4 * Size  * GAME_ARMOR_MULT
+	Mass: Size * 50 * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Costs: Metals[20 * Size * pow(SUBS_COST_CRV, Level)], Electronics[80 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[10 * Size * pow(SUBS_COST_CRV, Level)] Labr[5 * Size]
+
+	Requires:
+		To Run:
+			Control[5 * Size]
+
+	Consumes:
+		To Run:
+			Power[10 * Size]
+
+	Hints: BoardingDefense[Durability]
+	
+System: StealthHull
+	Name: #SS_STEALHHULL_NAME
+	Description: #SS_STEALHHULL_DESC
+	Appearance: ECMHull
+	Explosion: ship_explode
+	
+	Tags: IgnoresScale, Hull, Fetch:Fuel, Fetch:Ammo, EnterStargate, Tool:EnterStargate, StealthHull
+	Tied To: ActiveDef_Root 0
+
+	Equips To: Hull
+	PreDamageOrder: -2
+	
+	Available: Techs.ActiveDef_Root.Level >= 0
+	Level: Techs.ActiveDef_Root.Level
+	
+	sizePenalty: (1 / 100) * decay(pow(LEVEL_GAIN_CURVE, Techs.MegaConstruction.Level), 2)
+	vOneSpace: Object.Size * (1 / 15)
+	vMaxSize: 45 * sqrt(pow(2, Level))
+	vMaxSpace: 18
+	vMoreSpace: min((15 + floor(Object.Scale / 100)), vMaxSpace)
+	vExtra: 0
+	Size: (if(((Object.Scale * vMoreSpace) > vMaxSize * vMoreSpace), 0, (Object.Scale * vMoreSpace))) + vExtra
+	Durability: Size * 5 * pow(LEVEL_GAIN_CURVE, Level) * GAME_HULL_MULT
+	Mass: Size * 24 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
+
+	vMetal: poly(Size, 200, 40, 13.3 * sizePenalty)
+	vElec: poly(Size, 50, 10, 3.33 * sizePenalty)
+	vParts: poly(Size,200,40,13.33 * sizePenalty)
+
+	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Electronics[vElec * pow(SUBS_COST_CRV, Level)], AdvParts[vParts * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 1
+
+	Tick Rate: 1
+
+	vChargeTime: min((10 + (decay(pow(LEVEL_GAIN_CURVE, Level),25) * sqrt(Object.Scale))), 120)
+	vPowCost: 100 * Size	
+	vDodgeChange: 1 - ((40 + Level) * decay(Object.Scale, (pow(LEVEL_GAIN_CURVE, Level)) * 25) / 100)				//was min(0.05 + (max((0.85 - (Level * 0.08)), 0.05)) * (1 + (Object.Scale / 300)), 1)
+
+	Provides: Chameleon with HitMod[vDodgeChange]
+
+	Provides: GAHullSoak with ReceivePct[0.0], DmgAlter[0]
+
+	Provides: ArmorPoints with Amount[2]
+
+	Provides: ExternalMounts with Amount[1]
+
+	Provides: StargateJump	
+
+	Provides: ShieldEmitters with Amount[4]
+
+	Hints: Local/MissChance[(vDodgeChange - 1) * -100], Local/HullSoak[0], ArmorPoints[2], ShieldEmitters[4], ExternalMounts[1], Local/HullHP[Durability], Local/MaxScale[vMaxSize]

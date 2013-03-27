@@ -1,0 +1,38 @@
+Name: HeliocideDmg
+	Value: Damage
+	Value: Cost
+	
+	Tick: GACombatWeapons::HeliocideDmg
+
+Name: DSMDamage
+	Value: Damage
+	Value: wasteHeat
+
+	OnActive: GACombatWeapons::AreaDamageTriggerHeat
+	
+Name:	NBCDmg
+	Value: Damage
+	
+	Tick: GACombatWeapons::NBCDamage
+
+Name:	PopulationDamage
+	Value: Damage
+	
+	OnActive:	Combat::PopDamage
+
+Name:	TakePower
+	Value: Rate
+	
+	Tick:	Combat::SuckPower
+
+Name:	AddVelocity
+	Value: Force
+	Value: PowCost
+
+	Tick:	Combat::ImpartForce
+
+Name:	InterdictVelocity
+	Value: Force
+	Value: PowCost
+
+	Tick:	Combat::MatchVelocity

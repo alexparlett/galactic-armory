@@ -1,0 +1,116 @@
+Name: GAHullSoak
+	Value: ReceivePct
+	Value: DmgAlter
+	
+	OnGlobalDamage: GACombatDefense::DealHullDamage
+	OnDestruct: Death
+	
+Name: GASoakDamage
+	Value: Amount
+	
+	OnDamage: Skip
+	OnGlobalDamage:	GACombatDefense::SoakDamage
+
+Name: GAReactDamage
+	Value: Amount
+	Value: AbsorbPct
+	
+	OnDamage: Skip
+	OnGlobalDamage:	GACombatDefense::ReactDamage
+
+Name: GAMoveDodge
+	Value: HitMod
+	
+	OnGlobalDamage:	GACombatDefense::DodgeHitMod
+	
+Name: GAShields
+	Value: Amount
+	Value: Absorption
+
+	OnActive:	AddMax(Amount, "Shields")
+	OnDeactive:	SubMax(Amount, "Shields")
+	OnGlobalDamage:	GACombatDefense::ShieldSoak
+
+Name: ShieldArmor
+	Value: Amount
+	Value: Absorption
+	Value: CollapseTime
+
+	OnActive:	AddMax(Amount, "ShieldArmor")
+	OnDeactive:	SubMax(Amount, "ShieldArmor")
+	OnGlobalDamage:	GACombatDefense::ShieldArmorSoak
+
+Name: GAShieldRegen
+	Value: Rate
+	Value: Cost
+	
+	Tick:	GACombatDefense::ShieldRegen
+
+Name: ShieldArmorRegen
+	Value: Rate
+	Value: Cost
+	
+	Tick:	GACombatDefense::ShieldArmorRegen
+	
+Name: PointDefense
+	Value: Effectivity
+	
+	OnActive: 	GACombatDefense::AddPDEffectivity 	//AddMax(Effectivity, "PDEffectivity")
+	OnDeactive: GACombatDefense::SubPDEffectivity 	//SubMax(Effectivity, "PDEffectivity")
+
+//Damage is reduced by [Amount], then applied
+//If damage is reduced below 0, nothing happens
+Name:	SoakDamage
+	Value: Amount
+	
+	OnDamage: Skip
+	OnGlobalDamage:	Combat::SoakDamage
+
+//Takes normal damage up to [Amount]. Damage beyond [Amount] is multiplied by [AbsorbPct] and also applied.
+Name:	ReactDamage
+	Value: Amount
+	Value: AbsorbPct
+	
+	OnDamage: Skip
+	OnGlobalDamage:	Combat::ReactDamage
+
+
+Name:	Chameleon
+	Value: HitMod
+	
+	OnGlobalDamage:	Combat::HitMod
+
+Name:	MoveDodge
+	Value: HitMod
+	
+	OnGlobalDamage:	Combat::DodgeHitMod
+
+//Name:	Shields
+//	Value: Rate
+//	Value: Cost
+//	Value: FluxMult
+//
+//	Tick:	ProduceNoCargo("Shields", "Power", Rate, Cost)
+
+//Provides 'leaky' shields: Less damage is absorbed at lower charge%'s
+//	Absorption the absorption% at 100% charge. (e.g. 0.5 would leak 50% of damage at full charge, and get worse. 2 would not leak until less than 50% health)
+Name: Shields
+	Value: Amount
+	Value: Absorption
+
+	OnActive:	AddMax(Amount, "Shields")
+	OnDeactive:	SubMax(Amount, "Shields")
+	OnGlobalDamage:	Combat::ShieldSoak
+
+//Regenerates shields at [Rate]/second, each unit costing [Cost] Power
+Name: ShieldRegen
+	Value: Rate
+	Value: Cost
+	
+	Tick:	Combat::ShieldRegen
+
+Name:	FluxCap
+	Value: Amount
+
+	OnActive:	AddMax(Amount, "Shields")
+	OnDeactive:	SubMax(Amount, "Shields")

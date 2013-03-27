@@ -1,0 +1,496 @@
+
+System: PlanetPC
+	Name: #SS_PLANETPC_NAME
+	Description: #SS_PLANETPC_DESC
+	Appearance: DefenseBuilding
+
+	Available: Techs.ProjEnergy_Root.Level >= 0
+	Level: Techs.ProjEnergy_Root.Level
+	
+	Size: Scale
+	Durability: 800 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT
+	Mass: 800 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	
+	Tags: Structure, Weapon
+	Tied To: ProjEnergy_Root 0
+	
+	Costs: Metals[150 * Size * pow(COST_INC_CRV, Level)], Electronics[50 * Size * pow(COST_INC_CRV, Level)], AdvParts[40 * Size * pow(COST_INC_CRV, Level)]
+	Complexity: 2.5 * STRUCT_COMPLX_MULT
+	
+	vDamage: Size * 360 * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT		//was Size * 120
+	vDelay: max(6, 14 * decay(pow(LEVEL_GAIN_CURVE,Level),50)) * GAME_RELOAD_MULT
+	vDeviation: 0.1
+	vRange: (70 * (1 + (Level * (0.02 * WEAP_RANGE_CURVE)))) * WEAP_RANGE_MULT * Size
+	vWorkers: Size*300000
+	vEffectiveRange: 0.8
+	vMinHit: 0.5
+	vMinDmg: 0.5
+
+	Provides: ParticleWeapon with
+			Damage[vDamage], Delay[vDelay], PowerUse[0], Range[vRange], Speed[vRange * 0.5], Deviation[vDeviation], 
+			effectiveRangeFactor[vEffectiveRange], minDamage[vMinDmg], minHitChance[vMinHit], wasteHeat[0]
+	
+	Requires:
+		To Run:
+			Workers[vWorkers]
+
+	Hints: Workers[vWorkers * -1], DPS[vDamage / vDelay], Range[vRange], HP[Durability]
+	
+//	Variables Used
+//
+//////////////////////////
+//
+//	vDamage - All Types of Damage
+//	vDelay - Reload Time
+//	vDeviation
+//	vPowCost - Power Costs
+//	vRange - Weapons Range ONLY! Not used for AoE Effect Range
+//	vEffectiveRange - Effective Range
+//	vMinDmg - Lowest Damage
+//	vWasteHeat - Heat Needed
+//	vAoE_Range - Range AoE Weapons Effect
+//	vRequiredCharge - Charge needed for Charge to Fire
+//	vSpeed - Weapon Speed
+// 	vMinHit - Minimum Hit Chance
+// 	vAccuracy - Hit Chance
+//
+//////////////////////////
+
+System: PlasmaThrower
+	Name: #SS_PLASMAGUN_NAME
+	Description: #SS_PLASMAGUN_DESC
+	Appearance: PlasmaThrowerGreen
+	Explosion: subsystem_destroyed
+
+	Available: Techs.ProjEnergy_Root.Level >= 0
+	Level: Techs.ProjEnergy_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, BeamEnergyWeapon, Require:ThermalManagement
+	Tied To: ProjEnergy_Root 0
+	
+	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[25 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[35 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 1.5
+	
+	vDamage: Size * 45 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT				//was 40
+	vDelay: 1.2 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+	vDeviation: 0.1
+	vRange: (160 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vSpeed: vRange * 0.5 * ENERGY_PROJ_FACTOR
+	vEffectiveRange: 0.5
+	vMinHit: 0.5
+	vMinDmg: 0.5
+	vWasteHeat: Size * 0.3 * min((1 + (sqrt(Size) / 20)), 3) * (1 / GAME_RELOAD_MULT) * GAME_HEAT_MULT
+	vPowCost: Size * 40
+
+	Provides: PlasmaWeapon with Damage[vDamage], Delay[vDelay], PowerUse[vPowCost],					//PowerUse was 20 * Size
+		Range[vRange], Speed[vSpeed], Deviation[vDeviation],
+		effectiveRangeFactor[vEffectiveRange], minDamage[vMinDmg], minHitChance[vMinHit], wasteHeat[vWasteHeat]
+
+	Requires:
+		To Run:
+			Control[15 * Size]
+
+	Hints: Alpha[vDamage], Power[-1 * vPowCost / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/Delay[vDelay], Local/ProjSpeed[vSpeed], Local/EffRange[vEffectiveRange * vRange], Local/MinHit[vMinHit], Local/MinDmg[vMinDmg * vDamage], WasteHeat[vWasteHeat / vDelay]
+
+	
+System: TwinPlasmaThrower
+	Name: #SS_TWINPLASMAGUN_NAME
+	Description: #SS_TWINPLASMAGUN_DESC
+	Appearance: TwinPlasmaThrower
+	Explosion: subsystem_destroyed
+
+	Available: Techs.ProjEnergy_Root.Level >= 0
+	Level: Techs.ProjEnergy_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 80 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 160 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, BeamEnergyWeapon, Require:ThermalManagement, ClipWeapon
+	Tied To: ProjEnergy_Root 0
+	
+	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[70 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size]
+	Complexity: 3
+		
+	vBurst: 2
+	vDelay: (1.2 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * 2 * GAME_RELOAD_MULT) - 0.2
+	vDamage: Size * 45 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT
+	vShotDelay: 0.2
+	vTotalDelay: (vShotDelay * (vBurst - 1)) + vDelay
+	vRange: (160 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vSpeed: vRange * 0.5 * ENERGY_PROJ_FACTOR
+	vEffectiveRange: 0.5
+	vMinHit: 0.5
+	vMinDmg: 0.5
+	vWasteHeat: Size * 0.3 * min((1 + (sqrt(Size) / 20)), 3) * (1 / GAME_RELOAD_MULT) * GAME_HEAT_MULT
+	vPowCost: Size * 40
+
+	Provides: TwinPlasmaWeapon with Damage[vDamage], ShotDelay[vShotDelay], Delay[vDelay], ClipSize[vBurst], PowerUse[vPowCost],
+			Range[vRange], Speed[vSpeed], effectiveRangeFactor[vEffectiveRange], minDamage[vMinDmg], minHitChance[vMinHit], wasteHeat[vWasteHeat]
+
+	Requires:
+		To Run:
+			Control[22 * Size]
+
+	Hints: 	Alpha[vDamage * vBurst],Power[(-1 * vPowCost * vBurst)/ vTotalDelay],DPS[(vDamage * vBurst) / vTotalDelay], WasteHeat[(vWasteHeat * vBurst) / vTotalDelay],	Local/Range[vRange], Local/DMGperShot[vDamage], Local/Delay[vTotalDelay],Local/ProjSpeed[vSpeed],Local/EffRange[vEffectiveRange * vRange],			Local/MinHit[vMinHit], Local/MinDmg[vMinDmg * vDamage],	Local/ClipDelay[vDelay],			Local/Clip[vBurst]
+
+System: ParticleCannon
+	Name: #SS_PARTICANNON_NAME
+	Description: #SS_PARTICANNON_DESC
+	Appearance: ParticleCannon
+	Explosion: subsystem_destroyed
+
+	Available: Techs.ProjEnergy_Root.Level >= 0
+	Level: Techs.ProjEnergy_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 120 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, BeamEnergyWeapon, Require:ThermalManagement
+	Tied To: ProjEnergy_Root 0
+	
+	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[25 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[45 * Size * pow(SUBS_COST_CRV, Level)], Labr[7 * Size]
+	Complexity: 2.25
+	
+	vDamage: Size * 80 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT							//was Size * 72
+	vDelay: 3.0 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+	vDeviation: 0.1
+	vRange: (240 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vSpeed: vRange * 0.5 * ENERGY_PROJ_FACTOR
+	vEffectiveRange: 0.5
+	vMinHit: 0.5
+	vMinDmg: 0.5
+	vWasteHeat: Size * 0.72 * min((1 + (sqrt(Size) / 20)), 3) * (1 / GAME_RELOAD_MULT) * GAME_HEAT_MULT
+	vPowCost: Size * 90
+
+	Provides: ParticleWeapon with Damage[vDamage], Delay[vDelay], PowerUse[vPowCost],
+		Range[vRange], Speed[vSpeed], Deviation[vDeviation],
+		effectiveRangeFactor[vEffectiveRange], minDamage[vMinDmg], minHitChance[vMinHit], wasteHeat[vWasteHeat]
+
+	Requires:
+		To Run:
+			Control[20 * Size]
+
+	Hints: Alpha[vDamage], Power[-1 * vPowCost / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/Delay[vDelay], Local/ProjSpeed[vSpeed], Local/EffRange[vEffectiveRange * vRange], Local/MinHit[vMinHit], Local/MinDmg[vMinDmg * vDamage], WasteHeat[vWasteHeat / vDelay]
+
+
+System: TwinParticleCannon
+	Name: #SS_TWINPARTICANNON_NAME
+	Description: #SS_TWINPARTICANNON_DESC
+	Appearance: TwinParticleCannon
+	Explosion: subsystem_destroyed
+
+	Available: Techs.ProjEnergy_Root.Level >= 0
+	Level: Techs.ProjEnergy_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 80 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 240 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, BeamEnergyWeapon, Require:ThermalManagement, ClipWeapon
+	Tied To: ProjEnergy_Root 0
+	
+	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[90 * Size * pow(SUBS_COST_CRV, Level)], Labr[14 * Size]
+	Complexity: 4.5
+	
+	vBurst: 2
+	vDelay: (3.0 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * 2 * GAME_RELOAD_MULT) - 0.2
+	vDamage: Size * 80 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT			//was Size * 72
+	vShotDelay: 0.2
+	vTotalDelay: (vShotDelay * (vBurst - 1)) + vDelay
+	vRange: (240 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vSpeed: vRange * 0.5 * ENERGY_PROJ_FACTOR
+	vEffectiveRange: 0.5
+	vMinHit: 0.5
+	vMinDmg: 0.5
+	vWasteHeat: Size * 0.72 * min((1 + (sqrt(Size) / 20)), 3) * (1 / GAME_RELOAD_MULT) * GAME_HEAT_MULT
+	vPowCost: Size * 90
+
+	Provides: TwinParticleWeapon with Damage[vDamage], ShotDelay[vShotDelay], Delay[vDelay], ClipSize[vBurst], PowerUse[vPowCost],
+		Range[vRange], Speed[vSpeed], effectiveRangeFactor[vEffectiveRange], minDamage[vMinDmg], minHitChance[vMinHit], wasteHeat[vWasteHeat]
+
+	Requires:
+		To Run:
+			Control[30 * Size]
+
+	Hints: 	Alpha[vDamage * vBurst],Power[(-1 * vPowCost * vBurst) / vTotalDelay],DPS[(vDamage * vBurst) / vTotalDelay],Local/Range[vRange],Local/DMGperShot[vDamage], Local/Delay[vTotalDelay],Local/ClipDelay[vDelay],Local/Clip[vBurst],Local/ProjSpeed[vSpeed], Local/EffRange[vEffectiveRange * vRange], Local/MinHit[vMinHit],Local/MinDmg[vMinDmg * vDamage],WasteHeat[(vWasteHeat * vBurst) / vTotalDelay]
+	
+
+System: PFW
+	Name: #SS_PFW_NAME
+	Description: #SS_PFW_DESC
+	Appearance: PFWeapon
+	Explosion: subsystem_destroyed
+	
+	Available: Techs.ProjEnergy_Root.Level >= 0
+	Level: Techs.ProjEnergy_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, BeamEnergyWeapon, Require:ThermalManagement
+	Tied To: ProjEnergy_Root 0
+	
+	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 2
+	
+	vDamage: Size * 144 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT						//was Size * 180
+	vDelay: 3 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+	vDeviation: 0.1
+	vRange: (160 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vSpeed: vRange * 0.5 * ENERGY_PROJ_FACTOR
+	vWasteHeat: Size * 0.6 * min((1 + (sqrt(Size) / 20)), 3) * (1 / GAME_RELOAD_MULT) * GAME_HEAT_MULT
+	vPowCost: Size * 80
+
+	Provides: PolarizingFluxWeapon with Damage[vDamage], Delay[vDelay], PowerUse[vPowCost], Duration[1], 
+		Range[vRange], Speed[vSpeed], Deviation[vDeviation], wasteHeat[vWasteHeat]
+	
+	Requires:
+		To Run:
+			Control[30 * Size]
+
+	Hints: Alpha[vDamage], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Power[-1 * vPowCost / vDelay], Local/ProjSpeed[vSpeed], Local/Delay[vDelay], WasteHeat[vWasteHeat / vDelay]
+
+
+System: FusionLance
+	Name: #SS_FLANCE_NAME
+	Description: #SS_FLANCE_DESC
+	Appearance: FusionLance
+	Explosion: subsystem_destroyed
+	
+	Available: Techs.ProjEnergy_Root.Level >= 0
+	Level: Techs.ProjEnergy_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 120 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, BeamEnergyWeapon, Require:ThermalManagement
+	Tied To: ProjEnergy_Root 0
+	
+	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[25 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 6
+	
+	vDamage: Size * 600 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT						//was Size * 30
+	vDelay: 3 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+	vDeviation: 0.1
+	vPowCost: Size * 200 * decay(pow(LEVEL_GAIN_CURVE,Level),22.5)
+	vRange: (120 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vEffectiveRange: 0.5
+	vMinDmg: 0.5
+	vWasteHeat: Size * 3.0 * min((1 + (sqrt(Size) / 20)), 3) * (1 / GAME_RELOAD_MULT) * GAME_HEAT_MULT
+	
+	Provides: EnergyWeaponPulseCrit with Damage[vDamage], Delay[vDelay], Duration[0.25], PowCost[vPowCost], Range[vRange], Deviation[vDeviation],
+		effectiveRangeFactor[vEffectiveRange], minDamage[vMinDmg], wasteHeat[vWasteHeat]
+
+	Requires:
+		To Run:
+			Control[40 * Size]
+	
+	Hints: Alpha[vDamage * 0.25], Power[-1 * vPowCost], DPS[(vDamage / 4) / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage / 4], Local/HitsperShot[1], Local/Duration[0.25], Local/Delay[vDelay], Local/EffRange[vEffectiveRange * vRange], Local/MinDmg[vMinDmg * (vDamage / 4)], Local/CritChance[0.05], WasteHeat[(vWasteHeat * 0.25) / vDelay]	
+
+System: TachyonBlaster
+	Name: #SS_TACHYONBLASTER_NAME
+	Description: #SS_TACHYONBLASTER_DESC
+	Appearance: TachyonBlaster
+	Explosion: subsystem_destroyed
+	
+	Available: Techs.ProjEnergy_Root.Level >= 0
+	Level: Techs.ProjEnergy_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, BeamEnergyWeapon, Require:ThermalManagement
+	Tied To: ProjEnergy_Root 0
+	
+	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[100 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[75 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 5
+	
+	vDamage: Size * 50 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT
+	vDelay: (5) * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+	vDeviation: 0.2
+	vPowCost: Size * 100 * decay(pow(LEVEL_GAIN_CURVE,Level),22.5)
+	vRange: (600 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vEffectiveRange: 1
+	vMinDmg: 1
+	vWasteHeat: Size * 2.5 * min((1 + (sqrt(Size) / 20)), 3) * (1 / GAME_RELOAD_MULT) * GAME_HEAT_MULT
+	
+	Provides: EnergyWeaponInstant with Damage[vDamage], Delay[vDelay], PowCost[vPowCost], Range[vRange], Deviation[vDeviation],
+		effectiveRangeFactor[vEffectiveRange], minDamage[vMinDmg], wasteHeat[vWasteHeat]
+
+	Requires:
+		To Run:
+			Control[40 * Size]
+	
+	Hints: Alpha[vDamage] , Power[-1 * vPowCost], DPS[vDamage / vDelay], Local/Range[vRange], Local/MinRange[vRange * 0.1], Local/DMGperShot[vDamage], Local/Delay[vDelay], WasteHeat[vWasteHeat / vDelay]
+
+	
+System: WaveEmitter
+	Name: #SS_WAVEGUN_NAME
+	Description: #SS_WAVEGUN_DESC
+	Appearance: WaveEmitter
+	Explosion: subsystem_destroyed
+
+	Available: Techs.ProjEnergy_Root.Level >= 0
+	Level: Techs.ProjEnergy_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 120 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, BeamEnergyWeapon, Require:ThermalManagement
+	Tied To: ProjEnergy_Root 0
+	
+	Costs: Metals[300 * Size * pow(SUBS_COST_CRV, Level)], Electronics[150 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size]
+	Complexity: 3
+	
+	vDamage: Size * 36 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT							//was Size * 72
+	vDelay: 2.0 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+	vDeviation: 0.1
+	vRange: (200 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vSpeed: vRange * 0.5 * ENERGY_PROJ_FACTOR
+	vEffectiveRange: 0.5
+	vMinHit: 0.5
+	vMinDmg: 0.5
+	vWasteHeat: Size * 0.85 * min((1 + (sqrt(Size) / 20)), 3) * (1 / GAME_RELOAD_MULT) * GAME_HEAT_MULT
+	vPowCost: Size * 240
+
+	Provides: WaveWeapon with Damage[vDamage], Delay[vDelay], PowerUse[vPowCost],
+		Range[vRange], Speed[vSpeed], Deviation[vDeviation],
+		effectiveRangeFactor[vEffectiveRange], minDamage[vMinDmg], minHitChance[vMinHit], wasteHeat[vWasteHeat]
+
+	Requires:
+		To Run:
+			Control[40 * Size]
+
+	Hints: Alpha[vDamage], Power[-1 * vPowCost / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/Delay[vDelay], Local/ProjSpeed[vSpeed], Local/EffRange[vEffectiveRange * vRange], Local/MinHit[vMinHit], Local/MinDmg[vMinDmg * vDamage], WasteHeat[vWasteHeat / vDelay]
+	
+	
+System: FighterPFW
+	Name: #SS_FIGHTERPFW_NAME
+	Description: #SS_FIGHTERPFW_DESC
+	Appearance: FighterPFW
+	
+	Available: Techs.ProjEnergy_Root.Level >= 0
+	Level: Techs.ProjEnergy_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, FighterWeapon, Require:FighterBomber, EnergyWeapon
+	Tied To: ProjEnergy_Root 0
+	
+	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 3
+	
+	vDamage: Size * 320 * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT
+	vDelay: 4 * (1 + decay(pow(LEVEL_GAIN_CURVE, Level), 100)) * GAME_RELOAD_MULT
+	vRange: (70 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vSpeed: vRange * 0.75
+	vWasteHeat: Size * 0.2 * min((1 + (sqrt(Size) / 20)), 3) * (1 / GAME_RELOAD_MULT) * GAME_HEAT_MULT
+	vPowCost: Size * 40
+
+	Provides: PolarizingFluxWeapon with Damage[vDamage], Deviation[0], Delay[vDelay], PowerUse[vPowCost], Duration[1], 
+		Range[vRange], Speed[vSpeed], wasteHeat[vWasteHeat]
+	
+	Requires:
+		To Run:
+			Control[25 * Size]
+
+	Hints: Alpha[vDamage], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Power[-1 * vPowCost / vDelay], Local/ProjSpeed[vSpeed], Local/Delay[vDelay], WasteHeat[vWasteHeat / vDelay]
+	
+
+System: DualPlasmaBlaster
+	Name: #SS_PLASMABLASTER_NAME
+	Description: #SS_PLASMABLASTER_DESC
+	Appearance: DualPlasmaBlaster
+
+	Available: Techs.ProjEnergy_Root.Level >= 0
+	Level: Techs.ProjEnergy_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, FighterWeapon, Require:FighterHull, EnergyWeapon
+	Tied To: ProjEnergy_Root 0
+	
+	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[25 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[35 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 1.5
+	
+	vDamage: Size * 70 * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT
+	vDelay: 0.8 * (1 + decay(pow(LEVEL_GAIN_CURVE, Level), 100)) * GAME_RELOAD_MULT
+	vRange: (80 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vSpeed: vRange * 0.75
+	vEffectiveRange: 0.7
+	vMinHit: 0.5
+	vMinDmg: 0.5
+	vWasteHeat: Size * 0.125 * min((1 + (sqrt(Size) / 20)), 3) * (1 / GAME_RELOAD_MULT) * GAME_HEAT_MULT
+	vPowCost: Size * 45
+
+	Provides: MiniPlasmaWeapon with Damage[vDamage], Delay[vDelay], PowerUse[vPowCost], Range[vRange], Speed[vSpeed],
+		effectiveRangeFactor[vEffectiveRange], minDamage[vMinDmg], minHitChance[vMinHit], wasteHeat[vWasteHeat]
+
+	Requires:
+		To Run:
+			Control[15 * Size]
+
+	Hints: Alpha[vDamage], Power[-1 * vPowCost / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/Delay[vDelay], Local/ProjSpeed[vSpeed], Local/EffRange[vEffectiveRange * vRange], Local/MinHit[vMinHit], Local/MinDmg[vMinDmg * vDamage], WasteHeat[vWasteHeat / vDelay]
+
+System: FighterParticleCannon
+	Name: #SS_FIGHTERPC_NAME
+	Description: #SS_FIGHTERPC_DESC
+	Appearance: FighterParticleCannon
+
+	Available: Techs.ProjEnergy_Root.Level >= 0
+	Level: Techs.ProjEnergy_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, FighterWeapon, Require:FighterBomber, EnergyWeapon
+	Tied To: ProjEnergy_Root 0
+	
+	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[35 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 2.0
+	
+	vDamage: Size * 160 * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT
+	vDelay: 2.4 * (1 + decay(pow(LEVEL_GAIN_CURVE, Level), 100)) * GAME_RELOAD_MULT
+	vRange: (140 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vSpeed: vRange * 0.75
+	vEffectiveRange: 0.7
+	vMinHit: 0.5
+	vMinDmg: 0.5
+	vWasteHeat: Size * 4.2 * min((1 + (sqrt(Size) / 20)), 3) * (1 / GAME_RELOAD_MULT) * GAME_HEAT_MULT
+	vPowCost: Size * 135
+
+	Provides: MiniParticleWeapon with Damage[vDamage], Delay[vDelay], PowerUse[vPowCost], Range[vRange], Speed[vSpeed],
+		effectiveRangeFactor[vEffectiveRange], minDamage[vMinDmg], minHitChance[vMinHit], wasteHeat[vWasteHeat]
+
+	Requires:
+		To Run:
+			Control[30 * Size]
+
+	Hints: Alpha[vDamage], Power[-1 * vPowCost / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/Delay[vDelay], Local/ProjSpeed[vSpeed], Local/EffRange[vEffectiveRange * vRange], Local/MinHit[vMinHit], Local/MinDmg[vMinDmg * vDamage], WasteHeat[vWasteHeat / vDelay]
+	

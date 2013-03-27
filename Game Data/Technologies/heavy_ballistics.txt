@@ -1,0 +1,45 @@
+
+Technology: Ballistics_Root
+	Name: #RS_BALLISTICS_ROOT_NAME
+	Description: #RS_BALLISTICS_ROOT_DESC
+	Icon: res_tech_2
+	Position: 0,1
+	
+	StartLevel: 1
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+	Link: Ballistics_Acquisition[1 * LINK_COST]
+	Link: Ballistics_Ammo[1 * LINK_COST]
+	Link: Ballistics_Payload[1 * LINK_COST]
+	
+Technology: Ballistics_Acquisition
+	Name: #RS_BALLISTICS_ACQUISITION_NAME
+	Description: #RS_BALLISTICS_ACQUISITION_DESC
+	Icon: res_tech_2
+	Position: 0,2
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+Technology: Ballistics_Ammo
+	Name: #RS_BALLISTICS_AMMO_NAME
+	Description: #RS_BALLISTICS_AMMO_DESC
+	Icon: res_tech_2
+	Position: -1,0
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+Technology: Ballistics_Payload
+	Name: #RS_BALLISTICS_PAYLOAD_NAME
+	Description: #RS_BALLISTICS_PAYLOAD_DESC
+	Icon: res_tech_2
+	Position: 1,0
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	

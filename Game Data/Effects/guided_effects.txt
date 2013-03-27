@@ -1,0 +1,73 @@
+Name: TeraTorpedoEvent
+	Value: Damage
+	
+	OnActive: GACombatWeapons::TeraTorpedoDmg
+
+Name: PhasedMissileEvent
+	Value: Damage
+	
+	OnActive: GACombatWeapons::PhasedMissileDmg
+
+Name: EMPDamageTrigger
+	Value: Damage
+	
+	OnActive: GACombatWeapons::EMPAreaDamageTrigger
+	
+Name: TriggeredEMPAreaDamage
+	Value: Damage
+	Value: AoE_Range
+	
+	OnActive: GACombatWeapons::EMPAreaDamageTriggered
+
+Name: ProjWeaponDmg
+	Value: Damage
+	
+	OnActive: 	GACombatWeapons::ProjWeaponDamage
+	
+Name: LargeBombDmg
+	Value: Damage
+	
+	OnActive: 	GACombatWeapons::LargeBombDamage
+	
+Name: TRayBomb
+	Value: Damage
+	
+	Tick:	GACombatWeapons::TRayBombDamage
+
+Name:	NaniteDoT
+	Value: Damage
+	
+	Tick: GACombatWeapons::NaniteDoT
+	
+Name: AntiFighterDmg
+	Value: Damage
+	Value: Cost
+	
+	OnActive:	GACombatWeapons::AntiFighterDamage
+
+Name: ParticleAreaDamageTrigger
+	Value: Damage
+	Value: wasteHeat
+
+	OnActive: GACombatWeapons::ParticleAreaDamageTriggerHeat
+	
+Name: TriggeredPFWAreaDamage
+	Value: AoE_Damage
+	Value: AoE_Range
+
+	OnActive: GACombatWeapons::PFWAreaDamageTriggered
+	
+Name: PFWAreaDamageTrigger
+	Value: Damage
+
+	OnActive: GACombatWeapons::PFWAreaDamageTrigger
+	
+Name:	ProjDamage
+	Value: Damage
+	
+	OnActive:	Combat::ProjDamage
+	
+Name:	ExplosiveDamage
+	Value: Damage
+	
+	OnActive:	Combat::ExplosiveDamage

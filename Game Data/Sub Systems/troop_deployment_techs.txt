@@ -1,0 +1,65 @@
+System: Bunker
+	Name: #SS_BUNKER_NAME
+	Description: #SS_BUNKER_DESC
+	Appearance: GeneralBuilding
+
+	Available: Techs.Troop_Root.Level >= 0
+	Level: Techs.Troop_Root.Level
+	
+	Size: Scale
+	Durability: 5000 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT			//was 12000 * size
+	Mass: 800 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	
+	Tags: Structure
+	Tied To: Troop_Root 0
+	
+	Costs: Metals[250 * Size * pow(COST_INC_CRV, Level)], Electronics[10 * Size * pow(COST_INC_CRV, Level)], AdvParts[10 * Size * pow(COST_INC_CRV, Level)]
+	Complexity: 2 * STRUCT_COMPLX_MULT
+	
+	vHousing: Size * 600000 * pow(0.5 + LEVEL_GAIN_CURVE / 2, Level)
+	vSoakDamage: Size * 300 * pow(LEVEL_GAIN_CURVE, Level) * max((LEVEL_GAIN_CURVE * (Level / 5)), 1)
+	vDR: pow(LEVEL_GAIN_CURVE, Level) * 15 * Size * PLANET_DAMAGERES_MULT
+	
+	Provides: GASoakDamage with
+		Amount[vSoakDamage]
+	
+	Provides: Housing with
+		Amount[vHousing]
+	
+	Provides: DamageResistance with Amount[vDR]
+
+	Hints: Housing[vHousing], Soak[vSoakDamage], DR[vDR], HP[Durability]
+	
+System: BoardingParty
+	Name: #SS_BOARDING_NAME
+	Description: #SS_BOARDING_DESC
+	Appearance: BoardingParty
+	Explosion: subsystem_destroyed
+
+	Available: Techs.Troop_Root.Level >= 0
+	Level: Techs.Troop_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, SpecWeapon, ChargedWeapon, Tool:BoardingParty, BoardingParty, NoModifiers
+	Tied To: Troop_Root 0
+
+	Costs: Metals[150 * Size * pow(SUBS_COST_CRV, Level)], Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 1.2
+	
+	vTroops: (2 - decay(Level,50)) * 4 * Size
+	vRange: ((80 + sqrt(Size) / 10) + sqrt(Size)) * (1 + (Level * (0.01 * WEAP_RANGE_CURVE))) * WEAP_RANGE_MULT
+	
+	Triggerable: PDEffect: PointDefenseTriggered
+
+	Provides: Boarding with Troops[vTroops], Range[vRange]
+	Provides: TroopQuarters with Amount[vTroops], Regen[vTroops * 0.010]
+
+	Requires:
+		To Run:
+			Control[10 * Size], Power[5 * Size], Air[20 * Size]
+	
+	Hints: Troops[vTroops], Local/ProjSpeed[12], Local/Delay[1/.010], Local/Range[vRange]

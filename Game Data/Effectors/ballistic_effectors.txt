@@ -1,0 +1,431 @@
+Effector: ProjWeapon
+	Value: Damage
+	Value: Delay
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	Value: effectiveRangeFactor
+	Value: minHitChance
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: bullet
+		GfxSize: 0.5
+		GfxColor: fff						//was fea
+		Sound: railgun
+		HitGfx: railgun_impact, 0.013
+		FireGfx: muzzleflash5, 0.025							//muzzleflash2, 0.025
+	
+	Causes: GAProjectileDmg lasting 0 with Damage[Damage], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minHitChance[minHitChance]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: TimedShot(Delay, "Ammo", AmmoUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+	
+
+Effector: TwinProjWeapon
+	Value: Damage
+	Value: ShotDelay
+	Value: Delay
+	Value: ClipSize
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: effectiveRangeFactor
+	Value: minHitChance
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage * ClipSize
+	
+	PhysicalType: Bullet
+		Material: bullet
+		GfxSize: 0.5
+		GfxColor: fff						//was fea
+		Sound: railgun
+		HitGfx: railgun_impact, 0.013
+		FireGfx: muzzleflash5, 0.025								//muzzleflash2, 0.025
+	
+	Causes: GAProjectileDmg lasting 0 with Damage[Damage], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minHitChance[minHitChance]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: MultiPulseCost(ShotDelay, Delay, ClipSize, "Ammo", AmmoUse)
+	Progress: MultiPulseProgress(ShotDelay, Delay)	
+	Tick: Reload
+
+	
+Effector: MuonWeapon
+	Value: Damage
+	Value: Delay
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	Value: effectiveRangeFactor
+	Value: minHitChance
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: muon
+		GfxSize: 0.4
+		GfxColor: fff						//86a
+		Sound: pfw
+		HitGfx: railgun_impact, 0.013
+		FireGfx: muzzleflash5, 0.025
+	
+	Causes: GAProjPierceDamage lasting 0 with Damage[Damage], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minHitChance[minHitChance]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: TimedShot(Delay, "Ammo", AmmoUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress	
+	
+	
+Effector: ProjWeapon2
+	Value: Damage
+	Value: ShotDelay
+	Value: Delay
+	Value: ClipSize
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: effectiveRangeFactor
+	Value: minHitChance
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage * ClipSize
+	
+	PhysicalType: Bullet
+		Material: auto_slug
+		GfxSize: 0.3
+		GfxColor: fff
+		Sound: autocannon
+		HitGfx: autocannon_impact, 0.007
+		FireGfx: muzzleflash5, 0.01
+	
+	Causes: GAProjectileDmg lasting 0 with Damage[Damage], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minHitChance[minHitChance]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: MultiPulseCost(ShotDelay, Delay, ClipSize, "Ammo", AmmoUse)
+	Progress: MultiPulseProgress(ShotDelay, Delay)	
+	Tick: Reload
+	
+
+Effector: GatlingGun
+	Value: Damage
+	Value: ShotDelay
+	Value: Delay
+	Value: ClipSize
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: effectiveRangeFactor
+	Value: minHitChance
+
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: magnetic_repeater_bullet				//gatling_salvo
+		GfxSize: 0.12
+		GfxColor: fff
+		HitGfx: autocannon_impact, 0.007
+		Sound: gatlinggun
+		FireGfx: muzzleflash_gatling, 0.1							//muzzleflash2, 0.01
+	
+	Causes: GAProjectileDmg lasting 0 with Damage[Damage], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minHitChance[minHitChance]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: MultiPulseCost(ShotDelay, Delay, ClipSize, "Ammo", AmmoUse)
+	Progress: MultiPulseProgress(ShotDelay, Delay)	
+	Tick: Reload
+		
+	
+Effector: FighterProjWeapon
+	Value: Damage
+	Value: Delay
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	Value: effectiveRangeFactor
+	Value: minHitChance
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: projectile_salvo
+		GfxSize: 1.0
+		GfxColor: fea
+		Sound: chaingun_salvo
+		HitGfx: autocannon_impact, 0.1
+		FireGfx: muzzleflash_burst, 0.01						//muzzleflash2, 0.025
+	
+	Causes: GAProjectileDmg lasting 0 with Damage[Damage], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minHitChance[minHitChance]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: TimedShot(Delay, "Ammo", AmmoUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+
+
+Effector: PhasedBullet
+	Value: Damage
+	Value: Delay
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	Value: effectiveRangeFactor
+	Value: minHitChance
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: hyper_bullet						//was thermal_bullet
+		GfxSize: 0.4
+		GfxColor: f4f
+		Sound: railgun
+		HitGfx: plasma_burst, 0.2					//laser_impact, 1.0
+		FireGfx: muzzleflash5, 0.025
+	
+	Causes: ArmorPiercingDmg lasting 0 with Damage[Damage], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minHitChance[minHitChance]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: TimedShot(Delay, "Ammo", AmmoUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+
+
+Effector: HyperBullet
+	Value: Damage
+	Value: Delay
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	Value: effectiveRangeFactor
+	Value: minHitChance
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: hyper_bullet
+		GfxSize: 0.66
+		GfxColor: fff
+		Sound: hyper_railgun
+		HitGfx: railgun_impact_heavy, 0.1
+		FireGfx: muzzleflash5, 0.075						//muzzleflash2, 0.075
+	
+	Causes: GAProjectileDmg lasting 0 with Damage[Damage], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minHitChance[minHitChance]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: TimedShot(Delay, "Ammo", AmmoUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+	
+
+Effector: TwinHyperBullet
+	Value: Damage
+	Value: ShotDelay
+	Value: Delay
+	Value: ClipSize
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: effectiveRangeFactor
+	Value: minHitChance
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage * ClipSize
+	
+	PhysicalType: Bullet
+		Material: hyper_bullet
+		GfxSize: 0.66
+		GfxColor: fff
+		Sound: hyper_railgun
+		HitGfx: railgun_impact_heavy, 0.1
+		FireGfx: muzzleflash5, 0.075					//muzzleflash2, 0.075
+	
+	Causes: GAProjectileDmg lasting 0 with Damage[Damage], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minHitChance[minHitChance]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: MultiPulseCost(ShotDelay, Delay, ClipSize, "Ammo", AmmoUse)
+	Progress: MultiPulseProgress(ShotDelay, Delay)	
+	Tick: Reload
+
+
+Effector: AssaultWeapon
+	Value: Damage
+	Value: ShotDelay
+	Value: Delay
+	Value: ClipSize
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: effectiveRangeFactor
+	Value: minHitChance
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage * ClipSize
+	
+	PhysicalType: Bullet
+		Material: anim_assault_bullet
+		GfxSize: 0.5
+		GfxColor: fff
+		Sound: assault_cannon
+		HitGfx: assault_cannon_impact, 0.1
+		FireGfx: assault_muzzleflash, 0.1
+	
+	Causes: GAShieldPiercingDmg lasting 0 with Damage[Damage], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minHitChance[minHitChance]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: MultiPulseCost(ShotDelay, Delay, ClipSize, "Ammo", AmmoUse)
+	Progress: MultiPulseProgress(ShotDelay, Delay)
+	Tick: Reload
+	
+	
+Effector: ArtilleryWeaponTrigger
+	Value: Damage
+	Value: AoE_Range
+	Value: Delay
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: anim_artillery_bullet					//was artillery_shell
+		GfxSize: 0.4
+		GfxColor: fff
+		Sound: artillery
+		HitGfx: fiery_blast2, 0.75
+		FireGfx: muzzle_flash_arty, 0.15							//muzzleflash2, 0.075
+	
+	Causes: AreaDamageTrigger lasting 0 with Damage[Damage]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::CheckArtyAoERangeAsMinRange
+	OnFire: TimedShot(Delay, "Ammo", AmmoUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+
+
+Effector: AntimatterBulletTrigger
+	Value: Damage
+	Value: AoE_Range
+	Value: Delay
+	Value: AmmoUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: anim_antimatter_bullet					//was artillery_shell
+		GfxSize: 0.2
+		GfxColor: fff
+		Sound: artillery
+		HitGfx: fusion_blast, 0.05
+		FireGfx: muzzleflash5, 0.075
+	
+	Causes: AreaDamageTrigger lasting 0 with Damage[Damage]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::CheckAoERangeAsMinRange
+	OnFire: TimedShot(Delay, "Ammo", AmmoUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress	
+	
+
+Effector: RelativisticWeapon
+	Value: Damage
+	Value: Delay
+	Value: AmmoUse
+	Value: Range
+	Value: Deviation
+	Value: effectiveRangeFactor
+	Value: minHitChance
+	
+	Range: Range
+	PotentialDamage: Damage
+
+	PhysicalType: Beam
+		Material: bullet_trail								//was bullet_trail
+		GfxSize: 0.2
+		GfxColor: dcf		//777 - 770
+		HitGfx: railgun_impact_heavy, 0.3
+		FireGfx: muzzleflash2, 0.025
+		Sound: gravitic_accelerator
+	
+	Causes: GAProjectileDmg lasting 1 with Damage[Damage], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minHitChance[minHitChance]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::isNotPlanet
+	OnFire: TimedShot(Delay, "Ammo", AmmoUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+	
+Effector: AsteroidMini
+	Value: Damage
+	Value: Delay
+	Value: AsteroidUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	Value: effectiveRangeFactor
+	Value: minHitChance	
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: asteroid
+		GfxSize: 0.2
+		GfxColor: fff
+		Sound: gravitic_accelerator
+		HitGfx: asteroid_impact_mini, 0.1
+			
+	Causes: GAProjectileDmg lasting 0 with Damage[Damage], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minHitChance[minHitChance]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack
+	OnFire: TimedShot(Delay, "Asteroids", AsteroidUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress	

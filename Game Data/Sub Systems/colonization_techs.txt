@@ -1,0 +1,46 @@
+System: Colonizer
+	Name: #SS_COLONIZER_NAME
+	Description: #SS_COLONIZER_DESC
+	Appearance: ColonyModule
+	Explosion: subsystem_destroyed
+
+	Tags: Colonizer, Tool:Colonizer, Order:Colonize   //Tool
+	Tied To: Col_Root 0
+	
+	Available: Techs.Col_Root.Level >= 0
+	Level: Techs.Col_Root.Level
+	
+	Size: max(Scale,15)
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Costs: Metals[50 * Size * pow(SUBS_COST_CRV, Level)], Electronics[12 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[12 * Size * pow(SUBS_COST_CRV, Level)]
+	Complexity: 1.5
+	
+	vStructures: Size / 15
+	
+	Tick Rate: 4
+	
+	Provides: TakePlanet
+	Provides: MakeStructures with Amount[vStructures]
+
+	Consumes:
+		To Run: Air[5 * Size * 0.99]
+	
+	Hints: Local/AddStructs[vStructures]
+	
+
+System: Terraforming
+	Name: #SS_TERRAFORM_NAME
+	Description: #SS_TERRAFORM_DESC
+	Appearance: GeneralBuilding
+
+	Available: Techs.Col_Root.Level >= 0
+	
+	Tags: Improvement, Terrestial, NoManualBuild, Former
+	Tied To: Col_Root 0
+	
+	Costs: Metals[200000 * TERRAFORM_COST_MULT], Electronics[100000 * TERRAFORM_COST_MULT], AdvParts[50000 * TERRAFORM_COST_MULT]
+	
+	vSlotIncrease: 4

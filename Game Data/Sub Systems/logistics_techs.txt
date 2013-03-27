@@ -1,0 +1,650 @@
+System: SpacePort
+	Name: #SS_SPACEPORT_NAME
+	Description: #SS_SPACEPORT_DESC
+	Appearance: GeneralBuilding
+
+	Available: Techs.Logistics_Root.Level >= 0
+	Level: Techs.Logistics_Root.Level
+	econLevel: Techs.Economics.Level
+	cargoLevel: Techs.Cargo.Level
+	
+	Size: Scale
+	Durability: 500 * Size * pow(LEVEL_GAIN_CURVE, econLevel) * PLANET_STRUCT_MULT
+	Mass: 400 * Size * pow(LEVEL_GAIN_CURVE, econLevel)
+	
+	Tags: Structure, ShipBay
+	Tied To: Logistics_Root 0
+	
+	Costs: Metals[200 * Size * pow(COST_INC_CRV, econLevel)], Electronics[80 * Size * pow(COST_INC_CRV, econLevel)], AdvParts[80 * Size * pow(COST_INC_CRV, econLevel)]
+	Complexity: 2 * STRUCT_COMPLX_MULT
+	
+	vEcoStore: Size * 5 * pow(LEVEL_GAIN_CURVE, cargoLevel)
+	vTrade: Size * 10 * pow((1 + 5 * (LEVEL_GAIN_CURVE-1) / 3), econLevel) * TRADE_RATE_MULT
+	vWorkers: Size * 600000
+	vShipBay: Size * 40 * pow(LEVEL_GAIN_CURVE, cargoLevel)
+	vEmpTrade: 	Size * 5 * pow((1 + 5 * (LEVEL_GAIN_CURVE-1) / 3), econLevel) * TRADE_RATE_MULT
+
+	Provides: Trade with
+		Rate[vTrade]
+		
+	Provides: EmpireTrade with Amount[vEmpTrade]
+	
+	Provides: ShipStorage with
+		Amount[vShipBay]
+
+	Provides: StructFuelStorage with
+		Amount[Size * 40 * pow(LEVEL_GAIN_CURVE, cargoLevel)]
+	
+	Provides: MetalStorage with
+		Amount[vEcoStore * 0.6]
+	
+	Provides: ElecStorage with
+		Amount[vEcoStore * 0.3]
+	
+	Provides: AdvPartsStorage with
+		Amount[vEcoStore * 0.2]
+	
+	Provides: FoodStorage with
+		Amount[vEcoStore * 0.1]
+	
+	Provides: NeedWorkers with
+		Workers[vWorkers]
+	
+	Hints: Workers[vWorkers * -1], ShipBay[vShipBay], TradeRate[vTrade], Fuel[Size * 50 * pow(LEVEL_GAIN_CURVE, Level)], HP[Durability]
+
+System: CargoBlock
+	Name: #SS_CARGOBLOCK_NAME
+	Description: #SS_CARGOBLOCK_DESC
+	Appearance: GeneralBuilding
+	
+	Available: Techs.Logistics_Root.Level >= 0
+	Level: Techs.Logistics_Root.Level
+	
+	Size: Scale
+	Durability: 200 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT
+	Mass: 250 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	
+	Tags: Structure
+	Tied To: Logistics_Root 0
+
+	Costs: Metals[75 * Size]
+	Complexity: 0.2 * STRUCT_COMPLX_MULT
+	
+	vWorkers: Size * 100000
+	vCargoStore: Size * 2000 * pow((1 + 6 * (LEVEL_GAIN_CURVE-1) / 5), Level)			//was Size * 750 *
+
+	//Provides: Cargo with
+		//Amount[vCargoStore / 2]
+		
+	Provides: StructAmmoStorage with
+		Amount[vCargoStore / 5]
+	
+	Provides: MetalStorage with
+		Amount[vCargoStore * 0.6]
+	
+	Provides: ElecStorage with
+		Amount[vCargoStore * 0.3]
+	
+	Provides: AdvPartsStorage with
+		Amount[vCargoStore * 0.2]
+	
+	Provides: FoodStorage with
+		Amount[vCargoStore * 0.1]
+	
+	Requires:
+		To Run:
+			Workers[vWorkers]
+	
+	Hints: Workers[vWorkers * -1], AdvStore[vCargoStore * 0.2], ElecStore[vCargoStore * 0.3], MtlStore[vCargoStore * 0.6], FoodStore[vCargoStore * 0.1], Ammo[vCargoStore/5], HP[Durability]		//was Cargo[vCargoStore/2],
+	
+System: FuelCell
+	Name: #SS_FUELCELL_NAME
+	Description: #SS_FUELCELL_DESC
+	Appearance: FuelCell
+	Explosion: fuel_cell_explode
+	
+	Tags: Storage:Fuel, Storage
+	Tied To: Logistics_Root 0
+
+	Available: Techs.Logistics_Root.Level >= 0
+	Level: Techs.Logistics_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 80 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 15 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	vFuelStore: Size * 200 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
+	
+	Costs: Metals[150 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Fuel[vFuelStore]
+	Complexity: 0.4
+	
+	Tick Rate: 1
+	
+	Provides: FuelStorage with
+		Amount[vFuelStore]
+		
+	Hints: Fuel[vFuelStore]
+
+	
+System: BigFuelCell
+	Name: #SS_HDFUELCELL_NAME
+	Description: #SS_HDFUELCELL_DESC
+	Appearance: HDFuelStorage
+	Explosion: fuel_cell_explode
+	
+	Tags: Storage:Fuel, Storage
+	Tied To: Logistics_Root 0
+
+	Available: Techs.Logistics_Root.Level >= 0
+	Level: Techs.Logistics_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 20 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 20 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	vFuelStore: Size * 400 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
+	
+	Costs: Metals[150 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Fuel[vFuelStore]
+	Complexity: 0.6
+	
+	Tick Rate: 1
+	
+	Provides: FuelStorage with
+		Amount[vFuelStore]
+	
+	Provides: ExplodesShip
+	
+	Triggerable: Detonation: ShipExplosion with Damage[2 * vFuelStore *  GAME_DAMAGE_MULT], Accuracy[0.5], Range[sqrt(Size) * 3]
+	
+	Hints: Fuel[vFuelStore], Local/SelfDestruct[2 * vFuelStore * GAME_DAMAGE_MULT], Local/NovaRange[sqrt(Size) * 3]
+	
+
+System: AmmoStorage
+	Name: #SS_AMMOCACHE_NAME
+	Description: #SS_AMMOCACHE_DESC
+	Appearance: Ammocache
+	Explosion: fuel_cell_explode
+
+	Tags: Storage:Ammo, Restrict:FighterBomber, Storage
+	Tied To: Logistics_Root 0
+
+	Available: Techs.Logistics_Root.Level >= 0
+	Level: Techs.Logistics_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 120 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	vAmmoStore: Size * 125 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
+	
+	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], Labr[2 * Size], Ammo[vAmmoStore]
+	Complexity: 0.4
+	
+	Tick Rate: 1
+		
+	Provides: AmmoStorage with
+		Amount[vAmmoStore]
+		
+	Hints: Ammo[vAmmoStore]
+	
+
+System: BigAmmoStorage
+	Name: #SS_HDAMMOCACHE_NAME
+	Description: #SS_HDAMMOCACHE_DESC
+	Appearance: HDAmmoStorage
+	Explosion: fuel_cell_explode
+
+	Tags: Storage:Ammo, Restrict:FighterBomber, Storage
+	Tied To: Logistics_Root 0
+
+	Available: Techs.Logistics_Root.Level >= 0
+	Level: Techs.Logistics_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 30 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 60 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	vAmmoStore: Size * 250 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
+	
+	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], Labr[2 * Size], Ammo[vAmmoStore]
+	Complexity: 0.6
+	
+	Tick Rate: 1
+		
+	Provides: AmmoStorage with
+		Amount[vAmmoStore]
+	
+	Provides: ExplodesShip
+	
+	Triggerable: Detonation: ShipExplosion with Damage[2 * vAmmoStore * GAME_DAMAGE_MULT], Accuracy[0.5], Range[sqrt(Size) * 4]
+	
+	Hints: Ammo[vAmmoStore], Local/SelfDestruct[2 * vAmmoStore * GAME_DAMAGE_MULT], Local/NovaRange[sqrt(Size) * 4]
+	
+
+System: CargoBay
+	Name: #SS_CARGOBAY_NAME
+	Description: #SS_CARGOBAY_DESC
+	Appearance: Storage
+	Explosion: subsystem_destroyed
+	
+	Tags: CargoBay, Storage:Cargo, Storage, Storage:Resources
+	Tied To: Logistics_Root 0
+	
+	Available: Techs.Logistics_Root.Level >= 0
+	Level: Techs.Logistics_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 20 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 15 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Labr[2 * Size]
+	Complexity: 0.2
+	
+	Tick Rate: 1
+
+	vCargoStore: Size * 80 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))		//was Size * 60
+	
+	Provides: Cargo with
+		Amount[vCargoStore]
+
+	Hints: Cargo[vCargoStore]
+
+System: CargoMetal
+	Name: #SS_CARGOMETAL_NAME
+	Description: #SS_CARGOMETAL_DESC
+	Appearance: CargoMetal
+	Explosion: subsystem_destroyed
+	
+	Tags: Storage:Metal, Storage, CargoBay, Storage:Resources
+	Tied To: Logistics_Root 0
+	
+	Available: Techs.Logistics_Root.Level >= 0
+	Level: Techs.Logistics_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 20 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 15 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Labr[2 * Size]
+	Complexity: 0.2
+	
+	Tick Rate: 1
+
+	vCargoStore: Size * 100 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))		//was Size * 60
+	
+	Provides: MetalStorage with
+		Amount[vCargoStore]
+
+	Hints: MtlStore[vCargoStore]
+
+System: CargoElec
+	Name: #SS_CARGOELEC_NAME
+	Description: #SS_CARGOELEC_DESC
+	Appearance: CargoElec
+	Explosion: subsystem_destroyed
+	
+	Tags: Storage:Electronics, Storage, CargoBay, Storage:Resources
+	Tied To: Logistics_Root 0
+	
+	Available: Techs.Logistics_Root.Level >= 0
+	Level: Techs.Logistics_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 20 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 15 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Labr[2 * Size]
+	Complexity: 0.2
+	
+	Tick Rate: 1
+
+	vCargoStore: Size * 100 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))		//was Size * 60
+	
+	Provides: ElecStorage with
+		Amount[vCargoStore]
+
+	Hints: ElecStore[vCargoStore]
+	
+System: CargoAdvParts
+	Name: #SS_CARGOADVPARTS_NAME
+	Description: #SS_CARGOADVPARTS_DESC
+	Appearance: CargoAdvParts
+	Explosion: subsystem_destroyed
+	
+	Tags: Storage:AdvParts, Storage, CargoBay, Storage:Resources
+	Tied To: Logistics_Root 0
+	
+	Available: Techs.Logistics_Root.Level >= 0
+	Level: Techs.Logistics_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 20 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 15 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Labr[2 * Size]
+	Complexity: 0.2
+	
+	Tick Rate: 1
+
+	vCargoStore: Size * 100 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))		//was Size * 60
+	
+	Provides: AdvPartsStorage with
+		Amount[vCargoStore]
+
+	Hints: AdvStore[vCargoStore]			
+	
+System: Exporter
+    Name: #SS_EXPORTER_NAME
+    Description: #SS_EXPORTER_DESC
+
+    Appearance: ExportBay
+	Explosion: subsystem_destroyed
+    
+	Tied To: Logistics_Root 0
+    Tags: BankAccess
+    
+	Available: Techs.Logistics_Root.Level >= 0
+	Level: Techs.Logistics_Root.Level
+	
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 30 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 15 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+    Costs: Metals[80 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size]
+    
+    Tick Rate: 4
+
+    vCargoStore: Size * 10 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
+    vRate: Size * 4 * pow(LEVEL_GAIN_CURVE, Level)   // how does this behave when trait no_bank is selected?
+    
+    Provides: StructAmmoStorage with
+        Amount[vCargoStore * 0.175]
+    
+    Provides: StructFuelStorage with
+        Amount[vCargoStore * 0.175]
+    
+    Provides: AdvPartsStorage with
+        Amount[vCargoStore * 0.175]
+    
+    Provides: ElecStorage with
+        Amount[vCargoStore * 0.175]
+    
+    Provides: MetalStorage with
+        Amount[vCargoStore * 0.3]
+
+    Provides: GABankExport with Amount[vRate], Mode[0]
+
+    Requires:
+        To Run: Control[10 * Size]
+
+    Hints: EcoStore[vCargoStore], Local/BankExport[vRate]
+    
+System: MetalExporter
+    Name: #SS_MTL_EXPORTER_NAME
+    Description: #SS_MTL_EXPORTER_DESC
+
+    Appearance: ExportBayMetal
+	Explosion: subsystem_destroyed
+    
+	Tied To: Logistics_Root 0
+    Tags: BankAccess
+    
+	Available: Techs.Logistics_Root.Level >= 0
+	Level: Techs.Logistics_Root.Level
+	
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 30 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 15 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+    Costs: Metals[80 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size]
+    
+    Tick Rate: 4
+
+    vCargoStore: Size * 10 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
+    vRate: Size * 1 * pow(LEVEL_GAIN_CURVE, Level)   // how does this behave when trait no_bank is selected?
+    
+    
+    Provides: MetalStorage with
+        Amount[vCargoStore]
+
+    Provides: GABankExport with Amount[vRate], Mode[1]
+
+    Requires:
+        To Run: Control[10 * Size]
+
+    Hints: MtlStore[vCargoStore], Local/BankExport[vRate]
+
+System: ElectsExporter
+    Name: #SS_ELC_EXPORTER_NAME
+    Description: #SS_ELC_EXPORTER_DESC
+
+    Appearance: ExportBayElecs
+	Explosion: subsystem_destroyed
+    
+	Tied To: Logistics_Root 0
+    Tags: BankAccess
+    
+	Available: Techs.Logistics_Root.Level >= 0
+	Level: Techs.Logistics_Root.Level
+	
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 30 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 15 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+    Costs: Metals[80 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size]
+    
+    Tick Rate: 4
+
+    vCargoStore: Size * 10 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
+    vRate: Size * 1 * pow(LEVEL_GAIN_CURVE, Level)   // how does this behave when trait no_bank is selected?
+    
+    Provides: ElecStorage with
+        Amount[vCargoStore]
+    
+    Provides: GABankExport with Amount[vRate], Mode[2]
+
+    Requires:
+        To Run: Control[10 * Size]
+
+    Hints: ElecStorage[vCargoStore], Local/BankExport[vRate]
+
+System: PartsExporter
+    Name: #SS_PART_EXPORTER_NAME
+    Description: #SS_PART_EXPORTER_DESC
+
+    Appearance: ExportBayParts
+	Explosion: subsystem_destroyed
+    
+	Tied To: Logistics_Root 0
+    Tags: BankAccess
+    
+	Available: Techs.Logistics_Root.Level >= 0
+	Level: Techs.Logistics_Root.Level
+	
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 30 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 15 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+    Costs: Metals[80 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size]
+    
+    Tick Rate: 4
+
+    vCargoStore: Size * 10 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
+    vRate: Size * 1 * pow(LEVEL_GAIN_CURVE, Level)   // how does this behave when trait no_bank is selected?
+    
+    Provides: AdvPartsStorage with
+        Amount[vCargoStore]
+    
+    Provides: GABankExport with Amount[vRate], Mode[3]
+
+    Requires:
+        To Run: Control[10 * Size]
+
+    Hints: AdvStore[vCargoStore], Local/BankExport[vRate]    
+    
+System: Importer
+    Name: #SS_IMPORTER_NAME
+    Description: #SS_IMPORTER_DESC
+
+    Appearance: ExportBay
+	Explosion: subsystem_destroyed
+    
+	Tied To: Logistics_Root 0
+    Tags: BankAccess, ImportBay
+    
+	Available: Techs.Logistics_Root.Level >= 0
+	Level: Techs.Logistics_Root.Level
+	
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 30 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 15 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+    Costs: Metals[80 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size]
+    
+    Tick Rate: 4
+
+    vCargoStore: Size * 10 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
+    vRate: Size * 6 * pow(LEVEL_GAIN_CURVE, Level)
+
+    Provides: StructAmmoStorage with
+        Amount[vCargoStore * 0.175]
+    
+    Provides: StructFuelStorage with
+        Amount[vCargoStore * 0.175]
+    
+    Provides: AdvPartsStorage with
+        Amount[vCargoStore * 0.175]
+    
+    Provides: ElecStorage with
+        Amount[vCargoStore * 0.175]
+    
+    Provides: MetalStorage with
+        Amount[vCargoStore * 0.3]
+        
+    Provides: BankImport with Rate[vRate]
+    
+    Requires:
+        To Run: Control[10 * Size]
+
+    Hints: EcoStore[vCargoStore], Local/ImportTrade[vRate]
+    
+System: AmmoFabricator
+    Name: #SS_AMMOFAB_NAME
+    Description: #SS_AMMOFAB_DESC
+    Appearance: AmmoImporter
+    Explosion: fuel_cell_explode
+
+	Available: Techs.Logistics_Root.Level >= 0
+	Level: Techs.Logistics_Root.Level
+	
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 40 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 100 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+    Tags: BankAccess, Restrict:FighterBomber, Storage:Ammo
+	Tied To: Logistics_Root 0
+   
+    Costs: Metals[500 * Size * pow(SUBS_COST_CRV, Level)], Electronics[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[100 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size], Ammo[Size * 25 * (2 - decay(pow(LEVEL_GAIN_CURVE, Level), 35))]
+    Complexity: 10
+   
+    Tick Rate: 2
+      
+    vAmmoRate: Size * 2 * (2 - (decay(pow(LEVEL_GAIN_CURVE,Level), 35)))                                            //was Level), 25)
+    vAmmoStore: Size * 25 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
+
+    Provides: AmmoImport with
+        Rate[vAmmoRate]
+    
+    Provides: AmmoStorage with
+        Amount[vAmmoStore]
+        
+    Requires:
+    To Run:
+    Control[10 * Size]
+         
+    Hints: AmmoUse[vAmmoRate], Ammo[vAmmoStore]    
+	
+
+
+System: FuelDepot
+	Name: #SS_FUELDEPOT_NAME
+	Description: #SS_FUELDEPOT_DESC
+	Appearance: GeneralBuilding
+
+	Available: Techs.Logistics_Root.Level >= 0
+	Level: Techs.Logistics_Root.Level
+	
+	Size: Scale
+	Durability: 500 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT
+	Mass: 400 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	
+	Tags: Structure
+	Tied To: Logistics_Root 0
+	
+	Costs: Metals[200 * Size * pow(COST_INC_CRV, Level)], Electronics[80 * Size * pow(COST_INC_CRV, Level)], AdvParts[80 * Size * pow(COST_INC_CRV, Level)]
+	Complexity: 1 * STRUCT_COMPLX_MULT
+	
+	vWorkers: Size * 600000
+	vFuelRate: Size * 1.2 * (pow(LEVEL_GAIN_CURVE, Level) + RES_BASE_FACT) * RES_GEN_MULT * 0.5
+	vFuelStore: Size * 50 * pow(LEVEL_GAIN_CURVE, Level)
+
+	Provides: BuildFuel with
+		Rate[vFuelRate]
+		
+	Provides: StructFuelStorage with
+		Amount[vFuelStore]		//was Size * 750 *
+	
+	Requires:
+		To Run:
+			Workers[vWorkers]
+	
+	Hints: Workers[vWorkers * -1], Fuel[vFuelStore], FuelFab[vFuelRate], HP[Durability]
+	
+
+System: AmmoDepot
+	Name: #SS_AMMODEPOT_NAME
+	Description: #SS_AMMODEPOT_DESC
+	Appearance: GeneralBuilding
+
+	Available: Techs.Logistics_Root.Level >= 0
+	Level: Techs.Logistics_Root.Level
+	
+	Size: Scale
+	Durability: 500 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT
+	Mass: 400 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	
+	Tags: Structure
+	Tied To: Logistics_Root 0
+	
+	Costs: Metals[200 * Size * pow(COST_INC_CRV, Level)], Electronics[80 * Size * pow(COST_INC_CRV, Level)], AdvParts[80 * Size * pow(COST_INC_CRV, Level)]
+	Complexity: 1 * STRUCT_COMPLX_MULT
+	
+	vWorkers: Size * 600000
+	vAmmoRate: Size * 2.6 * (pow(LEVEL_GAIN_CURVE, Level) + RES_BASE_FACT) * RES_GEN_MULT * 0.5
+	vAmmoStore: Size * 50 * pow(LEVEL_GAIN_CURVE, Level)
+
+	Provides: BuildAmmo with
+		Rate[vAmmoRate]
+	
+	Provides: StructAmmoStorage with
+		Amount[vAmmoStore]		//was Size * 750 *
+	
+	Requires:
+		To Run:
+			Workers[vWorkers]
+	
+	Hints: Workers[vWorkers * -1], Ammo[vAmmoStore], AmmoFab[vAmmoRate], HP[Durability]

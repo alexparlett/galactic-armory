@@ -1,0 +1,297 @@
+//    Variables Used
+//
+//////////////////////////
+//
+//    vDamage - All Types of Damage
+//    vDelay - Reload Time
+//    vDeviation
+//    vPowCost - Power Costs
+//    vRange - Weapons Range ONLY! Not used for AoE Effect Range
+//    vEffectiveRange - Effective Range
+//    vMinDmg - Lowest Damage
+//    vWasteHeat - Heat Needed
+//    vAoE_Range - Range AoE Weapons Effect
+//    vRequiredCharge - Charge needed for Charge to Fire
+//    vSpeed - Weapon Speed
+//     vMinHit - Minimum Hit Chance
+//     vAccuracy - Hit Chance
+//
+//////////////////////////
+
+System: TorpedoBay
+    Name: #SS_TORPEDOBAY_NAME
+    Description: #SS_TORPEDOBAY_DESC
+    Appearance: TorpedoBay
+	Explosion: subsystem_destroyed
+
+    Available: Techs.Torpedo_Root.Level >= 0
+    Level: Techs.Torpedo_Root.Level
+	
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    
+    Tags: Weapon, MissileWeapon, Torpedo
+	Tied To: Torpedo_Root 0
+
+    Costs: Metals[150 * Size * pow(SUBS_COST_CRV, Level)], Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[Size * 25]
+    Complexity: 1.2
+    
+    vDamage: Size * 120 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT                        //was 80
+    vDelay: 5.0 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+    vRange: (240 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+    vSpeed: (vRange * 0.1) * MISSILE_PROJ_FACTOR + progress(6,2*LEVEL_GAIN_CURVE,Level)
+    vDeviation: 0.1
+    vAmmoUse: 2 * Size
+    
+    Triggerable: PDEffect: PointDefenseTriggered
+    
+    Provides: Torpedo with Damage[vDamage], Delay[vDelay], AmmoUse[vAmmoUse], Range[vRange], Speed[vSpeed], Deviation[vDeviation]
+
+    Provides: AmmoStorage with Amount[Size * 25]
+
+    Requires:
+        To Run:
+            Control[10 * Size]
+    
+    Hints: Alpha[vDamage], Ammo[Size * 25], AmmoUse[(-1 * vAmmoUse) / vDelay], Local/AmmoperShot[-1 * vAmmoUse], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]
+
+System: NaniteTorpedoBay
+    Name: #SS_NANITETORP_NAME
+    Description: #SS_NANITETORP_DESC
+    Appearance: NaniteTorpedoLauncher
+	Explosion: subsystem_destroyed
+
+    Available: Techs.Torpedo_Root.Level >= 0
+    Level: Techs.Torpedo_Root.Level
+	
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    
+    Tags: Weapon, MissileWeapon, Torpedo
+	Tied To: Torpedo_Root 0
+
+    Costs: Metals[150 * Size * pow(SUBS_COST_CRV, Level)], Electronics[60 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[35 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[Size * 25]
+    Complexity: 1.8
+    
+    vDamage: Size * 44 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT        //was Size * 36
+    vDelay: 5.0 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+    vRange: (240 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+    vSpeed: (vRange * 0.1) * MISSILE_PROJ_FACTOR + progress(6,2*LEVEL_GAIN_CURVE,Level)
+    vDeviation: 0.1
+    vAmmoUse: 2 * Size
+    
+    Triggerable: PDEffect: PointDefenseTriggered
+    
+    Provides: NaniteTorpedo with Damage[vDamage], Delay[vDelay], AmmoUse[vAmmoUse], Range[vRange], Speed[vSpeed], Deviation[vDeviation]
+
+    Provides: AmmoStorage with Amount[Size * 25]
+
+    Requires:
+        To Run:
+            Control[13 * Size]
+    
+    Hints: Alpha[vDamage * 4], Ammo[Size * 25], AmmoUse[(-1 * vAmmoUse) / vDelay], Local/AmmoperShot[-1 * vAmmoUse], DPS[(vDamage * 4)/ vDelay], Local/Range[vRange], Local/DMGperShot[vDamage * 4], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]
+
+
+System: FusionTorpedoBay
+    Name: #SS_FUSIONTORPEDO_NAME
+    Description: #SS_FUSIONTORPEDO_DESC
+    Appearance: FusionTorpedoLauncher
+    Explosion: antimatter_boom2 centered lasting 1.0
+
+    Available: Techs.Torpedo_Root.Level >= 0
+    Level: Techs.Torpedo_Root.Level
+	
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    
+    Tags: Weapon, MissileWeapon, Torpedo, WMD
+	Tied To: Torpedo_Root 0
+
+    Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], Electronics[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[150 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size], Ammo[Size * 25]
+    Complexity: 3
+    
+    vDamage: Size * 160 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT                //was 100
+    vAoE_Range: min((Size/100) + (30 + sqrt(Size)), (90 * (1 + (Level * 0.05))))                                                                                    //was min(10 + ((Size / 4) * 0.5 * pow(LEVEL_GAIN_CURVE, Level)), 65)
+    vDelay: 8.0 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+    vDeviation: 0.1
+    vRange:((240 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+    vSpeed: (vRange * 0.1) * MISSILE_PROJ_FACTOR + progress(6,2*LEVEL_GAIN_CURVE,Level)
+    vAmmoUse: 5 * Size
+
+    Provides: AoETorpedoTrigger with Damage[vDamage], AoE_Range[vAoE_Range], Delay[vDelay], AmmoUse[vAmmoUse], Range[vRange], Speed[vSpeed], Deviation[vDeviation]
+    
+    Triggerable: AreaDamage: AreaDamageTriggered with AoE_Damage[vDamage], AoE_Range[vAoE_Range]
+
+    Provides: AmmoStorage with Amount[Size * 25]
+    
+    Provides: ExplodesShip
+    
+    Triggerable: Detonation: ShipExplosion with Damage[vDamage * 2], Accuracy[0.75], Range[sqrt(Size) * 7]
+
+    Requires:
+        To Run:
+            Control[20 * Size]
+    
+    Hints: Alpha[vDamage], Ammo[Size * 25], AmmoUse[(-1 * vAmmoUse) / vDelay], Local/AmmoperShot[-1 * vAmmoUse], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/AoERange[vAoE_Range], Local/ProjSpeed[vSpeed], Local/Delay[vDelay], Local/SelfDestruct[vDamage * 2], Local/NovaRange[sqrt(Size) * 7]
+
+System: HeavyTorpedo
+    Name: #SS_HEAVYTORPEDO_NAME
+    Description: #SS_HEAVYTORPEDO_DESC
+    Appearance: HeavyTorpedo
+	Explosion: subsystem_destroyed
+
+    Available: Techs.Torpedo_Root.Level >= 0
+    Level: Techs.Torpedo_Root.Level
+	
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 120 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    
+    Tags: Weapon, MissileWeapon, Torpedo
+	Tied To: Torpedo_Root 0
+
+    Costs: Metals[250 * Size * pow(SUBS_COST_CRV, Level)], Electronics[75 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[Size * 25]
+    Complexity: 2
+    
+    vDamage: Size * 200 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT                    //was 180
+    vDelay: 12.0 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+    vRange: (400 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT                        //was 320
+    vSpeed: (vRange * 0.05) * MISSILE_PROJ_FACTOR + progress(4,2*LEVEL_GAIN_CURVE,Level)
+    vDeviation: 0.1
+    vAmmoUse: 5 * Size
+    
+    Triggerable: PDEffect: PointDefenseTriggered
+    
+    Provides: HeavyTorpedo with Damage[vDamage], Delay[vDelay], AmmoUse[vAmmoUse], Range[vRange], Speed[vSpeed], Deviation[vDeviation]
+
+    Provides: AmmoStorage with Amount[Size * 25]
+
+    Requires:
+        To Run:
+            Control[20 * Size]
+    
+    Hints: Alpha[vDamage], Ammo[Size * 25], AmmoUse[(-1 * vAmmoUse) / vDelay], Local/AmmoperShot[-1 * vAmmoUse], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]    
+
+System: TerahertzTorpedo
+    Name: #SS_TERAHERTZBAY_NAME
+    Description: #SS_TERAHERTZBAY_DESC
+    Appearance: TeraTorpedo
+	Explosion: subsystem_destroyed
+
+    Available: Techs.Torpedo_Root.Level >= 0
+    Level: Techs.Torpedo_Root.Level
+	
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    
+    Tags: Weapon, MissileWeapon, Torpedo
+	Tied To: Torpedo_Root 0
+
+    Costs: Metals[150 * Size * pow(SUBS_COST_CRV, Level)], Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[Size * 25]
+    Complexity: 1.2
+    
+    vDamage: (Size * 120 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT) * 0.66                    //was 80
+    vDelay: 5.0 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+    vRange: (240 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+    vSpeed: (vRange * 0.1) * MISSILE_PROJ_FACTOR + progress(6,2*LEVEL_GAIN_CURVE,Level)
+    vDeviation: 0.1
+    vAmmoUse: 2 * Size
+    
+    Triggerable: PDEffect: PointDefenseTriggered
+    
+    Provides: TeraTorpedo with Damage[vDamage], Delay[vDelay], AmmoUse[vAmmoUse], Range[vRange], Speed[vSpeed], Deviation[vDeviation]
+
+    Provides: AmmoStorage with Amount[Size * 25]
+
+    Requires:
+        To Run:
+            Control[10 * Size]
+    
+    Hints: Alpha[vDamage], Ammo[Size * 25], AmmoUse[(-1 * vAmmoUse) / vDelay], Local/AmmoperShot[-1 * vAmmoUse], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]
+	
+
+System: FighterTorpedo
+	Name: #SS_FTORPEDO_NAME
+	Description: #SS_FTORPEDO_DESC
+	Appearance: FighterTorpedo
+
+    Available: Techs.Torpedo_Root.Level >= 0
+    Level: Techs.Torpedo_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, FighterWeapon, Require:FighterBomber, Torpedo , WarheadWeapon
+	Tied To: Torpedo_Root 0
+
+	vDamage: Size * 430 * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT
+	vDelay: 7.0 * (max(5, 10 * decay(pow(LEVEL_GAIN_CURVE,Level),15) * decay(Size,50))) * GAME_RELOAD_MULT
+	vRange: (150 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vSpeed: (vRange * 0.2) + progress(5,2*LEVEL_GAIN_CURVE,Level)
+	vAmmoStorage: Size * 24 * (1 + (0.2 * Level))
+	
+	Costs: Metals[180 * Size * pow(SUBS_COST_CRV, Level)], Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[vAmmoStorage]
+	Complexity: 1.2	
+	
+	Triggerable: PDEffect: PointDefenseTriggered
+	
+	Provides: Torpedo with Damage[vDamage], Deviation[0], Delay[vDelay], AmmoUse[12 * Size], Range[vRange], Speed[vSpeed]
+
+	Provides: AmmoStorage with Amount[vAmmoStorage]
+
+	Requires:
+		To Run:
+			Control[10 * Size]
+	
+	Hints: Alpha[vDamage], Ammo[vAmmoStorage], AmmoUse[(-12 * Size) / vDelay], Local/AmmoperShot[-12 * Size], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]
+	
+	
+
+System: BomberHeavyTorpedo
+	Name: #SS_BOMBERTORPEDO_NAME
+	Description: #SS_BOMBERTORPEDO_DESC
+	Appearance: BomberHeavyTorpedo
+
+    Available: Techs.Torpedo_Root.Level >= 0
+    Level: Techs.Torpedo_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 100 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, BomberWeapon, Require:BomberHull, Torpedo , WarheadWeapon
+	Tied To: Torpedo_Root 0
+	
+	vDamage: Size * 1600 * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT
+	vDelay: 14.0 * (max(5, 10 * decay(pow(LEVEL_GAIN_CURVE,Level),15) * decay(Size,50))) * GAME_RELOAD_MULT
+	vRange: (270 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vSpeed: (vRange * 0.1) + progress(6,2*LEVEL_GAIN_CURVE,Level)
+	vAmmoStorage: Size * 24 * (1 + (0.2 * Level))
+	
+	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[vAmmoStorage]
+	Complexity: 2
+	
+	Triggerable: PDEffect: PointDefenseTriggered
+	
+	Provides: HeavyTorpedo with Damage[vDamage], Deviation[0], Delay[vDelay], AmmoUse[24 * Size], Range[vRange], Speed[vSpeed]
+
+	Provides: AmmoStorage with Amount[vAmmoStorage]
+
+	Requires:
+		To Run:
+			Control[10 * Size]
+	
+	Hints: Alpha[vDamage], Ammo[vAmmoStorage], AmmoUse[(-24 * Size) / vDelay], Local/AmmoperShot[-24 * Size], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]

@@ -1,0 +1,45 @@
+
+Technology: Engi_Root
+	Name: #RS_ENGI_ROOT_NAME
+	Description: #RS_ENGI_ROOT_DESC
+	Icon: engineering_root
+	Position: 0,-1
+	
+	StartLevel: 1
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+	Link: Engi_LifeSupport[1 * LINK_COST]
+	Link: Engi_Comp[1 * LINK_COST]
+	Link: Engi_Workload[1 * LINK_COST]
+	
+Technology: Engi_LifeSupport
+	Name: #RS_ENGI_LIFESUPPORT_NAME
+	Description: #RS_ENGI_LIFESUPPORT_DESC
+	Icon: engineering_life_support
+	Position: 0,-2
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+Technology: Engi_Comp
+	Name: #RS_ENGI_COMP_NAME
+	Description: #RS_ENGI_COMP_DESC
+	Icon: engineering_computers
+	Position: -1,-2
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+Technology: Engi_Workload
+	Name: #RS_ENGI_WORKLOAD_NAME
+	Description: #RS_ENGI_WORKLOAD_DESC
+	Icon: engineering_optimization
+	Position: 1,-2
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	

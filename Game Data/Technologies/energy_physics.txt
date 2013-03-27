@@ -1,0 +1,45 @@
+
+Technology: Energy_Root
+	Name: #RS_ENERGY_ROOT_NAME
+	Description: #RS_ENERGY_ROOT_DESC
+	Icon: energy_physics_root
+	Position: -1,0
+	
+	StartLevel: 1
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+	Link: Energy_Cap[1 * LINK_COST]
+	Link: Energy_Thermal[1 * LINK_COST]
+	Link: Energy_Efficiency[1 * LINK_COST]
+	
+Technology: Energy_Cap
+	Name: #RS_ENERGY_CAP_NAME
+	Description: #RS_ENERGY_CAP_DESC
+	Icon: energy_physics_accumulation
+	Position: -2,1
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+Technology: Energy_Thermal
+	Name: #RS_ENERGY_THERMAL_NAME
+	Description: #RS_ENERGY_THERMAL_DESC
+	Icon: energy_physics_thermal
+	Position: -2,0
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+Technology: Energy_Efficiency
+	Name: #RS_ENERGY_EFFICIENCY_NAME
+	Description: #RS_ENERGY_EFFICIENCY_DESC
+	Icon: energy_physics_efficiency
+	Position: -1,1
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	

@@ -1,0 +1,539 @@
+//    Variables Used
+//
+//////////////////////////
+//
+//    vDamage - All Types of Damage
+//    vDelay - Reload Time
+//    vDeviation
+//    vPowCost - Power Costs
+//    vRange - Weapons Range ONLY! Not used for AoE Effect Range
+//    vEffectiveRange - Effective Range
+//    vMinDmg - Lowest Damage
+//    vWasteHeat - Heat Needed
+//    vAoE_Range - Range AoE Weapons Effect
+//    vRequiredCharge - Charge needed for Charge to Fire
+//    vSpeed - Weapon Speed
+//     vMinHit - Minimum Hit Chance
+//     vAccuracy - Hit Chance
+//
+//////////////////////////
+
+    
+System: Artillery
+    Name: #SS_ARTILLERY_NAME
+    Description: #SS_ARTILLERY_DESC
+    Appearance: GAArtillery
+	Explosion: subsystem_destroyed
+
+    Available: Techs.Ballistics_Root.Level >= 0
+    Level: Techs.Ballistics_Root.Level
+	
+    Size: if(Object.Scale >= 10, Scale * 2, ((Scale * 2) + (20 / Object.Scale)))
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 150 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 150 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    
+    Tags: Weapon, ProjWeapon, Require:StationOrSpinalMount, Artillery
+	Tied To: Ballistics_Root 0
+    
+    Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[Size * 30]
+    Complexity: 1
+    
+    vDamage: Size * 150 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT                            //was Size * 100
+    vAoE_Range: min((Size/100) + (32 + sqrt(Size)), (128 * (1 + (Level * 0.05))))                                                                                                //was min(8 + ((Size / 8) * 0.5 * pow(LEVEL_GAIN_CURVE, Level)), 50)
+    vDelay: 10 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+    vDeviation: 0.05
+    vRange: (450 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+    vSpeed: vRange * .25 * BALLISTIC_PROJ_FACTOR
+    vAmmoUse: Size * 10
+    
+    Provides: ArtilleryWeaponTrigger with Damage[vDamage], AoE_Range[vAoE_Range], Delay[vDelay], AmmoUse[vAmmoUse],
+        Range[vRange], Speed[vSpeed], Deviation[vDeviation]
+    
+    Triggerable: AreaDamage: AreaDamageTriggered with AoE_Damage[vDamage], AoE_Range[vAoE_Range]
+    
+    Provides: AmmoStorage with Amount[Size * 30]
+
+    Requires:
+        To Run:
+            Control[35 * Size]
+
+    Hints: Alpha[vDamage], Ammo[Size * 30], AmmoUse[-1 * vAmmoUse / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/MinRange[vRange * 0.1], Local/DMGperShot[vDamage], Local/AoERange[vAoE_Range], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]
+
+System: AntimatterCannon
+    Name: #SS_AMCANNON_NAME
+    Description: #SS_AMCANNON_DESC
+    Appearance: AntimatterCannon
+	Explosion: subsystem_destroyed
+
+    Available: Techs.Ballistics_Root.Level >= 0
+    Level: Techs.Ballistics_Root.Level
+	
+    Size: max(5, Scale)
+        
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 150 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 150 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    
+    Tags: Weapon, ProjWeapon, WMD
+	Tied To: Ballistics_Root 0
+    
+    Costs: Metals[150 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[7 * Size], Ammo[Size * 30]
+    Complexity: 3
+    
+    vDamage: Size * 72 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT
+    vAoE_Range: min((Size/100) + (25 + sqrt(Size)), (75 * (1 + (Level * 0.05))))                                                                                            //was min(8 + ((Size / 8) * 0.5 * pow(LEVEL_GAIN_CURVE, Level)), 50)
+    vDelay: 3 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+    vDeviation: 0.2
+    vRange: (165 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+    vSpeed: vRange * .33 * BALLISTIC_PROJ_FACTOR
+    vAmmoUse: Size * 5
+    
+    Provides: AntimatterBulletTrigger with Damage[vDamage], AoE_Range[vAoE_Range], Delay[vDelay], AmmoUse[vAmmoUse],
+        Range[vRange], Speed[vSpeed], Deviation[vDeviation]
+    
+    Triggerable: AreaDamage: AreaDamageTriggered with AoE_Damage[vDamage], AoE_Range[vAoE_Range]
+    
+    Provides: AmmoStorage with Amount[Size * 30]
+
+    Consumes:
+        To Run:
+            Power[30 * Size]    
+    
+    Requires:
+        To Run:
+            Control[30 * Size], AntimatterGeneration[Size]            
+            
+    Hints: Alpha[vDamage], Ammo[Size * 30], AmmoUse[(-1 * vAmmoUse) / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/MinRange[vAoE_Range], Local/DMGperShot[vDamage], Local/AoERange[vAoE_Range], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]
+
+
+System: AssaultCannon
+    Name: #SS_ASSAULTCANNON_NAME
+    Description: #SS_ASSAULTCANNON_DESC
+    Appearance: AssaultCannon
+	Explosion: subsystem_destroyed
+
+    Available: Techs.Ballistics_Root.Level >= 0
+    Level: Techs.Ballistics_Root.Level
+	
+    Size: Scale
+    HPLevel: Techs.Materials.Level-1 As Level
+    Durability: GAME_SUBSYS_MULT * 160 * Size * pow(HEALTH_CURVE,HPLevel)
+    Mass: 300 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    
+    Tags: Weapon, ProjWeapon, Railgun, ClipWeapon
+	Tied To: Ballistics_Root 0
+    
+    Costs: Metals[540 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[160 * Size * pow(SUBS_COST_CRV, Level)], Labr[20 * Size], Ammo[Size * 30]
+    Complexity: 8
+    
+    vBurst: 3
+    vDelay: 11.0 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+    vDamage: Size * 72 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT                        //was 80
+    vShotDelay: 0.5
+    vTotalDelay: (vShotDelay * (vBurst - 1)) + vDelay
+    vRange: (250 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+    vSpeed: vRange * 0.66 * BALLISTIC_PROJ_FACTOR
+    vEffectiveRange: 0.66
+    vMinHit: 0.66
+    vAmmoUse: Size * 5
+
+    Provides: AssaultWeapon with Damage[vDamage], ShotDelay[vShotDelay],
+        Delay[vDelay], ClipSize[vBurst], AmmoUse[vAmmoUse], Range[vRange], Speed[vSpeed], effectiveRangeFactor[vEffectiveRange], minHitChance[vMinHit]
+    
+    Provides: AmmoStorage with Amount[Size * 30]
+
+    Requires:
+        To Run:
+            Control[40 * Size]
+
+    Hints: 	Alpha[vDamage * vBurst], Ammo[Size * 30],AmmoUse[(-1 * vAmmoUse * vBurst) / vTotalDelay],DPS[(vDamage * vBurst) / vTotalDelay],Local/Range[vRange], Local/DMGperShot[vDamage],Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vTotalDelay], Local/EffRange[vEffectiveRange * vRange],Local/MinHit[vMinHit],Local/ClipDelay[vDelay], Local/Clip[vBurst]
+
+
+System: FighterPrecisionBomb
+	Name: #SS_FPRECBOMB_NAME
+	Description: #SS_FPRECBOMB_DESC
+	Appearance: FighterPrecBomb
+
+    Available: Techs.Ballistics_Root.Level >= 0
+    Level: Techs.Ballistics_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, FighterWeapon, Require:FighterBomber, Bomb
+	Tied To: Ballistics_Root 0
+	
+	vDamage: Size * 180 * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT
+	vDelay: 6 * (1 + decay(pow(LEVEL_GAIN_CURVE, Level), 100)) * GAME_RELOAD_MULT
+	vRange: (50 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vSpeed: progress(5,2*LEVEL_GAIN_CURVE,Level)
+	vAmmoStorage: Size * 24 * (1 + (0.2 * Level))
+	vEffectiveRange: 1
+	vMinHit: 1
+	vAmmoUse: Size * 6	
+	
+	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[vAmmoStorage]
+	Complexity: 2.0
+		
+	Provides: ArmorPiercingBomb with Damage[vDamage], Deviation[0], Delay[vDelay], AmmoUse[vAmmoUse], Range[vRange], Speed[vSpeed], effectiveRangeFactor[vEffectiveRange], minHitChance[vMinHit]
+	
+	Provides: AmmoStorage with Amount[vAmmoStorage]
+
+	Requires:
+		To Run:
+			Control[25 * Size]
+
+	Hints: Alpha[vDamage], Ammo[vAmmoStorage], AmmoUse[(-1 * vAmmoUse) / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]
+	
+	
+System: FighterAdvancedBomb
+	Name: #SS_FADVBOMB_NAME
+	Description: #SS_FADVBOMB_DESC
+	Appearance: FighterAdvBomb
+	
+    Available: Techs.Ballistics_Root.Level >= 0
+    Level: Techs.Ballistics_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, FighterWeapon, Require:FighterBomber, Bomb
+	Tied To: Ballistics_Root 0
+	
+	vDamage: Size * 240 * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT
+	vDelay: 6 * (1 + decay(pow(LEVEL_GAIN_CURVE, Level), 100)) * GAME_RELOAD_MULT
+	vRange: (65 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vSpeed: progress(10,2*LEVEL_GAIN_CURVE,Level)
+	vAmmoStorage: Size * 24 * (1 + (0.2 * Level))
+	vAmmoUse: Size * 4	
+	
+	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[vAmmoStorage]
+	Complexity: 4.0
+		
+	Provides: AdvancedBomb with Damage[vDamage], Deviation[0], Delay[vDelay], AmmoUse[vAmmoUse], PowerUse[10 * Size], Duration[1], 
+		Range[vRange], Speed[vSpeed]
+	
+	Provides: AmmoStorage with Amount[vAmmoStorage]
+
+	Requires:
+		To Run:
+			Control[10 * Size]
+
+	Hints: Alpha[vDamage], Ammo[vAmmoStorage], AmmoUse[(-1 * vAmmoUse) / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Power[(-10 * Size) / vDelay], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]
+	
+	
+System: HeavyBomb
+	Name: #SS_HEAVYBOMB_NAME
+	Description: #SS_HEAVYBOMB_DESC
+	Appearance: HeavyBomb
+	
+    Available: Techs.Ballistics_Root.Level >= 0
+    Level: Techs.Ballistics_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 100 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, BomberWeapon, Require:BomberHull, Bomb
+	Tied To: Ballistics_Root 0
+	
+	vDamage: Size * 600 * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT
+	vDelay: 5 * (1 + decay(pow(LEVEL_GAIN_CURVE, Level), 100)) * GAME_RELOAD_MULT
+	vRange: (55 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vSpeed: progress(10,2*LEVEL_GAIN_CURVE,Level)
+	vAmmoStorage: Size * 24 * (1 + (0.2 * Level))
+	vAmmoUse: Size * 8	
+	
+	Costs: Metals[300 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[vAmmoStorage]
+	Complexity: 2.0
+		
+	Provides: HeavyBomb with Damage[vDamage], Deviation[0], Delay[vDelay], AmmoUse[vAmmoUse], Range[vRange], Speed[vSpeed]
+	
+	Provides: AmmoStorage with Amount[vAmmoStorage]
+
+	Requires:
+		To Run:
+			Control[10 * Size]
+
+	Hints: Alpha[vDamage], Ammo[vAmmoStorage], AmmoUse[(-1 * vAmmoUse) / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]
+
+System: EMPBomb
+	Name: #SS_EMPBOMB_NAME
+	Description: #SS_EMPBOMB_DESC
+	Appearance: EMPBomb
+	
+    Available: Techs.Ballistics_Root.Level >= 0
+    Level: Techs.Ballistics_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 100 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, BomberWeapon, Require:BomberHull, WMD
+	Tied To: Ballistics_Root 0
+	
+	vDamage: Size * 600 * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT
+	vAoE_Range: min(30 + (3 * (Size * pow(LEVEL_GAIN_CURVE, Level))), 60)
+	vDelay: 5 * (1 + decay(pow(LEVEL_GAIN_CURVE, Level), 100)) * GAME_RELOAD_MULT
+	vRange: (80 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vSpeed: progress(10,2*LEVEL_GAIN_CURVE,Level)
+	vAmmoStorage: Size * 24 * (1 + (0.2 * Level))
+	vAmmoUse: Size * 6	
+	
+	Costs: Metals[300 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[vAmmoStorage]
+	Complexity: 2.0
+		
+	Provides: EMPBombPFWTrigger with Damage[vDamage], AoE_Range[vAoE_Range], Delay[vDelay], AmmoUse[vAmmoUse], Range[vRange], Speed[vSpeed], Deviation[0]
+	
+	Triggerable: PFWAreaDamage: PFWAreaDamageTriggered with AoE_Damage[vDamage], AoE_Range[vAoE_Range]
+	
+	Provides: AmmoStorage with Amount[vAmmoStorage]
+
+	Requires:
+		To Run:
+			Control[10 * Size]
+
+	Hints: Alpha[vDamage], Ammo[vAmmoStorage], AmmoUse[(-1 * vAmmoUse) / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/AoERange[vAoE_Range], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]
+
+	
+System: FighterBomberASW
+	Name: #SS_FBASW_NAME
+	Description: #SS_FBASW_DESC
+	Appearance: FighterBomberASW
+	
+    Available: Techs.Ballistics_Root.Level >= 0
+    Level: Techs.Ballistics_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 300 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, FighterWeapon, Require:FighterBomber, Bomb
+	Tied To: Ballistics_Root 0
+	
+	vDamage: Size * 3000 * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT
+	vDelay: 5 * (1 + decay(pow(LEVEL_GAIN_CURVE, Level), 100)) * GAME_RELOAD_MULT
+	vRange: (40 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vSpeed: progress(5,2*LEVEL_GAIN_CURVE,Level)
+	vAmmoStorage: Size * 24 * (1 + (0.2 * Level))
+	
+	Costs: Metals[300 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[vAmmoStorage]
+	Complexity: 3.0
+	
+	Provides: AntiSurfaceWarhead with Damage[vDamage], Deviation[0], Delay[vDelay], AmmoUse[(6 * Size)], Range[vRange], Speed[vSpeed]
+	
+	Provides: AmmoStorage with Amount[vAmmoStorage]
+
+	Requires:
+		To Run:
+			Control[10 * Size]
+
+	Hints: Alpha[vDamage], Ammo[vAmmoStorage], AmmoUse[(-6 * Size) / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/AmmoperShot[-6 * Size], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]
+	
+
+System: AntiSurfaceWarhead
+	Name: #SS_ANTISURFACEWARHEAD_NAME
+	Description: #SS_ANTISURFACEWARHEAD_DESC
+	Appearance: AntiSurfaceWarhead
+	Explosion: subsystem_destroyed
+
+    Available: Techs.Ballistics_Root.Level >= 0
+    Level: Techs.Ballistics_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 300 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, SpecWeapon, Bomb
+	Tied To: Ballistics_Root 0
+	
+	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[Size * 24]
+	Complexity: 2
+	vDamage: Size * 400 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT							//was Size * 20
+	vDelay: 5 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+	vDeviation: 0.1
+	vRange: (55 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vSpeed: vRange * .3 * ANTIPLANET_PROJ_FACTOR
+	vAmmoUse: 3 * Size
+
+	Provides: AntiSurfaceWarhead with Damage[vDamage], Delay[vDelay], AmmoUse[vAmmoUse],
+		Range[vRange], Speed[vSpeed], Deviation[vDeviation]
+	
+	Provides: AmmoStorage with Amount[Size * 24]
+
+	Requires:
+		To Run:
+			Control[10 * Size]
+
+	Hints: Alpha[vDamage], Ammo[Size * 24], AmmoUse[-3 * Size / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/AmmoperShot[-3 * Size], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]
+	
+
+System: NBCWeapon
+	Name: #SS_NBCWEAPON_NAME
+	Description: #SS_NBCWEAPON_DESC
+	Appearance: BioWarhead
+	Explosion: subsystem_destroyed
+
+    Available: Techs.Ballistics_Root.Level >= 0
+    Level: Techs.Ballistics_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 200 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, SpecWeapon, Bomb
+	Tied To: Ballistics_Root 0
+	
+	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size], Ammo[Size * 24]
+	Complexity: 2.5
+	
+	vDamage: Size * 20 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT
+	vDelay: 20 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+	vDeviation: 0.1
+	vRange: (55 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vSpeed: vRange * .3 * ANTIPLANET_PROJ_FACTOR
+	vDuration: 2 + min((Level * 0.25), 3)																					//was 5
+	vAmmoUse: 3 * Size
+	
+	Provides: NBCWeapon with Damage[vDamage], Delay[vDelay], AmmoUse[vAmmoUse],
+		Range[vRange], Speed[vSpeed], Deviation[vDeviation], Duration[vDuration]
+	
+	Provides: AmmoStorage with Amount[Size * 24]
+
+	Requires:
+		To Run:
+			Control[10 * Size]
+
+	Hints: Alpha[vDamage], Local/Duration[vDuration], Ammo[Size * 24], AmmoUse[-3 * Size / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/AmmoperShot[-3 * Size], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]
+
+
+System: MassDriver
+	Name: #SS_MASSDRIVER_NAME
+	Description: #SS_MASSDRIVER_DESC
+	Appearance: MassDriver
+	Explosion: subsystem_destroyed
+
+    Available: Techs.Ballistics_Root.Level >= 0
+    Level: Techs.Ballistics_Root.Level
+	
+	Size: max(Scale, 100)
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 400 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, SpecWeapon, GlobalKiller, Tool:GlobalKiller, Roid
+	Tied To: Ballistics_Root 0
+	
+	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 4
+	vDamage: Size * 5000 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT							//was Size * 20
+	vDelay: 10 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+	vDeviation: 0.5
+	vRange: (90 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vSpeed: vRange * .25 * ANTIPLANET_PROJ_FACTOR
+	
+	Provides: Asteroid with Damage[vDamage], Delay[vDelay], AsteroidUse[4 * Size],
+		Range[vRange], Speed[vSpeed], Deviation[vDeviation]
+	
+	Provides: AsteroidStorage with Amount[Size * 24]
+	
+	Provides: AsteroidCollect with Rate[Size * (1 - (decay(pow(LEVEL_GAIN_CURVE,Level), 25))) * 0.1]   //reduce this
+
+	Requires:
+		To Run:
+			Control[10 * Size]
+
+	Hints: Alpha[vDamage], Asteroids[Size * 24], AsteroidUse[-4 * Size / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/AsteroidsperShot[-4 * Size], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]	
+
+	
+System: MassDriverLight
+	Name: #SS_MASSDRIVERLIGHT_NAME
+	Description: #SS_MASSDRIVERLIGHT_DESC
+	Appearance: MassDriverLight
+	Explosion: subsystem_destroyed
+
+    Available: Techs.Ballistics_Root.Level >= 0
+    Level: Techs.Ballistics_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 400 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, ProjWeapon, Roid
+	Tied To: Ballistics_Root 0
+	
+	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 4
+	vDamage: Size * 400 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT							//was Size * 20
+	vDelay: 4 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+	vDeviation: 0.25
+	vRange: (180 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vSpeed: vRange * .25 * ANTIPLANET_PROJ_FACTOR
+	vEffectiveRange: 0.25
+	vMinHit: 0.25
+		
+	Provides: AsteroidMini with Damage[vDamage], Delay[vDelay], AsteroidUse[2 * Size],
+		Range[vRange], Speed[vSpeed], Deviation[vDeviation], effectiveRangeFactor[vEffectiveRange], minHitChance[vMinHit]	
+	
+	Provides: AsteroidStorage with Amount[Size * 24]
+	
+	Provides: AsteroidCollect with Rate[Size * (1 - (decay(pow(LEVEL_GAIN_CURVE,Level), 25))) * 0.1]   //reduce this
+
+	Requires:
+		To Run:
+			Control[10 * Size]
+
+	Hints: Alpha[vDamage], Asteroids[Size * 24], AsteroidUse[-2 * Size / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/AsteroidsperShot[-2 * Size], Local/ProjSpeed[vSpeed], Local/Delay[vDelay], Local/EffRange[vEffectiveRange * vRange], Local/MinHit[vMinHit]
+	
+	
+System: AsteroidCollector
+	Name: #SS_ASTROCOL_NAME
+	Description: #SS_ASTROCOL_DESC
+	Appearance: AsteroidCollector
+	Explosion: fuel_cell_explode
+
+    Available: Techs.Ballistics_Root.Level >= 0
+    Level: Techs.Ballistics_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 40 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 100 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+	Tags: Support, Restrict:FighterBomber, Storage:Asteroids
+	Tied To: Ballistics_Root 0
+   
+	Costs: Metals[500 * Size * pow(SUBS_COST_CRV, Level)], Electronics[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[100 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size]
+	Complexity: 6
+   
+	Tick Rate: 2
+      
+	vAsteroidRate: Size * (2 - (decay(pow(LEVEL_GAIN_CURVE,Level), 25))) * 0.2											//was Size * 3
+   	vAsteroidStore: Size * 25 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
+	
+	Provides: AsteroidCollect with
+		Rate[vAsteroidRate]
+	
+	Provides: AsteroidStorage with
+		Amount[vAsteroidStore]
+		
+	Requires:
+	To Run:
+	Control[40 * Size]
+         
+	Consumes:
+	To Run: Power[40 * Size]																				//was 200 * Size
+      
+	Hints: Power[-1 * 40 * Size], AsteroidUse[vAsteroidRate], Asteroids[vAsteroidStore]
+

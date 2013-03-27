@@ -1,0 +1,246 @@
+System: SpatialGen
+    Name: #SS_SPATDISTGEN_NAME
+    Description: #SS_SPATDISTGEN_DESC
+    Appearance: RemnantSpatGen
+    Explosion: ship_explode centered lasting 2.5
+    
+    Tags: Weapon, Hull, Unobtainable, SpatialGen, Tool:SpatialGen, RemnantSuperWeapon, SpaceOwned
+
+    Available: Traits.remnants
+    Level: 1
+    Size: Object.Size * (5 / 15)
+    Durability: 160 * pow(10, 9)
+    Mass: 10
+    
+    Costs: Metals[1]    
+    
+    vRange: 10000000
+	vChargeUp: 600
+    
+    Provides: Control with Amount[pow(10,6)]
+    Provides: Power with Rate[pow(10,6)], Cost[0]
+    Provides: Capacitance with Amount[pow(10,6)]
+    Provides: Repair with Rate[25]
+	Provides: RemnantQuantumEntanglement
+    
+    Provides: SpatialGen with Range[vRange], ChargeUp[vChargeUp]
+	
+    Hints: Power[pow(10,6)], Control[pow(10,6)]
+
+System: RemnantIonCannon
+    Name: #SS_REMNANTIONCANNON_NAME
+    Description: #SS_REMNANTIONCANNON_DESC
+    Appearance: RemnantIonCannon
+    Explosion: ship_explode centered lasting 2.5
+    
+    Tags: Weapon, Hull, Unobtainable, IonCannon, Tool:IonCannon, RemnantSWGreen, SpaceOwned
+
+    Available: Traits.remnants
+    Level: 1
+    Size: Object.Size * (5 / 15)
+    Durability: 160 * pow(10, 9)
+    Mass: 10
+    
+    Costs: Metals[1]    
+
+    vDamage: 5000000 * Size * GAME_DAMAGE_MULT
+    vRange: 10000000
+    vSpeed: 20000
+    
+    Provides: Control with Amount[pow(10,6)]
+    Provides: Power with Rate[pow(10,6)], Cost[0]
+    Provides: Capacitance with Amount[pow(10,6)]
+    Provides: Repair with Rate[25]
+	Provides: RemnantQuantumEntanglement
+    
+    Provides: IonCannon with Damage[vDamage], Range[vRange], Speed[vSpeed]
+
+System: ZeroPointField
+    Name: #SS_ZPFGEN_NAME
+    Description: #SS_ZPFGEN_DESC
+    Appearance: RemnantZPFGen
+    Explosion: ship_explode centered lasting 2.5
+    
+    Tags: Weapon, Hull, Unobtainable, RemnantSuperWeapon
+
+    Available: Traits.remnants
+    Level: 1
+    Size: Object.Size * (5 / 15)
+    Durability: 160 * pow(10, 9)
+    Mass: 10
+    
+    Costs: Metals[1]    
+    
+    vDrain: Size * 150 * log(Object.Size) * GAME_DAMAGE_MULT
+    vRange: 15000
+    vAoE_Range: min((96 + sqrt(Size)), 256)
+    vDelay: 5 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+    vDeviation: 0.05
+    
+    Provides: Control with Amount[pow(10,6)]
+    Provides: Power with Rate[pow(10,6)], Cost[0]
+    Provides: Capacitance with Amount[pow(10,6)]
+    Provides: Repair with Rate[25]
+	Provides: RemnantQuantumEntanglement
+    
+    Provides: ZPDrainTrigger with Rate[vDrain], Range[vRange], AoE_Range[vAoE_Range], Delay[vDelay], Deviation[vDeviation]
+    Triggerable: ZPAreaDrain: ZPDrainTriggered with Rate[vDrain], AoE_Range[vAoE_Range]
+
+System: Stargate
+    Name: #SS_STARGATE_NAME
+    Description: #SS_STARGATE_DESC
+    Appearance: JumpBridge
+    Explosion: ship_explode centered lasting 2.5
+    
+    Tags: Stargate, Hull, Unobtainable, EstablishLink, Tool:EstablishLink, JumpGate, SpaceOwned
+
+    Available: Traits.remnants
+    Level: 1
+    Size: Object.Size * (5 / 15)
+    Durability: 160 * pow(10, 9)
+    Mass: 10
+    
+    Costs: Metals[1]    
+    
+    vStargateRange: 1000000
+    
+    Provides: Control with Amount[pow(10,6)]
+    Provides: Power with Rate[pow(10,6)], Cost[0]
+    Provides: Capacitance with Amount[pow(10,6)]
+    Provides: Repair with Rate[25]
+	Provides: RemnantBridgeChargeStorage with Amount[pow(11,7)], Rate[1500]
+	Provides: RemnantQuantumEntanglement
+
+    Provides: StargateLink with StargateRange[vStargateRange]
+    
+    Provides: RemnantGateNotification    
+
+    Hints: Power[pow(10,6)], Control[pow(10,6)], Charge[pow(10,6)], Local/StargateScale[Object.Scale], StargateRange[vStargateRange / 1000]    
+    
+System: CommandHull
+    Name: Command hull
+    Description: Special hull for remnant commanders
+    Appearance: StationHull
+    Explosion: ship_explode centered lasting 2.5
+    
+    Tags: IgnoresScale, Hull, CarrierHull, ShipBay, StationOrCarrier, Fetch:Fuel, Fetch:Ammo, HugeHull, Restrict:Engine, Link, Unobtainable
+    Tied To: ShipConstruction 1
+
+    Equips To: Hull
+    PreDamageOrder: -2
+
+    Available: Traits.remnants
+    Level: Techs.ShipConstruction.Level
+    
+    sizePenalty: (1 / 1000) * decay(pow(LEVEL_GAIN_CURVE, Techs.MegaConstruction.Level), 2)
+    vOneSpace: Object.Size * (1 / 15)
+    Size: Object.Size * min(((17 + floor(Object.Scale / 512)) / 15), (20 / 15))
+    Durability: max((Size * 100 * pow(LEVEL_GAIN_CURVE, Level)), 1) * GAME_HULL_MULT
+    Mass: Size * 80 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
+    
+    Costs: Metals[poly(Size, 2000, 80, 26 * sizePenalty) * pow(SUBS_COST_CRV, Level)], Electronics[poly(Size, 800, 8, 2.6 * sizePenalty) * pow(SUBS_COST_CRV, Level)], AdvParts[poly(Size,300,3.2,1.067 * sizePenalty) * pow(SUBS_COST_CRV, Level)], Labr[15 * Size]
+    Complexity: 5.0
+    
+    Tick Rate: 4
+
+    vRate: Object.Scale * 200 * (pow(LEVEL_GAIN_CURVE, Level) + RES_BASE_FACT) * RES_GEN_MULT
+    vEcoStore: Size * 2000 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))        //was Size * 40
+
+    Provides: GAHullSoak with ReceivePct[0.9], DmgAlter[Scale]
+
+    Provides: ArmorPoints with Amount[8]
+
+    Provides: ShieldEmitters with Amount[8]
+
+    Provides: MatterCreation with Amount[vRate]
+
+    Provides: AdvPartsStorage with
+        Amount[vEcoStore * 0.2]
+    
+    Provides: ElecStorage with
+        Amount[vEcoStore * 0.3]
+    
+    Provides: MetalStorage with
+        Amount[vEcoStore * 0.5]
+        
+    Provides: FuelStorage with
+        Amount[vEcoStore * 0.5]
+        
+    Provides: AmmoStorage with
+        Amount[vEcoStore * 0.5]
+
+    Hints: Local/DamageReduction[-1 * Scale], Local/HullSoak[90], ArmorPoints[8], ShieldEmitters[8], Local/HullHP[Durability], Local/CreateMatter[vRate], EcoStore[vEcoStore]
+    
+System: RemnantCapitol
+    Name: #SS_REMNCAPITAL_NAME
+    Description: #SS_REMNCAPITAL_DESC
+    Appearance: GeneralBuilding
+
+    Available: Traits.remnants
+    Level: 1
+    Size: Scale
+    Durability: 200000 * Size
+    Mass: 4000 * Size
+    
+    Tags: Structure, Unique, NoManualBuild, Capitol, Unique:Capitol
+    
+    Costs: Labr[BLDG_LABR_MULT * 4000 * Size]
+    Complexity: 1
+    
+    vHousing: Size * 24000000
+    
+    Provides: Housing with
+        Amount[vHousing]
+    
+    Provides: FoodStorage with Amount[20000]
+    Provides: AmmoStorage with Amount[20000]
+    Provides: FuelStorage with Amount[20000]    
+
+    Provides: MetalStorage with
+        Amount[Size * 25000]
+
+    Provides: ElecStorage with
+        Amount[Size * 10000]
+
+    Provides: AdvPartsStorage with
+        Amount[Size * 5000]
+    
+    Provides: Repair with Rate[Durability / 12]
+    
+    Provides: LaborPool with Amount[Size * 10]
+    
+    Provides: PopEconomy
+    
+    Provides: DamageResistance with Amount[pow(LEVEL_GAIN_CURVE, Level) * 50 * Size]
+    Provides: RemnantCapitolNotification    
+    
+    Provides: CapitalSupport with Metals[Size * 500], Electronics[Size * 250], AdvParts[Size * 100], Food[Size * 10], Fuel[Size * 250], Ammo[Size * 250]
+    Hints: Housing[vHousing], MtlGen[Size * 500], ElecGen[Size * 250], AdvGen[Size * 100], FoodGen[Size * 10], FuelGen[Size * 250], AmmoGen[Size * 250]
+
+System: RemnantGate
+    Name: #SS_REMNGATE_NAME
+    Description: #SS_REMNGATE_DESC
+    Appearance: JumpBridge
+
+    Available: Traits.remnants
+    Level: 1
+    Size: Object.Size * (5 / 15)
+    Durability: 160 * pow(10, 9)
+    Mass: 10
+
+    Tags: Weapon, Hull, Unobtainable, Tool:WarpGate, WarpGate, SpaceOwned
+    
+    Costs: Metals[1]
+
+    Provides: Control with Amount[pow(10,6)]
+    Provides: Power with Rate[pow(10,6)], Cost[0]
+    Provides: Capacitance with Amount[pow(10,6)]
+    Provides: Repair with Rate[25]
+    Provides: RemnantGateNotification
+	Provides: RemnantQuantumEntanglement
+
+    Provides: GateWarp with
+        MaxRange[pow(10,12)], RechargeTime[1800],
+        Duration[5], AreaSize[500]
+
+    Triggerable: WarpGraphic: WarpGraphic with AreaSize[500]

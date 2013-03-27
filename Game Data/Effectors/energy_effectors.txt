@@ -1,0 +1,733 @@
+Effector: HyperEnergyWeapon
+	Value: Damage
+	Value: Delay
+	Value: Duration
+	Value: PowCost
+	Value: Range
+	Value: Deviation
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+		
+	Range: Range
+	PotentialDamage: Damage * Duration
+	
+	PhysicalType: Beam
+		Material: antimatterbeam
+		GfxSize: 0.08
+		GfxColor: fff
+		FireGfx: ion_beam_emit, 2.0				//was laser_emit
+		HitGfx: ion_beam_impact, 1.3
+		Sound: antimatter_beam
+	
+	Causes: ParticleEnergyDmg lasting Duration with Damage[Damage], Cost[PowCost], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minDamage[minDamage], wasteHeat[wasteHeat]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::checkHeat
+	OnFire: Timed(Delay, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+
+Effector: WideEnergyWeapon
+	Value: Damage
+	Value: Delay
+	Value: Duration
+	Value: PowCost
+	Value: Range
+	Value: Deviation
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+		
+	Range: Range
+	PotentialDamage: Damage * Duration
+	
+	PhysicalType: Beam
+		Material: ionbeam
+		GfxSize: 0.22
+		GfxColor: 0af
+		FireGfx: ion_beam_emit, 3.0			//was laser_emit
+		HitGfx: ion_beam_impact, 2.5
+		Sound: ion_beam
+	
+	Causes: ParticleEnergyDmg lasting Duration with Damage[Damage], Cost[PowCost], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minDamage[minDamage], wasteHeat[wasteHeat]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::checkHeat
+	OnFire: Timed(Delay, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+	
+
+Effector: LongRangeLaser
+	Value: Damage
+	Value: Delay
+	Value: Duration
+	Value: PowCost
+	Value: Range
+	Value: VisibleTime
+		
+	Range: Range
+	
+	PhysicalType: Beam
+		Material: pulsing_beam					//was superbeam
+		GfxSize: 0.1
+		GfxColor: 00f
+		FireGfx: laser_emit, 1.0
+		HitGfx: bigbang, 1.0			//was antimatter_boom_heavy
+		Sound: mining_laser
+	
+	Causes: LongRangeLaserDmg lasting Duration with Damage[Damage], Cost[PowCost], VisibleTime[VisibleTime]
+	
+	IsWeapon: false
+	CanAttack: GACanAttack::YesDoIt
+	OnFire: Timed(Delay, 0.1)
+	Tick: Reload
+	Progress: TimedProgress
+	
+Effector: EnergyWeapon
+	Value: Damage
+	Value: Delay
+	Value: Duration
+	Value: PowCost
+	Value: Range
+	Value: Deviation
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+		
+	Range: Range
+	PotentialDamage: Damage * Duration
+	
+	PhysicalType: Beam
+		Material: beam_red
+		GfxSize: 0.1
+		GfxColor: fff						//was ff0
+		FireGfx: laser_emit, 1.25
+		HitGfx: laser_impact_spray, 0.75
+		Sound: laser
+	
+	Causes: GAEnergyDmg lasting Duration with Damage[Damage], Cost[PowCost], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minDamage[minDamage], wasteHeat[wasteHeat]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::checkHeat
+	OnFire: Timed(Delay, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+
+Effector: EnergyWeaponCrit
+	Value: Damage
+	Value: Delay
+	Value: Duration
+	Value: PowCost
+	Value: Range
+	Value: Deviation
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+		
+	Range: Range
+	PotentialDamage: Damage * Duration
+	
+	PhysicalType: Beam
+		Material: particle_beam
+		GfxSize: 0.2
+		GfxColor: fff						//was ff0
+		FireGfx: laser_emit, 0.25
+		HitGfx: fusion_impact, 0.1
+		Sound: laser
+	
+	Causes: GAEnergyDmgCrit lasting Duration with Damage[Damage], Cost[PowCost], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minDamage[minDamage], wasteHeat[wasteHeat]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::checkHeat
+	OnFire: Timed(Delay, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+
+
+Effector: EnergyWeaponPulseCrit
+	Value: Damage
+	Value: Delay
+	Value: Duration
+	Value: PowCost
+	Value: Range
+	Value: Deviation
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+		
+	Range: Range
+	PotentialDamage: Damage * Duration
+	
+	PhysicalType: Beam
+		Material: fusion_lance
+		GfxSize: 0.3
+		GfxColor: fff						//was ff0
+		FireGfx: laser_emit, 0.25
+		HitGfx: fusion_impact, 0.5
+		Sound: gravitic_accelerator
+	
+	Causes: GAEnergyDmgCrit lasting Duration with Damage[Damage], Cost[PowCost], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minDamage[minDamage], wasteHeat[wasteHeat]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::checkHeat
+	OnFire: Timed(Delay, Deviation)
+	Tick: Reload
+	Progress: TimedProgress	
+	
+	
+Effector: EnergyWeaponRed
+	Value: Damage
+	Value: Delay
+	Value: Duration
+	Value: PowCost
+	Value: Range
+	Value: Deviation
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+		
+	Range: Range
+	PotentialDamage: Damage * Duration
+	
+	PhysicalType: Beam
+		Material: beam_blue
+		GfxSize: 0.1
+		GfxColor: fff
+		FireGfx: laser_emit, 1.25
+		HitGfx: laser_impact_spray, 0.75
+		Sound: redlaser
+	
+	Causes: GAEnergyDmg lasting Duration with Damage[Damage], Cost[PowCost], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minDamage[minDamage], wasteHeat[wasteHeat]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::checkHeat
+	OnFire: Timed(Delay, Deviation)
+	Tick: Reload	
+	Progress: TimedProgress
+
+Effector: FighterEnergyWeapon
+	Value: Damage
+	Value: Delay
+	Value: Duration
+	Value: PowCost
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+	
+	Range: Range
+	PotentialDamage: Damage * Duration
+	
+	PhysicalType: Beam
+		Material: beam2
+		GfxSize: 0.3
+		GfxColor: 0f0
+		FireGfx: laser_emit, 0.5
+		HitGfx: laser_impact, 0.1
+		Sound: fighterlaser
+	
+	Causes: GAEnergyDmg lasting Duration with Damage[Damage], Cost[PowCost], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minDamage[minDamage], wasteHeat[wasteHeat]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::checkHeat
+	OnFire: Timed(Delay, 0.1)
+	Tick: Reload
+	Progress: TimedProgress
+	
+Effector: FighterEnergyWeaponLarge
+	Value: Damage
+	Value: Delay
+	Value: Duration
+	Value: PowCost
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+	
+	Range: Range
+	PotentialDamage: Damage * Duration
+	
+	PhysicalType: Beam
+		Material: beam_blue
+		GfxSize: 0.4
+		GfxColor: fff
+		FireGfx: laser_emit, 1.0
+		HitGfx: laser_impact, 0.1
+		Sound: fighterlaser
+	
+	Causes: GAEnergyDmg lasting Duration with Damage[Damage], Cost[PowCost], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minDamage[minDamage], wasteHeat[wasteHeat]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::checkHeat
+	OnFire: Timed(Delay, 0.1)
+	Tick: Reload
+	Progress: TimedProgress
+
+
+Effector: NarrowEnergyWeapon
+	Value: Damage
+	Value: Delay
+	Value: Duration
+	Value: PowCost
+	Value: Range
+	Value: Deviation
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+		
+	Range: Range
+	PotentialDamage: Damage * Duration
+	
+	PhysicalType: Beam
+		Material: beam_red
+		GfxSize: 0.075
+		GfxColor: fff							//was f40
+		FireGfx: laser_emit, 0.7
+		HitGfx: laser_impact_spray, 0.75
+		Sound: laser
+	
+	Causes: GAEnergyDmg lasting Duration with Damage[Damage], Cost[PowCost], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minDamage[minDamage], wasteHeat[wasteHeat]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::checkHeat
+	OnFire: Timed(Delay, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+
+Effector: XRayEnergyWeapon
+	Value: Damage
+	Value: Delay
+	Value: Duration
+	Value: PowCost
+	Value: Range
+	Value: Deviation
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+		
+	Range: Range
+	PotentialDamage: Damage * Duration
+	
+	PhysicalType: Beam
+		Material: beam_violet
+		GfxSize: 0.075
+		GfxColor: fff
+		FireGfx: laser_emit, 0.1
+		HitGfx: laser_impact_spray, 0.75
+		Sound: laser
+	
+	Causes: GAEnergyDmg lasting Duration with Damage[Damage], Cost[PowCost], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minDamage[minDamage], wasteHeat[wasteHeat]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::checkHeat
+	OnFire: Timed(Delay, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+
+
+Effector: BurstEnergyWeapon
+	Value: Damage
+	Value: Delay
+	Value: PowCost
+	Value: Range
+	Value: ShotDelay
+	Value: ClipSize
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+	
+	Range: Range
+	PotentialDamage: Damage * ClipSize
+	
+	PhysicalType: Beam
+		Material: laser_pulse_green
+		GfxSize: 0.05
+		GfxColor: fff
+		FireGfx: laser_emit, 1.0
+		HitGfx: laser_impact, 0.1
+		Sound: gatlinglaser
+	
+	Causes: GAEnergyDmg lasting 0.5 with Damage[Damage], Cost[PowCost], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minDamage[minDamage], wasteHeat[wasteHeat]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::checkHeat
+	OnFire: MultiPulseCost(ShotDelay, Delay, ClipSize, "Power", PowCost)
+	Progress: MultiPulseProgress(ShotDelay, Delay)	
+	Tick: Reload	
+	
+	
+Effector: TRayEnergyWeapon
+	Value: Damage
+	Value: Delay
+	Value: Duration
+	Value: PowCost
+	Value: Range
+	Value: Deviation
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+		
+	Range: Range
+	PotentialDamage: Damage * Duration
+	
+	PhysicalType: Beam
+		Material: ionbeam
+		GfxSize: 0.075
+		GfxColor: 900
+		FireGfx: laser_emit, 0.6
+		HitGfx: laser_impact, 0.8
+		Sound: laser
+	
+	Causes: TRayDmg lasting Duration with Damage[Damage], Cost[PowCost], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minDamage[minDamage], wasteHeat[wasteHeat]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::checkHeat
+	OnFire: Timed(Delay, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+
+Effector: PhasedEnergyWeapon
+	Value: Damage
+	Value: Delay
+	Value: Duration
+	Value: PowCost
+	Value: Range
+	Value: Deviation
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+		
+	Range: Range
+	PotentialDamage: Damage * Duration
+	
+	PhysicalType: Beam
+		Material: beam
+		GfxSize: 0.15
+		GfxColor: f0c
+		FireGfx: laser_emit, 1.0
+		HitGfx: laser_impact, 0.1
+		Sound: laser
+	
+	Causes: GAPhasedEnergyDmg lasting Duration with Damage[Damage], Cost[PowCost], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minDamage[minDamage], wasteHeat[wasteHeat]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::checkHeat
+	OnFire: Timed(Delay, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+
+Effector: EnergyWeaponInstant
+	Value: Damage
+	Value: Delay
+	Value: PowCost
+	Value: Range
+	Value: Deviation
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+		
+	Range: Range
+	PotentialDamage: Damage
+	
+	PhysicalType: Instant				//was Beam
+		//Material: beam_empty
+		GfxSize: 0.2
+		GfxColor: fff
+		FireGfx: laser_emit, 0.5
+		HitGfx: tachyon_impact, 0.05
+		Sound: fighterlaser
+	
+	Causes: TachyonDmg lasting 0 with Damage[Damage], Cost[PowCost], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minDamage[minDamage], wasteHeat[wasteHeat]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::checkHeat, GACanAttack::minimumRangeTachyonBlaster
+	OnFire: Timed(Delay, Deviation)
+	Tick: Reload
+	Progress: TimedProgress	
+
+Effector: PlasmaPulse
+	Value: FrontDamage
+	Value: DoTDamageRate
+	Value: Delay
+	Value: Duration
+	Value: PowCost
+	Value: Range
+	Value: Deviation
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: wasteHeat
+	
+	Range: Range
+	PotentialDamage: DoTDamageRate * Duration + FrontDamage
+	
+	PhysicalType: Beam
+		Material: pulsing_beam_plasma
+		GfxSize: 0.08
+		GfxColor: fff							//was 0c8
+		HitGfx: plasma_cloud2, 2.5
+		Sound: laser
+	
+	Causes: GAPlasmaDmg lasting Duration with FrontDamage[FrontDamage], DoTDamage[DoTDamageRate], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minDamage[minDamage], wasteHeat[wasteHeat]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::checkHeat
+	OnFire: TimedShot(Delay, "Power", PowCost, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+
+Effector: PolarizingFluxWeapon
+	Value: Damage
+	Value: Delay
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	Value: Duration
+	Value: PowerUse
+	Value: wasteHeat
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	
+	PhysicalType: Bullet
+		Material: anim_pfw_bullet
+		GfxSize: 0.3
+		GfxColor: fff
+		Sound: pfw
+		HitGfx: pfw_blast, 1.0
+		FireGfx: muzzleflash2, 0.025
+	
+	Causes: PFWDmg lasting Duration with Damage[Damage], wasteHeat[wasteHeat]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::checkHeat
+	OnFire: TimedShot(Delay, "Power", PowerUse,  Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+
+Effector: PlasmaWeapon
+	Value: Damage
+	Value: Delay
+	Value: PowerUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: minHitChance
+	Value: wasteHeat
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: anim_plasma_bullet				//green_plasma_bolt
+		GfxSize: 0.20
+		GfxColor: fff
+		Sound: plasma_thrower
+		HitGfx: plasma_cloud3, 0.2
+		FireGfx: plasma_muzzle_flash, 0.2							//muzzleflash2, 0.025
+	
+	Causes: GADoT lasting 1 with Damage[Damage], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minDamage[minDamage], minHitChance[minHitChance], wasteHeat[wasteHeat]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::checkHeat
+	OnFire: TimedShot(Delay, "Power", PowerUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+	
+Effector: TwinPlasmaWeapon
+	Value: Damage
+	Value: ShotDelay
+	Value: Delay
+	Value: ClipSize
+	Value: PowerUse
+	Value: Range
+	Value: Speed
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: minHitChance
+	Value: wasteHeat
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage * ClipSize
+	
+	PhysicalType: Bullet
+		Material: anim_plasma_bullet
+		GfxSize: 0.20
+		GfxColor: fff
+		Sound: plasma_thrower
+		HitGfx: plasma_cloud3, 0.2
+		FireGfx: plasma_muzzle_flash, 0.2						//muzzleflash2, 0.025
+	
+	Causes: GADoT lasting 1 with Damage[Damage], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minDamage[minDamage], minHitChance[minHitChance], wasteHeat[wasteHeat]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::checkHeat
+	OnFire: MultiPulseCost(ShotDelay, Delay, ClipSize, "Power", PowerUse)
+	Progress: MultiPulseProgress(ShotDelay, Delay)	
+	Tick: Reload
+
+
+Effector: MiniPlasmaWeapon
+	Value: Damage
+	Value: Delay
+	Value: PowerUse
+	Value: Range
+	Value: Speed
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: minHitChance
+	Value: wasteHeat
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: twin_plasma_bullet
+		GfxSize: 1.0
+		GfxColor: fff
+		Sound: plasma_thrower
+		HitGfx: railgun_impact, 0.5
+		FireGfx: muzzleflash2, 0.025
+	
+	Causes: GADoT lasting 1 with Damage[Damage], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minDamage[minDamage], minHitChance[minHitChance], wasteHeat[wasteHeat]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::checkHeat
+	OnFire: TimedShot(Delay, "Power", PowerUse)
+	Tick: Reload
+	Progress: TimedProgress
+
+Effector: MiniParticleWeapon
+	Value: Damage
+	Value: Delay
+	Value: PowerUse
+	Value: Range
+	Value: Speed
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: minHitChance
+	Value: wasteHeat
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: lightning_bolt
+		GfxSize: 1.0
+		GfxColor: fff
+		Sound: plasma_thrower
+		HitGfx: railgun_impact, 0.5
+		FireGfx: muzzleflash2, 0.025
+	
+	Causes: ParticleDmg lasting 0 with Damage[Damage], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minDamage[minDamage], minHitChance[minHitChance], wasteHeat[wasteHeat]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::checkHeat
+	OnFire: TimedShot(Delay, "Power", PowerUse)
+	Tick: Reload
+	Progress: TimedProgress	
+
+Effector: ParticleWeapon
+	Value: Damage
+	Value: Delay
+	Value: PowerUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: minHitChance
+	Value: wasteHeat
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: anim_particle_bullet
+		GfxSize: 0.3
+		GfxColor: fff
+		Sound: particle_cannon
+		HitGfx: particle_hit, 0.01
+		FireGfx: particle_muzzle_flash, 0.15							//muzzleflash2, 0.025
+	
+	Causes: ParticleDmg lasting 0 with Damage[Damage], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minDamage[minDamage], minHitChance[minHitChance], wasteHeat[wasteHeat]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::checkHeat
+	OnFire: TimedShot(Delay, "Power", PowerUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress
+
+Effector: TwinParticleWeapon
+	Value: Damage
+	Value: ShotDelay
+	Value: Delay
+	Value: ClipSize
+	Value: PowerUse
+	Value: Range
+	Value: Speed
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: minHitChance
+	Value: wasteHeat
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage * ClipSize
+	
+	PhysicalType: Bullet
+		Material: anim_particle_bullet
+		GfxSize: 0.3
+		GfxColor: fff
+		Sound: particle_cannon
+		HitGfx: particle_hit, 0.01
+		FireGfx: particle_muzzle_flash, 0.15						//muzzleflash2, 0.025
+	
+	Causes: ParticleDmg lasting 0 with Damage[Damage], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minDamage[minDamage], minHitChance[minHitChance], wasteHeat[wasteHeat]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::checkHeat
+	OnFire: MultiPulseCost(ShotDelay, Delay, ClipSize, "Power", PowerUse)
+	Progress: MultiPulseProgress(ShotDelay, Delay)	
+	Tick: Reload
+
+Effector: WaveWeapon
+	Value: Damage
+	Value: Delay
+	Value: PowerUse
+	Value: Range
+	Value: Speed
+	Value: Deviation
+	Value: effectiveRangeFactor
+	Value: minDamage
+	Value: minHitChance
+	Value: wasteHeat
+	
+	Range: Range
+	ProjectileSpeed: Speed
+	PotentialDamage: Damage
+	
+	PhysicalType: Bullet
+		Material: anim_wave_bullet
+		GfxSize: 0.35
+		GfxColor: fff
+		Sound: wave_emitter
+		HitGfx: wave_impact, 0.2
+		FireGfx: plasma_muzzle_flash, 0.25
+	
+	Causes: WaveDmg lasting 0 with Damage[Damage], Range[Range], effectiveRangeFactor[effectiveRangeFactor], minDamage[minDamage], minHitChance[minHitChance], wasteHeat[wasteHeat]
+	
+	AutoAttack: Enemy
+	CanAttack: CanAttack, GACanAttack::checkHeat
+	OnFire: TimedShot(Delay, "Power", PowerUse, Deviation)
+	Tick: Reload
+	Progress: TimedProgress	
+	

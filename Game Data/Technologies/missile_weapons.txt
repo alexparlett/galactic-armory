@@ -1,0 +1,45 @@
+
+Technology: Missiles_Root
+	Name: #RS_MISSILES_ROOT_NAME
+	Description: #RS_MISSILES_ROOT_DESC
+	Icon: missile_tech_root
+	Position: 0,-1
+	
+	StartLevel: 1
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+	Link: Missiles_Fuel[1 * LINK_COST]
+	Link: Missiles_Targetting[1 * LINK_COST]
+	Link: Missiles_Loading[1 * LINK_COST]
+	
+Technology: Missiles_Fuel
+	Name: #RS_MISSILES_FUEL_NAME
+	Description: #RS_MISSILES_FUEL_DESC
+	Icon: missile_tech_fuel
+	Position: 0,-2
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+Technology: Missiles_Targetting
+	Name: #RS_MISSILES_TARGETTING_NAME
+	Description: #RS_MISSILES_TARGETTING_DESC
+	Icon: missile_tech_targetting
+	Position: -1,-1
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+Technology: Missiles_Loading
+	Name: #RS_MISSILES_LOADING_NAME
+	Description: #RS_MISSILES_LOADING_DESC
+	Icon: missile_tech_loading
+	Position: 1,-1
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	

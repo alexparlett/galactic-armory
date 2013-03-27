@@ -1,0 +1,262 @@
+System: ShieldGen
+	Name: #SS_SHIELDGEN_NAME
+	Description: #SS_SHIELDGEN_DESC
+	Appearance: ShieldGenerator
+	Explosion: subsys_powerexplode lasting 0.75
+	
+	Tags: Shields, ShieldGen
+	Tied To: Shields_Root 0
+	
+	PreDamageOrder: -10
+
+	Available: Techs.Shields_Root.Level >= 0
+	Level: Techs.Shields_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: 50 * Size * pow(HEALTH_CURVE,HPLevel) * GAME_SUBSYS_MULT
+	Mass: 100 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+	vMetal: 100 * Size
+	vElec: 75 * Size
+	vParts: 10 * Size
+
+	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Electronics[vElec * pow(SUBS_COST_CRV, Level)], AdvParts[vParts * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 1.4 //Build complexity - Higher results in a slower build
+	
+	vAbsorption: 1			//was 1.0 + (0.25 * (Size/Object.Size))
+	vShielding: Size * 600 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (Object.Scale / 1600)),2) * GAME_SHIELD_MULT				//was Size * 400
+	vShieldReg: (Size * 6 * pow(LEVEL_GAIN_CURVE, Level)) / min((1 + (Object.Scale / 1600)),2.0) * GAME_SHIELD_REG_MULT
+	vRegCost: decay(pow(LEVEL_GAIN_CURVE,Level),5) * decay(Size,50)
+	
+	Provides: GAShields with
+		Amount[vShielding],
+		Absorption[vAbsorption]
+	
+	Provides: GAShieldRegen with
+		Rate[vShieldReg],
+		Cost[vRegCost]
+
+	Requires:
+		To Run: Control[25 * Size]
+
+
+	Requires:
+		To Run:
+			ShieldEmitters[2 * (Scale / Object.Scale)]
+	
+	Hints: Shields[vShielding], ShieldReg[vShieldReg], Power[vShieldReg * vRegCost * -1], Local/ShieldAbsorption[vAbsorption]
+
+
+
+System: ShieldCharger
+	Name: #SS_SHIELDCHARGE_NAME
+	Description: #SS_SHIELDCHARGE_DESC
+	Appearance: ShieldCharger
+	Explosion: subsys_powerexplode lasting 0.5
+	
+	Tags: Shields, NoModifiers							//was Link
+	Tied To: Shields_Root 0
+
+	Available: Techs.Shields_Root.Level >= 0
+	Level: Techs.Shields_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: 25 * Size * pow(HEALTH_CURVE,HPLevel) * GAME_SUBSYS_MULT
+	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[75 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[10 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 1.3
+
+	vShieldReg: (Size * 18 * pow(LEVEL_GAIN_CURVE, Level) / min((1 + (Object.Scale / 1600)),2.0)) * GAME_SHIELD_REG_MULT			//was Size * 40
+	vRegCost: 0.5 * decay(pow(LEVEL_GAIN_CURVE,Level),5) * decay(Size,50)
+	
+	Provides: GAShieldRegen with
+		Rate[vShieldReg],
+		Cost[vRegCost]
+
+	Requires:
+		To Run: Control[5 * Size]
+
+	Requires:
+		To Run:
+			ShieldEmitters[Scale / Object.Scale]
+
+	Hints: ShieldReg[vShieldReg], Power[vShieldReg * vRegCost * -1]
+
+
+
+System: ShieldHardener
+	Name: #SS_SHIELDHARD_NAME
+	Description: #SS_SHIELDHARD_DESC
+	Appearance: ShieldHardener
+	Explosion: subsys_powerexplode lasting 0.5
+	
+	Tags: Shields, Link
+	Tied To: Shields_Root 0
+
+	Available: Techs.Shields_Root.Level >= 0
+	Level: Techs.Shields_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: 25 * Size * pow(HEALTH_CURVE,HPLevel) * GAME_SUBSYS_MULT
+	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+	Costs: Metals[80 * Size * pow(SUBS_COST_CRV, Level)], Electronics[75 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[20 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 1.4
+
+	Alters: subSysAlterations::increaseShieldAbsorption[(Scale / Object.Scale)]				//was * 0.25
+
+	Requires:
+		To Run: Control[10 * Size]
+
+	Requires:
+		To Run:
+			ShieldEmitters[Scale / Object.Scale]
+	
+	Consumes:
+		To Run: Power[Size * 50]			//was Size * 5
+		
+	Hints: Local/ShieldHarden[Size/Object.Scale * 1]
+
+	
+System: PulsedShieldCharger
+	Name: #SS_PULSEDSHIELDCHARGE_NAME
+	Description: #SS_PULSEDSHIELDCHARGE_DESC
+	Appearance: PulsedShieldCharger
+	Explosion: subsys_powerexplode lasting 0.5
+	
+	Tags: Shields, Link
+	Tied To: Shields_Root 0
+
+	Available: Techs.Shields_Root.Level >= 0
+	Level: Techs.Shields_Root.Level
+	
+	Size: Scale
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: 25 * Size * pow(HEALTH_CURVE,HPLevel) * GAME_SUBSYS_MULT
+	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+
+	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[100 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[30 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 2.0
+
+	vShieldReg: (Size * 45 * pow(LEVEL_GAIN_CURVE, Level) / min((1 + (Object.Scale / 1600)),2.0)) * GAME_SHIELD_REG_MULT
+	vRegCost: 0.25 * decay(pow(LEVEL_GAIN_CURVE,Level),5) * decay(Size,50)
+	vAbsorptionDecrease: 0.2 * (Scale / Object.Scale)													//was 0.25
+	
+	Alters: GASubSysAlterations::decreaseShieldAbsorptionAndIncreaseRegenAndCost[vAbsorptionDecrease][vShieldReg][vRegCost]
+		
+	Consumes:
+		To Run: Power[Size * 50]
+	
+	Requires:
+		To Run: Control[15 * Size]
+
+	Requires:
+		To Run:
+			ShieldEmitters[Scale / Object.Scale]
+
+	Hints: Local/ShieldHarden[-1 * vAbsorptionDecrease], Local/ShieldRegIncrease[vShieldReg]
+	
+System: ShieldEmitter
+	Name: #SS_SHIELDEMITTER_NAME
+	Description: #SS_SHIELDEMITTER_DESC
+	Appearance: ShieldEmitter
+	Explosion: armor_explode lasting 0.125
+	
+	Tags: Defense
+	Tied To: Shields_Root 0
+	
+	Available: Techs.Shields_Root.Level >= 0
+	Level: Techs.Shields_Root.Level
+	
+	Size: Scale
+	Durability: 25 * Size * pow(HEALTH_CURVE,Level) * GAME_SUBSYS_MULT
+	Mass: 50 * Size * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
+	
+	Costs: Metals[30 * Size * pow(SUBS_COST_CRV, Level)], Electronics[50 * Size * pow(SUBS_COST_CRV, Level)]
+	Complexity: 0.8
+	
+	Tick Rate: 1
+
+	vShieldEmitters: Scale / Object.Scale
+	
+	Provides: ShieldEmitters with Amount[vShieldEmitters]
+
+	Hints: ShieldEmitters[vShieldEmitters]
+	
+System: PlanetShields
+	Name: #SS_PLANETSHIELDS_NAME
+	Description: #SS_PLANETSHIELDS_DESC
+	Appearance: GeneralBuilding
+
+	Available: Techs.Shields_Root.Level >= 0
+	Level: Techs.Shields_Root.Level
+	
+	Size: Scale
+	Durability: 800 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT
+	Mass: 800 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	
+	Tags: Structure
+	Tied To: Shields_Root 0
+	
+	Costs: Metals[500 * Size * pow(COST_INC_CRV, Level)], Electronics[750 * Size * pow(COST_INC_CRV, Level)], AdvParts[750 * Size * pow(COST_INC_CRV, Level)]
+	Complexity: 2 * STRUCT_COMPLX_MULT
+	
+	vShields: Size * 10000 * pow(LEVEL_GAIN_CURVE, Level) * GAME_SHIELD_MULT * max((LEVEL_GAIN_CURVE * (Level / 5)), 1)			//alternate: ((1 + ((LEVEL_GAIN_CURVE - 1) / 2)) * Level)
+	vShieldReg: Size * 50 * pow(LEVEL_GAIN_CURVE, Level) * GAME_SHIELD_REG_MULT
+	
+	Provides: GAShields with
+		Amount[vShields],
+		Absorption[2]
+	
+	Provides: GAShieldRegen with
+		Rate[vShieldReg],
+		Cost[0]
+
+	Hints: Shield[vShields], ShieldReg[vShieldReg], HP[Durability]
+	
+System: ShieldBomb
+	Name: #SS_SHIELDBOMB_NAME
+	Description: #SS_SHIELDBOMB_DESC
+	Appearance: ShieldBomb
+	Explosion: subsystem_destroyed
+	
+	Available: Techs.Shields_Root.Level >= 0
+	Level: Techs.Shields_Root.Level
+	
+	Size: max(Scale,1)
+	HPLevel: Techs.Materials.Level-1 As Level
+	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
+	Mass: 75 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	
+	Tags: Weapon, Defense, Require:ShieldGen, Restrict:FighterBomber, NoModifiers
+	Tied To: Shields_Root 0
+	
+	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[100 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	Complexity: 1.25
+	
+	vDamage: Size * 20 * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT			//was Size * 6
+	vDelay: 10 * GAME_RELOAD_MULT
+	vShieldCost: 100 * Size * GAME_SHIELD_MULT
+	vRange: (120 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	
+	vEffectivity: (Scale / Object.Scale) / 20
+	
+	Provides: PointDefense with Effectivity[vEffectivity]	
+	
+	Provides: ShieldDet with
+		Damage[vDamage],
+		Accuracy[1.0],
+		Delay[vDelay],
+		Range[vRange],
+		ShieldCost[vShieldCost],
+		Deviation[1]
+	
+	Requires:
+		To Run:
+			Control[15 * Size]
+	
+	Hints: ShieldBurst[vShieldCost], Local/ShieldCost[vShieldCost], AoEDmg[vDamage / vDelay], Local/Range[vRange], Local/Delay[vDelay], PointDefense[vEffectivity]

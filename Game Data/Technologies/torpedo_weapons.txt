@@ -1,0 +1,45 @@
+
+Technology: Torpedo_Root
+	Name: #RS_TORPEDO_ROOT_NAME
+	Description: #RS_TORPEDO_ROOT_DESC
+	Icon: res_tech_2
+	Position: 0,1
+	
+	StartLevel: 1
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+	Link: Torpedo_Engines[1 * LINK_COST]
+	Link: Torpedo_Preparation[1 * LINK_COST]
+	Link: Torpedo_Miniaturization[1 * LINK_COST]
+	
+Technology: Torpedo_Engines
+	Name: #RS_TORPEDO_ENGINES_NAME
+	Description: #RS_TORPEDO_ENGINES_DESC
+	Icon: res_tech_2
+	Position: 0,2
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+Technology: Torpedo_Preparation
+	Name: #RS_TORPEDO_PREPARATION_NAME
+	Description: #RS_TORPEDO_PREPARATION_DESC
+	Icon: res_tech_2
+	Position: -1,0
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+Technology: Torpedo_Miniaturization
+	Name: #RS_TORPEDO_MINIATURIZATION_NAME
+	Description: #RS_TORPEDO_MINIATURIZATION_DESC
+	Icon: res_tech_2
+	Position: 1,0
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	

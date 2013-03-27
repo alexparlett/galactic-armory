@@ -1,0 +1,45 @@
+
+Technology: Troop_Root
+	Name: #RS_TROOP_ROOT_NAME
+	Description: #RS_TROOP_ROOT_DESC
+	Icon: troops_root
+	Position: 0,-1
+	
+	StartLevel: 1
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+	Link: Troop_Training[1 * LINK_COST]
+	Link: Troop_Defense[1 * LINK_COST]
+	Link: Troop_Boarding[1 * LINK_COST]
+	
+Technology: Troop_Training
+	Name: #RS_TROOP_TRAINING_NAME
+	Description: #RS_TROOP_TRAINING_DESC
+	Icon: troops_training
+	Position: 0,-2
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+Technology: Troop_Defense
+	Name: #RS_TROOP_DEFENSE_NAME
+	Description: #RS_TROOP_DEFENSE_DESC
+	Icon: troops_defensive
+	Position: -1,-1
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+Technology: Troop_Boarding
+	Name: #RS_TROOP_BOARDING_NAME
+	Description: #RS_TROOP_BOARDING_DESC
+	Icon: troops_boarding
+	Position: 1,-1
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	

@@ -1,0 +1,45 @@
+
+Technology: Materials_Root
+	Name: #RS_MATERIALS_ROOT_NAME
+	Description: #RS_MATERIALS_ROOT_DESC
+	Icon: res_tech_2
+	Position: -1,0
+	
+	StartLevel: 1
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+	Link: Materials_Struct[1 * LINK_COST]
+	Link: Materials_Weapons[1 * LINK_COST]
+	Link: Materials_Lightweight[1 * LINK_COST]
+	
+Technology: Materials_Struct
+	Name: #RS_MATERIALS_STRUCT_NAME
+	Description: #RS_MATERIALS_STRUCT_DESC
+	Icon: res_tech_2
+	Position: -2,1
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+Technology: Materials_Weapons
+	Name: #RS_MATERIALS_WEAPONS_NAME
+	Description: #RS_MATERIALS_WEAPONS_DESC
+	Icon: res_tech_2
+	Position: -2,0
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+Technology: Materials_Lightweight
+	Name: #RS_MATERIALS_LIGHTWEIGHT_NAME
+	Description: #RS_MATERIALS_LIGHTWEIGHT_DESC
+	Icon: res_tech_2
+	Position: -1,1
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	

@@ -1,0 +1,103 @@
+Effector: StargateLink
+	Value: StargateRange
+	
+	PhysicalType: Instant
+		FireGfx: blue_glow, 1					//was antimatter_critmass, 8
+		Sound: jumpboom
+
+	Causes: StargateLinkEvent lasting 5
+	
+	Range: StargateRange	
+		
+	IsWeapon: false
+
+	CanAttack: JumpDrive::checkStargate
+	OnFire:  Timed(10)
+	Tick: Reload
+	Progress: TimedProgress
+	
+Effector: StargateJump
+	PhysicalType: Instant
+		FireGfx: jump_charge, 5						//was antimatter_critmass, 8
+		Sound: jumpboom
+		
+	Range: 100
+		
+	Causes: StargateJumpEvent lasting 5
+	
+	IsWeapon: false
+	
+	CanAttack: JumpDrive::checkStargateJump
+	OnFire:  Timed(30)
+	Tick: Reload
+	Progress: TimedProgress
+
+
+Effector: JumpDrive
+	Value: MinRange
+	Value: MaxRange
+	Value: ChargeupTime
+	Value: PowCost
+	Value: FuelCost
+	
+	PhysicalType: Instant
+		FireGfx: warp_trail, 10			//was antimatter_critmass, 8
+		Sound: jumpboom
+	
+	Range: MaxRange
+	
+	Causes: JumpDriveEvent lasting ChargeupTime with FuelCost[FuelCost]
+	
+	IsWeapon: false
+	
+	CanAttack: JumpDrive::checkRange, JumpDrive::checkFuel
+	OnFire:  TimedShot(ChargeupTime, "Power", PowCost)
+	Tick: Reload
+	Progress: TimedProgress
+	
+//crashes the game - why?
+//Effector: SetVisibleTriggerable
+//	Value: Time
+//	
+//	PhysicalType: Instant
+//	
+//	Range: 1
+//	
+//	Causes: SetVisible lasting 0 with Time[Time]
+//	
+//	CanAttack: Any
+//	OnFire: Timed(-1)
+//	Tick: Reload
+
+
+Effector: GateWarp
+	Value: MaxRange
+	Value: RechargeTime
+	Value: Duration
+	Value: AreaSize
+
+	Causes: WarpEvent lasting 1 with Duration[Duration], AreaSize[AreaSize]
+
+	PhysicalType: Instant
+
+	IsWeapon: false
+	Range: MaxRange
+
+	CanAttack: RemnantEffects::canWarp
+
+	OnFire: Timed(RechargeTime, 0)
+	Tick: Reload
+	Progress: TimedProgress
+
+Effector: WarpGraphic
+	Value: AreaSize
+	Range: AreaSize
+
+	PhysicalType: Instant
+		FireGfx: antimatter_critmass, 5
+		GfxSize: 40
+
+	CanAttack: Any
+	OnFire: Timed(-1)
+	Tick: Reload
+	

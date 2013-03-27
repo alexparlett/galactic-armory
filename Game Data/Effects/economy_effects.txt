@@ -1,0 +1,137 @@
+Name:	GABankExport
+	Value: Amount
+	Value: Mode
+
+	Tick:	BasicEffects::BankExport
+
+Name: BankImport
+	Value: Rate
+
+   OnConstruct: GABasicEffects::importdockBuilt
+   OnDestruct: GABasicEffects::importdockDestroyed
+   Tick: GABasicEffects::BankImport
+
+Name:   OreStorage
+   Value: Amount
+
+   Once: AddAmount(0, "Ore")
+   OnConstruct:   AddMax(Amount, "Ore")
+   OnDestruct:      SubMax(Amount, "Ore")
+
+Name:	RefineH3
+	Value: Rate
+	Value: H3CostPer
+
+	Tick: GABasicEffects::convertH3
+
+Name: H3Storage
+	Value: Amount
+
+	Once: AddAmount(0, "H3")
+	OnConstruct:	AddMax(Amount, "H3")
+	OnDestruct:		SubMax(Amount, "H3")
+
+Name: ScoopH3
+	Value: Rate
+	Value: PowCost
+	
+	Tick:	GABasicEffects::ScoopH3
+	
+Name: AmmoFab
+	Value: Rate
+	Value: MetalCost
+
+	Tick: GABasicEffects::FabricateAmmo
+	
+Name: AmmoImport
+	Value: Rate
+	
+	Tick: GABasicEffects::ImportAmmo
+	
+Name: AsteroidCollect
+	Value: Rate
+
+	Tick: GABasicEffects::CollectAsteroids
+	
+Name:	AsteroidStorage
+	Value: Amount
+
+	Once: AddAmount(Amount, "Asteroids")
+	OnConstruct:	AddMax(Amount, "Asteroids")
+	OnDestruct:		SubMax(Amount, "Asteroids")
+
+Name:	AICapitalSupport
+	Value: Metals
+	Value: Electronics
+	Value: AdvParts
+	Value: Food
+	
+	Tick:	GAStructureEffects::AIPlanetCapitalTick
+
+Name:	AmmoStorage
+	Value: Amount
+
+	Once: AddAmount(Amount, "Ammo")
+	OnConstruct:	AddMax(Amount, "Ammo")
+	OnDestruct:		SubMax(Amount, "Ammo")
+
+Name:	Cargo
+	Value: Amount
+
+	OnActive:	AddCargoSpace(Amount)
+	OnDeactive:	SubCargoSpace(Amount)
+
+Name:	ShipStorage
+	Value: Amount
+
+	OnActive:	AddShipSpace(Amount)
+	OnDeactive:	SubShipSpace(Amount)
+
+Name:	CollectFuel
+	Value: Rate
+	
+	Tick: GenerateNoCargo("Fuel", Rate)
+
+Name:	MakeBioFuel
+	Value: Rate
+	Value: FoodCostPer
+
+	Tick: ProduceNoCargo("Fuel", "Food", Rate, FoodCostPer)
+
+Name:	MakeAmmo
+	Value: Rate
+	Value: MetalCostPer
+
+	Tick: ProduceNoCargo("Ammo", "Metals", Rate, MetalCostPer)
+
+Name:	FuelStorage
+	Value: Amount
+	
+	Once:			AddAmount(Amount, "Fuel")
+	OnConstruct:	AddMax(Amount, "Fuel")
+	OnDestruct:		SubMax(Amount, "Fuel")
+
+Name:	RefineMetal
+	Value: Rate
+	Value: OreCostPer
+	
+	Tick:	Produce("Metals", "Ore", Rate, OreCostPer)
+
+Name:	FabElects
+	Value: Rate
+	Value: MtlCostPer
+	
+	Tick:	Produce("Electronics", "Metals", Rate, MtlCostPer)
+
+Name:	FabAdvParts
+	Value: Rate
+	Value: MtlCostPer
+	Value: ElcCostPer
+	
+	Tick:	BasicEffects::FabricateAdv
+
+Name:	MatterGeneration
+	Value: Rate
+	Value: PowCost
+
+	Tick:	BasicEffects::MatterGen

@@ -1,5 +1,5 @@
 #include "~/Game Data/gui/include/blueprints_sort.as"
-#include "~/Game Data/gui/include/dialog.as"
+#include "/include/dialog.as"
 #include "~/Game Data/gui/include/order_descriptors.as"
 
 import void triggerQueueWin(Object@) from "queue_win";

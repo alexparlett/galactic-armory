@@ -1,8 +1,17 @@
 objUser00 - Unused
 objUser01 - Used for Planet Damage flag.
-objUser02 - Future Use PI
+objUser02 - User for Invasions.
 objUser03 - Used for Planet Improvements.
 objUser04 - Unused
 objUser05 - Unused
-objUser06 - Unused
+objUser06
 objUser07 - AI
+
+objSetting00 - Used For PI Pause
+objSetting01 - Unused
+objSetting02 - Unused
+objSetting03 - Unused
+objSetting04 - Unused
+objSetting05 - Unused
+objSetting06 - Unused
+objSetting07 - Unused

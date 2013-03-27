@@ -1,0 +1,45 @@
+
+Technology: Spatial_Root
+	Name: #RS_SPATIAL_ROOT_NAME
+	Description: #RS_SPATIAL_ROOT_DESC
+	Icon: spatial_dynamics_root
+	Position: 1,0
+	
+	StartLevel: 1
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+	Link: Spatial_Comp[1 * LINK_COST]
+	Link: Spatial_DSM[1 * LINK_COST]
+	Link: Spatial_Heliocide[1 * LINK_COST]
+	
+Technology: Spatial_Comp
+	Name: #RS_SPATIAL_COMP_NAME
+	Description: #RS_SPATIAL_COMP_DESC
+	Icon: spatial_dynamics_compression
+	Position: 2,1
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+Technology: Spatial_DSM
+	Name: #RS_SPATIAL_DSM_NAME
+	Description: #RS_SPATIAL_DSM_DESC
+	Icon: spatial_dynamics_manipulation
+	Position: 2,0
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+Technology: Spatial_Heliocide
+	Name: #RS_SPATIAL_HELIOCIDE_NAME
+	Description: #RS_SPATIAL_HELIOCIDE_DESC
+	Icon: spatial_dynamics_heliocide
+	Position: 1,1
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	

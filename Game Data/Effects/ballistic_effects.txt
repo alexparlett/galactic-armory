@@ -1,0 +1,50 @@
+Name:	GAProjectileDmg
+	Value: Damage
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minHitChance
+	
+	OnActive:	GACombatWeapons::ProjDamage
+	
+Name:	GAProjPierceDamage
+	Value: Damage
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minHitChance
+	
+	OnActive:	GACombatWeapons::ProjPierceDamage
+	
+Name:	GAShieldPiercingDmg
+	Value: Damage
+	Value: Range
+	Value: effectiveRangeFactor
+	Value: minHitChance
+	
+	OnActive:	GACombatWeapons::ShieldPiercingDamage
+	
+Name: TriggeredAreaDamage
+	Value: AoE_Damage
+	Value: AoE_Range
+
+	OnActive: GACombatWeapons::AreaDamageTriggered
+	
+Name: AreaDamageTrigger
+	Value: Damage
+
+	OnActive: GACombatWeapons::AreaDamageTrigger
+	
+Name:	ProjectileDmg
+	Value: Damage
+	Value: Cost
+	
+	OnActive:	Combat::ProjDamage
+
+Name:	ArtilleryDmg
+	Value: Damage
+	
+	OnActive:	Combat::ArtyDamage
+	
+Name:	ProjPierceDamage
+	Value: Damage
+	
+	OnActive:	Combat::ProjPierceDamage

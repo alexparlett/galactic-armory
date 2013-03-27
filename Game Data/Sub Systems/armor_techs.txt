@@ -1,0 +1,313 @@
+System: Armor
+	Name: #SS_PLATEARMOR_NAME
+	Description: #SS_PLATEARMOR_DESC
+	Appearance: ArmorPlate
+	Explosion: armor_explode lasting 0.25
+	
+	Tags: Armor
+	Tied To: Armor_Root 0
+	
+	Equips To: Armor
+	PreDamageOrder: -5
+	
+	Available: Techs.Armor_Root.Level >= 0
+	Level: Techs.Armor_Root.Level
+	
+	Size: Scale
+	Durability: Size * 320 * pow(LEVEL_GAIN_CURVE, Level) * max((1 - (Object.Scale / 3600)), 0.75) * GAME_ARMOR_MULT		//was Size * 200
+	Mass: Size * 100 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
+	vDamageReduction: 12 * Object.Scale * max((1 - (Object.Scale / 7200)), 0.5) * pow(LEVEL_GAIN_CURVE, Level)						//was 15
+	
+	vMetal: 300 * Size
+	
+	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Labr[6 * Size]
+	Complexity: 0.2
+
+	Tick Rate: 1
+	
+	Provides: GASoakDamage with Amount[vDamageReduction]
+
+	Requires:
+		To Run:
+			ArmorPoints[Scale / Object.Scale]
+
+	Hints: Local/DamageReduction[vDamageReduction], Armor[Durability]
+
+
+System: SoakArmor
+	Name: #SS_SOAKARMOR_NAME
+	Description: #SS_SOAKARMOR_DESC
+	Appearance: AblativePlate
+	Explosion: armor_explode
+	
+	Tags:  Armor
+	Tied To: Armor_Root 0
+	
+	Equips To: Armor
+	PreDamageOrder: -5
+	
+	Available: Techs.Armor_Root.Level >= 0
+	Level: Techs.Armor_Root.Level
+	
+	Size: Scale
+	Durability: Size * 250 * pow(LEVEL_GAIN_CURVE, Level) * max((1 - (Object.Scale / 3600)), 0.75) * GAME_ARMOR_MULT		//was Size * 150
+	Mass: Size * 75 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
+	vDamageReduction: 18 * Object.Scale * max((1 - (Object.Scale / 7200)), 0.5) * pow(LEVEL_GAIN_CURVE, Level)				//was 20
+	
+	vMetal: 300 * Size
+	
+	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Labr[6 * Size]
+	Complexity: 0.35
+	
+	Tick Rate: 1
+	
+	Provides: GASoakDamage with Amount[vDamageReduction]		//was 7 * sqrt
+
+	Requires:
+		To Run:
+			ArmorPoints[Scale / Object.Scale]
+
+	Hints: Local/DamageReduction[vDamageReduction], Armor[Durability]
+
+System: ReactArmor
+	Name: #SS_REACTARMOR_NAME
+	Description: #SS_REACTARMOR_DESC
+	Appearance: ReactiveArmor
+	Explosion: armor_explode lasting 0.25
+	
+	Tags: Armor
+	Tied To: Armor_Root 0
+	
+	Equips To: Armor
+	PreDamageOrder: -5
+	
+	Available: Techs.Armor_Root.Level >= 0
+	Level: Techs.Armor_Root.Level
+	
+	Size: Scale
+	Durability: Size * 180 * pow(LEVEL_GAIN_CURVE, Level) * max((1 - (Object.Scale / 3600)), 0.75) * GAME_ARMOR_MULT				//was size * 150
+	Mass: Size * 85 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
+	
+	vMetal: 300 * Size
+	vElec: 100 * Size
+
+	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Electronics[vElec * pow(SUBS_COST_CRV, Level)], Labr[7 * Size]
+	Complexity: 0.4
+	
+	Tick Rate: 1
+	
+	vReactLevel: (1 + decay(pow(LEVEL_GAIN_CURVE,Level),35)) * 20 * Object.Scale * min((1 + (Object.Scale / 7200)), 1.5) * pow(LEVEL_GAIN_CURVE, Level)
+	vAbsorbLevel: 1 + decay(pow(LEVEL_GAIN_CURVE,Level),35)
+	
+	Provides: GAReactDamage with Amount[vReactLevel], AbsorbPct[vAbsorbLevel * 0.1]
+
+	Requires:
+		To Run:
+			ArmorPoints[Scale / Object.Scale]
+
+	Hints: Armor[Durability], Local/ImpactLevel[vReactLevel]
+	
+System: PowerArmor
+	Name: #SS_POWERARMOR_NAME
+	Description: #SS_POWERARMOR_DESC
+	Appearance: PoweredArmor
+	Explosion: armor_explode lasting 0.25
+	
+	Tags: Armor
+	Tied To: Armor_Root 0
+	
+	Equips To: Armor
+	PreDamageOrder: -5
+	
+	Available: Techs.Armor_Root.Level >= 0
+	Level: Techs.Armor_Root.Level
+	
+	Size: Scale
+	Durability: Size * 250 * pow(LEVEL_GAIN_CURVE, Level) * max((1 - (Object.Scale / 3600)), 0.75) * GAME_ARMOR_MULT		//was Size * 100
+	Mass: Size * 40 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
+	vDamageReduction: 25 * Object.Scale * max((1 - (Object.Scale / 7200)), 0.5) * pow(LEVEL_GAIN_CURVE, Level)					//was 60
+	
+	vMetal: 400 * Size
+	vElec: 300 * Size
+	vParts: 100 * Size
+
+	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Electronics[vElec * pow(SUBS_COST_CRV, Level)], AdvParts[vParts * pow(SUBS_COST_CRV, Level)], Labr[9 * Size]
+	Complexity: 1
+	
+	Tick Rate: 4
+	
+	Provides: GASoakDamage with Amount[vDamageReduction]
+
+	Requires:
+		To Run:
+			ArmorPoints[Scale / Object.Scale]
+	
+	Consumes:
+		To Run:
+			Power[Size * 60]						//was size * 15
+	
+	Hints: Local/DamageReduction[vDamageReduction], Armor[Durability]
+
+
+System: NanoArmor
+	Name: #SS_NANOARMOR_NAME
+	Description: #SS_NANOARMOR_DESC
+	Appearance: Nanoarmor
+	Explosion: armor_explode lasting 0.25
+	
+	Tags: Armor
+	Tied To: Armor_Root 0
+	
+	Equips To: Armor
+	PreDamageOrder: -5
+	
+	Available: Techs.Armor_Root.Level >= 0
+	Level: Techs.Armor_Root.Level
+	
+	armorLevel: Techs.Armor.Level As Level
+	nanoLevel: Techs.Nanotech.Level As Level
+		
+	Size: Scale
+	Durability: Size * 100 * pow(LEVEL_GAIN_CURVE, armorLevel) * max((1 - (Object.Scale / 3600)), 0.75) * GAME_ARMOR_MULT		//was Size  * 75
+	Mass: Size * 60 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
+	vDamageReduction: 10 * Object.Scale * max((1 - (Object.Scale / 7200)), 0.5) * pow(LEVEL_GAIN_CURVE, Level)				//was 15
+	
+	vMetal: 400 * Size
+	vElec: 100 * Size
+	vParts: 150 * Size
+
+	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Electronics[vElec * pow(SUBS_COST_CRV, Level)], AdvParts[vParts * pow(SUBS_COST_CRV, Level)], Labr[10 * Size]
+	Complexity: 1.2
+	
+	Tick Rate: 10
+	
+	vHitPoints: Size * 100 * pow(LEVEL_GAIN_CURVE, armorLevel) * max((1 - (Object.Scale / 3600)), 0.75) * GAME_ARMOR_MULT		//Was Size * 75
+	vHealRate: Durability / max((12 - (nanoLevel * 0.2)), 5)																			//was (28 * decay(pow(LEVEL_GAIN_CURVE, nanoLevel), 10))
+	
+	Provides: GASoakDamage with Amount[vDamageReduction]
+
+	Provides: SelfHeal with Rate[vHealRate], UpToHP[vHitPoints]		//was Durability  * (1 - (0.5 * decay(pow(LEVEL_GAIN_CURVE, Level), 5)))
+
+	Requires:
+		To Run:
+			ArmorPoints[Scale / Object.Scale]
+	
+	Consumes:
+		To Run:
+			Power[Size * 50]					//was size * 10
+	
+	Hints: Local/DamageReduction[vDamageReduction], Armor[Durability], ArmorRegen[vHealRate]
+
+
+System: ShieldArmor
+	Name: #SS_SHIELDARMOR_NAME
+	Description: #SS_SHIELDARMOR_DESC
+	Appearance: ShieldArmor
+	Explosion: armor_explode lasting 0.25
+	
+	Tags: Armor, ShieldArmor, Restrict:Shields
+	Tied To: Armor_Root 0
+	
+	Equips To: Armor
+	PreDamageOrder: -9
+	
+	Available: Techs.Armor_Root.Level >= 0
+	Level: Techs.Armor_Root.Level
+	
+	Size: Scale
+	Durability: Size * 200 * pow(LEVEL_GAIN_CURVE, Level) * max((1 - (Object.Scale / 3600)), 0.75) * GAME_ARMOR_MULT				//was Size * 50
+	Mass: Size * 50 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
+	
+	vMetal: 200 * Size
+	vElec: 100 * Size
+	vParts: 300 * Size
+
+	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Electronics[vElec * pow(SUBS_COST_CRV, Level)], AdvParts[vParts * pow(SUBS_COST_CRV, Level)], Labr[8 * Size]
+	Complexity: 2
+	
+	Tick Rate: 4																		//was 4
+	
+	vAbsorption: 2																		//was 2.5
+	vShielding: Size * 200 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (Object.Scale / 2400)),3) * GAME_SHIELD_MULT				//was Size * 100
+	vShieldReg: (Size * 40 * pow(LEVEL_GAIN_CURVE, Level) / min((1 + (Object.Scale / 2400)),3)) * GAME_SHIELD_REG_MULT		//was Size * 50
+	vRegCost: 0.3 * decay(pow(LEVEL_GAIN_CURVE,Level),5) * decay(Size,50)
+	vCollapseTime: 5.0
+	
+	Provides: ShieldArmor with
+		Amount[vShielding],
+		Absorption[vAbsorption],
+		CollapseTime[vCollapseTime]
+	
+	Provides: ShieldArmorRegen with
+		Rate[vShieldReg],
+		Cost[vRegCost]
+	
+	Requires:
+		To Run:
+			ShieldEmitters[Scale / Object.Scale]
+	
+	Requires:
+		To Run:
+			ArmorPoints[Scale / Object.Scale]
+	
+	Consumes:
+		To Run:
+			Power[Size * 120]
+	
+	Hints: Armor[Durability], ShieldArmor[vShielding], ShieldArmorRegen[vShieldReg], Power[vShieldReg * vRegCost * -1], Local/ShieldAbsorption[vAbsorption]
+	
+System: ArmorMount
+	Name: #SS_ARMORMOUNT_NAME
+	Description: #SS_ARMORMOUNT_DESC
+	Appearance: ArmorMount
+	Explosion: armor_explode lasting 0.125
+	
+	Tags: Defense
+	Tied To: Armor_Root 0
+	
+	Available: Techs.Armor_Root.Level >= 0
+	Level: Techs.Armor_Root.Level
+	
+	Size: Scale
+	Durability: 25 * Size * pow(HEALTH_CURVE,Level) * GAME_SUBSYS_MULT	
+	Mass: 50 * Size * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
+	
+	Costs: Metals[50 * Size * pow(SUBS_COST_CRV, Level)]
+	Complexity: 0.6
+	
+	Tick Rate: 1
+
+	vArmorPoints: Scale / Object.Scale
+	
+	Provides: ArmorPoints with Amount[vArmorPoints]
+
+	Hints: ArmorPoints[vArmorPoints]
+	
+System: Bulkhead
+	Name: #SS_BULKHEAD_NAME
+	Description: #SS_BULKHEAD_DESC
+	Appearance: Bulkhead
+	Explosion: armor_explode lasting 0.125
+	
+	Tags: Defense, IndependentLink, Link
+	Tied To: Armor_Root 0
+	
+	Available: Techs.Armor_Root.Level >= 0
+	Level: Techs.Armor_Root.Level
+	
+	Size: Scale / 2
+	Durability: 100 * Size * pow(LEVEL_GAIN_CURVE, Level) * GAME_SUBSYS_MULT
+	Mass: 60 * Size * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
+	
+	Costs: Metals[80 * Size * pow(SUBS_COST_CRV, Level)]
+	Complexity: 0.6
+	
+	Tick Rate: 1
+	
+	vBonusHP: Size * 100 * pow(LEVEL_GAIN_CURVE, Level) * GAME_SUBSYS_MULT
+
+	Alters: subSysAlterations::addMaxHealth[vBonusHP]
+
+	Hints: Local/BonusHP[vBonusHP]
+
+	

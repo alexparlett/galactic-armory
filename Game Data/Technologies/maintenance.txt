@@ -1,0 +1,45 @@
+
+Technology: Maint_Root
+	Name: #RS_MAINT_ROOT_NAME
+	Description: #RS_MAINT_ROOT_DESC
+	Icon: res_tech_2
+	Position: 1,0
+	
+	StartLevel: 1
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+	Link: Maint_Cost[1 * LINK_COST]
+	Link: Maint_Power[1 * LINK_COST]
+	Link: Maint_Management[1 * LINK_COST]
+	
+Technology: Maint_Cost
+	Name: #RS_MAINT_COST_NAME
+	Description: #RS_MAINT_COST_DESC
+	Icon: res_tech_2
+	Position: 2,1
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+Technology: Maint_Power
+	Name: #RS_MAINT_POWER_NAME
+	Description: #RS_MAINT_POWER_DESC
+	Icon: res_tech_2
+	Position: 2,0
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
+Technology: Maint_Management
+	Name: #RS_MAINT_MANAGEMENT_NAME
+	Description: #RS_MAINT_MANAGEMENT_DESC
+	Icon: res_tech_2
+	Position: 1,1
+	
+	StartLevel: 0
+	MaxLevel: 20
+	Cost: 1000 * (0.5 + (NextLevel * 0.5))
+	
