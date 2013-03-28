@@ -58,6 +58,12 @@ void alterBuildCost (subSystem@ subSys, SubSystemEvalMode mode, float Factor) {
 	}
 }
 
+const string@ strResRate = "vResRate";
+void increaseResearch (subSystem@ subSys, const string@ name, float Factor) {
+	if(name == strResRate)
+		subSys.setVariable(strResRate, subSys.getVariable(strResRate) * Factor);
+}
+
 //Increases the damage of all weapons !! Would be easier if they used a unified damage variable!!
 void alterDamage (subSystem@ subSys, const string@ name, float Factor) {
 	if(name == strDamage && (!subSys.type.hasTag(strDefense) && !subSys.type.hasTag(strECM) && (subSys.type.hasTag(strWeapon) || subSys.type.hasTag(strSpecWeap))))

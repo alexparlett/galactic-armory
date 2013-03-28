@@ -7,20 +7,22 @@ System: ShipBay
 	Tags: ShipBay, Restrict:CarrierHull, Storage
 	Tied To: Engi_Root 0
 	
-	Available: Techs.Engi_Root.Level >= 0
+	Available: Techs.Engi_Root.Level > 0
 	Level: Techs.Engi_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	CargoLevel: Techs.Engi_Root.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 5 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 5 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 5 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (5 * Size) / (1 + (0.1 * MassLevel))
 
 	Costs: Metals[20 * Size * pow(SUBS_COST_CRV, Level)], Electronics[5 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[1 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
 	Complexity: 0.5
 	
 	Tick Rate: 1
 
-	vShipBay: Size * (1 / 20) * 1.01								//was ((Size * (1 / 32) * (2 - decay(pow(LEVEL_GAIN_CURVE,Level), 12))
+	vShipBay: (1 * Size) * (1 + (CargoLevel * GA_TECH_INCREASE))  // provisional 1
 	
 	Provides: ShipStorage with
 		Amount[vShipBay]
@@ -37,20 +39,22 @@ System: LifeSupport
 	Tags: Control
 	Tied To: Engi_Root 0
 	
-	Available: Techs.Engi_Root.Level >= 0
+	Available: Techs.Engi_Root.Level > 0
 	Level: Techs.Engi_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	LifesupportLevel: Techs.Engi_LifeSupport.Level 
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 20 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 20 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 
 	Costs: Metals[150 * Size * pow(SUBS_COST_CRV, Level)], Electronics[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[10 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
 	Complexity: 1
 	
 	Tick Rate: 4
 	
-	vAirGen: 5 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	vAirGen: (5 * Size) * (1 + (LifesupportLevel * GA_TECH_INCREASE))
 	
 	Provides: MakeAir with Amount[vAirGen]
 	Provides: AirStorage with Amount[progress(50,10,Level) * Size]
@@ -69,21 +73,24 @@ System: CrewQuarters
 	Tags: Control
 	Tied To: Engi_Root 0
 	
-	Available: Techs.Engi_Root.Level >= 0
+	Available: Techs.Engi_Root.Level > 0
 	Level: Techs.Engi_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level 
+	LifesupportLevel: Techs.Engi_LifeSupport.Level 
+	RepairLevel: Techs.Maint_Makeshift.Level 
+	HPLevel: Techs.Materials_Root.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 20 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 30 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	Durability: 20 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 
 	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], Electronics[20 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
 	Complexity: 0.75
 	
 	Tick Rate: 4
 	
-	vCrewStore: ceil(25 * Size)
-	vCrewRegen: Size * 2.5 * pow(LEVEL_GAIN_CURVE, Level)			//was Size * 2.0
+	vCrewStore: 25 * Size * (1 + (LifesupportLevel * GA_TECH_INCREASE))
+	vCrewRegen: 2.5 * Size * (1 + (RepairLevel * GA_TECH_INCREASE))
 				
 	//vMetalCost: Size * 0.001 * pow(LEVEL_GAIN_CURVE, Level)   	//for now only metal cost, but others possible
 	vMetalCost: Size * 0.1 * * max((Level / 2), 1)					//wasSize * 0.1 * pow(LEVEL_GAIN_CURVE, Level) * (2 - decay(pow(LEVEL_GAIN_CURVE,Level),35))
@@ -110,21 +117,24 @@ System: Bridge
 	Tags: Control
 	Tied To: Engi_Root 0
 	
-	Available: Techs.Engi_Root.Level >= 0
+	Available: Techs.Engi_Root.Level > 0
 	Level: Techs.Engi_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	CommandLevel: Techs.Engi_Root.Level
+	EfficiencyLevel: Techs.Engi_Workload.Level 
 	
 	Size: Scale	
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 50 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 30 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (30 * Size) / (1 + (0.1 * MassLevel))
 	
 	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[125 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[10 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
 	Complexity: 4
 	
 	Tick Rate: 4
 	
-	vCrewReq: ceil(5 * Size * (1 + decay(pow(LEVEL_GAIN_CURVE,Level),20)))													//was ceil(5 * Size * (2 - decay(pow(LEVEL_GAIN_CURVE,Level),40)))
-	vControlGen: 100 * Size * pow(LEVEL_GAIN_CURVE, (1 + (Level / 2)))
+	vCrewReq: (25 * Size) / (1 + (0.1 * EfficiencyLevel))
+	vControlGen: 100 * Size * (1 + (CommandLevel * GA_TECH_INCREASE))
 	
 	Provides: Control with
 		Amount[vControlGen]
@@ -146,20 +156,22 @@ System: Cockpit
 	Tags: Control, Require:FighterBomber
 	Tied To: Engi_Root 0
 	
-	Available: Techs.Engi_Root.Level >= 0
+	Available: Techs.Engi_Root.Level > 0
 	Level: Techs.Engi_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	CommandLevel: Techs.Engi_Root.Level
 	
 	Size: Scale	
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 50 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 30 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (30 * Size) / (1 + (0.1 * MassLevel))
 	
 	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[125 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[10 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
 	Complexity: 3
 	
 	Tick Rate: 4
 	
-	vControlGen: 80 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	vControlGen: 80 * Size * (1 + (CommandLevel * GA_TECH_INCREASE))
 	
 	Provides: Control with
 		Amount[vControlGen]
@@ -178,23 +190,28 @@ System: IntegratedCommandCenter
 	Tags: Control
 	Tied To: Engi_Root 0
 	
-	Available: Techs.Engi_Root.Level >= 0
+	Available: Techs.Engi_Root.Level > 0
 	Level: Techs.Engi_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	LifesupportLevel: Techs.Engi_LifeSupport.Level
+	RepairLevel: Techs.Maint_Makeshift.Level
+	CommandLevel: Techs.Engi_Root.Level
+	PowerLevel: Techs.Engi_Comp.Level
 	
 	Size: Scale	* 2
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 70 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 30 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 70 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (30 * Size) / (1 + (0.1 * MassLevel))
 	
 	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[125 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[10 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
 	Complexity: 4
 	
 	Tick Rate: 4
 	
-	vControlGen: 80 * Size * pow(LEVEL_GAIN_CURVE, (1 + (Level / 2)))
-	vCrewStore: ceil(5 * Size)
-	vCrewRegen: Size * 2.0 * pow(LEVEL_GAIN_CURVE, Level)			//was Size * 1.0
-	vAirGen: 1 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	vControlGen: 80 * Size * (1 + (CommandLevel * GA_TECH_INCREASE))
+	vCrewStore: (15 * Size) * (1 + (LifesupportLevel * GA_TECH_INCREASE))
+	vCrewRegen: (2.5 * Size) * (1 + (RepairLevel * GA_TECH_INCREASE))
+	vAirGen: (1 * Size) * (1 + (LifesupportLevel * GA_TECH_INCREASE))
 	
 	vMetalCost: Size * 0.1 * * max((Level / 2), 1)					//was Size * 0.1 * pow(LEVEL_GAIN_CURVE, Level) * (2 - decay(pow(LEVEL_GAIN_CURVE,Level),35))   //for now only metal cost, but others possible
 	
@@ -213,7 +230,7 @@ System: IntegratedCommandCenter
 	
 	Consumes:
 		To Run:
-			Power[10 * Size]
+			Power[(10 * Size) / (1 + (0.1 * PowerLevel))]
 	
 	Hints: Crew[vCrewStore], Regen[vCrewRegen], Control[vControlGen], Air[vAirGen], RegenCost[-1 * vMetalCost]
 	
@@ -226,26 +243,29 @@ System: Computer
 	Tags: Control
 	Tied To: Engi_Root 0
 
-	Available: Techs.Engi_Root.Level >= 0
-	Level: Techs.Engi_Root.Level
+	Available: Techs.Engi_Root.Level > 0
+	Level:Techs.Engi_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	PowerLevel: Techs.Engi_Comp.Level
+	CommandLevel: Techs.Engi_Root.Level
 	
 	Size: Scale	
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 20 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 75 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 20 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (75 * Size) / (1 + (0.1 * MassLevel))
 	
 	Costs: Metals[50 * Size * pow(SUBS_COST_CRV, Level)], Electronics[400 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[30 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
 	Complexity: 6
 	
 	Tick Rate: 4
 	
-	vComputerControlGen: Size * 50 * pow(LEVEL_GAIN_CURVE, (1 + (Level / 2)))
+	vComputerControlGen: 50 * Size * (1 + (CommandLevel * GA_TECH_INCREASE))
 	
 	Provides: Control with
 		Amount[vComputerControlGen]
 	
 	Consumes:
-		To Run: Power[20 * Size]
+		To Run: Power[20 * Size) / (1 + (0.1 * PowerLevel))]
 	
 	Hints: Control[vComputerControlGen]
 
@@ -258,29 +278,29 @@ System: AdvancedAICore
 	Tags: BoardingDefense, Control, NoBonusHealth
 	Tied To: Engi_Root 0
 
-	Available: Techs.Engi_Root.Level >= 0
+	Available: Techs.Engi_Root.Level > 0
 	Level: Techs.Engi_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	PowerLevel: Techs.Engi_Comp.Level
+	CommandLevel: Techs.Engi_Root.Level
 	
 	Size: Scale	* 2
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 5 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 120 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 5 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (120 * Size) / (1 + (0.1 * MassLevel))
 	
 	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[400 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[60 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
 	Complexity: 10
 	
 	Tick Rate: 4
 	
-	vComputerControlGen: Size * 120 * pow(LEVEL_GAIN_CURVE, (1 + (Level / 2)))
-											//was vCrewStore: ceil(10 * Size)
+	vComputerControlGen: 120 * Size * (1 + (CommandLevel * GA_TECH_INCREASE))
 	
 	Provides: Control with
 		Amount[vComputerControlGen]
-		
-											//was Provides: CrewQuarters with Amount[vCrewStore], Regen[vCrewStore * 0.02]
-	
+
 	Consumes:
-		To Run: Power[50 * Size]
+		To Run: Power[(50 * Size) / (1 + (0.1 * PowerLevel))]
 	
 	Hints: Control[vComputerControlGen], BoardingDefense[Durability]								//was Crew[vCrewStore]
 
@@ -293,22 +313,25 @@ System: QuantumComputer
 	Tags: Link
 	Tied To: Engi_Root 0
 
-	Available: Techs.Engi_Root.Level >= 0
+	Available: Techs.Engi_Root.Level > 0
 	Level: Techs.Engi_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	PowerLevel: Techs.Engi_Comp.Level
+	CommandLevel: Techs.Engi_Root.Level
 	
 	Size: Scale	/ 2
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 15 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 75 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 15 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (75 * Size) / (1 + (0.1 * MassLevel))
 
 	Costs: Metals[50 * Size * pow(SUBS_COST_CRV, Level)], Electronics[600 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[200 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
 	Complexity: 10
 
 	Tick Rate: 1
 
-	Alters: subSysAlterations::reduceControlReq[Size * 75 * pow(LEVEL_GAIN_CURVE, Level)]
+	Alters: subSysAlterations::reduceControlReq(50 * Size * (1 + (CommandLevel * GA_TECH_INCREASE)))
 
 	Consumes:
-		To Run: Power[10 * Size]
+		To Run: Power[(10 * Size) / (1 + (0.1 * PowerLevel))]
 
 	Hints: Local/ReduceControl[Size * 75 * pow(LEVEL_GAIN_CURVE, Level)]

@@ -3,12 +3,14 @@ System: Bunker
 	Description: #SS_BUNKER_DESC
 	Appearance: GeneralBuilding
 
-	Available: Techs.Troop_Root.Level >= 0
+	Available: Techs.Troop_Root.Level > 0
 	Level: Techs.Troop_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	HPLevel: Techs.Materials_Struct.Level
 	
 	Size: Scale
-	Durability: 5000 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT			//was 12000 * size
-	Mass: 800 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	Durability: 5000 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT			//was 12000 * size
+	Mass: (800 * Size) / (1 + (0.1 * MassLevel))
 	
 	Tags: Structure
 	Tied To: Troop_Root 0
@@ -36,13 +38,14 @@ System: BoardingParty
 	Appearance: BoardingParty
 	Explosion: subsystem_destroyed
 
-	Available: Techs.Troop_Root.Level >= 0
+	Available: Techs.Troop_Root.Level > 0
 	Level: Techs.Troop_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel: Techs.Materials_Struct.Level
+	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (80 * Size) / (1 + (0.1 * MassLevel))
 	
 	Tags: Weapon, SpecWeapon, ChargedWeapon, Tool:BoardingParty, BoardingParty, NoModifiers
 	Tied To: Troop_Root 0

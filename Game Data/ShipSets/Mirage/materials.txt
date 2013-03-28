@@ -1,0 +1,339 @@
+#forceHighQTextures on
+#makeMipMaps off
+
+SpriteBank: Mirage_Shipset
+ Texture: ../../Images/Ships/Mirage/Mirage_Shipset.png
+ AutoTile: rowmajor, 64, 64
+
+#forceHighQTextures off
+#makeMipMaps on
+
+
+Material: Mirage_tiny_low
+ Defer: High
+ Texture: ../../Images/Ships/Mirage/Tiny_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ 
+Material: Mirage_tiny
+ Defer: High
+ Texture: ../../Images/Ships/Mirage/Tiny_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/Mirage/Tiny_Lightmap.png
+ Texture3: ../../Images/Ships/Mirage/Tiny_markings.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+
+Material: Mirage_fighter_low
+ Defer: High
+ Texture:  ../../Images/Ships/Mirage/Fighter_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ 
+Material: Mirage_fighter
+ Defer: High
+ Texture: ../../Images/Ships/Mirage/Fighter_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/Mirage/Fighter_lightmap.png
+ Texture3: ../../Images/Ships/Mirage/Fighter_markings.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+
+Material: Mirage_satellite_low
+ Defer: High
+ Texture: ../../Images/Ships/Mirage/Satellite_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ 
+Material: Mirage_satellite
+ Defer: High
+ Texture: ../../Images/Ships/Mirage/Satellite_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/Mirage/Satellite_lightmap.png
+ Texture3: ../../Images/Ships/Mirage/Satellite_markings.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+ 
+
+Material: Mirage_small_low
+Defer: High
+ Texture: ../../Images/Ships/Mirage/Small_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+
+Material: Mirage_small
+ Defer: High
+ Texture: ../../Images/Ships/Mirage/Small_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/Mirage/Small_lightmap.png
+ Texture3: ../../Images/Ships/Mirage/Small_markings.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+
+ 
+Material: Mirage_medium_low
+ Defer: High
+ Texture: ../../Images/Ships/Mirage/Medium_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666 
+ 
+ 
+Material: Mirage_medium
+ Defer: High
+ Texture: ../../Images/Ships/Mirage/Medium_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/Mirage/Medium_lightmap.png
+ Texture3: ../../Images/Ships/Mirage/Medium_markings.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+ 
+ 
+Material: Mirage_freighter_low
+ Defer: High
+ Texture: ../../Images/Ships/Mirage/Freighter_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666 
+ 
+ 
+Material: Mirage_freighter
+ Defer: High
+ Texture: ../../Images/Ships/Mirage/Freighter_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/Mirage/Freighter_lightmap_256.png
+ Texture3: ../../Images/Ships/Mirage/Freighter_markings.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+ 
+Material: Mirage_Station_low
+ Defer: High
+ Texture: ../../Images/Ships/Mirage/Freighter_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666 
+ 
+ 
+Material: Mirage_Station
+ Defer: High
+ Texture: ../../Images/Ships/Mirage/Station_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/Mirage/Station_lightmap.png
+ Texture3: ../../Images/Ships/Mirage/Station_markings.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+ 
+
+Material: Mirage_Colonizer_low
+ Defer: High
+ Texture: ../../Images/Ships/Mirage/Colonizer_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666 
+ 
+ 
+Material: Mirage_Colonizer
+ Defer: High
+ Texture: ../../Images/Ships/Mirage/Colonizer_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/Mirage/Colonizer_lightmap.png
+ Texture3: ../../Images/Ships/Mirage/Colonizer_markings.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+
+Material: Mirage_Spinal_low
+ Defer: High
+ Texture: ../../Images/Ships/Mirage/Spinal_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666 
+ 
+ 
+Material: Mirage_Spinal
+ Defer: High
+ Texture: ../../Images/Ships/Mirage/Spinal_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/Mirage/Spinal_lightmap.png
+ Texture3: ../../Images/Ships/Mirage/Spinal_markings.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+
+Material: Mirage_Heavy_low
+ Defer: High
+ Texture: ../../Images/Ships/Mirage/Heavy_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666 
+
+Material: Mirage_Heavy
+ Defer: High
+ Texture: ../../Images/Ships/Mirage/Heavy_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/Mirage/Heavy_lightmap.png
+ Texture3: ../../Images/Ships/Mirage/Heavy_markings.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+
+Material: Mirage_Carrier_low
+ Defer: High
+ Texture: ../../Images/Ships/Mirage/Carrier_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666 
+
+Material: Mirage_Carrier
+ Defer: High
+ Texture: ../../Images/Ships/Mirage/Carrier_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/Mirage/Carrier_lightmap.png
+ Texture3: ../../Images/Ships/Mirage/Carrier_markings.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+
+Material: Mirage_Huge_low
+ Defer: High
+ Texture: ../../Images/Ships/Mirage/Huge_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666 
+
+Material: Mirage_Huge
+ Defer: High
+ Texture: ../../Images/Ships/Mirage/Huge_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/Mirage/Huge_lightmap.png
+ Texture3: ../../Images/Ships/Mirage/Huge_markings.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+
+Material: Mirage_Mega_low
+ Defer: High
+ Texture: ../../Images/Ships/Mirage/Mega_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666 
+
+Material: Mirage_Mega
+ Defer: High
+ Texture: ../../Images/Ships/Mirage/Mega_B.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/Mirage/Mega_lightmap.png
+ Texture3: ../../Images/Ships/Mirage/Mega_markings.png
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+
+Material: plasmathruster1
+ Texture: ../../Images/Ships/Mirage/thruster_plasma_01.png
+#if shaders
+ RenderMode: SignedVertexColored
+#else
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite
+ 
+ 
+Material: plasmathruster1_back
+ Texture: ../../Images/Ships/Mirage/thruster_plasma_01_back.png
+#if shaders
+ RenderMode: SignedVertexColored
+#else
+ RenderMode: Add
+#end
+ FlagOff: Lighting
+ FlagOff: ZWrite

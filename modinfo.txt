@@ -1,10 +1,10 @@
-Name: Galactic Armory 1.9.3
+Name: Galactic Armory 2.0
 
 Authors:	Galactic Armory Mod Project
 
 			Core Team:
 			Azalrion - Scripting, testing, UI
-			balancesheet - race profile images & additional art
+			balancesheet - Race profile images & additional art
 			cause792 - Modelling, texturing, subsystem art
 			seronis - Scripting, testing
 			Starman001 - Modelling, texturing, testing

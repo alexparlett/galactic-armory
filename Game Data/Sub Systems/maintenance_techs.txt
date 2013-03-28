@@ -5,23 +5,32 @@ System: RepairBay
 	Explosion: subsystem_destroyed
 
 	Tags: Support
-	Tied To: Maint_Root 0
+	Tied To: Maint_Makeshift 0
 	
-	Available: Techs.Maint_Root.Level >= 0
-	Level: Techs.Maint_Root.Level
+	Available: Techs.Maint_Makeshift.Level > 0
+	Level: Techs.Maint_Makeshift.Level
+	HPLevel: Techs.Materials_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	RepairLevel: Techs.Maint_Makeshift.Level
+	RecyclingLevel: Techs.Maint_Recycling.Level
+	ManagementLevel: Techs.Maint_Management.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 50 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 150 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (150 * Size) / (1 + (0.1 * MassLevel))
+
+	vMetal: 250 * Size
+	vElec: 50 * Size
+	vParts: 50 * Size
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[5 * Size]
 	
-	Costs: Metals[250 * Size * pow(SUBS_COST_CRV, Level)], Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
-	Complexity: 2.5
+	Complexity: 1
 	
-	Tick Rate: 1							//was 1
+	Tick Rate: 1
 	
-	vRepair: Size * 15.0 * pow(LEVEL_GAIN_CURVE, Level)		//was Size * 12
-	vMetalCost: Size * 0.5 * max((Level / 2), 1)																//was Size * 0.5 * pow(LEVEL_GAIN_CURVE, Level) * (1 + decay(pow(LEVEL_GAIN_CURVE,Level),35))
+	vRepair: Size * 15.0 * (1 + (RepairLevel * GA_TECH_INCREASE))
+	vMetalCost: (Size * 0.6) / (1 + (0.1 * RecyclingLevel))
+	vControlCost: (30 * Size) / (1 + (0.1 * ManagementLevel))
 	
 	Provides: DelayedRepairManpower with
 		Rate[vRepair], MetalCost[vMetalCost]
@@ -29,7 +38,7 @@ System: RepairBay
 	Provides: HasDelRepair with Amount[1]
 
 	Requires:
-		To Run: Control[20 * Size]
+		To Run: Control[vControlCost]
 
 	Hints: Regen[vRepair], RegenCost[-1 * vMetalCost]
 
@@ -40,34 +49,44 @@ System: NaniteRepair
 	Explosion: subsystem_destroyed
 
 	Tags: Support
-	Tied To: Maint_Root 0
+	Tied To: Maint_Makeshift 0
 	
-	Available: Techs.Maint_Root.Level >= 0
-	Level: Techs.Maint_Root.Level
+	Available: Techs.Maint_Makeshift.Level > 0
+	Level: Techs.Maint_Makeshift.Level
+	HPLevel: Techs.Materials_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	RepairLevel: Techs.Maint_Makeshift.Level
+	RecyclingLevel: Techs.Maint_Recycling.Level
+	ManagementLevel: Techs.Maint_Management.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 15 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 150 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
-	
-	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[300 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
-	Complexity: 4.0
+	Durability: 15 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (150 * Size) / (1 + (0.1 * MassLevel))
 
+	vMetal: 100 * Size
+	vElec: 200 * Size
+	vParts: 300 * Size
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[5 * Size]
+	
+	Complexity: 1
+	
 	Tick Rate: 1
 	
-	vRepair: Size * 10.0 * pow(LEVEL_GAIN_CURVE, Level)		//was Size * 16.0
-	vMetalCost: Size * 1.0 * max((Level / 2), 1)			//was Size * 1.0 * pow(LEVEL_GAIN_CURVE, Level) * (1 + decay(pow(LEVEL_GAIN_CURVE,Level),35))
-	
+	vRepair: Size * 8.0 * (1 + (RepairLevel * GA_TECH_INCREASE))
+	vMetalCost: (Size * 1.2) / (1 + (0.1 * RecyclingLevel))
+	vControlCost: (60 * Size) / (1 + (0.1 * ManagementLevel))
+	vPowerCost: (180 * Size) / (1 + (0.1 * ManagementLevel))
+
 	Provides: RepairMachines with
 		Rate[vRepair], MetalCost[vMetalCost]
 		
 	Provides: HasRepair with Amount[1]
 
 	Requires:
-		To Run: Control[60 * Size]
+		To Run: Control[vControlCost]
 
 	Consumes:
-		To Run: Power[200 * Size]
+		To Run: Power[vPowerCost]
 
 	Hints: Regen[vRepair], RegenCost[-1 * vMetalCost]
 	
@@ -80,27 +99,40 @@ System: RepairTool
 	Tags: Repairer, Support, Work:Repairer, Tool:Repairer, TimedReload						//Restrict:Weapon, Tool
 	Tied To: Maint_Root 0
 	
-	Available: Techs.Maint_Root.Level >= 0
+	Available: Techs.Maint_Root.Level > 0
 	Level: Techs.Maint_Root.Level
+	HPLevel: Techs.Materials_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	RepairLevel: Techs.Maint_Root.Level
+	RecyclingLevel: Techs.Maint_Recycling.Level
+	ManagementLevel: Techs.Maint_Management.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (100 * Size) / (1 + (0.1 * MassLevel))
 	
-	Costs: Metals[80 * Size * pow(SUBS_COST_CRV, Level)], Electronics[30 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[50 * Size * pow(SUBS_COST_CRV, Level)]
-	Complexity: 2
+	vMetal: 80 * Size
+	vElec: 30 * Size
+	vParts: 50 * Size
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[5 * Size]
+	Complexity: 1
 	
 	Tick Rate: 10
 	
-	vRemoteRep: Size * 5 * pow(LEVEL_GAIN_CURVE, Level)		//was size * 5
-	vMetalCost: Size * 0.5 * max((Level / 2), 1)			//was Size * 0.5 * pow(LEVEL_GAIN_CURVE, Level) * (1 + decay(pow(LEVEL_GAIN_CURVE,Level),35))
+	vRemoteRep: Size * 5.0 * (1 + (RepairLevel * GA_TECH_INCREASE))
+	vMetalCost: (Size * 0.5) / (1 + (0.1 * RecyclingLevel))
+	vControlCost: (10 * Size) / (1 + (0.1 * ManagementLevel))
+	vPowerCost: (20 * Size) / (1 + (0.1 * ManagementLevel))
 	
 	Provides: RepairTool with RepairRate[vRemoteRep], MetalCost[vMetalCost]
 
 	Requires:
 		To Run:
-			Control[10 * Size]
+			Control[vControlCost]
+
+	Consumes:
+		To Run:
+			Power[vPowerCost]
 	
 	Hints: RepOther[vRemoteRep], RegenCost[-1 * vMetalCost] 
 
@@ -113,27 +145,40 @@ System: RepairFacilities
 	Tags: RepairFacs, Support, Work:RepairFacs, Tool:RepairFacs, Require:StationOrCarrier, TimedReload    //Tool
 	Tied To: Maint_Root 0
 	
-	Available: Techs.Maint_Root.Level >= 0
+	Available: Techs.Maint_Root.Level > 0
 	Level: Techs.Maint_Root.Level
+	HPLevel: Techs.Materials_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	RepairLevel: Techs.Maint_Root.Level
+	RecyclingLevel: Techs.Maint_Recycling.Level
+	ManagementLevel: Techs.Maint_Management.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 125 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 300 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
-	
-	Costs: Metals[400 * Size * pow(SUBS_COST_CRV, Level)], Electronics[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[100 * Size * pow(SUBS_COST_CRV, Level)]
-	Complexity: 5
+	Durability: 125 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (300 * Size) / (1 + (0.1 * MassLevel))
+
+	vMetal: 400 * Size
+	vElec: 200 * Size
+	vParts: 100 * Size
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[5 * Size]
+	Complexity: 1
 	
 	Tick Rate: 10
 	
-	vRemoteRep: Size * 12 * pow(LEVEL_GAIN_CURVE, Level)		//was size * 5
-	vMetalCost: Size * 0.5 * max((Level / 2), 1)				//was Size * 0.5 * pow(LEVEL_GAIN_CURVE, Level) * (1 + decay(pow(LEVEL_GAIN_CURVE,Level),35))
+	vRemoteRep: Size * 12.0 * (1 + (RepairLevel * GA_TECH_INCREASE))
+	vMetalCost: (Size * 0.6) / (1 + (0.1 * RecyclingLevel))
+	vControlCost: (40 * Size) / (1 + (0.1 * ManagementLevel))
+	vPowerCost: (40 * Size) / (1 + (0.1 * ManagementLevel))
 	
 	Provides: RepairFacilities with RepairRate[vRemoteRep], MetalCost[vMetalCost]
 
 	Requires:
 		To Run:
-			Control[40 * Size]
+			Control[vControlCost]
+
+	Consumes:
+		To Run:
+			Power[vPowerCost]
 	
 	Hints: RepOther[vRemoteRep], RegenCost[-1 * vMetalCost]
 	
@@ -143,27 +188,36 @@ System: Salvager
 	Appearance: Salvager
 	Explosion: subsystem_destroyed
 	
-	Tags: Salvager, Work:Salvager, Tool:Salvager, Deposit:Metals, TimedReload      //Tool
-	Tied To: Maint_Root 0
+	Tags: Salvager, Work:Salvager, Tool:Salvager, Deposit:Metals, TimedReload
+	Tied To: Maint_Recycling 0
 	
-	Available: Techs.Maint_Root.Level >= 0
-	Level: Techs.Maint_Root.Level
-	
+	Available: Techs.Maint_Recycling.Level > 0
+	Level: Techs.Materials_Root.Level
+	HPLevel: Techs.Materials_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	SalvagingLevel: Techs.Maint_Recycling.Level
+	ManagementLevel: Techs.Maint_Management.Level
+
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
-	
-	Costs: Metals[50 * Size * pow(SUBS_COST_CRV, Level)], Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[75 * Size * pow(SUBS_COST_CRV, Level)]
-	Complexity: 2.5
+	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (80 * Size) / (1 + (0.1 * MassLevel))
+
+	vMetal: 50 * Size
+	vElec: 50 * Size
+	vParts: 75 * Size
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[5 * Size]
+	Complexity: 1
 	
 	Tick Rate: 10
 	
-	Provides: Salvager with Rate[Size * 10 * pow(LEVEL_GAIN_CURVE, Level)], Factor[1 - (0.75 * decay(pow(LEVEL_GAIN_CURVE,Level), 12))], Delay[10], Duration[5]
+	vSalvagingRate: Size * 10.0 * (1 + (RecyclingLevel * GA_TECH_INCREASE))
+	vControlCost: (24 * Size) / (1 + (0.1 * ManagementLevel))
+	
+	Provides: Salvager with Rate[vSalvagingRate], Factor[0.4 +  (0.02 * RecyclingLevel)], Delay[10], Duration[5]
 
 	Requires:
 		To Run:
-			Control[10 * Size]
+			Control[vControlCost]
 
-	Hints: Salvage[(Size * 10 * pow(LEVEL_GAIN_CURVE, Level) * 5)/10]
+	Hints: Salvage[(vSalvagingRate * 5) / 10]
 	

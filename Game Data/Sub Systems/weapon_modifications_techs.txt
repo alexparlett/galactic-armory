@@ -29,31 +29,43 @@ System: CoolantSys
 	Tags: Link
 	Tied To: WeapMod_Root 0
 
-	Available: Techs.WeapMod_Root.Level >= 0
+	Available: Techs.WeapMod_Root.Level > 0
 	Level: Techs.WeapMod_Root.Level
+	ModifierLevel: Techs.WeapMod_Root.Level
+	ControlLevel: Techs.WeapMod_Control.Level
+	EfficiencyLevel: Techs.WeapMod_Efficiency.Level
+	DiscountLevel: Techs.WeapMod_Cost.Level
+	HPLevel: Techs.Materials_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+
+	Size: Scale
+	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 	
-	Size: max((Scale / 2), (Scale/Object.Scale * SS_MIN_SCALE))
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 30 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 100 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	vMetal: (180 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (300 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (45 * Size) / (1 + (0.1 * DiscountLevel))
+	vLabor: (12 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[vLabor]
+	Complexity: 1
 
-	Costs: Metals[300 * Size * pow(SUBS_COST_CRV, Level)], Electronics[10 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size]
-	Complexity: 0.5
-
-	vDelayFactor: 1 / (1 + (0.75 * Scale/Object.Scale))
-	vPenalty: (1/vDelayFactor)^1.4					//was (1 + (Scale/Object.Scale)) + (...)
+	vDelayFactor: 1 / (1 + ((0.25 * (1 + (0.1 * ModifierLevel))) * Scale/Object.Scale))
+	vPenalty: ((1/vDelayFactor)^1.4) / (1 + (0.1 * EfficiencyLevel))
 
 	vPenalty_ammo: vPenalty * vDelayFactor
 	vHeatFactor: 1 / (sqrt(1 + (Scale/Object.Scale)))
+	
+	vControl: (Size * 15 * (Scale / Object.Scale)) / (1 + (0.1 * ControlLevel))
+	vPower: (Size * 15 * (Scale / Object.Scale)) / (1 + (0.1 * EfficiencyLevel))
 
 	Alters: GASubSysAlterations::coolantSystem[vDelayFactor][vPenalty][vPenalty_ammo][vHeatFactor]						//was subSysAlterations::alterFiringDelay
 
 	Consumes:
 		To Run:
-			Power[Size * 15 * (Scale / Object.Scale) * (0.5 + decay(pow(LEVEL_GAIN_CURVE,Level), 10))]
+			Power[vPower]
 
 	Requires:
-		To Run: Control[Size * 10 * (Scale / Object.Scale) * (0.5 + decay(pow(LEVEL_GAIN_CURVE,Level), 10))]
+		To Run: Control[vControl]
 
 	Hints: Local/FireSpeedUp[1 / vDelayFactor], Local/CostPenalty[vPenalty], Local/HeatFactor[vHeatFactor]
 
@@ -67,27 +79,40 @@ System: AimBot
 	Tags: Link
 	Tied To: WeapMod_Root 0
 
-	Available: Techs.WeapMod_Root.Level >= 0
+	Available: Techs.WeapMod_Root.Level > 0
 	Level: Techs.WeapMod_Root.Level
-	
-	Size: Scale / 2
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 25 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 100 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
-	
-	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[100 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[70 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size]
-	Complexity: 1.1
+	ModifierLevel: Techs.WeapMod_Root.Level
+	ControlLevel: Techs.WeapMod_Control.Level
+	EfficiencyLevel: Techs.WeapMod_Efficiency.Level
+	DiscountLevel: Techs.WeapMod_Cost.Level
+	HPLevel: Techs.Materials_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 
-	vRangeUp: 1 + ((Scale/Object.Scale) / 3) * (2 - decay(pow(LEVEL_GAIN_CURVE, Level-1), 50))		//was 2 - decay(pow(LEVEL_GAIN_CURVE,Level) + 5, 20)
+	Size: Scale
+	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
+	
+	vMetal: (180 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (300 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (45 * Size) / (1 + (0.1 * DiscountLevel))
+	vLabor: (12 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[vLabor]
+	Complexity: 1
+	
+	vControl: (Size * 30 * (Scale / Object.Scale)) / (1 + (0.1 * ControlLevel))
+	vPower: (Size * 20 * (Scale / Object.Scale)) / (1 + (0.1 * EfficiencyLevel))
+	Complexity: 1
+
+	vRangeUp: 1 + ((Scale/Object.Scale) / 3) * (1.5 + (0.1 * ModifierLevel))
 
 	Alters: GASubSysAlterations::improveAllRange[Scale][vRangeUp]
 
 	Consumes:
 		To Run:
-			Power[Size * 20]
+			Power[vPower]
 	
 	Requires:
-		To Run: Control[Size * 30]
+		To Run: Control[vControl]
 
 	Hints: Local/RangeUp[vRangeUp]
 	
@@ -100,33 +125,45 @@ System: PrecisionMod
 	Tags: Link
 	Tied To: WeapMod_Root 0
 
-	Available: Techs.WeapMod_Root.Level >= 0
+	Available: Techs.WeapMod_Root.Level > 0
 	Level: Techs.WeapMod_Root.Level
+	ModifierLevel: Techs.WeapMod_Root.Level
+	ControlLevel: Techs.WeapMod_Control.Level
+	EfficiencyLevel: Techs.WeapMod_Efficiency.Level
+	DiscountLevel: Techs.WeapMod_Cost.Level
+	HPLevel: Techs.Materials_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 
-	Size: Scale / 2
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 25 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 100 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	Size: Scale
+	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 	
-	Costs: Metals[30 * Size * pow(SUBS_COST_CRV, Level)], Electronics[150 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[100 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size]
-	Complexity: 1.4
+	vMetal: (90 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (300 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (180 * Size) / (1 + (0.1 * DiscountLevel))
+	vLabor: (12 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[vLabor]
+	Complexity: 1
 
 	vDamageUp: 1.0 / (1 + (0.25 * (Scale/Object.Scale)))
 	vDelayFactor: 1
-	vRangeUp: 1 + (Scale/Object.Scale) * (2 - decay(pow(LEVEL_GAIN_CURVE, Level-1), 50))				//was 1.5 + (0.5 * (Scale/Object.Scale))
+	vRangeUp: 1 + (Scale/Object.Scale) * (2.0 + (0.1 * ModifierLevel))
 	vBonusHP: 1
-	vAmmoUseUp: 1 + (0.25 * (Scale/Object.Scale))
-	vPowCostUp: 1 + (0.25 * (Scale/Object.Scale))
-	vWasteHeatUp: 1 + (0.25 * (Scale/Object.Scale))
-
+	vAmmoUseUp: (1 + (0.36 * (Scale/Object.Scale))) / (1 + (0.1 * EfficiencyLevel))
+	vPowCostUp: (1 + (0.36 * (Scale/Object.Scale))) / (1 + (0.1 * EfficiencyLevel))
+	vWasteHeatUp: (1 + (0.36 * (Scale/Object.Scale))) / (1 + (0.1 * EfficiencyLevel))
+	
+	vControl: (Size * 45 * (Scale / Object.Scale)) / (1 + (0.1 * ControlLevel))
+	vPower: (Size * 45 * (Scale / Object.Scale)) / (1 + (0.1 * EfficiencyLevel))
+	
 	Alters: GASubSysAlterations::improveAll[Scale][vRangeUp][vDelayFactor][vBonusHP][vDamageUp][vAmmoUseUp][vPowCostUp][vWasteHeatUp]
 
 	Consumes:
 		To Run:
-			Power[Size * 50 * (Scale / Object.Scale) * (0.5 + decay(pow(LEVEL_GAIN_CURVE,Level), 10))]
+			Power[vPower]
 	
 	Requires:
-		To Run: Control[Size * 40 * (sqrt(Scale / Object.Scale))]
+		To Run: Control[vControl]
 	
 	Hints: Local/RangeUp[vRangeUp], Local/DamageMultiplier[vDamageUp], Local/AmmoUseMultiplier[vAmmoUseUp], Local/PowCostMultiplier[vPowCostUp], Local/HeatFactor[vWasteHeatUp]
 
@@ -139,22 +176,42 @@ System: MultiRack
 	Tags: Link
 	Tied To: WeapMod_Root 0
 
-	Available: Techs.WeapMod_Root.Level >= 0
+	Available: Techs.WeapMod_Root.Level > 0
 	Level: Techs.WeapMod_Root.Level
-	
-	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 50 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
-	
-	Costs: Metals[150 * Size * pow(SUBS_COST_CRV, Level)], Electronics[5 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
-	Complexity: 0.5
-	vRangeModifier: 0.90
+	ModifierLevel: Techs.WeapMod_Root.Level
+	ControlLevel: Techs.WeapMod_Control.Level
+	EfficiencyLevel: Techs.WeapMod_Efficiency.Level
+	DiscountLevel: Techs.WeapMod_Cost.Level
+	HPLevel: Techs.Materials_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 
-	Alters: GASubSysAlterations::makeRapidMount[Size][vRangeModifier]		//was [4 - (2 * decay(pow(LEVEL_GAIN_CURVE,Level),25))][Size]
+	Size: Scale
+	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
+	
+	vMetal: (360 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (90 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (45 * Size) / (1 + (0.1 * DiscountLevel))
+	vLabor: (12 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[vLabor]
+	Complexity: 1
+	
+	vControl: (Size * 30 * (Scale / Object.Scale)) / (1 + (0.1 * ControlLevel))
+	vPower: (Size * 45 * (Scale / Object.Scale)) / (1 + (0.1 * EfficiencyLevel))
+
+	vRangeModifier: 1 - (0.25 - (0.01 * ModifierLevel)
+	vMountMulti: 1 + (0.01 * ModifierLevel)
+
+	Alters: GASubSysAlterations::makeRapidMount[Size * vMountMulti][vRangeModifier]
+
+	Consumes:
+		To Run:
+			Power[vPower]
 	
 	Requires:
-		To Run: Control[Size * 10 * (sqrt(Scale / Object.Scale))]
+		To Run: Control[vControl]
+		
+	Hints: Local/RangeUp[vRangeModifier -1]
 		
 
 System: OversizeMount
@@ -166,35 +223,45 @@ System: OversizeMount
 	Tags: Link
 	Tied To: WeapMod_Root 0
 
-	Available: Techs.WeapMod_Root.Level >= 0
+	Available: Techs.WeapMod_Root.Level > 0
 	Level: Techs.WeapMod_Root.Level
+	ModifierLevel: Techs.WeapMod_Root.Level
+	ControlLevel: Techs.WeapMod_Control.Level
+	EfficiencyLevel: Techs.WeapMod_Efficiency.Level
+	DiscountLevel: Techs.WeapMod_Cost.Level
+	HPLevel: Techs.Materials_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 150 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 100 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 	
-	Costs: Metals[300 * Size * pow(SUBS_COST_CRV, Level)], Electronics[150 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[75 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size]
-	Complexity: 4.0
+	vMetal: (450 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (150 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (75 * Size) / (1 + (0.1 * DiscountLevel))
+	vLabor: (15 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[vLabor]
+	Complexity: 1
 
-	//Tick Rate: 1
+	vControl: (Size * 60 * (Scale / Object.Scale)) / (1 + (0.1 * ControlLevel))
+	vPower: (Size * 45 * (Scale / Object.Scale)) / (1 + (0.1 * EfficiencyLevel))
 	
-	vDamageUp: 1 + (0.5 * (Scale/Object.Scale))
-	vDelayFactor: 1 + (0.25 * (Scale/Object.Scale))
-	vRangeUp: 1 + (0.4 * (Scale/Object.Scale))
-	vBonusHP: Size * (1 + (0.25 * (Scale/Object.Scale))) * pow(LEVEL_GAIN_CURVE, Level)
-	vAmmoUseUp: 1 + (0.5 * (Scale/Object.Scale))
-	vPowCostUp: 1 + (0.5 * (Scale/Object.Scale))
-	vWasteHeatUp: 1 + (0.5 * (Scale/Object.Scale))
+	vDamageUp: 1 + ((0.5 + (0.01 * ModifierLevel)) * (Scale/Object.Scale))		//(1 + (0.01 * ModifierLevel)) + (0.5 * (Scale/Object.Scale))
+	vDelayFactor: 1 + ((0.3 - (0.01 * ModifierLevel)) * (Scale/Object.Scale))
+	vRangeUp: 1 + ((0.3 + (0.01 * ModifierLevel)) * (Scale/Object.Scale))
+	vBonusHP: Size * (1 + (0.25 * (Scale/Object.Scale)))
+	vAmmoUseUp: 1 + (0.5 * (Scale/Object.Scale)) / (1 + (0.05 * EfficiencyLevel))
+	vPowCostUp: 1 + (0.5 * (Scale/Object.Scale)) / (1 + (0.05 * EfficiencyLevel))
+	vWasteHeatUp: 1 + (0.5 * (Scale/Object.Scale)) / (1 + (0.05 * EfficiencyLevel))
 
 	Alters: GASubSysAlterations::improveAll[Scale][vRangeUp][vDelayFactor][vBonusHP][vDamageUp][vAmmoUseUp][vPowCostUp][vWasteHeatUp]
 
 	Consumes:
 		To Run:
-			Power[Size * 50 * (Scale / Object.Scale) * (0.5 + decay(pow(LEVEL_GAIN_CURVE,Level), 10))]
+			Power[vPower]
 	
 	Requires:
-		To Run: Control[Size * 50 * (sqrt(Scale / Object.Scale))]
+		To Run: Control[vControl]
 	
 	Hints: Local/FireSpeedUp[1 / vDelayFactor], Local/RangeUp[vRangeUp], Local/DamageMultiplier[vDamageUp], Local/BonusHP[vBonusHP], Local/AmmoUseMultiplier[vAmmoUseUp], Local/PowCostMultiplier[vPowCostUp], Local/HeatFactor[vWasteHeatUp]
 
@@ -208,22 +275,42 @@ System: MassMount
 	Tags: Link, Require:HugeHull
 	Tied To: WeapMod_Root 0
 
-	Available: Techs.WeapMod_Root.Level >= 0
+	Available: Techs.WeapMod_Root.Level > 0
 	Level: Techs.WeapMod_Root.Level
+	ModifierLevel: Techs.WeapMod_Root.Level
+	ControlLevel: Techs.WeapMod_Control.Level
+	EfficiencyLevel: Techs.WeapMod_Efficiency.Level
+	DiscountLevel: Techs.WeapMod_Cost.Level
+	HPLevel: Techs.Materials_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 
-	Size: Scale																//was if(Object.Scale >= 100, Scale, 0)
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 150 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	Size: Scale
+	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 	
-	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], Electronics[7 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[30 * Size * pow(SUBS_COST_CRV, Level)], Labr[12 * Size]
-	Complexity: 2.5
-	vRangeModifier: 0.85
+	vMetal: (480 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (180 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (90 * Size) / (1 + (0.1 * DiscountLevel))
+	vLabor: (15 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[vLabor]
+	Complexity: 1
+	
+	vControl: (Size * 60 * (Scale / Object.Scale)) / (1 + (0.1 * ControlLevel))
+	vPower: (Size * 60 * (Scale / Object.Scale)) / (1 + (0.1 * EfficiencyLevel))
 
-	Alters: GASubSysAlterations::makeRapidMount[Size * 1.66][vRangeModifier]
+	vRangeModifier: 1 - (0.35 - (0.01 * ModifierLevel)
+	vMountMulti: 1.4 + (0.015 * ModifierLevel)
+
+	Alters: GASubSysAlterations::makeRapidMount[Size * vMountMulti][vRangeModifier]
+
+	Consumes:
+		To Run:
+			Power[vPower]
 	
 	Requires:
-		To Run: Control[Size * 60 * (sqrt(Scale / Object.Scale))]
+		To Run: Control[vControl]
+		
+	Hints: Local/RangeUp[vRangeModifier -1]
 
 
 System: ExtendedMagazine
@@ -235,26 +322,39 @@ System: ExtendedMagazine
 	Tags: Link
 	Tied To: WeapMod_Root 0
 
-	Available: Techs.WeapMod_Root.Level >= 0
+	Available: Techs.WeapMod_Root.Level > 0
 	Level: Techs.WeapMod_Root.Level
-	
+	ModifierLevel: Techs.WeapMod_Root.Level
+	ControlLevel: Techs.WeapMod_Control.Level
+	EfficiencyLevel: Techs.WeapMod_Efficiency.Level
+	DiscountLevel: Techs.WeapMod_Cost.Level
+	HPLevel: Techs.Materials_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+
 	Size: Scale
-	Durability: GAME_SUBSYS_MULT * 30 * Size * pow(HEALTH_CURVE,Level)
-	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 	
-	Costs: Metals[150 * Size * pow(SUBS_COST_CRV, Level)], Electronics[5 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	vMetal: (150 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (45 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (15 * Size) / (1 + (0.1 * DiscountLevel))
+	vLabor: (9 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[vLabor]
 	Complexity: 1
 	
-	vMagExtension: 1 + (0.25 * floor((Scale / Object.Scale) / 0.25))
+	vControl: (Size * 6 * (Scale / Object.Scale)) / (1 + (0.1 * ControlLevel))
+	vPower: (Size * 18 * (Scale / Object.Scale)) / (1 + (0.1 * EfficiencyLevel))
+	
+	vMagExtension: (1 + (0.25 * floor((Scale / Object.Scale) / 0.25))) * (1 + (0.025 * ModifierLevel))
 	
 	Alters: GASubSysAlterations::alterClipSize[vMagExtension]
 
 	Consumes:
 		To Run:
-			Power[Size * 20]							//was Size * 10
+			Power[vPower]
 	
 	Requires:
-		To Run: Control[Size * 5]
+		To Run: Control[vControl]
 	
 	Hints: Local/MagExtension[vMagExtension]
 		
@@ -268,30 +368,42 @@ System: DamageSys
 	Tags: Link
 	Tied To: WeapMod_Root 0
 
-	Available: Techs.WeapMod_Root.Level >= 0
+	Available: Techs.WeapMod_Root.Level > 0
 	Level: Techs.WeapMod_Root.Level
-	
+	ModifierLevel: Techs.WeapMod_Root.Level
+	ControlLevel: Techs.WeapMod_Control.Level
+	EfficiencyLevel: Techs.WeapMod_Efficiency.Level
+	DiscountLevel: Techs.WeapMod_Cost.Level
+	HPLevel: Techs.Materials_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 30 * Size * pow(HEALTH_CURVE, HPLevel)
-	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 	
-	Costs: Metals[150 * Size * pow(SUBS_COST_CRV, Level)], Electronics[5 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
-	Complexity: 1.5
-	
-	vDamageUp: 1 + (0.5 * (Scale/Object.Scale))
-	vAmmoUseUp: 1 + (0.5 * (Scale/Object.Scale))
-	vPowCostUp: 1 + (0.5 * (Scale/Object.Scale))
-	vWasteHeatUp: 1 + (0.5 * (Scale/Object.Scale))
+	vMetal: (150 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (60 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (120 * Size) / (1 + (0.1 * DiscountLevel))
+	vLabor: (12 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[vLabor]
+	Complexity: 1
+
+	vControl: (Size * 30 * (Scale / Object.Scale)) / (1 + (0.1 * ControlLevel))
+	vPower: (Size * 12 * (Scale / Object.Scale)) / (1 + (0.1 * EfficiencyLevel))
+
+	vDamageUp: 1 + ((0.5 + (0.01 * ModifierLevel)) * (Scale/Object.Scale))
+	vAmmoUseUp: 1 + ((0.6 - (0.01 * EfficiencyLevel)) * (Scale/Object.Scale))
+	vPowCostUp: 1 + ((0.6 - (0.01 * EfficiencyLevel)) * (Scale/Object.Scale))
+	vWasteHeatUp: 1 + ((0.6 - (0.01 * EfficiencyLevel)) * (Scale/Object.Scale))
 
 	Alters: GASubSysAlterations::alterDamage[vDamageUp][vAmmoUseUp][vPowCostUp][vWasteHeatUp]
 
 	Consumes:
 		To Run:
-			Power[Size * 10 * (Scale / Object.Scale) * (0.5 + decay(pow(LEVEL_GAIN_CURVE,Level), 10))]
+			Power[vPower]
 	
 	Requires:
-		To Run: Control[Size * 30 * (sqrt(Scale / Object.Scale))]
+		To Run: Control[vControl]
 	
 	Hints: Local/DamageMultiplier[vDamageUp], Local/AmmoUseMultiplier[vAmmoUseUp], Local/PowCostMultiplier[vPowCostUp], Local/HeatFactor[vWasteHeatUp]		
 	

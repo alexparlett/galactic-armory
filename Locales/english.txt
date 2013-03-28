@@ -817,6 +817,8 @@
 #RT_CODEOFHONOR_DESC: Cannot use subsystems such as NBC Warhead, Phased Energy Beam, Salvager, etc.
 
 //Research System Names and Descriptions
+
+//Vanilla Research
 #RS_ARMOR_NAME: Armor
 #RS_ARMOR_DESC: The study and application of materials which are resistant to various forms of weapons.
 
@@ -892,6 +894,308 @@
 #RS_WARPPHYSICS_NAME: Spatial Dynamics
 #RS_WARPPHYSICS_DESC: The study of space-time physics, and the development of ways to manipulate it. Leads to a variety of highly advanced technologies.
 
+//Mod Research
+//Research System Names and Descriptions
+
+#RS_GENSCI_ROOT_NAME: General Science
+#RS_GENSCI_ROOT_DESC: The study of theoretical and applied sciences. Improves available research methods.\n#c:green##tab:8#Improves: Research Modifier, Success Rate, Range
+
+#RS_GENSCI_GRAVITICS_NAME: Gravitics
+#RS_GENSCI_GRAVITICS_DESC: The study of the effects (and eventual creation, modification, and destruction) of gravitational fields. Unlocks and improves related technologies.\n#c:green##tab:8#Improves: Force, Range, Thrust
+
+#RS_GENSCI_SPECIAL_NAME: Unorthodox Applied Science
+#RS_GENSCI_SPECIAL_DESC: This field of research specializes in the study and application of highly unconventional technologies.\n#c:green##tab:8#Improves: Power and Control Damage, Range, Resource Beaming Rate
+
+#RS_GENSCI_MEGA_NAME: Megaconstruction
+#RS_GENSCI_MEGA_DESC: The science dedicated to creating concepts of megastructures and ultimately enabling to build them.\n#c:green##tab:8#Improves: Resource Cost, Durability
+
+
+#RS_SPATIAL_ROOT_NAME: Spatial Dynamics
+#RS_SPATIAL_ROOT_DESC: The study of space-time physics, and the development of ways to manipulate it.\n#c:green##tab:8#Improves: Jump Range, Charge Time
+
+#RS_SPATIAL_COMP_NAME: Space-Time Compression
+#RS_SPATIAL_COMP_DESC: This field of research is dedicated to finding and improving ways to compress limited volumes of space-time to higher density.\n#c:green##tab:8#Improves: Power Cost, Compression Rate
+
+#RS_SPATIAL_DSM_NAME: Directed Spatial Manipulation
+#RS_SPATIAL_DSM_DESC: This unlocks and improves the mighty Directed Spatial Manipulator superweapon and improves its features.\n#c:green##tab:8#Improves: Required Charge, Area of Effect
+
+#RS_SPATIAL_HELIOCIDE_NAME: Heliocide
+#RS_SPATIAL_HELIOCIDE_DESC: The study dedicated to using advanced space-time manipulation to accelerate the fusion process within a star to destroy it.\n#c:green##tab:8#Improves: Damage, Helium-3 Consumption, Power Cost
+
+
+#RS_LOGISTICS_ROOT_NAME: Logistics
+#RS_LOGISTICS_ROOT_DESC: The ability to efficiently organize the transport and storage of different resources.\n#c:green##tab:8#Improves: Trade Rate
+
+#RS_LOGISTICS_CARGO_NAME: Resource Storage
+#RS_LOGISTICS_CARGO_DESC: The research of more efficient storage methods.\n#c:green##tab:8#Improves: Storage
+
+#RS_LOGISTICS_SUPPLIES_NAME: Military Supplies
+#RS_LOGISTICS_SUPPLIES_DESC: A research field dedicated to finding better ways of storing fuel and ammunition.\n#c:green##tab:8#Improves: Fuel Storage, Ammo Storage, Explosion Damage and Radius
+
+#RS_LOGISTICS_RESUPPLY_NAME: Efficient Resupply
+#RS_LOGISTICS_RESUPPLY_DESC: The discipline of efficiently resupplying resource and supplies.\n#c:green##tab:8#Improves: Import / Export Rate, Ammo Import Rate
+
+
+#RS_INFRA_ROOT_NAME: Infrastructure
+#RS_INFRA_ROOT_DESC: Creating, organizing and maintaining the physical and organizational structures needed for the operation of society and economy.\n#c:green##tab:8#Improves: Import / Export Rate
+
+#RS_INFRA_INDUSTRY_NAME: Terrestrial Industry
+#RS_INFRA_INDUSTRY_DESC: The study of technologies used to mine and refine resource and create goods out of them.\n#c:green##tab:8#Improves: Ammo / Fuel Production, Materials Production, Food Production
+
+#RS_INFRA_HELIUM3_NAME: Helium-3 Application
+#RS_INFRA_HELIUM3_DESC: The discipline of researching and improving possible applications of Helium-3.\n#c:green##tab:8#Improves: He3 Mining and Refining Rate, He3 Storage
+
+#RS_INFRA_SPACEINDUSTRY_NAME: Orbital and Deep-Space Industry
+#RS_INFRA_SPACEINDUSTRY_DESC: The study of industrial enterprises in zero-G environments.\n#c:green##tab:8#Improves: Mining Rate, Material Production, Ammo Production, Storage
+
+
+#RS_COL_ROOT_NAME: Colonization
+#RS_COL_ROOT_DESC: The research of planetary colonization and technologies used in the process.\n#c:green##tab:8#Improves: Population Transport Capacity
+
+#RS_COL_SOCIOLOGY_NAME: Social Engineering
+#RS_COL_SOCIOLOGY_DESC: The discipline of manipulating and influencing popular attitudes and social behaviors on a large scale.\n#c:green##tab:8#Improves: Population Growth Modifier
+
+#RS_COL_SURVEY_NAME: Geodetics
+#RS_COL_SURVEY_DESC: The surveying of unknown worlds and evaluation of gathered geodesic data.\n#c:green##tab:8#Improves: Surveying Rate, Survey Team Survivability
+
+#RS_COL_TERRAFORMING_NAME: Terraforming
+#RS_COL_TERRAFORMING_DESC: The goal of terraforming is changing the properties of a planet to more desired (i.e. more habitable) ones. \n#c:green##tab:8#Improves: Decreases Time and Resource Cost of Terraforming
+
+
+#RS_TROOP_ROOT_NAME: Troop Deployment
+#RS_TROOP_ROOT_DESC: Training, deploying and supplying ground troops in various situations.\n#c:green##tab:8#Improves: Troop Strength
+
+#RS_TROOP_TRAINING_NAME: Military Training
+#RS_TROOP_TRAINING_DESC: This discipline aims to improve training methods to reduce the amount of time needed for basic training.\n#c:green##tab:8#Improves: Training Rate
+
+#RS_TROOP_DEFENSE_NAME: Defensive Doctrine
+#RS_TROOP_DEFENSE_DESC: The development and use of strictly defensive tactics and equipment.\n#c:green##tab:8#Improves: Troop Housing, Invasion Point Defense, Invasion Defense
+
+#RS_TROOP_BOARDING_NAME: Boarding Tactics
+#RS_TROOP_BOARDING_DESC: Improving the training and tactics of troops used to board hostile ships.\n#c:green##tab:8#Improves: Boarding Party Strength
+
+
+#RS_SPY_ROOT_NAME: Espionage
+#RS_SPY_ROOT_DESC: Espionage covers everything related to covert operations, from intel gathering to data theft and sabotage.\n#c:green##tab:8#Improves: Training Success Chance, Counter-Espionage Efficiency
+
+#RS_SPY_INTEL_NAME: Intelligence Data Acquisition
+#RS_SPY_INTEL_DESC: This field specializes in techniques used to acquire useful information from other empires.\n#c:green##tab:8#Improves: Chance of Success
+
+#RS_SPY_SABOTAGE_NAME: Sabotage
+#RS_SPY_SABOTAGE_DESC: A research that specializes in finding ways to disrupt and harm the enemy by use of sabotage.\n#c:green##tab:8#Improves: Chance of Success
+
+#RS_SPY_THEFT_NAME: Strategic Theft
+#RS_SPY_THEFT_DESC: The study of diverting enemy resources, plans or objects to our empire.\n#c:green##tab:8#Improves: Chance of Success
+
+
+#RS_ENERGY_ROOT_NAME: Energy Physics
+#RS_ENERGY_ROOT_DESC: The study of the decay, creation, and storage of energy through both conventional and theoretical forms.\n#c:green##tab:8#Improves: Power Output, Matter Output
+
+#RS_ENERGY_CAP_NAME: Energy Accumulation
+#RS_ENERGY_CAP_DESC: This discipline focuses on the storage of energy.\n#c:green##tab:8#Improves: Capacitance
+
+#RS_ENERGY_THERMAL_NAME: Thermal Efficiency
+#RS_ENERGY_THERMAL_DESC: This field of research aims to achieve a higher grade of Thermal Efficiency, meaning less waste heat per unit of energy generated.\n#c:green##tab:8#Improves: Heat Dissipation, Waste Heat
+
+#RS_ENERGY_EFFICIENCY_NAME: Economic Fuel Usage
+#RS_ENERGY_EFFICIENCY_DESC: Researching this will reduce the amount of fuel consumed by all power generators while maintaining the same output.\n#c:green##tab:8#Improves: Fuel Consumption
+
+
+#RS_PROPULSION_ROOT_NAME: Propulsion
+#RS_PROPULSION_ROOT_DESC: A set of scientific fields which work to improve the efficiency and economics of propulsion while branching out into new technologies.\n#c:green##tab:8#Improves: Thrust
+
+#RS_PROPULSION_FUEL_NAME: Improved Combustion Process
+#RS_PROPULSION_FUEL_DESC: Reduces the amount of fuel consumed by engines when active.\n#c:green##tab:8#Improves: Fuel Consumption
+
+#RS_PROPULSION_POWER_NAME: Improved Power Usage
+#RS_PROPULSION_POWER_DESC: Reduces the amount of power required to run an engine.\n#c:green##tab:8#Improves: Power Usage
+
+#RS_PROPULSION_BUSSARD_NAME: Bussard Technology
+#RS_PROPULSION_BUSSARD_DESC: The study of specialized propulsion technologies that rely on the gathering of hydrogen particles floating around in deep space.\n#c:green##tab:8#Improves: Thrust, Fuel Scoop Rate
+
+
+#RS_ENGI_ROOT_NAME: Engineering
+#RS_ENGI_ROOT_DESC: The study of improving the design and efficiency of ship-borne systems.\n#c:green##tab:8#Improves: Control
+
+#RS_ENGI_LIFESUPPORT_NAME: Life Support
+#RS_ENGI_LIFESUPPORT_DESC: The science of keeping the crew alive by creating habitable conditions on board of a ship.\n#c:green##tab:8#Improves: Life Support, Oxygen Storage, Crew Space
+
+#RS_ENGI_COMP_NAME: Computers
+#RS_ENGI_COMP_DESC: A large branch of studies which generally work together to improve the speed, efficiency, logic, and size of computer technology.\n#c:green##tab:8#Improves: Power Usage
+
+#RS_ENGI_WORKLOAD_NAME: Workload Optimization
+#RS_ENGI_WORKLOAD_DESC: The study of theoretical and applied methods to reduce the workload of a ship's crew.\n#c:green##tab:8#Improves: Crew Requirement
+
+
+#RS_MAINT_ROOT_NAME: Maintenance
+#RS_MAINT_ROOT_DESC: Servicing and repairing ships and stations in space.\n#c:green##tab:8#Improves: Repair Rate, Self-Repair Rate
+
+#RS_MAINT_COST_NAME: Low-Cost Repairs
+#RS_MAINT_COST_DESC: Increasing the efficiency of repairs by reducing the amount of parts needed to fully repair an object.\n#c:green##tab:8#Improves: Repair Cost
+
+#RS_MAINT_POWER_NAME: Simplified Repair Process
+#RS_MAINT_POWER_DESC: This field aims to reduce the amount of electrical power needed for repairs.\n#c:green##tab:8#Improves: Power Usage
+
+#RS_MAINT_MANAGEMENT_NAME: Servicing Management
+#RS_MAINT_MANAGEMENT_DESC: Efficient Management reduces the amount of supervision needed for complete repairs.\n#c:green##tab:8#Improves: Control Requirement
+
+
+#RS_SHIPCON_ROOT_NAME: Ship Construction
+#RS_SHIPCON_ROOT_DESC: The focused application of varied forms of architectural, maths, and materials sciences to create safer, cheaper, and more spacious hulls for space-faring craft.\n#c:green##tab:8#Improves: Durability
+
+#RS_SHIPCON_COST_NAME: Streamlined Ship Design
+#RS_SHIPCON_COST_DESC: The science of developing and creating cost-efficient spacecraft designs.\n#c:green##tab:8#Improves: Resource Cost
+
+#RS_SHIPCON_MASS_NAME: Leightweight Construction
+#RS_SHIPCON_MASS_DESC: The discipline of reducing the mass of the hull structure.\n#c:green##tab:8#Improves: Reduces Mass
+
+#RS_SHIPCON_SCALE_NAME: Improved Scalability
+#RS_SHIPCON_SCALE_DESC: This research is dedicated to increasing the maximum scale a given hull type can be built at.\n#c:green##tab:8#Improves: Increases Maximum Scale
+
+
+#RS_MATERIALS_ROOT_NAME: Material Science
+#RS_MATERIALS_ROOT_DESC: The study and development of new types of materials to fulfill various purposes in cheaper, more effective ways. Increases the health of most sub systems.\n#c:green##tab:8#Improves: Durability
+
+#RS_MATERIALS_STRUCT_NAME: Structural Engineering
+#RS_MATERIALS_STRUCT_DESC: The study and development of new materials and techniques for planetary structures. Increases structure health.\n#c:green##tab:8#Improves: Durability
+
+#RS_MATERIALS_WEAPONS_NAME: Protective Weapon Design
+#RS_MATERIALS_WEAPONS_DESC: The discipline of sturdy and robust weapon design, making them less prone to battle damage. Increases weapon-type subsystem health.\n#c:green##tab:8#Improves: Durability
+
+#RS_MATERIALS_LIGHTWEIGHT_NAME: Lightweight Materials
+#RS_MATERIALS_LIGHTWEIGHT_DESC: The study of lightweight materials that are sturdy enough to replace heavier ones.\n#c:green##tab:8#Improves: Reduces Mass
+
+
+#RS_ARMOR_ROOT_NAME: Armor
+#RS_ARMOR_ROOT_DESC: The study and application of materials which are resistant to various forms of weapons. Increases strength of most armor types.\n#c:green##tab:8#Improves: Durability, Damage Reduction, Regeneration
+
+#RS_ARMOR_SPECIAL_NAME: Specialized Armor
+#RS_ARMOR_SPECIAL_DESC: The study of armor techniques specialized in countering specific weapon types. Increases strength of specialized armor.\n#c:green##tab:8#Improves: Durability, Damage Reduction
+
+#RS_ARMOR_MASS_NAME: Lightweight Armor
+#RS_ARMOR_MASS_DESC: The research of lightweight materials specifically suited for use as armor.\n#c:green##tab:8#Improves: Reduces Mass
+
+#RS_ARMOR_COST_NAME: Cost-optimized Protection
+#RS_ARMOR_COST_DESC: The discipline of reducing the manufacturing and running cost of basic and advanced armor types. Reduces armor resource and power cost.\n#c:green##tab:8#Improves: Resource Cost, Power Usage
+
+
+#RS_ACTIVEDEF_ROOT_NAME: Active Defenses
+#RS_ACTIVEDEF_ROOT_DESC: The study of defensive systems that rely on actively countering incoming fire instead of enduring it.\n#c:green##tab:8#Improves: Damage, Range, Invasion Point Defense
+
+#RS_ACTIVEDEF_EWS_NAME: Electronic Warfare Systems
+#RS_ACTIVEDEF_EWS_DESC: The utilization of the electromagnetic spectrum for offensive or defensive applications. Scientific basis for the creation of a suite of ECM and ECCM systems.\n#c:green##tab:8#Improves: ECM Generation, Radius
+
+#RS_ACTIVEDEF_SPECDEF_NAME: Specialized Defenses
+#RS_ACTIVEDEF_SPECDEF_DESC: The research of active defenses suitable to counter specific threats.\n#c:green##tab:8#Improves: Defensive Value Generation, Radius
+
+#RS_ACTIVEDEF_BOARDING_NAME: Boarding Defenses
+#RS_ACTIVEDEF_BOARDING_DESC: The study of on-board defensive systems that help fighting hostile boarding parties.\n#c:green##tab:8#Improves: Boarding Defense
+
+
+#RS_SHIELDS_ROOT_NAME: Shields
+#RS_SHIELDS_ROOT_DESC: The focused application of energy physics, gravitics and spatial dynamics into various forms of barriers which culminate in a form of 'projected armor' which is typically classified as 'shielding' or 'shields'.\n#c:green##tab:8#Improves: Shield Durability
+
+#RS_SHIELDS_DENSITY_NAME: Shield Density
+#RS_SHIELDS_DENSITY_DESC: The study of projected field dynamics and finding ways to improve field stability and density.\n#c:green##tab:8#Improves: Shield Density, Damage, Radius
+
+#RS_SHIELDS_POWER_NAME: Improved Power Conversion
+#RS_SHIELDS_POWER_DESC: The science of utilizing energy to create and maintain projected shields.\n#c:green##tab:8#Improves: Power Usage
+
+#RS_SHIELDS_REGEN_NAME: Shield Regeneration
+#RS_SHIELDS_REGEN_DESC: The research dedicated to maintaining shields even under the most adverse conditions, i.e. incoming fire.\n#c:green##tab:8#Improves: Shield Regeneration
+
+
+#RS_KINETIC_ROOT_NAME: Kinetic Weapons
+#RS_KINETIC_ROOT_DESC: The development and application of weapon systems that deal damage through the application of kinetic energy.\n#c:green##tab:8#Improves: Damage, Velocity
+
+#RS_KINETIC_TARGETTING_NAME: Targetting Systems
+#RS_KINETIC_TARGETTING_DESC: The development and application of fire-control computers that reliably enable hitting distant targets with kinetic weapons.\n#c:green##tab:8#Improves: Range, Accuracy
+
+#RS_KINETIC_AMMO_NAME: Pressure Doctrine
+#RS_KINETIC_AMMO_DESC: Keeping constant pressure on the enemy by enabling weapons to fire faster and over an extended period of time.\n#c:green##tab:8#Improves: Rate of Fire, Ammo Consumption
+
+#RS_KINETIC_HARDENED_NAME: Hardened Projectiles
+#RS_KINETIC_HARDENED_DESC: The utilization of material sciences to develop harder and/or more flexible projectile compounds.\n#c:green##tab:8#Improves: Chance of Armor Penetration
+
+
+#RS_BALLISTICS_ROOT_NAME: Heavy Ballistics
+#RS_BALLISTICS_ROOT_DESC: The development and application of unguided, ballistic weaponry that utilizes various kinds of warheads to inflict damage.\n#c:green##tab:8#Improves: Damage, Velocity
+
+#RS_BALLISTICS_ACQUISITION_NAME: Target Acquisition
+#RS_BALLISTICS_ACQUISITION_DESC: The development of precise and fast-tracking aiming mechanisms and advanced targetting computers.\n#c:green##tab:8#Improves: Range, Accuracy
+
+#RS_BALLISTICS_AMMO_NAME: Devastation Doctrine
+#RS_BALLISTICS_AMMO_DESC: The study of creating ways to repeatedly keep on hitting the enemy with brute force over an extended timeframe.\n#c:green##tab:8#Improves: Rate of Fire, Ammo Consumption
+
+#RS_BALLISTICS_PAYLOAD_NAME: Improved Payload
+#RS_BALLISTICS_PAYLOAD_DESC: The development of more powerful warheads for ballistic weapons.\n#c:green##tab:8#Improves: Area of Effect, Damage over Time
+
+
+#RS_BEAMENERGY_ROOT_NAME: Beam Energy Weapons
+#RS_BEAMENERGY_ROOT_DESC: The focused application of energy science to create weapons-grade beams.\n#c:green##tab:8#Improves: Damage, Dispersion
+
+#RS_BEAMENERGY_FOCUS_NAME: Improved Focusing
+#RS_BEAMENERGY_FOCUS_DESC: The study of techniques to improve beam density and accuracy.\n#c:green##tab:8#Improves: Range, Accuracy
+
+#RS_BEAMENERGY_EFFICIENCY_NAME: Energy Conversion
+#RS_BEAMENERGY_EFFICIENCY_DESC: The study of energy conversion processes. Reduces waste heat and power usage.\n#c:green##tab:8#Improves: Power Usage, Waste Heat, Rate of Fire
+
+#RS_BEAMENERGY_WAVELENGTH_NAME: Wavelength Adjustment
+#RS_BEAMENERGY_WAVELENGTH_DESC: The development of highly-dynamic emitters that allow wavelength adjustment for maximum destructive capability.\n#c:green##tab:8#Improves: Critical Chance, Shield Damage, Damage over Time
+
+
+#RS_PROJENERGY_ROOT_NAME: Projectile Energy Weapons
+#RS_PROJENERGY_ROOT_DESC: The focused application of energy science to create, maintain and manipulate containment fields for energy-based projectile weapons.\n#c:green##tab:8#Improves: Damage, Velocity
+
+#RS_PROJENERGY_FIELDS_NAME: Forcefield Manipulation
+#RS_PROJENERGY_FIELDS_DESC: The study of projected forcefields and their creation and manipulation.\n#c:green##tab:8#Improves: Range, Accuracy, Dispersion
+
+#RS_PROJENERGY_EFFICIENCY_NAME: Improved Projection Mechanism
+#RS_PROJENERGY_EFFICIENCY_DESC: The study of acceleration and projection techniques.\n#c:green##tab:8#Improves: Power Usage, Waste Heat, Rate of Fire
+
+#RS_PROJENERGY_WAVELENGTH_NAME: Wavelength Modulation
+#RS_PROJENERGY_WAVELENGTH_DESC: The application of dynamic wavelength modulation to projected forcefields to maximize destructive side-effects.\n#c:green##tab:8#Improves: Critical Chance, Shield Damage, Damage over Time
+
+
+#RS_MISSILES_ROOT_NAME: Missiles
+#RS_MISSILES_ROOT_DESC: The focused study of fast and agile explosive, self-guiding and self-propelling rockets, combining knowledge from the fields of engine technology and computers and the effects of gravity to deliver an agile and intelligent weapon.\n#c:green##tab:8#Improves: Damage, Area of Effect, Chance of Armor Penetration
+
+#RS_MISSILES_FUEL_NAME: High-Impulse Fuel
+#RS_MISSILES_FUEL_DESC: The development of fuel types that deliver a higher specific impulse.\n#c:green##tab:8#Improves: Range, Velocity
+
+#RS_MISSILES_TARGETTING_NAME: Seeker Head Improvement
+#RS_MISSILES_TARGETTING_DESC: The study and development of miniaturized sensors and targetting computers used in missiles.\n#c:green##tab:8#Improves: Accuracy
+
+#RS_MISSILES_LOADING_NAME: Loading and Storage Systems
+#RS_MISSILES_LOADING_DESC: The development of quicker loading mechanisms and more efficient ammunition storages.\n#c:green##tab:8#Improves: Rate of Fire, Ammo Consumption
+
+
+#RS_TORPEDO_ROOT_NAME: Torpedos
+#RS_TORPEDO_ROOT_DESC: The development of massive and heavy self-guiding and self-propelling torpedos, able to deliver tremendous damage using various kinds of warheads.\n#c:green##tab:8#Improves: Damage, Area of Effect, Damage over Time
+
+#RS_TORPEDO_ENGINES_NAME: Torpedo Engines
+#RS_TORPEDO_ENGINES_DESC: The study of miniaturized propulsion systems for use with torpedos.\n#c:green##tab:8#Improves: Range, Accuracy, Velocity
+
+#RS_TORPEDO_PREPARATION_NAME: Simplified Preparation Process
+#RS_TORPEDO_PREPARATION_DESC: The research of quick, automated processes used to prepare the firing of torpedo weapons.\n#c:green##tab:8#Improves: Rate of Fire
+
+#RS_TORPEDO_MINIATURIZATION_NAME: Torpedo Miniaturization
+#RS_TORPEDO_MINIATURIZATION_DESC: The study of techniques used to minimize the overall mass and bulk of torpedo weapons while maintaining all other properties.\n#c:green##tab:8#Improves: Ammo Consumption
+
+
+#RS_WEAPMOD_ROOT_NAME: Weapon Modifications
+#RS_WEAPMOD_ROOT_DESC: The focused study and application of advanced methods to modify and boost various properties of weapon systems.\n#c:green##tab:8#Improves: Modifier Bonus
+
+#RS_WEAPMOD_CONTROL_NAME: Automated Modifications
+#RS_WEAPMOD_CONTROL_DESC: The development of computer automation to aid in the use of weapon modifications.\n#c:green##tab:8#Improves: Reduced Control Penalty
+
+#RS_WEAPMOD_EFFICIENCY_NAME: Simplified Feeding Mechanism
+#RS_WEAPMOD_EFFICIENCY_DESC: The research of power/ammo feeding systems that remain closer to unmodified weapons.\n#c:green##tab:8#Improves: Reduced Power/Ammo Penalties
+
+#RS_WEAPMOD_COST_NAME: Weapon Mod Mass-production
+#RS_WEAPMOD_COST_DESC: The application of mass-production methods to decrease the production cost of weapon modifications.\n#c:green##tab:8#Improves: Resouce Cost
+
+//End of Research
 
 //color becomes color:link
 //Stellar Pedia

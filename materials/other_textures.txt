@@ -1,0 +1,44 @@
+//Various Space Structures
+
+Material: orbital
+ Defer: Low
+ Texture: Images/SpaceStructures/Orbital 3_Texture4.png
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 6
+ Specular: 666
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+Material: sunring
+ Defer: Low
+ Texture: Images/SpaceStructures/Sun_ring_texture.png
+#if shaders
+ RenderMode: SmoothLit
+ SpecularFactor: 6
+ Specular: 666
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end
+
+
+
+//Various Space Creatures
+
+Material: space_worm
+ Defer: Low
+ Texture: Images/SpaceCreatures/Monster_02_05.png
+ SpecularFactor: 6
+ Specular: 666
+#if shaders
+ Texture2: Images/SpaceCreatures/Monster_02_02_glowmap.png
+ Texture3: Images/Ships/no_marks.png
+ Texture4: Images/Ships/no_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end

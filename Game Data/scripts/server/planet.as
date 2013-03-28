@@ -18,19 +18,18 @@ const string@ strAlwaysHappy = "always_happy", strPlanetRemoveConditions = "plan
 const string@ strLowLuxuries = "low_luxuries_consumption", strHighLuxuries = "high_luxuries_consumption";
 const string@ strDoubleLabor = "double_pop_labor", strHalfLabor ="half_pop_labor", strIndifferent = "forever_indifferent";
 const string@ strHalfExports = "half_exports", strH3FuelGen = "H3FuelG";
+const string@ strGroundForces = "GroundForces";
+ObjectFlag objImprovement = objUser03, setImpPause = objSetting00, objInvasion = objUser02;
 
 const string@ strPosition = "position", strRotation = "rotation";
 const double million = 1000000.0;
 const double c_e = 2.71828183;
-
-ObjectFlag objImprovement = objUser03, setImpPause = objSetting00;;
 
 //Conversion rates when working with no resources (scales down from 1 to this value as the value/max ratio declines)
 const float deadOreRate = 0.2f;
 const float deadElcRate = 0.01f;
 const float deadAdvRate = 0.001f;
 
-import void createImp(Object@ obj) from "GAImprovements";
 import float processOre(Object@ obj, float Rate) from "Economy";
 import float makeElectronics(Object@ obj, float Rate) from "Economy";
 import float makeAdvParts(Object@ obj, float Rate) from "Economy";
@@ -599,10 +598,6 @@ void tick(Planet@ pl, float time) {
 	State@ workers = pl.toObject().getState(strWorkers);
 	workers.val = pl.getPopulation();
 	workers.max = pl.getMaxPopulation();
-	
-	// Check for improvement flag
-	if(obj.getFlag(objImprovement) && !obj.getFlag(setImpPause))
-		createImp(obj);
 }
 
 float sign(float x) {
@@ -680,9 +675,15 @@ float populationConsume(Planet@ pl, const string@ state, double amnPer, double t
 	double pop = pl.getPopulation();
 	double maxPop = pl.getMaxPopulation();
 
+	State@ Troops = pl.toObject().getState(strGroundForces);
+	double troops = Troops.val;
+	double maxtroops = Troops.max;
+
 	State@ res = pl.toObject().getState(state);
 	double avail = res.getAvailable();
-	double needed = pop * time * amnPer;
+	double popneeded = pop * time * amnPer;
+	double troopneeded = troops * time * amnPer;
+	double needed = popneeded + troopneeded;
 
 	if (avail >= needed) {
 		res.consume(needed, pl.toObject());
@@ -690,8 +691,10 @@ float populationConsume(Planet@ pl, const string@ state, double amnPer, double t
 	}
 	else {
 		res.consume(avail, pl.toObject());
-		//Up to 10% of the population will die per second
-		pl.modPopulation(-1.f * min((needed - avail) / amnPer, pop * (1.f - pow(0.9f,float(time))) ));
+		//Up to 10% of the population will die per second		
+		pl.modPopulation(-1.f * min((popneeded - avail) / amnPer, pop * (1.f - pow(0.95f,float(time))) ));
+		//Up to 5% of the troops will die per second
+		Troops.val -= ((1.f * min((troopneeded - avail) / amnPer, Troops.val * (1.f - pow(0.975f,float(time))) )));
 		return avail/needed;
 	}
 }
@@ -784,12 +787,11 @@ bool onOwnerChange(Planet@ pl, Empire@ from, Empire@ to) {
 	// Clear any import/export flags
 	obj.setStateVals(strTradeMode, 0, 0, 0, 0);
 	
-	// Clear any terraforming
-	obj.setStateVals("impCosts", 0, 0, 0, 0);
-	obj.setStateVals("impTotalCosts", 0, 0, 0, 0);
+	// Clear any flags
 	obj.setFlag(objImprovement, false);
 	obj.setFlag(setImpPause, false);
-	
+	obj.setFlag(objInvasion, false);
+
 	return false;
 }
 

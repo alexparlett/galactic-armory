@@ -25,13 +25,18 @@ System: Artillery
     Appearance: GAArtillery
 	Explosion: subsystem_destroyed
 
-    Available: Techs.Ballistics_Root.Level >= 0
+    Available: Techs.Ballistics_Root.Level > 0
     Level: Techs.Ballistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	DamageLevel: Techs.Ballistics_Root.Level
+	RangeLevel: Techs.Ballistics_Acquisition.Level
+	AmmoLevel: Techs.Ballistics_Ammo.Level
+	PayloadLevel: Techs.Ballistics_Payload.Level
+	HPLevel:  Techs.Materials_Weapons.Level
 	
-    Size: if(Object.Scale >= 10, Scale * 2, ((Scale * 2) + (20 / Object.Scale)))
-    HPLevel: Techs.Materials.Level-1 As Level
-    Durability: GAME_SUBSYS_MULT * 150 * Size * pow(HEALTH_CURVE,HPLevel)
-    Mass: 150 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    Size: if(Object.Scale > 10, Scale * 2, ((Scale * 2) + (20 / Object.Scale)))
+    Durability: 150 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+    Mass: (150 * Size) / (1 + (0.1 * MassLevel))
     
     Tags: Weapon, ProjWeapon, Require:StationOrSpinalMount, Artillery
 	Tied To: Ballistics_Root 0
@@ -39,13 +44,13 @@ System: Artillery
     Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[Size * 30]
     Complexity: 1
     
-    vDamage: Size * 150 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT                            //was Size * 100
-    vAoE_Range: min((Size/100) + (32 + sqrt(Size)), (128 * (1 + (Level * 0.05))))                                                                                                //was min(8 + ((Size / 8) * 0.5 * pow(LEVEL_GAIN_CURVE, Level)), 50)
-    vDelay: 10 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+    vDamage: 150 * Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT                        //was Size * 100
+    vAoE_Range: (10 + (Size/20)) * (1 + (PayloadLevel * 0.1))                                        //(BaseRadius + (Size/20)) - 10 is a placeholder, not sure what is base radius
+    vDelay: (10 + (sqrt(Size) / 5)) / (1 + (0.05 * AmmoLevel))
     vDeviation: 0.05
-    vRange: (450 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
-    vSpeed: vRange * .25 * BALLISTIC_PROJ_FACTOR
-    vAmmoUse: Size * 10
+    vRange: (450 + (5 * sqrt(Size))) *  (1 + (0.1 * RangeLevel))
+    vSpeed:(vRange / 5)  * (1 + (DamageLevel * GA_TECH_INCREASE))
+    vAmmoUse: (10 * Size) / (1 + (0.1 * AmmoLevel))
     
     Provides: ArtilleryWeaponTrigger with Damage[vDamage], AoE_Range[vAoE_Range], Delay[vDelay], AmmoUse[vAmmoUse],
         Range[vRange], Speed[vSpeed], Deviation[vDeviation]
@@ -60,66 +65,24 @@ System: Artillery
 
     Hints: Alpha[vDamage], Ammo[Size * 30], AmmoUse[-1 * vAmmoUse / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/MinRange[vRange * 0.1], Local/DMGperShot[vDamage], Local/AoERange[vAoE_Range], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]
 
-System: AntimatterCannon
-    Name: #SS_AMCANNON_NAME
-    Description: #SS_AMCANNON_DESC
-    Appearance: AntimatterCannon
-	Explosion: subsystem_destroyed
-
-    Available: Techs.Ballistics_Root.Level >= 0
-    Level: Techs.Ballistics_Root.Level
-	
-    Size: max(5, Scale)
-        
-    HPLevel: Techs.Materials.Level-1 As Level
-    Durability: GAME_SUBSYS_MULT * 150 * Size * pow(HEALTH_CURVE,HPLevel)
-    Mass: 150 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
-    
-    Tags: Weapon, ProjWeapon, WMD
-	Tied To: Ballistics_Root 0
-    
-    Costs: Metals[150 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[7 * Size], Ammo[Size * 30]
-    Complexity: 3
-    
-    vDamage: Size * 72 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT
-    vAoE_Range: min((Size/100) + (25 + sqrt(Size)), (75 * (1 + (Level * 0.05))))                                                                                            //was min(8 + ((Size / 8) * 0.5 * pow(LEVEL_GAIN_CURVE, Level)), 50)
-    vDelay: 3 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
-    vDeviation: 0.2
-    vRange: (165 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
-    vSpeed: vRange * .33 * BALLISTIC_PROJ_FACTOR
-    vAmmoUse: Size * 5
-    
-    Provides: AntimatterBulletTrigger with Damage[vDamage], AoE_Range[vAoE_Range], Delay[vDelay], AmmoUse[vAmmoUse],
-        Range[vRange], Speed[vSpeed], Deviation[vDeviation]
-    
-    Triggerable: AreaDamage: AreaDamageTriggered with AoE_Damage[vDamage], AoE_Range[vAoE_Range]
-    
-    Provides: AmmoStorage with Amount[Size * 30]
-
-    Consumes:
-        To Run:
-            Power[30 * Size]    
-    
-    Requires:
-        To Run:
-            Control[30 * Size], AntimatterGeneration[Size]            
-            
-    Hints: Alpha[vDamage], Ammo[Size * 30], AmmoUse[(-1 * vAmmoUse) / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/MinRange[vAoE_Range], Local/DMGperShot[vDamage], Local/AoERange[vAoE_Range], Local/AmmoperShot[-1 * vAmmoUse], Local/ProjSpeed[vSpeed], Local/Delay[vDelay]
-
-
 System: AssaultCannon
     Name: #SS_ASSAULTCANNON_NAME
     Description: #SS_ASSAULTCANNON_DESC
     Appearance: AssaultCannon
 	Explosion: subsystem_destroyed
 
-    Available: Techs.Ballistics_Root.Level >= 0
+    Available: Techs.Ballistics_Root.Level > 0
     Level: Techs.Ballistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	DamageLevel: Techs.Ballistics_Root.Level As
+	RangeLevel: Techs.Ballistics_Acquisition.Level
+	AmmoLevel: Techs.Ballistics_Ammo.Level
+	PayloadLevel: Techs.Ballistics_Payload.Level
+	HPLevel:  Techs.Materials_Weapons.Level
 	
     Size: Scale
-    HPLevel: Techs.Materials.Level-1 As Level
-    Durability: GAME_SUBSYS_MULT * 160 * Size * pow(HEALTH_CURVE,HPLevel)
-    Mass: 300 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    Durability: 160 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+    Mass: (300 * Size) / (1 + (0.1 * MassLevel))
     
     Tags: Weapon, ProjWeapon, Railgun, ClipWeapon
 	Tied To: Ballistics_Root 0
@@ -128,15 +91,15 @@ System: AssaultCannon
     Complexity: 8
     
     vBurst: 3
-    vDelay: 11.0 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
-    vDamage: Size * 72 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT                        //was 80
+    vDelay: (11 + (sqrt(Size) / 5)) / (1 + (0.05 * AmmoLevel))
+    vDamage: 72 * Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT                      //was 80
     vShotDelay: 0.5
     vTotalDelay: (vShotDelay * (vBurst - 1)) + vDelay
-    vRange: (250 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
-    vSpeed: vRange * 0.66 * BALLISTIC_PROJ_FACTOR
-    vEffectiveRange: 0.66
+    vRange: (250 + (5 * sqrt(Size))) *  (1 + (0.1 * RangeLevel))
+    vSpeed:(vRange / 5)  * (1 + (DamageLevel * GA_TECH_INCREASE))
+    vEffectiveRange: 0.4 +  (0.02 * RangeLevel)
     vMinHit: 0.66
-    vAmmoUse: Size * 5
+    vAmmoUse: (5 * Size) / (1 + (0.1 * AmmoLevel))
 
     Provides: AssaultWeapon with Damage[vDamage], ShotDelay[vShotDelay],
         Delay[vDelay], ClipSize[vBurst], AmmoUse[vAmmoUse], Range[vRange], Speed[vSpeed], effectiveRangeFactor[vEffectiveRange], minHitChance[vMinHit]
@@ -155,25 +118,30 @@ System: FighterPrecisionBomb
 	Description: #SS_FPRECBOMB_DESC
 	Appearance: FighterPrecBomb
 
-    Available: Techs.Ballistics_Root.Level >= 0
+    Available: Techs.Ballistics_Root.Level > 0
     Level: Techs.Ballistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	DamageLevel: Techs.Ballistics_Root.Level As
+	RangeLevel: Techs.Ballistics_Acquisition.Level
+	AmmoLevel: Techs.Ballistics_Ammo.Level
+	PayloadLevel: Techs.Ballistics_Payload.Level
+	HPLevel:  Techs.Materials_Weapons.Level
 	
-	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    Size: Scale
+	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 	
 	Tags: Weapon, FighterWeapon, Require:FighterBomber, Bomb
 	Tied To: Ballistics_Root 0
 	
-	vDamage: Size * 180 * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT
-	vDelay: 6 * (1 + decay(pow(LEVEL_GAIN_CURVE, Level), 100)) * GAME_RELOAD_MULT
-	vRange: (50 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
-	vSpeed: progress(5,2*LEVEL_GAIN_CURVE,Level)
+	vDamage: 180 * Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT
+	vDelay: (6 + (sqrt(Size) / 5)) / (1 + (0.05 * AmmoLevel))
+	vRange: (50 + (5 * sqrt(Size))) *  (1 + (0.1 * RangeLevel))
+	vSpeed:(vRange / 5)  * (1 + (DamageLevel * GA_TECH_INCREASE))
 	vAmmoStorage: Size * 24 * (1 + (0.2 * Level))
 	vEffectiveRange: 1
 	vMinHit: 1
-	vAmmoUse: Size * 6	
+	vAmmoUse: (6 * Size) / (1 + (0.1 * AmmoLevel))
 	
 	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[vAmmoStorage]
 	Complexity: 2.0
@@ -194,23 +162,28 @@ System: FighterAdvancedBomb
 	Description: #SS_FADVBOMB_DESC
 	Appearance: FighterAdvBomb
 	
-    Available: Techs.Ballistics_Root.Level >= 0
+    Available: Techs.Ballistics_Root.Level > 0
     Level: Techs.Ballistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	DamageLevel: Techs.Ballistics_Root.Level As
+	RangeLevel: Techs.Ballistics_Acquisition.Level
+	AmmoLevel: Techs.Ballistics_Ammo.Level
+	PayloadLevel: Techs.Ballistics_Payload.Level
+	HPLevel:  Techs.Materials_Weapons.Level
 	
-	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    Size: Scale
+	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 	
 	Tags: Weapon, FighterWeapon, Require:FighterBomber, Bomb
 	Tied To: Ballistics_Root 0
 	
-	vDamage: Size * 240 * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT
-	vDelay: 6 * (1 + decay(pow(LEVEL_GAIN_CURVE, Level), 100)) * GAME_RELOAD_MULT
-	vRange: (65 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
-	vSpeed: progress(10,2*LEVEL_GAIN_CURVE,Level)
+	vDamage: 240 * Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT
+	vDelay: (6 + (sqrt(Size) / 5)) / (1 + (0.05 * AmmoLevel))
+	vRange: (65 + (5 * sqrt(Size))) *  (1 + (0.1 * RangeLevel))
+	vSpeed:(vRange / 5)  * (1 + (DamageLevel * GA_TECH_INCREASE))
 	vAmmoStorage: Size * 24 * (1 + (0.2 * Level))
-	vAmmoUse: Size * 4	
+	vAmmoUse: (4 * Size) / (1 + (0.1 * AmmoLevel))
 	
 	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[vAmmoStorage]
 	Complexity: 4.0
@@ -232,23 +205,28 @@ System: HeavyBomb
 	Description: #SS_HEAVYBOMB_DESC
 	Appearance: HeavyBomb
 	
-    Available: Techs.Ballistics_Root.Level >= 0
+    Available: Techs.Ballistics_Root.Level > 0
     Level: Techs.Ballistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	DamageLevel: Techs.Ballistics_Root.Level As
+	RangeLevel: Techs.Ballistics_Acquisition.Level
+	AmmoLevel: Techs.Ballistics_Ammo.Level
+	PayloadLevel: Techs.Ballistics_Payload.Level
+	HPLevel:  Techs.Materials_Weapons.Level
 	
-	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 100 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    Size: Scale
+	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (100 * Size) / (1 + (0.1 * MassLevel))
 	
 	Tags: Weapon, BomberWeapon, Require:BomberHull, Bomb
 	Tied To: Ballistics_Root 0
 	
-	vDamage: Size * 600 * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT
-	vDelay: 5 * (1 + decay(pow(LEVEL_GAIN_CURVE, Level), 100)) * GAME_RELOAD_MULT
-	vRange: (55 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
-	vSpeed: progress(10,2*LEVEL_GAIN_CURVE,Level)
+	vDamage: 600 * Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT
+	vDelay: (5 + (sqrt(Size) / 5)) / (1 + (0.05 * AmmoLevel))
+	vRange: (55 + (5 * sqrt(Size))) *  (1 + (0.1 * RangeLevel))
+	vSpeed:(vRange / 5)  * (1 + (DamageLevel * GA_TECH_INCREASE))
 	vAmmoStorage: Size * 24 * (1 + (0.2 * Level))
-	vAmmoUse: Size * 8	
+	vAmmoUse: (8 * Size) / (1 + (0.1 * AmmoLevel))
 	
 	Costs: Metals[300 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[vAmmoStorage]
 	Complexity: 2.0
@@ -268,24 +246,29 @@ System: EMPBomb
 	Description: #SS_EMPBOMB_DESC
 	Appearance: EMPBomb
 	
-    Available: Techs.Ballistics_Root.Level >= 0
+    Available: Techs.Ballistics_Root.Level > 0
     Level: Techs.Ballistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	DamageLevel: Techs.Ballistics_Root.Level As
+	RangeLevel: Techs.Ballistics_Acquisition.Level
+	AmmoLevel: Techs.Ballistics_Ammo.Level
+	PayloadLevel: Techs.Ballistics_Payload.Level
+	HPLevel:  Techs.Materials_Weapons.Level
 	
-	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 100 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    Size: Scale
+	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (100 * Size) / (1 + (0.1 * MassLevel))
 	
 	Tags: Weapon, BomberWeapon, Require:BomberHull, WMD
 	Tied To: Ballistics_Root 0
 	
-	vDamage: Size * 600 * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT
-	vAoE_Range: min(30 + (3 * (Size * pow(LEVEL_GAIN_CURVE, Level))), 60)
-	vDelay: 5 * (1 + decay(pow(LEVEL_GAIN_CURVE, Level), 100)) * GAME_RELOAD_MULT
-	vRange: (80 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
-	vSpeed: progress(10,2*LEVEL_GAIN_CURVE,Level)
+	vDamage: 600 * Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT
+	vAoE_Range: (10 + (Size/20)) * (1 + (PayloadLevel * 0.1))
+	vDelay: (5 + (sqrt(Size) / 5)) / (1 + (0.05 * AmmoLevel))
+	vRange: (80 + (5 * sqrt(Size))) *  (1 + (0.1 * RangeLevel))
+	vSpeed:(vRange / 5)  * (1 + (DamageLevel * GA_TECH_INCREASE))
 	vAmmoStorage: Size * 24 * (1 + (0.2 * Level))
-	vAmmoUse: Size * 6	
+	vAmmoUse: (8 * Size) / (1 + (0.1 * AmmoLevel))
 	
 	Costs: Metals[300 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[vAmmoStorage]
 	Complexity: 2.0
@@ -308,21 +291,26 @@ System: FighterBomberASW
 	Description: #SS_FBASW_DESC
 	Appearance: FighterBomberASW
 	
-    Available: Techs.Ballistics_Root.Level >= 0
+    Available: Techs.Ballistics_Root.Level > 0
     Level: Techs.Ballistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	DamageLevel: Techs.Ballistics_Root.Level As
+	RangeLevel: Techs.Ballistics_Acquisition.Level
+	AmmoLevel: Techs.Ballistics_Ammo.Level
+	PayloadLevel: Techs.Ballistics_Payload.Level
+	HPLevel:  Techs.Materials_Weapons.Level
 	
-	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 300 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    Size: Scale
+	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (300 * Size) / (1 + (0.1 * MassLevel))
 	
 	Tags: Weapon, FighterWeapon, Require:FighterBomber, Bomb
 	Tied To: Ballistics_Root 0
 	
-	vDamage: Size * 3000 * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT
-	vDelay: 5 * (1 + decay(pow(LEVEL_GAIN_CURVE, Level), 100)) * GAME_RELOAD_MULT
+	vDamage: 3000 * Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT
+	vDelay: (5 + (sqrt(Size) / 5)) / (1 + (0.05 * AmmoLevel))
 	vRange: (40 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
-	vSpeed: progress(5,2*LEVEL_GAIN_CURVE,Level)
+	vSpeed:(vRange / 5)  * (1 + (DamageLevel * GA_TECH_INCREASE))
 	vAmmoStorage: Size * 24 * (1 + (0.2 * Level))
 	
 	Costs: Metals[300 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[vAmmoStorage]
@@ -345,25 +333,30 @@ System: AntiSurfaceWarhead
 	Appearance: AntiSurfaceWarhead
 	Explosion: subsystem_destroyed
 
-    Available: Techs.Ballistics_Root.Level >= 0
+    Available: Techs.Ballistics_Root.Level > 0
     Level: Techs.Ballistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	DamageLevel: Techs.Ballistics_Root.Level As
+	RangeLevel: Techs.Ballistics_Acquisition.Level
+	AmmoLevel: Techs.Ballistics_Ammo.Level
+	PayloadLevel: Techs.Ballistics_Payload.Level
+	HPLevel:  Techs.Materials_Weapons.Level
 	
-	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 300 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    Size: Scale
+	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (300 * Size) / (1 + (0.1 * MassLevel))
 	
 	Tags: Weapon, SpecWeapon, Bomb
 	Tied To: Ballistics_Root 0
 	
 	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[Size * 24]
 	Complexity: 2
-	vDamage: Size * 400 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT							//was Size * 20
-	vDelay: 5 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+	vDamage: 400 * Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT					//was Size * 20
+	vDelay: (5 + (sqrt(Size) / 5)) / (1 + (0.05 * AmmoLevel))
 	vDeviation: 0.1
-	vRange: (55 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
-	vSpeed: vRange * .3 * ANTIPLANET_PROJ_FACTOR
-	vAmmoUse: 3 * Size
+	vRange: (55 + (5 * sqrt(Size))) *  (1 + (0.1 * RangeLevel))
+	vSpeed:(vRange / 5)  * (1 + (DamageLevel * GA_TECH_INCREASE))
+	vAmmoUse: (3 * Size) / (1 + (0.1 * AmmoLevel))
 
 	Provides: AntiSurfaceWarhead with Damage[vDamage], Delay[vDelay], AmmoUse[vAmmoUse],
 		Range[vRange], Speed[vSpeed], Deviation[vDeviation]
@@ -383,13 +376,18 @@ System: NBCWeapon
 	Appearance: BioWarhead
 	Explosion: subsystem_destroyed
 
-    Available: Techs.Ballistics_Root.Level >= 0
+    Available: Techs.Ballistics_Root.Level > 0
     Level: Techs.Ballistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	DamageLevel: Techs.Ballistics_Root.Level As
+	RangeLevel: Techs.Ballistics_Acquisition.Level
+	AmmoLevel: Techs.Ballistics_Ammo.Level
+	PayloadLevel: Techs.Ballistics_Payload.Level
+	HPLevel:  Techs.Materials_Weapons.Level
 	
-	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 200 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    Size: Scale
+	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (200 * Size) / (1 + (0.1 * MassLevel))
 	
 	Tags: Weapon, SpecWeapon, Bomb
 	Tied To: Ballistics_Root 0
@@ -397,13 +395,13 @@ System: NBCWeapon
 	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size], Ammo[Size * 24]
 	Complexity: 2.5
 	
-	vDamage: Size * 20 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT
-	vDelay: 20 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+	vDamage: 20 * Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT
+	vDelay: (20 + (sqrt(Size) / 5)) / (1 + (0.05 * AmmoLevel))
 	vDeviation: 0.1
-	vRange: (55 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vRange: (55 + (5 * sqrt(Size))) *  (1 + (0.1 * RangeLevel))
 	vSpeed: vRange * .3 * ANTIPLANET_PROJ_FACTOR
 	vDuration: 2 + min((Level * 0.25), 3)																					//was 5
-	vAmmoUse: 3 * Size
+	vAmmoUse: (3 * Size) / (1 + (0.1 * AmmoLevel))
 	
 	Provides: NBCWeapon with Damage[vDamage], Delay[vDelay], AmmoUse[vAmmoUse],
 		Range[vRange], Speed[vSpeed], Deviation[vDeviation], Duration[vDuration]
@@ -423,23 +421,28 @@ System: MassDriver
 	Appearance: MassDriver
 	Explosion: subsystem_destroyed
 
-    Available: Techs.Ballistics_Root.Level >= 0
+    Available: Techs.Ballistics_Root.Level > 0
     Level: Techs.Ballistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	DamageLevel: Techs.Ballistics_Root.Level As
+	RangeLevel: Techs.Ballistics_Acquisition.Level
+	AmmoLevel: Techs.Ballistics_Ammo.Level
+	PayloadLevel: Techs.Ballistics_Payload.Level
+	HPLevel:  Techs.Materials_Weapons.Level
 	
 	Size: max(Scale, 100)
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 400 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (400 * Size) / (1 + (0.1 * MassLevel))
 	
 	Tags: Weapon, SpecWeapon, GlobalKiller, Tool:GlobalKiller, Roid
 	Tied To: Ballistics_Root 0
 	
 	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
 	Complexity: 4
-	vDamage: Size * 5000 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT							//was Size * 20
-	vDelay: 10 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+	vDamage: 5000 * Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT			
+	vDelay: (10 + (sqrt(Size) / 5)) / (1 + (0.05 * AmmoLevel))
 	vDeviation: 0.5
-	vRange: (90 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vRange: (90 + (5 * sqrt(Size))) *  (1 + (0.1 * RangeLevel))
 	vSpeed: vRange * .25 * ANTIPLANET_PROJ_FACTOR
 	
 	Provides: Asteroid with Damage[vDamage], Delay[vDelay], AsteroidUse[4 * Size],
@@ -462,23 +465,28 @@ System: MassDriverLight
 	Appearance: MassDriverLight
 	Explosion: subsystem_destroyed
 
-    Available: Techs.Ballistics_Root.Level >= 0
+    Available: Techs.Ballistics_Root.Level > 0
     Level: Techs.Ballistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	DamageLevel: Techs.Ballistics_Root.Level As
+	RangeLevel: Techs.Ballistics_Acquisition.Level
+	AmmoLevel: Techs.Ballistics_Ammo.Level
+	PayloadLevel: Techs.Ballistics_Payload.Level
+	HPLevel:  Techs.Materials_Weapons.Level
 	
-	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 400 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    Size: Scale
+	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (400 * Size) / (1 + (0.1 * MassLevel))
 	
 	Tags: Weapon, ProjWeapon, Roid
 	Tied To: Ballistics_Root 0
 	
 	Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
 	Complexity: 4
-	vDamage: Size * 400 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT							//was Size * 20
-	vDelay: 4 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+	vDamage: 400 * Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT				
+	vDelay: (4 + (sqrt(Size) / 5)) / (1 + (0.05 * AmmoLevel))
 	vDeviation: 0.25
-	vRange: (180 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vRange: (180 + (5 * sqrt(Size))) *  (1 + (0.1 * RangeLevel))
 	vSpeed: vRange * .25 * ANTIPLANET_PROJ_FACTOR
 	vEffectiveRange: 0.25
 	vMinHit: 0.25
@@ -503,13 +511,18 @@ System: AsteroidCollector
 	Appearance: AsteroidCollector
 	Explosion: fuel_cell_explode
 
-    Available: Techs.Ballistics_Root.Level >= 0
+    Available: Techs.Ballistics_Root.Level > 0
     Level: Techs.Ballistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	DamageLevel: Techs.Ballistics_Root.Level As
+	RangeLevel: Techs.Ballistics_Acquisition.Level
+	AmmoLevel: Techs.Ballistics_Ammo.Level
+	PayloadLevel: Techs.Ballistics_Payload.Level
+	HPLevel:  Techs.Materials_Weapons.Level
 	
-	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 40 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 100 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    Size: Scale
+	Durability: 40 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (100 * Size) / (1 + (0.1 * MassLevel))
 
 	Tags: Support, Restrict:FighterBomber, Storage:Asteroids
 	Tied To: Ballistics_Root 0

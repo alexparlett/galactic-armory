@@ -63,145 +63,85 @@ void initPlanetTypes() {
 }
 
 void setMakeOddities(bool make) {
-	if(getGameSetting("REAL_SYS_BOOL", 1) == 1)
-		RS_setMakeOddities(make);
-	else
-		V_setMakeOddities(make);	
+	RS_setMakeOddities(make);
 }
 
 bool getMakeOddities() {
-	if(getGameSetting("REAL_SYS_BOOL", 1) == 1)
-		return RS_getMakeOddities();
-	else
-		return V_getMakeOddities();	
+	return RS_getMakeOddities();
 }
 
 float getOrbitRadiusFactor() { 
-	if(getGameSetting("REAL_SYS_BOOL", 1) == 1)
-		return RS_getOrbitRadiusFactor();
-	else
-		return V_getOrbitRadiusFactor();	 
+	return RS_getOrbitRadiusFactor();
 }
 
 void initMapGeneration() {
-	if(getGameSetting("REAL_SYS_BOOL", 1) == 1)
-		RS_initMapGeneration();
-	else
-		V_initMapGeneration();	
+	RS_initMapGeneration();
 
 	print("Map Generation Initialized");	
 }
 
 float range(float low, float high, float pct) {
-	if(getGameSetting("REAL_SYS_BOOL", 1) == 1)
-		return RS_range(low, high, pct);
-	else
-		return V_range(low, high, pct);	
+	return RS_range(low, high, pct);
 }
 
 float pctBetween(float x, float low, float hi) {
-	if(getGameSetting("REAL_SYS_BOOL", 1) == 1)
-		return RS_pctBetween(x, low, hi);
-	else
-		return V_pctBetween(x, low, hi);
+	return RS_pctBetween(x, low, hi);
 }
 
 void addStruct(uint count, string@ name, Planet@ pl) {
-	if(getGameSetting("REAL_SYS_BOOL", 1) == 1)
-		RS_addStruct(count, name, pl);
-	else
-		V_addStruct(count, name, pl);
+	RS_addStruct(count, name, pl);
 }
 
 set_int disregardPlanets;
 Planet@ getRandomPlanet(System@ sys) {
-	if(getGameSetting("REAL_SYS_BOOL", 1) == 1)
-		return RS_getRandomPlanet(sys);
-	else
-		return V_getRandomPlanet(sys);
+	return RS_getRandomPlanet(sys);
 }
 
 Planet@ makeRandomPlanet(System@ sys, uint plNum, uint plCount) {
-	if(getGameSetting("REAL_SYS_BOOL", 1) == 1)
-		return RS_makeRandomPlanet(sys, plNum, plCount);
-	else
-		return V_makeRandomPlanet(sys, plNum, plCount);
+	return RS_makeRandomPlanet(sys, plNum, plCount);
 }
 
 Planet@ setupStandardHomeworld(System@ sys, Empire@ emp) {
-	if(getGameSetting("REAL_SYS_BOOL", 1) == 1)
-		return RS_setupStandardHomeworld(sys, emp);
-	else
-		return V_setupStandardHomeworld(sys, emp);
+	return RS_setupStandardHomeworld(sys, emp);
 }
 
 void createSecondaryPlanet(System@ sys, Empire@ emp) {
-	if(getGameSetting("REAL_SYS_BOOL", 1) == 1)
-		RS_createSecondaryPlanet(sys, emp);
-	else
-		V_createSecondaryPlanet(sys, emp);
+	RS_createSecondaryPlanet(sys, emp);
 }
 
 Planet@ makeStandardPlanet(System@ sys, uint plNum, uint plCount) {
-	if(getGameSetting("REAL_SYS_BOOL", 1) == 1)
-		return RS_makeStandardPlanet(sys, plNum, plCount);
-	else
-		return V_makeStandardPlanet(sys, plNum, plCount);
+	return RS_makeStandardPlanet(sys, plNum, plCount);
 }
 
 void makeRandomComet(System@ sys) {
-	if(getGameSetting("REAL_SYS_BOOL", 1) == 1)
-		RS_makeRandomComet(sys);
-	else
-		V_makeRandomComet(sys);
+	RS_makeRandomComet(sys);
 }
 
 void makeRandomAsteroid(System@ sys, uint rocks) {
-	if(getGameSetting("REAL_SYS_BOOL", 1) == 1)
-		RS_makeRandomAsteroid(sys, rocks);
-	else
-		V_makeRandomAsteroid(sys, rocks);
+	RS_makeRandomAsteroid(sys, rocks);
 }
 
 System@ makeRandomSystem(Galaxy@ Glx, vector position, uint sysNum, uint sysCount) {
-	if(getGameSetting("REAL_SYS_BOOL", 1) == 1)
-		return RS_makeRandomSystem(Glx, position, sysNum, sysCount);
-	else
-		return V_makeRandomSystem(Glx, position, sysNum, sysCount);
+	return RS_makeRandomSystem(Glx, position, sysNum, sysCount);
 }
 
 System@ makeStandardSystem(Galaxy@ glx, vector pos) {
-	if(getGameSetting("REAL_SYS_BOOL", 1) == 1)
-		return RS_makeStandardSystem(glx, pos);
-	else
-		return V_makeStandardSystem(glx, pos);
+	return RS_makeStandardSystem(glx, pos);
 }
 
 System@ makeBinarySystem(Galaxy@ glx, vector pos) {
-	if(getGameSetting("REAL_SYS_BOOL", 1) == 1)
-		return RS_makeBinarySystem(glx, pos);
-	else
-		return V_makeBinarySystem(glx, pos);
+	return RS_makeBinarySystem(glx, pos);
 }
 
 System@ makeAsteroidBelt(Galaxy@ glx, vector pos) {
-	if(getGameSetting("REAL_SYS_BOOL", 1) == 1)
-		return RS_makeAsteroidBelt(glx, pos);
-	else
-		return V_makeAsteroidBelt(glx, pos);
+	return RS_makeAsteroidBelt(glx, pos);
 }
 
 System@ makeSupernova(Galaxy@ glx, vector pos) {
-	if(getGameSetting("REAL_SYS_BOOL", 1) == 1)
-		return RS_makeSupernova(glx, pos);
-	else
-		return V_makeSupernova(glx, pos);
+	return RS_makeSupernova(glx, pos);
 }
 
 float makeQuasar(Galaxy@ glx, vector pos, float sizeFactor) {
-	if(getGameSetting("REAL_SYS_BOOL", 1) == 1)
-		return RS_makeQuasar(glx, pos, sizeFactor);
-	else
-		return V_makeQuasar(glx, pos, sizeFactor);
+	return RS_makeQuasar(glx, pos, sizeFactor);
 }
 

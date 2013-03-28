@@ -1,0 +1,105 @@
+//Vanilla Files (asteroids, etc.)
+
+Model: planet_ring_lod2
+ File: SFX/planet_disc_8.obj
+ Scale: 1.2, 0.25, 1.2
+
+Model: planet_ring_lod1
+ File: SFX/planet_disc_16.obj
+ LOD: planet_ring_lod2, 0.01
+ Scale: 1.2, 0.25, 1.2
+
+Model: planet_ring
+ File: SFX/planet_disc_32.obj
+ LOD: planet_ring_lod1, 0.0025
+ Scale: 1.2, 0.25, 1.2
+
+Model: quasar
+ File: SFX/quasarhi.obj
+ Scale: 0.5
+ Material: star_animated
+
+Model: quasar_lod1
+ File: SFX/quasar.obj
+ Scale: 0.5
+ Material: star_animated
+
+Model: quasar_lod2
+ File: SFX/quasarlo.obj
+ Scale: 0.5
+ Material: star_animated
+
+Model: asteroid1_lod3
+ File: Rocks/Asteroid1/asteroid_lod3.obj
+ Scale: 0.05
+ Material: Asteroid1
+
+Model: asteroid1_lod2
+ File: Rocks/Asteroid1/asteroid_lod2.obj
+ Scale: 0.05
+ //LOD: asteroid1_lod3, 0.02
+ Material: Asteroid1
+
+Model: asteroid1_lod1
+ File: Rocks/Asteroid1/asteroid_lod1.obj
+ Scale: 0.05
+ LOD: asteroid1_lod2, 0.05
+ Material: Asteroid1
+
+Model: asteroid1_lod0
+ File: Rocks/Asteroid1/asteroid_lod0.obj
+ Scale: 0.05
+ LOD: asteroid1_lod1, 0.02
+ Material: Asteroid1
+
+Model: asteroid1_lodx
+ File: Rocks/Asteroid1/asteroid_lodx.obj
+ Scale: 0.05
+ LOD: asteroid1_lod0, 0.005
+ Material: Asteroid1
+
+Model: ringworld
+ File: SpaceStructures/Ringworld/ringworld.x
+ Material: ringworld
+ Scale: 2.0
+
+//Various Space Structures
+
+Model: pirate_base
+ File: SpaceStructures/PirateBase/pirate_base.obj
+ Material: pirate_base
+ Scale: 0.2
+
+//===========================================
+// Orbital Ring Structure
+//===========================================
+
+Model: orbital
+ File: ../Models/SpaceStructures/Orbital/Orbital_ring.obj
+ Scale: 0.85
+ Material: orbital
+ 
+//===========================================
+// Sun Stabilizer
+//=========================================== 
+
+Model: sunring
+ File: ../Models/SpaceStructures/SolarStabilizer/Solar_stabilizer.obj
+ Scale: 0.85
+ Material: sunring
+
+ 
+//===================================================
+//Various Space Creatures
+//===================================================
+
+
+//===========================================
+// Space Worm
+//===========================================
+
+Model: space_worm
+ File: ../Models/SpaceCreatures/SpaceWorm/Monster_02_02.obj
+ Scale: 0.6625
+ Material: space_worm
+

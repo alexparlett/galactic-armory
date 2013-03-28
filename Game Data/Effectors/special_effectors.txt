@@ -16,7 +16,7 @@ Effector: IonCannon
 	
 	Causes: IonCannonActive lasting 1 with Damage[Damage]
 
-	CanAttack: GASuperWeapons::checkIC, CanAttack
+	CanAttack: GARemnantEvents::checkIC, CanAttack
 	OnFire: Timed(300)
 	Tick: Reload
 	Progress: TimedProgress

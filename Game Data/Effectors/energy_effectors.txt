@@ -729,5 +729,4 @@ Effector: WaveWeapon
 	CanAttack: CanAttack, GACanAttack::checkHeat
 	OnFire: TimedShot(Delay, "Power", PowerUse, Deviation)
 	Tick: Reload
-	Progress: TimedProgress	
-	
+	Progress: TimedProgress

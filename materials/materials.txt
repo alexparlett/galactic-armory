@@ -8,6 +8,7 @@
 #include "~/materials/distant_icons.txt"
 #include "research_icons.txt"
 #include "shaders.txt"
+#include "other_textures.txt"
 
 Material: rangeRing
 #if shaders & !intel
@@ -909,7 +910,7 @@ Material: rift
  
 Material: pulsing_beam_fast
  Defer: Medium
- Texture: ~/Images/beam.png
+ Texture: Images/beam_white.png
 #if shaders
  RenderMode: PulsedBeamFast
 #else

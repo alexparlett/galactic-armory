@@ -11,7 +11,7 @@ Sound: new_treaty
 	File: new_treaty.wav
 
 Sound: laser
-	File: new_laser4.ogg
+	File: laser_beam.ogg
 	Volume: 0.225
 
 Sound: msg_notify
@@ -35,7 +35,7 @@ Sound: ship_rumble
 
 Sound: railgun
 	File: railgun1.ogg
-	Volume: 0.350
+	Volume: 0.225
 
 Sound: mining_laser
 	File: mining_laser.ogg

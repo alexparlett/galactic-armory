@@ -149,7 +149,7 @@ Shader: DetailedBeam
  Program: shaders/laser_vs.txt, shaders/laser_ps.txt, Add
  Variable: tex beam = 0
  Variable: tex detail = 1
- Variable: float time = time_cycle 0.1
+ Variable: float time = time_cycle 0.2				//was 0.1
 
 //Smooth lighting via Lambertian lighting model
 Shader: SmoothLit

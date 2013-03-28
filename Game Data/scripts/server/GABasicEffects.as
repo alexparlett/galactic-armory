@@ -17,7 +17,7 @@ void StaticCheckPosition(Event@ evt) {
 	
 	if(ox <= 0 && oy <= 0 && oz <= 0)
 	{
-		game.setStateVals(strStaticPosition,pos.x,pos.y,pos.z,0);
+		gate.setStateVals(strStaticPosition,pos.x,pos.y,pos.z,0);
 	} else if(pos.x != ox || pos.y != oy || pos.z != oz) {
 		vector old = vector(ox,oy,oz);
 		gate.position = old;

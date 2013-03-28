@@ -1,79 +1,156 @@
 #makeMipMaps off
 
-Material: res_tech_1
- Texture: ~/Images/Research/research_icon_technology1.png
+//Missile Weapons
+Material: missile_tech_root
+ Texture: Images/Research/missile_tech_root.png
+ 
+Material: missile_tech_loading
+ Texture: Images/Research/missile_tech_loading.png
+ 
+Material: missile_tech_fuel
+ Texture: Images/Research/missile_tech_fuel.png
+ 
+Material: missile_tech_targetting
+ Texture: Images/Research/missile_tech_targetting.png
+ 
+//General Science
+Material: general_science_root
+ Texture: Images/Research/general_science_root.png
+ 
+Material: general_science_unorthodox
+ Texture: Images/Research/general_science_unorthodox.png
+ 
+Material: general_science_megaconstruction
+ Texture: Images/Research/general_science_megaconstruction.png
+ 
+Material: general_science_gravitics
+ Texture: Images/Research/general_science_gravitics.png
+ 
+//Logistics
+Material: logistics_root
+ Texture: Images/Research/logistics_root.png
+ 
+Material: logistics_resource_storage
+ Texture: Images/Research/logistics_resource_storage.png
+ 
+Material: logistics_resupply
+ Texture: Images/Research/logistics_resupply.png
+ 
+Material: logistics_military
+ Texture: Images/Research/logistics_military.png
+ 
+//Spatial Dynamics
+Material: spatial_dynamics_root
+ Texture: Images/Research/spatial_dynamics_root.png
+ 
+Material: spatial_dynamics_manipulation
+ Texture: Images/Research/spatial_dynamics_manipulation.png
+ 
+Material: spatial_dynamics_compression
+ Texture: Images/Research/spatial_dynamics_compression.png
+ 
+Material: spatial_dynamics_heliocide
+ Texture: Images/Research/spatial_dynamics_heliocide.png
+
+//Engineering 
+Material: engineering_root
+ Texture: Images/Research/engineering_root.png
+
+Material: engineering_optimization
+ Texture: Images/Research/engineering_optimization.png
+
+Material: engineering_life_support
+ Texture: Images/Research/engineering_life_support.png
+
+Material: engineering_computers
+ Texture: Images/Research/engineering_computers.png
+
+//Propulsion
+Material: propulsion_root
+ Texture: Images/Research/propulsion_root.png
+
+Material: propulsion_ramscoop
+ Texture: Images/Research/propulsion_ramscoop.png
+
+Material: propulsion_fuel_efficiency
+ Texture: Images/Research/propulsion_fuel_efficiency.png
+
+Material: propulsion_energy_usage
+ Texture: Images/Research/propulsion_energy_usage.png
+
+//Energy Physics
+Material: energy_physics_root
+ Texture: Images/Research/energy_physics_root.png
+
+Material: energy_physics_thermal
+ Texture: Images/Research/energy_physics_thermal.png
+
+Material: energy_physics_efficiency
+ Texture: Images/Research/energy_physics_efficiency.png
+
+Material: energy_physics_accumulation
+ Texture: Images/Research/energy_physics_accumulation.png
+
+//Troop Deployment
+Material: troops_root
+ Texture: Images/Research/troops_root.png
+
+Material: troops_defensive
+ Texture: Images/Research/troops_defensive.png
+
+Material: troops_boarding
+ Texture: Images/Research/troops_boarding.png
+
+Material: troops_training
+ Texture: Images/Research/troops_training.png
+ 
+//Espionage and Sabotage
+Material: espionage_root
+ Texture: Images/Research/espionage_root.png
+
+Material: espionage_intelligence
+ Texture: Images/Research/espionage_intelligence.png
+
+Material: espionage_sabotage
+ Texture: Images/Research/espionage_sabotage.png
+
+Material: espionage_strategic
+ Texture: Images/Research/espionage_strategic.png
+
+//Colonization
+Material: colonization_root
+ Texture: Images/Research/colonization_root.png
+
+Material: colonization_social_engineering
+ Texture: Images/Research/colonization_social_engineering.png
+
+Material: colonization_geodetics
+ Texture: Images/Research/colonization_geodetics.png
+
+Material: colonization_terraforming
+ Texture: Images/Research/colonization_terraforming.png
+
+//Infrastructure
+Material: infrastructure_root
+ Texture: Images/Research/infrastructure_root.png
+
+Material: infrastructure_terrestrial_industry
+ Texture: Images/Research/infrastructure_terrestrial_industry.png
+
+Material: infrastructure_orbital
+ Texture: Images/Research/infrastructure_orbital.png
+
+Material: infrastructure_He3
+ Texture: Images/Research/infrastructure_He3.png
+ 
+
+
+ ///////////////////////////////
+ //OLD                        //
+ ///////////////////////////////
 
 Material: res_tech_2
  Texture: ~/Images/Research/research_icon_technology2.png
-
-Material: res_tech_3
- Texture: ~/Images/Research/research_icon_technology3.png
-
-Material: res_tech_4
- Texture: ~/Images/Research/research_icon_technology4.png
-
-Material: res_tech_5
- Texture: ~/Images/Research/research_icon_technology5.png
-
-Material: res_tech_6
- Texture: ~/Images/Research/research_icon_technology6.png
-
-Material: res_tech_7
- Texture: ~/Images/Research/research_icon_technology7.png
-
-Material: res_tech_8
- Texture: ~/Images/Research/research_icon_technology8.png
-
-Material: res_tech_9
- Texture: ~/Images/Research/research_icon_technology9.png
-
-Material: res_tech_10
- Texture: ~/Images/Research/research_icon_technology10.png
-
-Material: res_tech_11
- Texture: ~/Images/Research/research_icon_technology11.png
-
-Material: res_tech_12
- Texture: ~/Images/Research/research_icon_technology12.png
-
-Material: res_tech_13
- Texture: ~/Images/Research/research_icon_technology13.png
-
-Material: res_tech_14
- Texture: ~/Images/Research/research_icon_technology14.png
-
-Material: res_tech_15
- Texture: ~/Images/Research/research_icon_technology15.png
-
-Material: res_tech_16
- Texture: ~/Images/Research/research_icon_technology16.png
-
-Material: res_tech_17
- Texture: ~/Images/Research/research_icon_technology17.png
-
-Material: res_tech_18
- Texture: ~/Images/Research/research_icon_technology18.png
-
-Material: res_tech_19
- Texture: ~/Images/Research/research_icon_technology19.png
-
-Material: res_tech_20
- Texture: ~/Images/Research/research_icon_technology20.png
-
-Material: res_tech_21
- Texture: ~/Images/Research/research_icon_technology21.png
-
-Material: res_tech_22
- Texture: ~/Images/Research/research_icon_technology22.png
-
-Material: res_tech_23
- Texture: ~/Images/Research/research_icon_technology23.png
-
-Material: res_tech_24
- Texture: ~/Images/Research/research_icon_technology24.png
-
-Material: res_tech_25
- Texture: ~/Images/Research/research_icon_technology25.png
  
 Material: res_tech_ew
  Texture: Images/Research/electronic_warfare.png

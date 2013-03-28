@@ -10,30 +10,31 @@ System: LightHull
 	Equips To: Hull
 	PreDamageOrder: -2
 	
-	Available: Techs.ShipCon_Root.Level >= 0
+	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	
-	sizePenalty: (1 / 100) * decay(pow(LEVEL_GAIN_CURVE, Techs.MegaConstruction.Level), 2)
-	vMaxSize: 60 * sqrt(pow(2, Level))
+	SizeLevel: Techs.ShipCon_Scale.Level
+	HPLevel: Techs.ShipCon_Root.Level
+	DiscountLevel: Techs.ShipCon_Cost.Level
+	MassLevel: Techs.ShipCon_Mass.Level
+
+	vMaxSize:  50 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)
 	vMaxSpace: 20
 	vMoreSpace: min((16 + (2 * floor(Object.Scale / 100))), vMaxSpace)
 	vExtra: 0
-	Size: (if(((Object.Scale * vMoreSpace) > vMaxSize * vMoreSpace), 0, (Object.Scale * vMoreSpace))) + vExtra
+	Size: (if((Object.Scale > vMaxSize), 0, (Object.Scale * vMoreSpace))) + vExtra
+	Durability: 150 * Object.Scale * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_HULL_MULT
+	Mass: (15 * Size) / (1 + (0.1 * MassLevel))
 	
-	Durability: Size * 10 * pow(LEVEL_GAIN_CURVE, Level) * GAME_HULL_MULT
-	Mass: Size * 16	* max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
-	
-	vMetal: poly(Size, 250, 37.5, 10 * sizePenalty)
-	vElec: poly(Size, 100, 7.5, 2.5 * sizePenalty)
-	vParts: poly(Size,50,3,1 * sizePenalty)
-	
-	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Electronics[vElec * pow(SUBS_COST_CRV, Level)], AdvParts[vParts * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]	
-	Complexity: 0.2
+	vMetal: (200 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (100 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (50 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[5 * Size]
+	Complexity: 1
 	
 	Tick Rate: 1
 
-	vChargeTime: min((10 + (decay(pow(LEVEL_GAIN_CURVE, Level),25) * sqrt(Object.Scale))), 120)
+	vChargeTime: min(((15 / (1 + (0.1 * MassLevel))) * sqrt(Object.Scale)), 120)
 	vPowCost: 100 * Size
 
 	Provides: GAHullSoak with ReceivePct[0.2], DmgAlter[Scale]
@@ -61,29 +62,31 @@ System: MediumHull
 	Equips To: Hull
 	PreDamageOrder: -2
 
-	Available: Techs.ShipCon_Root.Level >= 0
+	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	
-	sizePenalty: (1 / 100) * decay(pow(LEVEL_GAIN_CURVE, Techs.MegaConstruction.Level), 2)
+	SizeLevel: Techs.ShipCon_Scale.Level
+	HPLevel: Techs.ShipCon_Root.Level
+	DiscountLevel: Techs.ShipCon_Cost.Level
+	MassLevel: Techs.ShipCon_Mass.Level
+
+	vMaxSize:  50 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)
-	vMaxSize: 50 * sqrt(pow(2, Level))
 	vMaxSpace: 18
 	vMoreSpace: min((15 + floor(Object.Scale / 100)), vMaxSpace)
-	vExtra: 0	
-	Size: (if(((Object.Scale * vMoreSpace) > vMaxSize * vMoreSpace), 0, (Object.Scale * vMoreSpace))) + vExtra
-	Durability: Size * 20 * pow(LEVEL_GAIN_CURVE, Level) * GAME_HULL_MULT
-	Mass: Size * 24 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
-
-	vMetal: poly(Size, 350, 50, 16 * sizePenalty)
-	vElec: poly(Size, 125, 10, 3.3 * sizePenalty)
-	vParts: poly(Size,60,4,1.33 * sizePenalty)
+	vExtra: 0
+	Size: (if((Object.Scale > vMaxSize), 0, (Object.Scale * vMoreSpace))) + vExtra
+	Durability: 200 * Object.Scale * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_HULL_MULT
+	Mass: (20 * Size) / (1 + (0.1 * MassLevel))
 	
-	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Electronics[vElec * pow(SUBS_COST_CRV, Level)], AdvParts[vParts * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
-	Complexity: 0.4
+	vMetal: (200 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (100 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (50 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[5 * Size]
+	Complexity: 1
 	
 	Tick Rate: 1
 
-	vChargeTime: min((10 + (decay(pow(LEVEL_GAIN_CURVE, Level),25) * sqrt(Object.Scale))), 120)
+	vChargeTime: min(((15 / (1 + (0.1 * MassLevel))) * sqrt(Object.Scale)), 120)
 	vPowCost: 100 * Size	
 	
 	Provides: GAHullSoak with ReceivePct[0.4], DmgAlter[0]
@@ -111,29 +114,31 @@ System: HeavyHull
 	Equips To: Hull
 	PreDamageOrder: -2
 
-	Available: Techs.ShipCon_Root.Level >= 0
+	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	
-	sizePenalty: (1 / 100) * decay(pow(LEVEL_GAIN_CURVE, Techs.MegaConstruction.Level), 2)
+	SizeLevel: Techs.ShipCon_Scale.Level
+	HPLevel: Techs.ShipCon_Root.Level
+	DiscountLevel: Techs.ShipCon_Cost.Level
+	MassLevel: Techs.ShipCon_Mass.Level
+
+	vMaxSize:  50 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)
-	vMaxSize: 40 * sqrt(pow(2, Level))
 	vMaxSpace: 16
 	vMoreSpace: min((14 + floor(Object.Scale / 100)), vMaxSpace)
 	vExtra: 0
-	Size: (if(((Object.Scale * vMoreSpace) > vMaxSize * vMoreSpace), 0, (Object.Scale * vMoreSpace))) + vExtra
-	Durability: Size * 50 * pow(LEVEL_GAIN_CURVE, Level) * GAME_HULL_MULT
-	Mass: Size * 48	* max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
-
-	vMetal: poly(Size, 500, 100, 33 * sizePenalty)
-	vElec: poly(Size, 175, 10, 3.3 * sizePenalty)
-	vParts: poly(Size,85,5,1.67 * sizePenalty)
+	Size: (if((Object.Scale > vMaxSize), 0, (Object.Scale * vMoreSpace))) + vExtra
+	Durability: 250 * Object.Scale * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_HULL_MULT
+	Mass: (25 * Size) / (1 + (0.1 * MassLevel))
 	
-	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Electronics[vElec * pow(SUBS_COST_CRV, Level)], AdvParts[vParts * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
-	Complexity: 0.6
+	vMetal: (200 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (100 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (50 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[5 * Size]
+	Complexity: 1
 	
 	Tick Rate: 1
 
-	vChargeTime: min((10 + (decay(pow(LEVEL_GAIN_CURVE, Level),25) * sqrt(Object.Scale))), 120)
+	vChargeTime: min(((15 / (1 + (0.1 * MassLevel))) * sqrt(Object.Scale)), 120)
 	vPowCost: 100 * Size	
 	
 	Provides: GAHullSoak with ReceivePct[0.5], DmgAlter[-1 * Scale]
@@ -161,32 +166,31 @@ System: MegastructureHull
 	Equips To: Hull
 	PreDamageOrder: -2
 
-	Available: Techs.ShipCon_Root.Level >= 0
+	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	
-	sizePenalty: (1 / 300) * decay(pow(LEVEL_GAIN_CURVE, Techs.MegaConstruction.Level), 2)
-	reversePenalty:  1 + ((400 * decay(Techs.MegaConstruction.Level, 4)) / Size)
+	SizeLevel: Techs.ShipCon_Scale.Level
+	HPLevel: Techs.ShipCon_Root.Level
+	DiscountLevel: Techs.ShipCon_Cost.Level
+	MassLevel: Techs.ShipCon_Mass.Level
+
+	vMaxSize:  100 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)
-	
-	vMaxSize: 160 * sqrt(pow(2, Level))
 	vMaxSpace: 20
 	vMoreSpace: min((17 + floor(Object.Scale / 200)), vMaxSpace)
-	vExtra: 0	
-	Size: (if(((Object.Scale * vMoreSpace) > vMaxSize * vMoreSpace), 0, (Object.Scale * vMoreSpace))) + vExtra
-		
-	Durability: Size * 65 * pow(LEVEL_GAIN_CURVE, Level) * GAME_HULL_MULT
-	Mass: Size * 32 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
-
-	vMetal: poly(Size, 500, 100, 33 * sizePenalty) * reversePenalty
-	vElec: poly(Size, 175, 10, 3.3 * sizePenalty) * reversePenalty
-	vParts:	poly(Size,85,5,1.67 * sizePenalty) * reversePenalty
+	vExtra: 0
+	Size: (if((Object.Scale > vMaxSize), 0, (Object.Scale * vMoreSpace))) + vExtra
+	Durability: 200 * Object.Scale * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_HULL_MULT
+	Mass: (30 * Size) / (1 + (0.1 * MassLevel))
 	
-	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Electronics[vElec * pow(SUBS_COST_CRV, Level)], AdvParts[vParts * pow(SUBS_COST_CRV, Level)], Labr[6 * Size]
-	Complexity: 1.0
+	vMetal: (200 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (100 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (50 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[5 * Size]
+	Complexity: 1
 	
 	Tick Rate: 1
 
-	vChargeTime: min((10 + (decay(pow(LEVEL_GAIN_CURVE, Level),25) * sqrt(Object.Scale))), 120)
+	vChargeTime: min(((15 / (1 + (0.1 * MassLevel))) * sqrt(Object.Scale)), 120)
 	vPowCost: 100 * Size	
 	
 	Provides: GAHullSoak with ReceivePct[0.4], DmgAlter[-1 * Scale]
@@ -199,7 +203,7 @@ System: MegastructureHull
 	
 	Provides: ShieldEmitters with Amount[6]
 	
-	Hints: Local/DamageReduction[Scale], Local/HullSoak[40], ArmorPoints[6], ShieldEmitters[6], ExternalMounts[3], Local/HullHP[Durability], Local/MaxScale[vMaxSize], Local/SmallSizePenalty[reversePenalty]
+	Hints: Local/DamageReduction[Scale], Local/HullSoak[40], ArmorPoints[6], ShieldEmitters[6], ExternalMounts[3], Local/HullHP[Durability], Local/MaxScale[vMaxSize]
 
 
 System: SpinalMountHull
@@ -214,37 +218,39 @@ System: SpinalMountHull
 	Equips To: Hull
 	PreDamageOrder: -2
 
-	Available: Techs.ShipCon_Root.Level >= 0
+	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	
-	sizePenalty: (1 / 200) * decay(pow(LEVEL_GAIN_CURVE, Techs.MegaConstruction.Level), 2)
+	SizeLevel: Techs.ShipCon_Scale.Level
+	HPLevel: Techs.ShipCon_Root.Level
+	DiscountLevel: Techs.ShipCon_Cost.Level
+	MassLevel: Techs.ShipCon_Mass.Level
+
+	vMaxSize:  50 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)
-	vMaxSize: 30 * sqrt(pow(2, Level))
 	vMaxSpace: 16
 	vMoreSpace: min((13 + floor(Object.Scale / 100)), vMaxSpace)
 	vExtra: 0
-	Size: (if(((Object.Scale * vMoreSpace) > vMaxSize * vMoreSpace), 0, (Object.Scale * vMoreSpace))) + vExtra
-	Durability: Size * 30 * pow(LEVEL_GAIN_CURVE, Level) * GAME_HULL_MULT
-	Mass: Size * 40 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
-
-	vMetal: poly(Size, 500, 100, 33 * sizePenalty)
-	vElec: poly(Size, 175, 10, 3.3 * sizePenalty)
-	vParts:	poly(Size,85,5,1.67 * sizePenalty)
+	Size: (if((Object.Scale > vMaxSize), 0, (Object.Scale * vMoreSpace))) + vExtra
+	Durability: 150 * Object.Scale * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_HULL_MULT
+	Mass: (40 * Size) / (1 + (0.1 * MassLevel))
 	
-	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Electronics[vElec * pow(SUBS_COST_CRV, Level)], AdvParts[vParts * pow(SUBS_COST_CRV, Level)], Labr[6 * Size]
-	Complexity: 1.2
+	vMetal: (200 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (100 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (50 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[5 * Size]
+	Complexity: 1
 	
 	Tick Rate: 1
 
-	vChargeTime: min((10 + (decay(pow(LEVEL_GAIN_CURVE, Level),25) * sqrt(Object.Scale))), 120)
+	vChargeTime: min(((15 / (1 + (0.1 * MassLevel))) * sqrt(Object.Scale)), 120)
 	vPowCost: 100 * Size
-	vDamageUp: 3.0
-	vDelayFactor: 2.0
-	vRangeUp: 2.6
-	vBonusHP: Size * 4 * pow(LEVEL_GAIN_CURVE, Level)
-	vAmmoUseUp: 3.0
-	vPowCostUp: 3.0
-	vWasteHeatUp: 3.0
+	vDamageUp: 3.8
+	vDelayFactor: 1.4
+	vRangeUp: 3.0
+	vBonusHP: Size * 4
+	vAmmoUseUp: 1.5
+	vPowCostUp: 1.5
+	vWasteHeatUp: 1.5
 
 	Alters: GASubSysAlterations::improveAll[Scale][vRangeUp][vDelayFactor][vBonusHP][vDamageUp][vAmmoUseUp][vPowCostUp][vWasteHeatUp]
 
@@ -273,32 +279,31 @@ System: GargantuanHull
 	Equips To: Hull
 	PreDamageOrder: -2
 
-	Available: Techs.ShipCon_Root.Level >= 0
+	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	
-	sizePenalty: (1 / 1000) * decay(pow(LEVEL_GAIN_CURVE, Techs.MegaConstruction.Level), 2)
-	reversePenalty:  1 + ((1200 * decay(Techs.MegaConstruction.Level, 5)) / Size)
+	SizeLevel: Techs.ShipCon_Scale.Level
+	HPLevel: Techs.ShipCon_Root.Level
+	DiscountLevel: Techs.ShipCon_Cost.Level
+	MassLevel: Techs.ShipCon_Mass.Level
+
+	vMaxSize:  200 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (2 / 15)
-	
-	vMaxSize: 225 * sqrt(pow(2, Level))
 	vMaxSpace: 23
-	vMoreSpace: min((20 + floor(Object.Scale / 1200)), vMaxSpace)
-	vExtra: 0	
-	Size: (if(((Object.Scale * vMoreSpace) > vMaxSize * vMoreSpace), 0, (Object.Scale * vMoreSpace))) + vExtra	
-
-	Durability: Size * 100 * pow(LEVEL_GAIN_CURVE, Level) * GAME_HULL_MULT
-	Mass: Size * 40 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
-
-	vMetal: poly(Size, 1400, 200, 66 * sizePenalty) * reversePenalty
-	vElec: poly(Size, 400, 15, 3.3 * sizePenalty) * reversePenalty
-	vParts:	poly(Size,170,8,1.67 * sizePenalty) * reversePenalty
+	vMoreSpace: min((20 + floor(Object.Scale / 400)), vMaxSpace)
+	vExtra: 0
+	Size: (if((Object.Scale > vMaxSize), 0, (Object.Scale * vMoreSpace))) + vExtra
+	Durability: 300 * Object.Scale * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_HULL_MULT
+	Mass: (60 * Size) / (1 + (0.1 * MassLevel))
 	
-	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Electronics[vElec * pow(SUBS_COST_CRV, Level)], AdvParts[vParts * pow(SUBS_COST_CRV, Level)], Labr[12 * Size]
-	Complexity: 2.0
+	vMetal: (200 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (100 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (50 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[5 * Size]
+	Complexity: 1
 	
 	Tick Rate: 1
 	
-	vChargeTime: min((10 + (decay(pow(LEVEL_GAIN_CURVE, Level),25) * sqrt(Object.Scale))), 120)
+	vChargeTime: min(((15 / (1 + (0.1 * MassLevel))) * sqrt(Object.Scale)), 120)
 	vPowCost: 100 * Size
 	vDamageUp: 3.0
 	vDelayFactor: 2.0
@@ -320,7 +325,7 @@ System: GargantuanHull
 	
 	Provides: ShieldEmitters with Amount[8]
 	
-	Hints: Local/DamageReduction[Scale], Local/HullSoak[60], Local/FireSpeedUp[1 / vDelayFactor], Local/RangeUp[vRangeUp], Local/DamageMultiplier[vDamageUp], Local/BonusHP[vBonusHP], ArmorPoints[8], ShieldEmitters[8], ExternalMounts[4], Local/HullHP[Durability+vBonusHP], Local/AmmoUseMultiplier[vAmmoUseUp], Local/PowCostMultiplier[vPowCostUp], Local/HeatFactor[vWasteHeatUp], Local/MaxScale[vMaxSize], Local/SmallSizePenalty[reversePenalty]
+	Hints: Local/DamageReduction[Scale], Local/HullSoak[60], Local/FireSpeedUp[1 / vDelayFactor], Local/RangeUp[vRangeUp], Local/DamageMultiplier[vDamageUp], Local/BonusHP[vBonusHP], ArmorPoints[8], ShieldEmitters[8], ExternalMounts[4], Local/HullHP[Durability+vBonusHP], Local/AmmoUseMultiplier[vAmmoUseUp], Local/PowCostMultiplier[vPowCostUp], Local/HeatFactor[vWasteHeatUp], Local/MaxScale[vMaxSize]
 
 
 System: MothershipHull
@@ -335,26 +340,31 @@ System: MothershipHull
 	Equips To: Hull
 	PreDamageOrder: -2
 
-	Available: Techs.ShipCon_Root.Level >= 0
+	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	
-	sizePenalty: (1 / 1000) * decay(pow(LEVEL_GAIN_CURVE, Techs.MegaConstruction.Level), 2)
+	SizeLevel: Techs.ShipCon_Scale.Level
+	HPLevel: Techs.ShipCon_Root.Level
+	DiscountLevel: Techs.ShipCon_Cost.Level
+	MassLevel: Techs.ShipCon_Mass.Level
+
+	vMaxSize:  250 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (2 / 15)
+	vMaxSpace: 21
+	vMoreSpace: min((18 + floor(Object.Scale / 400)), vMaxSpace)
 	vExtra: 0
-	Size: (if(Object.Scale < 3600, 0, (Object.Size * min(((17 + floor(Object.Scale / 3600)) / 15), (20 / 15))))) + vExtra
-	Durability: max((Size * 75 * pow(LEVEL_GAIN_CURVE, Level)), 1) * GAME_HULL_MULT
-	Mass: Size * 40 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
+	Size: (if((Object.Scale > vMaxSize), 0, (Object.Scale * vMoreSpace))) + vExtra
+	Durability: 150 * Object.Scale * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_HULL_MULT
+	Mass: (75 * Size) / (1 + (0.1 * MassLevel))
 	
-	vMetal: poly(Size, 1000, 200, 66 * sizePenalty)
-	vElec: poly(Size, 300, 15, 3.3 * sizePenalty)
-	vParts:	poly(Size,150,8,1.67 * sizePenalty)
-	
-	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Electronics[vElec * pow(SUBS_COST_CRV, Level)], AdvParts[vParts * pow(SUBS_COST_CRV, Level)], Labr[10 * Size]
-	Complexity: 3.0
+	vMetal: (200 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (100 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (50 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[5 * Size]
+	Complexity: 1
 	
 	Tick Rate: 1
 
-	vChargeTime: min((10 + (decay(pow(LEVEL_GAIN_CURVE, Level),25) * sqrt(Object.Scale))), 120)
+	vChargeTime: min(((15 / (1 + (0.1 * MassLevel))) * sqrt(Object.Scale)), 120)
 	vPowCost: 100 * Size
 	vShipBay: Object.Scale * 0.401
 	
@@ -371,7 +381,7 @@ System: MothershipHull
 	
 	Provides: ShieldEmitters with Amount[6]
 	
-	Hints: Local/DamageReduction[-1 * Scale], Local/HullSoak[50], ShipBay[vShipBay], ArmorPoints[5], ShieldEmitters[6], ExternalMounts[5], Local/HullHP[Durability]
+	Hints: Local/DamageReduction[Scale], Local/HullSoak[50], ShipBay[vShipBay], ArmorPoints[5], ShieldEmitters[6], ExternalMounts[5], Local/HullHP[Durability], Local/MaxScale[vMaxSize]
 	
 
 System: StationHull
@@ -386,25 +396,27 @@ System: StationHull
 	Equips To: Hull
 	PreDamageOrder: -2
 
-	Available: Techs.ShipCon_Root.Level >= 0
+	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	
-	sizePenalty: (1 / 400) * decay(pow(LEVEL_GAIN_CURVE, Techs.MegaConstruction.Level), 2)
+	SizeLevel: Techs.ShipCon_Scale.Level
+	HPLevel: Techs.ShipCon_Root.Level
+	DiscountLevel: Techs.ShipCon_Cost.Level
+	MassLevel: Techs.ShipCon_Mass.Level
+
+	vMaxSize:  100 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)
-	vMaxSize: 240 * sqrt(pow(2, Level))
 	vMaxSpace: 20
 	vMoreSpace: min((17 + floor(Object.Scale / 200)), vMaxSpace)
 	vExtra: 0
-	Size: (if(((Object.Scale * vMoreSpace) > vMaxSize * vMoreSpace), 0, (Object.Scale * vMoreSpace))) + vExtra
-	Durability: Size * 50 * pow(LEVEL_GAIN_CURVE, Level) * GAME_HULL_MULT
-	Mass: Size * 72 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
-
-	vMetal: poly(Size, 1500, 80, 26 * sizePenalty)
-	vElec: poly(Size, 500, 8, 2.6 * sizePenalty)
-	vParts: poly(Size,270,3.2,1.067 * sizePenalty)
-
-	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Electronics[vElec * pow(SUBS_COST_CRV, Level)], AdvParts[vParts * pow(SUBS_COST_CRV, Level)], Labr[10 * Size]
-	Complexity: 0.5
+	Size: (if((Object.Scale > vMaxSize), 0, (Object.Scale * vMoreSpace))) + vExtra
+	Durability: 250 * Object.Scale * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_HULL_MULT
+	Mass: (60 * Size) / (1 + (0.1 * MassLevel))
+	
+	vMetal: (200 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (100 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (50 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[5 * Size]
+	Complexity: 1
 	
 	Tick Rate: 1
 
@@ -431,22 +443,28 @@ System: FortressHull
 	Equips To: Hull
 	PreDamageOrder: -2
 
-	Available: Techs.ShipCon_Root.Level >= 0
+	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	
-	sizePenalty: (1 / 1000) * decay(pow(LEVEL_GAIN_CURVE, Techs.MegaConstruction.Level), 2)
+	SizeLevel: Techs.ShipCon_Scale.Level
+	HPLevel: Techs.ShipCon_Root.Level
+	DiscountLevel: Techs.ShipCon_Cost.Level
+	MassLevel: Techs.ShipCon_Mass.Level
+
+	vMaxSize:  400 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (2 / 15)
+	vMaxSpace: 24
+	vMoreSpace: min((21 + floor(Object.Scale / 800)), vMaxSpace)
 	vExtra: 0
-	Size: (if(Object.Scale < 1000, 0, (Object.Size * min(((23 + floor(Object.Scale / 1000)) / 15), (26 / 15))))) + vExtra
-	Durability: Size * 200 * pow(LEVEL_GAIN_CURVE, Level) * GAME_HULL_MULT
-	Mass: Size * 100 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
+	Size: (if((Object.Scale > vMaxSize), 0, (Object.Scale * vMoreSpace))) + vExtra
+	Durability: 500 * Object.Scale * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_HULL_MULT
+	Mass: (120 * Size) / (1 + (0.1 * MassLevel))
+	
+	vMetal: (200 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (100 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (50 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[5 * Size]
+	Complexity: 1
 
-	vMetal: poly(Size, 2000, 80, 26 * sizePenalty)
-	vElec: poly(Size, 800, 8, 2.6 * sizePenalty)
-	vParts: poly(Size,300,3.2,1.067 * sizePenalty)
-
-	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Electronics[vElec * pow(SUBS_COST_CRV, Level)], AdvParts[vParts * pow(SUBS_COST_CRV, Level)], Labr[15 * Size]
-	Complexity: 3
 	vRangeModifier: 1.0
 	
 	Tick Rate: 1
@@ -461,7 +479,7 @@ System: FortressHull
 
 	Provides: ShieldEmitters with Amount[12]
 	
-	Hints: Local/DamageReduction[Scale], Local/HullSoak[70], ArmorPoints[12], ShieldEmitters[12], ExternalMounts[6], Local/HullHP[Durability]
+	Hints: Local/DamageReduction[Scale], Local/HullSoak[70], ArmorPoints[12], ShieldEmitters[12], ExternalMounts[6], Local/HullHP[Durability], Local/MaxScale[vMaxSize]
 
 	
 System: FighterHull
@@ -476,23 +494,26 @@ System: FighterHull
 	Equips To: Hull
 	PreDamageOrder: -2
 	
-	Available: Techs.ShipCon_Root.Level >= 0
+	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	
-	vMaxSize: 1 * pow(1.3, Level)
+	SizeLevel: Techs.ShipCon_Scale.Level
+	HPLevel: Techs.ShipCon_Root.Level
+	DiscountLevel: Techs.ShipCon_Cost.Level
+	MassLevel: Techs.ShipCon_Mass.Level
+
+	vMaxSize:  1 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)
-	vMaxSpace: 17
-	vMoreSpace: min((15 + (1 * floor(Object.Scale / 10))), vMaxSpace)
+	vMaxSpace: 18
+	vMoreSpace: min((15 + floor(Object.Scale / 3)), vMaxSpace)
 	vExtra: 0
-	Size: (if(((Object.Scale * vMoreSpace) > vMaxSize * vMoreSpace), 0, (Object.Scale * vMoreSpace))) + vExtra
-	Durability: Size * 2 * pow(LEVEL_GAIN_CURVE, Level) * GAME_HULL_MULT
-	Mass: Size * 6 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
-
-	vMetal: 280 + 50 * Size
-	vElec: 100 + 10 * Size
-	vParts: 48 + 4 * Size
-
-	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Electronics[vElec * pow(SUBS_COST_CRV, Level)], AdvParts[vParts * pow(SUBS_COST_CRV, Level)], Labr[4 * Size]
+	Size: (if(((Object.Scale > vMaxSize), 0, (Object.Scale * vMoreSpace))) + vExtra
+	Durability: 120 * Object.Scale * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_HULL_MULT
+	Mass: (6 * Size) / (1 + (0.1 * MassLevel))
+	
+	vMetal: (200 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (100 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (50 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[5 * Size]
 	Complexity: 1
 	
 	Tick Rate: 1
@@ -522,24 +543,26 @@ System: BomberHull
 	Equips To: Hull
 	PreDamageOrder: -2
 	
-	Available: Techs.ShipCon_Root.Level >= 0
+	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
+	SizeLevel: Techs.ShipCon_Scale.Level
+	HPLevel: Techs.ShipCon_Root.Level
+	DiscountLevel: Techs.ShipCon_Cost.Level
+	MassLevel: Techs.ShipCon_Mass.Level
 
-	vMaxSize: 1 * pow(1.3, Level)
+	vMaxSize:  2 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)
 	vMaxSpace: 18
-	vMoreSpace: min((16 + (1 * floor(Object.Scale / 10))), vMaxSpace)
+	vMoreSpace: min((15 + floor(Object.Scale / 6)), vMaxSpace)
 	vExtra: 0
-	Size: (if(((Object.Scale * vMoreSpace) > vMaxSize * vMoreSpace), 0, (Object.Scale * vMoreSpace))) + vExtra
+	Size: (if((Object.Scale > vMaxSize), 0, (Object.Scale * vMoreSpace))) + vExtra
+	Durability: 180 * Object.Scale * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_HULL_MULT
+	Mass: (12 * Size) / (1 + (0.1 * MassLevel))
 	
-	Durability: Size * 4 * pow(LEVEL_GAIN_CURVE, Level) * GAME_HULL_MULT
-	Mass: Size * 12 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
-
-	vMetal: 400 + 50 * Size
-	vElec: 120 + 10 * Size
-	vParts: 56 + 4 * Size
-
-	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Electronics[vElec * pow(SUBS_COST_CRV, Level)], AdvParts[vParts * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
+	vMetal: (200 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (100 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (50 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[5 * Size]
 	Complexity: 1
 	
 	Tick Rate: 1
@@ -569,30 +592,31 @@ System: CarrierHull
 	Equips To: Hull
 	PreDamageOrder: -2
 	
-	Available: Techs.ShipCon_Root.Level >= 0
+	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	
-	sizePenalty: (1 / 100) * decay(pow(LEVEL_GAIN_CURVE, Techs.MegaConstruction.Level), 2)
-	
+	SizeLevel: Techs.ShipCon_Scale.Level
+	HPLevel: Techs.ShipCon_Root.Level
+	DiscountLevel: Techs.ShipCon_Cost.Level
+	MassLevel: Techs.ShipCon_Mass.Level
+
+	vMaxSize:  100 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)
-	vMaxSize: 80 * sqrt(pow(2, Level))
 	vMaxSpace: 15
 	vMoreSpace: min((12 + floor(Object.Scale / 200)), vMaxSpace)
 	vExtra: 0
-	Size: (if(((Object.Scale * vMoreSpace) > vMaxSize * vMoreSpace), 0, (Object.Scale * vMoreSpace))) + vExtra
-	Durability: Size * 4 * pow(LEVEL_GAIN_CURVE, Level) * GAME_HULL_MULT
-	Mass: Size * 56 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
+	Size: (if((Object.Scale > vMaxSize), 0, (Object.Scale * vMoreSpace))) + vExtra
+	Durability: 100 * Object.Scale * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_HULL_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 	
-	vMetal: poly(Size, 250, 37.5, 10 * sizePenalty)
-	vElec: poly(Size, 100, 7.5, 2.5 * sizePenalty)
-	vParts: poly(Size,50,3,1 * sizePenalty)
-
-	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Electronics[vElec * pow(SUBS_COST_CRV, Level)], AdvParts[vParts * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
-	Complexity: 0.2
+	vMetal: (200 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (100 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (50 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[5 * Size]
+	Complexity: 1
 	
 	Tick Rate: 1
 
-	vChargeTime: min((10 + (decay(pow(LEVEL_GAIN_CURVE, Level),25) * sqrt(Object.Scale))), 120)
+	vChargeTime: min(((15 / (1 + (0.1 * MassLevel))) * sqrt(Object.Scale)), 120)
 	vPowCost: 100 * Size	
 	vShipBay: Object.Scale * 0.601
 	
@@ -624,25 +648,32 @@ System: HaulerHull
 	Equips To: Hull
 	PreDamageOrder: -2
 
-	Available: Techs.ShipCon_Root.Level >= 0
+	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	
-	sizePenalty: (1 / 100) * decay(pow(LEVEL_GAIN_CURVE, Techs.MegaConstruction.Level), 2)
+	SizeLevel: Techs.ShipCon_Scale.Level
+	HPLevel: Techs.ShipCon_Root.Level
+	DiscountLevel: Techs.ShipCon_Cost.Level
+	MassLevel: Techs.ShipCon_Mass.Level
+	CargoLevel: Techs.Logistics_Cargo.Level
+
+	vMaxSize:  75 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)
+	vMaxSpace: 15
+	vMoreSpace: min((13 + floor(Object.Scale / 150)), vMaxSpace)
 	vExtra: 0
-	Size: (Object.Size * min(((10 + floor(Object.Scale / 100)) / 15), (13 / 15))) + vExtra
-	Durability: Size * 4 * pow(LEVEL_GAIN_CURVE, Level) * GAME_HULL_MULT
-	Mass: Size * 40 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
-
-	vMetal: poly(Size, 350, 50, 16 * sizePenalty)
-	vElec: poly(Size, 125, 10, 3.3 * sizePenalty)
-	vParts: poly(Size,60,4,1.33 * sizePenalty)
-
-	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Electronics[vElec * pow(SUBS_COST_CRV, Level)], AdvParts[vParts * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
-	Complexity: 0.3
+	Size: (if((Object.Scale > vMaxSize), 0, (Object.Scale * vMoreSpace))) + vExtra
+	Durability: 50 * Object.Scale * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_HULL_MULT
+	Mass: (40 * Size) / (1 + (0.1 * MassLevel))
 	
-	vCargoStore: Size * 100 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
-	vChargeTime: min((10 + (decay(pow(LEVEL_GAIN_CURVE, Level),25) * sqrt(Object.Scale))), 120)
+	vMetal: (200 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (100 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (50 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[5 * Size]
+	Complexity: 1
+	
+	vCargoStore: (100 * Size) * (1 + (CargoLevel * GA_TECH_INCREASE))
+	
+	vChargeTime: min(((15 / (1 + (0.1 * MassLevel))) * sqrt(Object.Scale)), 120)
 	vPowCost: 100 * Size
 	
 	Tick Rate: 1
@@ -656,7 +687,7 @@ System: HaulerHull
 	Provides: Cargo with
 		Amount[vCargoStore]
 
-	Hints: Local/HullSoak[10], Cargo[vCargoStore], ExternalMounts[4], Local/HullHP[Durability]
+	Hints: Local/HullSoak[10], Cargo[vCargoStore], ExternalMounts[4], Local/HullHP[Durability], Local/MaxScale[vMaxSize]
 
 	
 System: TankerHull
@@ -665,32 +696,38 @@ System: TankerHull
 	Appearance: TankerHull
 	Explosion: ship_explode centered lasting 1.0
 	
-	Tags: IgnoresScale, Hull, Restrict:Weapon, Fetch:Fuel, Fetch:Ammo, Storage:Fuel, EnterStargate, Tool:EnterStargate
+	Tags: IgnoresScale, Hull, Restrict:Weapon, Fetch:Fuel, Fetch:Ammo, Storage:Fuel, EnterStargate, Tool:EnterStargate, TankerHull
 	Tied To: ShipCon_Root 0
 
 	Equips To: Hull
 	PreDamageOrder: -2
 
-	Available: Techs.ShipCon_Root.Level >= 0
+	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	
-	sizePenalty: (1 / 100) * decay(pow(LEVEL_GAIN_CURVE, Techs.MegaConstruction.Level), 2)
+	SizeLevel: Techs.ShipCon_Scale.Level
+	HPLevel: Techs.ShipCon_Root.Level
+	DiscountLevel: Techs.ShipCon_Cost.Level
+	MassLevel: Techs.ShipCon_Mass.Level
+	SuppliesLevel: Techs.Logistics_Supplies.Level
+
+	vMaxSize:  75 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)
+	vMaxSpace: 15
+	vMoreSpace: min((13 + floor(Object.Scale / 150)), vMaxSpace)
 	vExtra: 0
-	Size: (Object.Size * min(((10 + floor(Object.Scale / 100)) / 15), (13 / 15))) + vExtra
-	Durability: Size * 4 * pow(LEVEL_GAIN_CURVE, Level) * GAME_HULL_MULT
-	Mass: Size * 40 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
-
-	vMetal: poly(Size, 350, 50, 16 * sizePenalty)
-	vElec: poly(Size, 125, 10, 3.3 * sizePenalty)
-	vParts: poly(Size,60,4,1.33 * sizePenalty)
-	vFuelStore: Size * 400 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
+	Size: (if((Object.Scale > vMaxSize), 0, (Object.Scale * vMoreSpace))) + vExtra
+	Durability: 50 * Object.Scale * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_HULL_MULT
+	Mass: (40 * Size) / (1 + (0.1 * MassLevel))
 	
-	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Electronics[vElec * pow(SUBS_COST_CRV, Level)], AdvParts[vParts * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Fuel[vFuelStore]
-	Complexity: 0.3
+	vMetal: (200 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (100 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (50 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[5 * Size]
+	Complexity: 1
+	
+	vFuelStore: (100 * Size) * (1 + (SuppliesLevel * GA_TECH_INCREASE))	
 
-
-	vChargeTime: min((10 + (decay(pow(LEVEL_GAIN_CURVE, Level),25) * sqrt(Object.Scale))), 120)
+	vChargeTime: min(((15 / (1 + (0.1 * MassLevel))) * sqrt(Object.Scale)), 120)
 	vPowCost: 100 * Size
 	
 	Tick Rate: 1
@@ -704,7 +741,7 @@ System: TankerHull
 	Provides: FuelStorage with
 		Amount[vFuelStore]
 
-	Hints: Local/HullSoak[10], Fuel[vFuelStore], ExternalMounts[4], Local/HullHP[Durability]
+	Hints: Local/HullSoak[10], Fuel[vFuelStore], ExternalMounts[4], Local/HullHP[Durability], Local/MaxScale[vMaxSize]
 	
 System: ExternalMount
 	Name: #SS_EXTERNALMOUNT_NAME
@@ -715,16 +752,21 @@ System: ExternalMount
 	Tags: NegatesSpace, IgnoresScale, Link
 	Tied To: ShipCon_Root 0
 
-	Available: Techs.ShipCon_Root.Level >= 0
+	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
+	HPLevel: Techs.ShipCon_Root.Level
+	DiscountLevel: Techs.ShipCon_Cost.Level
+	MassLevel: Techs.ShipCon_Mass.Level
 	
 	Size: Object.Scale
-	Mass: 40 * Size
+	Mass: (40 * Size) / (1 + (0.1 * MassLevel))
 
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: 30 * Size * pow(HEALTH_CURVE,HPLevel) * HEALTH_MULT
+	Durability: 30 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_HULL_MULT
 
-	Costs: Metals[Size * 275 * pow(SUBS_COST_CRV, Level)]
+	vMetal: (200 * Size) / (1 + (0.1 * DiscountLevel))
+	
+	Costs: Metals[vMetal], Labr[5 * Size]
+
 	Alters: subSysAlterations::dummyAlter
 
 	PreDamageOrder: -8
@@ -744,17 +786,22 @@ System: IntegratedConstruction
 	Tags: Link, IgnoresScale
 	Tied To: ShipCon_Root 0
 	
-	Available: Techs.ShipCon_Root.Level >= 0
+	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
+	HPLevel: Techs.ShipCon_Root.Level
+	DiscountLevel: Techs.ShipCon_Cost.Level
+	MassLevel: Techs.ShipCon_Mass.Level
 	
 	Size: Object.Scale
 	
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 30 * Size * pow(HEALTH_CURVE, HPLevel)
-	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	Durability: 30 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_HULL_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 	
-	Costs: Metals[600 * Size * pow(SUBS_COST_CRV, Level)], Electronics[300 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[150 * Size * pow(SUBS_COST_CRV, Level)], Labr[50 * Size]
-	Complexity: 10
+	vMetal: (600 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (300 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (150 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[5 * Size]
+	Complexity: 1
 	
 	vHullSpaceBonus: Size * 3
 		
@@ -770,46 +817,52 @@ System: ShipYard
 	Description: #SS_SHIPYARD_DESC
 	Appearance: GeneralBuilding
 
-	Available: Techs.ShipCon_Root.Level >= 0
+	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
+	HPLevel: Techs.Materials_Struct.Level
+	CargoLevel: Techs.Logistics_Cargo.Level
+	SuppliesLevel: Techs.Logistics_Supplies.Level
 	
 	Size: Scale
-	Durability: 500 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT
-	Mass: 400 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	Durability: 500 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
+	Mass: 400 * Size
 	
 	Tags: Structure, ShipBay, BuildsShips
 	Tied To: ShipCon_Root 0
 	
-	Costs: Metals[200 * Size * pow(COST_INC_CRV, Level)], Electronics[80 * Size * pow(COST_INC_CRV, Level)], AdvParts[80 * Size * pow(COST_INC_CRV, Level)]
-	Complexity: 2 * STRUCT_COMPLX_MULT
+	vMetal: 200 * Size
+	vElec: 80 * Size
+	vParts: 80 * Size
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[1 * Size]
+	Complexity: 1 * STRUCT_COMPLX_MULT
 
-	vEcoStore: Size * 250 * (2 - decay(pow(LEVEL_GAIN_CURVE,Level), 45))
-	vTrade: Size * 20 * pow(LEVEL_GAIN_CURVE, Level)
+	vCargoStore: (250 * Size) * (1 + (CargoLevel * GA_TECH_INCREASE))
+	vSuppliesStore: (250 * Size) * (1 + (SuppliesLevel * GA_TECH_INCREASE))
 	vWorkers: Size * 1200000
-	vShipBay: Size * 10 * pow(LEVEL_GAIN_CURVE, Level)
-	vLaborPool: Size * 10 * pow(LEVEL_GAIN_CURVE, Level)
-	vLabor: Size * 2 * pow(LEVEL_GAIN_CURVE, Level)
+	vShipBay: Size * 15
+	vLaborPool: Size * 15
+	vLabor: Size * 2
 	
 	Provides: AutoLabor with
 		Rate[vLabor], Store[vLaborPool]
 	
 	Provides: AdvPartsStorage with
-		Amount[vEcoStore * 0.2]
+		Amount[vCargoStore * 0.2]
 	
 	Provides: ElecStorage with
-		Amount[vEcoStore * 0.3]
+		Amount[vCargoStore * 0.3]
 	
 	Provides: MetalStorage with
-		Amount[vEcoStore * 0.6]
+		Amount[vCargoStore * 0.6]
 	
 	Provides: ShipStorage with
 		Amount[vShipBay]
 
 	Provides: StructFuelStorage with
-		Amount[Size* 40 * pow(LEVEL_GAIN_CURVE, Level)]
+		Amount[vSuppliesStore]
 	
 	Provides: StructAmmoStorage with
-		Amount[Size * 40 * pow(LEVEL_GAIN_CURVE, Level)]
+		Amount[vSuppliesStore]
 	
 	Requires:
 		To Run:

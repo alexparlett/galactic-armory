@@ -7,13 +7,14 @@ System: Thruster
 	Tags: Engine
 	Tied To: Propulsion_Root 0
 
-	Available: Techs.Propulsion_Root.Level >= 0
+	Available: Techs.Propulsion_Root.Level > 0
 	Level: Techs.Propulsion_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 50 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 	
 	Costs: Metals[200 * progress(Size, 0.05, Level) * pow(SUBS_COST_CRV, Level)], Electronics[15 * progress(Size, 0.05, Level) * pow(SUBS_COST_CRV, Level)], AdvParts[100 * progress(Size, 0.05, Level) * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Fuel[Size * 10]
 	Complexity: 0.4
@@ -43,13 +44,14 @@ System: IonThruster
 	Tags: Engine
 	Tied To: Propulsion_Root 0
 
-	Available: Techs.Propulsion_Root.Level >= 0
+	Available: Techs.Propulsion_Root.Level > 0
 	Level: Techs.Propulsion_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 50 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 	
 	Costs: Metals[200 * progress(Size, 0.05, Level) * pow(SUBS_COST_CRV, Level)], Electronics[15 * progress(Size, 0.05, Level) * pow(SUBS_COST_CRV, Level)], AdvParts[100 * progress(Size, 0.05, Level) * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Fuel[Size * 10]
 	Complexity: 0.5
@@ -80,13 +82,14 @@ System: PolypropellantThruster
 	Tags: Engine
 	Tied To: Propulsion_Root 0
 
-	Available: Techs.Propulsion_Root.Level >= 0
+	Available: Techs.Propulsion_Root.Level > 0
 	Level: Techs.Propulsion_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 25 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 25 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 	
 	Costs: Metals[300 * progress(Size, 0.05, Level) * pow(SUBS_COST_CRV, Level)], Electronics[15 * progress(Size, 0.05, Level) * pow(SUBS_COST_CRV, Level)], AdvParts[100 * progress(Size, 0.05, Level) * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Fuel[Size * 10]
 	Complexity: 0.6
@@ -116,13 +119,14 @@ System: MagnetoPlasmaThruster
 	Tags: Engine
 	Tied To: Propulsion_Root 0
 
-	Available: Techs.Propulsion_Root.Level >= 0
+	Available: Techs.Propulsion_Root.Level > 0
 	Level: Techs.Propulsion_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 50 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 	
 	Costs: Metals[150 * progress(Size, 0.05, Level) * pow(SUBS_COST_CRV, Level)], Electronics[20 * progress(Size, 0.05, Level) * pow(SUBS_COST_CRV, Level)], AdvParts[150 * progress(Size, 0.05, Level) * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Fuel[Size * 10]
 	Complexity: 0.8
@@ -154,13 +158,14 @@ System: VASIMRThruster
 	Tags: Engine
 	Tied To: Propulsion_Root 0
 
-	Available: Techs.Propulsion_Root.Level >= 0
+	Available: Techs.Propulsion_Root.Level > 0
 	Level: Techs.Propulsion_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 50 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 	
 	Costs: Metals[100 * progress(Size, 0.05, Level) * pow(SUBS_COST_CRV, Level)], Electronics[30 * progress(Size, 0.05, Level) * pow(SUBS_COST_CRV, Level)], AdvParts[150 * progress(Size, 0.05, Level) * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Fuel[Size * 10]
 	Complexity: 1
@@ -193,13 +198,14 @@ System: AntimatterRocket
 	Tags: Engine
 	Tied To: Propulsion_Root 0
 
-	Available: Techs.Propulsion_Root.Level >= 0
+	Available: Techs.Propulsion_Root.Level > 0
 	Level: Techs.Propulsion_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 50 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 	
 	Costs: Metals[50 * progress(Size, 0.05, Level) * pow(SUBS_COST_CRV, Level)], Electronics[25 * progress(Size, 0.05, Level) * pow(SUBS_COST_CRV, Level)], AdvParts[250 * progress(Size, 0.05, Level) * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
 	Complexity: 2
@@ -227,13 +233,14 @@ System: BussardRamjet
 	Tags: Engine
 	Tied To: Propulsion_Root 0
 
-	Available: Techs.Propulsion_Root.Level >= 0
+	Available: Techs.Propulsion_Root.Level > 0
 	Level: Techs.Propulsion_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
 	Size: max(Scale, 1)							//was Scale *2
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 50 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 	
 	Costs: Metals[150 * Size * pow(SUBS_COST_CRV, Level)], Electronics[10 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[10 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
 	Complexity: 1.2
@@ -257,13 +264,14 @@ System: RamScoop
 	Tags: Support
 	Tied To: Propulsion_Root 0
 
-	Available: Techs.Propulsion_Root.Level >= 0
+	Available: Techs.Propulsion_Root.Level > 0
 	Level: Techs.Propulsion_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
 	Size: max(Scale, 1)
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 50 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 	
 	Costs: Metals[150 * Size * pow(SUBS_COST_CRV, Level)], Electronics[10 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[10 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Fuel[Size * 10 * pow(LEVEL_GAIN_CURVE, Level)]
 	Complexity: 1

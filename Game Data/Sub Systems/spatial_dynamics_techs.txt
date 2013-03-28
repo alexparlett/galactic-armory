@@ -7,22 +7,28 @@ System: JumpDrive
 	Tags: JumpDrive, Tool:JumpDrive, TimedReload, Engine
 	Tied To: Spatial_Root 0
 	
-	Available: Spatial_Root >= 0
+	Available: Techs.Spatial_Root.Level > 0
 	Level: Techs.Spatial_Root.Level
+	JumpLevel: Techs.Spatial_Root.Level
+	HPLevel: Techs.Materials_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 300 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (300 * Size) / (1 + (0.1 * MassLevel))
 	
-	Costs: Metals[250 * Size * pow(SUBS_COST_CRV, Level)], Electronics[250 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[250 * Size * pow(SUBS_COST_CRV, Level)]
-	Complexity: 2.5
+	vMetal: 250 * Size
+	vElec: 250 * Size
+	vParts: 250 * Size
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[5 * Size]
 	
-	vJumpRangeMin: 1000 * decay(Level, 250)
-	vJumpRange: progress(15000 + (Size * 50),1000 + (Size * 10), pow(LEVEL_GAIN_CURVE, Level)) * sqrt(Scale / Object.Scale)				//was progress(5000 + ...
-	vChargeTime: min((10 + (decay(pow(LEVEL_GAIN_CURVE, Level),25) * sqrt(Object.Scale))), 120)
-	vPowCost: 100 * Size
-	vFuelCost: 20 * Size
+	Complexity: 1
+	
+	vJumpRangeMin: 1000 * decay(JumpLevel, 250)
+	vJumpRange: Size * 10000 * (1 + (JumpLevel * GA_TECH_INCREASE)) * sqrt(Scale / Object.Scale)
+	vChargeTime: min(( ((sqrt(Object.Scale)) * 5) / (1 + (0.1 * JumpLevel))), 120)
+	vPowCost: (100 * Size) / (1 + (0.1 * JumpLevel))
+	vFuelCost: (20 * Size) / (1 + (0.1 * JumpLevel))
 
 	Provides: DestructsShip
 	Provides: GAJumpDriveEvent
@@ -42,27 +48,34 @@ System: QuantumCompressor
 	Explosion: electrical_spark
 	
 	Tags: Link
-	Tied To: Spatial_Root 0
+	Tied To: Spatial_Comp 0
 
-	Available: Spatial_Root >= 0
-	Level: Techs.Spatial_Root.Level
+	Available: Techs.Spatial_Comp.Level > 0
+	Level: Techs.Spatial_Comp.Level
+	SpatialCompressionLevel: Techs.Spatial_Comp.Level
+	HPLevel: Techs.Materials_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
-	Size: Scale	
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 15 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	Size: Scale
+	Durability: 15 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (500 * Size) / (1 + (0.1 * MassLevel))
 
-	Costs: Metals[50 * Size * pow(SUBS_COST_CRV, Level)], Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[180 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
-	Complexity: 10
+	vMetal: 50 * Size
+	vElec: 50 * Size
+	vParts: 180 * Size
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[5 * Size]
 	
+	vPowerCost: (60 * Size) / (1 + (0.1 * SpatialCompressionLevel))
+	
+	Complexity: 1	
 	Tick Rate: 1
 
-	Alters: GASubSysAlterations::increaseCargoSpace[Size][5 - 3*decay(pow(LEVEL_GAIN_CURVE,Level),30)]
+	Alters: GASubSysAlterations::increaseCargoSpace[Size][2 * (1 + (SpatialCompressionLevel * GA_TECH_INCREASE))]
 
 	Consumes:
-		To Run: Power[25 * Size]
+		To Run: Power[vPowerCost]
 
-	Hints: Local/IncreaseSpace[5 - 3*decay(pow(LEVEL_GAIN_CURVE,Level),30)]
+	Hints: Local/IncreaseSpace[2 * (1 + (SpatialCompressionLevel * GA_TECH_INCREASE))]
 
 System: DirectedSpaceFold
 	Name: #SS_SPATIALMANIP_NAME
@@ -71,25 +84,32 @@ System: DirectedSpaceFold
 	Explosion: subsystem_destroyed
 	
 	Tags: SuperWeapon, SpecWeapon, DSM, Require:ThermalManagement, Tool:DSM, WMD, ECM
-	Tied To: Spatial_Root 0
-	
-	Available: Spatial_Root >= 0
-	Level: Techs.Spatial_Root.Level
-	
-	Size: max(Scale, 3600)											//was if(Object.Scale >= 1000, Scale * 2, 999999)
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 250 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 500 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	Tied To: Spatial_DSM 0
 
-	Costs: Metals[400 * Size * pow(SUBS_COST_CRV, Level)], Electronics[400 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[500 * Size * pow(SUBS_COST_CRV, Level)], Labr[20 * Size]
-	Complexity: 16
+	Available: Techs.Spatial_DSM.Level > 0
+	Level: Techs.Spatial_DSM.Level
+	DSMLevel: Techs.Spatial_DSM.Level
+	HPLevel: Techs.Materials_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	HeatLevel: Techs.Energy_Thermal.Level
+	
+	Size: max(Scale, 200)
+	Durability: 80 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (500 * Size) / (1 + (0.1 * MassLevel))
+
+	vMetal: 400 * Size
+	vElec: 400 * Size
+	vParts: 500 * Size
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[20 * Size]
+	Complexity: 1
 	
 	//Damage/Charge ratio is 1 at Size ~ 20
-	vRequiredCharge: (500000 + (5000 * Size)) * decay(pow(LEVEL_GAIN_CURVE,Level),45)
-	vDamage: 50000 * Size * 1 * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT				//was 25000
-	vAoE_Range: min((50 + sqrt(Size)), (120 * (1 + (Level * 0.05))))																//was min(5 + ((Size / 8) * 0.25 * pow(LEVEL_GAIN_CURVE, Level)), 40)
-	vRange: (160 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
-	vWasteHeat: Size * 12 * min((1 + (sqrt(Size) / 20)), 3) * (1 / GAME_RELOAD_MULT) * GAME_HEAT_MULT
+	vRequiredCharge: (30000 + (3000 * Size)) / (1 + (0.1 * SpatialDSMLevel))
+	vDamage: 10000 * Size * (1 + (DSMLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT
+	vAoE_Range: (50 + (Size/20)) * (1 + (DSMLevel * 0.1))
+	vRange: (150 + (5 * sqrt(Size))) *  (1 + (0.1 * DSMLevel))
+
+	vWasteHeat: ((Size * 15) / (1 + (0.1 * HeatLevel))) * GAME_HEAT_MULT
 
 	Provides: ChargeToFireTemplate with Damage[vDamage], AoE_Range[vAoE_Range], Range[vRange], ReqCharge[vRequiredCharge], MaxChargeRate[vRequiredCharge / 60], wasteHeat[vWasteHeat]
 	
@@ -113,27 +133,33 @@ System: HeliocideHull
 	Equips To: Hull
 	PreDamageOrder: -2
 
-	Available: Spatial_Root >= 0
+	Available: Techs.Spatial_Root.Level > 0
 	Level: Techs.Spatial_Root.Level
-	
-	sizePenalty: (1 / 1000) * decay(pow(LEVEL_GAIN_CURVE, Techs.MegaConstruction.Level), 2)
-	vOneSpace: Object.Size * (1 / 15)
-	vExtra: 0
-	Size: (if(Object.Scale < 1000, 0, Object.Size * (9 / 15))) + vExtra
-	Durability: max((Size * 20 * pow(LEVEL_GAIN_CURVE, Level)), 1) * GAME_HULL_MULT
-	Mass: Size * 100 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
+	SizeLevel: Techs.ShipCon_Scale.Level
+	HPLevel: Techs.ShipCon_Root.Level
+	DiscountLevel: Techs.ShipCon_Cost.Level
+	MassLevel: Techs.ShipCon_Mass.Level
+	HeliocideLevel: Techs.Spatial_Heliocide.Level
 
-	vHeliocideDamage: Size * 50000000 * GAME_DAMAGE_MULT
+	vMaxSize:  200 * (1 + (GA_SIZE_INCREASE * SizeLevel))
+	vOneSpace: Object.Size * (1 / 15)
+	vMaxSpace: 15
+	vMoreSpace: min((15 + (floor(Object.Scale / 100))), vMaxSpace)
+	vExtra: 0
+	Size: (if((Object.Scale > vMaxSize), 0, (Object.Scale * vMoreSpace))) + vExtra
+	Durability: 70 * Object.Scale * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_HULL_MULT
+	Mass: (150 * Size) / (1 + (0.1 * MassLevel))
+	
+	vHeliocideDamage: Size * 50000 * (1 + (HeliocideLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT
 	vHeliocideDelay: 1
-	vPowCost: Size * 600
+	vPowCost: (Size * 500) / (1 + (0.1 * HeliocideLevel))
 	vHeliocideRange: 500 + sqrt(Object.Scale)
 	
-	vMetal: poly(Size, 2000, 200, 66 * sizePenalty)
-	vElec: poly(Size, 600, 15, 3.3 * sizePenalty)
-	vParts:	poly(Size,300,8,1.67 * sizePenalty)
-	
-	Costs: Metals[vMetal * pow(SUBS_COST_CRV, Level)], Electronics[vElec * pow(SUBS_COST_CRV, Level)], AdvParts[vParts * pow(SUBS_COST_CRV, Level)], Labr[20 * Size]
-	Complexity: 6.0
+	vMetal: (200 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (100 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (50 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[5 * Size]
+	Complexity: 1
 	
 	Tick Rate: 1
 	
@@ -147,5 +173,5 @@ System: HeliocideHull
 
 	Provides: ShieldEmitters with Amount[2]
 	
-	Hints: Alpha[vHeliocideDamage], Power[-1 * vPowCost], DPS[vHeliocideDamage/ vHeliocideDelay], Local/Range[vHeliocideRange], Local/DMGperShot[vHeliocideDamage], Local/HitsperShot[4], Local/Duration[1], Local/Delay[vHeliocideDelay], Local/DamageReduction[Scale], Local/HullSoak[20], ArmorPoints[2], ShieldEmitters[2], ExternalMounts[3], Local/HullHP[Durability], H3Usage[-1 * (vPowCost/100)]
+	Hints: Alpha[vHeliocideDamage], Power[-1 * vPowCost], DPS[vHeliocideDamage/ vHeliocideDelay], Local/Range[vHeliocideRange], Local/DMGperShot[vHeliocideDamage], Local/HitsperShot[4], Local/Duration[1], Local/Delay[vHeliocideDelay], Local/DamageReduction[Scale], Local/HullSoak[20], ArmorPoints[2], ShieldEmitters[2], ExternalMounts[3], Local/HullHP[Durability], H3Usage[-1 * (vPowCost/100)], Local/MaxScale[vMaxSize]
 	

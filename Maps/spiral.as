@@ -37,7 +37,7 @@ void makeMap(Galaxy@ Glx) {
 	
 	if(jumpBridges)
 	{
-		float density = getGameSetting("MAP_BRIDGE_DENSITY", 0.1f);
+		float density = getGameSetting("MAP_JUMP_BRIDGES_DENSITY", 0.1f);
 		float availableGates = float(sysCount) * density;
 		float gateIndex = 0;
 		

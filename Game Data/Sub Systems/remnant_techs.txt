@@ -9,7 +9,7 @@ System: SpatialGen
     Available: Traits.remnants
     Level: 1
     Size: Object.Size * (5 / 15)
-    Durability: 160 * pow(10, 9)
+    Durability: 16000000				//160 * pow(10, 9)
     Mass: 10
     
     Costs: Metals[1]    
@@ -38,7 +38,7 @@ System: RemnantIonCannon
     Available: Traits.remnants
     Level: 1
     Size: Object.Size * (5 / 15)
-    Durability: 160 * pow(10, 9)
+    Durability: 16000000				//160 * pow(10, 9)
     Mass: 10
     
     Costs: Metals[1]    
@@ -66,12 +66,12 @@ System: ZeroPointField
     Available: Traits.remnants
     Level: 1
     Size: Object.Size * (5 / 15)
-    Durability: 160 * pow(10, 9)
+    Durability: 16000000				//160 * pow(10, 9)
     Mass: 10
     
     Costs: Metals[1]    
     
-    vDrain: Size * 150 * log(Object.Size) * GAME_DAMAGE_MULT
+    vDrain: Size * 100 * log(Object.Size) * GAME_DAMAGE_MULT
     vRange: 15000
     vAoE_Range: min((96 + sqrt(Size)), 256)
     vDelay: 5 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
@@ -97,7 +97,7 @@ System: Stargate
     Available: Traits.remnants
     Level: 1
     Size: Object.Size * (5 / 15)
-    Durability: 160 * pow(10, 9)
+    Durability: 16000000				//160 * pow(10, 9)
     Mass: 10
     
     Costs: Metals[1]    
@@ -130,21 +130,31 @@ System: CommandHull
     PreDamageOrder: -2
 
     Available: Traits.remnants
-    Level: Techs.ShipConstruction.Level
+	Level: Techs.ShipCon_Root.Level
+	SizeLevel: Techs.ShipCon_Scale.Level
+	HPLevel: Techs.ShipCon_Root.Level
+	DiscountLevel: Techs.ShipCon_Cost.Level
+	MassLevel: Techs.ShipCon_Mass.Level
+
+	vMaxSize:  1000 * (1 + (GA_SIZE_INCREASE * SizeLevel))
+	vOneSpace: Object.Size * (1 / 15)
+	vMaxSpace: 20
+	vMoreSpace: min((17 + floor(Object.Scale / 200)), vMaxSpace)
+	vExtra: 0
+	Size: (if((Object.Scale > vMaxSize), 0, (Object.Scale * vMoreSpace))) + vExtra
+	Durability: 150 * Object.Scale * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_HULL_MULT
+	Mass: (80 * Size) / (1 + (0.1 * MassLevel))
     
-    sizePenalty: (1 / 1000) * decay(pow(LEVEL_GAIN_CURVE, Techs.MegaConstruction.Level), 2)
-    vOneSpace: Object.Size * (1 / 15)
-    Size: Object.Size * min(((17 + floor(Object.Scale / 512)) / 15), (20 / 15))
-    Durability: max((Size * 100 * pow(LEVEL_GAIN_CURVE, Level)), 1) * GAME_HULL_MULT
-    Mass: Size * 80 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
-    
-    Costs: Metals[poly(Size, 2000, 80, 26 * sizePenalty) * pow(SUBS_COST_CRV, Level)], Electronics[poly(Size, 800, 8, 2.6 * sizePenalty) * pow(SUBS_COST_CRV, Level)], AdvParts[poly(Size,300,3.2,1.067 * sizePenalty) * pow(SUBS_COST_CRV, Level)], Labr[15 * Size]
-    Complexity: 5.0
+	vMetal: (2000 * Size) / (1 + (0.1 * DiscountLevel))
+	vElec: (800 * Size) / (1 + (0.1 * DiscountLevel))
+	vParts: (300 * Size) / (1 + (0.1 * DiscountLevel))
+	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[15 * Size]
+    Complexity: 1
     
     Tick Rate: 4
 
-    vRate: Object.Scale * 200 * (pow(LEVEL_GAIN_CURVE, Level) + RES_BASE_FACT) * RES_GEN_MULT
-    vEcoStore: Size * 2000 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))        //was Size * 40
+    vRate: Object.Scale * 200 * RES_BASE_FACT * RES_GEN_MULT
+    vEcoStore: Size * 2000
 
     Provides: GAHullSoak with ReceivePct[0.9], DmgAlter[Scale]
 
@@ -168,6 +178,8 @@ System: CommandHull
         
     Provides: AmmoStorage with
         Amount[vEcoStore * 0.5]
+		
+	Provides: RemnantQuantumEntanglement
 
     Hints: Local/DamageReduction[-1 * Scale], Local/HullSoak[90], ArmorPoints[8], ShieldEmitters[8], Local/HullHP[Durability], Local/CreateMatter[vRate], EcoStore[vEcoStore]
     
@@ -211,7 +223,7 @@ System: RemnantCapitol
     
     Provides: PopEconomy
     
-    Provides: DamageResistance with Amount[pow(LEVEL_GAIN_CURVE, Level) * 50 * Size]
+    Provides: DamageResistance with Amount[50 * Size]
     Provides: RemnantCapitolNotification    
     
     Provides: CapitalSupport with Metals[Size * 500], Electronics[Size * 250], AdvParts[Size * 100], Food[Size * 10], Fuel[Size * 250], Ammo[Size * 250]
@@ -225,7 +237,7 @@ System: RemnantGate
     Available: Traits.remnants
     Level: 1
     Size: Object.Size * (5 / 15)
-    Durability: 160 * pow(10, 9)
+    Durability: 16000000				//160 * pow(10, 9)
     Mass: 10
 
     Tags: Weapon, Hull, Unobtainable, Tool:WarpGate, WarpGate, SpaceOwned

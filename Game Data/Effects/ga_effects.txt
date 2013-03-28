@@ -1,13 +1,3 @@
-Name: InvasionEvent
-	Value: Amount
-	
-	OnActive: GAInvasion::startInvasion
-	
-Name: SurveyEvent
-	Value: Amount
-	
-	OnActive: GASurvey::startSurvey
-	
 Name: TroopQuarters
 	Value: Amount
 

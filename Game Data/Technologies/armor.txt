@@ -2,7 +2,7 @@
 Technology: Armor_Root
 	Name: #RS_ARMOR_ROOT_NAME
 	Description: #RS_ARMOR_ROOT_DESC
-	Icon: res_tech_2
+	Icon: armor_root
 	Position: 0,-1
 	
 	StartLevel: 1
@@ -16,7 +16,7 @@ Technology: Armor_Root
 Technology: Armor_Special
 	Name: #RS_ARMOR_SPECIAL_NAME
 	Description: #RS_ARMOR_SPECIAL_DESC
-	Icon: res_tech_2
+	Icon: armor_specialised
 	Position: 0,-2
 	
 	StartLevel: 0
@@ -26,7 +26,7 @@ Technology: Armor_Special
 Technology: Armor_Mass
 	Name: #RS_ARMOR_MASS_NAME
 	Description: #RS_ARMOR_MASS_DESC
-	Icon: res_tech_2
+	Icon: armor_light
 	Position: -1,-2
 	
 	StartLevel: 0
@@ -36,7 +36,7 @@ Technology: Armor_Mass
 Technology: Armor_Cost
 	Name: #RS_ARMOR_COST_NAME
 	Description: #RS_ARMOR_COST_DESC
-	Icon: res_tech_2
+	Icon: armor_power
 	Position: 1,-2
 	
 	StartLevel: 0

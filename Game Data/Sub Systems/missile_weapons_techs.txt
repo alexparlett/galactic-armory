@@ -1,38 +1,3 @@
-System: PlanetMissile
-	Name: #SS_MISSILESILO_NAME
-	Description: #SS_MISSILESILO_DESC
-	Appearance: DefenseBuilding
-
-	Available: Techs.Missiles_Root.Level >= 0
-	Level: Techs.Missiles_Root.Level
-	
-	Size: Scale
-	Durability: 800 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT
-	Mass: 800 * Size * pow(LEVEL_GAIN_CURVE, Level)
-	
-	Tags: Structure, Weapon
-	Tied To: Missiles_Root 0
-	
-	Costs: Metals[200 * Size * pow(COST_INC_CRV, Level)], Electronics[25 * Size * pow(COST_INC_CRV, Level)], AdvParts[25 * Size * pow(COST_INC_CRV, Level)]
-	Complexity: 2 * STRUCT_COMPLX_MULT
-	
-	vDamage: Size * 240 * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT		//was Size * 120
-	vDelay: max(4, 12 * decay(pow(LEVEL_GAIN_CURVE,Level),50)) * GAME_RELOAD_MULT
-	vDeviation: 0.1
-	vRange: (80 * (1 + (Level * (0.02 * WEAP_RANGE_CURVE)))) * WEAP_RANGE_MULT * Size
-	vWorkers: Size*300000
-
-	Provides: Torpedo with Damage[vDamage],
-				Delay[vDelay], AmmoUse[0], Range[vRange], Speed[200],
-				Deviation[vDeviation]
-	
-	Requires:
-		To Run:
-			Workers[vWorkers]
-
-	Hints: Workers[vWorkers * -1], DPS[vDamage / vDelay], Range[vRange], HP[Durability]
-
-
 //    Variables Used
 //
 //////////////////////////
@@ -53,19 +18,64 @@ System: PlanetMissile
 //
 //////////////////////////
 
+System: PlanetMissile
+	Name: #SS_MISSILESILO_NAME
+	Description: #SS_MISSILESILO_DESC
+	Appearance: DefenseBuilding
+
+	Available: Techs.Missiles_Root.Level > 0
+	Level: Techs.Missiles_Root.Level
+	HPLevel:  Techs.Materials_Struct.Level
+	DamageLevel: Techs.Missiles_Root.Level
+	RangeLevel: Techs.Missiles_Fuel.Level
+	TargettingLevel: Techs.Missiles_Targetting.Level
+	AmmoLevel: Techs.Missiles_Loading.Level
+	
+	Size: Scale
+	Durability: 800 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
+	Mass: (800 * Size) / (1 + (0.1 * MassLevel))
+	
+	Tags: Structure, Weapon
+	Tied To: Missiles_Root 0
+	
+	Costs: Metals[200 * Size * pow(COST_INC_CRV, Level)], Electronics[25 * Size * pow(COST_INC_CRV, Level)], AdvParts[25 * Size * pow(COST_INC_CRV, Level)]
+	Complexity: 2 * STRUCT_COMPLX_MULT
+	
+	vDamage: 240* Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT
+	vDelay: (5 + (sqrt(Size) / 5)) / (1 + (0.05 * AmmoLevel))
+	vDeviation: 0.1
+	vRange: (80 + (5 * sqrt(Size))) *  (1 + (0.1 * RangeLevel))
+	vWorkers: Size*300000
+
+	Provides: Torpedo with Damage[vDamage],
+				Delay[vDelay], AmmoUse[0], Range[vRange], Speed[200],
+				Deviation[vDeviation]
+	
+	Requires:
+		To Run:
+			Workers[vWorkers]
+
+	Hints: Workers[vWorkers * -1], DPS[vDamage / vDelay], Range[vRange], HP[Durability]
+
+
 System: MissileRack
     Name: #SS_MISSILERACK_NAME
     Description: #SS_MISSILERACK_DESC
     Appearance: MissileRack
 	Explosion: subsystem_destroyed
 
-	Available: Techs.Missiles_Root.Level >= 0
+	Available: Techs.Missiles_Root.Level > 0
 	Level: Techs.Missiles_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	DamageLevel: Techs.Missiles_Root.Level
+	RangeLevel: Techs.Missiles_Fuel.Level
+	TargettingLevel: Techs.Missiles_Targetting.Level
+	AmmoLevel: Techs.Missiles_Loading.Level
+	HPLevel:  Techs.Materials_Weapons.Level
 	
     Size: Scale
-    HPLevel: Techs.Materials.Level-1 As Level
-    Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-    Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+    Mass: (80 * Size) / (1 + (0.1 * MassLevel))
     
     Tags: Weapon, MissileWeapon, Extendable, ClipWeapon
 	Tied To: Missiles_Root 0
@@ -74,13 +84,13 @@ System: MissileRack
     Complexity: 1.2
     
     vClip: 4                                //was min(floor(3 * Size),60)
-    vDelay: (3) * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
-    vDamage: 20 * Size * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT
+    vDelay:(3 + (sqrt(Size) / 5)) / (1 + (0.05 * AmmoLevel))
+    vDamage: 20 * Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT
     vShotDelay: 0.25
     vTotalDelay: (vShotDelay * vClip) + vDelay
-    vRange: (400 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
-    vSpeed: (vRange * 0.1) * MISSILE_PROJ_FACTOR + progress(20,2*LEVEL_GAIN_CURVE,Level)
-    vAmmoUse: 0.5 * Size
+    vRange: (400 + (5 * sqrt(Size))) *  (1 + (0.1 * RangeLevel))
+    vSpeed: (vRange / 6)  * (1 + (RangeLevel * GA_TECH_INCREASE))
+    vAmmoUse: (0.5 * Size) / (1 + (0.1 * AmmoLevel))
     
     Triggerable: PDEffect: PointDefenseTriggered
     
@@ -103,13 +113,18 @@ System: LargeMissileRack
     Appearance: LargeMissileRack
 	Explosion: subsystem_destroyed
 
-	Available: Techs.Missiles_Root.Level >= 0
+	Available: Techs.Missiles_Root.Level > 0
 	Level: Techs.Missiles_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	DamageLevel: Techs.Missiles_Root.Level
+	RangeLevel: Techs.Missiles_Fuel.Level
+	TargettingLevel: Techs.Missiles_Targetting.Level
+	AmmoLevel: Techs.Missiles_Loading.Level
+	HPLevel:  Techs.Materials_Weapons.Level
 	
     Size: Scale
-    HPLevel: Techs.Materials.Level-1 As Level
-    Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-    Mass: 120 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+    Mass: (120 * Size) / (1 + (0.1 * MassLevel))
     
     Tags: Weapon, MissileWeapon, Extendable, ClipWeapon
 	Tied To: Missiles_Root 0
@@ -118,13 +133,13 @@ System: LargeMissileRack
     Complexity: 1.5
     
     vClip: 16                                //was min(floor(3 * Size),60)
-    vDelay: (6) * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
-    vDamage: 12 * Size * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT                        //was 8
+    vDelay:(6 + (sqrt(Size) / 5)) / (1 + (0.05 * AmmoLevel))
+    vDamage: 12 * Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT
     vShotDelay: 0.15
     vTotalDelay: (vShotDelay * vClip) + vDelay
-    vRange: (300 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
-    vSpeed: (vRange * 0.1) * MISSILE_PROJ_FACTOR + progress(20,2*LEVEL_GAIN_CURVE,Level)
-    vAmmoUse: 0.25 * Size
+    vRange: (300 + (5 * sqrt(Size))) *  (1 + (0.1 * RangeLevel))
+    vSpeed: (vRange / 6)  * (1 + (RangeLevel * GA_TECH_INCREASE))
+    vAmmoUse: (0.25 * Size) / (1 + (0.1 * AmmoLevel))
     
     
     Triggerable: PDEffect: PointDefenseTriggered
@@ -148,13 +163,18 @@ System: MegaMissileRack
     Appearance: MegaMissileRack
 	Explosion: subsystem_destroyed
 
-	Available: Techs.Missiles_Root.Level >= 0
+	Available: Techs.Missiles_Root.Level > 0
 	Level: Techs.Missiles_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	DamageLevel: Techs.Missiles_Root.Level
+	RangeLevel: Techs.Missiles_Fuel.Level
+	TargettingLevel: Techs.Missiles_Targetting.Level
+	AmmoLevel: Techs.Missiles_Loading.Level
+	HPLevel:  Techs.Materials_Weapons.Level
 	
     Size: Scale
-    HPLevel: Techs.Materials.Level-1 As Level
-    Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-    Mass: 160 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+    Mass: (160 * Size) / (1 + (0.1 * MassLevel))
     
     Tags: Weapon, MissileWeapon, Extendable, ClipWeapon
 	Tied To: Missiles_Root 0
@@ -163,13 +183,13 @@ System: MegaMissileRack
     Complexity: 3.0
     
     vClip: 64
-    vDelay: (24) * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
-    vDamage: 12 * Size * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT                        //was 8
+    vDelay:(24 + (sqrt(Size) / 5)) / (1 + (0.05 * AmmoLevel))
+    vDamage: 12 * Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT
     vShotDelay: 0.08
     vTotalDelay: (vShotDelay * vClip) + vDelay
-    vRange: (180 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
-    vSpeed: (vRange * 0.1) * MISSILE_PROJ_FACTOR + progress(20,2*LEVEL_GAIN_CURVE,Level)
-    vAmmoUse: 0.25 * Size
+    vRange: (180 + (5 * sqrt(Size))) *  (1 + (0.1 * RangeLevel))
+    vSpeed: (vRange / 6)  * (1 + (RangeLevel * GA_TECH_INCREASE))
+    vAmmoUse: (0.25 * Size) / (1 + (0.1 * AmmoLevel))
     
     Triggerable: PDEffect: PointDefenseTriggered
     
@@ -191,13 +211,18 @@ System: InterceptorMissile
     Appearance: InterceptorMissile
 	Explosion: subsystem_destroyed
 
-	Available: Techs.Missiles_Root.Level >= 0
+	Available: Techs.Missiles_Root.Level > 0
 	Level: Techs.Missiles_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	DamageLevel: Techs.Missiles_Root.Level
+	RangeLevel: Techs.Missiles_Fuel.Level
+	TargettingLevel: Techs.Missiles_Targetting.Level
+	AmmoLevel: Techs.Missiles_Loading.Level
+	HPLevel:  Techs.Materials_Weapons.Level
 	
     Size: Scale
-    HPLevel: Techs.Materials.Level-1 As Level
-    Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-    Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+    Mass: (80 * Size) / (1 + (0.1 * MassLevel))
     
     Tags: Weapon, MissileWeapon
 	Tied To: Missiles_Root 0
@@ -205,11 +230,11 @@ System: InterceptorMissile
     Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[Size * 25]
     Complexity: 1.5
 
-    vDamage: Size * 24 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT
-    vDelay: 2 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
-    vRange: (350 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
-    vSpeed: (vRange * 0.2) * MISSILE_PROJ_FACTOR + progress(80,2*LEVEL_GAIN_CURVE,Level)
-    vAmmoUse: 1 * Size
+    vDamage: 24 * Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT
+    vDelay:(2 + (sqrt(Size) / 5)) / (1 + (0.05 * AmmoLevel))
+    vRange: (350 + (5 * sqrt(Size))) *  (1 + (0.1 * RangeLevel))
+    vSpeed: (vRange / 6)  * (1 + (RangeLevel * GA_TECH_INCREASE))
+    vAmmoUse: (1 * Size) / (1 + (0.1 * AmmoLevel))
 
     Triggerable: PDEffect: PointDefenseTriggered
     
@@ -229,13 +254,18 @@ System: ClusterMissile
     Appearance: ClusterMissile
 	Explosion: subsystem_destroyed
 
-	Available: Techs.Missiles_Root.Level >= 0
+	Available: Techs.Missiles_Root.Level > 0
 	Level: Techs.Missiles_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	DamageLevel: Techs.Missiles_Root.Level
+	RangeLevel: Techs.Missiles_Fuel.Level
+	TargettingLevel: Techs.Missiles_Targetting.Level
+	AmmoLevel: Techs.Missiles_Loading.Level
+	HPLevel:  Techs.Materials_Weapons.Level
 	
     Size: Scale
-    HPLevel: Techs.Materials.Level-1 As Level
-    Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-    Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+    Mass: (80 * Size) / (1 + (0.1 * MassLevel))
     
     Tags: Weapon, MissileWeapon, WMD
 	Tied To: Missiles_Root 0
@@ -243,12 +273,12 @@ System: ClusterMissile
     Costs: Metals[200 * Size * pow(SUBS_COST_CRV, Level)], Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[25 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[Size * 25]
     Complexity: 2
     
-    vDamage: Size * 36 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT
-    vAoE_Range: min((Size/100) + (20 + sqrt(Size)), (160 * (1 + (Level * 0.05))))                                                                                            //was min(8 + ((Size / 8) * 0.5 * pow(LEVEL_GAIN_CURVE, Level)), 50)
-    vDelay: 3.5 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
-    vRange: (300 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
-    vSpeed: (vRange * 0.15) * MISSILE_PROJ_FACTOR + progress(80,2*LEVEL_GAIN_CURVE,Level)
-    vAmmoUse: 2 * Size
+    vDamage: 36 * Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT
+    vAoE_Range: (50 + (Size/20)) * (1 + (DamageLevel * 0.1))
+    vDelay:(3.5 + (sqrt(Size) / 5)) / (1 + (0.05 * AmmoLevel))
+    vRange: (300 + (5 * sqrt(Size))) *  (1 + (0.1 * RangeLevel))
+    vSpeed: (vRange / 6)  * (1 + (RangeLevel * GA_TECH_INCREASE))
+    vAmmoUse: (2 * Size) / (1 + (0.1 * AmmoLevel))
     
     Triggerable: AreaDamage: AreaDamageTriggered with AoE_Damage[vDamage], AoE_Range[vAoE_Range]
     
@@ -269,13 +299,18 @@ System: PhasedMissile
     Appearance: PhasedMissiles
 	Explosion: subsystem_destroyed
     
-	Available: Techs.Missiles_Root.Level >= 0
+	Available: Techs.Missiles_Root.Level > 0
 	Level: Techs.Missiles_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	DamageLevel: Techs.Missiles_Root.Level
+	RangeLevel: Techs.Missiles_Fuel.Level
+	TargettingLevel: Techs.Missiles_Targetting.Level
+	AmmoLevel: Techs.Missiles_Loading.Level
+	HPLevel:  Techs.Materials_Weapons.Level
 	
     Size: Scale
-    HPLevel: Techs.Materials.Level-1 As Level
-    Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-    Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+    Mass: (80 * Size) / (1 + (0.1 * MassLevel))
     
     Tags: Weapon, MissileWeapon, ClipWeapon
 	Tied To: Missiles_Root 0
@@ -284,13 +319,13 @@ System: PhasedMissile
     Complexity: 1.2
     
     vClip: 2                                //was min(floor(3 * Size),60)
-    vDelay: (3) * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
-    vDamage: 20 * Size * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT
+    vDelay:(3 + (sqrt(Size) / 5)) / (1 + (0.05 * AmmoLevel))
+    vDamage: 20 * Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT
     vShotDelay: 0.25
     vTotalDelay: (vShotDelay * vClip) + vDelay
-    vRange: (400 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
-    vSpeed: (vRange * 0.1) * MISSILE_PROJ_FACTOR + progress(20,2*LEVEL_GAIN_CURVE,Level)
-    vAmmoUse: 0.5 * Size
+    vRange: (400 + (5 * sqrt(Size))) *  (1 + (0.1 * RangeLevel))
+    vSpeed: (vRange / 6)  * (1 + (RangeLevel * GA_TECH_INCREASE))
+    vAmmoUse: (0.5 * Size) / (1 + (0.1 * AmmoLevel))
     
     Triggerable: PDEffect: PointDefenseTriggered
     
@@ -312,13 +347,18 @@ System: EMPMissile
     Appearance: EMPMissiles
 	Explosion: subsystem_destroyed
     
-	Available: Techs.Missiles_Root.Level >= 0
+	Available: Techs.Missiles_Root.Level > 0
 	Level: Techs.Missiles_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	DamageLevel: Techs.Missiles_Root.Level
+	RangeLevel: Techs.Missiles_Fuel.Level
+	TargettingLevel: Techs.Missiles_Targetting.Level
+	AmmoLevel: Techs.Missiles_Loading.Level
+	HPLevel:  Techs.Materials_Weapons.Level
 	
     Size: Scale
-    HPLevel: Techs.Materials.Level-1 As Level
-    Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-    Mass: 80 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+    Mass: (80 * Size) / (1 + (0.1 * MassLevel))
     
     Tags: Weapon, MissileWeapon, ClipWeapon
 	Tied To: Missiles_Root 0
@@ -327,14 +367,14 @@ System: EMPMissile
     Complexity: 1.2
     
     vClip: 2                                //was min(floor(3 * Size),60)
-    vDelay: (3) * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
-    vDamage: 18 * Size * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT
-    vAoE_Range: min((Size/100) + (30 + sqrt(Size)), (240 * (1 + (Level * 0.05))))
+    vDelay:(3 + (sqrt(Size) / 5)) / (1 + (0.05 * AmmoLevel))
+    vDamage: 18 * Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT
+    vAoE_Range: (min + (Size/20)) * (1 + (DamageLevel * 0.1))
     vShotDelay: 0.25
     vTotalDelay: (vShotDelay * vClip) + vDelay
-    vRange: (400 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
-    vSpeed: (vRange * 0.1) * MISSILE_PROJ_FACTOR + progress(20,2*LEVEL_GAIN_CURVE,Level)
-    vAmmoUse: 0.5 * Size
+    vRange: (400 + (5 * sqrt(Size))) *  (1 + (0.1 * RangeLevel))
+    vSpeed: (vRange / 6)  * (1 + (RangeLevel * GA_TECH_INCREASE))
+    vAmmoUse: (0.5 * Size) / (1 + (0.1 * AmmoLevel))
     
     Triggerable: PDEffect: PointDefenseTriggered
     
@@ -356,13 +396,18 @@ System: PlanetBuster
 	Appearance: PlanetBuster
 	Explosion: subsystem_destroyed
 
-	Available: Techs.Missiles_Root.Level >= 0
+	Available: Techs.Missiles_Root.Level > 0
 	Level: Techs.Missiles_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	DamageLevel: Techs.Missiles_Root.Level
+	RangeLevel: Techs.Missiles_Fuel.Level
+	TargettingLevel: Techs.Missiles_Targetting.Level
+	AmmoLevel: Techs.Missiles_Loading.Level
+	HPLevel:  Techs.Materials_Weapons.Level
 	
 	Size: max(Scale, 1200)
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 300 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (300 * Size) / (1 + (0.1 * MassLevel))
 	
 	Tags: SpecWeapon, Superweapon, Planet Buster, Tool:Planet Buster, Bomb, NoModifiers
 	Tied To: Missiles_Root 0
@@ -370,12 +415,12 @@ System: PlanetBuster
 	Costs: Metals[300 * Size * pow(SUBS_COST_CRV, Level)], Electronics[100 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size], Ammo[Size * 25]
 	Complexity: 3
 	
-	vDamage: Size * 100000 * pow(LEVEL_GAIN_CURVE, Level) * min((1 + (sqrt(Size) / 30)), 3) * GAME_DAMAGE_MULT							//was Size * 20
-	vDelay: 60 * (1 + decay(Level, 8)) * min((1 + (sqrt(Size) / 20)), 5) * GAME_RELOAD_MULT
+	vDamage: 1000000 * Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT
+	vDelay:(60 + (sqrt(Size) / 5)) / (1 + (0.05 * AmmoLevel))
 	vDeviation: 0.1
-	vRange: (55 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vRange: (55 + (5 * sqrt(Size))) *  (1 + (0.1 * RangeLevel))
 	vSpeed: vRange * .3 * ANTIPLANET_PROJ_FACTOR
-	vAmmoUse: 5 * Size
+	vAmmoUse: (5 * Size) / (1 + (0.1 * AmmoLevel))
 
 	Provides: PlanetBuster with Damage[vDamage], Delay[vDelay], AmmoUse[vAmmoUse],
 		Range[vRange], Speed[vSpeed], Deviation[vDeviation]
@@ -398,25 +443,30 @@ System: FighterRockets
 	Description: #SS_FROCKETS_DESC
 	Appearance: FighterRockets
 
-	Available: Techs.Missiles_Root.Level >= 0
+	Available: Techs.Missiles_Root.Level > 0
 	Level: Techs.Missiles_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	DamageLevel: Techs.Missiles_Root.Level
+	RangeLevel: Techs.Missiles_Fuel.Level
+	TargettingLevel: Techs.Missiles_Targetting.Level
+	AmmoLevel: Techs.Missiles_Loading.Level
+	HPLevel:  Techs.Materials_Weapons.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 	
 	Tags: Weapon, FighterWeapon, Require:FighterBomber, WarheadWeapon, Extendable, ClipWeapon
 	Tied To: Missiles_Root 0
 	
 	vClip: 8
 	vClipDelay: (2) * (1 + decay(pow(LEVEL_GAIN_CURVE, Level), 50)) * GAME_RELOAD_MULT
-	vDamage: 50 * Size * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT
-	vDelay: (0.3) * (1 + decay(pow(LEVEL_GAIN_CURVE, Level), 50))
+	vDamage: 50 * Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT
+	vDelay:(0.3 + (sqrt(Size) / 5)) / (1 + (0.05 * AmmoLevel))
 	vTotalDelay: (vDelay * vClip) + vClipDelay
-	vRange: (120 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
+	vRange: (120 + (5 * sqrt(Size))) *  (1 + (0.1 * RangeLevel))
 	vAmmoStorage: Size * 24 * (1 + (0.2 * Level))
-	vSpeed: (vRange * 0.2) + progress(30,2*LEVEL_GAIN_CURVE,Level)
+	vSpeed: (vRange / 6)  * (1 + (RangeLevel * GA_TECH_INCREASE))
 	
 	Costs: Metals[150 * Size * pow(SUBS_COST_CRV, Level)], Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[vAmmoStorage]
 	Complexity: 1
@@ -442,23 +492,28 @@ System: FighterAAMissile
 	Description: #SS_AAMISSILE_DESC
 	Appearance: AAMissile
 
-	Available: Techs.Missiles_Root.Level >= 0
+	Available: Techs.Missiles_Root.Level > 0
 	Level: Techs.Missiles_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	DamageLevel: Techs.Missiles_Root.Level
+	RangeLevel: Techs.Missiles_Fuel.Level
+	TargettingLevel: Techs.Missiles_Targetting.Level
+	AmmoLevel: Techs.Missiles_Loading.Level
+	HPLevel:  Techs.Materials_Weapons.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 50 * Size
+	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 	
 	Tags: Weapon, FighterWeapon, Require:FighterHull , WarheadWeapon
 	Tied To: Missiles_Root 0
 	
-	vMissileDamage: Size * 160 * pow(LEVEL_GAIN_CURVE, Level) * GAME_DAMAGE_MULT
-	vDelay: 3.0 * (1 + decay(pow(LEVEL_GAIN_CURVE, Level), 100)) * GAME_RELOAD_MULT
-	vRange: (260 * (1 + (Level * (0.01 * WEAP_RANGE_CURVE)))) * ((sqrt(1 + Size) / 10) + 1) * WEAP_RANGE_MULT
-	vSpeed: (vRange * 0.1) + progress(50,2*LEVEL_GAIN_CURVE,Level)
+	vMissileDamage: 160 * Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT
+	vDelay:(3 + (sqrt(Size) / 5)) / (1 + (0.05 * AmmoLevel))
+	vRange: (260 + (5 * sqrt(Size))) *  (1 + (0.1 * RangeLevel))
+	vSpeed: (vRange / 6)  * (1 + (RangeLevel * GA_TECH_INCREASE))
 	vAmmoStorage: Size * 24 * (1 + (0.2 * Level))
-	vAmmoUse: Size * 3
+	vAmmoUse: (3 * Size) / (1 + (0.1 * AmmoLevel))
 	
 	Costs: Metals[180 * Size * pow(SUBS_COST_CRV, Level)], Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[vAmmoStorage]
 	Complexity: 1.2 * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)

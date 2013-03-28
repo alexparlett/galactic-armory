@@ -20,17 +20,12 @@
 //			This typically involves analyzing the situation, and giving orders to objects to fit the situation
 //			As well as adjusting empire settings, such as the current research.
 
-import void init_basic_ai() from "basic_ai";
-import void prep_basic_ai_defaults(Empire@ emp) from "basic_ai";
-
 import void init_pirate_ai() from "pirate_ai";
 import void prep_pirate_ai_defaults(Empire@ emp) from "pirate_ai";
 
 import void init_remnant_ai() from "remnant_ai";
 import void prep_remnant_ai_defaults(Empire@ emp) from "remnant_ai";
 
-import void init_erudite_ai() from "erudite_ai";
-import void prep_erudite_ai_defaults(Empire@ emp) from "erudite_ai";
 
 #include "/include/empire_lib.as"
 
@@ -45,74 +40,20 @@ void registerEmpireData(Empire@ emp) {
 
 	if(!initialized) {
 		loadDefaults(false);
-		init_basic_ai();
-		init_pirate_ai();
-		init_remnant_ai();
-		init_erudite_ai();
+		
+		if(getGameSetting("MAP_PIRATES", 1.f) > 0.5f) {
+			init_pirate_ai();
+		}
+		
+		if(getGameSetting("MAP_SPECIAL_SYSTEMS", 1.f) > 0.5f) {
+			init_remnant_ai();
+		}
+		
 		initialized = true;
 	}
 	
 	if(emp.isValid()) {
 		if(emp.isAI()){
-		//if(true){ //Uncomment to use an AI for the player
-			// Register proper AI for this empire
-			if(emp.ID == -2) {
-				print("Registering pirate AI for " + emp.getName());
-				emp.regScriptData("pirate_ai", "PirateAIData");
-				prep_pirate_ai_defaults(emp);
-			}
-			else if(emp.ID == -3) {
-				print("Registering remnant AI for " + emp.getName());
-				emp.regScriptData("remnant_ai", "RemnantAIData");
-				prep_remnant_ai_defaults(emp);
-			}
-			else {
-				// Figure out what AI we are based on the personality
-				PersonalityDesc@ desc;
-				uint persID = uint(emp.getSetting("Personality"));
-
-				// Check if we have a personality configured
-				if (persID > 0 && persID <= persDesc.length())
-					@desc = persDesc[persID - 1];
-				else
-					@desc = PersonalityDesc("", "erudite_ai");
-
-				// If this is a player AI, full difficulty
-				if(!emp.isAI()) {
-					emp.setSetting("Difficulty", 5.f);
-					emp.setSetting("Cheats", 0.f);
-				}
-
-				// Check if this used to be a player,
-				// and give the appropriate difficulty
-				float diff = emp.getSetting("Difficulty");
-				if (diff < 0) {
-					if (maxAIDifficulty >= 0)
-						emp.setSetting("Difficulty", maxAIDifficulty);
-					else
-						emp.setSetting("Difficulty", 3.f);
-				}
-				else if (diff > maxAIDifficulty) {
-					maxAIDifficulty = diff;
-				}
-
-				// Load the correct AI
-				if (desc.forAI == "erudite_ai") {
-					print("Registering erudite AI for " + emp.getName() + " (" + emp.ID + ")");
-					emp.regScriptData("erudite_ai", "EmpireAIData");
-					
-					// Set empire settings
-					emp.setSetting("autoGovern", 0);
-					emp.setSetting("defaultGovernor", 0);	
-
-					if(getGameSetting("RES_SHOW_ALL_TECHS", 1) < 0.5f) {
-						LevelTech(emp, "BeamWeapons", 1);
-						LevelTech(emp, "Computers", 1);
-					}					
-					
-					prep_erudite_ai_defaults(emp);
-				}
-			}
 		}
 		else {
 			// Automatically govern new planets
@@ -186,19 +127,23 @@ void registerHostilities(Empire@ from, Empire@ to) {
  *  - Empires created here will not have a homeworld set up automatically.
  */
 void registerSpecialEmpires() {
-	// The pirates raid resources from any undefended systems
-	Empire@ pirates = addEmpire(-2);
-	pirates.setReserved(true);
-	pirates.setName(localize("#NM_Pirates"));
-	pirates.color = Color(0xff8c0000);
-	pirates.setShipSet("terrakin");
+	if(getGameSetting("MAP_PIRATES", 1.f) > 0.5f) {
+		// The pirates raid resources from any undefended systems
+		Empire@ pirates = addEmpire(-2);
+		pirates.setReserved(true);
+		pirates.setName(localize("#NM_Pirates"));
+		pirates.color = Color(0xff8c0000);
+		pirates.setShipSet("terrakin");
+	}
 
-	// The remnants are leftover guardians of a fallen empire
-	Empire@ remnants = addEmpire(-3);
-	remnants.setReserved(true);
-	remnants.setName(localize("#NM_Remnants"));
-	remnants.color = Color(0xffccc5ab);
-	remnants.setShipSet("neumon");
+	if(getGameSetting("MAP_SPECIAL_SYSTEMS", 1.f) > 0.5f) {	
+		// The remnants are leftover guardians of a fallen empire
+		Empire@ remnants = addEmpire(-3);
+		remnants.setReserved(true);
+		remnants.setName(localize("#NM_Remnants"));
+		remnants.color = Color(0xffccc5ab);
+		remnants.setShipSet("neumon");
+	}
 }
 
 void loadDesignsForTrait(Empire@ emp, string@ trait)

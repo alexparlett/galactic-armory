@@ -2,7 +2,7 @@
 Technology: Kinetic_Root
 	Name: #RS_KINETIC_ROOT_NAME
 	Description: #RS_KINETIC_ROOT_DESC
-	Icon: res_tech_2
+	Icon: ballistics_root
 	Position: 0,-1
 	
 	StartLevel: 1
@@ -16,7 +16,7 @@ Technology: Kinetic_Root
 Technology: Kinetic_Targetting
 	Name: #RS_KINETIC_TARGETTING_NAME
 	Description: #RS_KINETIC_TARGETTING_DESC
-	Icon: res_tech_2
+	Icon: ballistics_targetting
 	Position: 0,-2
 	
 	StartLevel: 0
@@ -26,7 +26,7 @@ Technology: Kinetic_Targetting
 Technology: Kinetic_Ammo
 	Name: #RS_KINETIC_AMMO_NAME
 	Description: #RS_KINETIC_AMMO_DESC
-	Icon: res_tech_2
+	Icon: ballistics_pressure
 	Position: -1,-1
 	
 	StartLevel: 0
@@ -36,7 +36,7 @@ Technology: Kinetic_Ammo
 Technology: Kinetic_Hardened
 	Name: #RS_KINETIC_HARDENED_NAME
 	Description: #RS_KINETIC_HARDENED_DESC
-	Icon: res_tech_2
+	Icon: ballistics_hardened
 	Position: 1,-1
 	
 	StartLevel: 0

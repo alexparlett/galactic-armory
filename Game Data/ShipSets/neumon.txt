@@ -1,3 +1,8 @@
+tag WarpGate {
+	Sprite = 13
+	Model = neumon_supergate
+}
+
 tag JumpGate {
 	Sprite = 13
 	Model = neumon_jumpgate

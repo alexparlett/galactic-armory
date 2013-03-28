@@ -3,14 +3,16 @@ System: SpacePort
 	Description: #SS_SPACEPORT_DESC
 	Appearance: GeneralBuilding
 
-	Available: Techs.Logistics_Root.Level >= 0
+	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
 	econLevel: Techs.Economics.Level
 	cargoLevel: Techs.Cargo.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	HPLevel: Techs.Materials_Struct.Level
 	
 	Size: Scale
-	Durability: 500 * Size * pow(LEVEL_GAIN_CURVE, econLevel) * PLANET_STRUCT_MULT
-	Mass: 400 * Size * pow(LEVEL_GAIN_CURVE, econLevel)
+	Durability: 500 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
+	Mass: (400 * Size) / (1 + (0.1 * MassLevel))
 	
 	Tags: Structure, ShipBay
 	Tied To: Logistics_Root 0
@@ -57,12 +59,14 @@ System: CargoBlock
 	Description: #SS_CARGOBLOCK_DESC
 	Appearance: GeneralBuilding
 	
-	Available: Techs.Logistics_Root.Level >= 0
+	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	HPLevel: Techs.Materials_Struct.Level
 	
 	Size: Scale
 	Durability: 200 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT
-	Mass: 250 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	Mass: (250 * Size) / (1 + (0.1 * MassLevel))
 	
 	Tags: Structure
 	Tied To: Logistics_Root 0
@@ -106,13 +110,14 @@ System: FuelCell
 	Tags: Storage:Fuel, Storage
 	Tied To: Logistics_Root 0
 
-	Available: Techs.Logistics_Root.Level >= 0
+	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 80 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 15 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 80 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (15 * Size) / (1 + (0.1 * MassLevel))
 	
 	vFuelStore: Size * 200 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
 	
@@ -136,13 +141,14 @@ System: BigFuelCell
 	Tags: Storage:Fuel, Storage
 	Tied To: Logistics_Root 0
 
-	Available: Techs.Logistics_Root.Level >= 0
+	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 20 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 20 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 20 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (20 * Size) / (1 + (0.1 * MassLevel))
 	
 	vFuelStore: Size * 400 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
 	
@@ -170,13 +176,14 @@ System: AmmoStorage
 	Tags: Storage:Ammo, Restrict:FighterBomber, Storage
 	Tied To: Logistics_Root 0
 
-	Available: Techs.Logistics_Root.Level >= 0
+	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 120 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 120 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 	
 	vAmmoStore: Size * 125 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
 	
@@ -200,13 +207,14 @@ System: BigAmmoStorage
 	Tags: Storage:Ammo, Restrict:FighterBomber, Storage
 	Tied To: Logistics_Root 0
 
-	Available: Techs.Logistics_Root.Level >= 0
+	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 30 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 60 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 30 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (60 * Size) / (1 + (0.1 * MassLevel))
 	
 	vAmmoStore: Size * 250 * (4 - decay(pow(LEVEL_GAIN_CURVE, Level), 25) - decay(pow(LEVEL_GAIN_CURVE, Level), 125) - decay(pow(LEVEL_GAIN_CURVE, Level), 625))
 	
@@ -234,13 +242,14 @@ System: CargoBay
 	Tags: CargoBay, Storage:Cargo, Storage, Storage:Resources
 	Tied To: Logistics_Root 0
 	
-	Available: Techs.Logistics_Root.Level >= 0
+	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 20 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 15 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 20 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (15 * Size) / (1 + (0.1 * MassLevel))
 
 	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Labr[2 * Size]
 	Complexity: 0.2
@@ -263,13 +272,14 @@ System: CargoMetal
 	Tags: Storage:Metal, Storage, CargoBay, Storage:Resources
 	Tied To: Logistics_Root 0
 	
-	Available: Techs.Logistics_Root.Level >= 0
+	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 20 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 15 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 20 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (15 * Size) / (1 + (0.1 * MassLevel))
 
 	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Labr[2 * Size]
 	Complexity: 0.2
@@ -292,13 +302,14 @@ System: CargoElec
 	Tags: Storage:Electronics, Storage, CargoBay, Storage:Resources
 	Tied To: Logistics_Root 0
 	
-	Available: Techs.Logistics_Root.Level >= 0
+	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 20 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 15 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 20 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (15 * Size) / (1 + (0.1 * MassLevel))
 
 	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Labr[2 * Size]
 	Complexity: 0.2
@@ -321,13 +332,14 @@ System: CargoAdvParts
 	Tags: Storage:AdvParts, Storage, CargoBay, Storage:Resources
 	Tied To: Logistics_Root 0
 	
-	Available: Techs.Logistics_Root.Level >= 0
+	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 20 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 15 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 20 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (15 * Size) / (1 + (0.1 * MassLevel))
 
 	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Labr[2 * Size]
 	Complexity: 0.2
@@ -351,13 +363,14 @@ System: Exporter
 	Tied To: Logistics_Root 0
     Tags: BankAccess
     
-	Available: Techs.Logistics_Root.Level >= 0
+	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
     Size: Scale
-    HPLevel: Techs.Materials.Level-1 As Level
-    Durability: GAME_SUBSYS_MULT * 30 * Size * pow(HEALTH_CURVE,HPLevel)
-    Mass: 15 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    HPLevel:  Techs.Materials_Root.Level
+    Durability: 30 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+    Mass: (15 * Size) / (1 + (0.1 * MassLevel))
 
     Costs: Metals[80 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size]
     
@@ -398,13 +411,14 @@ System: MetalExporter
 	Tied To: Logistics_Root 0
     Tags: BankAccess
     
-	Available: Techs.Logistics_Root.Level >= 0
+	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
     Size: Scale
-    HPLevel: Techs.Materials.Level-1 As Level
-    Durability: GAME_SUBSYS_MULT * 30 * Size * pow(HEALTH_CURVE,HPLevel)
-    Mass: 15 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    HPLevel:  Techs.Materials_Root.Level
+    Durability: 30 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+    Mass: (15 * Size) / (1 + (0.1 * MassLevel))
 
     Costs: Metals[80 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size]
     
@@ -434,13 +448,14 @@ System: ElectsExporter
 	Tied To: Logistics_Root 0
     Tags: BankAccess
     
-	Available: Techs.Logistics_Root.Level >= 0
+	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
     Size: Scale
-    HPLevel: Techs.Materials.Level-1 As Level
-    Durability: GAME_SUBSYS_MULT * 30 * Size * pow(HEALTH_CURVE,HPLevel)
-    Mass: 15 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    HPLevel:  Techs.Materials_Root.Level
+    Durability: 30 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+    Mass: (15 * Size) / (1 + (0.1 * MassLevel))
 
     Costs: Metals[80 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size]
     
@@ -469,13 +484,14 @@ System: PartsExporter
 	Tied To: Logistics_Root 0
     Tags: BankAccess
     
-	Available: Techs.Logistics_Root.Level >= 0
+	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
     Size: Scale
-    HPLevel: Techs.Materials.Level-1 As Level
-    Durability: GAME_SUBSYS_MULT * 30 * Size * pow(HEALTH_CURVE,HPLevel)
-    Mass: 15 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    HPLevel:  Techs.Materials_Root.Level
+    Durability: 30 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+    Mass: (15 * Size) / (1 + (0.1 * MassLevel))
 
     Costs: Metals[80 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size]
     
@@ -504,13 +520,14 @@ System: Importer
 	Tied To: Logistics_Root 0
     Tags: BankAccess, ImportBay
     
-	Available: Techs.Logistics_Root.Level >= 0
+	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
     Size: Scale
-    HPLevel: Techs.Materials.Level-1 As Level
-    Durability: GAME_SUBSYS_MULT * 30 * Size * pow(HEALTH_CURVE,HPLevel)
-    Mass: 15 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    HPLevel:  Techs.Materials_Root.Level
+    Durability: 30 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+    Mass: (15 * Size) / (1 + (0.1 * MassLevel))
 
     Costs: Metals[80 * Size * pow(SUBS_COST_CRV, Level)], Labr[10 * Size]
     
@@ -547,13 +564,14 @@ System: AmmoFabricator
     Appearance: AmmoImporter
     Explosion: fuel_cell_explode
 
-	Available: Techs.Logistics_Root.Level >= 0
+	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
     Size: Scale
-    HPLevel: Techs.Materials.Level-1 As Level
-    Durability: GAME_SUBSYS_MULT * 40 * Size * pow(HEALTH_CURVE,HPLevel)
-    Mass: 100 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+    HPLevel:  Techs.Materials_Root.Level
+    Durability: 40 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+    Mass: (100 * Size) / (1 + (0.1 * MassLevel))
 
     Tags: BankAccess, Restrict:FighterBomber, Storage:Ammo
 	Tied To: Logistics_Root 0
@@ -585,12 +603,14 @@ System: FuelDepot
 	Description: #SS_FUELDEPOT_DESC
 	Appearance: GeneralBuilding
 
-	Available: Techs.Logistics_Root.Level >= 0
+	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	HPLevel: Techs.Materials_Struct.Level
 	
 	Size: Scale
-	Durability: 500 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT
-	Mass: 400 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	Durability: 500 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
+	Mass: (400 * Size) / (1 + (0.1 * MassLevel))
 	
 	Tags: Structure
 	Tied To: Logistics_Root 0
@@ -620,12 +640,14 @@ System: AmmoDepot
 	Description: #SS_AMMODEPOT_DESC
 	Appearance: GeneralBuilding
 
-	Available: Techs.Logistics_Root.Level >= 0
+	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	HPLevel: Techs.Materials_Struct.Level
 	
 	Size: Scale
-	Durability: 500 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT
-	Mass: 400 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	Durability: 500 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
+	Mass: (400 * Size) / (1 + (0.1 * MassLevel))
 	
 	Tags: Structure
 	Tied To: Logistics_Root 0

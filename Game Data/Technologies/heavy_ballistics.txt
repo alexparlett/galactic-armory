@@ -2,7 +2,7 @@
 Technology: Ballistics_Root
 	Name: #RS_BALLISTICS_ROOT_NAME
 	Description: #RS_BALLISTICS_ROOT_DESC
-	Icon: res_tech_2
+	Icon: heavy_ballistics_root
 	Position: 0,1
 	
 	StartLevel: 1
@@ -16,7 +16,7 @@ Technology: Ballistics_Root
 Technology: Ballistics_Acquisition
 	Name: #RS_BALLISTICS_ACQUISITION_NAME
 	Description: #RS_BALLISTICS_ACQUISITION_DESC
-	Icon: res_tech_2
+	Icon: heavy_ballistics_targetting
 	Position: 0,2
 	
 	StartLevel: 0
@@ -26,7 +26,7 @@ Technology: Ballistics_Acquisition
 Technology: Ballistics_Ammo
 	Name: #RS_BALLISTICS_AMMO_NAME
 	Description: #RS_BALLISTICS_AMMO_DESC
-	Icon: res_tech_2
+	Icon: heavy_ballistics_devastation
 	Position: -1,0
 	
 	StartLevel: 0
@@ -36,7 +36,7 @@ Technology: Ballistics_Ammo
 Technology: Ballistics_Payload
 	Name: #RS_BALLISTICS_PAYLOAD_NAME
 	Description: #RS_BALLISTICS_PAYLOAD_DESC
-	Icon: res_tech_2
+	Icon: heavy_ballistics_payload
 	Position: 1,0
 	
 	StartLevel: 0

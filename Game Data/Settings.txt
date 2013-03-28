@@ -1,3 +1,21 @@
+//Spawn chances for leftover special systems of a powerful race
+MAP_SPECIAL_SYSTEMS : 1
+MAP_SPECIAL_SYSTEM_DENSITY : 0.2
+
+//Whether pirates shall spawn and their strength
+MAP_PIRATES: 1
+MAP_PIRATES_DENSITY: 1
+
+//Whether Jump Bridges shall exist in the galaxy or not
+MAP_JUMP_BRIDGES: 1
+MAP_JUMP_BRIDGES_DENSITY: 0.1
+
+//Tech Increase per Level for Flat Level Increase System
+GA_TECH_INCREASE: 0.2
+
+//Tech Increase per Level for Flat Level Increase System
+GA_SIZE_INCREASE: 0.4
+
 //Damage factor for all weapons
 GAME_DAMAGE_MULT:	1
 

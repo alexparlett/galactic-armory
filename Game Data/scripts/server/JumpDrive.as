@@ -1,4 +1,6 @@
-const string@ strFuel = "Fuel", strBridgeCharge = "RemnantBridgeCharge";
+const string@ strFuel = "Fuel";
+
+import void clearOrders(Object@ obj) from "GATools";
 
 float checkRange(const Object@ src, const Object@ trg, const Effector@ eff) {
 	//Can only jump to significant sources of gravity
@@ -105,110 +107,4 @@ void doJump(Object@ jumpShip, Object@ jumpTo) {
 	//Force it to be reparented correctly
 	jumpShip.reparent();
 	//NOTE: It will take 2 game frames to relocate the ship to the other system
-}
-
-const string@ strStargate = "Stargate";
-float checkStargate(const Object@ src, const Object@ trg, const Effector@ eff) {
-	const HulledObj@ stargate = trg;
-	if (@stargate !is null){
-		const HullLayout@ stargateHull = stargate.getHull();
-		if (@stargateHull !is null){
-			if(stargateHull.hasSystemWithTag(strStargate)){
-				return 1.f;
-			}
-		}
-	}
-	return 0.f;
-}
-
-float checkStargateJump(const Object@ src, const Object@ trg, const Effector@ eff) {
-	const HulledObj@ stargate = trg;
-	if (@stargate !is null){
-		const HullLayout@ stargateHull = stargate.getHull();
-		if (@stargateHull !is null){
-			if(stargateHull.hasSystemWithTag(strStargate)) {
-				const State@ targetID = trg.getState(strStargate);
-				
-				if(@targetID !is null){
-					const Object@ jumpTo = getObjectByID(targetID.val);
-					if (@jumpTo !is null){
-						if(jumpTo.isValid()){
-							float jumpShipScale = src.radius * src.radius;
-							float jumpFromScale = trg.radius * trg.radius;
-							float jumpToScale = jumpTo.radius * jumpTo.radius;
-							if(jumpShipScale <= jumpFromScale){
-								if(jumpShipScale <= jumpToScale){
-									return 1.f;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	return 0.f;
-}
-
-void createLink(Event@ evt) {
-	evt.obj.getState(strStargate).val = evt.target.uid;
-	evt.obj.getOwner().postMessage("Hyperspace route established from #link:o"+evt.obj.uid+"##c:red#"+evt.obj.getName()+"#c##link# to #link:o"+evt.target.uid+"##c:red#"+evt.target.getName()+"#c##link#.");	
-	clearOrders(evt.obj);
-}
-
-void GateJump(Event@ evt) {
-	Object@ jumpShip = evt.obj;
-	Object@ jumpFrom = evt.target;
-	const State@ targetID = jumpFrom.getState(strStargate);
-	
-	if(@targetID !is null){
-		Object@ jumpTo = getObjectByID(targetID.val);
-		if (@jumpTo !is null){
-			if(jumpTo.isValid()){
-				State@ bridgeCharge = evt.target.getState(strBridgeCharge);
-				
-				print(f_to_s(bridgeCharge.val));
-				print(f_to_s(bridgeCharge.max));
-				
-				if(jumpShip.getMass() < bridgeCharge.val) {
-					bridgeCharge.val -= jumpShip.getMass();
-					
-					jumpShip.velocity = vector(0,0,0);
-			
-					clearOrders(jumpShip);
-					doJump(jumpShip, jumpTo);
-					return;
-				}
-				else {
-					jumpShip.getOwner().postMessage("#link:o"+jumpShip.uid+"##c:red#"+jumpShip.getName()+"#c##link#: Aborting stargate jump. End point #link:o"+jumpTo.uid+"##c:red#"+jumpTo.getName()+"#c##link# not enough energy to transport.");
-					clearOrders(jumpShip);
-					return;
-				}
-			}
-			else{
-				jumpShip.getOwner().postMessage("#link:o"+jumpShip.uid+"##c:red#"+jumpShip.getName()+"#c##link#: Aborting stargate jump. End point #link:o"+jumpTo.uid+"##c:red#"+jumpTo.getName()+"#c##link# has invalid hyperspace coordinates.");
-				clearOrders(jumpShip);
-				return;
-			}
-		}
-		else{
-			clearOrders(jumpShip);
-			jumpShip.getOwner().postMessage("#link:o"+jumpShip.uid+"##c:red#"+jumpShip.getName()+"#c##link#: Aborting stargate jump. Starting point #link:o"+jumpFrom.uid+"##c:red#"+jumpFrom.getName()+"#c##link# has invalid hyperspace coordinates.");
-			return;
-		}
-	}
-	clearOrders(jumpShip);
-	jumpShip.getOwner().postMessage("#link:o"+jumpShip.uid+"##c:red#"+jumpShip.getName()+"#c##link#: Aborting stargate jump. #link:o"+jumpFrom.uid+"##c:red#"+jumpFrom.getName()+"#c##link# has invalid hyperspace coordinates.");	
-}
-
-void clearOrders(Object@ obj){
-	AIStance old = obj.getStance();
-	obj.setStance(AIS_HoldFire);
-	obj.setStance(old);
-
-	OrderList orders;
-	if(orders.prepare(obj)) {
-		orders.clearOrders(false);
-		orders.prepare(null);		
-	}
 }

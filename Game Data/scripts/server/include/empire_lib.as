@@ -83,32 +83,32 @@ class WeightList {
 };
 
 enum GoalID {
-	GID_Invalid = 0,
-	GID_Lead = 1,
-	GID_Fight,
-	GID_Trade,
-	GID_Miner,
-	GID_MegaMiner,	
-	GID_Explore,
-	GID_Colonize,
-	GID_Defense,
-	GID_Annihilate,
-	GID_Supply,
-	GID_StaticDefense,
-	GID_FightSpecialised,
-	GID_StrikeCraft,
-	GID_Raid,
-	GID_Pillage,
-	GID_Remnant,
-	GID_Tanker,
-	GID_RemnantFighter,
-	GID_Carrier,
-	GID_RemnantCommand,
-	GID_RemnantStation,
-	GID_RemnantWave,
-	GID_RemnantPicket,
-	GID_SpecialDefense,
-	GID_Ringworld,
+	GID_Invalid = 0,		//Erudite Only
+	GID_Lead = 1,			//Erudite Only
+	GID_Fight,				//Erudite Only
+	GID_Trade,				//Erudite Only
+	GID_Miner,				//Erudite Only
+	GID_MegaMiner,			//Unused
+	GID_Explore,			//Erudite Only
+	GID_Colonize,			//Erudite Only
+	GID_Defense,			//Unused	
+	GID_Annihilate,			//Unused	
+	GID_Supply,				//Erudite Only
+	GID_StaticDefense,		//Erudite Only
+	GID_FightSpecialised,	//Erudite Only
+	GID_StrikeCraft,		//Erudite Only
+	GID_Raid,				//Pirate Only
+	GID_Pillage,			//Pirate Only
+	GID_Remnant,			//Remnant Only
+	GID_Tanker,				//Erudite Only
+	GID_RemnantFighter,		//Remnant Only
+	GID_Carrier,			//Erudite Only
+	GID_RemnantCommand,		//Remnant Only
+	GID_RemnantStation,		//Remnant Only
+	GID_RemnantWave,		//Remnant Only
+	GID_RemnantPicket,		//Remnant Only
+	GID_SpecialDefense,		//Remnant Only
+	GID_Ringworld,			//Erudite Only
 	
 	GID_COUNT,
 };

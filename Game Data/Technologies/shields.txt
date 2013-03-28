@@ -2,7 +2,7 @@
 Technology: Shields_Root
 	Name: #RS_SHIELDS_ROOT_NAME
 	Description: #RS_SHIELDS_ROOT_DESC
-	Icon: res_tech_2
+	Icon: shields_root
 	Position: -1,0
 	
 	StartLevel: 1
@@ -16,7 +16,7 @@ Technology: Shields_Root
 Technology: Shields_Density
 	Name: #RS_SHIELDS_DENSITY_NAME
 	Description: #RS_SHIELDS_DENSITY_DESC
-	Icon: res_tech_2
+	Icon: shields_density
 	Position: -2,1
 	
 	StartLevel: 0
@@ -26,7 +26,7 @@ Technology: Shields_Density
 Technology: Shields_Power
 	Name: #RS_SHIELDS_POWER_NAME
 	Description: #RS_SHIELDS_POWER_DESC
-	Icon: res_tech_2
+	Icon: shields_power
 	Position: -2,0
 	
 	StartLevel: 0
@@ -36,7 +36,7 @@ Technology: Shields_Power
 Technology: Shields_Regen
 	Name: #RS_SHIELDS_REGEN_NAME
 	Description: #RS_SHIELDS_REGEN_DESC
-	Icon: res_tech_2
+	Icon: shields_regen
 	Position: -1,1
 	
 	StartLevel: 0

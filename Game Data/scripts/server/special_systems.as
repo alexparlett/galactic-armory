@@ -7,16 +7,18 @@ funcdef System@ SpecialSystem (Galaxy@ Glx, vector position);
 SpecialSystem@[] specialSystems;
 
 void initSpecialSystems() {
-	specialSystems.resize(6);
-	@specialSystems[0] = ImperialSeat;
-	@specialSystems[1] = RemnantGates;
-	@specialSystems[2] = ResearchOutpost;
-	@specialSystems[3] = SpatialGen;
-	@specialSystems[4] = IonCanon;
-	@specialSystems[5] = ZeroPoint;
+	if(getGameSetting("MAP_SPECIAL_SYSTEMS",1.0f) > 0.5f) 
+	{
+		specialSystems.resize(6);
+		@specialSystems[0] = ImperialSeat;
+		@specialSystems[1] = RemnantGates;
+		@specialSystems[2] = ResearchOutpost;
+		@specialSystems[3] = SpatialGen;
+		@specialSystems[4] = IonCanon;
+		@specialSystems[5] = ZeroPoint;
 
-	print("Special Systems Initialized");
-	
+		print("Special Systems Initialized");
+	}	
 }
 
 System@ makeSpecialSystem(Galaxy@ Glx, vector position) {

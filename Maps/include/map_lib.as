@@ -22,7 +22,7 @@ import Planet@ setupStandardHomeworld(System@, Empire@) from "map_generation";
 import bool makeGateSystem(Galaxy@ Glx) from "special_systems";
 
 void prepMap() {
-	jumpBridges = getGameSetting("MAP_JUMP_GATES", 1.f) > 0.5f;
+	jumpBridges = getGameSetting("MAP_JUMP_BRIDGES", 1.f) > 0.5f;
 	
 	initMapGeneration();
 	orbitRadiusFactor = getOrbitRadiusFactor();

@@ -11,7 +11,7 @@ Effector: StargateLink
 		
 	IsWeapon: false
 
-	CanAttack: JumpDrive::checkStargate
+	CanAttack: GAJumpBridge::checkStargate
 	OnFire:  Timed(10)
 	Tick: Reload
 	Progress: TimedProgress
@@ -27,7 +27,7 @@ Effector: StargateJump
 	
 	IsWeapon: false
 	
-	CanAttack: JumpDrive::checkStargateJump
+	CanAttack: GAJumpBridge::checkStargateJump
 	OnFire:  Timed(30)
 	Tick: Reload
 	Progress: TimedProgress

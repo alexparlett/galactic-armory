@@ -1908,3 +1908,15 @@ Material: ringworld
 #else
  FlagOn: NormalizeNorms
 #end
+
+Material: pirate_base
+ Defer: Low
+ Texture: Images/SpaceStructures/pirate_base.png
+#if shaders
+ RenderMode: CityLights 
+ Texture2: Images/SpaceStructures/pirate_base_glow.png
+ SpecularFactor: 15
+ FlagOff: Lighting
+#else
+ FlagOn: NormalizeNorms
+#end

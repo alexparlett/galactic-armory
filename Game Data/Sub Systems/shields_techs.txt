@@ -9,13 +9,14 @@ System: ShieldGen
 	
 	PreDamageOrder: -10
 
-	Available: Techs.Shields_Root.Level >= 0
+	Available: Techs.Shields_Root.Level > 0
 	Level: Techs.Shields_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: 50 * Size * pow(HEALTH_CURVE,HPLevel) * GAME_SUBSYS_MULT
-	Mass: 100 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (100 * Size) / (1 + (0.1 * MassLevel))
 
 	vMetal: 100 * Size
 	vElec: 75 * Size
@@ -58,13 +59,14 @@ System: ShieldCharger
 	Tags: Shields, NoModifiers							//was Link
 	Tied To: Shields_Root 0
 
-	Available: Techs.Shields_Root.Level >= 0
+	Available: Techs.Shields_Root.Level > 0
 	Level: Techs.Shields_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: 25 * Size * pow(HEALTH_CURVE,HPLevel) * GAME_SUBSYS_MULT
-	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 25 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 
 	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[75 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[10 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
 	Complexity: 1.3
@@ -96,13 +98,14 @@ System: ShieldHardener
 	Tags: Shields, Link
 	Tied To: Shields_Root 0
 
-	Available: Techs.Shields_Root.Level >= 0
+	Available: Techs.Shields_Root.Level > 0
 	Level: Techs.Shields_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: 25 * Size * pow(HEALTH_CURVE,HPLevel) * GAME_SUBSYS_MULT
-	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 25 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 
 	Costs: Metals[80 * Size * pow(SUBS_COST_CRV, Level)], Electronics[75 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[20 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
 	Complexity: 1.4
@@ -131,13 +134,14 @@ System: PulsedShieldCharger
 	Tags: Shields, Link
 	Tied To: Shields_Root 0
 
-	Available: Techs.Shields_Root.Level >= 0
+	Available: Techs.Shields_Root.Level > 0
 	Level: Techs.Shields_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: 25 * Size * pow(HEALTH_CURVE,HPLevel) * GAME_SUBSYS_MULT
-	Mass: 50 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 25 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 
 	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[100 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[30 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
 	Complexity: 2.0
@@ -169,12 +173,13 @@ System: ShieldEmitter
 	Tags: Defense
 	Tied To: Shields_Root 0
 	
-	Available: Techs.Shields_Root.Level >= 0
+	Available: Techs.Shields_Root.Level > 0
 	Level: Techs.Shields_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
 	Size: Scale
 	Durability: 25 * Size * pow(HEALTH_CURVE,Level) * GAME_SUBSYS_MULT
-	Mass: 50 * Size * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 	
 	Costs: Metals[30 * Size * pow(SUBS_COST_CRV, Level)], Electronics[50 * Size * pow(SUBS_COST_CRV, Level)]
 	Complexity: 0.8
@@ -192,12 +197,14 @@ System: PlanetShields
 	Description: #SS_PLANETSHIELDS_DESC
 	Appearance: GeneralBuilding
 
-	Available: Techs.Shields_Root.Level >= 0
+	Available: Techs.Shields_Root.Level > 0
 	Level: Techs.Shields_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
+	HPLevel: Techs.Materials_Struct.Level
 	
 	Size: Scale
-	Durability: 800 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT
-	Mass: 800 * Size * pow(LEVEL_GAIN_CURVE, Level)
+	Durability: 800 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
+	Mass: (800 * Size) / (1 + (0.1 * MassLevel))
 	
 	Tags: Structure
 	Tied To: Shields_Root 0
@@ -224,13 +231,14 @@ System: ShieldBomb
 	Appearance: ShieldBomb
 	Explosion: subsystem_destroyed
 	
-	Available: Techs.Shields_Root.Level >= 0
+	Available: Techs.Shields_Root.Level > 0
 	Level: Techs.Shields_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level
 	
 	Size: max(Scale,1)
-	HPLevel: Techs.Materials.Level-1 As Level
-	Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
-	Mass: 75 * Size * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	HPLevel:  Techs.Materials_Root.Level
+	Durability: 100 * Size * pow(HEALTH_CURVE,Level) * GAME_SUBSYS_MULT
+	Mass: (75 * Size) / (1 + (0.1 * MassLevel))
 	
 	Tags: Weapon, Defense, Require:ShieldGen, Restrict:FighterBomber, NoModifiers
 	Tied To: Shields_Root 0

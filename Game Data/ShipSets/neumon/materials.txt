@@ -335,7 +335,7 @@ Material: neumon_huge
   Defer: High
  Texture: ../../Images/Ships/SuperWeaponBase.png
  FlagOn: NormalizeNorms
- SpecularFactor: 1
+ SpecularFactor: 12
  Specular: 666
  #if shaders
  Texture2: ../../Images/Ships/SuperWeaponGlow.png
@@ -349,12 +349,28 @@ Material: neumon_huge
  
  Material: green_neumon_superweapon
   Defer: High
- Texture: ../../Images/Ships/SuperWeaponBase.png
+ Texture: ../../Images/Ships/SuperWeaponBase_02.png
  FlagOn: NormalizeNorms
- SpecularFactor: 1
+ SpecularFactor: 12
  Specular: 666
  #if shaders
  Texture2: ../../Images/Ships/SuperWeaponGlowGreen.png
+ Texture3: ../../Images/Ships/no_marks.png 
+ Texture4: ../../Images/Ships/wear_marks.png
+ RenderMode: ShipLightsMarks
+ FlagOff: Lighting
+ #else
+ FlagOn: NormalizeNorms
+ #end
+
+ Material: neumon_supergate
+  Defer: High
+ Texture: ../../Images/Ships/gate_map.png
+ FlagOn: NormalizeNorms
+ SpecularFactor: 12
+ Specular: 666
+ #if shaders
+ Texture2: ../../Images/Ships/SupergateGlow.png
  Texture3: ../../Images/Ships/no_marks.png 
  Texture4: ../../Images/Ships/wear_marks.png
  RenderMode: ShipLightsMarks

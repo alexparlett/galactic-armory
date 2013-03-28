@@ -10,12 +10,14 @@ System: Armor
 	Equips To: Armor
 	PreDamageOrder: -5
 	
-	Available: Techs.Armor_Root.Level >= 0
+	Available: Techs.Armor_Root.Level > 0
 	Level: Techs.Armor_Root.Level
+	MassLevel: Techs.Armor_Mass.Level
+	HPLevel:  Techs.Armor_Root.Level
 	
 	Size: Scale
-	Durability: Size * 320 * pow(LEVEL_GAIN_CURVE, Level) * max((1 - (Object.Scale / 3600)), 0.75) * GAME_ARMOR_MULT		//was Size * 200
-	Mass: Size * 100 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
+	Durability: 320 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_ARMOR_MULT		//was Size * 200
+	Mass: (100 * Size) / (1 + (0.1 * MassLevel))
 	vDamageReduction: 12 * Object.Scale * max((1 - (Object.Scale / 7200)), 0.5) * pow(LEVEL_GAIN_CURVE, Level)						//was 15
 	
 	vMetal: 300 * Size
@@ -46,12 +48,14 @@ System: SoakArmor
 	Equips To: Armor
 	PreDamageOrder: -5
 	
-	Available: Techs.Armor_Root.Level >= 0
-	Level: Techs.Armor_Root.Level
+	Available: Techs.Armor_Special.Level > 0
+	Level: Techs.Armor_Special.Level
+	MassLevel: Techs.Armor_Mass.Level
+	HPLevel:  Techs.Armor_Root.Level
 	
 	Size: Scale
-	Durability: Size * 250 * pow(LEVEL_GAIN_CURVE, Level) * max((1 - (Object.Scale / 3600)), 0.75) * GAME_ARMOR_MULT		//was Size * 150
-	Mass: Size * 75 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
+	Durability: 250 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_ARMOR_MULT		//was Size * 150
+	Mass: (75 * Size) / (1 + (0.1 * MassLevel))
 	vDamageReduction: 18 * Object.Scale * max((1 - (Object.Scale / 7200)), 0.5) * pow(LEVEL_GAIN_CURVE, Level)				//was 20
 	
 	vMetal: 300 * Size
@@ -81,12 +85,14 @@ System: ReactArmor
 	Equips To: Armor
 	PreDamageOrder: -5
 	
-	Available: Techs.Armor_Root.Level >= 0
-	Level: Techs.Armor_Root.Level
+	Available: Techs.Armor_Special.Level > 0
+	Level: Techs.Armor_Special.Level
+	MassLevel: Techs.Armor_Mass.Level
+	HPLevel:  Techs.Armor_Root.Level
 	
 	Size: Scale
-	Durability: Size * 180 * pow(LEVEL_GAIN_CURVE, Level) * max((1 - (Object.Scale / 3600)), 0.75) * GAME_ARMOR_MULT				//was size * 150
-	Mass: Size * 85 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
+	Durability: 180 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_ARMOR_MULT				//was size * 150
+	Mass: (85 * Size) / (1 + (0.1 * MassLevel))
 	
 	vMetal: 300 * Size
 	vElec: 100 * Size
@@ -119,12 +125,14 @@ System: PowerArmor
 	Equips To: Armor
 	PreDamageOrder: -5
 	
-	Available: Techs.Armor_Root.Level >= 0
+	Available: Techs.Armor_Root.Level > 0
 	Level: Techs.Armor_Root.Level
+	MassLevel: Techs.Armor_Mass.Level
+	HPLevel:  Techs.Armor_Root.Level
 	
 	Size: Scale
-	Durability: Size * 250 * pow(LEVEL_GAIN_CURVE, Level) * max((1 - (Object.Scale / 3600)), 0.75) * GAME_ARMOR_MULT		//was Size * 100
-	Mass: Size * 40 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
+	Durability: 250 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_ARMOR_MULT		//was Size * 100
+	Mass: (40 * Size) / (1 + (0.1 * MassLevel))
 	vDamageReduction: 25 * Object.Scale * max((1 - (Object.Scale / 7200)), 0.5) * pow(LEVEL_GAIN_CURVE, Level)					//was 60
 	
 	vMetal: 400 * Size
@@ -161,15 +169,17 @@ System: NanoArmor
 	Equips To: Armor
 	PreDamageOrder: -5
 	
-	Available: Techs.Armor_Root.Level >= 0
+	Available: Techs.Armor_Root.Level > 0
 	Level: Techs.Armor_Root.Level
+	MassLevel: Techs.Armor_Mass.Level
+	HPLevel:  Techs.Armor_Root.Level
 	
-	armorLevel: Techs.Armor.Level As Level
-	nanoLevel: Techs.Nanotech.Level As Level
+	armorLevel: Techs.Armor.Level
+	nanoLevel: Techs.Nanotech.Level
 		
 	Size: Scale
-	Durability: Size * 100 * pow(LEVEL_GAIN_CURVE, armorLevel) * max((1 - (Object.Scale / 3600)), 0.75) * GAME_ARMOR_MULT		//was Size  * 75
-	Mass: Size * 60 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
+	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_ARMOR_MULT		//was Size  * 75
+	Mass: (60 * Size) / (1 + (0.1 * MassLevel))
 	vDamageReduction: 10 * Object.Scale * max((1 - (Object.Scale / 7200)), 0.5) * pow(LEVEL_GAIN_CURVE, Level)				//was 15
 	
 	vMetal: 400 * Size
@@ -211,12 +221,14 @@ System: ShieldArmor
 	Equips To: Armor
 	PreDamageOrder: -9
 	
-	Available: Techs.Armor_Root.Level >= 0
+	Available: Techs.Armor_Root.Level > 0
 	Level: Techs.Armor_Root.Level
+	MassLevel: Techs.Armor_Mass.Level
+	HPLevel:  Techs.Armor_Root.Level
 	
 	Size: Scale
-	Durability: Size * 200 * pow(LEVEL_GAIN_CURVE, Level) * max((1 - (Object.Scale / 3600)), 0.75) * GAME_ARMOR_MULT				//was Size * 50
-	Mass: Size * 50 * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
+	Durability: 200 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_ARMOR_MULT				//was Size * 50
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 	
 	vMetal: 200 * Size
 	vElec: 100 * Size
@@ -265,12 +277,14 @@ System: ArmorMount
 	Tags: Defense
 	Tied To: Armor_Root 0
 	
-	Available: Techs.Armor_Root.Level >= 0
+	Available: Techs.Armor_Root.Level > 0
 	Level: Techs.Armor_Root.Level
+	MassLevel: Techs.Armor_Mass.Level
+	HPLevel:  Techs.Armor_Root.Level
 	
 	Size: Scale
-	Durability: 25 * Size * pow(HEALTH_CURVE,Level) * GAME_SUBSYS_MULT	
-	Mass: 50 * Size * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
+	Durability: 25 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_ARMOR_MULT
+	Mass: (50 * Size) / (1 + (0.1 * MassLevel))
 	
 	Costs: Metals[50 * Size * pow(SUBS_COST_CRV, Level)]
 	Complexity: 0.6
@@ -292,12 +306,14 @@ System: Bulkhead
 	Tags: Defense, IndependentLink, Link
 	Tied To: Armor_Root 0
 	
-	Available: Techs.Armor_Root.Level >= 0
+	Available: Techs.Armor_Root.Level > 0
 	Level: Techs.Armor_Root.Level
+	MassLevel: Techs.Armor_Mass.Level
+	HPLevel:  Techs.Armor_Root.Level
 	
 	Size: Scale / 2
-	Durability: 100 * Size * pow(LEVEL_GAIN_CURVE, Level) * GAME_SUBSYS_MULT
-	Mass: 60 * Size * max((1 - (0.02 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.2)
+	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_ARMOR_MULT
+	Mass: (60 * Size) / (1 + (0.1 * MassLevel))
 	
 	Costs: Metals[80 * Size * pow(SUBS_COST_CRV, Level)]
 	Complexity: 0.6
