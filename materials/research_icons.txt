@@ -143,8 +143,164 @@ Material: infrastructure_orbital
 Material: infrastructure_He3
  Texture: Images/Research/infrastructure_He3.png
  
+//Maintenance
+Material: maintenance_root
+ Texture: Images/Research/maintenance_root.png
+ 
+Material: maintenance_recycling
+ Texture: Images/Research/maintenance_recycling.png
+
+Material: maintenance_management
+ Texture: Images/Research/maintenance_managment.png
+ 
+Material: maintenance_makeshift
+ Texture: Images/Research/maintenance_makeshift.png
+ 
+//Ship Construction
+Material: ship_construction_streamlined
+ Texture: Images/Research/ship_construction_streamlined.png
+ 
+Material: ship_construction_scalability
+ Texture: Images/Research/ship_construction_scalability.png
+ 
+Material: ship_construction_root
+ Texture: Images/Research/ship_construction_root.png
+ 
+Material: ship_construction_lightweight
+ Texture: Images/Research/ship_construction_lightweight.png
+ 
+//Materials
+Material: material_science_root
+ Texture: Images/Research/material_science_root.png
+ 
+Material: material_science_lightweight
+ Texture: Images/Research/material_science_lightweight.png
+ 
+Material: material_science_structural
+ Texture: Images/Research/material_science_structural.png
+ 
+Material: material_science_weapons
+ Texture: Images/Research/material_science_weapons.png 
+ 
+//Weapon Modifications
+Material: weapon_mod_automation
+ Texture: Images/Research/weapon_mod_automation.png
+ 
+Material: weapon_mod_mass_production
+ Texture: Images/Research/weapon_mod_mass_production.png
+ 
+Material: weapon_mod_reloader
+ Texture: Images/Research/weapon_mod_reloader.png
+ 
+Material: weapon_mod_root
+ Texture: Images/Research/weapon_mod_root.png  
+ 
+//Armor
+Material: armor_root
+ Texture: Images/Research/armor_root.png
+ 
+Material: armor_specialised
+ Texture: Images/Research/armor_specialised.png
+ 
+Material: armor_power
+ Texture: Images/Research/armor_power.png
+ 
+Material: armor_light
+ Texture: Images/Research/armor_light.png  
 
 
+//Shields
+Material: shields_root
+ Texture: Images/Research/shields_root.png
+ 
+Material: shields_regen
+ Texture: Images/Research/shields_regen.png
+ 
+Material: shields_power
+ Texture: Images/Research/shields_power.png
+ 
+Material: shields_density
+ Texture: Images/Research/shields_density.png  
+ 
+//Active Defenses
+Material: active_defense_boarding
+ Texture: Images/Research/active_defense_boarding.png
+ 
+Material: active_defense_electronic
+ Texture: Images/Research/active_defense_electronic.png
+ 
+Material: active_defense_root
+ Texture: Images/Research/active_defense_root.png
+ 
+Material: active_defense_specialized
+ Texture: Images/Research/active_defense_specialized.png   
+
+//Kinetics
+Material: balistics_hardened
+ Texture: Images/Research/balistics_hardened.png
+ 
+Material: balistics_pressure
+ Texture: Images/Research/balistics_pressure.png
+ 
+Material: balistics_root
+ Texture: Images/Research/balistics_root.png
+ 
+Material: balistics_targetting
+ Texture: Images/Research/balistics_targetting.png   
+ 
+ 
+//Heavy Ballistics
+Material: heavy_ballistics_devastation
+ Texture: Images/Research/heavy_ballistics_devastation.png
+ 
+Material: heavy_ballistics_payload
+ Texture: Images/Research/heavy_ballistics_payload.png
+ 
+Material: heavy_ballistics_root
+ Texture: Images/Research/heavy_ballistics_root.png
+ 
+Material: heavy_ballistics_targetting
+ Texture: Images/Research/heavy_ballistics_targetting.png  
+ 
+//Beam Energy Weapons
+Material: beam_weapons_root
+ Texture: Images/Research/beam_weapons_root.png
+ 
+Material: beam_weapons_modulation
+ Texture: Images/Research/beam_weapons_modulation.png
+ 
+Material: beam_weapons_focusing
+ Texture: Images/Research/beam_weapons_focusing.png
+ 
+Material: beam_weapons_energy
+ Texture: Images/Research/beam_weapons_energy.png   
+ 
+//Projectile Energy Weapons
+Material: energy_projectiles_fields
+ Texture: Images/Research/energy_projectiles_fields.png
+ 
+Material: energy_projectiles_modulation
+ Texture: Images/Research/energy_projectiles_modulation.png
+ 
+Material: energy_projectiles_projectors
+ Texture: Images/Research/energy_projectiles_projectors.png
+ 
+Material: energy_projectiles_root
+ Texture: Images/Research/energy_projectiles_root.png   
+ 
+//Torpedoes
+Material: torpedoes_engines
+ Texture: Images/Research/torpedoes_engines.png
+ 
+Material: torpedoes_miniaturization
+ Texture: Images/Research/torpedoes_miniaturization.png
+ 
+Material: torpedoes_reloader
+ Texture: Images/Research/torpedoes_reloader.png
+ 
+Material: torpedoes_root
+ Texture: Images/Research/torpedoes_root.png  
+ 
  ///////////////////////////////
  //OLD                        //
  ///////////////////////////////

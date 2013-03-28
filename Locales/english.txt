@@ -942,8 +942,8 @@
 #RS_INFRA_INDUSTRY_NAME: Terrestrial Industry
 #RS_INFRA_INDUSTRY_DESC: The study of technologies used to mine and refine resource and create goods out of them.\n#c:green##tab:8#Improves: Ammo / Fuel Production, Materials Production, Food Production
 
-#RS_INFRA_HELIUM3_NAME: Helium-3 Application
-#RS_INFRA_HELIUM3_DESC: The discipline of researching and improving possible applications of Helium-3.\n#c:green##tab:8#Improves: He3 Mining and Refining Rate, He3 Storage
+#RS_INFRA_HELIUM_NAME: Helium-3 Application
+#RS_INFRA_HELIUM_DESC: The discipline of researching and improving possible applications of Helium-3.\n#c:green##tab:8#Improves: He3 Mining and Refining Rate, He3 Storage
 
 #RS_INFRA_SPACEINDUSTRY_NAME: Orbital and Deep-Space Industry
 #RS_INFRA_SPACEINDUSTRY_DESC: The study of industrial enterprises in zero-G environments.\n#c:green##tab:8#Improves: Mining Rate, Material Production, Ammo Production, Storage

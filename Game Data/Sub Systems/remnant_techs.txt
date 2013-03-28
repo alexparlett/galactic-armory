@@ -131,10 +131,10 @@ System: CommandHull
 
     Available: Traits.remnants
 	Level: Techs.ShipCon_Root.Level
-	SizeLevel: Techs.ShipCon_Scale.Level
-	HPLevel: Techs.ShipCon_Root.Level
-	DiscountLevel: Techs.ShipCon_Cost.Level
-	MassLevel: Techs.ShipCon_Mass.Level
+	SizeLevel: Techs.ShipCon_Scale.Level As Level
+	HPLevel: Techs.ShipCon_Root.Level As Level
+	DiscountLevel: Techs.ShipCon_Cost.Level As Level
+	MassLevel: Techs.ShipCon_Mass.Level As Level
 
 	vMaxSize:  1000 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)

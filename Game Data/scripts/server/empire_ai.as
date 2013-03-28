@@ -54,6 +54,16 @@ void registerEmpireData(Empire@ emp) {
 	
 	if(emp.isValid()) {
 		if(emp.isAI()){
+			if(emp.ID == -2) {
+				print("Registering pirate AI for " + emp.getName());
+				emp.regScriptData("pirate_ai", "PirateAIData");
+				prep_pirate_ai_defaults(emp);
+			}
+			else if(emp.ID == -3) {
+				print("Registering remnant AI for " + emp.getName());
+				emp.regScriptData("remnant_ai", "RemnantAIData");
+				prep_remnant_ai_defaults(emp);
+			}		
 		}
 		else {
 			// Automatically govern new planets
@@ -110,7 +120,6 @@ void registerTeam(Empire@ from, Empire@ to, int team) {
 	// Set allied state (bidirectional)
 	from.setAllied(to, true);
 }
-
 
 /* Called for all empires that should start at war with each other */
 void registerHostilities(Empire@ from, Empire@ to) {

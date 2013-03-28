@@ -9,11 +9,12 @@ System: FlakTurret
 	
 	Available: Techs.ActiveDef_Root.Level > 0
 	Level: Techs.ActiveDef_Root.Level
+	
 	DamageLevel: Techs.ActiveDef_Root.Level
 	RangeLevel: Techs.ActiveDef_Root.Level
 	PointDefenseLevel: Techs.ActiveDef_Root.Level
-	HPLevel:  Techs.Materials_Weapons.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: max(Scale, 2)
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -61,11 +62,12 @@ System: Firestorm
 	
 	Available: Techs.ActiveDef_Root.Level > 0
 	Level: Techs.ActiveDef_Root.Level
+	
 	DamageLevel: Techs.ActiveDef_Root.Level
 	RangeLevel: Techs.ActiveDef_Root.Level
 	PointDefenseLevel: Techs.ActiveDef_Root.Level
-	HPLevel:  Techs.Materials_Weapons.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: max(Scale, 2)
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -108,11 +110,12 @@ System: PlanetDefenseNetwork
 
 	Available: Techs.ActiveDef_Root.Level > 0
 	Level: Techs.ActiveDef_Root.Level
+	
 	DamageLevel: Techs.ActiveDef_Root.Level
 	RangeLevel: Techs.ActiveDef_Root.Level
 	DelayLevel: Techs.ActiveDef_Root.Level
 	PointDefenseLevel: Techs.ActiveDef_Root.Level
-	HPLevel:  Techs.Materials_Struct.Level
+	HPLevel:  Techs.Materials_Struct.Level As Level
 	
 	Size: Scale
 	Durability: 800 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
@@ -160,9 +163,10 @@ System: StealthField
 	
 	Available: Techs.ActiveDef_EWS.Level > 0
 	Level: Techs.ActiveDef_EWS.Level
-	HPLevel:  Techs.Materials_Weapons.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	ECMLevel: Techs.ActiveDef_EWS.Level
+	
+	HPLevel:  Techs.Materials_Weapons.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	ECMLevel: Techs.ActiveDef_EWS.Level As Level
 	
 	Size: Scale
 	Durability: 25 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -201,9 +205,10 @@ System: PointDefense
 	
 	Available: Techs.ActiveDef_SpecDef.Level > 0
 	Level: Techs.ActiveDef_SpecDef.Level
-	HPLevel:  Techs.Materials_Weapons.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	PointDefenseLevel: Techs.ActiveDef_SpecDef.Level
+	
+	HPLevel:  Techs.Materials_Weapons.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	PointDefenseLevel: Techs.ActiveDef_SpecDef.Level As Level
 	
 	Size: Scale
 	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -241,8 +246,9 @@ System: BoardingDefense
 
 	Available: Techs.ActiveDef_Boarding.Level > 0
 	Level: Techs.ActiveDef_Boarding.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	BoardingDefenseLevel: Techs.ActiveDef_Boarding.Level
+	
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	BoardingDefenseLevel: Techs.ActiveDef_Boarding.Level As Level
 	
 	Size: Scale
 	Durability: 200 * Size * (1 + (BoardingDefenseLevel * GA_TECH_INCREASE)) * GAME_ARMOR_MULT
@@ -277,11 +283,12 @@ System: StealthHull
 
 	Available: Techs.ActiveDef_EWS.Level > 0
 	Level: Techs.ActiveDef_Root.Level
-	SizeLevel: Techs.ShipCon_Scale.Level
-	HPLevel: Techs.ShipCon_Root.Level
-	DiscountLevel: Techs.ShipCon_Cost.Level
-	MassLevel: Techs.ShipCon_Mass.Level
-	ECMLevel: Techs.ActiveDef_EWS.Level
+	
+	SizeLevel: Techs.ShipCon_Scale.Level As Level
+	HPLevel: Techs.ShipCon_Root.Level As Level As Level
+	DiscountLevel: Techs.ShipCon_Cost.Level As Level
+	MassLevel: Techs.ShipCon_Mass.Level As Level
+	ECMLevel: Techs.ActiveDef_EWS.Level As Level
 
 	vMaxSize:  50 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)

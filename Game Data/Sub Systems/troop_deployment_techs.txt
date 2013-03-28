@@ -3,10 +3,10 @@ System: Bunker
 	Description: #SS_BUNKER_DESC
 	Appearance: GeneralBuilding
 
-	Available: Techs.Troop_Root.Level > 0
-	Level: Techs.Troop_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	HPLevel: Techs.Materials_Struct.Level
+	Available: Techs.Troop_Root.Level  > 0
+	Level: Techs.Troop_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	HPLevel: Techs.Materials_Struct.Level As Level
 	
 	Size: Scale
 	Durability: 5000 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT			//was 12000 * size
@@ -38,12 +38,12 @@ System: BoardingParty
 	Appearance: BoardingParty
 	Explosion: subsystem_destroyed
 
-	Available: Techs.Troop_Root.Level > 0
-	Level: Techs.Troop_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	Available: Techs.Troop_Root.Level  > 0
+	Level: Techs.Troop_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials_Struct.Level
+	HPLevel: Techs.Materials_Struct.Level As Level
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
 	Mass: (80 * Size) / (1 + (0.1 * MassLevel))
 	
@@ -59,7 +59,7 @@ System: BoardingParty
 	Triggerable: PDEffect: PointDefenseTriggered
 
 	Provides: Boarding with Troops[vTroops], Range[vRange]
-	Provides: TroopQuarters with Amount[vTroops], Regen[vTroops * 0.010]
+	Provides: TroopQuarters with Amount[vTroops]
 
 	Requires:
 		To Run:

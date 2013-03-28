@@ -9,12 +9,12 @@ System: PowerGen
 
 	Available: Techs.Energy_Root.Level > 0
 	Level: Techs.Energy_Root.Level
-	PowerLevel: Techs.Energy_Root.Level
-	CapacitanceLevel: Techs.Energy_Cap.Level
-	ThermalLevel: Techs.Energy_Thermal.Level
-	EfficiencyLevel: Techs.Energy_Efficiency.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	PowerLevel: Techs.Energy_Root.Level As Level
+	CapacitanceLevel: Techs.Energy_Cap.Level As Level
+	ThermalLevel: Techs.Energy_Thermal.Level As Level
+	EfficiencyLevel: Techs.Energy_Efficiency.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: Scale
 	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -59,12 +59,12 @@ System: FusionGen
 
 	Available: Techs.Energy_Root.Level > 0
 	Level: Techs.Energy_Root.Level
-	PowerLevel: Techs.Energy_Root.Level
-	CapacitanceLevel: Techs.Energy_Cap.Level
-	ThermalLevel: Techs.Energy_Thermal.Level
-	EfficiencyLevel: Techs.Energy_Efficiency.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	PowerLevel: Techs.Energy_Root.Level As Level
+	CapacitanceLevel: Techs.Energy_Cap.Level As Level
+	ThermalLevel: Techs.Energy_Thermal.Level As Level
+	EfficiencyLevel: Techs.Energy_Efficiency.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: max(1, Scale)
 	Durability: 40 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -113,12 +113,12 @@ System: AntiMatterGen
 
 	Available: Techs.Energy_Root.Level > 0
 	Level: Techs.Energy_Root.Level
-	PowerLevel: Techs.Energy_Root.Level
-	CapacitanceLevel: Techs.Energy_Cap.Level
-	ThermalLevel: Techs.Energy_Thermal.Level
-	EfficiencyLevel: Techs.Energy_Efficiency.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	PowerLevel: Techs.Energy_Root.Level As Level
+	CapacitanceLevel: Techs.Energy_Cap.Level As Level
+	ThermalLevel: Techs.Energy_Thermal.Level As Level
+	EfficiencyLevel: Techs.Energy_Efficiency.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: max(2, Scale)
 	Durability: 25 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -169,12 +169,12 @@ System: ShieldedAntimatterGen
 
 	Available: Techs.Energy_Root.Level > 0
 	Level: Techs.Energy_Root.Level
-	PowerLevel: Techs.Energy_Root.Level
-	CapacitanceLevel: Techs.Energy_Cap.Level
-	ThermalLevel: Techs.Energy_Thermal.Level
-	EfficiencyLevel: Techs.Energy_Efficiency.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	PowerLevel: Techs.Energy_Root.Level As Level
+	CapacitanceLevel: Techs.Energy_Cap.Level As Level
+	ThermalLevel: Techs.Energy_Thermal.Level As Level
+	EfficiencyLevel: Techs.Energy_Efficiency.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: max(4, Scale)
 	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -221,12 +221,12 @@ System: ZeroPointGenerator
 
 	Available: Techs.Energy_Root.Level > 0
 	Level: Techs.Energy_Root.Level
-	PowerLevel: Techs.Energy_Root.Level
-	CapacitanceLevel: Techs.Energy_Cap.Level
-	ThermalLevel: Techs.Energy_Thermal.Level
-	EfficiencyLevel: Techs.Energy_Efficiency.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	PowerLevel: Techs.Energy_Root.Level As Level
+	CapacitanceLevel: Techs.Energy_Cap.Level As Level
+	ThermalLevel: Techs.Energy_Thermal.Level As Level
+	EfficiencyLevel: Techs.Energy_Efficiency.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: max(8, Scale)
 	Durability: 15 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -270,11 +270,11 @@ System: SolarPowerGen
 
 	Available: Techs.Energy_Root.Level > 0
 	Level: Techs.Materials_Root.Level
-	PowerLevel: Techs.Energy_Root.Level
-	CapacitanceLevel: Techs.Energy_Cap.Level
-	EfficiencyLevel: Techs.Energy_Efficiency.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	PowerLevel: Techs.Energy_Root.Level As Level
+	CapacitanceLevel: Techs.Energy_Cap.Level As Level
+	EfficiencyLevel: Techs.Energy_Efficiency.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: Scale
 	Durability: 15 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -313,9 +313,9 @@ System: Capacitor
 
 	Available: Techs.Energy_Cap.Level > 0
 	Level: Techs.Materials_Root.Level
-	CapacitanceLevel: Techs.Energy_Cap.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	CapacitanceLevel: Techs.Energy_Cap.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -347,9 +347,9 @@ System: QuantumBattery
 
 	Available: Techs.Energy_Cap.Level > 0
 	Level: Techs.Materials_Root.Level
-	CapacitanceLevel: Techs.Energy_Cap.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	CapacitanceLevel: Techs.Energy_Cap.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: Scale
 	Durability: 60 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -386,9 +386,9 @@ System: MatterGen
 	Available: Techs.Energy_Root.Level > 0
 	Level: Techs.Energy_Root.Level
 	MatterLevel: Techs.Energy_Root.Level
-	EfficiencyLevel: Techs.Energy_Efficiency.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	EfficiencyLevel: Techs.Energy_Efficiency.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: Scale
 	Durability: 40 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -431,9 +431,9 @@ System: Heatsink
 
 	Available: Techs.Energy_Thermal.Level > 0
 	Level: Techs.Materials_Root.Level
-	ThermalLevel: Techs.Energy_Thermal.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	ThermalLevel: Techs.Energy_Thermal.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: Scale
 	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -467,8 +467,8 @@ System: AMConverter
 
 	Available: Techs.Energy_Thermal.Level > 0
 	Level: Techs.Materials_Root.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: Scale
 	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -500,9 +500,9 @@ System: BackupPower
 
 	Available: Techs.Energy_Root.Level > 0
 	Level: Techs.Energy_Root.Level
-	PowerLevel: Techs.Energy_Root.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	PowerLevel: Techs.Energy_Root.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: Scale
 	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT

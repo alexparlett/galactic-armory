@@ -20,7 +20,6 @@
 //			This typically involves analyzing the situation, and giving orders to objects to fit the situation
 //			As well as adjusting empire settings, such as the current research.
 //
-#include "/ai_personalities.as"
 
 //Logs a single empire
 bool logEmpire = false;
@@ -30,57 +29,6 @@ string@ str_presence = "prs", str_visited = "visited", str_planets = "planets", 
 string@ str_fighterHull = "FighterHull", str_mediumHull = "MediumHull";
 
 const float twoPi = 6.28318531f;
-
-//A weighted list
-//Holds matched weight:value pairs
-//Pick a specific or random value out of all the values via weight (out of total)
-class WeightList {
-	float[] weights;
-	int[] values;
-	
-	void addWeight(float weight, int value) {
-		uint len = weights.length();
-		weights.resize(len + 1);
-		weights[len] = weight;
-		values.resize(len + 1);
-		values[len] = value;
-	}
-	
-	void clear() {
-		weights.resize(0);
-		values.resize(0);
-	}
-	
-	float get_totalWeight() const {
-		float total = 0;
-		uint wCnt = weights.length();
-		for(uint i = 0; i < wCnt; ++i)
-			total += weights[i];
-		return total;
-	}
-	
-	//Returns a value based on the passed input between 0 and totalWeight
-	//Note: Negative values will return the last value, rather than the first
-	int pick(float input) const {
-		float runningTotal = 0;
-		uint wCnt = weights.length();
-		for(uint i = 0; i < wCnt; ++i) {
-			float weight = weights[i];
-			if(input >= runningTotal && input < runningTotal + weight)
-				return values[i];
-			runningTotal += weight;
-		}
-		
-		if(wCnt > 0)
-			return values[wCnt-1];
-		else
-			return 0;
-	}
-	
-	int pickRand() const {
-		return pick(randomf(totalWeight));
-	}
-};
 
 enum GoalID {
 	GID_Invalid = 0,		//Erudite Only
@@ -288,10 +236,8 @@ class PersonalityDesc {
 };
 
 PersonalityDesc@[] persDesc;
-int basicPersonalities = 0;
 
 void loadPersonalities(XMLReader@ xml, bool loadNow) {
-	basicPersonalities = 0;
 	while(xml.advance()) {
 		switch(xml.getNodeType()) {
 			case XN_Element:
@@ -302,12 +248,6 @@ void loadPersonalities(XMLReader@ xml, bool loadNow) {
 					uint n = persDesc.length();
 					persDesc.resize(n+1);
 					@persDesc[n] = PersonalityDesc(file, forAI);
-
-					if (forAI == "basic_ai") {
-						if (loadNow)
-							addPersonality(file);
-						basicPersonalities += 1;
-					}
 				}
 				break;
 			case XN_Element_End:

@@ -3,11 +3,11 @@ System: City
 	Description: #SS_CITY_DESC
 	Appearance: GeneralBuilding
 
-	Available: Techs.Infra_Root.Level > 0
+	Available: Techs.Infra_Root.Level  > 0
 	Level: Techs.Infra_Root.Level
 	DamageResistanceLevel: Techs.Infra_Root.Level
-	PopulationLevel: Techs.Col_Sociology.Level
-	HPLevel:  Techs.Materials_Struct.Level
+	PopulationLevel: Techs.Col_Sociology.Level As Level
+	HPLevel:  Techs.Materials_Struct.Level As Level
 	
 	Size: Scale
 	Durability: 500 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
@@ -39,10 +39,10 @@ System: MetalMine
 	Description: #SS_METALMINE_DESC
 	Appearance: GeneralBuilding
 
-	Available: Techs.Infra_Industry.Level > 0
+	Available: Techs.Infra_Industry.Level  > 0
 	Level: Techs.Infra_Industry.Level
-	MiningLevel: Techs.Infra_Industry.Level
-	HPLevel:  Techs.Materials_Struct.Level
+	MiningLevel: Techs.Infra_Industry.Level As Level
+	HPLevel:  Techs.Materials_Struct.Level As Level
 	
 	Size: Scale
 	Durability: 500 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
@@ -78,10 +78,10 @@ System: ElectronicFact
 	Description: #SS_ELECTFACT_DESC
 	Appearance: GeneralBuilding
 
-	Available: Techs.Infra_Industry.Level > 0
+	Available: Techs.Infra_Industry.Level  > 0
 	Level: Techs.Infra_Industry.Level
-	MiningLevel: Techs.Infra_Industry.Level
-	HPLevel:  Techs.Materials_Struct.Level
+	MiningLevel: Techs.Infra_Industry.Level As Level
+	HPLevel:  Techs.Materials_Struct.Level As Level
 	
 	Size: Scale
 	Durability: 500 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
@@ -117,10 +117,10 @@ System: AdvPartFact
 	Description: #SS_ADVFACT_DESC
 	Appearance: GeneralBuilding
 
-	Available: Techs.Infra_Industry.Level > 0
+	Available: Techs.Infra_Industry.Level  > 0
 	Level: Techs.Infra_Industry.Level
-	MiningLevel: Techs.Infra_Industry.Level
-	HPLevel:  Techs.Materials_Struct.Level
+	MiningLevel: Techs.Infra_Industry.Level As Level
+	HPLevel:  Techs.Materials_Struct.Level As Level
 	
 	Size: Scale
 	Durability: 500 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
@@ -156,10 +156,10 @@ System: GoodsFactory
 	Description: #SS_GOODSFACT_DESC
 	Appearance: GeneralBuilding
 
-	Available: Techs.Infra_Industry.Level > 0
-	Level: Techs.Infra_Industry.Level
-	MiningLevel: Techs.Infra_Industry.Level
-	HPLevel:  Techs.Materials_Struct.Level
+	Available: Techs.Infra_Industry.Level  > 0
+	Level: Techs.Infra_Industry.Level 
+	MiningLevel: Techs.Infra_Industry.Level As Level
+	HPLevel:  Techs.Materials_Struct.Level As Level
 	
 	Size: Scale
 	Durability: 500 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
@@ -191,10 +191,10 @@ System: LuxsFactory
 	Description: #SS_LUXSFACT_DESC
 	Appearance: GeneralBuilding
 	
-	Available: Techs.Infra_Industry.Level > 0
-	Level: Techs.Infra_Industry.Level
-	MiningLevel: Techs.Infra_Industry.Level
-	HPLevel:  Techs.Materials_Struct.Level
+	Available: Techs.Infra_Industry.Level  > 0
+	Level: Techs.Infra_Industry.Level 
+	MiningLevel: Techs.Infra_Industry.Level As Level
+	HPLevel:  Techs.Materials_Struct.Level As Level
 	
 	Size: Scale
 	Durability: 500 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
@@ -225,10 +225,10 @@ System: Capital
 	Description: #SS_CAPITAL_DESC
 	Appearance: GeneralBuilding
 
-	Available: Techs.Infra_Root.Level > 0
-	Level: Techs.Infra_Root.Level
+	Available: Techs.Infra_Root.Level  > 0
+	Level: Techs.Infra_Root.Level 
 	TradeLevel: Techs.Infra_Root.Level
-	HPLevel:  Techs.Materials_Struct.Level
+	HPLevel:  Techs.Materials_Struct.Level As Level
 	
 	Size: Scale
 	Durability: 2000 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
@@ -291,19 +291,17 @@ System: GalacticCapital
 	Appearance: GeneralBuilding
 
 
-	Available: Techs.Infra_Root.Level > 0
-	Level: Techs.Infra_Root.Level
+	Available: Techs.Infra_Root.Level  > 0
+	Level: Techs.Infra_Root.Level 
 	TradeLevel: Techs.Infra_Root.Level
-	HPLevel:  Techs.Materials_Struct.Level
+	HPLevel:  Techs.Materials_Struct.Level As Level
 	
 	Size: Scale
 	Durability: 20000 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
 	Mass: 400 * Size
 	
-	Tags: Structure, Unique, Capitol, Unique:Capitol
-	Tied To: Infra_Root 0
-	
 	Tags: Structure, Unique, NoManualBuild, Capitol, Unique:Capitol, OnHomeWorld
+	Tied To: Infra_Root 0
 	
 	Complexity: 1 * STRUCT_COMPLX_MULT
 	vCapitalMetalRate: Size * 50
@@ -353,10 +351,10 @@ System: Farm
 	Description: #SS_FARM_DESC
 	Appearance: GeneralBuilding
 
-	Available: Techs.Infra_Root.Level > 0
-	Level: Techs.Infra_Root.Level
+	Available: Techs.Infra_Root.Level  > 0
+	Level: Techs.Infra_Root.Level 
 	FoodLevel: Techs.Infra_Root.Level
-	HPLevel:  Techs.Materials_Struct.Level
+	HPLevel:  Techs.Materials_Struct.Level As Level
 	
 	Size: Scale
 	Durability: 500 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
@@ -393,17 +391,17 @@ System: HeliumRefinery
 	Description: #SS_HELIUMREFINERY_DESC
 	Appearance: GeneralBuilding
 
-	Available: Techs.Infra_Helium3.Level > 0
-	Level: Techs.Infra_Helium3.Level
-	He3RefiningLevel: Techs.Infra_Helium3.Level
-	HPLevel:  Techs.Materials_Struct.Level
+	Available: Techs.Infra_Helium.Level  > 0
+	Level: Techs.Infra_Helium.Level 
+	HeRefiningLevel: Techs.Infra_Helium.Level As Level
+	HPLevel:  Techs.Materials_Struct.Level As Level
 	
 	Size: Scale
 	Durability: 500 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
 	Mass: 400 * Size
 	
 	Tags: Structure
-	Tied To: Infra_Helium3 0
+	Tied To: Infra_Helium 0
 	
 	vMetal: 200 * Size
 	vElec: 80 * Size
@@ -412,8 +410,8 @@ System: HeliumRefinery
 	Complexity: 1 * STRUCT_COMPLX_MULT
 	
 	vWorkers: Size * 600000
-	vFuelRate: Size * 3 * (1 + (He3RefiningLevel * GA_TECH_INCREASE)) * RES_GEN_MULT
-	vFuelStore: Size * 100 * (1 + (He3RefiningLevel * GA_TECH_INCREASE)) * RES_GEN_MULT
+	vFuelRate: Size * 3 * (1 + HeRefiningLevel * GA_TECH_INCREASE) * RES_GEN_MULT
+	vFuelStore: Size * 100 * (1 + HeRefiningLevel * GA_TECH_INCREASE) * RES_GEN_MULT
 
 	Provides: RefineHE3 with
 		Rate[vFuelRate]
@@ -436,11 +434,11 @@ System: ConstructionBay
     Tags: BuildBay, BuildsShips, PostOrder:Fetch:Metals:0.3, PostOrder:Fetch:Electronics:0.3, PostOrder:Fetch:AdvParts:0.3, PostOrder:Fetch:Fuel:0.3, PostOrder:Fetch:Ammo:0.3, Storage:Resources
 	Tied To: Infra_SpaceIndustry 0
     
-	Available: Techs.Infra_SpaceIndustry.Level > 0
-	Level: Techs.Infra_SpaceIndustry.Level
-	EcoStoreLevel: Techs.Infra_SpaceIndustry.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	Available: Techs.Infra_SpaceIndustry.Level  > 0
+	Level: Techs.Infra_SpaceIndustry.Level 
+	EcoStoreLevel: Techs.Infra_SpaceIndustry.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	Durability: 10 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -485,11 +483,11 @@ System: Refinery
     Tags: Deposit:Metals
 	Tied To: Infra_SpaceIndustry 0
     
-	Available: Techs.Infra_SpaceIndustry.Level > 0
-	Level: Techs.Infra_SpaceIndustry.Level
-	MetalRefiningLevel: Techs.Infra_SpaceIndustry.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	Available: Techs.Infra_SpaceIndustry.Level  > 0
+	Level: Techs.Infra_SpaceIndustry.Level 
+	MetalRefiningLevel: Techs.Infra_SpaceIndustry.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	Durability: 30 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -529,11 +527,11 @@ System: ElectsFab
     Tags: Deposit:Electronics
 	Tied To: Infra_SpaceIndustry 0
     
-	Available: Techs.Infra_SpaceIndustry.Level > 0
-	Level: Techs.Infra_SpaceIndustry.Level
-	ElecFabLevel: Techs.Infra_SpaceIndustry.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	Available: Techs.Infra_SpaceIndustry.Level  > 0
+	Level: Techs.Infra_SpaceIndustry.Level 
+	ElecFabLevel: Techs.Infra_SpaceIndustry.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	Durability: 30 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -573,11 +571,11 @@ System: AdvAssembler
     Tags: Deposit:AdvParts
 	Tied To: Infra_SpaceIndustry 0
     
-	Available: Techs.Infra_SpaceIndustry.Level > 0
-	Level: Techs.Infra_SpaceIndustry.Level
-	AdvFabLevel: Techs.Infra_SpaceIndustry.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	Available: Techs.Infra_SpaceIndustry.Level  > 0
+	Level: Techs.Infra_SpaceIndustry.Level 
+	AdvFabLevel: Techs.Infra_SpaceIndustry.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	Durability: 30 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -615,11 +613,11 @@ System: AmmoProducer
     Appearance: AmmoFabricator
     Explosion: fuel_cell_explode
 
-	Available: Techs.Infra_SpaceIndustry.Level > 0
-	Level: Techs.Infra_SpaceIndustry.Level
-	AmmoLevel: Techs.Infra_SpaceIndustry.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	Available: Techs.Infra_SpaceIndustry.Level  > 0
+	Level: Techs.Infra_SpaceIndustry.Level 
+	AmmoLevel: Techs.Infra_SpaceIndustry.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Tags: Deposit:Ammo
 	Tied To: Infra_SpaceIndustry 0
@@ -662,13 +660,13 @@ System: H3Refinery
     Explosion: subsys_powerexplode lasting 0.5
     
     Tags: Deposit:Fuel
-	Tied To: Infra_Helium3 0
+	Tied To: Infra_Helium 0
     
-	Available: Techs.Infra_Helium3.Level > 0
-	Level: Techs.Infra_Helium3.Level
-	He3RefiningLevel: Techs.Infra_Helium3.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	Available: Techs.Infra_Helium.Level  > 0
+	Level: Techs.Infra_Helium.Level 
+	HeRefiningLevel: Techs.Infra_Helium.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: Scale
 	Durability: 20 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -682,8 +680,8 @@ System: H3Refinery
 	
 	Tick Rate: 1
 
-	vFuelStore: Size * 10 * (1 + (He3RefiningLevel * GA_TECH_INCREASE)) * RES_GEN_MULT
-	vRate: Size * 2 * (1 + (He3RefiningLevel * GA_TECH_INCREASE)) * RES_GEN_MULT  // vFabRate gets altered by trait no_bank!
+	vFuelStore: Size * 10 * (1 + HeRefiningLevel * GA_TECH_INCREASE) * RES_GEN_MULT
+	vRate: Size * 2 * (1 + HeRefiningLevel * GA_TECH_INCREASE) * RES_GEN_MULT  // vFabRate gets altered by trait no_bank!
 	vCost: 2.0
    
     Provides: RefineH3 with
@@ -712,10 +710,10 @@ System: MiningLaser
 	Tied To: Infra_SpaceIndustry 0
     
 	Available: Techs.Infra_SpaceIndustry.Level > 0
-	Level: Techs.Infra_SpaceIndustry.Level
-	OreHarvestingLevel: Techs.Infra_SpaceIndustry.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	Level: Techs.Infra_SpaceIndustry.Level 
+	OreHarvestingLevel: Techs.Infra_SpaceIndustry.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -748,13 +746,13 @@ System: H3Harvester
 	Explosion: subsystem_destroyed
     
     Tags: Harvester, Tool:Harvester, Work:Harvester
-	Tied To: Infra_Helium3 0
+	Tied To: Infra_Helium 0
     
-	Available: Techs.Infra_Helium3.Level > 0
-	Level: Techs.Infra_Helium3.Level
-	He3HarvestingLevel: Techs.Infra_Helium3.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	Available: Techs.Infra_Helium.Level > 0
+	Level: Techs.Infra_Helium.Level 
+	HeHarvestingLevel: Techs.Infra_Helium.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -766,7 +764,7 @@ System: H3Harvester
 	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[5 * Size]
 	Complexity: 1
     
-    vRate: Size * 5 * (1 + (He3HarvestingLevel * GA_TECH_INCREASE)) * RES_GEN_MULT
+    vRate: Size * 5 * (1 + HeHarvestingLevel * GA_TECH_INCREASE) * RES_GEN_MULT
     vDelay: 5 * GAME_RELOAD_MULT
     vDuration: 5
     vPowCost: Size * 60
@@ -786,13 +784,13 @@ System: HydrogenStorage
 	Explosion: fuel_cell_explode
 	
 	Tags: Storage:H3, Storage, CargoBay
-	Tied To: Infra_Helium3 0
+	Tied To: Infra_Helium 0
 	
-	Available: Techs.Infra_Helium3.Level > 0
-	Level: Techs.Infra_Helium3.Level
-	He3StorageLevel: Techs.Infra_Helium3.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	Available: Techs.Infra_Helium.Level  > 0
+	Level: Techs.Infra_Helium.Level 
+	HeStorageLevel: Techs.Infra_Helium.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: Scale
 	Durability: 20 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -806,7 +804,7 @@ System: HydrogenStorage
 
 	Tick Rate: 1
 	
-	vCargoStore: Size * 100 * (1 + (He3StorageLevel * GA_TECH_INCREASE)) * RES_GEN_MULT
+	vCargoStore: Size * 100 * (1 + HeStorageLevel * GA_TECH_INCREASE) * RES_GEN_MULT
 	
 	Provides: H3Storage with
 		Amount[vCargoStore]

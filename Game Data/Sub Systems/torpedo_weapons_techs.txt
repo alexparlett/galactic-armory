@@ -24,14 +24,14 @@ System: TorpedoBay
     Appearance: TorpedoBay
 	Explosion: subsystem_destroyed
 
-    Available: Techs.Torpedo_Root.Level > 0
-    Level: Techs.Torpedo_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+    Available: Techs.Torpedo_Root.Level  > 0
+    Level: Techs.Torpedo_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.Torpedo_Root.Level
-	RangeLevel: Techs.Torpedo_Engines.Level
-	PrepLevel: Techs.Torpedo_Preparation.Level
-	AmmoLevel: Techs.Torpedo_Miniaturization.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.Torpedo_Engines.Level As Level
+	PrepLevel: Techs.Torpedo_Preparation.Level As Level
+	AmmoLevel: Techs.Torpedo_Miniaturization.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
     Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -68,14 +68,14 @@ System: NaniteTorpedoBay
     Appearance: NaniteTorpedoLauncher
 	Explosion: subsystem_destroyed
 
-    Available: Techs.Torpedo_Root.Level > 0
-    Level: Techs.Torpedo_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+    Available: Techs.Torpedo_Root.Level  > 0
+    Level: Techs.Torpedo_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.Torpedo_Root.Level
-	RangeLevel: Techs.Torpedo_Engines.Level
-	PrepLevel: Techs.Torpedo_Preparation.Level
-	AmmoLevel: Techs.Torpedo_Miniaturization.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.Torpedo_Engines.Level As Level
+	PrepLevel: Techs.Torpedo_Preparation.Level As Level
+	AmmoLevel: Techs.Torpedo_Miniaturization.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
     Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -113,14 +113,14 @@ System: FusionTorpedoBay
     Appearance: FusionTorpedoLauncher
     Explosion: antimatter_boom2 centered lasting 1.0
 
-    Available: Techs.Torpedo_Root.Level > 0
-    Level: Techs.Torpedo_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+    Available: Techs.Torpedo_Root.Level  > 0
+    Level: Techs.Torpedo_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.Torpedo_Root.Level
-	RangeLevel: Techs.Torpedo_Engines.Level
-	PrepLevel: Techs.Torpedo_Preparation.Level
-	AmmoLevel: Techs.Torpedo_Miniaturization.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.Torpedo_Engines.Level As Level
+	PrepLevel: Techs.Torpedo_Preparation.Level As Level
+	AmmoLevel: Techs.Torpedo_Miniaturization.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
     Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -138,7 +138,7 @@ System: FusionTorpedoBay
     vDeviation: 0.1
     vRange: (240 + (5 * sqrt(Size))) *  (1 + (0.1 * RangeLevel))
     vSpeed: (vRange / 7)  * (1 + (RangeLevel * GA_TECH_INCREASE))
-    vAmmoUse: (5 * Size) / (1 + (0.1 * AmmoLevel))vAmmoUse: 5 * Size
+    vAmmoUse: (5 * Size) / (1 + (0.1 * AmmoLevel))
 
     Provides: AoETorpedoTrigger with Damage[vDamage], AoE_Range[vAoE_Range], Delay[vDelay], AmmoUse[vAmmoUse], Range[vRange], Speed[vSpeed], Deviation[vDeviation]
     
@@ -163,14 +163,14 @@ System: TerahertzTorpedo
     Appearance: TeraTorpedo
 	Explosion: subsystem_destroyed
 
-    Available: Techs.Torpedo_Root.Level > 0
-    Level: Techs.Torpedo_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+    Available: Techs.Torpedo_Root.Level  > 0
+    Level: Techs.Torpedo_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.Torpedo_Root.Level
-	RangeLevel: Techs.Torpedo_Engines.Level
-	PrepLevel: Techs.Torpedo_Preparation.Level
-	AmmoLevel: Techs.Torpedo_Miniaturization.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.Torpedo_Engines.Level As Level
+	PrepLevel: Techs.Torpedo_Preparation.Level As Level
+	AmmoLevel: Techs.Torpedo_Miniaturization.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
     Durability: GAME_SUBSYS_MULT * 100 * Size * pow(HEALTH_CURVE,HPLevel)
@@ -207,14 +207,14 @@ System: FighterTorpedo
 	Description: #SS_FTORPEDO_DESC
 	Appearance: FighterTorpedo
 
-    Available: Techs.Torpedo_Root.Level > 0
-    Level: Techs.Torpedo_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+    Available: Techs.Torpedo_Root.Level  > 0
+    Level: Techs.Torpedo_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.Torpedo_Root.Level
-	RangeLevel: Techs.Torpedo_Engines.Level
-	PrepLevel: Techs.Torpedo_Preparation.Level
-	AmmoLevel: Techs.Torpedo_Miniaturization.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.Torpedo_Engines.Level As Level
+	PrepLevel: Techs.Torpedo_Preparation.Level As Level
+	AmmoLevel: Techs.Torpedo_Miniaturization.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -251,14 +251,14 @@ System: BomberHeavyTorpedo
 	Description: #SS_BOMBERTORPEDO_DESC
 	Appearance: BomberHeavyTorpedo
 
-    Available: Techs.Torpedo_Root.Level > 0
-    Level: Techs.Torpedo_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+    Available: Techs.Torpedo_Root.Level  > 0
+    Level: Techs.Torpedo_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.Torpedo_Root.Level
-	RangeLevel: Techs.Torpedo_Engines.Level
-	PrepLevel: Techs.Torpedo_Preparation.Level
-	AmmoLevel: Techs.Torpedo_Miniaturization.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.Torpedo_Engines.Level As Level
+	PrepLevel: Techs.Torpedo_Preparation.Level As Level
+	AmmoLevel: Techs.Torpedo_Miniaturization.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT

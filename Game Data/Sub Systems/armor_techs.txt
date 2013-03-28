@@ -12,7 +12,8 @@ System: Armor
 	
 	Available: Techs.Armor_Root.Level > 0
 	Level: Techs.Armor_Root.Level
-	MassLevel: Techs.Armor_Mass.Level
+	
+	MassLevel: Techs.Armor_Mass.Level As Level
 	HPLevel:  Techs.Armor_Root.Level
 	
 	Size: Scale
@@ -50,7 +51,8 @@ System: SoakArmor
 	
 	Available: Techs.Armor_Special.Level > 0
 	Level: Techs.Armor_Special.Level
-	MassLevel: Techs.Armor_Mass.Level
+	
+	MassLevel: Techs.Armor_Mass.Level As Level
 	HPLevel:  Techs.Armor_Root.Level
 	
 	Size: Scale
@@ -87,7 +89,8 @@ System: ReactArmor
 	
 	Available: Techs.Armor_Special.Level > 0
 	Level: Techs.Armor_Special.Level
-	MassLevel: Techs.Armor_Mass.Level
+	
+	MassLevel: Techs.Armor_Mass.Level As Level
 	HPLevel:  Techs.Armor_Root.Level
 	
 	Size: Scale
@@ -127,7 +130,8 @@ System: PowerArmor
 	
 	Available: Techs.Armor_Root.Level > 0
 	Level: Techs.Armor_Root.Level
-	MassLevel: Techs.Armor_Mass.Level
+	
+	MassLevel: Techs.Armor_Mass.Level As Level
 	HPLevel:  Techs.Armor_Root.Level
 	
 	Size: Scale
@@ -171,11 +175,12 @@ System: NanoArmor
 	
 	Available: Techs.Armor_Root.Level > 0
 	Level: Techs.Armor_Root.Level
-	MassLevel: Techs.Armor_Mass.Level
+	
+	MassLevel: Techs.Armor_Mass.Level As Level
 	HPLevel:  Techs.Armor_Root.Level
 	
-	armorLevel: Techs.Armor.Level
-	nanoLevel: Techs.Nanotech.Level
+	armorLevel: Techs.Armor.Level As Level
+	nanoLevel: Techs.Nanotech.Level As Level
 		
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_ARMOR_MULT		//was Size  * 75
@@ -223,7 +228,8 @@ System: ShieldArmor
 	
 	Available: Techs.Armor_Root.Level > 0
 	Level: Techs.Armor_Root.Level
-	MassLevel: Techs.Armor_Mass.Level
+	
+	MassLevel: Techs.Armor_Mass.Level As Level
 	HPLevel:  Techs.Armor_Root.Level
 	
 	Size: Scale
@@ -279,7 +285,8 @@ System: ArmorMount
 	
 	Available: Techs.Armor_Root.Level > 0
 	Level: Techs.Armor_Root.Level
-	MassLevel: Techs.Armor_Mass.Level
+	
+	MassLevel: Techs.Armor_Mass.Level As Level
 	HPLevel:  Techs.Armor_Root.Level
 	
 	Size: Scale
@@ -308,7 +315,8 @@ System: Bulkhead
 	
 	Available: Techs.Armor_Root.Level > 0
 	Level: Techs.Armor_Root.Level
-	MassLevel: Techs.Armor_Mass.Level
+	
+	MassLevel: Techs.Armor_Mass.Level As Level
 	HPLevel:  Techs.Armor_Root.Level
 	
 	Size: Scale / 2

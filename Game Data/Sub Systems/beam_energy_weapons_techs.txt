@@ -1,3 +1,24 @@
+
+//	Variables Used
+//
+//////////////////////////
+//
+//	vDamage - All Types of Damage
+//	vDelay - Reload Time
+//	vDeviation
+//	vPowCost - Power Costs
+//	vRange - Weapons Range ONLY! Not used for AoE Effect Range
+//	vEffectiveRange - Effective Range
+//	vMinDmg - Lowest Damage
+//	vWasteHeat - Heat Needed
+//	vAoE_Range - Range AoE Weapons Effect
+//	vRequiredCharge - Charge needed for Charge to Fire
+//	vSpeed - Weapon Speed
+// 	vMinHit - Minimum Hit Chance
+// 	vAccuracy - Hit Chance
+//
+//////////////////////////
+
 System: PlanetLaser
 	Name: #SS_PLANETLASER_NAME
 	Description: #SS_PLANETLASER_DESC
@@ -5,11 +26,12 @@ System: PlanetLaser
 
 	Available: Techs.BeamEnergy_Root.Level > 0
 	Level: Techs.BeamEnergy_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	HPLevel: Techs.Materials_Struct.Level
+	
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	HPLevel: Techs.Materials_Struct.Level As Level
 	DamageLevel: Techs.BeamEnergy_Root.Level
-	RangeLevel: Techs.BeamEnergy_Focus.Level
-	WaveLevel: Techs.BeamEnergy_Wavelength.Level
+	RangeLevel: Techs.BeamEnergy_Focus.Level As Level
+	WaveLevel: Techs.BeamEnergy_Wavelength.Level As Level
 	
 	Size: Scale
 	Durability: 800 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
@@ -39,27 +61,6 @@ System: PlanetLaser
 			Workers[vWorkers]
 
 	Hints: Workers[vWorkers * -1], DPS[vDuration * vDamage / vDelay], Range[vRange], HP[Durability]
-
-//	Variables Used
-//
-//////////////////////////
-//
-//	vDamage - All Types of Damage
-//	vDelay - Reload Time
-//	vDeviation
-//	vPowCost - Power Costs
-//	vRange - Weapons Range ONLY! Not used for AoE Effect Range
-//	vEffectiveRange - Effective Range
-//	vMinDmg - Lowest Damage
-//	vWasteHeat - Heat Needed
-//	vAoE_Range - Range AoE Weapons Effect
-//	vRequiredCharge - Charge needed for Charge to Fire
-//	vSpeed - Weapon Speed
-// 	vMinHit - Minimum Hit Chance
-// 	vAccuracy - Hit Chance
-//
-//////////////////////////
-
 	
 System: Laser
 	Name: #SS_LASER_NAME
@@ -69,12 +70,13 @@ System: Laser
 	
 	Available: Techs.BeamEnergy_Root.Level > 0
 	Level: Techs.BeamEnergy_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.BeamEnergy_Root.Level
-	RangeLevel: Techs.BeamEnergy_Focus.Level
-	PowerLevel: Techs.BeamEnergy_Efficiency.Level
-	WaveLevel: Techs.BeamEnergy_Wavelength.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.BeamEnergy_Focus.Level As Level
+	PowerLevel: Techs.BeamEnergy_Efficiency.Level As Level
+	WaveLevel: Techs.BeamEnergy_Wavelength.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -114,12 +116,13 @@ System: OverchargeLaser
 	
 	Available: Techs.BeamEnergy_Root.Level > 0
 	Level: Techs.BeamEnergy_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.BeamEnergy_Root.Level
-	RangeLevel: Techs.BeamEnergy_Focus.Level
-	PowerLevel: Techs.BeamEnergy_Efficiency.Level
-	WaveLevel: Techs.BeamEnergy_Wavelength.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.BeamEnergy_Focus.Level As Level
+	PowerLevel: Techs.BeamEnergy_Efficiency.Level As Level
+	WaveLevel: Techs.BeamEnergy_Wavelength.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -158,12 +161,13 @@ System: GatlingLaser
 	
 	Available: Techs.BeamEnergy_Root.Level > 0
 	Level: Techs.BeamEnergy_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.BeamEnergy_Root.Level
-	RangeLevel: Techs.BeamEnergy_Focus.Level
-	PowerLevel: Techs.BeamEnergy_Efficiency.Level
-	WaveLevel: Techs.BeamEnergy_Wavelength.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.BeamEnergy_Focus.Level As Level
+	PowerLevel: Techs.BeamEnergy_Efficiency.Level As Level
+	WaveLevel: Techs.BeamEnergy_Wavelength.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -209,12 +213,13 @@ System: TRayEmitter
 	
 	Available: Techs.BeamEnergy_Root.Level > 0
 	Level: Techs.BeamEnergy_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.BeamEnergy_Root.Level
-	RangeLevel: Techs.BeamEnergy_Focus.Level
-	PowerLevel: Techs.BeamEnergy_Efficiency.Level
-	WaveLevel: Techs.BeamEnergy_Wavelength.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.BeamEnergy_Focus.Level As Level
+	PowerLevel: Techs.BeamEnergy_Efficiency.Level As Level
+	WaveLevel: Techs.BeamEnergy_Wavelength.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -252,12 +257,13 @@ System: PhasedLaser
 	
 	Available: Techs.BeamEnergy_Root.Level > 0
 	Level: Techs.BeamEnergy_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.BeamEnergy_Root.Level
-	RangeLevel: Techs.BeamEnergy_Focus.Level
-	PowerLevel: Techs.BeamEnergy_Efficiency.Level
-	WaveLevel: Techs.BeamEnergy_Wavelength.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.BeamEnergy_Focus.Level As Level
+	PowerLevel: Techs.BeamEnergy_Efficiency.Level As Level
+	WaveLevel: Techs.BeamEnergy_Wavelength.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -295,12 +301,13 @@ System: IonCannon
 		
 	Available: Techs.BeamEnergy_Root.Level > 0
 	Level: Techs.BeamEnergy_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.BeamEnergy_Root.Level
-	RangeLevel: Techs.BeamEnergy_Focus.Level
-	PowerLevel: Techs.BeamEnergy_Efficiency.Level
-	WaveLevel: Techs.BeamEnergy_Wavelength.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.BeamEnergy_Focus.Level As Level
+	PowerLevel: Techs.BeamEnergy_Efficiency.Level As Level
+	WaveLevel: Techs.BeamEnergy_Wavelength.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -346,12 +353,13 @@ System: PlasmaBeam
 	
 	Available: Techs.BeamEnergy_Root.Level > 0
 	Level: Techs.BeamEnergy_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.BeamEnergy_Root.Level
-	RangeLevel: Techs.BeamEnergy_Focus.Level
-	PowerLevel: Techs.BeamEnergy_Efficiency.Level
-	WaveLevel: Techs.BeamEnergy_Wavelength.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.BeamEnergy_Focus.Level As Level
+	PowerLevel: Techs.BeamEnergy_Efficiency.Level As Level
+	WaveLevel: Techs.BeamEnergy_Wavelength.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -389,12 +397,13 @@ System: FighterLaser
 	
 	Available: Techs.BeamEnergy_Root.Level > 0
 	Level: Techs.BeamEnergy_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.BeamEnergy_Root.Level
-	RangeLevel: Techs.BeamEnergy_Focus.Level
-	PowerLevel: Techs.BeamEnergy_Efficiency.Level
-	WaveLevel: Techs.BeamEnergy_Wavelength.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.BeamEnergy_Focus.Level As Level
+	PowerLevel: Techs.BeamEnergy_Efficiency.Level As Level
+	WaveLevel: Techs.BeamEnergy_Wavelength.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -430,12 +439,12 @@ System: FighterLaserOvercharged
 	
 	Available: Techs.BeamEnergy_Root.Level > 0
 	Level: Techs.BeamEnergy_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.BeamEnergy_Root.Level
-	RangeLevel: Techs.BeamEnergy_Focus.Level
-	PowerLevel: Techs.BeamEnergy_Efficiency.Level
-	WaveLevel: Techs.BeamEnergy_Wavelength.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.BeamEnergy_Focus.Level As Level
+	PowerLevel: Techs.BeamEnergy_Efficiency.Level As Level
+	WaveLevel: Techs.BeamEnergy_Wavelength.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -476,12 +485,12 @@ System: Superlaser
 	
 	Available: Techs.BeamEnergy_Root.Level > 0
 	Level: Techs.BeamEnergy_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.BeamEnergy_Root.Level
-	RangeLevel: Techs.BeamEnergy_Focus.Level
-	PowerLevel: Techs.BeamEnergy_Efficiency.Level
-	WaveLevel: Techs.BeamEnergy_Wavelength.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.BeamEnergy_Focus.Level As Level
+	PowerLevel: Techs.BeamEnergy_Efficiency.Level As Level
+	WaveLevel: Techs.BeamEnergy_Wavelength.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
 	Size: max(Scale, 2400)
 	Durability: 150 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT

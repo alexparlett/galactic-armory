@@ -12,8 +12,6 @@ MAP_JUMP_BRIDGES_DENSITY: 0.1
 
 //Tech Increase per Level for Flat Level Increase System
 GA_TECH_INCREASE: 0.2
-
-//Tech Increase per Level for Flat Level Increase System
 GA_SIZE_INCREASE: 0.4
 
 //Damage factor for all weapons
@@ -137,6 +135,3 @@ WORK_POP_MULTI: 	1.0
 
 //Disparity in strength for a system to be blockaded
 BLOCKADE_RATIO: 2.0
-
-//Density for Jump Bridges from 0 - 100%
-MAP_BRIDGE_DENSITY: 0.1

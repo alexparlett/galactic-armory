@@ -25,11 +25,11 @@ System: PlanetMissile
 
 	Available: Techs.Missiles_Root.Level > 0
 	Level: Techs.Missiles_Root.Level
-	HPLevel:  Techs.Materials_Struct.Level
+	HPLevel:  Techs.Materials_Struct.Level As Level
 	DamageLevel: Techs.Missiles_Root.Level
-	RangeLevel: Techs.Missiles_Fuel.Level
-	TargettingLevel: Techs.Missiles_Targetting.Level
-	AmmoLevel: Techs.Missiles_Loading.Level
+	RangeLevel: Techs.Missiles_Fuel.Level As Level
+	TargettingLevel: Techs.Missiles_Targetting.Level As Level
+	AmmoLevel: Techs.Missiles_Loading.Level As Level
 	
 	Size: Scale
 	Durability: 800 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
@@ -66,12 +66,12 @@ System: MissileRack
 
 	Available: Techs.Missiles_Root.Level > 0
 	Level: Techs.Missiles_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.Missiles_Root.Level
-	RangeLevel: Techs.Missiles_Fuel.Level
-	TargettingLevel: Techs.Missiles_Targetting.Level
-	AmmoLevel: Techs.Missiles_Loading.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.Missiles_Fuel.Level As Level
+	TargettingLevel: Techs.Missiles_Targetting.Level As Level
+	AmmoLevel: Techs.Missiles_Loading.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
     Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -115,12 +115,12 @@ System: LargeMissileRack
 
 	Available: Techs.Missiles_Root.Level > 0
 	Level: Techs.Missiles_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.Missiles_Root.Level
-	RangeLevel: Techs.Missiles_Fuel.Level
-	TargettingLevel: Techs.Missiles_Targetting.Level
-	AmmoLevel: Techs.Missiles_Loading.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.Missiles_Fuel.Level As Level
+	TargettingLevel: Techs.Missiles_Targetting.Level As Level
+	AmmoLevel: Techs.Missiles_Loading.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
     Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -165,12 +165,12 @@ System: MegaMissileRack
 
 	Available: Techs.Missiles_Root.Level > 0
 	Level: Techs.Missiles_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.Missiles_Root.Level
-	RangeLevel: Techs.Missiles_Fuel.Level
-	TargettingLevel: Techs.Missiles_Targetting.Level
-	AmmoLevel: Techs.Missiles_Loading.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.Missiles_Fuel.Level As Level
+	TargettingLevel: Techs.Missiles_Targetting.Level As Level
+	AmmoLevel: Techs.Missiles_Loading.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
     Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -213,12 +213,12 @@ System: InterceptorMissile
 
 	Available: Techs.Missiles_Root.Level > 0
 	Level: Techs.Missiles_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.Missiles_Root.Level
-	RangeLevel: Techs.Missiles_Fuel.Level
-	TargettingLevel: Techs.Missiles_Targetting.Level
-	AmmoLevel: Techs.Missiles_Loading.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.Missiles_Fuel.Level As Level
+	TargettingLevel: Techs.Missiles_Targetting.Level As Level
+	AmmoLevel: Techs.Missiles_Loading.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
     Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -256,12 +256,12 @@ System: ClusterMissile
 
 	Available: Techs.Missiles_Root.Level > 0
 	Level: Techs.Missiles_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.Missiles_Root.Level
-	RangeLevel: Techs.Missiles_Fuel.Level
-	TargettingLevel: Techs.Missiles_Targetting.Level
-	AmmoLevel: Techs.Missiles_Loading.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.Missiles_Fuel.Level As Level
+	TargettingLevel: Techs.Missiles_Targetting.Level As Level
+	AmmoLevel: Techs.Missiles_Loading.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
     Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -301,12 +301,12 @@ System: PhasedMissile
     
 	Available: Techs.Missiles_Root.Level > 0
 	Level: Techs.Missiles_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.Missiles_Root.Level
-	RangeLevel: Techs.Missiles_Fuel.Level
-	TargettingLevel: Techs.Missiles_Targetting.Level
-	AmmoLevel: Techs.Missiles_Loading.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.Missiles_Fuel.Level As Level
+	TargettingLevel: Techs.Missiles_Targetting.Level As Level
+	AmmoLevel: Techs.Missiles_Loading.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
     Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -349,12 +349,12 @@ System: EMPMissile
     
 	Available: Techs.Missiles_Root.Level > 0
 	Level: Techs.Missiles_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.Missiles_Root.Level
-	RangeLevel: Techs.Missiles_Fuel.Level
-	TargettingLevel: Techs.Missiles_Targetting.Level
-	AmmoLevel: Techs.Missiles_Loading.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.Missiles_Fuel.Level As Level
+	TargettingLevel: Techs.Missiles_Targetting.Level As Level
+	AmmoLevel: Techs.Missiles_Loading.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
     Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -398,12 +398,12 @@ System: PlanetBuster
 
 	Available: Techs.Missiles_Root.Level > 0
 	Level: Techs.Missiles_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.Missiles_Root.Level
-	RangeLevel: Techs.Missiles_Fuel.Level
-	TargettingLevel: Techs.Missiles_Targetting.Level
-	AmmoLevel: Techs.Missiles_Loading.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.Missiles_Fuel.Level As Level
+	TargettingLevel: Techs.Missiles_Targetting.Level As Level
+	AmmoLevel: Techs.Missiles_Loading.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
 	Size: max(Scale, 1200)
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -445,12 +445,12 @@ System: FighterRockets
 
 	Available: Techs.Missiles_Root.Level > 0
 	Level: Techs.Missiles_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.Missiles_Root.Level
-	RangeLevel: Techs.Missiles_Fuel.Level
-	TargettingLevel: Techs.Missiles_Targetting.Level
-	AmmoLevel: Techs.Missiles_Loading.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.Missiles_Fuel.Level As Level
+	TargettingLevel: Techs.Missiles_Targetting.Level As Level
+	AmmoLevel: Techs.Missiles_Loading.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -494,12 +494,12 @@ System: FighterAAMissile
 
 	Available: Techs.Missiles_Root.Level > 0
 	Level: Techs.Missiles_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.Missiles_Root.Level
-	RangeLevel: Techs.Missiles_Fuel.Level
-	TargettingLevel: Techs.Missiles_Targetting.Level
-	AmmoLevel: Techs.Missiles_Loading.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.Missiles_Fuel.Level As Level
+	TargettingLevel: Techs.Missiles_Targetting.Level As Level
+	AmmoLevel: Techs.Missiles_Loading.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -516,7 +516,7 @@ System: FighterAAMissile
 	vAmmoUse: (3 * Size) / (1 + (0.1 * AmmoLevel))
 	
 	Costs: Metals[180 * Size * pow(SUBS_COST_CRV, Level)], Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size], Ammo[vAmmoStorage]
-	Complexity: 1.2 * max((1 - (0.01 * (floor((Techs.Metallurgy.Level / 3) + (Techs.ShipConstruction.Level / 3) + (Techs.Chemistry.Level / 3))))), 0.6)
+	Complexity: 1
 		
 	Triggerable: PDEffect: PointDefenseTriggered
 	

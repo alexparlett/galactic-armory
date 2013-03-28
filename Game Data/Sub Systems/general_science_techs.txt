@@ -5,8 +5,8 @@ System: SciLab
 
 	Available: Techs.GenSci_Root.Level > 0
 	Level: Techs.GenSci_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	HPLevel:  Techs.Materials_Struct.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	HPLevel:  Techs.Materials_Struct.Level As Level
 	Size: Scale
 	
 	Durability: 300 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
@@ -41,11 +41,10 @@ System: Analyzer
 	
 	Available: Techs.GenSci_Root.Level > 0
 	Level: Techs.GenSci_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	HPLevel: Techs.Materials_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials.Level-1
 	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
 	Mass: (60 * Size) / (1 + (0.1 * MassLevel))
 	
@@ -55,7 +54,7 @@ System: Analyzer
 	Tick Rate: 10
 	
 	vSizeImpact: 0.5 + (0.5 * Object.Scale/Scale)
-	vTechImpact: if(Techs.Sensors.Level > 0, 1, 0.5)
+	vTechImpact: if(Techs.Spatial_Root.Level > 0, 1, 0.5)
 	vLevelImpact: 0.48 * (1 - decay(pow(LEVEL_GAIN_CURVE, Level),150))
 	
 	vAnalyzeChance: vTechImpact * ( 0.02 + vLevelImpact )^vSizeImpact
@@ -77,8 +76,8 @@ System: PowerVampire
 	
 	Available: Techs.GenSci_Root.Level > 0
 	Level: Techs.GenSci_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	HPLevel: Techs.Materials_Root.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
 	
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -111,10 +110,10 @@ System: MindSapper
 
 	Available: Techs.GenSci_Root.Level > 0
 	Level: Techs.GenSci_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
-	HPLevel: Techs.Materials_Root.Level
+	HPLevel: Techs.Materials_Root.Level As Level
 	Durability: 20 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
 	Mass: (80 * Size) / (1 + (0.1 * MassLevel))
 	
@@ -148,10 +147,10 @@ System: ResourceDrain
 
 	Available: Techs.GenSci_Root.Level > 0
 	Level: Techs.GenSci_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: Scale
-	HPLevel: Techs.Materials_Root.Level
+	HPLevel: Techs.Materials_Root.Level As Level
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
 	Mass: (80 * Size) / (1 + (0.1 * MassLevel))
 	
@@ -186,10 +185,10 @@ System: Repulsor
 
 	Available: Techs.GenSci_Root.Level > 0
 	Level: Techs.GenSci_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: Scale
-	HPLevel: Techs.Materials_Root.Level
+	HPLevel: Techs.Materials_Root.Level As Level
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
 	Mass: (60 * Size) / (1 + (0.1 * MassLevel))
 
@@ -226,10 +225,10 @@ System: Attractor
 
 	Available: Techs.GenSci_Root.Level > 0
 	Level: Techs.GenSci_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: Scale
-	HPLevel: Techs.Materials_Root.Level
+	HPLevel: Techs.Materials_Root.Level As Level
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
 	Mass: (60 * Size) / (1 + (0.1 * MassLevel))
 
@@ -266,10 +265,10 @@ System: Interdictor
 
 	Available: Techs.GenSci_Root.Level > 0
 	Level: Techs.GenSci_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: Scale
-	HPLevel: Techs.Materials_Root.Level
+	HPLevel: Techs.Materials_Root.Level As Level
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
 	Mass: (60 * Size) / (1 + (0.1 * MassLevel))
 
@@ -299,8 +298,8 @@ System: PlanetEngine
 	
 	Available: Techs.GenSci_Root.Level > 0
 	Level: Techs.GenSci_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	HPLevel:  Techs.Materials_Struct.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	HPLevel:  Techs.Materials_Struct.Level As Level
 	
 	Size: Scale
 	Durability: 200 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT

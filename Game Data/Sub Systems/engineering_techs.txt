@@ -1,3 +1,4 @@
+
 System: ShipBay
 	Name: #SS_SHIPBAY_NAME
 	Description: #SS_SHIPBAY_DESC
@@ -7,10 +8,10 @@ System: ShipBay
 	Tags: ShipBay, Restrict:CarrierHull, Storage
 	Tied To: Engi_Root 0
 	
-	Available: Techs.Engi_Root.Level > 0
-	Level: Techs.Engi_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	CargoLevel: Techs.Engi_Root.Level
+	Available: Techs.Engi_Root.Level  > 0
+	Level: Techs.Engi_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	CargoLevel: Techs.Engi_Root.Level As Level
 	
 	Size: Scale
 	HPLevel:  Techs.Materials_Root.Level
@@ -39,10 +40,10 @@ System: LifeSupport
 	Tags: Control
 	Tied To: Engi_Root 0
 	
-	Available: Techs.Engi_Root.Level > 0
-	Level: Techs.Engi_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	LifesupportLevel: Techs.Engi_LifeSupport.Level 
+	Available: Techs.Engi_Root.Level  > 0
+	Level: Techs.Engi_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	LifesupportLevel: Techs.Engi_LifeSupport.Level As Level 
 	
 	Size: Scale
 	HPLevel:  Techs.Materials_Root.Level
@@ -73,12 +74,12 @@ System: CrewQuarters
 	Tags: Control
 	Tied To: Engi_Root 0
 	
-	Available: Techs.Engi_Root.Level > 0
-	Level: Techs.Engi_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level 
-	LifesupportLevel: Techs.Engi_LifeSupport.Level 
-	RepairLevel: Techs.Maint_Makeshift.Level 
-	HPLevel: Techs.Materials_Root.Level
+	Available: Techs.Engi_Root.Level  > 0
+	Level: Techs.Engi_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level 
+	LifesupportLevel: Techs.Engi_LifeSupport.Level As Level 
+	RepairLevel: Techs.Maint_Makeshift.Level As Level 
+	HPLevel: Techs.Materials_Root.Level As Level
 	
 	Size: Scale
 	Durability: 20 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -95,7 +96,7 @@ System: CrewQuarters
 	//vMetalCost: Size * 0.001 * pow(LEVEL_GAIN_CURVE, Level)   	//for now only metal cost, but others possible
 	vMetalCost: Size * 0.1 * * max((Level / 2), 1)					//wasSize * 0.1 * pow(LEVEL_GAIN_CURVE, Level) * (2 - decay(pow(LEVEL_GAIN_CURVE,Level),35))
 	
-	Provides: CrewQuarters with Amount[vCrewStore], Regen[vCrewStore * 0.01]
+	Provides: CrewQuarters with Amount[vCrewStore]
 	
 	Provides: DelayedRepairManpower with
 		Rate[vCrewRegen], MetalCost[vMetalCost]
@@ -117,11 +118,11 @@ System: Bridge
 	Tags: Control
 	Tied To: Engi_Root 0
 	
-	Available: Techs.Engi_Root.Level > 0
-	Level: Techs.Engi_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	CommandLevel: Techs.Engi_Root.Level
-	EfficiencyLevel: Techs.Engi_Workload.Level 
+	Available: Techs.Engi_Root.Level  > 0
+	Level: Techs.Engi_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	CommandLevel: Techs.Engi_Root.Level As Level
+	EfficiencyLevel: Techs.Engi_Workload.Level As Level 
 	
 	Size: Scale	
 	HPLevel:  Techs.Materials_Root.Level
@@ -156,10 +157,10 @@ System: Cockpit
 	Tags: Control, Require:FighterBomber
 	Tied To: Engi_Root 0
 	
-	Available: Techs.Engi_Root.Level > 0
-	Level: Techs.Engi_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	CommandLevel: Techs.Engi_Root.Level
+	Available: Techs.Engi_Root.Level  > 0
+	Level: Techs.Engi_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	CommandLevel: Techs.Engi_Root.Level As Level
 	
 	Size: Scale	
 	HPLevel:  Techs.Materials_Root.Level
@@ -190,13 +191,13 @@ System: IntegratedCommandCenter
 	Tags: Control
 	Tied To: Engi_Root 0
 	
-	Available: Techs.Engi_Root.Level > 0
-	Level: Techs.Engi_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	LifesupportLevel: Techs.Engi_LifeSupport.Level
-	RepairLevel: Techs.Maint_Makeshift.Level
-	CommandLevel: Techs.Engi_Root.Level
-	PowerLevel: Techs.Engi_Comp.Level
+	Available: Techs.Engi_Root.Level  > 0
+	Level: Techs.Engi_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	LifesupportLevel: Techs.Engi_LifeSupport.Level As Level
+	RepairLevel: Techs.Maint_Makeshift.Level As Level
+	CommandLevel: Techs.Engi_Root.Level As Level
+	PowerLevel: Techs.Engi_Comp.Level As Level
 	
 	Size: Scale	* 2
 	HPLevel:  Techs.Materials_Root.Level
@@ -218,7 +219,7 @@ System: IntegratedCommandCenter
 	Provides: Control with
 		Amount[vControlGen]
 	
-	Provides: CrewQuarters with Amount[vCrewStore], Regen[vCrewStore * 0.01]
+	Provides: CrewQuarters with Amount[vCrewStore]
 	
 	Provides: DelayedRepairManpower with
 		Rate[vCrewRegen], MetalCost[vMetalCost]
@@ -243,11 +244,11 @@ System: Computer
 	Tags: Control
 	Tied To: Engi_Root 0
 
-	Available: Techs.Engi_Root.Level > 0
-	Level:Techs.Engi_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	PowerLevel: Techs.Engi_Comp.Level
-	CommandLevel: Techs.Engi_Root.Level
+	Available: Techs.Engi_Root.Level  > 0
+	Level:Techs.Engi_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	PowerLevel: Techs.Engi_Comp.Level As Level
+	CommandLevel: Techs.Engi_Root.Level As Level
 	
 	Size: Scale	
 	HPLevel:  Techs.Materials_Root.Level
@@ -265,7 +266,7 @@ System: Computer
 		Amount[vComputerControlGen]
 	
 	Consumes:
-		To Run: Power[20 * Size) / (1 + (0.1 * PowerLevel))]
+		To Run: Power[(20 * Size) / (1 + (0.1 * PowerLevel))]
 	
 	Hints: Control[vComputerControlGen]
 
@@ -278,11 +279,11 @@ System: AdvancedAICore
 	Tags: BoardingDefense, Control, NoBonusHealth
 	Tied To: Engi_Root 0
 
-	Available: Techs.Engi_Root.Level > 0
-	Level: Techs.Engi_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	PowerLevel: Techs.Engi_Comp.Level
-	CommandLevel: Techs.Engi_Root.Level
+	Available: Techs.Engi_Root.Level  > 0
+	Level: Techs.Engi_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	PowerLevel: Techs.Engi_Comp.Level As Level
+	CommandLevel: Techs.Engi_Root.Level As Level
 	
 	Size: Scale	* 2
 	HPLevel:  Techs.Materials_Root.Level
@@ -313,11 +314,11 @@ System: QuantumComputer
 	Tags: Link
 	Tied To: Engi_Root 0
 
-	Available: Techs.Engi_Root.Level > 0
-	Level: Techs.Engi_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	PowerLevel: Techs.Engi_Comp.Level
-	CommandLevel: Techs.Engi_Root.Level
+	Available: Techs.Engi_Root.Level  > 0
+	Level: Techs.Engi_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	PowerLevel: Techs.Engi_Comp.Level As Level
+	CommandLevel: Techs.Engi_Root.Level As Level
 	
 	Size: Scale	/ 2
 	HPLevel:  Techs.Materials_Root.Level
@@ -329,7 +330,7 @@ System: QuantumComputer
 
 	Tick Rate: 1
 
-	Alters: subSysAlterations::reduceControlReq(50 * Size * (1 + (CommandLevel * GA_TECH_INCREASE)))
+	Alters: subSysAlterations::reduceControlReq[50 * Size * (1 + (CommandLevel * GA_TECH_INCREASE))]
 
 	Consumes:
 		To Run: Power[(10 * Size) / (1 + (0.1 * PowerLevel))]

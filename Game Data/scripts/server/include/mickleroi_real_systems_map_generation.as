@@ -240,10 +240,10 @@ Planet@ RS_setupStandardHomeworld(System@ sys, Empire@ emp) {
 	//plDesc.setPlanetType( getPlanetTypeID( "rock5" ));
 	plDesc.setPlanetType(getPlanetTypeID("rock"+rand(1, 16)));
 	
-	if(makeOddities) {
+	if(RS_makeOddities) {
 		int belts = 0;
 		while (belts < 6) {
-			V_makeRandomAsteroid(sys, rand(20,50));
+			RS_makeRandomAsteroid(sys, rand(20,50));
 			++belts;
 		}
 	}	

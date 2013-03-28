@@ -9,7 +9,7 @@ System: Thruster
 
 	Available: Techs.Propulsion_Root.Level > 0
 	Level: Techs.Propulsion_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	HPLevel:  Techs.Materials_Root.Level
@@ -46,7 +46,7 @@ System: IonThruster
 
 	Available: Techs.Propulsion_Root.Level > 0
 	Level: Techs.Propulsion_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	HPLevel:  Techs.Materials_Root.Level
@@ -84,7 +84,7 @@ System: PolypropellantThruster
 
 	Available: Techs.Propulsion_Root.Level > 0
 	Level: Techs.Propulsion_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	HPLevel:  Techs.Materials_Root.Level
@@ -121,7 +121,7 @@ System: MagnetoPlasmaThruster
 
 	Available: Techs.Propulsion_Root.Level > 0
 	Level: Techs.Propulsion_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	HPLevel:  Techs.Materials_Root.Level
@@ -160,7 +160,7 @@ System: VASIMRThruster
 
 	Available: Techs.Propulsion_Root.Level > 0
 	Level: Techs.Propulsion_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	HPLevel:  Techs.Materials_Root.Level
@@ -200,7 +200,7 @@ System: AntimatterRocket
 
 	Available: Techs.Propulsion_Root.Level > 0
 	Level: Techs.Propulsion_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	HPLevel:  Techs.Materials_Root.Level
@@ -235,7 +235,7 @@ System: BussardRamjet
 
 	Available: Techs.Propulsion_Root.Level > 0
 	Level: Techs.Propulsion_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: max(Scale, 1)							//was Scale *2
 	HPLevel:  Techs.Materials_Root.Level
@@ -266,7 +266,7 @@ System: RamScoop
 
 	Available: Techs.Propulsion_Root.Level > 0
 	Level: Techs.Propulsion_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: max(Scale, 1)
 	HPLevel:  Techs.Materials_Root.Level

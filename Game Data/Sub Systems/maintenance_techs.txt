@@ -9,11 +9,11 @@ System: RepairBay
 	
 	Available: Techs.Maint_Makeshift.Level > 0
 	Level: Techs.Maint_Makeshift.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	RepairLevel: Techs.Maint_Makeshift.Level
-	RecyclingLevel: Techs.Maint_Recycling.Level
-	ManagementLevel: Techs.Maint_Management.Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	RepairLevel: Techs.Maint_Makeshift.Level As Level
+	RecyclingLevel: Techs.Maint_Recycling.Level As Level
+	ManagementLevel: Techs.Maint_Management.Level As Level
 	
 	Size: Scale
 	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -53,11 +53,11 @@ System: NaniteRepair
 	
 	Available: Techs.Maint_Makeshift.Level > 0
 	Level: Techs.Maint_Makeshift.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	RepairLevel: Techs.Maint_Makeshift.Level
-	RecyclingLevel: Techs.Maint_Recycling.Level
-	ManagementLevel: Techs.Maint_Management.Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	RepairLevel: Techs.Maint_Makeshift.Level As Level
+	RecyclingLevel: Techs.Maint_Recycling.Level As Level
+	ManagementLevel: Techs.Maint_Management.Level As Level
 	
 	Size: Scale
 	Durability: 15 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -101,11 +101,11 @@ System: RepairTool
 	
 	Available: Techs.Maint_Root.Level > 0
 	Level: Techs.Maint_Root.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	RepairLevel: Techs.Maint_Root.Level
-	RecyclingLevel: Techs.Maint_Recycling.Level
-	ManagementLevel: Techs.Maint_Management.Level
+	RecyclingLevel: Techs.Maint_Recycling.Level As Level
+	ManagementLevel: Techs.Maint_Management.Level As Level
 	
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -147,11 +147,11 @@ System: RepairFacilities
 	
 	Available: Techs.Maint_Root.Level > 0
 	Level: Techs.Maint_Root.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	RepairLevel: Techs.Maint_Root.Level
-	RecyclingLevel: Techs.Maint_Recycling.Level
-	ManagementLevel: Techs.Maint_Management.Level
+	RecyclingLevel: Techs.Maint_Recycling.Level As Level
+	ManagementLevel: Techs.Maint_Management.Level As Level
 	
 	Size: Scale
 	Durability: 125 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -193,10 +193,10 @@ System: Salvager
 	
 	Available: Techs.Maint_Recycling.Level > 0
 	Level: Techs.Materials_Root.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	SalvagingLevel: Techs.Maint_Recycling.Level
-	ManagementLevel: Techs.Maint_Management.Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	SalvagingLevel: Techs.Maint_Recycling.Level As Level
+	ManagementLevel: Techs.Maint_Management.Level As Level
 
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT

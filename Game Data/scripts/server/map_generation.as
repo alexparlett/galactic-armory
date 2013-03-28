@@ -1,5 +1,4 @@
 #include "/include/mickleroi_real_systems_map_generation.as"
-#include "/include/vanilla_map_generation.as"
 
 // {{{ Imports
 import void initSpecialSystems() from "special_systems";

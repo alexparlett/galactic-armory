@@ -25,14 +25,14 @@ System: Artillery
     Appearance: GAArtillery
 	Explosion: subsystem_destroyed
 
-    Available: Techs.Ballistics_Root.Level > 0
+    Available: Techs.Ballistics_Root.Level  > 0
     Level: Techs.Ballistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.Ballistics_Root.Level
-	RangeLevel: Techs.Ballistics_Acquisition.Level
-	AmmoLevel: Techs.Ballistics_Ammo.Level
-	PayloadLevel: Techs.Ballistics_Payload.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.Ballistics_Acquisition.Level As Level
+	AmmoLevel: Techs.Ballistics_Ammo.Level As Level
+	PayloadLevel: Techs.Ballistics_Payload.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: if(Object.Scale > 10, Scale * 2, ((Scale * 2) + (20 / Object.Scale)))
     Durability: 150 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -71,14 +71,14 @@ System: AssaultCannon
     Appearance: AssaultCannon
 	Explosion: subsystem_destroyed
 
-    Available: Techs.Ballistics_Root.Level > 0
+    Available: Techs.Ballistics_Root.Level  > 0
     Level: Techs.Ballistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	DamageLevel: Techs.Ballistics_Root.Level As
-	RangeLevel: Techs.Ballistics_Acquisition.Level
-	AmmoLevel: Techs.Ballistics_Ammo.Level
-	PayloadLevel: Techs.Ballistics_Payload.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	DamageLevel: Techs.Ballistics_Root.Level
+	RangeLevel: Techs.Ballistics_Acquisition.Level As Level
+	AmmoLevel: Techs.Ballistics_Ammo.Level As Level
+	PayloadLevel: Techs.Ballistics_Payload.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
     Durability: 160 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -118,14 +118,14 @@ System: FighterPrecisionBomb
 	Description: #SS_FPRECBOMB_DESC
 	Appearance: FighterPrecBomb
 
-    Available: Techs.Ballistics_Root.Level > 0
-    Level: Techs.Ballistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	DamageLevel: Techs.Ballistics_Root.Level As
-	RangeLevel: Techs.Ballistics_Acquisition.Level
-	AmmoLevel: Techs.Ballistics_Ammo.Level
-	PayloadLevel: Techs.Ballistics_Payload.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+    Available: Techs.Ballistics_Root.Level  > 0
+    Level: Techs.Ballistics_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	DamageLevel: Techs.Ballistics_Root.Level
+	RangeLevel: Techs.Ballistics_Acquisition.Level As Level
+	AmmoLevel: Techs.Ballistics_Ammo.Level As Level
+	PayloadLevel: Techs.Ballistics_Payload.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -162,14 +162,14 @@ System: FighterAdvancedBomb
 	Description: #SS_FADVBOMB_DESC
 	Appearance: FighterAdvBomb
 	
-    Available: Techs.Ballistics_Root.Level > 0
-    Level: Techs.Ballistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	DamageLevel: Techs.Ballistics_Root.Level As
-	RangeLevel: Techs.Ballistics_Acquisition.Level
-	AmmoLevel: Techs.Ballistics_Ammo.Level
-	PayloadLevel: Techs.Ballistics_Payload.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+    Available: Techs.Ballistics_Root.Level  > 0
+    Level: Techs.Ballistics_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	DamageLevel: Techs.Ballistics_Root.Level
+	RangeLevel: Techs.Ballistics_Acquisition.Level As Level
+	AmmoLevel: Techs.Ballistics_Ammo.Level As Level
+	PayloadLevel: Techs.Ballistics_Payload.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -205,14 +205,14 @@ System: HeavyBomb
 	Description: #SS_HEAVYBOMB_DESC
 	Appearance: HeavyBomb
 	
-    Available: Techs.Ballistics_Root.Level > 0
-    Level: Techs.Ballistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	DamageLevel: Techs.Ballistics_Root.Level As
-	RangeLevel: Techs.Ballistics_Acquisition.Level
-	AmmoLevel: Techs.Ballistics_Ammo.Level
-	PayloadLevel: Techs.Ballistics_Payload.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+    Available: Techs.Ballistics_Root.Level  > 0
+    Level: Techs.Ballistics_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	DamageLevel: Techs.Ballistics_Root.Level
+	RangeLevel: Techs.Ballistics_Acquisition.Level As Level
+	AmmoLevel: Techs.Ballistics_Ammo.Level As Level
+	PayloadLevel: Techs.Ballistics_Payload.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -246,14 +246,14 @@ System: EMPBomb
 	Description: #SS_EMPBOMB_DESC
 	Appearance: EMPBomb
 	
-    Available: Techs.Ballistics_Root.Level > 0
-    Level: Techs.Ballistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	DamageLevel: Techs.Ballistics_Root.Level As
-	RangeLevel: Techs.Ballistics_Acquisition.Level
-	AmmoLevel: Techs.Ballistics_Ammo.Level
-	PayloadLevel: Techs.Ballistics_Payload.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+    Available: Techs.Ballistics_Root.Level  > 0
+    Level: Techs.Ballistics_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	DamageLevel: Techs.Ballistics_Root.Level
+	RangeLevel: Techs.Ballistics_Acquisition.Level As Level
+	AmmoLevel: Techs.Ballistics_Ammo.Level As Level
+	PayloadLevel: Techs.Ballistics_Payload.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -291,14 +291,14 @@ System: FighterBomberASW
 	Description: #SS_FBASW_DESC
 	Appearance: FighterBomberASW
 	
-    Available: Techs.Ballistics_Root.Level > 0
-    Level: Techs.Ballistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	DamageLevel: Techs.Ballistics_Root.Level As
-	RangeLevel: Techs.Ballistics_Acquisition.Level
-	AmmoLevel: Techs.Ballistics_Ammo.Level
-	PayloadLevel: Techs.Ballistics_Payload.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+    Available: Techs.Ballistics_Root.Level  > 0
+    Level: Techs.Ballistics_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	DamageLevel: Techs.Ballistics_Root.Level
+	RangeLevel: Techs.Ballistics_Acquisition.Level As Level
+	AmmoLevel: Techs.Ballistics_Ammo.Level As Level
+	PayloadLevel: Techs.Ballistics_Payload.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -333,14 +333,14 @@ System: AntiSurfaceWarhead
 	Appearance: AntiSurfaceWarhead
 	Explosion: subsystem_destroyed
 
-    Available: Techs.Ballistics_Root.Level > 0
-    Level: Techs.Ballistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	DamageLevel: Techs.Ballistics_Root.Level As
-	RangeLevel: Techs.Ballistics_Acquisition.Level
-	AmmoLevel: Techs.Ballistics_Ammo.Level
-	PayloadLevel: Techs.Ballistics_Payload.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+    Available: Techs.Ballistics_Root.Level  > 0
+    Level: Techs.Ballistics_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	DamageLevel: Techs.Ballistics_Root.Level
+	RangeLevel: Techs.Ballistics_Acquisition.Level As Level
+	AmmoLevel: Techs.Ballistics_Ammo.Level As Level
+	PayloadLevel: Techs.Ballistics_Payload.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -376,14 +376,14 @@ System: NBCWeapon
 	Appearance: BioWarhead
 	Explosion: subsystem_destroyed
 
-    Available: Techs.Ballistics_Root.Level > 0
-    Level: Techs.Ballistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	DamageLevel: Techs.Ballistics_Root.Level As
-	RangeLevel: Techs.Ballistics_Acquisition.Level
-	AmmoLevel: Techs.Ballistics_Ammo.Level
-	PayloadLevel: Techs.Ballistics_Payload.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+    Available: Techs.Ballistics_Root.Level  > 0
+    Level: Techs.Ballistics_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	DamageLevel: Techs.Ballistics_Root.Level
+	RangeLevel: Techs.Ballistics_Acquisition.Level As Level
+	AmmoLevel: Techs.Ballistics_Ammo.Level As Level
+	PayloadLevel: Techs.Ballistics_Payload.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -421,14 +421,14 @@ System: MassDriver
 	Appearance: MassDriver
 	Explosion: subsystem_destroyed
 
-    Available: Techs.Ballistics_Root.Level > 0
-    Level: Techs.Ballistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	DamageLevel: Techs.Ballistics_Root.Level As
-	RangeLevel: Techs.Ballistics_Acquisition.Level
-	AmmoLevel: Techs.Ballistics_Ammo.Level
-	PayloadLevel: Techs.Ballistics_Payload.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+    Available: Techs.Ballistics_Root.Level  > 0
+    Level: Techs.Ballistics_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	DamageLevel: Techs.Ballistics_Root.Level
+	RangeLevel: Techs.Ballistics_Acquisition.Level As Level
+	AmmoLevel: Techs.Ballistics_Ammo.Level As Level
+	PayloadLevel: Techs.Ballistics_Payload.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
 	Size: max(Scale, 100)
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -465,14 +465,14 @@ System: MassDriverLight
 	Appearance: MassDriverLight
 	Explosion: subsystem_destroyed
 
-    Available: Techs.Ballistics_Root.Level > 0
-    Level: Techs.Ballistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	DamageLevel: Techs.Ballistics_Root.Level As
-	RangeLevel: Techs.Ballistics_Acquisition.Level
-	AmmoLevel: Techs.Ballistics_Ammo.Level
-	PayloadLevel: Techs.Ballistics_Payload.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+    Available: Techs.Ballistics_Root.Level  > 0
+    Level: Techs.Ballistics_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	DamageLevel: Techs.Ballistics_Root.Level
+	RangeLevel: Techs.Ballistics_Acquisition.Level As Level
+	AmmoLevel: Techs.Ballistics_Ammo.Level As Level
+	PayloadLevel: Techs.Ballistics_Payload.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -511,14 +511,14 @@ System: AsteroidCollector
 	Appearance: AsteroidCollector
 	Explosion: fuel_cell_explode
 
-    Available: Techs.Ballistics_Root.Level > 0
-    Level: Techs.Ballistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	DamageLevel: Techs.Ballistics_Root.Level As
-	RangeLevel: Techs.Ballistics_Acquisition.Level
-	AmmoLevel: Techs.Ballistics_Ammo.Level
-	PayloadLevel: Techs.Ballistics_Payload.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+    Available: Techs.Ballistics_Root.Level  > 0
+    Level: Techs.Ballistics_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	DamageLevel: Techs.Ballistics_Root.Level
+	RangeLevel: Techs.Ballistics_Acquisition.Level As Level
+	AmmoLevel: Techs.Ballistics_Ammo.Level As Level
+	PayloadLevel: Techs.Ballistics_Payload.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
 	Durability: 40 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT

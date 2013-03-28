@@ -11,7 +11,7 @@ System: ShieldGen
 
 	Available: Techs.Shields_Root.Level > 0
 	Level: Techs.Shields_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	HPLevel:  Techs.Materials_Root.Level
@@ -61,7 +61,7 @@ System: ShieldCharger
 
 	Available: Techs.Shields_Root.Level > 0
 	Level: Techs.Shields_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	HPLevel:  Techs.Materials_Root.Level
@@ -100,7 +100,7 @@ System: ShieldHardener
 
 	Available: Techs.Shields_Root.Level > 0
 	Level: Techs.Shields_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	HPLevel:  Techs.Materials_Root.Level
@@ -136,7 +136,7 @@ System: PulsedShieldCharger
 
 	Available: Techs.Shields_Root.Level > 0
 	Level: Techs.Shields_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	HPLevel:  Techs.Materials_Root.Level
@@ -175,7 +175,7 @@ System: ShieldEmitter
 	
 	Available: Techs.Shields_Root.Level > 0
 	Level: Techs.Shields_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	Durability: 25 * Size * pow(HEALTH_CURVE,Level) * GAME_SUBSYS_MULT
@@ -199,8 +199,8 @@ System: PlanetShields
 
 	Available: Techs.Shields_Root.Level > 0
 	Level: Techs.Shields_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	HPLevel: Techs.Materials_Struct.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	HPLevel: Techs.Materials_Struct.Level As Level
 	
 	Size: Scale
 	Durability: 800 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
@@ -233,7 +233,7 @@ System: ShieldBomb
 	
 	Available: Techs.Shields_Root.Level > 0
 	Level: Techs.Shields_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: max(Scale,1)
 	HPLevel:  Techs.Materials_Root.Level

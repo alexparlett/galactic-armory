@@ -9,8 +9,8 @@ System: Colonizer
 	
 	Available: Techs.Col_Root.Level > 0
 	Level: Techs.Col_Root.Level
-	HPLevel: Techs.Materials_Root.Level 
-	MassLevel: Techs.Materials_Lightweight.Level
+	HPLevel: Techs.Materials_Root.Level As Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: max(Scale,15)
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -43,7 +43,7 @@ System: Terraforming
 
 	Available: Techs.Col_Terraforming.Level > 0
 	
-	TerraformingLevel: Techs.Col_Terraforming.Level
+	TerraformingLevel: Techs.Col_Terraforming.Level As Level
 	
 	Tags: Improvement, Terrestial, NoManualBuild, Former
 	Tied To: Col_Root 0

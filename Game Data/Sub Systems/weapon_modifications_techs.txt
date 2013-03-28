@@ -29,14 +29,14 @@ System: CoolantSys
 	Tags: Link
 	Tied To: WeapMod_Root 0
 
-	Available: Techs.WeapMod_Root.Level > 0
-	Level: Techs.WeapMod_Root.Level
+	Available: Techs.WeapMod_Root.Level  > 0
+	Level: Techs.WeapMod_Root.Level 
 	ModifierLevel: Techs.WeapMod_Root.Level
-	ControlLevel: Techs.WeapMod_Control.Level
-	EfficiencyLevel: Techs.WeapMod_Efficiency.Level
-	DiscountLevel: Techs.WeapMod_Cost.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	ControlLevel: Techs.WeapMod_Control.Level As Level
+	EfficiencyLevel: Techs.WeapMod_Efficiency.Level As Level
+	DiscountLevel: Techs.WeapMod_Cost.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: Scale
 	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -79,14 +79,14 @@ System: AimBot
 	Tags: Link
 	Tied To: WeapMod_Root 0
 
-	Available: Techs.WeapMod_Root.Level > 0
-	Level: Techs.WeapMod_Root.Level
+	Available: Techs.WeapMod_Root.Level  > 0
+	Level: Techs.WeapMod_Root.Level 
 	ModifierLevel: Techs.WeapMod_Root.Level
-	ControlLevel: Techs.WeapMod_Control.Level
-	EfficiencyLevel: Techs.WeapMod_Efficiency.Level
-	DiscountLevel: Techs.WeapMod_Cost.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	ControlLevel: Techs.WeapMod_Control.Level As Level
+	EfficiencyLevel: Techs.WeapMod_Efficiency.Level As Level
+	DiscountLevel: Techs.WeapMod_Cost.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: Scale
 	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -96,13 +96,13 @@ System: AimBot
 	vElec: (300 * Size) / (1 + (0.1 * DiscountLevel))
 	vParts: (45 * Size) / (1 + (0.1 * DiscountLevel))
 	vLabor: (12 * Size) / (1 + (0.1 * DiscountLevel))
+	
 	Costs: Metals[vMetal], Electronics[vElec], AdvParts[vParts], Labr[vLabor]
+	
 	Complexity: 1
 	
 	vControl: (Size * 30 * (Scale / Object.Scale)) / (1 + (0.1 * ControlLevel))
 	vPower: (Size * 20 * (Scale / Object.Scale)) / (1 + (0.1 * EfficiencyLevel))
-	Complexity: 1
-
 	vRangeUp: 1 + ((Scale/Object.Scale) / 3) * (1.5 + (0.1 * ModifierLevel))
 
 	Alters: GASubSysAlterations::improveAllRange[Scale][vRangeUp]
@@ -125,14 +125,14 @@ System: PrecisionMod
 	Tags: Link
 	Tied To: WeapMod_Root 0
 
-	Available: Techs.WeapMod_Root.Level > 0
-	Level: Techs.WeapMod_Root.Level
+	Available: Techs.WeapMod_Root.Level  > 0
+	Level: Techs.WeapMod_Root.Level 
 	ModifierLevel: Techs.WeapMod_Root.Level
-	ControlLevel: Techs.WeapMod_Control.Level
-	EfficiencyLevel: Techs.WeapMod_Efficiency.Level
-	DiscountLevel: Techs.WeapMod_Cost.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	ControlLevel: Techs.WeapMod_Control.Level As Level
+	EfficiencyLevel: Techs.WeapMod_Efficiency.Level As Level
+	DiscountLevel: Techs.WeapMod_Cost.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: Scale
 	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -176,14 +176,14 @@ System: MultiRack
 	Tags: Link
 	Tied To: WeapMod_Root 0
 
-	Available: Techs.WeapMod_Root.Level > 0
-	Level: Techs.WeapMod_Root.Level
+	Available: Techs.WeapMod_Root.Level  > 0
+	Level: Techs.WeapMod_Root.Level 
 	ModifierLevel: Techs.WeapMod_Root.Level
-	ControlLevel: Techs.WeapMod_Control.Level
-	EfficiencyLevel: Techs.WeapMod_Efficiency.Level
-	DiscountLevel: Techs.WeapMod_Cost.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	ControlLevel: Techs.WeapMod_Control.Level As Level
+	EfficiencyLevel: Techs.WeapMod_Efficiency.Level As Level
+	DiscountLevel: Techs.WeapMod_Cost.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: Scale
 	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -223,14 +223,14 @@ System: OversizeMount
 	Tags: Link
 	Tied To: WeapMod_Root 0
 
-	Available: Techs.WeapMod_Root.Level > 0
-	Level: Techs.WeapMod_Root.Level
+	Available: Techs.WeapMod_Root.Level  > 0
+	Level: Techs.WeapMod_Root.Level 
 	ModifierLevel: Techs.WeapMod_Root.Level
-	ControlLevel: Techs.WeapMod_Control.Level
-	EfficiencyLevel: Techs.WeapMod_Efficiency.Level
-	DiscountLevel: Techs.WeapMod_Cost.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	ControlLevel: Techs.WeapMod_Control.Level As Level
+	EfficiencyLevel: Techs.WeapMod_Efficiency.Level As Level
+	DiscountLevel: Techs.WeapMod_Cost.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: Scale
 	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -275,14 +275,14 @@ System: MassMount
 	Tags: Link, Require:HugeHull
 	Tied To: WeapMod_Root 0
 
-	Available: Techs.WeapMod_Root.Level > 0
-	Level: Techs.WeapMod_Root.Level
+	Available: Techs.WeapMod_Root.Level  > 0
+	Level: Techs.WeapMod_Root.Level 
 	ModifierLevel: Techs.WeapMod_Root.Level
-	ControlLevel: Techs.WeapMod_Control.Level
-	EfficiencyLevel: Techs.WeapMod_Efficiency.Level
-	DiscountLevel: Techs.WeapMod_Cost.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	ControlLevel: Techs.WeapMod_Control.Level As Level
+	EfficiencyLevel: Techs.WeapMod_Efficiency.Level As Level
+	DiscountLevel: Techs.WeapMod_Cost.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: Scale
 	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -322,14 +322,14 @@ System: ExtendedMagazine
 	Tags: Link
 	Tied To: WeapMod_Root 0
 
-	Available: Techs.WeapMod_Root.Level > 0
-	Level: Techs.WeapMod_Root.Level
+	Available: Techs.WeapMod_Root.Level  > 0
+	Level: Techs.WeapMod_Root.Level 
 	ModifierLevel: Techs.WeapMod_Root.Level
-	ControlLevel: Techs.WeapMod_Control.Level
-	EfficiencyLevel: Techs.WeapMod_Efficiency.Level
-	DiscountLevel: Techs.WeapMod_Cost.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	ControlLevel: Techs.WeapMod_Control.Level As Level
+	EfficiencyLevel: Techs.WeapMod_Efficiency.Level As Level
+	DiscountLevel: Techs.WeapMod_Cost.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: Scale
 	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -368,14 +368,14 @@ System: DamageSys
 	Tags: Link
 	Tied To: WeapMod_Root 0
 
-	Available: Techs.WeapMod_Root.Level > 0
-	Level: Techs.WeapMod_Root.Level
+	Available: Techs.WeapMod_Root.Level  > 0
+	Level: Techs.WeapMod_Root.Level 
 	ModifierLevel: Techs.WeapMod_Root.Level
-	ControlLevel: Techs.WeapMod_Control.Level
-	EfficiencyLevel: Techs.WeapMod_Efficiency.Level
-	DiscountLevel: Techs.WeapMod_Cost.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	ControlLevel: Techs.WeapMod_Control.Level As Level
+	EfficiencyLevel: Techs.WeapMod_Efficiency.Level As Level
+	DiscountLevel: Techs.WeapMod_Cost.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 
 	Size: Scale
 	Durability: 50 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT

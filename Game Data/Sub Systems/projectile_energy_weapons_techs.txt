@@ -23,14 +23,14 @@ System: PlanetPC
 	Description: #SS_PLANETPC_DESC
 	Appearance: DefenseBuilding
 
-	Available: Techs.ProjEnergy_Root.Level > 0
-	Level: Techs.ProjEnergy_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	DamageLevel: Techs.ProjEnergy_Root.Level 
-	RangeLevel: Techs.ProjEnergy_Fields.Level
-	PowerLevel: Techs.ProjEnergy_Efficiency.Level
-	WaveLevel: Techs.ProjEnergy_Wavelength.Level
-	HPLevel: Techs.Materials_Struct.Level
+	Available: Techs.ProjEnergy_Root.Level  > 0
+	Level: Techs.ProjEnergy_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	DamageLevel: Techs.ProjEnergy_Root.Level As Level
+	RangeLevel: Techs.ProjEnergy_Fields.Level As Level
+	PowerLevel: Techs.ProjEnergy_Efficiency.Level As Level
+	WaveLevel: Techs.ProjEnergy_Wavelength.Level As Level
+	HPLevel: Techs.Materials_Struct.Level As Level
 	
 	Size: Scale
 	Durability: 800 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
@@ -68,14 +68,14 @@ System: PlasmaThrower
 	Appearance: PlasmaThrowerGreen
 	Explosion: subsystem_destroyed
 
-	Available: Techs.ProjEnergy_Root.Level > 0
-	Level: Techs.ProjEnergy_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	DamageLevel: Techs.ProjEnergy_Root.Level
-	RangeLevel: Techs.ProjEnergy_Fields.Level 
-	PowerLevel: Techs.ProjEnergy_Efficiency.Level
-	WaveLevel: Techs.ProjEnergy_Wavelength.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	Available: Techs.ProjEnergy_Root.Level  > 0
+	Level: Techs.ProjEnergy_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	DamageLevel: Techs.ProjEnergy_Root.Level As Level
+	RangeLevel: Techs.ProjEnergy_Fields.Level As Level 
+	PowerLevel: Techs.ProjEnergy_Efficiency.Level As Level
+	WaveLevel: Techs.ProjEnergy_Wavelength.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -115,14 +115,14 @@ System: TwinPlasmaThrower
 	Appearance: TwinPlasmaThrower
 	Explosion: subsystem_destroyed
 
-	Available: Techs.ProjEnergy_Root.Level > 0
-	Level: Techs.ProjEnergy_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	DamageLevel: Techs.ProjEnergy_Root.Level
-	RangeLevel: Techs.ProjEnergy_Fields.Level 
-	PowerLevel: Techs.ProjEnergy_Efficiency.Level
-	WaveLevel: Techs.ProjEnergy_Wavelength.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	Available: Techs.ProjEnergy_Root.Level  > 0
+	Level: Techs.ProjEnergy_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	DamageLevel: Techs.ProjEnergy_Root.Level As Level
+	RangeLevel: Techs.ProjEnergy_Fields.Level As Level 
+	PowerLevel: Techs.ProjEnergy_Efficiency.Level As Level
+	WaveLevel: Techs.ProjEnergy_Wavelength.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
 	Size: Scale
 	Durability: 80 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -162,14 +162,14 @@ System: ParticleCannon
 	Appearance: ParticleCannon
 	Explosion: subsystem_destroyed
 
-	Available: Techs.ProjEnergy_Root.Level > 0
-	Level: Techs.ProjEnergy_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	DamageLevel: Techs.ProjEnergy_Root.Level
-	RangeLevel: Techs.ProjEnergy_Fields.Level 
-	PowerLevel: Techs.ProjEnergy_Efficiency.Level
-	WaveLevel: Techs.ProjEnergy_Wavelength.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	Available: Techs.ProjEnergy_Root.Level  > 0
+	Level: Techs.ProjEnergy_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	DamageLevel: Techs.ProjEnergy_Root.Level As Level
+	RangeLevel: Techs.ProjEnergy_Fields.Level As Level 
+	PowerLevel: Techs.ProjEnergy_Efficiency.Level As Level
+	WaveLevel: Techs.ProjEnergy_Wavelength.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -209,14 +209,14 @@ System: TwinParticleCannon
 	Appearance: TwinParticleCannon
 	Explosion: subsystem_destroyed
 
-	Available: Techs.ProjEnergy_Root.Level > 0
-	Level: Techs.ProjEnergy_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	DamageLevel: Techs.ProjEnergy_Root.Level
-	RangeLevel: Techs.ProjEnergy_Fields.Level 
-	PowerLevel: Techs.ProjEnergy_Efficiency.Level
-	WaveLevel: Techs.ProjEnergy_Wavelength.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	Available: Techs.ProjEnergy_Root.Level  > 0
+	Level: Techs.ProjEnergy_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	DamageLevel: Techs.ProjEnergy_Root.Level As Level
+	RangeLevel: Techs.ProjEnergy_Fields.Level As Level 
+	PowerLevel: Techs.ProjEnergy_Efficiency.Level As Level
+	WaveLevel: Techs.ProjEnergy_Wavelength.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
 	Size: Scale
 	Durability: 80 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -257,14 +257,14 @@ System: PFW
 	Appearance: PFWeapon
 	Explosion: subsystem_destroyed
 	
-	Available: Techs.ProjEnergy_Root.Level > 0
-	Level: Techs.ProjEnergy_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	DamageLevel: Techs.ProjEnergy_Root.Level
-	RangeLevel: Techs.ProjEnergy_Fields.Level 
-	PowerLevel: Techs.ProjEnergy_Efficiency.Level
-	WaveLevel: Techs.ProjEnergy_Wavelength.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	Available: Techs.ProjEnergy_Root.Level  > 0
+	Level: Techs.ProjEnergy_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	DamageLevel: Techs.ProjEnergy_Root.Level As Level
+	RangeLevel: Techs.ProjEnergy_Fields.Level As Level 
+	PowerLevel: Techs.ProjEnergy_Efficiency.Level As Level
+	WaveLevel: Techs.ProjEnergy_Wavelength.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -300,14 +300,14 @@ System: TachyonBlaster
 	Appearance: TachyonBlaster
 	Explosion: subsystem_destroyed
 	
-	Available: Techs.ProjEnergy_Root.Level > 0
-	Level: Techs.ProjEnergy_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	DamageLevel: Techs.ProjEnergy_Root.Level
-	RangeLevel: Techs.ProjEnergy_Fields.Level 
-	PowerLevel: Techs.ProjEnergy_Efficiency.Level
-	WaveLevel: Techs.ProjEnergy_Wavelength.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	Available: Techs.ProjEnergy_Root.Level  > 0
+	Level: Techs.ProjEnergy_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	DamageLevel: Techs.ProjEnergy_Root.Level As Level
+	RangeLevel: Techs.ProjEnergy_Fields.Level As Level 
+	PowerLevel: Techs.ProjEnergy_Efficiency.Level As Level
+	WaveLevel: Techs.ProjEnergy_Wavelength.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -344,14 +344,14 @@ System: WaveEmitter
 	Appearance: WaveEmitter
 	Explosion: subsystem_destroyed
 
-	Available: Techs.ProjEnergy_Root.Level > 0
-	Level: Techs.ProjEnergy_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	DamageLevel: Techs.ProjEnergy_Root.Level
-	RangeLevel: Techs.ProjEnergy_Fields.Level 
-	PowerLevel: Techs.ProjEnergy_Efficiency.Level
-	WaveLevel: Techs.ProjEnergy_Wavelength.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	Available: Techs.ProjEnergy_Root.Level  > 0
+	Level: Techs.ProjEnergy_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	DamageLevel: Techs.ProjEnergy_Root.Level As Level
+	RangeLevel: Techs.ProjEnergy_Fields.Level As Level 
+	PowerLevel: Techs.ProjEnergy_Efficiency.Level As Level
+	WaveLevel: Techs.ProjEnergy_Wavelength.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -390,14 +390,14 @@ System: FighterPFW
 	Description: #SS_FIGHTERPFW_DESC
 	Appearance: FighterPFW
 	
-	Available: Techs.ProjEnergy_Root.Level > 0
-	Level: Techs.ProjEnergy_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	DamageLevel: Techs.ProjEnergy_Root.Level
-	RangeLevel: Techs.ProjEnergy_Fields.Level 
-	PowerLevel: Techs.ProjEnergy_Efficiency.Level
-	WaveLevel: Techs.ProjEnergy_Wavelength.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	Available: Techs.ProjEnergy_Root.Level  > 0
+	Level: Techs.ProjEnergy_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	DamageLevel: Techs.ProjEnergy_Root.Level As Level
+	RangeLevel: Techs.ProjEnergy_Fields.Level As Level 
+	PowerLevel: Techs.ProjEnergy_Efficiency.Level As Level
+	WaveLevel: Techs.ProjEnergy_Wavelength.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -431,14 +431,14 @@ System: DualPlasmaBlaster
 	Description: #SS_PLASMABLASTER_DESC
 	Appearance: DualPlasmaBlaster
 
-	Available: Techs.ProjEnergy_Root.Level > 0
-	Level: Techs.ProjEnergy_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	DamageLevel: Techs.ProjEnergy_Root.Level
-	RangeLevel: Techs.ProjEnergy_Fields.Level 
-	PowerLevel: Techs.ProjEnergy_Efficiency.Level
-	WaveLevel: Techs.ProjEnergy_Wavelength.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	Available: Techs.ProjEnergy_Root.Level  > 0
+	Level: Techs.ProjEnergy_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	DamageLevel: Techs.ProjEnergy_Root.Level As Level
+	RangeLevel: Techs.ProjEnergy_Fields.Level As Level 
+	PowerLevel: Techs.ProjEnergy_Efficiency.Level As Level
+	WaveLevel: Techs.ProjEnergy_Wavelength.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -474,14 +474,14 @@ System: FighterParticleCannon
 	Description: #SS_FIGHTERPC_DESC
 	Appearance: FighterParticleCannon
 
-	Available: Techs.ProjEnergy_Root.Level > 0
-	Level: Techs.ProjEnergy_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	DamageLevel: Techs.ProjEnergy_Root.Level
-	RangeLevel: Techs.ProjEnergy_Fields.Level 
-	PowerLevel: Techs.ProjEnergy_Efficiency.Level
-	WaveLevel: Techs.ProjEnergy_Wavelength.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	Available: Techs.ProjEnergy_Root.Level  > 0
+	Level: Techs.ProjEnergy_Root.Level 
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	DamageLevel: Techs.ProjEnergy_Root.Level As Level
+	RangeLevel: Techs.ProjEnergy_Fields.Level As Level 
+	PowerLevel: Techs.ProjEnergy_Efficiency.Level As Level
+	WaveLevel: Techs.ProjEnergy_Wavelength.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -493,7 +493,7 @@ System: FighterParticleCannon
 	Costs: Metals[100 * Size * pow(SUBS_COST_CRV, Level)], Electronics[50 * Size * pow(SUBS_COST_CRV, Level)], AdvParts[35 * Size * pow(SUBS_COST_CRV, Level)], Labr[5 * Size]
 	Complexity: 2.0
 	
-	vDamage: 160 * Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT
+	vDamage: (160 * Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT)
 	vDelay: (2.4 + (sqrt(Size) / 5)) / (1 + (0.05 * PowerLevel))
 	vRange: (140 + (5 * sqrt(Size))) *  (1 + (0.1 * RangeLevel))
 	vSpeed: (vRange / 4)  * (1 + (DamageLevel * GA_TECH_INCREASE))
@@ -511,4 +511,3 @@ System: FighterParticleCannon
 			Control[30 * Size]
 
 	Hints: Alpha[vDamage], Power[-1 * vPowCost / vDelay], DPS[vDamage / vDelay], Local/Range[vRange], Local/DMGperShot[vDamage], Local/Delay[vDelay], Local/ProjSpeed[vSpeed], Local/EffRange[vEffectiveRange * vRange], Local/MinHit[vMinHit], Local/MinDmg[vMinDmg * vDamage], WasteHeat[vWasteHeat / vDelay]
-	

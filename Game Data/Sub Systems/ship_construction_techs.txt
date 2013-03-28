@@ -12,10 +12,10 @@ System: LightHull
 	
 	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	SizeLevel: Techs.ShipCon_Scale.Level
-	HPLevel: Techs.ShipCon_Root.Level
-	DiscountLevel: Techs.ShipCon_Cost.Level
-	MassLevel: Techs.ShipCon_Mass.Level
+	SizeLevel: Techs.ShipCon_Scale.Level As Level
+	HPLevel: Techs.ShipCon_Root.Level As Level
+	DiscountLevel: Techs.ShipCon_Cost.Level As Level
+	MassLevel: Techs.ShipCon_Mass.Level As Level
 
 	vMaxSize:  50 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)
@@ -64,10 +64,10 @@ System: MediumHull
 
 	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	SizeLevel: Techs.ShipCon_Scale.Level
-	HPLevel: Techs.ShipCon_Root.Level
-	DiscountLevel: Techs.ShipCon_Cost.Level
-	MassLevel: Techs.ShipCon_Mass.Level
+	SizeLevel: Techs.ShipCon_Scale.Level As Level
+	HPLevel: Techs.ShipCon_Root.Level As Level
+	DiscountLevel: Techs.ShipCon_Cost.Level As Level
+	MassLevel: Techs.ShipCon_Mass.Level As Level
 
 	vMaxSize:  50 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)
@@ -116,10 +116,10 @@ System: HeavyHull
 
 	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	SizeLevel: Techs.ShipCon_Scale.Level
-	HPLevel: Techs.ShipCon_Root.Level
-	DiscountLevel: Techs.ShipCon_Cost.Level
-	MassLevel: Techs.ShipCon_Mass.Level
+	SizeLevel: Techs.ShipCon_Scale.Level As Level
+	HPLevel: Techs.ShipCon_Root.Level As Level
+	DiscountLevel: Techs.ShipCon_Cost.Level As Level
+	MassLevel: Techs.ShipCon_Mass.Level As Level
 
 	vMaxSize:  50 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)
@@ -168,10 +168,10 @@ System: MegastructureHull
 
 	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	SizeLevel: Techs.ShipCon_Scale.Level
-	HPLevel: Techs.ShipCon_Root.Level
-	DiscountLevel: Techs.ShipCon_Cost.Level
-	MassLevel: Techs.ShipCon_Mass.Level
+	SizeLevel: Techs.ShipCon_Scale.Level As Level
+	HPLevel: Techs.ShipCon_Root.Level As Level
+	DiscountLevel: Techs.ShipCon_Cost.Level As Level
+	MassLevel: Techs.ShipCon_Mass.Level As Level
 
 	vMaxSize:  100 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)
@@ -220,10 +220,10 @@ System: SpinalMountHull
 
 	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	SizeLevel: Techs.ShipCon_Scale.Level
-	HPLevel: Techs.ShipCon_Root.Level
-	DiscountLevel: Techs.ShipCon_Cost.Level
-	MassLevel: Techs.ShipCon_Mass.Level
+	SizeLevel: Techs.ShipCon_Scale.Level As Level
+	HPLevel: Techs.ShipCon_Root.Level As Level
+	DiscountLevel: Techs.ShipCon_Cost.Level As Level
+	MassLevel: Techs.ShipCon_Mass.Level As Level
 
 	vMaxSize:  50 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)
@@ -281,10 +281,10 @@ System: GargantuanHull
 
 	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	SizeLevel: Techs.ShipCon_Scale.Level
-	HPLevel: Techs.ShipCon_Root.Level
-	DiscountLevel: Techs.ShipCon_Cost.Level
-	MassLevel: Techs.ShipCon_Mass.Level
+	SizeLevel: Techs.ShipCon_Scale.Level As Level
+	HPLevel: Techs.ShipCon_Root.Level As Level
+	DiscountLevel: Techs.ShipCon_Cost.Level As Level
+	MassLevel: Techs.ShipCon_Mass.Level As Level
 
 	vMaxSize:  200 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (2 / 15)
@@ -342,10 +342,10 @@ System: MothershipHull
 
 	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	SizeLevel: Techs.ShipCon_Scale.Level
-	HPLevel: Techs.ShipCon_Root.Level
-	DiscountLevel: Techs.ShipCon_Cost.Level
-	MassLevel: Techs.ShipCon_Mass.Level
+	SizeLevel: Techs.ShipCon_Scale.Level As Level
+	HPLevel: Techs.ShipCon_Root.Level As Level
+	DiscountLevel: Techs.ShipCon_Cost.Level As Level
+	MassLevel: Techs.ShipCon_Mass.Level As Level
 
 	vMaxSize:  250 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (2 / 15)
@@ -398,10 +398,10 @@ System: StationHull
 
 	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	SizeLevel: Techs.ShipCon_Scale.Level
-	HPLevel: Techs.ShipCon_Root.Level
-	DiscountLevel: Techs.ShipCon_Cost.Level
-	MassLevel: Techs.ShipCon_Mass.Level
+	SizeLevel: Techs.ShipCon_Scale.Level As Level
+	HPLevel: Techs.ShipCon_Root.Level As Level
+	DiscountLevel: Techs.ShipCon_Cost.Level As Level
+	MassLevel: Techs.ShipCon_Mass.Level As Level
 
 	vMaxSize:  100 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)
@@ -445,10 +445,10 @@ System: FortressHull
 
 	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	SizeLevel: Techs.ShipCon_Scale.Level
-	HPLevel: Techs.ShipCon_Root.Level
-	DiscountLevel: Techs.ShipCon_Cost.Level
-	MassLevel: Techs.ShipCon_Mass.Level
+	SizeLevel: Techs.ShipCon_Scale.Level As Level
+	HPLevel: Techs.ShipCon_Root.Level As Level
+	DiscountLevel: Techs.ShipCon_Cost.Level As Level
+	MassLevel: Techs.ShipCon_Mass.Level As Level
 
 	vMaxSize:  400 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (2 / 15)
@@ -496,10 +496,10 @@ System: FighterHull
 	
 	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	SizeLevel: Techs.ShipCon_Scale.Level
-	HPLevel: Techs.ShipCon_Root.Level
-	DiscountLevel: Techs.ShipCon_Cost.Level
-	MassLevel: Techs.ShipCon_Mass.Level
+	SizeLevel: Techs.ShipCon_Scale.Level As Level
+	HPLevel: Techs.ShipCon_Root.Level As Level
+	DiscountLevel: Techs.ShipCon_Cost.Level As Level
+	MassLevel: Techs.ShipCon_Mass.Level As Level
 
 	vMaxSize:  1 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)
@@ -545,10 +545,10 @@ System: BomberHull
 	
 	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	SizeLevel: Techs.ShipCon_Scale.Level
-	HPLevel: Techs.ShipCon_Root.Level
-	DiscountLevel: Techs.ShipCon_Cost.Level
-	MassLevel: Techs.ShipCon_Mass.Level
+	SizeLevel: Techs.ShipCon_Scale.Level As Level
+	HPLevel: Techs.ShipCon_Root.Level As Level
+	DiscountLevel: Techs.ShipCon_Cost.Level As Level
+	MassLevel: Techs.ShipCon_Mass.Level As Level
 
 	vMaxSize:  2 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)
@@ -594,10 +594,10 @@ System: CarrierHull
 	
 	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	SizeLevel: Techs.ShipCon_Scale.Level
-	HPLevel: Techs.ShipCon_Root.Level
-	DiscountLevel: Techs.ShipCon_Cost.Level
-	MassLevel: Techs.ShipCon_Mass.Level
+	SizeLevel: Techs.ShipCon_Scale.Level As Level
+	HPLevel: Techs.ShipCon_Root.Level As Level
+	DiscountLevel: Techs.ShipCon_Cost.Level As Level
+	MassLevel: Techs.ShipCon_Mass.Level As Level
 
 	vMaxSize:  100 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)
@@ -650,11 +650,11 @@ System: HaulerHull
 
 	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	SizeLevel: Techs.ShipCon_Scale.Level
-	HPLevel: Techs.ShipCon_Root.Level
-	DiscountLevel: Techs.ShipCon_Cost.Level
-	MassLevel: Techs.ShipCon_Mass.Level
-	CargoLevel: Techs.Logistics_Cargo.Level
+	SizeLevel: Techs.ShipCon_Scale.Level As Level
+	HPLevel: Techs.ShipCon_Root.Level As Level
+	DiscountLevel: Techs.ShipCon_Cost.Level As Level
+	MassLevel: Techs.ShipCon_Mass.Level As Level
+	CargoLevel: Techs.Logistics_Cargo.Level As Level
 
 	vMaxSize:  75 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)
@@ -704,11 +704,11 @@ System: TankerHull
 
 	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	SizeLevel: Techs.ShipCon_Scale.Level
-	HPLevel: Techs.ShipCon_Root.Level
-	DiscountLevel: Techs.ShipCon_Cost.Level
-	MassLevel: Techs.ShipCon_Mass.Level
-	SuppliesLevel: Techs.Logistics_Supplies.Level
+	SizeLevel: Techs.ShipCon_Scale.Level As Level
+	HPLevel: Techs.ShipCon_Root.Level As Level
+	DiscountLevel: Techs.ShipCon_Cost.Level As Level
+	MassLevel: Techs.ShipCon_Mass.Level As Level
+	SuppliesLevel: Techs.Logistics_Supplies.Level As Level
 
 	vMaxSize:  75 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)
@@ -754,9 +754,9 @@ System: ExternalMount
 
 	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	HPLevel: Techs.ShipCon_Root.Level
-	DiscountLevel: Techs.ShipCon_Cost.Level
-	MassLevel: Techs.ShipCon_Mass.Level
+	HPLevel: Techs.ShipCon_Root.Level As Level
+	DiscountLevel: Techs.ShipCon_Cost.Level As Level
+	MassLevel: Techs.ShipCon_Mass.Level As Level
 	
 	Size: Object.Scale
 	Mass: (40 * Size) / (1 + (0.1 * MassLevel))
@@ -788,9 +788,9 @@ System: IntegratedConstruction
 	
 	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	HPLevel: Techs.ShipCon_Root.Level
-	DiscountLevel: Techs.ShipCon_Cost.Level
-	MassLevel: Techs.ShipCon_Mass.Level
+	HPLevel: Techs.ShipCon_Root.Level As Level
+	DiscountLevel: Techs.ShipCon_Cost.Level As Level
+	MassLevel: Techs.ShipCon_Mass.Level As Level
 	
 	Size: Object.Scale
 	
@@ -819,9 +819,9 @@ System: ShipYard
 
 	Available: Techs.ShipCon_Root.Level > 0
 	Level: Techs.ShipCon_Root.Level
-	HPLevel: Techs.Materials_Struct.Level
-	CargoLevel: Techs.Logistics_Cargo.Level
-	SuppliesLevel: Techs.Logistics_Supplies.Level
+	HPLevel: Techs.Materials_Struct.Level As Level
+	CargoLevel: Techs.Logistics_Cargo.Level As Level
+	SuppliesLevel: Techs.Logistics_Supplies.Level As Level
 	
 	Size: Scale
 	Durability: 500 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT

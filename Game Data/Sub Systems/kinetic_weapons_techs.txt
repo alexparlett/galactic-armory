@@ -25,12 +25,12 @@ System: PlanetCannon
 
 	Available: Techs.Kinetic_Root.Level > 0
 	Level: Techs.Kinetic_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	HPLevel:  Techs.Materials_Struct.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	HPLevel:  Techs.Materials_Struct.Level As Level
 	DamageLevel: Techs.Kinetic_Root.Level
-	RangeLevel: Techs.Kinetic_Targetting.Level
-	AmmoLevel: Techs.Kinetic_Ammo.Level
-	HardenedLevel: Techs.Kinetic_Hardened.Level
+	RangeLevel: Techs.Kinetic_Targetting.Level As Level
+	AmmoLevel: Techs.Kinetic_Ammo.Level As Level
+	HardenedLevel: Techs.Kinetic_Hardened.Level As Level
 	
 	Size: Scale
 	Durability: 800 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
@@ -70,12 +70,12 @@ System: Railgun
 
 	Available: Techs.Kinetic_Root.Level > 0
 	Level: Techs.Kinetic_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.Kinetic_Root.Level
-	RangeLevel: Techs.Kinetic_Targetting.Level
-	AmmoLevel: Techs.Kinetic_Ammo.Level
-	HardenedLevel: Techs.Kinetic_Hardened.Level
-	HPLevel: Techs.Materials_Weapons.Level
+	RangeLevel: Techs.Kinetic_Targetting.Level As Level
+	AmmoLevel: Techs.Kinetic_Ammo.Level As Level
+	HardenedLevel: Techs.Kinetic_Hardened.Level As Level
+	HPLevel: Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
     Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -115,12 +115,12 @@ System: TwinRailgun
 
 	Available: Techs.Kinetic_Root.Level > 0
 	Level: Techs.Kinetic_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.Kinetic_Root.Level
-	RangeLevel: Techs.Kinetic_Targetting.Level
-	AmmoLevel: Techs.Kinetic_Ammo.Level
-	HardenedLevel: Techs.Kinetic_Hardened.Level
-	HPLevel: Techs.Materials_Weapons.Level
+	RangeLevel: Techs.Kinetic_Targetting.Level As Level
+	AmmoLevel: Techs.Kinetic_Ammo.Level As Level
+	HardenedLevel: Techs.Kinetic_Hardened.Level As Level
+	HPLevel: Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
     Durability: 80 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -163,12 +163,12 @@ System: MuonCannon
 
 	Available: Techs.Kinetic_Root.Level > 0
 	Level: Techs.Kinetic_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.Kinetic_Root.Level
-	RangeLevel: Techs.Kinetic_Targetting.Level
-	AmmoLevel: Techs.Kinetic_Ammo.Level
-	HardenedLevel: Techs.Kinetic_Hardened.Level
-	HPLevel: Techs.Materials_Weapons.Level
+	RangeLevel: Techs.Kinetic_Targetting.Level As Level
+	AmmoLevel: Techs.Kinetic_Ammo.Level As Level
+	HardenedLevel: Techs.Kinetic_Hardened.Level As Level
+	HPLevel: Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
     Durability: 100 * Size * pow(HEALTH_CURVE,HPLevel) * HEALTH_MULT
@@ -214,12 +214,12 @@ System: GraviticAccelerator
 
 	Available: Techs.Kinetic_Root.Level > 0
 	Level: Techs.Kinetic_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.Kinetic_Root.Level
-	RangeLevel: Techs.Kinetic_Targetting.Level
-	AmmoLevel: Techs.Kinetic_Ammo.Level
-	HardenedLevel: Techs.Kinetic_Hardened.Level
-	HPLevel:  Techs.Materials_Weapons.Level
+	RangeLevel: Techs.Kinetic_Targetting.Level As Level
+	AmmoLevel: Techs.Kinetic_Ammo.Level As Level
+	HardenedLevel: Techs.Kinetic_Hardened.Level As Level
+	HPLevel:  Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
     Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -263,12 +263,12 @@ System: AutocannonBattery
 	
 	Available: Techs.Kinetic_Root.Level > 0
 	Level: Techs.Kinetic_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.Kinetic_Root.Level
-	RangeLevel: Techs.Kinetic_Targetting.Level
-	AmmoLevel: Techs.Kinetic_Ammo.Level
-	HardenedLevel: Techs.Kinetic_Hardened.Level
-	HPLevel: Techs.Materials_Weapons.Level
+	RangeLevel: Techs.Kinetic_Targetting.Level As Level
+	AmmoLevel: Techs.Kinetic_Ammo.Level As Level
+	HardenedLevel: Techs.Kinetic_Hardened.Level As Level
+	HPLevel: Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
     Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -311,12 +311,12 @@ System: GatlingTurret
 
 	Available: Techs.Kinetic_Root.Level > 0
 	Level: Techs.Kinetic_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	DamageLevel: Techs.Kinetic_Root.Level
-	RangeLevel: Techs.Kinetic_Targetting.Level
-	AmmoLevel: Techs.Kinetic_Ammo.Level
-	HardenedLevel: Techs.Kinetic_Hardened.Level
-	HPLevel: Techs.Materials_Weapons.Level
+	RangeLevel: Techs.Kinetic_Targetting.Level As Level
+	AmmoLevel: Techs.Kinetic_Ammo.Level As Level
+	HardenedLevel: Techs.Kinetic_Hardened.Level As Level
+	HPLevel: Techs.Materials_Weapons.Level As Level
 	
     Size: Scale
     Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT

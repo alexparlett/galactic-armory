@@ -10,7 +10,7 @@ Technology: Infra_Root
 	Cost: 1000 * (0.5 + (NextLevel * 0.5))
 	
 	Link: Infra_Industry[1 * LINK_COST]
-	Link: Infra_Helium3[1 * LINK_COST]
+	Link: Infra_Helium[1 * LINK_COST]
 	Link: Infra_SpaceIndustry[1 * LINK_COST]
 	
 Technology: Infra_Industry
@@ -23,9 +23,9 @@ Technology: Infra_Industry
 	MaxLevel: 20
 	Cost: 1000 * (0.5 + (NextLevel * 0.5))
 	
-Technology: Infra_Helium3
-	Name: #RS_INFRA_HELIUM3_NAME
-	Description: #RS_INFRA_HELIUM3_DESC
+Technology: Infra_Helium
+	Name: #RS_INFRA_HELIUM_NAME
+	Description: #RS_INFRA_HELIUM_DESC
 	Icon: infrastructure_He3
 	Position: 2,0
 	

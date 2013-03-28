@@ -5,10 +5,10 @@ System: SpacePort
 
 	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
-	econLevel: Techs.Economics.Level
-	cargoLevel: Techs.Cargo.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	HPLevel: Techs.Materials_Struct.Level
+	econLevel: Techs.Logistics_Root.Level
+	cargoLevel: Techs.Logistics_Cargo.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	HPLevel: Techs.Materials_Struct.Level As Level
 	
 	Size: Scale
 	Durability: 500 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
@@ -61,8 +61,8 @@ System: CargoBlock
 	
 	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	HPLevel: Techs.Materials_Struct.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	HPLevel: Techs.Materials_Struct.Level As Level
 	
 	Size: Scale
 	Durability: 200 * Size * pow(LEVEL_GAIN_CURVE, Level) * PLANET_STRUCT_MULT
@@ -112,7 +112,7 @@ System: FuelCell
 
 	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	HPLevel:  Techs.Materials_Root.Level
@@ -143,7 +143,7 @@ System: BigFuelCell
 
 	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	HPLevel:  Techs.Materials_Root.Level
@@ -178,7 +178,7 @@ System: AmmoStorage
 
 	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	HPLevel:  Techs.Materials_Root.Level
@@ -209,7 +209,7 @@ System: BigAmmoStorage
 
 	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	HPLevel:  Techs.Materials_Root.Level
@@ -244,7 +244,7 @@ System: CargoBay
 	
 	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	HPLevel:  Techs.Materials_Root.Level
@@ -274,7 +274,7 @@ System: CargoMetal
 	
 	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	HPLevel:  Techs.Materials_Root.Level
@@ -304,7 +304,7 @@ System: CargoElec
 	
 	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	HPLevel:  Techs.Materials_Root.Level
@@ -334,7 +334,7 @@ System: CargoAdvParts
 	
 	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	HPLevel:  Techs.Materials_Root.Level
@@ -365,7 +365,7 @@ System: Exporter
     
 	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
     Size: Scale
     HPLevel:  Techs.Materials_Root.Level
@@ -413,7 +413,7 @@ System: MetalExporter
     
 	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
     Size: Scale
     HPLevel:  Techs.Materials_Root.Level
@@ -450,7 +450,7 @@ System: ElectsExporter
     
 	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
     Size: Scale
     HPLevel:  Techs.Materials_Root.Level
@@ -486,7 +486,7 @@ System: PartsExporter
     
 	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
     Size: Scale
     HPLevel:  Techs.Materials_Root.Level
@@ -522,7 +522,7 @@ System: Importer
     
 	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
     Size: Scale
     HPLevel:  Techs.Materials_Root.Level
@@ -566,7 +566,7 @@ System: AmmoFabricator
 
 	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
     Size: Scale
     HPLevel:  Techs.Materials_Root.Level
@@ -605,8 +605,8 @@ System: FuelDepot
 
 	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	HPLevel: Techs.Materials_Struct.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	HPLevel: Techs.Materials_Struct.Level As Level
 	
 	Size: Scale
 	Durability: 500 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT
@@ -642,8 +642,8 @@ System: AmmoDepot
 
 	Available: Techs.Logistics_Root.Level > 0
 	Level: Techs.Logistics_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	HPLevel: Techs.Materials_Struct.Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	HPLevel: Techs.Materials_Struct.Level As Level
 	
 	Size: Scale
 	Durability: 500 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * PLANET_STRUCT_MULT

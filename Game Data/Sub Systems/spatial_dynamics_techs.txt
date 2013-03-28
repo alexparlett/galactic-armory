@@ -10,8 +10,8 @@ System: JumpDrive
 	Available: Techs.Spatial_Root.Level > 0
 	Level: Techs.Spatial_Root.Level
 	JumpLevel: Techs.Spatial_Root.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	Durability: 100 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -52,9 +52,9 @@ System: QuantumCompressor
 
 	Available: Techs.Spatial_Comp.Level > 0
 	Level: Techs.Spatial_Comp.Level
-	SpatialCompressionLevel: Techs.Spatial_Comp.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
+	SpatialCompressionLevel: Techs.Spatial_Comp.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
 	
 	Size: Scale
 	Durability: 15 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -88,10 +88,10 @@ System: DirectedSpaceFold
 
 	Available: Techs.Spatial_DSM.Level > 0
 	Level: Techs.Spatial_DSM.Level
-	DSMLevel: Techs.Spatial_DSM.Level
-	HPLevel: Techs.Materials_Root.Level
-	MassLevel: Techs.Materials_Lightweight.Level
-	HeatLevel: Techs.Energy_Thermal.Level
+	DSMLevel: Techs.Spatial_DSM.Level As Level
+	HPLevel: Techs.Materials_Root.Level As Level
+	MassLevel: Techs.Materials_Lightweight.Level As Level
+	HeatLevel: Techs.Energy_Thermal.Level As Level
 	
 	Size: max(Scale, 200)
 	Durability: 80 * Size * (1 + (HPLevel * GA_TECH_INCREASE)) * GAME_SUBSYS_MULT
@@ -135,11 +135,11 @@ System: HeliocideHull
 
 	Available: Techs.Spatial_Root.Level > 0
 	Level: Techs.Spatial_Root.Level
-	SizeLevel: Techs.ShipCon_Scale.Level
-	HPLevel: Techs.ShipCon_Root.Level
-	DiscountLevel: Techs.ShipCon_Cost.Level
-	MassLevel: Techs.ShipCon_Mass.Level
-	HeliocideLevel: Techs.Spatial_Heliocide.Level
+	SizeLevel: Techs.ShipCon_Scale.Level As Level
+	HPLevel: Techs.ShipCon_Root.Level As Level
+	DiscountLevel: Techs.ShipCon_Cost.Level As Level
+	MassLevel: Techs.ShipCon_Mass.Level As Level
+	HeliocideLevel: Techs.Spatial_Heliocide.Level As Level
 
 	vMaxSize:  200 * (1 + (GA_SIZE_INCREASE * SizeLevel))
 	vOneSpace: Object.Size * (1 / 15)
