@@ -13,15 +13,18 @@
 //string@ strLivable = "Livable";
 
 // Settings
-float RS_minPlanetRadius = 10, RS_maxPlanetRadius = 40;
-float RS_orbitRadiusFactor = 400.f;
-float RS_tempFalloffRadius  = RS_orbitRadiusFactor * 6.f;
-uint RS_maxStructSpaceHome = 30;
-uint RS_maxStructSpaceRock = 30;
+float RS_galacticScale = 1.f;
+float RS_minPlanetRadius = 6.f, RS_maxPlanetRadius = 12.f;//50=sf=30, 40=sf=24, 60=sf=36
+float RS_minDwarfPlanetRadius = 2.f, RS_maxDwarfPlanetRadius = 6.f;
+float RS_orbitRadiusFactor = 800.f;
+float RS_tempFalloffRadius  = RS_orbitRadiusFactor * 20.f;
+uint RS_maxStructSpaceHome = 34;
+uint RS_maxStructSpaceRock = 34;
+uint RS_maxStructSpaceRockDwarf = 12;
 uint RS_maxNumberMoonsGas = 40;
 uint RS_maxNumberMoonsOther = 5;
-float RS_starSizeFactor = 4.5f;
-const float RS_starMassFactor = 1.f / 19800.f;
+float RS_starSizeFactor = 45.f;// = RS_maxPlanetRadius / sqrt(sqrt(sqrt(300) / 0.65
+const float RS_starMassFactor = 1.f /30000.f;// 19800.f;
 bool RS_makeOddities = true;
 bool RS_prepped = false;
 bool RS_balancedStart = false;
@@ -155,7 +158,7 @@ Planet@ RS_setupStandardHomeworld(System@ sys, Empire@ emp) {
 	int pass = 4;
 	do {
 		Planet@ newPlanet = RS_getRandomPlanet(sys);
-		bool livable = sys.toObject().getStat(space, strLivable) > 0.1f;
+		bool livable = sys.toObject().getStat(space, strLivable) > 0.5f; //0.1
 		
 		if (pass > 0 && livable) {
 			// Player distance
@@ -214,11 +217,11 @@ Planet@ RS_setupStandardHomeworld(System@ sys, Empire@ emp) {
 	
 	sys.toObject().setStat(space, strLivable, 0.f);
 	Planet_Desc plDesc;
-	plDesc.PlanetRadius = randomf(9.f,11.f);
+	plDesc.PlanetRadius = RS_minPlanetRadius + ((RS_maxPlanetRadius - RS_minPlanetRadius) / randomf(9.f,11.f));
 	plDesc.RandomConditions = false;
 	string@ name = "";
 
-	orbDesc.Eccentricity = 1.f;
+	orbDesc.Eccentricity = randomf(0.85f, 1.15f);
 	if (planet is null) {
 		// Just creating a new planet, this may cause colliding planet syndrome
 		orbDesc.Radius = randomf(2.f, 6.f) * RS_orbitRadiusFactor;
@@ -439,7 +442,8 @@ void RS_createSecondaryPlanet(System@ sys, Empire@ emp) {
 	// Create a new planet if we didn't find any
 	if (planet is null) {
 		Planet_Desc plDesc;
-		pRad = randomf(RS_minPlanetRadius, RS_maxPlanetRadius);
+		pRad = 4;
+//		pRad = randomf(RS_minPlanetRadius, RS_maxPlanetRadius);
 		plDesc.PlanetRadius = pRad;
 		plDesc.RandomConditions = false;
 
@@ -626,30 +630,35 @@ void RS_createSecondaryPlanet(System@ sys, Empire@ emp) {
 // {{{ Standard Planet
 Planet@ RS_makeStandardPlanet(System@ sys, uint plNum, uint plCount) {
 	// Planet radius
-	float pRad = randomf(RS_minPlanetRadius, RS_maxPlanetRadius), pVol = pRad * pRad * pRad * 4.189f;
+	float pRad = randomf(RS_minPlanetRadius, RS_maxPlanetRadius);
 	plDesc.PlanetRadius = pRad;
 	plDesc.RandomConditions = false;
 
 	// Calculate planetary temperature
 	if (RS_tempFalloff) {
 		int type = -1;
-		float temp = starDesc.Temperature / sqr(orbDesc.Radius / RS_tempFalloffRadius);
+		float temp = (sqrt(starDesc.Temperature * starDesc.Radius)) / sqr(orbDesc.Radius / RS_tempFalloffRadius);
 		float tp = randomf(1.f);
 
-		if (tp < 0.15f)
+		if (tp < 0.25f){
 			type = getRandomType(GasTypes);
-		else if (temp > 30000.f)
+			plDesc.PlanetRadius += pRad*4.f;
+			}
+		else if (temp > 24000.f){
 			type = getRandomType(LavaTypes);
-		else if (temp > 17000.f)
+			}
+		else if (temp > 14000.f){
 			type = getRandomType(WarmTypes);
-		else if (temp > 5000.f)
+			}
+		else if (temp > 10000.f){
 			type = getRandomType(NormalTypes);
-		else
+			}
+		else{
 			type = getRandomType(ColdTypes);
-
+			}
 		plDesc.setPlanetType(type);
 	}
-	
+	float pVol = pRad * pRad * pRad * 4.189f;
 	// Planet orbit
 	plDesc.setOrbit(orbDesc);
 	
@@ -824,6 +833,124 @@ Planet@ RS_makeStandardPlanet(System@ sys, uint plNum, uint plCount) {
 	return pl;
 }
 // }}}
+// {{{ Planet Generation Dwarf Planets
+Planet@ RS_makeRandomDwarfPlanet(System@ sys, uint dplNum, uint dplCount) {
+	// Make a planet in the system 
+	return RS_makeDwarfPlanet(sys, dplNum, dplCount);
+}
+// {{{ Dwarf Planet
+Planet@ RS_makeDwarfPlanet(System@ sys, uint dplNum, uint dplCount) {
+	// Planet radius
+	float dpRad = randomf(RS_minDwarfPlanetRadius, RS_maxDwarfPlanetRadius), dpVol = dpRad * dpRad * dpRad * 4.189f;
+	dplDesc.PlanetRadius = dpRad;
+	dplDesc.RandomConditions = false;
+
+	// Calculate planetary temperature
+	if (RS_tempFalloff) {
+		int type = -1;
+		float temp = (sqrt(starDesc.Temperature * starDesc.Radius)) / sqr(orbDesc.Radius / RS_tempFalloffRadius);
+		float tp = randomf(1.f);
+
+		if (temp > 30000.f)
+			type = getRandomType(DLavaTypes);
+		else if (temp > 17000.f)
+			type = getRandomType(DWarmTypes);
+		else if (temp > 5000.f)
+			type = getRandomType(DNormalTypes);
+		else
+			type = getRandomType(DColdTypes);
+
+		dplDesc.setPlanetType(type);
+	}
+	
+	// Planet orbit
+	dplDesc.setOrbit(orbDesc);
+	
+	// Create planet
+	Planet@ dpl = sys.makePlanet(dplDesc);
+	Object@ planet = dpl.toObject();
+	
+	// Add random conditions
+	if (randomf(1.f) < 0.6f)
+		dpl.addPositiveCondition();
+	else
+		dpl.addNegativeCondition();
+
+	if (randomf(1.f) < 0.5f) {
+		if (randomf(1.f) < 0.6f)
+			dpl.addPositiveCondition();
+		else
+			dpl.addNegativeCondition();
+	}
+	
+	if (randomf(1.f) < 0.5f) {
+		if (randomf(1.f) < 0.6f)
+			dpl.addPositiveCondition();
+		else
+			dpl.addNegativeCondition();
+	}	
+
+	// Give the planet ore
+	State@ ore = planet.getState(strOre);
+	ore.max = dpVol * 6000.f;
+	ore.val = ore.max * (0.5f + randomf(0.5f));
+
+	//Set structure limit
+	uint strucsp = 1;
+	//uint strucsp = (RS_pctBetween(pRad, RS_minDwarfPlanetRadius, RS_maxDwarfPlanetRadius) * 0.5f + 0.5f) * RS_maxStructSpace;
+
+	if (dpl.getPhysicalType().beginsWith("dwarflava")) 
+	{
+		strucsp = rand(2, 5);
+	}
+	else if (dpl.getPhysicalType().beginsWith("dwarfice")) 
+	{
+		//strucsp = (strucsp / 2);
+		//strucsp = (strucsp);
+		strucsp = rand(3, 6);
+	}
+	else if (dpl.getPhysicalType().beginsWith("dwarfdesert")) 
+	{
+		//strucsp = (strucsp);
+		strucsp = rand(4, 8);
+	}
+	else if (dpl.getPhysicalType().beginsWith("dwarfrock")) 
+	{
+		//random amount of strucspace between 0 and RS_maxStructSpaceRockDwarf
+		//lower amount more likely
+		while(randomf(1.f) < 0.2f && strucsp < RS_maxStructSpaceRockDwarf) {
+			strucsp++;
+		}
+		strucsp = (strucsp + dpRad);
+	}
+	
+	if(strucsp <= 1)
+		strucsp = 5;
+	dpl.setStructureSpace(strucsp);
+	
+	float oceanic = strucsp / 2;
+	if(dpl.hasCondition("oceanic"))
+		dpl.setStructureSpace(oceanic);	
+		
+	float slots = dpl.getMaxStructureCount();
+	
+	State@ terSlots = planet.getState(strTerraform);
+	if(slots >= 12) {
+		terSlots.max = rand(2, 6);
+		terSlots.val = terSlots.max;
+	}
+	else if(slots >= 6) {
+		terSlots.max = rand(4, 8);
+		terSlots.val = terSlots.max;
+	}
+	else {
+		terSlots.max = rand(6, 12);
+		terSlots.val = terSlots.max;
+	}
+
+	return dpl;
+}
+// }}}
 // }}}
 // {{{ Oddity Generation
 // {{{ Comet
@@ -842,6 +969,40 @@ void RS_makeRandomComet(System@ sys) {
 }
 // }}}
 // {{{ Asteroids
+void RS_makeRandomAsteroidNew(System@ sys, uint rocks, float starRad) {
+	asteroid_desc.clear();
+	
+	asteroid_desc.setFloat(strOrbMass, 0.2f); //Slow down the orbit
+	asteroid_desc.setFloat(strOrbEcc, randomf(0.9f,1.1f));
+	
+	float maxRadius = sys.toObject().radius * 0.9f;	
+	float baseRadius = starRad * 2.f + (randomf(2.f,6.f) * RS_orbitRadiusFactor), rockMaxDev = RS_orbitRadiusFactor / 4.f;
+	float basePitch = randomf(-0.2f,0.2f), rockPitchDev = 10.f / (2.f * twoPi * baseRadius);
+	
+	for(uint i = 0; i < rocks; ++i) {
+		asteroid_desc.setFloat(strOrbDays, randomf(3.f, 6.f));
+		asteroid_desc.setFloat(strRadius, randomf(4.f, 8.f));
+		asteroid_desc.setFloat(strOrbYaw, twoPi * randomf(-0.4f,0.4f) / float(rocks));
+		
+		float rockDev = randomf(rockMaxDev), rockDevAng = randomf(twoPi);
+		float oreVal = randomf(3000000, 9000000);
+		
+		asteroid_desc.setFloat(strOrbRad, min(baseRadius + (rockDev * cos(rockDevAng)), maxRadius));
+		asteroid_desc.setFloat(strOrbPitch, basePitch + (rockDev * rockPitchDev * sin(rockDevAng)));
+		asteroid_desc.setFloat(strMass, oreVal);
+		
+		Object@ asteroid = sys.makeOddity(asteroid_desc);
+		
+		State@ ore = asteroid.getState(strOre);
+		ore.max = oreVal;
+		ore.val = oreVal;
+		
+		State@ hp = asteroid.getState(strDmg);
+		hp.val = 0;
+		hp.max = oreVal;
+	}
+}
+
 void RS_makeRandomAsteroid(System@ sys, uint rocks) {
 	asteroid_desc.clear();
 	
@@ -891,34 +1052,36 @@ System@ RS_makeRandomSystem(Galaxy@ Glx, vector position, uint sysNum, uint sysC
 	if (sysNum >= 11) {
 		// We can have dead systems when we already
 		// have 11 live ones (one for each possible player)
-		if(sysType >= 97)
+		if(sysType >= 100)
 			return RS_makeSupernova(Glx, position);
-		else if (sysType >= 85)
-			return RS_makeBinarySystem(Glx, position);
-		else if (sysType >= 75 && RS_makeOddities)
-			return RS_makeAsteroidBelt(Glx, position);
-		else if (sysType >= 70) 
-			return makeUnstableStar(Glx, position);
-		else if (sysType >= 65) 
-			return makeNeutronStar(Glx, position);
+//		else if (sysType >= 80)
+	//		return RS_makeProtostar(Glx, position);&& RS_makeOddities
+//		//else if (sysType >= 90)
+//			return RS_makeBinarySystem(Glx, position);
+//		else if (sysType >= 90)
+//			return RS_makeAsteroidBelt(Glx, position);
+//		else if (sysType >= 80 ) 
+//			return RS_makeUnstableStar(Glx, position);
+//		else if (sysType >= 80) 
+//			return makeNeutronStar(Glx, position);
 		else
 			return RS_makeStandardSystem(Glx, position);
 	}
 	else {
 		// Guaranteed live systems
-		if (sysType >= 90)
-			return RS_makeBinarySystem(Glx, position);
-		else
+//		if (sysType >= 90)
+//			return RS_makeBinarySystem(Glx, position);
+//		else
 			return RS_makeStandardSystem(Glx, position);
 	}
 }
 
-// {{{ Standard System
+// {{{ Systems with main sequence dwarf stars, cold sub-dwars OR the larger sub-gaints AND a potential tiny white dwarf OR brown dwarf binary companion.
 System@ RS_makeStandardSystem(Galaxy@ glx, vector pos) {
 	// Reset orbit parameters
 	orbDesc.Offset = vector(0, 0, 0);
 	orbDesc.setCenter(null);
-	orbDesc.PosInYear = -1.f;
+	orbDesc.PosInYear = randomf(-0.2f, -2.f);
 	orbDesc.IsStatic = true;
 
 	// Create the system
@@ -926,41 +1089,1024 @@ System@ RS_makeStandardSystem(Galaxy@ glx, vector pos) {
 	sysDesc.AutoStar = false;
 
 	System @sys = @glx.createSystem(sysDesc);
-
 	// Create the star
-	starDesc.Temperature = randomf(2000,40000);
-	starDesc.Radius = randomf(30.f + (starDesc.Temperature / 1000.f),60.f + (starDesc.Temperature / 600.f)) * RS_starSizeFactor;
-	starDesc.Brightness = 5;
-	starDesc.setOrbit(orbDesc);
+	float specialB;
+	float number;
+	float diceroll = randomf(0.f,100.f);
+	if(diceroll <= 10.f){
+	// white dwarf test
+	starDesc.Temperature = randomf(0.f,100000.f); // D-Class White Dwarfs
+	if(starDesc.Temperature < 500.f){
+		starDesc.StarColor = Color(0x22220000);
+			number = 9.f;
+		}
+	if(starDesc.Temperature < 1000.f){
+		starDesc.StarColor = Color(0x56bd481d);
+			number = 8.f;
+		}
+	else if(starDesc.Temperature < 3000.f){
+		starDesc.StarColor = Color(0xa2dda416);
+			number = 7.f;
+		}
+	else if(starDesc.Temperature < 5000.f){	
+		starDesc.StarColor = Color(0xffeed945);
+			number = 6.f;
+		}
+	else if(starDesc.Temperature < 7500.f){	
+		starDesc.StarColor = Color(0xfff1e5bd);
+			number = 5.f;
+		}
+	else if(starDesc.Temperature < 10000.f){	
+		starDesc.StarColor = Color(0xffeef1f9);
+			number = 4.f;
+		}
+	else if(starDesc.Temperature < 25000.f){	
+		starDesc.StarColor = Color(0xffe0e7f9);
+			number = 3.f;
+		}
+	else if(starDesc.Temperature < 45000.f){	
+		starDesc.StarColor = Color(0xffbbc4f3);
+			number = 2.f;
+		}
+	else if(starDesc.Temperature < 70000.f){	
+		starDesc.StarColor = Color(0xffa8adea);
+			number = 1.f;
+		}
+	else if(starDesc.Temperature < 100000.f){	
+		starDesc.StarColor = Color(0xffc9b6ea);
+			number = 0.f;
+		}
+	float dicerollWhite = randomf(0.f,100.f);
+	if(dicerollWhite <= 20.f)
+	sys.addTag("DDAwarf"+number);
+	else if(dicerollWhite <= 40.f)
+	sys.addTag("DDBwarf"+number);
+	else if(dicerollWhite <= 60.f)
+	sys.addTag("DDPwarf"+number);
+	else if(dicerollWhite <= 80.f)
+	sys.addTag("DDQwarf"+number);
+	else if(dicerollWhite <= 100.f)
+	sys.addTag("DDZwarf"+number);
 	
+	starDesc.Radius = RS_starSizeFactor / randomf(2.f,3.f); //min-max 17-25 at factor 50 //it's a white dwarf, a degenerating core of a dead star slowly cooling. Without any generation of energy, temperature is not relevant in the math. Had it been larger as a previous live star, it would have collapsed to a neutron Star, other exotic star or a black hole.
+	specialB =(sqrt(sqrt(sqrt(starDesc.Temperature))))/2.f;
+	}	
+//10
+	else if(diceroll <= 18.f){	
+	starDesc.Temperature = randomf(300, 2200);
+	//	Y-Class(Near absolutely no light) Coldest Brown Dwarf.
+		if(starDesc.Temperature < 250.f){
+			starDesc.StarColor = Color(0x105b2b13);
+			number = 9.f;
+			}
+		else if(starDesc.Temperature < 300.f){
+			starDesc.StarColor = Color(0x115a2914);
+			number = 8.f;
+			}
+		else if(starDesc.Temperature < 350.f){
+			starDesc.StarColor = Color(0x12592615);
+			number = 7.f;
+			}
+		else if(starDesc.Temperature < 400.f){
+			starDesc.StarColor = Color(0x13572417);
+			number = 6.f;
+			}
+		else if(starDesc.Temperature < 450.f){
+			starDesc.StarColor = Color(0x14562219);
+			number = 5.f;
+			}
+		else if(starDesc.Temperature < 500.f){
+			starDesc.StarColor = Color(0x1554211c);
+			number = 4.f;
+			}
+		else if(starDesc.Temperature < 550.f){
+			starDesc.StarColor = Color(0x1653201f);
+			number = 3.f;
+			}
+		else if(starDesc.Temperature < 600.f){
+			starDesc.StarColor = Color(0x17501e24);
+			number = 2.f;
+			}
+		else if(starDesc.Temperature < 650.f){
+			starDesc.StarColor = Color(0x184f1e27);
+			number = 1.f;
+			}
+		else if(starDesc.Temperature <= 700.f){
+			starDesc.StarColor = Color(0x194e1e2a);
+			number = 0.f;
+	//	T-Class(Near no light) Brown Dwarf.
+			}
+		else if(starDesc.Temperature < 760.f){
+			starDesc.StarColor = Color(0x21461c33);
+			number = 9.f;
+			}
+		else if(starDesc.Temperature < 820.f){
+			starDesc.StarColor = Color(0x224a1e34);
+			number = 8.f;
+			}
+		else if(starDesc.Temperature < 880.f){
+			starDesc.StarColor = Color(0x234e1e34);
+			number = 7.f;
+			}
+		else if(starDesc.Temperature < 940.f){
+			starDesc.StarColor = Color(0x24542035);
+			number = 6.f;
+			}
+		else if(starDesc.Temperature < 1000.f){
+			starDesc.StarColor = Color(0x25592035);
+			number = 5.f;
+			}
+		else if(starDesc.Temperature < 1060.f){
+			starDesc.StarColor = Color(0x26602134);
+			number = 4.f;
+			}
+		else if(starDesc.Temperature < 1120.f){
+			starDesc.StarColor = Color(0x27672233);
+			number = 3.f;
+			}
+		else if(starDesc.Temperature < 1180.f){
+			starDesc.StarColor = Color(0x286e2232);
+			number = 2.f;
+			}
+		else if(starDesc.Temperature < 1240.f){
+			starDesc.StarColor = Color(0x29742331);
+			number = 1.f;
+			}
+		else if(starDesc.Temperature <= 1300.f){
+			starDesc.StarColor = Color(0x307b242e);
+			number = 0.f;
+			}
+	//	L-Class(Near weak light) Brown Dwarf.
+		else if(starDesc.Temperature < 1390.f){
+			starDesc.StarColor = Color(0x3283242b);
+			number = 9.f;
+			}
+		else if(starDesc.Temperature < 1480.f){
+			starDesc.StarColor = Color(0x348a2427);
+			number = 8.f;
+			}
+		else if(starDesc.Temperature < 1570.f){
+			starDesc.StarColor = Color(0x36902525);
+			number = 7.f;
+			}
+		else if(starDesc.Temperature < 1660.f){
+			starDesc.StarColor = Color(0x38962624);
+			number = 6.f;
+			}
+		else if(starDesc.Temperature < 1750.f){
+			starDesc.StarColor = Color(0x409c2723);
+			number = 5.f;
+			}
+		else if(starDesc.Temperature < 1840.f){
+			starDesc.StarColor = Color(0x42a12923);
+			number = 4.f;
+			}
+		else if(starDesc.Temperature < 1930.f){
+			starDesc.StarColor = Color(0x44a62a23);
+			number = 3.f;
+			}
+		else if(starDesc.Temperature < 2020.f){
+			starDesc.StarColor = Color(0x46aa2c24);
+			number = 2.f;
+			}
+		else if(starDesc.Temperature < 2110.f){
+			starDesc.StarColor = Color(0x48ad2e25);
+			number = 1.f;
+			}
+		else if(starDesc.Temperature <= 2200.f){
+			starDesc.StarColor = Color(0x50b13027);
+			number = 0.f;
+			}
+			if(starDesc.Temperature <= 700.f){
+				//Note: M-Class Brown Dwarf Calculation, min size is 215
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(0.65f, 0.7f);
+				sys.addTag("YDwarf"+number); //brown
+				specialB =0.5f;
+				}
+			else if(starDesc.Temperature <= 1300.f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(0.8f, 0.95f);// they are supposed to be bigger than L-Class! Gravity havent collapsed them yet.
+				sys.addTag("TDwarf"+number); //brown
+				specialB =0.75f;
+				}
+			else{
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(0.75f, 0.9f);
+				sys.addTag("LDwarf"+number); //brown
+				specialB =1.f;
+				}
+			//Note M-Class Brown Dwarfs are generated in the M-Class section.
+			}
+//18			
+	else if(diceroll <= 32.f){
+	starDesc.Temperature = randomf(2800, 4500);
+	//	C-Class(Pale Red Spectrum) Carbon Star, rare Red Dwarf, occasionally Red Giant+ branch.
+		if(starDesc.Temperature < 2970.f){
+			starDesc.StarColor = Color(0xffdb3d24);
+			number = 9.f;
+			}
+		else if(starDesc.Temperature < 3140.f){
+			starDesc.StarColor = Color(0xffe64124);
+			number = 8.f;
+			}
+		else if(starDesc.Temperature < 3310.f){
+			starDesc.StarColor = Color(0xffee4c2e);
+			number = 7.f;
+			}
+		else if(starDesc.Temperature < 3480.f){
+			starDesc.StarColor = Color(0xffee5a3b);
+			number = 6.f;
+			}
+		else if(starDesc.Temperature < 3650.f){
+			starDesc.StarColor = Color(0xffee694a);
+			number = 5.f;
+			}
+		else if(starDesc.Temperature < 3820.f){
+			starDesc.StarColor = Color(0xffee7b5d);
+			number = 4.f;
+			}
+		else if(starDesc.Temperature < 3990.f){
+			starDesc.StarColor = Color(0xffee8366);
+			number = 3.f;
+			}
+		else if(starDesc.Temperature < 4160.f){
+			starDesc.StarColor = Color(0xffee8d70);
+			number = 2.f;
+			}
+		else if(starDesc.Temperature < 4330.f){
+			starDesc.StarColor = Color(0xffee9a7b);
+			number = 1.f;
+			}
+		else if(starDesc.Temperature <= 4500.f){
+			starDesc.StarColor = Color(0xffee9f83);
+			number = 0.f;
+			}
+			float sizeroll = randomf(0.f,100.f);
+			if(sizeroll <= 2.5f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(30.f, 36.f); //hypergiant
+				sys.addTag("CHypergiant"+number); //red  randomf(30.f,36.f)
+				}
+			else if(sizeroll <= 6.5f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(24.f, 30.f); //supergiant
+				sys.addTag("CSupergiant"+number); //red  randomf(24.f,30.f)
+				}
+			else if(sizeroll <= 12.f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(18.f, 24.f); //bright giant
+				sys.addTag("CBrightgiant"+number); //red  randomf(18.f,24.f)
+				}
+			else if(sizeroll <= 20.f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(12.f, 18.f); //giant
+				sys.addTag("CGiant"+number); //red  randomf(12.f,18.f)
+				}
+			else{
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(0.8f, 1.2f); //dwarf
+				sys.addTag("CDwarf"+number); //red  randomf(0.8f, 1.2f)
+				}
+			specialB =2.f;
+			}
+//32
+	else if(diceroll <= 38.f){
+	starDesc.Temperature = randomf(2800, 4500);
+	//	S-Class(Dull Red Spectrum) Occasionally Red Giant+ branch. Transition stage of M-Class to C-Class.
+		if(starDesc.Temperature < 2970.f){
+			starDesc.StarColor = Color(0xffe05733);
+			number = 9.f;
+			}
+		else if(starDesc.Temperature < 3140.f){
+			starDesc.StarColor = Color(0xffec5b33);
+			number = 8.f;
+			}
+		else if(starDesc.Temperature < 3310.f){
+			starDesc.StarColor = Color(0xfffa6333);
+			number = 7.f;
+			}
+		else if(starDesc.Temperature < 3480.f){
+			starDesc.StarColor = Color(0xffff7038);
+			number = 6.f;
+			}
+		else if(starDesc.Temperature < 3650.f){
+			starDesc.StarColor = Color(0xffff8046);
+			number = 5.f;
+			}
+		else if(starDesc.Temperature < 3820.f){
+			starDesc.StarColor = Color(0xffff9254);
+			number = 4.f;
+			}
+		else if(starDesc.Temperature < 3990.f){
+			starDesc.StarColor = Color(0xffffa263);
+			number = 3.f;
+			}
+		else if(starDesc.Temperature < 4160.f){
+			starDesc.StarColor = Color(0xffffaf6f);
+			number = 2.f;
+			}
+		else if(starDesc.Temperature < 4330.f){
+			starDesc.StarColor = Color(0xffffbc78);
+			number = 1.f;
+			}
+		else if(starDesc.Temperature <= 4500.f){
+			starDesc.StarColor = Color(0xffffc680);
+			number = 0.f;
+			}
+			float sizeroll = randomf(0.f,100.f);
+			if(sizeroll <= 2.5f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(30.f, 36.f); //hypergiant
+				sys.addTag("SHypergiant"+number); //red
+				}
+			else if(sizeroll <= 6.5f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(24.f, 30.f); //supergiant
+				sys.addTag("SSupergiant"+number); //red
+				}
+			else if(sizeroll <= 12.f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(18.f, 24.f); //bright giant
+				sys.addTag("SBrightgiant"+number); //red
+				}
+			else if(sizeroll <= 20.f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(12.f, 18.f); //giant
+				sys.addTag("SGiant"+number); //red
+				}
+			else{
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(0.8f, 1.2f); //dwarf
+				sys.addTag("SDwarf"+number); //red
+				}
+			specialB =2.f;
+			}						
+//38			
+	else if(diceroll <= 48.f){
+	// M-Class(Red Spectrum) Main Sequence Red Dwarf and occasional Gaint+
+		starDesc.Temperature = randomf(2200, 3900);
+		if(starDesc.Temperature < 2370.f){
+			starDesc.StarColor = Color(0xffbb2c0d);
+			number = 9.f;
+			}
+		else if(starDesc.Temperature < 2540.f){
+			starDesc.StarColor = Color(0xffbb2f14);
+			number = 8.f;
+			}
+		else if(starDesc.Temperature < 2710.f){
+			starDesc.StarColor = Color(0xffbc3716);
+			number = 7.f;
+			}
+		else if(starDesc.Temperature < 2880.f){
+			starDesc.StarColor = Color(0xffbe3b16);
+			number = 6.f;
+			}
+		else if(starDesc.Temperature < 3050.f){
+			starDesc.StarColor = Color(0xffc24317);
+			number = 4.f;
+			}
+		else if(starDesc.Temperature < 3220.f){
+			starDesc.StarColor = Color(0xffc44917);
+			number = 5.f;
+			}
+		else if(starDesc.Temperature < 3390.f){
+			starDesc.StarColor = Color(0xffc75217);
+			number = 3.f;
+			}
+		else if(starDesc.Temperature < 3560.f){
+			starDesc.StarColor = Color(0xffc85b18);
+			number = 2.f;
+			}
+		else if(starDesc.Temperature < 3730.f){
+			starDesc.StarColor = Color(0xffc96318);
+			number = 1.f;
+			}
+		else if(starDesc.Temperature <= 3900.f){
+			starDesc.StarColor = Color(0xffcd6c19);
+			number = 0.f;
+			}
+			float sizeroll = randomf(0.f,100.f);
+			if(sizeroll <= 2.5f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(30.f, 36.f);	//hypergiant
+				sys.addTag("MHypergiant"+number); //red
+				specialB =2.f;
+				}
+			else if(sizeroll <= 6.5f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(24.f, 30.f); //supergiant
+				sys.addTag("MSupergiant"+number); //red
+				specialB =2.f;
+				}
+			else if(sizeroll <= 12.f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(18.f, 24.f); //bright giant 
+				sys.addTag("MBrightgiant"+number); //red
+				specialB =2.f;
+				}
+			else if(sizeroll <= 20.f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(12.f, 18.f); //giant
+				sys.addTag("MGiant"+number); //red
+				specialB =2.f;
+				}
+			else if(starDesc.Temperature <= 2800.f){
+				//Note: M-Class Brown Dwarf Calculation, min size is 215
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(0.9f, 1.1f); //brown dwarf
+				sys.addTag("MDwarf"+number); //brown
+				specialB =1.2f;
+				}
+			else{
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(0.8f, 1.2f); //red dwarf
+				sys.addTag("MDwarf"+number); //red
+				specialB =2.f;
+				}
+			}
+//48		
+	else if(diceroll <= 62.f){
+	starDesc.Temperature = randomf(3900, 5200);
+	//	K-Class(Orange Spectrum) Main Sequence Orange Dwarf
+		if(starDesc.Temperature < 4030.f){
+			starDesc.StarColor = Color(0xffce761a);
+			number = 9.f;
+			}
+		else if(starDesc.Temperature < 4160.f){
+			starDesc.StarColor = Color(0xffd17f19);
+			number = 8.f;
+			}
+		else if(starDesc.Temperature < 4290.f){
+			starDesc.StarColor = Color(0xffd4881a);
+			number = 7.f;
+			}
+		else if(starDesc.Temperature < 4420.f){
+			starDesc.StarColor = Color(0xffd69019);
+			number = 6.f;
+			}
+		else if(starDesc.Temperature < 4550.f){
+			starDesc.StarColor = Color(0xffdb9b19);
+			number = 5.f;
+			}
+		else if(starDesc.Temperature < 4680.f){
+			starDesc.StarColor = Color(0xffdba31a);
+			number = 4.f;
+			}
+		else if(starDesc.Temperature < 4810.f){
+			starDesc.StarColor = Color(0xffdfa919);
+			number = 3.f;
+			}
+		else if(starDesc.Temperature < 4940.f){
+			starDesc.StarColor = Color(0xffe1b219);
+			number = 2.f;
+			}
+		else if(starDesc.Temperature < 5070.f){
+			starDesc.StarColor = Color(0xffe3b91a);
+			number = 1.f;
+			}
+		else if(starDesc.Temperature <= 5200.f){
+			starDesc.StarColor = Color(0xffe5bf1a);
+			number = 0.f;
+			}
+			float sizeroll = randomf(0.f,100.f);
+			if(starDesc.Temperature <= 4500.f && sizeroll <= 2.5f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(30.f, 36.f); //hypergiant
+				sys.addTag("KHypergiant"+number); //red
+				}
+			else if(starDesc.Temperature > 4500.f && sizeroll <= 0.5f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(30.f, 36.f)*0.6f; //hypergiant
+				sys.addTag("KHypergiant"+number); //yellow
+				}
+			else if(starDesc.Temperature <= 4500.f && sizeroll <= 6.5f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(24.f, 30.f); //supergiant
+				sys.addTag("KSupergiant"+number); //red
+				}
+			else if(starDesc.Temperature > 4500.f && sizeroll <= 1.5f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(24.f, 30.f)*0.6f; //supergiant
+				sys.addTag("KSupergiant"+number); //yellow
+				}
+			else if(starDesc.Temperature <= 4500.f && sizeroll <= 12.f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(18.f, 24.f); //bright giant
+				sys.addTag("KBrightgiant"+number); //red
+				}
+			else if(starDesc.Temperature > 4500.f && sizeroll <= 2.875f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(18.f, 24.f)*0.6f; //bright giant
+				sys.addTag("KBrightgiant"+number); //yellow
+				}
+			else if(starDesc.Temperature <= 4500.f && sizeroll <= 20.f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(12.f, 18.f); //giant
+				sys.addTag("KGiant"+number); //red
+				}
+			else if(starDesc.Temperature > 4500.f && sizeroll <= 4.875f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(12.f, 18.f)*0.6f; //giant
+				sys.addTag("KGiant"+number); //yellow
+				}
+			else if(starDesc.Temperature > 4500.f && sizeroll <= 32.4375f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(1.4f, 2.6f); //subgiant
+				sys.addTag("KSubgiant"+number); //orange
+				}
+			else{
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(0.8f, 1.2f); //Main Sequence
+				sys.addTag("KMSQ"+number); //orange
+				}
+			specialB =2.f;
+			}
+//62			
+	else if(diceroll <= 76.f){
+	starDesc.Temperature = randomf(5200, 6000);
+	// G-Class(Yellow Spectrum) Main Sequence Yellow Dwarf 
+		if(starDesc.Temperature < 5280.f){
+			starDesc.StarColor = Color(0xffe7c41b);
+			number = 9.f;
+			}
+		else if(starDesc.Temperature < 5360.f){
+			starDesc.StarColor = Color(0xffe8c91e);
+			number = 8.f;
+			}
+		else if(starDesc.Temperature < 5440.f){
+			starDesc.StarColor = Color(0xffe8cc24);
+			number = 7.f;
+			}
+		else if(starDesc.Temperature < 5520.f){
+			starDesc.StarColor = Color(0xffe8ce2c);
+			number = 5.f;
+			}
+		else if(starDesc.Temperature < 5600.f){
+			starDesc.StarColor = Color(0xffead132);
+			number = 5.f;
+			}
+		else if(starDesc.Temperature < 5680.f){
+			starDesc.StarColor = Color(0xffecd33a);
+			number = 4.f;
+			}
+		else if(starDesc.Temperature < 5760.f){
+			starDesc.StarColor = Color(0xffecd744);
+			number = 3.f;
+			}
+		else if(starDesc.Temperature < 5840.f){
+			starDesc.StarColor = Color(0xffecda51);
+			number = 2.f;
+			}
+		else if(starDesc.Temperature < 5920.f){
+			starDesc.StarColor = Color(0xffeedc58);
+			number = 1.f;
+			}
+		else if(starDesc.Temperature <= 6000.f){
+			starDesc.StarColor = Color(0xffefdd62);
+			number = 0.f;
+			}
+			float sizeroll = randomf(0.f,100.f);
+			if(sizeroll <= 0.5f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(30.f, 36.f)*0.6f; //hypergiant
+				sys.addTag("GHypergiant"+number); //yellow
+				}
+			else if(sizeroll <= 1.5f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(24.f, 30.f)*0.6f; //supergiant
+				sys.addTag("GSupergiant"+number); //yellow
+				}
+			else if(sizeroll <= 2.875f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(18.f, 24.f)*0.6f; //bright giant
+				sys.addTag("GBrightgiant"+number); //yellow
+				}
+			else if(sizeroll <= 4.875f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(12.f, 18.f)*0.6f; //giant
+				sys.addTag("GGiant"+number); //yellow
+				}
+			else if(sizeroll <= 24.875f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(1.4f, 2.6f); //subgiant
+				sys.addTag("GSubgiant"+number); //yellow
+				}
+			else{
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(0.8f, 1.2f); //Main Sequence
+				sys.addTag("GMSQ"+number); //yellow
+				}
+			specialB =2.f;
+			}
+//76
+	else if(diceroll <= 84.f){
+	starDesc.Temperature = randomf(6000, 7600);
+	//	F-Class(Yellow White Spectrum) Main Sequence Yellow-White Dwarf
+		if(starDesc.Temperature < 6160.f){
+			starDesc.StarColor = Color(0xfff0df6d);
+			number = 9.f;
+			}
+		else if(starDesc.Temperature < 6320.f){
+			starDesc.StarColor = Color(0xfff1df7b);
+			number = 8.f;
+			}
+		else if(starDesc.Temperature < 6480.f){
+			starDesc.StarColor = Color(0xfff1e288);
+			number = 7.f;
+			}
+		else if(starDesc.Temperature < 6640.f){
+			starDesc.StarColor = Color(0xfff2e390);
+			number = 6.f;
+			}
+		else if(starDesc.Temperature < 6800.f){
+			starDesc.StarColor = Color(0xfff2e49c);
+			number = 5.f;
+			}
+		else if(starDesc.Temperature < 6960.f){
+			starDesc.StarColor = Color(0xfff2e3a7);
+			number = 4.f;
+			}
+		else if(starDesc.Temperature < 7120.f){
+			starDesc.StarColor = Color(0xfff1e4b2);
+			number = 3.f;
+			}
+		else if(starDesc.Temperature < 7280.f){
+			starDesc.StarColor = Color(0xfff3e5bb);
+			number = 2.f;
+			}
+		else if(starDesc.Temperature < 7440.f){
+			starDesc.StarColor = Color(0xfff4e6c6);
+			number = 1.f;
+			}
+		else if(starDesc.Temperature <= 7600.f){
+			starDesc.StarColor = Color(0xfff4e5d0);
+			number = 0.f;
+			}
+			float sizeroll = randomf(0.f,100.f);
+			if(sizeroll <= 0.5f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(30.f, 36.f)*0.6f; //hypergiant
+				sys.addTag("FHypergiant"+number); //yellow
+				}
+			else if(sizeroll <= 1.5f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(24.f, 30.f)*0.6f; //supergiant
+				sys.addTag("FSupergiant"+number); //yellow
+				}
+			else if(sizeroll <= 2.875f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(18.f, 24.f)*0.6f; //bright giant
+				sys.addTag("FBrightgiant"+number); //yellow
+				}
+			else if(sizeroll <= 4.875f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(12.f, 18.f)*0.6f; //giant
+				sys.addTag("FGiant"+number); //yellow
+				}
+			else if(sizeroll <= 24.875f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(1.4f, 2.6f); //subgiant
+				sys.addTag("FSubgiant"+number); //white yellow
+				}
+			else{
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(0.8f, 1.2f); //Main Sequence
+				sys.addTag("FMSQ"+number); //white yellow
+				}
+			specialB =2.f;
+			}
+//84
+	else if(diceroll <= 89.5f){
+	starDesc.Temperature = randomf(7600, 10000);
+	// A-Class(White Spectrum - NOT a White Dwarf!) Main Sequence Dwarf Star
+		if(starDesc.Temperature < 7840.f){
+			starDesc.StarColor = Color(0xfff2e8d9);
+			number = 9.f;
+			}
+		else if(starDesc.Temperature < 8080.f){
+			starDesc.StarColor = Color(0xfff4ebea);
+			number = 8.f;
+			}
+		else if(starDesc.Temperature < 8320.f){
+			starDesc.StarColor = Color(0xfff3ecf3);
+			number = 7.f;
+			}
+		else if(starDesc.Temperature < 8560.f){
+			starDesc.StarColor = Color(0xfff3ecf4);
+			number = 6.f;
+			}
+		else if(starDesc.Temperature < 8800.f){
+			starDesc.StarColor = Color(0xfff3ecf4);
+			number = 5.f;
+			}
+		else if(starDesc.Temperature < 9040.f){
+			starDesc.StarColor = Color(0xfff3ecf4);
+			number = 4.f;
+			}
+		else if(starDesc.Temperature < 9280.f){
+			starDesc.StarColor = Color(0xffefecf3);
+			number = 3.f;
+			}
+		else if(starDesc.Temperature < 9520.f){
+			starDesc.StarColor = Color(0xffeeedf4);
+			number = 2.f;
+			}
+		else if(starDesc.Temperature < 9760.f){
+			starDesc.StarColor = Color(0xffebebf3);
+			number = 1.f;
+			}
+		else if(starDesc.Temperature <= 10000.f){
+			starDesc.StarColor = Color(0xffe5e7f4);
+			number = 0.f;
+			}
+			float sizeroll = randomf(0.f,100.f);
+			if(starDesc.Temperature >= 8500.f && sizeroll <= 0.125f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(30.f, 36.f)*0.35f; //hypergiant
+				sys.addTag("AHypergiant"+number); //blue
+				}
+			else if(starDesc.Temperature < 8500.f && sizeroll <= 0.5f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(30.f, 36.f)*0.6f; //hypergiant
+				sys.addTag("AHypergiant"+number); //yellow
+				}
+			else if(starDesc.Temperature >= 8500.f && sizeroll <= 0.325f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(24.f, 30.f)*0.35f; //supergiant
+				sys.addTag("ASupergiant"+number); //blue
+				}
+			else if(starDesc.Temperature < 8500.f && sizeroll <= 1.5f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(24.f, 30.f)*0.6f; //supergiant
+				sys.addTag("ASupergiant"+number); //yellow
+				}
+			else if(starDesc.Temperature >= 8500.f && sizeroll <= 0.6f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(18.f, 24.f)*0.35f; //bright giant
+				sys.addTag("ABrightgiant"+number); //blue
+				}
+			else if(starDesc.Temperature < 8500.f && sizeroll <= 2.875f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(18.f, 24.f)*0.6f; //bright giant
+				sys.addTag("ABrightgiant"+number); //yellow
+				}
+			else if(starDesc.Temperature >= 8500.f && sizeroll <= 1.f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(12.f, 18.f)*0.35f; //giant
+				sys.addTag("AGiant"+number); //blue
+				}
+			else if(starDesc.Temperature < 8500.f && sizeroll <= 4.875f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(12.f, 18.f)*0.6f; //giant
+				sys.addTag("AGiant"+number); //yellow
+				}
+			else if(sizeroll <= 22.9375f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(1.4f, 2.6f); //subgiant
+				sys.addTag("ASubgiant"+number); //white
+				}
+			else{
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(0.8f, 1.2f); //Main Sequence
+				sys.addTag("AMSQ"+number); //white
+				}
+			specialB =2.f;
+			}
+//89.5
+	else if(diceroll <= 94.f){
+	starDesc.Temperature = randomf(10000, 30000);
+	// B-Class(Blue-White Spectrum) Class-V Main Sequence Dwarf Star
+		if(starDesc.Temperature < 12000.f){
+			starDesc.StarColor = Color(0xffe2e5f4);
+			number = 9.f;
+			}
+		else if(starDesc.Temperature < 14000.f){
+			starDesc.StarColor = Color(0xffdfe5f4);
+			number = 8.f;
+			}
+		else if(starDesc.Temperature < 16000.f){
+			starDesc.StarColor = Color(0xffdee4f3);
+			number = 7.f;
+			}
+		else if(starDesc.Temperature < 18000.f){
+			starDesc.StarColor = Color(0xffdce3f4);
+			number = 6.f;
+			}
+		else if(starDesc.Temperature < 20000.f){
+			starDesc.StarColor = Color(0xffdae1f4);
+			number = 5.f;
+			}
+		else if(starDesc.Temperature < 22000.f){
+			starDesc.StarColor = Color(0xffd8e0f4);
+			number = 4.f;
+			}
+		else if(starDesc.Temperature < 24000.f){
+			starDesc.StarColor = Color(0xffd2def4);
+			number = 3.f;
+			}
+		else if(starDesc.Temperature < 26000.f){
+			starDesc.StarColor = Color(0xffd2def4);
+			number = 2.f;
+			}
+		else if(starDesc.Temperature < 28000.f){
+			starDesc.StarColor = Color(0xffcddaf4);
+			number = 1.f;
+			}
+		else if(starDesc.Temperature <= 30000.f){
+			starDesc.StarColor = Color(0xffcbd7f4);
+			number = 0.f;
+			}
+			float sizeroll = randomf(0.f,100.f);
+			if(sizeroll <= 0.25f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(30.f, 36.f)*0.35f; //hypergiant
+				sys.addTag("BHypergiant"+number); //blue
+				}
+			else if(sizeroll <= 0.65f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(24.f, 30.f)*0.35f; //supergiant
+				sys.addTag("BSupergiant"+number); //blue
+				}
+			else if(sizeroll <= 1.2f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(18.f, 24.f)*0.35f; //bright giant
+				sys.addTag("BBrightgiant"+number); //blue
+				}
+			else if(sizeroll <= 2.f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(12.f, 18.f)*0.35f; //giant
+				sys.addTag("BGiant"+number); //blue
+				}
+			else if(sizeroll <= 22.f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(1.4f, 2.6f); //subgiant
+				sys.addTag("BSubgiant"+number); //whiteblue
+				}
+			else{
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(0.8f, 1.2f); //Main Sequence
+				sys.addTag("BMSQ"+number); //whiteblue
+				}
+			specialB =2.f;
+			}
+//94
+	else if(diceroll <= 100.f){
+	starDesc.Temperature = randomf(30000, 52000);
+	// O-Class(Blue Spectrum - NOT a Blue Dwarf!) Main Sequence Dwarf Star
+		if(starDesc.Temperature < 32200.f){	
+			starDesc.StarColor = Color(0xffc6d3f4);			
+			number = 2.f;
+			}
+		else if(starDesc.Temperature < 34400.f){
+			starDesc.StarColor = Color(0xffc1cdf4);			
+			number = 2.f;
+			}
+		else if(starDesc.Temperature < 36600.f){
+			starDesc.StarColor = Color(0xffbbc9f4);			
+			number = 2.f;
+			}
+		else if(starDesc.Temperature < 38800.f){
+			starDesc.StarColor = Color(0xffb3c2f2);			
+			number = 2.f;
+			}
+		else if(starDesc.Temperature < 41000.f){
+			starDesc.StarColor = Color(0xffa9b8f3);			
+			number = 2.f;
+			}
+		else if(starDesc.Temperature < 43200.f){
+			starDesc.StarColor = Color(0xff9fafee);			
+			number = 2.f;
+			}
+		else if(starDesc.Temperature < 45400.f){
+			starDesc.StarColor = Color(0xff92a4ed);			
+			number = 2.f;
+			}
+		else if(starDesc.Temperature < 47600.f){
+			starDesc.StarColor = Color(0xff8399ed);			
+			number = 2.f;
+			}
+		else if(starDesc.Temperature < 49800.f){
+			starDesc.StarColor = Color(0xff798ee8);			
+			number = 2.f;
+			}
+		else if(starDesc.Temperature <= 52000.f){
+			starDesc.StarColor = Color(0xff6e83e4);
+			}
+				float sizeroll = randomf(0.f,100.f);
+			if(sizeroll <= 0.5f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(30.f, 36.f)*0.35f; //hypergiant randomf(48.f,96.f)
+				sys.addTag("OHypergiant"+number); //blue
+				}
+			else if(sizeroll <= 1.3f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(24.f, 30.f)*0.35f; //supergiant randomf(24.f,48.f)
+				sys.addTag("OSupergiant"+number); //blue
+				}
+			else if(sizeroll <= 2.4f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(18.f, 24.f)*0.35f; //bright giant randomf(12.f,24.f)
+				sys.addTag("OBrightgiant"+number); //blue
+				}
+			else if(sizeroll <= 4.f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(12.f, 18.f)*0.35f; //giant randomf (8.f, 12.f)
+				sys.addTag("OGiant"+number); //blue
+				}
+			else if(sizeroll <= 24.f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(1.4f, 2.6f); //subgiant
+				sys.addTag("OSubgiant"+number); //blue
+				}
+			else{
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(0.8f, 1.2f); //Main Sequence
+				sys.addTag("OMSQ"+number); //blue 
+				}
+			specialB =2.f;
+			}
+	starDesc.Brightness = (sqrt(sqrt(Pi*(starDesc.Radius^2)*starDesc.Temperature)))*specialB;
+	float spriteSizeGlow = ((Pi*(starDesc.Radius^2)*starDesc.Temperature))/starDesc.Brightness;
+	float spriteSize = starDesc.Radius* 55.f;
+	float spriteSizeCloseGlow = starDesc.Radius* 10.f;
+	Color StarColor = starDesc.StarColor;
+	float StarTemp = starDesc.Temperature;
+	starDesc.setOrbit(orbDesc);
+
 	Star@ st = sys.makeStar(starDesc);
+	
+	float starRad = starDesc.Radius;
 
 	Effect starEffect("SelfHealing");
 	starEffect.set("Rate", 100000000.f);	
 	st.toObject().addTimedEffect(starEffect, pow(10, 35), 0.f, st.toObject(), null, null, TEF_None);		
-
+	
 	State@ h3 = st.toObject().getState(strH3);
 	h3.max = starDesc.Temperature * randomf(50000,100000);
 	h3.val = h3.max * (0.5f + (randomf(0.5f)));	
 	
 	// Set planet orbit parameters
+
 	orbDesc.MassRadius = starDesc.Radius;
 	orbDesc.Mass = starDesc.Radius * RS_starMassFactor;
-	orbDesc.Radius = RS_orbitRadiusFactor;
+	orbDesc.Radius = RS_orbitRadiusFactor + sqrt(starDesc.Radius * starDesc.Temperature * 2.f);
 	orbDesc.IsStatic = false;
 	
-	int pCount = rand(1, 5) + rand(1, 7);
+	if((starDesc.Radius / RS_starSizeFactor) > 36.f){
+		int belts = rand(0, 3) + rand(0, 3) + rand(1, 3);;
+		while (randomf(1.f) < 1.f / (belts + 2.f)) {
+			RS_makeRandomAsteroidNew(sys, rand(250,600), starRad);
+			++belts;
+		}
+		sys.toObject().setStat(getEmpireByID(-1), strLivable, 0.f);
+	}
+		else if((starDesc.Radius / RS_starSizeFactor) > 32.f){
+	int pCount = rand(0, 3);
 	
 	for(int p = 0; p < pCount; ++p) {
-		orbDesc.Radius += randomf(1.3f, 2.1f) * RS_orbitRadiusFactor;
+		orbDesc.Radius += (randomf(1.3f, 2.1f) * RS_orbitRadiusFactor);
 		orbDesc.Eccentricity = randomf(0.5f, 1.5f);
-
+		if(randomf(1.f) < 0.05f)
+		orbDesc.Yaw = randomf(-0.1f,0.1f);
+		if(randomf(1.f) < 0.05f)
+		orbDesc.Pitch = randomf(-0.1f,0.1f);
+		
 		RS_makeRandomPlanet(sys, p, pCount);
 	}
+	int dpCount = rand(0, 3);
 	
-	if(!RS_balancedStart || (pCount > 2 && pCount < 5))
+	for(int dp = 0; dp < dpCount; ++dp) {
+		orbDesc.Radius += (randomf(1.3f, 2.1f) * RS_orbitRadiusFactor);
+		orbDesc.Eccentricity = randomf(0.5f, 1.5f);
+		if(randomf(1.f) < 0.1f)
+		orbDesc.Yaw = randomf(-0.2f,0.2f);
+		if(randomf(1.f) < 0.1f)
+		orbDesc.Pitch = randomf(-0.2f,0.2f);
+		
+		RS_makeRandomDwarfPlanet(sys, dp, dpCount);
+	}
+		// Add oddities to system
+	if(RS_makeOddities) {	
+		int comets = 1;
+		while (randomf(1.f) < (0.60f / comets)) {
+			RS_makeRandomComet(sys);
+			++comets;
+		}
+		
+		int belts = 0;
+		while (randomf(1.f) < 1.f / (belts + 4.f) && belts < pCount) {
+			RS_makeRandomAsteroidNew(sys, rand(250,600), starRad);
+			++belts;
+			}
+		}
+	}
+	else if((starDesc.Radius / RS_starSizeFactor) > 26.f){
+	int pCount = rand(1, 3) + rand(0, 3);
+	
+	for(int p = 0; p < pCount; ++p) {
+		orbDesc.Radius += (randomf(1.3f, 2.1f) * RS_orbitRadiusFactor);
+		orbDesc.Eccentricity = randomf(0.5f, 1.5f);
+		if(randomf(1.f) < 0.05f)
+		orbDesc.Yaw = randomf(-0.1f,0.1f);
+		if(randomf(1.f) < 0.05f)
+		orbDesc.Pitch = randomf(-0.1f,0.1f);
+		
+		RS_makeRandomPlanet(sys, p, pCount);
+		if(!RS_balancedStart || (pCount > 2 && pCount < 5))
 		sys.toObject().setStat(getEmpireByID(-1), strLivable, 1.f);
+	}
+	int dpCount = rand(1, 3) + rand(0, 3);
 	
+	for(int dp = 0; dp < dpCount; ++dp) {
+		orbDesc.Radius += (randomf(1.3f, 2.1f) * RS_orbitRadiusFactor);
+		orbDesc.Eccentricity = randomf(0.5f, 1.5f);
+		if(randomf(1.f) < 0.1f)
+		orbDesc.Yaw = randomf(-0.2f,0.2f);
+		if(randomf(1.f) < 0.1f)
+		orbDesc.Pitch = randomf(-0.2f,0.2f);
+
+		RS_makeRandomDwarfPlanet(sys, dp, dpCount);
+	}
+		// Add oddities to system
+	if(RS_makeOddities) {	
+		int comets = 1;
+		while (randomf(1.f) < (0.60f / comets)) {
+			RS_makeRandomComet(sys);
+			++comets;
+		}
+		
+		int belts = 0;
+		while (randomf(1.f) < 1.f / (belts + 3.f) && belts < pCount) {
+			RS_makeRandomAsteroidNew(sys, rand(250,600), starRad);
+			++belts;
+			}
+		}
+	}
+	else if((starDesc.Radius / RS_starSizeFactor) > 16.f){
+	int pCount = rand(1, 3) + rand(0, 3) + rand(0, 3);
+	
+	for(int p = 0; p < pCount; ++p) {
+		orbDesc.Radius += (randomf(1.3f, 2.1f) * RS_orbitRadiusFactor);
+		orbDesc.Eccentricity = randomf(0.5f, 1.5f);
+		if(randomf(1.f) < 0.05f)
+		orbDesc.Yaw = randomf(-0.1f,0.1f);
+		if(randomf(1.f) < 0.05f)
+		orbDesc.Pitch = randomf(-0.1f,0.1f);
+		
+		RS_makeRandomPlanet(sys, p, pCount);
+		if(!RS_balancedStart || (pCount > 2 && pCount < 5))
+		sys.toObject().setStat(getEmpireByID(-1), strLivable, 1.f);
+	}
+	int dpCount = rand(0, 3) + rand(0, 3);
+	
+	for(int dp = 0; dp < dpCount; ++dp) {
+		orbDesc.Radius += (randomf(1.3f, 2.1f) * RS_orbitRadiusFactor);
+		orbDesc.Eccentricity = randomf(0.5f, 1.5f);
+		if(randomf(1.f) < 0.1f)
+		orbDesc.Yaw = randomf(-0.2f,0.2f);
+		if(randomf(1.f) < 0.1f)
+		orbDesc.Pitch = randomf(-0.2f,0.2f);
+		
+		RS_makeRandomDwarfPlanet(sys, dp, dpCount);
+	}
 	// Add oddities to system
 	if(RS_makeOddities) {	
 		int comets = 1;
@@ -971,14 +2117,107 @@ System@ RS_makeStandardSystem(Galaxy@ glx, vector pos) {
 		
 		int belts = 0;
 		while (randomf(1.f) < 1.f / (belts + 2.f) && belts < pCount) {
-			RS_makeRandomAsteroid(sys, rand(250,600));
+			RS_makeRandomAsteroidNew(sys, rand(250,600), starRad);
 			++belts;
+			}
+		}
+	}
+	else if((starDesc.Radius / RS_starSizeFactor) > 6.f){
+	int pCount = rand(0, 3) + rand(0, 3);
+	
+	for(int p = 0; p < pCount; ++p) {
+		orbDesc.Radius += (randomf(1.3f, 2.1f) * RS_orbitRadiusFactor);
+		orbDesc.Eccentricity = randomf(0.5f, 1.5f);
+		if(randomf(1.f) < 0.05f)
+		orbDesc.Yaw = randomf(-0.1f,0.1f);
+		if(randomf(1.f) < 0.05f)
+		orbDesc.Pitch = randomf(-0.1f,0.1f);
+		
+		RS_makeRandomPlanet(sys, p, pCount);
+		if(!RS_balancedStart || (pCount > 2 && pCount < 5))
+		sys.toObject().setStat(getEmpireByID(-1), strLivable, 1.f);
+	}
+	int dpCount = rand(1, 3) + rand(0, 3);
+	
+	for(int dp = 0; dp < dpCount; ++dp) {
+		orbDesc.Radius += (randomf(1.3f, 2.1f) * RS_orbitRadiusFactor);
+		orbDesc.Eccentricity = randomf(0.5f, 1.5f);
+		if(randomf(1.f) < 0.1f)
+		orbDesc.Yaw = randomf(-0.2f,0.2f);
+		if(randomf(1.f) < 0.1f)
+		orbDesc.Pitch = randomf(-0.2f,0.2f);
+		
+		RS_makeRandomDwarfPlanet(sys, dp, dpCount);
+	}
+		// Add oddities to system
+	if(RS_makeOddities) {	
+		int comets = 1;
+		while (randomf(1.f) < (0.60f / comets)) {
+			RS_makeRandomComet(sys);
+			++comets;
+		}
+		
+		int belts = 0;
+		while (randomf(1.f) < 1.f / (belts + 2.f) && belts < pCount) {
+			RS_makeRandomAsteroidNew(sys, rand(250,600), starRad);
+			++belts;
+			}
+		}
+	}
+	else{
+	int pCount = rand(0, 3);
+	
+	for(int p = 0; p < pCount; ++p) {
+		orbDesc.Radius += (randomf(1.3f, 2.1f) * RS_orbitRadiusFactor);
+		orbDesc.Eccentricity = randomf(0.5f, 1.5f);
+		if(randomf(1.f) < 0.05f)
+		orbDesc.Yaw = randomf(-0.1f,0.1f);
+		if(randomf(1.f) < 0.05f)
+		orbDesc.Pitch = randomf(-0.1f,0.1f);
+		
+		RS_makeRandomPlanet(sys, p, pCount);
+
+	}
+	int dpCount = rand(0, 3) + rand(0, 3);
+	
+	for(int dp = 0; dp < dpCount; ++dp) {
+		orbDesc.Radius += (randomf(1.3f, 2.1f) * RS_orbitRadiusFactor);
+		orbDesc.Eccentricity = randomf(0.5f, 1.5f);
+		if(randomf(1.f) < 0.1f)
+		orbDesc.Yaw = randomf(-0.2f,0.2f);
+		if(randomf(1.f) < 0.1f)
+		orbDesc.Pitch = randomf(-0.2f,0.2f);
+		
+		RS_makeRandomDwarfPlanet(sys, dp, dpCount);
+	}
+		// Add oddities to system
+	if(RS_makeOddities) {	
+		int comets = 1;
+		while (randomf(1.f) < (0.60f / comets)) {
+			RS_makeRandomComet(sys);
+			++comets;
+		}
+		
+		int belts = 0;
+		while (randomf(1.f) < 1.f / (belts + 2.f) && belts < pCount) {
+			RS_makeRandomAsteroidNew(sys, rand(250,600), starRad);
+			++belts;
+			}
 		}
 	}
 
+	if(specialB >1.f){
+	createEnvironmentStarX(spriteSize, pos, StarColor);
+	createEnvironmentStarGlow(spriteSizeGlow, pos, StarColor);
+	createEnvironmentCloseGlow(spriteSizeCloseGlow, pos, StarColor);
+	}
+	else{
+	createEnvironmentStarGlow(spriteSizeGlow, pos, StarColor);
+	}	
 	return sys;
 }
 // }}}
+
 // {{{ Binary System
 System@ RS_makeBinarySystem(Galaxy@ glx, vector pos) {
 	// Create the system
@@ -1057,24 +2296,10 @@ System@ RS_makeBinarySystem(Galaxy@ glx, vector pos) {
 	orbDesc.setCenter(null);
 	orbDesc.PosInYear = -1.f;
 
-	// Add oddities to system
-	if(RS_makeOddities) {	
-		int comets = 1;
-		while (randomf(1.f) < (0.2f / comets)) {
-			RS_makeRandomComet(sys);
-			++comets;
-		}
-		
-		int belts = 0;
-		while (randomf(1.f) < 1.f / (belts + 2.f) && belts < pCount) {
-			RS_makeRandomAsteroid(sys, rand(250,600));
-			++belts;
-		}
-	}
 
 	return sys;
 }
-// }}}
+
 // {{{ Asteroid belt
 System@ RS_makeAsteroidBelt(Galaxy@ glx, vector pos) {
 	// Create the system
@@ -1136,7 +2361,7 @@ System@ RS_makeAsteroidBelt(Galaxy@ glx, vector pos) {
 	return sys;
 }
 // }}}
-// {{{ Supernova System
+// {{{ Minor Globular Cluster System, formerly Supernova System
 System@ RS_makeSupernova(Galaxy@ glx, vector pos) {
 	System@ sys;
 	{
@@ -1147,25 +2372,18 @@ System@ RS_makeSupernova(Galaxy@ glx, vector pos) {
 		@sys = @glx.createSystem(sysDesc);
 	}
 	
-	{
-		starDesc.Temperature = randomf(4000,10000);
-		starDesc.Radius = randomf(180,270) * RS_starSizeFactor;
-		starDesc.Brightness = 7;
-		starDesc.clearOrbit();
-		
-		Star@ st = sys.makeStar(starDesc);
+	
+	float sizeFactor = 2.5f;	
+	int gcCount = rand(4, 40) + rand(4, 40);
+	orbDesc.Radius = (RS_orbitRadiusFactor * (sqrt(gcCount * RS_orbitRadiusFactor)))/3.f;
+	float rad = orbDesc.Radius/2.f;
+	for(int gc = 0; gc < gcCount; ++gc) {
 
-		Effect starEffect("SelfHealing");
-		starEffect.set("Rate", 100000000.f);		
-		st.toObject().addTimedEffect(starEffect, pow(10, 35), 0.f, st.toObject(), null, null, TEF_None);		
-		
-		Object@ obj = st;
-		
-		State@ h3 = obj.getState(strH3);
-		h3.max = starDesc.Temperature * randomf(100000,200000);
-		h3.val = h3.max * (0.5f + (randomf(0.5f)));
+		RS_makeGlobularCluster(sys, pos, gc, gcCount, sizeFactor, rad);
 	}
-
+	float glowSize = rad*25.f;
+	Color glowCol(255,244,229,208);
+	createEnvironmentGlobular(glowSize, pos, glowCol);
 	return sys;
 }
 // }}}
@@ -1180,33 +2398,409 @@ float RS_makeQuasar(Galaxy@ glx, vector pos, float sizeFactor) {
 		
 		@sys = @glx.createSystem(sysDesc);
 		
-		sys.addTag("Quasar");
+		sys.addTag("CentralGlobular");
 	}
 	
-	{
-		starDesc.Temperature = randomf(60000,100000);
-		starDesc.Radius = randomf(400,450) * sizeFactor * RS_starSizeFactor;
-		starDesc.Brightness = 16;
-		starDesc.clearOrbit();
-		
-		Star@ quasar = sys.makeStar(starDesc);
+	
+	
+	int gcCount = 250;//rand(100, 200) + rand(100, 200);	
+	// Set Globular Cluster orbit parameters
 
-		Effect starEffect("SelfHealing");
-		starEffect.set("Rate", 100000000.f);		
-		quasar.toObject().addTimedEffect(starEffect, pow(10, 35), 0.f, quasar.toObject(), null, null, TEF_None);	
-		
-		Effect quasarExplosion("Quasar");
-		quasar.toObject().addTimedEffect(quasarExplosion, pow(10, 35), 0.f,
-				quasar.toObject(), null, null, TEF_None);
-		
-		Object@ obj = quasar;
-		
-		State@ h3 = obj.getState(strH3);
-		h3.max = starDesc.Temperature * randomf(100000,200000);
-		h3.val = h3.max * (0.5f + (randomf(0.5f)));
-		
-		return starDesc.Radius * 3.f;
+	orbDesc.Radius = (((sizeFactor * RS_starSizeFactor)^4)*gcCount*3.f)*(sqrt(sqrt(sqrt(gcCount*3.f)))); //(change sizefactor calculation later)
+	
+	for(int gc = 0; gc < gcCount; ++gc) {
+		float rad = orbDesc.Radius;
+		//RS_makeGlobularCluster(sys, pos, gc, gcCount, sizeFactor, rad);
 	}
+			
+	return orbDesc.Radius * 1.2f;
+}
+const float fadeOutFactor = 0.1f;	
+// {{{ Globular Cluster Generation
+Star@ RS_makeGlobularCluster(System@ sys, vector pos, uint gcNum, uint gcCount, float sizeFactor, float rad) {
+// Make globular cluster at galactic center.
+	return RS_makeGlobularStar(sys, pos, gcNum, gcCount, sizeFactor, rad);
 }
 // }}}
 
+// {{{ Globular Cluster Stars
+Star@ RS_makeGlobularStar(System@ sys, vector pos, uint gcNum, uint gcCount, float sizeFactor, float rad) {
+
+	orbDesc.setCenter(null);
+	orbDesc.PosInYear = randomf(-0.2f, -2.f);
+	orbDesc.IsStatic = true;
+	
+	Star@ gc = sys.makeStar(starDesc);
+		
+	orbDesc.PosInYear = 0.f;
+
+	float randomOffsetX = ((randomf(-1.f,1.f)) * (randomf((RS_orbitRadiusFactor/3.f), (rad*2.f))));
+	float randomOffsetY = ((randomf(-1.f,1.f)) * (randomf((RS_orbitRadiusFactor/3.f), (rad*2.f))));
+	float randomOffsetZ = ((randomf(-1.f,1.f)) * (randomf((RS_orbitRadiusFactor/3.f), (rad*2.f))));
+	pos += vector(randomOffsetX, randomOffsetY, randomOffsetZ);	
+	float specialB;
+	float spriteSizeGlow;
+	float number;
+	const float diceroll = randomf(0.f,100.f);
+	if(diceroll <= 10.f){
+		starDesc.Temperature = randomf(5200, 6000);
+	// G-Class(Yellow Spectrum) Main Sequence Yellow Dwarf 
+		if(starDesc.Temperature < 5280.f){
+			starDesc.StarColor = Color(0xffe7c41b);
+			number = 9.f;
+			}
+		else if(starDesc.Temperature < 5360.f){
+			starDesc.StarColor = Color(0xffe8c91e);
+			number = 8.f;
+			}
+		else if(starDesc.Temperature < 5440.f){
+			starDesc.StarColor = Color(0xffe8cc24);
+			number = 7.f;
+			}
+		else if(starDesc.Temperature < 5520.f){
+			starDesc.StarColor = Color(0xffe8ce2c);
+			number = 5.f;
+			}
+		else if(starDesc.Temperature < 5600.f){
+			starDesc.StarColor = Color(0xffead132);
+			number = 5.f;
+			}
+		else if(starDesc.Temperature < 5680.f){
+			starDesc.StarColor = Color(0xffecd33a);
+			number = 4.f;
+			}
+		else if(starDesc.Temperature < 5760.f){
+			starDesc.StarColor = Color(0xffecd744);
+			number = 3.f;
+			}
+		else if(starDesc.Temperature < 5840.f){
+			starDesc.StarColor = Color(0xffecda51);
+			number = 2.f;
+			}
+		else if(starDesc.Temperature < 5920.f){
+			starDesc.StarColor = Color(0xffeedc58);
+			number = 1.f;
+			}
+		else if(starDesc.Temperature <= 6000.f){
+			starDesc.StarColor = Color(0xffefdd62);
+			number = 0.f;
+			}
+		starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(0.8f, 1.2f); //Main Sequence
+//		sys.addTag("GMSQ"+number); //yellow
+		specialB =2.f;
+		starDesc.Brightness = (sqrt(sqrt(Pi*(starDesc.Radius^2)*starDesc.Temperature)))*specialB;
+		spriteSizeGlow = ((Pi*(starDesc.Radius^2)*starDesc.Temperature))/starDesc.Brightness;				
+		}
+//10
+	else if(diceroll <= 85.f){
+	starDesc.Temperature = randomf(6000, 7600);
+	//	F-Class(Yellow White Spectrum) Main Sequence Yellow-White Dwarf
+		if(starDesc.Temperature < 6160.f){
+			starDesc.StarColor = Color(0xfff0df6d);
+			number = 9.f;
+			}
+		else if(starDesc.Temperature < 6320.f){
+			starDesc.StarColor = Color(0xfff1df7b);
+			number = 8.f;
+			}
+		else if(starDesc.Temperature < 6480.f){
+			starDesc.StarColor = Color(0xfff1e288);
+			number = 7.f;
+			}
+		else if(starDesc.Temperature < 6640.f){
+			starDesc.StarColor = Color(0xfff2e390);
+			number = 6.f;
+			}
+		else if(starDesc.Temperature < 6800.f){
+			starDesc.StarColor = Color(0xfff2e49c);
+			number = 5.f;
+			}
+		else if(starDesc.Temperature < 6960.f){
+			starDesc.StarColor = Color(0xfff2e3a7);
+			number = 4.f;
+			}
+		else if(starDesc.Temperature < 7120.f){
+			starDesc.StarColor = Color(0xfff1e4b2);
+			number = 3.f;
+			}
+		else if(starDesc.Temperature < 7280.f){
+			starDesc.StarColor = Color(0xfff3e5bb);
+			number = 2.f;
+			}
+		else if(starDesc.Temperature < 7440.f){
+			starDesc.StarColor = Color(0xfff4e6c6);
+			number = 1.f;
+			}
+		else if(starDesc.Temperature <= 7600.f){
+			starDesc.StarColor = Color(0xfff4e5d0);
+			number = 0.f;
+			}
+		starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(0.8f, 1.2f); //Main Sequence
+//		sys.addTag("FMSQ"+number); //white yellow
+		specialB =2.f;
+		starDesc.Brightness = (sqrt(sqrt(Pi*(starDesc.Radius^2)*starDesc.Temperature)))*specialB;
+		spriteSizeGlow = ((Pi*(starDesc.Radius^2)*starDesc.Temperature))/starDesc.Brightness;
+		}
+//90
+	else if(diceroll <= 88.f){
+	// M-Class(Red Spectrum) Red Gaint
+		starDesc.Temperature = randomf(2200, 3900);//2200//2370
+		if(starDesc.Temperature < 2800.f){
+//			starDesc.StarColor = Color(0xffbb2c0d);
+//			number = 9.f;
+//			}
+//		else if(starDesc.Temperature < 2540.f){
+//			starDesc.StarColor = Color(0xffbb2f14);
+//			number = 8.f;
+//			}
+//		else if(starDesc.Temperature < 2710.f){
+//			starDesc.StarColor = Color(0xffbc3716);
+//			number = 7.f;
+//			}
+//		else if(starDesc.Temperature < 2880.f){
+//			starDesc.StarColor = Color(0xffbe3b16);
+//			number = 6.f;
+//			}
+//		else if(starDesc.Temperature < 3050.f){
+			starDesc.StarColor = Color(0xffc24317);
+			number = 4.f;
+			}
+		else if(starDesc.Temperature < 3220.f){
+			starDesc.StarColor = Color(0xffc44917);
+			number = 5.f;
+			}
+		else if(starDesc.Temperature < 3390.f){
+			starDesc.StarColor = Color(0xffc75217);
+			number = 3.f;
+			}
+		else if(starDesc.Temperature < 3560.f){
+			starDesc.StarColor = Color(0xffc85b18);
+			number = 2.f;
+			}
+		else if(starDesc.Temperature < 3730.f){
+			starDesc.StarColor = Color(0xffc96318);
+			number = 1.f;
+			}
+		else if(starDesc.Temperature <= 3900.f){
+			starDesc.StarColor = Color(0xffcd6c19);
+			number = 0.f;
+			}
+		starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(12.f, 18.f); //giant
+//		sys.addTag("MGiant"+number); //red
+		specialB =2.f;
+		starDesc.Brightness = (sqrt(sqrt(Pi*(starDesc.Radius^2)*starDesc.Temperature)))*specialB;
+		spriteSizeGlow = ((Pi*(starDesc.Radius^2)*starDesc.Temperature))/starDesc.Brightness;
+		}
+//93
+	else if(diceroll <= 100.f){
+	starDesc.Temperature = randomf(30000, 52000);
+	// A-Class(Blue Spectrum) Blue Straggler, binary main sequence hot merger
+		if(starDesc.Temperature < 32200.f)
+			starDesc.StarColor = Color(0xff6376e3);
+		else if(starDesc.Temperature < 34400.f)
+			starDesc.StarColor = Color(0xffc6fe04);
+		else if(starDesc.Temperature < 36600.f)
+			starDesc.StarColor = Color(0xff5566de);
+		else if(starDesc.Temperature < 38800.f)
+			starDesc.StarColor = Color(0xff5262dd);
+		else if(starDesc.Temperature < 41000.f)
+			starDesc.StarColor = Color(0xff515ed9);
+		else if(starDesc.Temperature < 43200.f)
+			starDesc.StarColor = Color(0xff535cd8);
+		else if(starDesc.Temperature < 45400.f)
+			starDesc.StarColor = Color(0xff585fd7);
+		else if(starDesc.Temperature < 47600.f)
+			starDesc.StarColor = Color(0xff5e61d7);
+		else if(starDesc.Temperature < 49800.f)
+			starDesc.StarColor = Color(0xff6564d7);
+		else if(starDesc.Temperature <= 52000.f)
+			starDesc.StarColor = Color(0xff6d67d6);
+		starDesc.Radius = ((sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(0.8f, 1.2f))*1.4f; // special blue cluster only star
+//		sys.addTag("BSS"); //Bright Blue
+		specialB =2.f;
+		starDesc.Brightness = (sqrt(sqrt(Pi*(starDesc.Radius^2)*starDesc.Temperature)))*specialB;
+//		spriteSizeGlow = ((Pi*(starDesc.Radius^2)*starDesc.Temperature))/starDesc.Brightness;		
+		spriteSizeGlow = sqrt((Pi*(starDesc.Radius^2)*starDesc.Temperature)); //special calculation!!
+			}
+		float spriteSize = starDesc.Radius* 55.f;
+		float spriteCloseGlow = starDesc.Radius* 10.f;
+//		vector pos = orbDesc.Offset = pos;
+		Color StarColor = starDesc.StarColor;
+	
+		orbDesc.Offset += pos;
+			createEnvironmentStarX(spriteSize, pos, StarColor);
+			createEnvironmentStarGlow(spriteSizeGlow, pos, StarColor);
+			createEnvironmentCloseGlow(spriteCloseGlow, pos, StarColor);
+//		pos -= vector(randomOffsetX, randomOffsetY, randomOffsetZ);		
+		starDesc.setOrbit(orbDesc);
+		orbDesc.Offset -= pos;
+//		starDesc.setOrbit(orbDesc); //the 3D stars are not generated on spot, and zoom on the cluster is not possible, so no reason to generate star right now.
+	return gc;
+}
+// }}}
+
+
+// {{{ Systems with main sequence dwarf stars, cold sub-dwars OR the larger sub-gaints AND a potential tiny white dwarf OR brown dwarf binary companion.
+System@ RS_makeUnstableStar(Galaxy@ glx, vector pos) {
+////////////////////////////////////////////////////////////
+// Not used, didn't clean it of notes experimental notes. //
+////////////////////////////////////////////////////////////
+	// Reset orbit parameters
+	orbDesc.Offset = vector(0, 0, 0);
+	orbDesc.setCenter(null);
+	orbDesc.PosInYear = randomf(-0.2f, -2.f);
+	orbDesc.IsStatic = true;
+
+	// Create the system
+	sysDesc.Position = pos;
+	sysDesc.AutoStar = false;
+
+	System @sys = @glx.createSystem(sysDesc);
+	// Create the star
+
+
+	float diceroll = randomf(0.f,3.f);
+				if(diceroll <= 2.f){
+	// M-Class(Red Spectrum) Main Sequence Red Dwarf
+		starDesc.Temperature = randomf(2200, 3900);
+		if(starDesc.Temperature < 2370.f)
+			starDesc.StarColor = Color(0xffbb2c0d);
+		else if(starDesc.Temperature < 2540.f)
+			starDesc.StarColor = Color(0xffbb2f14);
+		else if(starDesc.Temperature < 2710.f)
+			starDesc.StarColor = Color(0xffbc3716);
+		else if(starDesc.Temperature < 2880.f)
+			starDesc.StarColor = Color(0xffbe3b16);
+		else if(starDesc.Temperature < 3050.f)
+			starDesc.StarColor = Color(0xffc24317);
+		else if(starDesc.Temperature < 3220.f)
+			starDesc.StarColor = Color(0xffc44917);
+		else if(starDesc.Temperature < 3390.f)
+			starDesc.StarColor = Color(0xffc75217);
+		else if(starDesc.Temperature < 3560.f)
+			starDesc.StarColor = Color(0xffc85b18);
+		else if(starDesc.Temperature < 3730.f)
+			starDesc.StarColor = Color(0xffc96318);
+		else if(starDesc.Temperature <= 3900.f)
+			starDesc.StarColor = Color(0xffcd6c19);
+				float sizeroll = randomf(0.f,1.f);
+				if(sizeroll <= 0.7f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(18.f, 24.f); //bright giant
+				}
+				else if(sizeroll <= 0.85f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(24.f, 30.f); //supergiant
+				}
+				else if(sizeroll <= 0.95f){
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(30.f, 36.f); //hypergiant
+				}
+			else{
+				starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(12.f, 18.f); //giant
+				}
+			starDesc.Radius = (sqrt(sqrt(sqrt(starDesc.Temperature)))) * RS_starSizeFactor * randomf(6.f, 12.f);
+		// max planet radius is 80, max star radius at 3900 temp is 281, min at 2200 temp is 211, main sequence earth sun would be 
+		starDesc.Brightness = sqrt(sqrt(Pi*(starDesc.Radius^2)*starDesc.Temperature));
+
+
+//	vector pos = orbDesc.Offset;
+
+		}
+			else if(diceroll <= 3.f){
+	starDesc.Temperature = randomf(30000, 52000);
+	// Exotic Blue Spectrum - Blue Straggler, binary main sequence merger
+	
+	if(starDesc.Temperature < 32200.f)
+		starDesc.StarColor = Color(0xff6376e3);
+	else if(starDesc.Temperature < 34400.f)
+		starDesc.StarColor = Color(0xffc6fe04);
+	else if(starDesc.Temperature < 36600.f)
+		starDesc.StarColor = Color(0xff5566de);
+	else if(starDesc.Temperature < 38800.f)
+		starDesc.StarColor = Color(0xff5262dd);
+	else if(starDesc.Temperature < 41000.f)
+		starDesc.StarColor = Color(0xff515ed9);
+	else if(starDesc.Temperature < 43200.f)
+		starDesc.StarColor = Color(0xff535cd8);
+	else if(starDesc.Temperature < 45400.f)
+		starDesc.StarColor = Color(0xff585fd7);
+	else if(starDesc.Temperature < 47600.f)
+		starDesc.StarColor = Color(0xff5e61d7);
+	else if(starDesc.Temperature < 49800.f)
+		starDesc.StarColor = Color(0xff6564d7);
+	else if(starDesc.Temperature <= 52000.f)
+		starDesc.StarColor = Color(0xff6d67d6);
+			// main sequence *1.6.
+			starDesc.Radius = (sqrt(sqrt(starDesc.Temperature)) * RS_starSizeFactor * randomf(4.f, 8.f));
+	// max planet radius is 80, max star radius at 52000 temp is 1026, min at 30000 temp is 779, main sequence earth sun would be 
+	starDesc.Brightness = sqrt(sqrt(Pi*(starDesc.Radius^2)*starDesc.Temperature));	
+	
+
+	}
+		
+	starDesc.setOrbit(orbDesc);
+	Color StarColor = starDesc.StarColor;
+	float spriteSizeGlow = ((Pi*(starDesc.Radius^2)*starDesc.Temperature))/starDesc.Brightness;
+float spriteSize = starDesc.Radius *80.f;
+	float starRad = starDesc.Radius;
+	Star@ st = sys.makeStar(starDesc);
+	
+	Effect starEffect("SelfHealing");
+	starEffect.set("Rate", 100000000.f);	
+	st.toObject().addTimedEffect(starEffect, pow(10, 35), 0.f, st.toObject(), null, null, TEF_None);		
+
+	
+	State@ h3 = st.toObject().getState(strH3);
+	h3.max = starDesc.Temperature * randomf(50000,100000);
+	h3.val = h3.max * (0.5f + (randomf(0.5f)));	
+	
+	// Set planet orbit parameters
+
+	orbDesc.MassRadius = starDesc.Radius;
+	orbDesc.Mass = starDesc.Radius * RS_starMassFactor * RS_starSizeFactor;
+	orbDesc.Radius = RS_orbitRadiusFactor + starDesc.Radius;
+	orbDesc.IsStatic = false;
+	int pCount = rand(0, 1) + rand(0, 1) + rand(0, 1);
+	
+	orbDesc.Radius += randomf(1.3f, 2.1f) * RS_orbitRadiusFactor;
+	
+	// Add oddities to system
+	if(RS_makeOddities) {	
+		int comets = 1;
+		while (randomf(1.f) < (0.60f / comets)) {
+			RS_makeRandomComet(sys);
+			++comets;
+		}
+		
+		int belts = 0;
+		while (randomf(1.f) < 1.f / (belts + 2.f) && belts < pCount) {
+			RS_makeRandomAsteroidNew(sys, rand(250,600), starRad);
+			++belts;
+		}
+	}
+	createEnvironmentStarX(spriteSize, pos, StarColor);
+	createEnvironmentStarGlow(spriteSizeGlow, pos, StarColor);
+	
+	return sys;
+}
+// }}}
+
+
+		string@ starX = "starX", starGlowSprite = "galactic_glow2", starCloseGlowSprite = "galactic_eye";
+void createEnvironmentStarX(float spriteSize, vector pos, Color StarColor){
+createGalaxyGasSprite(starX, spriteSize, pos, StarColor, spriteSize * fadeOutFactor);	
+}
+
+void createEnvironmentStarGlow(float spriteSizeGlow, vector pos, Color StarColor){
+createGalaxyGasSprite(starGlowSprite, spriteSizeGlow, pos, StarColor, spriteSizeGlow * fadeOutFactor);	
+
+}
+
+void createEnvironmentCloseGlow(float spriteSizeCloseGlow, vector pos, Color StarColor){
+createGalaxyGasSprite(starCloseGlowSprite, spriteSizeCloseGlow, pos, StarColor, spriteSizeCloseGlow * fadeOutFactor);	
+
+}
+/////////////////////// used for small clusters, that aren't currently generated ///////////////////////
+	string@ glowSprite = "galactic_glow";	
+	float fadeGlow = 0.f;
+void createEnvironmentGlobular(float glowSize, vector pos, Color glowCol){
+createGalaxyGasSprite(glowSprite, glowSize, pos, glowCol, glowSize * fadeGlow);
+}

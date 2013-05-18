@@ -10,6 +10,395 @@
 #include "shaders.txt"
 #include "other_textures.txt"
 
+//////////////////////////////new stuff start//////////////////////////////
+Material: starX
+ Defer: Required
+#if shaders
+RenderMode: CoronaAnimOld
+Texture: Images/New/particlestar001_shaderanimated.png
+#else
+Texture: Images/New/particlestar001.png
+RenderMode: Add
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: galactic_eye
+ Defer: High
+#if shaders
+ Texture: Images/New/galactic_glow5.png
+ RenderMode: Add
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+Material: galactic_glow
+ Defer: High
+#if shaders
+ Texture: Images/New/galactic_glow4.png
+ RenderMode: Alpha
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+ 
+Material: galactic_glow2
+ Defer: low
+#if shaders
+ Texture: Images/New/starglow.png
+ RenderMode: Alpha
+#end
+ FlagOff: ZWrite
+ FlagOff: Lighting
+
+//////////////////////////////bright dust start
+ 
+Material: brightdust000
+ Defer: Low
+ Texture: Images/New/nebula000.png
+RenderMode: Atmosphere
+ FlagOff: ZWrite
+FlagOn: Clamp
+ FlagOff: Lighting
+Material: brightdust001
+ Defer: Low
+ Texture: Images/New/nebula001.png
+RenderMode: Atmosphere
+ FlagOff: ZWrite
+FlagOn: Clamp
+ FlagOff: Lighting 
+Material: brightdust002
+ Defer: Low
+ Texture: Images/New/nebula002.png
+RenderMode: Atmosphere
+ FlagOff: ZWrite
+FlagOn: Clamp
+ FlagOff: Lighting 
+Material: brightdust003
+ Defer: Low
+ Texture: Images/New/nebula003.png
+RenderMode: Atmosphere
+ FlagOff: ZWrite
+FlagOn: Clamp
+ FlagOff: Lighting
+Material: brightdust004
+ Defer: Low
+ Texture: Images/New/nebula004.png
+RenderMode: Atmosphere
+ FlagOff: ZWrite
+FlagOn: Clamp
+ FlagOff: Lighting 
+Material: brightdust005
+ Defer: Low
+ Texture: Images/New/nebula005.png
+RenderMode: Atmosphere
+ FlagOff: ZWrite
+FlagOn: Clamp
+ FlagOff: Lighting 
+Material: brightdust006
+ Defer: Low
+ Texture: Images/New/nebula006.png
+RenderMode: Atmosphere
+ FlagOff: ZWrite
+FlagOn: Clamp
+ FlagOff: Lighting 
+Material: brightdust007
+ Defer: Low
+ Texture: Images/New/nebula007.png
+RenderMode: Atmosphere
+ FlagOff: ZWrite
+FlagOn: Clamp
+ FlagOff: Lighting 
+Material: brightdust008
+ Defer: Low
+ Texture: Images/New/nebula008.png
+RenderMode: Atmosphere
+ FlagOff: ZWrite
+FlagOn: Clamp
+ FlagOff: Lighting 
+Material: brightdust009
+ Defer: Low
+ Texture: Images/New/nebula009.png
+RenderMode: Atmosphere
+ FlagOff: ZWrite
+FlagOn: Clamp
+ FlagOff: Lighting 
+Material: brightdust010
+ Defer: Low
+ Texture: Images/New/nebula010.png
+RenderMode: Atmosphere
+ FlagOff: ZWrite
+FlagOn: Clamp
+  FlagOff: Lighting
+Material: brightdust011
+ Defer: Low
+ Texture: Images/New/nebula011.png
+RenderMode: Atmosphere
+ FlagOff: ZWrite
+FlagOn: Clamp
+ FlagOff: Lighting 
+Material: brightdust012
+ Defer: Low
+ Texture: Images/New/nebula012.png
+RenderMode: Atmosphere
+ FlagOff: ZWrite
+FlagOn: Clamp
+  FlagOff: Lighting
+Material: brightdust013
+ Defer: Low
+ Texture: Images/New/nebula013.png
+RenderMode: Atmosphere
+ FlagOff: ZWrite
+FlagOn: Clamp
+ FlagOff: Lighting 
+Material: brightdust014
+ Defer: Low
+ Texture: Images/New/nebula014.png
+RenderMode: Atmosphere
+ FlagOff: ZWrite
+FlagOn: Clamp
+ FlagOff: Lighting 
+Material: brightdust015
+ Defer: Low
+ Texture: Images/New/nebula015.png
+RenderMode: Atmosphere
+ FlagOff: ZWrite
+FlagOn: Clamp
+  FlagOff: Lighting
+Material: brightdust016
+ Defer: Low
+ Texture: Images/New/nebula016.png
+RenderMode: Atmosphere
+ FlagOff: ZWrite
+FlagOn: Clamp
+  FlagOff: Lighting
+Material: brightdust017
+ Defer: Low
+ Texture: Images/New/nebula017.png
+RenderMode: Atmosphere
+ FlagOff: ZWrite
+FlagOn: Clamp
+  FlagOff: Lighting
+Material: brightdust018
+ Defer: Low
+ Texture: Images/New/nebula018.png
+RenderMode: Atmosphere
+ FlagOff: ZWrite
+FlagOn: Clamp
+  FlagOff: Lighting
+Material: brightdust019
+ Defer: Low
+ Texture: Images/New/nebula019.png
+RenderMode: Atmosphere
+ FlagOff: ZWrite
+FlagOn: Clamp
+  FlagOff: Lighting
+Material: brightdust020
+ Defer: Low
+ Texture: Images/New/darkdust020.png
+RenderMode: Atmosphere
+ FlagOff: ZWrite
+FlagOn: Clamp
+  FlagOff: Lighting
+Material: brightdust021
+ Defer: Low
+ Texture: Images/New/darkdust021.png
+RenderMode: Atmosphere
+ FlagOff: ZWrite
+FlagOn: Clamp
+  FlagOff: Lighting
+Material: brightdust022
+ Defer: Low
+ Texture: Images/New/darkdust022.png
+RenderMode: Atmosphere
+ FlagOff: ZWrite
+FlagOn: Clamp
+  FlagOff: Lighting
+Material: brightdust023
+ Defer: Low
+ Texture: Images/New/darkdust023.png
+RenderMode: Atmosphere
+ FlagOff: ZWrite
+FlagOn: Clamp
+  FlagOff: Lighting
+  
+  /////////////////////////////bright dust end
+ //////////////////////////////dark dust start
+ 
+ 
+Material: darkdust000
+ Defer: Low
+ Texture: Images/New/darkdust000.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ FlagOff: Lighting
+Material: darkdust001
+ Defer: Low
+ Texture: Images/New/darkdust001.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ FlagOff: Lighting 
+Material: darkdust002
+ Defer: Low
+ Texture: Images/New/darkdust002.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ FlagOff: Lighting 
+Material: darkdust003
+ Defer: Low
+ Texture: Images/New/darkdust003.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ FlagOff: Lighting
+Material: darkdust004
+ Defer: Low
+ Texture: Images/New/darkdust004.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ FlagOff: Lighting 
+Material: darkdust005
+ Defer: Low
+ Texture: Images/New/darkdust005.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ FlagOff: Lighting 
+Material: darkdust006
+ Defer: Low
+ Texture: Images/New/darkdust006.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ FlagOff: Lighting 
+Material: darkdust007
+ Defer: Low
+ Texture: Images/New/darkdust007.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ FlagOff: Lighting 
+Material: darkdust008
+ Defer: Low
+ Texture: Images/New/darkdust008.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ FlagOff: Lighting 
+Material: darkdust009
+ Defer: Low
+ Texture: Images/New/darkdust009.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ FlagOff: Lighting 
+Material: darkdust010
+ Defer: Low
+ Texture: Images/New/darkdust010.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOn: Clamp
+  FlagOff: Lighting
+Material: darkdust011
+ Defer: Low
+ Texture: Images/New/darkdust011.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ FlagOff: Lighting 
+Material: darkdust012
+ Defer: Low
+ Texture: Images/New/darkdust012.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOn: Clamp
+  FlagOff: Lighting
+Material: darkdust013
+ Defer: Low
+ Texture: Images/New/darkdust013.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ FlagOff: Lighting 
+Material: darkdust014
+ Defer: Low
+ Texture: Images/New/darkdust014.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOn: Clamp
+ FlagOff: Lighting 
+Material: darkdust015
+ Defer: Low
+ Texture: Images/New/darkdust015.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOn: Clamp
+  FlagOff: Lighting
+Material: darkdust016
+ Defer: Low
+ Texture: Images/New/darkdust016.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOn: Clamp
+  FlagOff: Lighting
+Material: darkdust017
+ Defer: Low
+ Texture: Images/New/darkdust017.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOn: Clamp
+  FlagOff: Lighting
+Material: darkdust018
+ Defer: Low
+ Texture: Images/New/darkdust018.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOn: Clamp
+  FlagOff: Lighting
+Material: darkdust019
+ Defer: Low
+ Texture: Images/New/darkdust019.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOn: Clamp
+  FlagOff: Lighting
+Material: darkdust020
+ Defer: Low
+ Texture: Images/New/darkdust020.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOn: Clamp
+  FlagOff: Lighting
+Material: darkdust021
+ Defer: Low
+ Texture: Images/New/darkdust021.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOn: Clamp
+  FlagOff: Lighting
+Material: darkdust022
+ Defer: Low
+ Texture: Images/New/darkdust022.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOn: Clamp
+  FlagOff: Lighting
+Material: darkdust023
+ Defer: Low
+ Texture: Images/New/darkdust023.png
+ RenderMode: Alpha
+ FlagOff: ZWrite
+ FlagOn: Clamp
+  FlagOff: Lighting
+
+ //////////////////////////////dark dust end
+  
+
+//////////////////////////////new stuff end//////////////////////////////
+
 Material: rangeRing
 #if shaders & !intel
  RenderMode: RangeRing

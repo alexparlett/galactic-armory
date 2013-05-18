@@ -1028,16 +1028,16 @@
 
 
 #RS_MAINT_ROOT_NAME: Maintenance
-#RS_MAINT_ROOT_DESC: Servicing and repairing ships and stations in space.\n#c:green##tab:8#Improves: Repair Rate, Self-Repair Rate
+#RS_MAINT_ROOT_DESC: Servicing and repairing ships and stations in space.\n#c:green##tab:8#Improves: Repair Rate
 
-#RS_MAINT_COST_NAME: Low-Cost Repairs
-#RS_MAINT_COST_DESC: Increasing the efficiency of repairs by reducing the amount of parts needed to fully repair an object.\n#c:green##tab:8#Improves: Repair Cost
+#RS_MAINT_MAKESHIFT_NAME: Makeshift Repairs
+#RS_MAINT_MAKESHIFT_DESC: Increasing the efficiency of self-repair by reducing the complexity of ship systems to make repairs easier.\n#c:green##tab:8#Improves: Self-Repair Rate
 
-#RS_MAINT_POWER_NAME: Simplified Repair Process
-#RS_MAINT_POWER_DESC: This field aims to reduce the amount of electrical power needed for repairs.\n#c:green##tab:8#Improves: Power Usage
+#RS_MAINT_RECYCLING_NAME: Recycling
+#RS_MAINT_RECYCLING_DESC: The act of re-using old parts and materials to minimize cost.\n#c:green##tab:8#Improves: Repair Cost, Salvaging Rate, Retrofit Cost
 
 #RS_MAINT_MANAGEMENT_NAME: Servicing Management
-#RS_MAINT_MANAGEMENT_DESC: Efficient Management reduces the amount of supervision needed for complete repairs.\n#c:green##tab:8#Improves: Control Requirement
+#RS_MAINT_MANAGEMENT_DESC: Efficient Management reduces the amount of supervision and power needed for complete repairs.\n#c:green##tab:8#Improves: Control Requirement, Power Usage
 
 
 #RS_SHIPCON_ROOT_NAME: Ship Construction
@@ -4060,3 +4060,695 @@ lightly but decided upon with care.
 
 //AI Tools
 #TT_EMP_SELECT: Select Empire: 
+
+
+
+///////////////////////////////////////////////////////////// New by Jon START///////////////////////////////////////////////////////////////////////////
+
+// Brown Dwarfs Y/T/L
+
+#ST_YDwarf9_Name: #c:f00#Y9-Class Brown Dwarf#c#
+#ST_YDwarf8_Name: #c:f00#Y8-Class Brown Dwarf#c#
+#ST_YDwarf7_Name: #c:f00#Y7-Class Brown Dwarf#c#
+#ST_YDwarf6_Name: #c:f00#Y6-Class Brown Dwarf#c#
+#ST_YDwarf5_Name: #c:f00#Y5-Class Brown Dwarf#c#
+#ST_YDwarf4_Name: #c:f00#Y4-Class Brown Dwarf#c#
+#ST_YDwarf3_Name: #c:f00#Y3-Class Brown Dwarf#c#
+#ST_YDwarf2_Name: #c:f00#Y2-Class Brown Dwarf#c#
+#ST_YDwarf1_Name: #c:f00#Y1-Class Brown Dwarf#c#
+#ST_YDwarf0_Name: #c:f00#Y0-Class Brown Dwarf#c#
+
+#ST_TDwarf9_Name: #c:f00#T9-Class Brown Dwarf#c#
+#ST_TDwarf8_Name: #c:f00#T8-Class Brown Dwarf#c#
+#ST_TDwarf7_Name: #c:f00#T7-Class Brown Dwarf#c#
+#ST_TDwarf6_Name: #c:f00#T6-Class Brown Dwarf#c#
+#ST_TDwarf5_Name: #c:f00#T5-Class Brown Dwarf#c#
+#ST_TDwarf4_Name: #c:f00#T4-Class Brown Dwarf#c#
+#ST_TDwarf3_Name: #c:f00#T3-Class Brown Dwarf#c#
+#ST_TDwarf2_Name: #c:f00#T2-Class Brown Dwarf#c#
+#ST_TDwarf1_Name: #c:f00#T1-Class Brown Dwarf#c#
+#ST_TDwarf0_Name: #c:f00#T0-Class Brown Dwarf#c#
+
+#ST_LDwarf9_Name: #c:f00#L9-Class Brown Dwarf#c#
+#ST_LDwarf8_Name: #c:f00#L8-Class Brown Dwarf#c#
+#ST_LDwarf7_Name: #c:f00#L7-Class Brown Dwarf#c#
+#ST_LDwarf6_Name: #c:f00#L6-Class Brown Dwarf#c#
+#ST_LDwarf5_Name: #c:f00#L5-Class Brown Dwarf#c#
+#ST_LDwarf4_Name: #c:f00#L4-Class Brown Dwarf#c#
+#ST_LDwarf3_Name: #c:f00#L3-Class Brown Dwarf#c#
+#ST_LDwarf2_Name: #c:f00#L2-Class Brown Dwarf#c#
+#ST_LDwarf1_Name: #c:f00#L1-Class Brown Dwarf#c#
+#ST_LDwarf0_Name: #c:f00#L0-Class Brown Dwarf#c#
+
+// C-Class, sub type of Reds, hotter start and end, comes dwarf and giant branch
+
+#ST_CHypergiant9_Name: #c:f00#C9-Class Red Hypergiant#c#
+#ST_CHypergiant8_Name: #c:f00#C8-Class Red Hypergiant#c#
+#ST_CHypergiant7_Name: #c:f00#C7-Class Red Hypergiant#c#
+#ST_CHypergiant6_Name: #c:f00#C6-Class Red Hypergiant#c#
+#ST_CHypergiant5_Name: #c:f00#C5-Class Red Hypergiant#c#
+#ST_CHypergiant4_Name: #c:f00#C4-Class Red Hypergiant#c#
+#ST_CHypergiant3_Name: #c:f00#C3-Class Red Hypergiant#c#
+#ST_CHypergiant2_Name: #c:f00#C2-Class Red Hypergiant#c#
+#ST_CHypergiant1_Name: #c:f00#C1-Class Red Hypergiant#c#
+#ST_CHypergiant0_Name: #c:f00#C0-Class Red Hypergiant#c#
+
+#ST_CSupergiant9_Name: #c:f00#C9-Class Red Supergiant#c#
+#ST_CSupergiant8_Name: #c:f00#C8-Class Red Supergiant#c#
+#ST_CSupergiant7_Name: #c:f00#C7-Class Red Supergiant#c#
+#ST_CSupergiant6_Name: #c:f00#C6-Class Red Supergiant#c#
+#ST_CSupergiant5_Name: #c:f00#C5-Class Red Supergiant#c#
+#ST_CSupergiant4_Name: #c:f00#C4-Class Red Supergiant#c#
+#ST_CSupergiant3_Name: #c:f00#C3-Class Red Supergiant#c#
+#ST_CSupergiant2_Name: #c:f00#C2-Class Red Supergiant#c#
+#ST_CSupergiant1_Name: #c:f00#C1-Class Red Supergiant#c#
+#ST_CSupergiant0_Name: #c:f00#C0-Class Red Supergiant#c#
+
+#ST_CBrightgiant9_Name: #c:f00#C9-Class Red Brightgiant#c#
+#ST_CBrightgiant8_Name: #c:f00#C8-Class Red Brightgiant#c#
+#ST_CBrightgiant7_Name: #c:f00#C7-Class Red Brightgiant#c#
+#ST_CBrightgiant6_Name: #c:f00#C6-Class Red Brightgiant#c#
+#ST_CBrightgiant5_Name: #c:f00#C5-Class Red Brightgiant#c#
+#ST_CBrightgiant4_Name: #c:f00#C4-Class Red Brightgiant#c#
+#ST_CBrightgiant3_Name: #c:f00#C3-Class Red Brightgiant#c#
+#ST_CBrightgiant2_Name: #c:f00#C2-Class Red Brightgiant#c#
+#ST_CBrightgiant1_Name: #c:f00#C1-Class Red Brightgiant#c#
+#ST_CBrightgiant0_Name: #c:f00#C0-Class Red Brightgiant#c#
+
+#ST_CGiant9_Name: #c:f00#C9-Class Red Giant#c#
+#ST_CGiant8_Name: #c:f00#C8-Class Red Giant#c#
+#ST_CGiant7_Name: #c:f00#C7-Class Red Giant#c#
+#ST_CGiant6_Name: #c:f00#C6-Class Red Giant#c#
+#ST_CGiant5_Name: #c:f00#C5-Class Red Giant#c#
+#ST_CGiant4_Name: #c:f00#C4-Class Red Giant#c#
+#ST_CGiant3_Name: #c:f00#C3-Class Red Giant#c#
+#ST_CGiant2_Name: #c:f00#C2-Class Red Giant#c#
+#ST_CGiant1_Name: #c:f00#C1-Class Red Giant#c#
+#ST_CGiant0_Name: #c:f00#C0-Class Red Giant#c#
+
+#ST_CDwarf9_Name: #c:f00#C9-Class Red Dwarf#c#
+#ST_CDwarf8_Name: #c:f00#C8-Class Red Dwarf#c#
+#ST_CDwarf7_Name: #c:f00#C7-Class Red Dwarf#c#
+#ST_CDwarf6_Name: #c:f00#C6-Class Red Dwarf#c#
+#ST_CDwarf5_Name: #c:f00#C5-Class Red Dwarf#c#
+#ST_CDwarf4_Name: #c:f00#C4-Class Red Dwarf#c#
+#ST_CDwarf3_Name: #c:f00#C3-Class Red Dwarf#c#
+#ST_CDwarf2_Name: #c:f00#C2-Class Red Dwarf#c#
+#ST_CDwarf1_Name: #c:f00#C1-Class Red Dwarf#c#
+#ST_CDwarf0_Name: #c:f00#C0-Class Red Dwarf#c#
+
+// S-Class, sub type of Reds, hotter start and end, comes dwarf and giant branch
+
+#ST_SHypergiant9_Name: #c:f00#S9-Class Hypergiant#c#
+#ST_SHypergiant8_Name: #c:f00#S8-Class Hypergiant#c#
+#ST_SHypergiant7_Name: #c:f00#S7-Class Hypergiant#c#
+#ST_SHypergiant6_Name: #c:f00#S6-Class Hypergiant#c#
+#ST_SHypergiant5_Name: #c:f00#S5-Class Hypergiant#c#
+#ST_SHypergiant4_Name: #c:f00#S4-Class Hypergiant#c#
+#ST_SHypergiant3_Name: #c:f00#S3-Class Hypergiant#c#
+#ST_SHypergiant2_Name: #c:f00#S2-Class Hypergiant#c#
+#ST_SHypergiant1_Name: #c:f00#S1-Class Hypergiant#c#
+#ST_SHypergiant0_Name: #c:f00#S0-Class Hypergiant#c#
+
+#ST_SSupergiant9_Name: #c:f00#S9-Class Red Supergiant#c#
+#ST_SSupergiant8_Name: #c:f00#S8-Class Red Supergiant#c#
+#ST_SSupergiant7_Name: #c:f00#S7-Class Red Supergiant#c#
+#ST_SSupergiant6_Name: #c:f00#S6-Class Red Supergiant#c#
+#ST_SSupergiant5_Name: #c:f00#S5-Class Red Supergiant#c#
+#ST_SSupergiant4_Name: #c:f00#S4-Class Red Supergiant#c#
+#ST_SSupergiant3_Name: #c:f00#S3-Class Red Supergiant#c#
+#ST_SSupergiant2_Name: #c:f00#S2-Class Red Supergiant#c#
+#ST_SSupergiant1_Name: #c:f00#S1-Class Red Supergiant#c#
+#ST_SSupergiant0_Name: #c:f00#S0-Class Red Supergiant#c#
+
+#ST_SBrightgiant9_Name: #c:f00#S9-Class Red Brightgiant#c#
+#ST_SBrightgiant8_Name: #c:f00#S8-Class Red Brightgiant#c#
+#ST_SBrightgiant7_Name: #c:f00#S7-Class Red Brightgiant#c#
+#ST_SBrightgiant6_Name: #c:f00#S6-Class Red Brightgiant#c#
+#ST_SBrightgiant5_Name: #c:f00#S5-Class Red Brightgiant#c#
+#ST_SBrightgiant4_Name: #c:f00#S4-Class Red Brightgiant#c#
+#ST_SBrightgiant3_Name: #c:f00#S3-Class Red Brightgiant#c#
+#ST_SBrightgiant2_Name: #c:f00#S2-Class Red Brightgiant#c#
+#ST_SBrightgiant1_Name: #c:f00#S1-Class Red Brightgiant#c#
+#ST_SBrightgiant0_Name: #c:f00#S0-Class Red Brightgiant#c#
+
+#ST_SGiant9_Name: #c:f00#S9-Class Red Giant#c#
+#ST_SGiant8_Name: #c:f00#S8-Class Red Giant#c#
+#ST_SGiant7_Name: #c:f00#S7-Class Red Giant#c#
+#ST_SGiant6_Name: #c:f00#S6-Class Red Giant#c#
+#ST_SGiant5_Name: #c:f00#S5-Class Red Giant#c#
+#ST_SGiant4_Name: #c:f00#S4-Class Red Giant#c#
+#ST_SGiant3_Name: #c:f00#S3-Class Red Giant#c#
+#ST_SGiant2_Name: #c:f00#S2-Class Red Giant#c#
+#ST_SGiant1_Name: #c:f00#S1-Class Red Giant#c#
+#ST_SGiant0_Name: #c:f00#S0-Class Red Giant#c#
+
+#ST_SDwarf9_Name: #c:f00#S9-Class Red Dwarf#c#
+#ST_SDwarf8_Name: #c:f00#S8-Class Red Dwarf#c#
+#ST_SDwarf7_Name: #c:f00#S7-Class Red Dwarf#c#
+#ST_SDwarf6_Name: #c:f00#S6-Class Red Dwarf#c#
+#ST_SDwarf5_Name: #c:f00#S5-Class Red Dwarf#c#
+#ST_SDwarf4_Name: #c:f00#S4-Class Red Dwarf#c#
+#ST_SDwarf3_Name: #c:f00#S3-Class Red Dwarf#c#
+#ST_SDwarf2_Name: #c:f00#S2-Class Red Dwarf#c#
+#ST_SDwarf1_Name: #c:f00#S1-Class Red Dwarf#c#
+#ST_SDwarf0_Name: #c:f00#S0-Class Red Dwarf#c#
+
+//M-Class Red/Brown dwarf transition. Red giant Branch
+
+#ST_MHypergiant9_Name: #c:f00#M9-Class Hypergiant#c#
+#ST_MHypergiant8_Name: #c:f00#M8-Class Hypergiant#c#
+#ST_MHypergiant7_Name: #c:f00#M7-Class Hypergiant#c#
+#ST_MHypergiant6_Name: #c:f00#M6-Class Hypergiant#c#
+#ST_MHypergiant5_Name: #c:f00#M5-Class Hypergiant#c#
+#ST_MHypergiant4_Name: #c:f00#M4-Class Hypergiant#c#
+#ST_MHypergiant3_Name: #c:f00#M3-Class Hypergiant#c#
+#ST_MHypergiant2_Name: #c:f00#M2-Class Hypergiant#c#
+#ST_MHypergiant1_Name: #c:f00#M1-Class Hypergiant#c#
+#ST_MHypergiant0_Name: #c:f00#M0-Class Hypergiant#c#
+
+#ST_MSupergiant9_Name: #c:f00#M9-Class Red Supergiant#c#
+#ST_MSupergiant8_Name: #c:f00#M8-Class Red Supergiant#c#
+#ST_MSupergiant7_Name: #c:f00#M7-Class Red Supergiant#c#
+#ST_MSupergiant6_Name: #c:f00#M6-Class Red Supergiant#c#
+#ST_MSupergiant5_Name: #c:f00#M5-Class Red Supergiant#c#
+#ST_MSupergiant4_Name: #c:f00#M4-Class Red Supergiant#c#
+#ST_MSupergiant3_Name: #c:f00#M3-Class Red Supergiant#c#
+#ST_MSupergiant2_Name: #c:f00#M2-Class Red Supergiant#c#
+#ST_MSupergiant1_Name: #c:f00#M1-Class Red Supergiant#c#
+#ST_MSupergiant0_Name: #c:f00#M0-Class Red Supergiant#c#
+
+#ST_MBrightgiant9_Name: #c:f00#M9-Class Red Brightgiant#c#
+#ST_MBrightgiant8_Name: #c:f00#M8-Class Red Brightgiant#c#
+#ST_MBrightgiant7_Name: #c:f00#M7-Class Red Brightgiant#c#
+#ST_MBrightgiant6_Name: #c:f00#M6-Class Red Brightgiant#c#
+#ST_MBrightgiant5_Name: #c:f00#M5-Class Red Brightgiant#c#
+#ST_MBrightgiant4_Name: #c:f00#M4-Class Red Brightgiant#c#
+#ST_MBrightgiant3_Name: #c:f00#M3-Class Red Brightgiant#c#
+#ST_MBrightgiant2_Name: #c:f00#M2-Class Red Brightgiant#c#
+#ST_MBrightgiant1_Name: #c:f00#M1-Class Red Brightgiant#c#
+#ST_MBrightgiant0_Name: #c:f00#M0-Class Red Brightgiant#c#
+
+#ST_MGiant9_Name: #c:f00#M9-Class Red Giant#c#
+#ST_MGiant8_Name: #c:f00#M8-Class Red Giant#c#
+#ST_MGiant7_Name: #c:f00#M7-Class Red Giant#c#
+#ST_MGiant6_Name: #c:f00#M6-Class Red Giant#c#
+#ST_MGiant5_Name: #c:f00#M5-Class Red Giant#c#
+#ST_MGiant4_Name: #c:f00#M4-Class Red Giant#c#
+#ST_MGiant3_Name: #c:f00#M3-Class Red Giant#c#
+#ST_MGiant2_Name: #c:f00#M2-Class Red Giant#c#
+#ST_MGiant1_Name: #c:f00#M1-Class Red Giant#c#
+#ST_MGiant0_Name: #c:f00#M0-Class Red Giant#c#
+
+#ST_MDwarf9_Name: #c:f00#M9-Class Brown Dwarf#c#
+#ST_MDwarf8_Name: #c:f00#M8-Class Brown Dwarf#c#
+#ST_MDwarf7_Name: #c:f00#M7-Class Brown Dwarf#c#
+#ST_MDwarf6_Name: #c:f00#M6-Class Red Dwarf#c#
+#ST_MDwarf5_Name: #c:f00#M5-Class Red Dwarf#c#
+#ST_MDwarf4_Name: #c:f00#M4-Class Red Dwarf#c#
+#ST_MDwarf3_Name: #c:f00#M3-Class Red Dwarf#c#
+#ST_MDwarf2_Name: #c:f00#M2-Class Red Dwarf#c#
+#ST_MDwarf1_Name: #c:f00#M1-Class Red Dwarf#c#
+#ST_MDwarf0_Name: #c:f00#M0-Class Red Dwarf#c#
+
+// Orange msq and subg with a late start!! Red/Yellow Giant branch transition
+
+#ST_KHypergiant9_Name: #c:f00#K9-Class Red Hypergiant#c#
+#ST_KHypergiant8_Name: #c:f00#K8-Class Red Hypergiant#c#
+#ST_KHypergiant7_Name: #c:f00#K7-Class Red Hypergiant#c#
+#ST_KHypergiant6_Name: #c:f00#K6-Class Yellow Hypergiant#c#
+#ST_KHypergiant5_Name: #c:f00#K5-Class Yellow Hypergiant#c#
+#ST_KHypergiant4_Name: #c:f00#K4-Class Yellow Hypergiant#c#
+#ST_KHypergiant3_Name: #c:f00#K3-Class Yellow Hypergiant#c#
+#ST_KHypergiant2_Name: #c:f00#K2-Class Yellow Hypergiant#c#
+#ST_KHypergiant1_Name: #c:f00#K1-Class Yellow Hypergiant#c#
+#ST_KHypergiant0_Name: #c:f00#K0-Class Yellow Hypergiant#c#
+
+#ST_KSupergiant9_Name: #c:f00#K9-Class Red Supergiant#c#
+#ST_KSupergiant8_Name: #c:f00#K8-Class Red Supergiant#c#
+#ST_KSupergiant7_Name: #c:f00#K7-Class Red Supergiant#c#
+#ST_KSupergiant6_Name: #c:f00#K6-Class Yellow Supergiant#c#
+#ST_KSupergiant5_Name: #c:f00#K5-Class Yellow Supergiant#c#
+#ST_KSupergiant4_Name: #c:f00#K4-Class Yellow Supergiant#c#
+#ST_KSupergiant3_Name: #c:f00#K3-Class Yellow Supergiant#c#
+#ST_KSupergiant2_Name: #c:f00#K2-Class Yellow Supergiant#c#
+#ST_KSupergiant1_Name: #c:f00#K1-Class Yellow Supergiant#c#
+#ST_KSupergiant0_Name: #c:f00#K0-Class Yellow Supergiant#c#
+
+#ST_KBrightgiant9_Name: #c:f00#K9-Class Red Brightgiant#c#
+#ST_KBrightgiant8_Name: #c:f00#K8-Class Red Brightgiant#c#
+#ST_KBrightgiant7_Name: #c:f00#K7-Class Red Brightgiant#c#
+#ST_KBrightgiant6_Name: #c:f00#K6-Class Yellow Brightgiant#c#
+#ST_KBrightgiant5_Name: #c:f00#K5-Class Yellow Brightgiant#c#
+#ST_KBrightgiant4_Name: #c:f00#K4-Class Yellow Brightgiant#c#
+#ST_KBrightgiant3_Name: #c:f00#K3-Class Yellow Brightgiant#c#
+#ST_KBrightgiant2_Name: #c:f00#K2-Class Yellow Brightgiant#c#
+#ST_KBrightgiant1_Name: #c:f00#K1-Class Yellow Brightgiant#c#
+#ST_KBrightgiant0_Name: #c:f00#K0-Class Yellow Brightgiant#c#
+
+#ST_KGiant9_Name: #c:f00#K9-Class Red Giant#c#
+#ST_KGiant8_Name: #c:f00#K8-Class Red Giant#c#
+#ST_KGiant7_Name: #c:f00#K7-Class Red Giant#c#
+#ST_KGiant6_Name: #c:f00#K6-Class Yellow Giant#c#
+#ST_KGiant5_Name: #c:f00#K5-Class Yellow Giant#c#
+#ST_KGiant4_Name: #c:f00#K4-Class Yellow Giant#c#
+#ST_KGiant3_Name: #c:f00#K3-Class Yellow Giant#c#
+#ST_KGiant2_Name: #c:f00#K2-Class Yellow Giant#c#
+#ST_KGiant1_Name: #c:f00#K1-Class Yellow Giant#c#
+#ST_KGiant0_Name: #c:f00#K0-Class Yellow Giant#c#
+
+#ST_KMSQ9_Name: #c:f00#K9-Class Orange Main-Sequence#c#
+#ST_KMSQ8_Name: #c:f00#K8-Class Orange Main-Sequence#c#
+#ST_KMSQ7_Name: #c:f00#K7-Class Orange Main-Sequence#c#
+#ST_KMSQ6_Name: #c:f00#K6-Class Orange Main-Sequence#c#
+#ST_KMSQ5_Name: #c:f00#K5-Class Orange Main-Sequence#c#
+#ST_KMSQ4_Name: #c:f00#K4-Class Orange Main-Sequence#c#
+#ST_KMSQ3_Name: #c:f00#K3-Class Orange Main-Sequence#c#
+#ST_KMSQ2_Name: #c:f00#K2-Class Orange Main-Sequence#c#
+#ST_KMSQ1_Name: #c:f00#K1-Class Orange Main-Sequence#c#
+#ST_KMSQ0_Name: #c:f00#K0-Class Orange Main-Sequence#c#
+
+// note orange subgiants start hotter than msq, don't have colder variants.
+#ST_KSubgiant6_Name: #c:f00#K6-Class Orange Sub-Giant#c#
+#ST_KSubgiant5_Name: #c:f00#K5-Class Orange Sub-Giant#c#
+#ST_KSubgiant4_Name: #c:f00#K4-Class Orange Sub-Giant#c#
+#ST_KSubgiant3_Name: #c:f00#K3-Class Orange Sub-Giant#c#
+#ST_KSubgiant2_Name: #c:f00#K2-Class Orange Sub-Giant#c#
+#ST_KSubgiant1_Name: #c:f00#K1-Class Orange Sub-Giant#c#
+#ST_KSubgiant0_Name: #c:f00#K0-Class Orange Sub-Giant#c#
+
+//G- Yellow G Branch and msq/subg
+
+#ST_GHypergiant9_Name: #c:f00#G9-Class Yellow Hypergiant#c#
+#ST_GHypergiant8_Name: #c:f00#G8-Class Yellow Hypergiant#c#
+#ST_GHypergiant7_Name: #c:f00#G7-Class Yellow Hypergiant#c#
+#ST_GHypergiant6_Name: #c:f00#G6-Class Yellow Hypergiant#c#
+#ST_GHypergiant5_Name: #c:f00#G5-Class Yellow Hypergiant#c#
+#ST_GHypergiant4_Name: #c:f00#G4-Class Yellow Hypergiant#c#
+#ST_GHypergiant3_Name: #c:f00#G3-Class Yellow Hypergiant#c#
+#ST_GHypergiant2_Name: #c:f00#G2-Class Yellow Hypergiant#c#
+#ST_GHypergiant1_Name: #c:f00#G1-Class Yellow Hypergiant#c#
+#ST_GHypergiant0_Name: #c:f00#G0-Class Yellow Hypergiant#c#
+
+#ST_GSupergiant9_Name: #c:f00#G9-Class Yellow Supergiant#c#
+#ST_GSupergiant8_Name: #c:f00#G8-Class Yellow Supergiant#c#
+#ST_GSupergiant7_Name: #c:f00#G7-Class Yellow Supergiant#c#
+#ST_GSupergiant6_Name: #c:f00#G6-Class Yellow Supergiant#c#
+#ST_GSupergiant5_Name: #c:f00#G5-Class Yellow Supergiant#c#
+#ST_GSupergiant4_Name: #c:f00#G4-Class Yellow Supergiant#c#
+#ST_GSupergiant3_Name: #c:f00#G3-Class Yellow Supergiant#c#
+#ST_GSupergiant2_Name: #c:f00#G2-Class Yellow Supergiant#c#
+#ST_GSupergiant1_Name: #c:f00#G1-Class Yellow Supergiant#c#
+#ST_GSupergiant0_Name: #c:f00#G0-Class Yellow Supergiant#c#
+
+#ST_GBrightgiant9_Name: #c:f00#G9-Class Yellow Brightgiant#c#
+#ST_GBrightgiant8_Name: #c:f00#G8-Class Yellow Brightgiant#c#
+#ST_GBrightgiant7_Name: #c:f00#G7-Class Yellow Brightgiant#c#
+#ST_GBrightgiant6_Name: #c:f00#G6-Class Yellow Brightgiant#c#
+#ST_GBrightgiant5_Name: #c:f00#G5-Class Yellow Brightgiant#c#
+#ST_GBrightgiant4_Name: #c:f00#G4-Class Yellow Brightgiant#c#
+#ST_GBrightgiant3_Name: #c:f00#G3-Class Yellow Brightgiant#c#
+#ST_GBrightgiant2_Name: #c:f00#G2-Class Yellow Brightgiant#c#
+#ST_GBrightgiant1_Name: #c:f00#G1-Class Yellow Brightgiant#c#
+#ST_GBrightgiant0_Name: #c:f00#G0-Class Yellow Brightgiant#c#
+
+#ST_GGiant9_Name: #c:f00#G9-Class Yellow Giant#c#
+#ST_GGiant8_Name: #c:f00#G8-Class Yellow Giant#c#
+#ST_GGiant7_Name: #c:f00#G7-Class Yellow Giant#c#
+#ST_GGiant6_Name: #c:f00#G6-Class Yellow Giant#c#
+#ST_GGiant5_Name: #c:f00#G5-Class Yellow Giant#c#
+#ST_GGiant4_Name: #c:f00#G4-Class Yellow Giant#c#
+#ST_GGiant3_Name: #c:f00#G3-Class Yellow Giant#c#
+#ST_GGiant2_Name: #c:f00#G2-Class Yellow Giant#c#
+#ST_GGiant1_Name: #c:f00#G1-Class Yellow Giant#c#
+#ST_GGiant0_Name: #c:f00#G0-Class Yellow Giant#c#
+
+#ST_GMSQ9_Name: #c:f00#G9-Class Yellow Main-Sequence#c#
+#ST_GMSQ8_Name: #c:f00#G8-Class Yellow Main-Sequence#c#
+#ST_GMSQ7_Name: #c:f00#G7-Class Yellow Main-Sequence#c#
+#ST_GMSQ6_Name: #c:f00#G6-Class Yellow Main-Sequence#c#
+#ST_GMSQ5_Name: #c:f00#G5-Class Yellow Main-Sequence#c#
+#ST_GMSQ4_Name: #c:f00#G4-Class Yellow Main-Sequence#c#
+#ST_GMSQ3_Name: #c:f00#G3-Class Yellow Main-Sequence#c#
+#ST_GMSQ2_Name: #c:f00#G2-Class Yellow Main-Sequence#c#
+#ST_GMSQ1_Name: #c:f00#G1-Class Yellow Main-Sequence#c#
+#ST_GMSQ0_Name: #c:f00#G0-Class Yellow Main-Sequence#c#
+
+#ST_GSubgiant9_Name: #c:f00#G9-Class Yellow Sub-Giant#c#
+#ST_GSubgiant8_Name: #c:f00#G8-Class Yellow Sub-Giant#c#
+#ST_GSubgiant7_Name: #c:f00#G7-Class Yellow Sub-Giant#c#
+#ST_GSubgiant6_Name: #c:f00#G6-Class Yellow Sub-Giant#c#
+#ST_GSubgiant5_Name: #c:f00#G5-Class Yellow Sub-Giant#c#
+#ST_GSubgiant4_Name: #c:f00#G4-Class Yellow Sub-Giant#c#
+#ST_GSubgiant3_Name: #c:f00#G3-Class Yellow Sub-Giant#c#
+#ST_GSubgiant2_Name: #c:f00#G2-Class Yellow Sub-Giant#c#
+#ST_GSubgiant1_Name: #c:f00#G1-Class Yellow Sub-Giant#c#
+#ST_GSubgiant0_Name: #c:f00#G0-Class Yellow Sub-Giant#c#
+
+//F-Class Yellow Giant Branch and White-Yellow msq subgiant
+
+#ST_FHypergiant9_Name: #c:f00#F9-Class Yellow Hypergiant#c#
+#ST_FHypergiant8_Name: #c:f00#F8-Class Yellow Hypergiant#c#
+#ST_FHypergiant7_Name: #c:f00#F7-Class Yellow Hypergiant#c#
+#ST_FHypergiant6_Name: #c:f00#F6-Class Yellow Hypergiant#c#
+#ST_FHypergiant5_Name: #c:f00#F5-Class Yellow Hypergiant#c#
+#ST_FHypergiant4_Name: #c:f00#F4-Class Yellow Hypergiant#c#
+#ST_FHypergiant3_Name: #c:f00#F3-Class Yellow Hypergiant#c#
+#ST_FHypergiant2_Name: #c:f00#F2-Class Yellow Hypergiant#c#
+#ST_FHypergiant1_Name: #c:f00#F1-Class Yellow Hypergiant#c#
+#ST_FHypergiant0_Name: #c:f00#F0-Class Yellow Hypergiant#c#
+
+#ST_FSupergiant9_Name: #c:f00#F9-Class Yellow Supergiant#c#
+#ST_FSupergiant8_Name: #c:f00#F8-Class Yellow Supergiant#c#
+#ST_FSupergiant7_Name: #c:f00#F7-Class Yellow Supergiant#c#
+#ST_FSupergiant6_Name: #c:f00#F6-Class Yellow Supergiant#c#
+#ST_FSupergiant5_Name: #c:f00#F5-Class Yellow Supergiant#c#
+#ST_FSupergiant4_Name: #c:f00#F4-Class Yellow Supergiant#c#
+#ST_FSupergiant3_Name: #c:f00#F3-Class Yellow Supergiant#c#
+#ST_FSupergiant2_Name: #c:f00#F2-Class Yellow Supergiant#c#
+#ST_FSupergiant1_Name: #c:f00#F1-Class Yellow Supergiant#c#
+#ST_FSupergiant0_Name: #c:f00#F0-Class Yellow Supergiant#c#
+
+#ST_FBrightgiant9_Name: #c:f00#F9-Class Yellow Brightgiant#c#
+#ST_FBrightgiant8_Name: #c:f00#F8-Class Yellow Brightgiant#c#
+#ST_FBrightgiant7_Name: #c:f00#F7-Class Yellow Brightgiant#c#
+#ST_FBrightgiant6_Name: #c:f00#F6-Class Yellow Brightgiant#c#
+#ST_FBrightgiant5_Name: #c:f00#F5-Class Yellow Brightgiant#c#
+#ST_FBrightgiant4_Name: #c:f00#F4-Class Yellow Brightgiant#c#
+#ST_FBrightgiant3_Name: #c:f00#F3-Class Yellow Brightgiant#c#
+#ST_FBrightgiant2_Name: #c:f00#F2-Class Yellow Brightgiant#c#
+#ST_FBrightgiant1_Name: #c:f00#F1-Class Yellow Brightgiant#c#
+#ST_FBrightgiant0_Name: #c:f00#F0-Class Yellow Brightgiant#c#
+
+#ST_FGiant9_Name: #c:f00#F9-Class Yellow Giant#c#
+#ST_FGiant8_Name: #c:f00#F8-Class Yellow Giant#c#
+#ST_FGiant7_Name: #c:f00#F7-Class Yellow Giant#c#
+#ST_FGiant6_Name: #c:f00#F6-Class Yellow Giant#c#
+#ST_FGiant5_Name: #c:f00#F5-Class Yellow Giant#c#
+#ST_FGiant4_Name: #c:f00#F4-Class Yellow Giant#c#
+#ST_FGiant3_Name: #c:f00#F3-Class Yellow Giant#c#
+#ST_FGiant2_Name: #c:f00#F2-Class Yellow Giant#c#
+#ST_FGiant1_Name: #c:f00#F1-Class Yellow Giant#c#
+#ST_FGiant0_Name: #c:f00#F0-Class Yellow Giant#c#
+
+#ST_FMSQ9_Name: #c:f00#F9-Class White-Yellow Main-Sequence#c#
+#ST_FMSQ8_Name: #c:f00#F8-Class White-Yellow Main-Sequence#c#
+#ST_FMSQ7_Name: #c:f00#F7-Class White-Yellow Main-Sequence#c#
+#ST_FMSQ6_Name: #c:f00#F6-Class White-Yellow Main-Sequence#c#
+#ST_FMSQ5_Name: #c:f00#F5-Class White-Yellow Main-Sequence#c#
+#ST_FMSQ4_Name: #c:f00#F4-Class White-Yellow Main-Sequence#c#
+#ST_FMSQ3_Name: #c:f00#F3-Class White-Yellow Main-Sequence#c#
+#ST_FMSQ2_Name: #c:f00#F2-Class White-Yellow Main-Sequence#c#
+#ST_FMSQ1_Name: #c:f00#F1-Class White-Yellow Main-Sequence#c#
+#ST_FMSQ0_Name: #c:f00#F0-Class White-Yellow Main-Sequence#c#
+
+#ST_FSubgiant9_Name: #c:f00#F9-Class White-Yellow Sub-Giant#c#
+#ST_FSubgiant8_Name: #c:f00#F8-Class White-Yellow Sub-Giant#c#
+#ST_FSubgiant7_Name: #c:f00#F7-Class White-Yellow Sub-Giant#c#
+#ST_FSubgiant6_Name: #c:f00#F6-Class White-Yellow Sub-Giant#c#
+#ST_FSubgiant5_Name: #c:f00#F5-Class White-Yellow Sub-Giant#c#
+#ST_FSubgiant4_Name: #c:f00#F4-Class White-Yellow Sub-Giant#c#
+#ST_FSubgiant3_Name: #c:f00#F3-Class White-Yellow Sub-Giant#c#
+#ST_FSubgiant2_Name: #c:f00#F2-Class White-Yellow Sub-Giant#c#
+#ST_FSubgiant1_Name: #c:f00#F1-Class White-Yellow Sub-Giant#c#
+#ST_FSubgiant0_Name: #c:f00#F0-Class White-Yellow Sub-Giant#c#
+
+// A-Class white msq and subgiant Yellow AND blue Giant Branch transition
+
+
+#ST_AHypergiant9_Name: #c:f00#A9-Class Yellow Hypergiant#c#
+#ST_AHypergiant8_Name: #c:f00#A8-Class Yellow Hypergiant#c#
+#ST_AHypergiant7_Name: #c:f00#A7-Class Yellow Hypergiant#c#
+#ST_AHypergiant6_Name: #c:f00#A6-Class Blue Hypergiant#c#
+#ST_AHypergiant5_Name: #c:f00#A5-Class Blue Hypergiant#c#
+#ST_AHypergiant4_Name: #c:f00#A4-Class Blue Hypergiant#c#
+#ST_AHypergiant3_Name: #c:f00#A3-Class Blue Hypergiant#c#
+#ST_AHypergiant2_Name: #c:f00#A2-Class Blue Hypergiant#c#
+#ST_AHypergiant1_Name: #c:f00#A1-Class Blue Hypergiant#c#
+#ST_AHypergiant0_Name: #c:f00#A0-Class Blue Hypergiant#c#
+
+#ST_ASupergiant9_Name: #c:f00#A9-Class Yellow Supergiant#c#
+#ST_ASupergiant8_Name: #c:f00#A8-Class Yellow Supergiant#c#
+#ST_ASupergiant7_Name: #c:f00#A7-Class Yellow Supergiant#c#
+#ST_ASupergiant6_Name: #c:f00#A6-Class Blue Supergiant#c#
+#ST_ASupergiant5_Name: #c:f00#A5-Class Blue Supergiant#c#
+#ST_ASupergiant4_Name: #c:f00#A4-Class Blue Supergiant#c#
+#ST_ASupergiant3_Name: #c:f00#A3-Class Blue Supergiant#c#
+#ST_ASupergiant2_Name: #c:f00#A2-Class Blue Supergiant#c#
+#ST_ASupergiant1_Name: #c:f00#A1-Class Blue Supergiant#c#
+#ST_ASupergiant0_Name: #c:f00#A0-Class Blue Supergiant#c#
+
+#ST_AYellowBrightgiant9_Name: #c:f00#A9-Class Yellow Brightgiant#c#
+#ST_AYellowBrightgiant8_Name: #c:f00#A8-Class Yellow Brightgiant#c#
+#ST_AYellowBrightgiant7_Name: #c:f00#A7-Class Yellow Brightgiant#c#
+#ST_ABrightgiant6_Name: #c:f00#A6-Class Blue Brightgiant#c#
+#ST_ABrightgiant5_Name: #c:f00#A5-Class Blue Brightgiant#c#
+#ST_ABrightgiant4_Name: #c:f00#A4-Class Blue Brightgiant#c#
+#ST_ABrightgiant3_Name: #c:f00#A3-Class Blue Brightgiant#c#
+#ST_ABrightgiant2_Name: #c:f00#A2-Class Blue Brightgiant#c#
+#ST_ABrightgiant1_Name: #c:f00#A1-Class Blue Brightgiant#c#
+#ST_ABrightgiant0_Name: #c:f00#A0-Class Blue Brightgiant#c#
+
+#ST_AGiant9_Name: #c:f00#A9-Class Yellow Giant#c#
+#ST_AGiant8_Name: #c:f00#A8-Class Yellow Giant#c#
+#ST_AGiant7_Name: #c:f00#A7-Class Yellow Giant#c#
+#ST_AGiant6_Name: #c:f00#A6-Class Blue Giant#c#
+#ST_AGiant5_Name: #c:f00#A5-Class Blue Giant#c#
+#ST_AGiant4_Name: #c:f00#A4-Class Blue Giant#c#
+#ST_AGiant3_Name: #c:f00#A3-Class Blue Giant#c#
+#ST_AGiant2_Name: #c:f00#A2-Class Blue Giant#c#
+#ST_AGiant1_Name: #c:f00#A1-Class Blue Giant#c#
+#ST_AGiant0_Name: #c:f00#A0-Class Blue Giant#c#
+
+#ST_ASubgiant9_Name: #c:f00#A9-Class White Sub-Giant#c#
+#ST_ASubgiant8_Name: #c:f00#A8-Class White Sub-Giant#c#
+#ST_ASubgiant7_Name: #c:f00#A7-Class White Sub-Giant#c#
+#ST_ASubgiant6_Name: #c:f00#A6-Class White Sub-Giant#c#
+#ST_ASubgiant5_Name: #c:f00#A5-Class White Sub-Giant#c#
+#ST_ASubgiant4_Name: #c:f00#A4-Class White Sub-Giant#c#
+#ST_ASubgiant3_Name: #c:f00#A3-Class White Sub-Giant#c#
+#ST_ASubgiant2_Name: #c:f00#A2-Class White Sub-Giant#c#
+#ST_ASubgiant1_Name: #c:f00#A1-Class White Sub-Giant#c#
+#ST_ASubgiant0_Name: #c:f00#A0-Class White Sub-Giant#c#
+
+#ST_AMSQ9_Name: #c:f00#A9-Class White Main-Sequence#c#
+#ST_AMSQ8_Name: #c:f00#A8-Class White Main-Sequence#c#
+#ST_AMSQ7_Name: #c:f00#A7-Class White Main-Sequence#c#
+#ST_AMSQ6_Name: #c:f00#A6-Class White Main-Sequence#c#
+#ST_AMSQ5_Name: #c:f00#A5-Class White Main-Sequence#c#
+#ST_AMSQ4_Name: #c:f00#A4-Class White Main-Sequence#c#
+#ST_AMSQ3_Name: #c:f00#A3-Class White Main-Sequence#c#
+#ST_AMSQ2_Name: #c:f00#A2-Class White Main-Sequence#c#
+#ST_AMSQ1_Name: #c:f00#A1-Class White Main-Sequence#c#
+#ST_AMSQ0_Name: #c:f00#A0-Class White Main-Sequence#c#
+
+
+//B-Class Blue Giant Branch and blue white msq and subgiant
+
+#ST_BHypergiant9_Name: #c:f00#B9-Class Blue Hypergiant#c#
+#ST_BHypergiant8_Name: #c:f00#B8-Class Blue Hypergiant#c#
+#ST_BHypergiant7_Name: #c:f00#B7-Class Blue Hypergiant#c#
+#ST_BHypergiant6_Name: #c:f00#B6-Class Blue Hypergiant#c#
+#ST_BHypergiant5_Name: #c:f00#B5-Class Blue Hypergiant#c#
+#ST_BHypergiant4_Name: #c:f00#B4-Class Blue Hypergiant#c#
+#ST_BHypergiant3_Name: #c:f00#B3-Class Blue Hypergiant#c#
+#ST_BHypergiant2_Name: #c:f00#B2-Class Blue Hypergiant#c#
+#ST_BHypergiant1_Name: #c:f00#B1-Class Blue Hypergiant#c#
+#ST_BHypergiant0_Name: #c:f00#B0-Class Blue Hypergiant#c#
+
+#ST_BSupergiant9_Name: #c:f00#B9-Class Blue Supergiant#c#
+#ST_BSupergiant8_Name: #c:f00#B8-Class Blue Supergiant#c#
+#ST_BSupergiant7_Name: #c:f00#B7-Class Blue Supergiant#c#
+#ST_BSupergiant6_Name: #c:f00#B6-Class Blue Supergiant#c#
+#ST_BSupergiant5_Name: #c:f00#B5-Class Blue Supergiant#c#
+#ST_BSupergiant4_Name: #c:f00#B4-Class Blue Supergiant#c#
+#ST_BSupergiant3_Name: #c:f00#B3-Class Blue Supergiant#c#
+#ST_BSupergiant2_Name: #c:f00#B2-Class Blue Supergiant#c#
+#ST_BSupergiant1_Name: #c:f00#B1-Class Blue Supergiant#c#
+#ST_BSupergiant0_Name: #c:f00#B0-Class Blue Supergiant#c#
+
+#ST_BBrightgiant9_Name: #c:f00#B9-Class Blue Brightgiant#c#
+#ST_BBrightgiant8_Name: #c:f00#B8-Class Blue Brightgiant#c#
+#ST_BBrightgiant7_Name: #c:f00#B7-Class Blue Brightgiant#c#
+#ST_BBrightgiant6_Name: #c:f00#B6-Class Blue Brightgiant#c#
+#ST_BBrightgiant5_Name: #c:f00#B5-Class Blue Brightgiant#c#
+#ST_BBrightgiant4_Name: #c:f00#B4-Class Blue Brightgiant#c#
+#ST_BBrightgiant3_Name: #c:f00#B3-Class Blue Brightgiant#c#
+#ST_BBrightgiant2_Name: #c:f00#B2-Class Blue Brightgiant#c#
+#ST_BBrightgiant1_Name: #c:f00#B1-Class Blue Brightgiant#c#
+#ST_BBrightgiant0_Name: #c:f00#B0-Class Blue Brightgiant#c#
+
+#ST_BGiant9_Name: #c:f00#B9-Class Blue Giant#c#
+#ST_BGiant8_Name: #c:f00#B8-Class Blue Giant#c#
+#ST_BGiant7_Name: #c:f00#B7-Class Blue Giant#c#
+#ST_BGiant6_Name: #c:f00#B6-Class Blue Giant#c#
+#ST_BGiant5_Name: #c:f00#B5-Class Blue Giant#c#
+#ST_BGiant4_Name: #c:f00#B4-Class Blue Giant#c#
+#ST_BGiant3_Name: #c:f00#B3-Class Blue Giant#c#
+#ST_BGiant2_Name: #c:f00#B2-Class Blue Giant#c#
+#ST_BGiant1_Name: #c:f00#B1-Class Blue Giant#c#
+#ST_BGiant0_Name: #c:f00#B0-Class Blue Giant#c#
+
+#ST_BMSQ9_Name: #c:f00#B9-Class Blue-White Main-Sequence#c#
+#ST_BMSQ8_Name: #c:f00#B8-Class Blue-White Main-Sequence#c#
+#ST_BMSQ7_Name: #c:f00#B7-Class Blue-White Main-Sequence#c#
+#ST_BMSQ6_Name: #c:f00#B6-Class Blue-White Main-Sequence#c#
+#ST_BMSQ5_Name: #c:f00#B5-Class Blue-White Main-Sequence#c#
+#ST_BMSQ4_Name: #c:f00#B4-Class Blue-White Main-Sequence#c#
+#ST_BMSQ3_Name: #c:f00#B3-Class Blue-White Main-Sequence#c#
+#ST_BMSQ2_Name: #c:f00#B2-Class Blue-White Main-Sequence#c#
+#ST_BMSQ1_Name: #c:f00#B1-Class Blue-White Main-Sequence#c#
+#ST_BMSQ0_Name: #c:f00#B0-Class Blue-White Main-Sequence#c#
+
+#ST_BSubgiant9_Name: #c:f00#B9-Class Blue-White Sub-Giant#c#
+#ST_BSubgiant8_Name: #c:f00#B8-Class Blue-White Sub-Giant#c#
+#ST_BSubgiant7_Name: #c:f00#B7-Class Blue-White Sub-Giant#c#
+#ST_BSubgiant6_Name: #c:f00#B6-Class Blue-White Sub-Giant#c#
+#ST_BSubgiant5_Name: #c:f00#B5-Class Blue-White Sub-Giant#c#
+#ST_BSubgiant4_Name: #c:f00#B4-Class Blue-White Sub-Giant#c#
+#ST_BSubgiant3_Name: #c:f00#B3-Class Blue-White Sub-Giant#c#
+#ST_BSubgiant2_Name: #c:f00#B2-Class Blue-White Sub-Giant#c#
+#ST_BSubgiant1_Name: #c:f00#B1-Class Blue-White Sub-Giant#c#
+#ST_BSubgiant0_Name: #c:f00#B0-Class Blue-White Sub-Giant#c#
+
+// O-Class Blue stars
+
+#ST_OHypergiant9_Name: #c:f00#O9-Class Blue Hypergiant#c#
+#ST_OHypergiant8_Name: #c:f00#O8-Class Blue Hypergiant#c#
+#ST_OHypergiant7_Name: #c:f00#O7-Class Blue Hypergiant#c#
+#ST_OHypergiant6_Name: #c:f00#O6-Class Blue Hypergiant#c#
+#ST_OHypergiant5_Name: #c:f00#O5-Class Blue Hypergiant#c#
+#ST_OHypergiant4_Name: #c:f00#O4-Class Blue Hypergiant#c#
+#ST_OHypergiant3_Name: #c:f00#O3-Class Blue Hypergiant#c#
+#ST_OHypergiant2_Name: #c:f00#O2-Class Blue Hypergiant#c#
+#ST_OHypergiant1_Name: #c:f00#O1-Class Blue Hypergiant#c#
+#ST_OHypergiant0_Name: #c:f00#O0-Class Blue Hypergiant#c#
+
+#ST_OSupergiant9_Name: #c:f00#O9-Class Blue Supergiant#c#
+#ST_OSupergiant8_Name: #c:f00#O8-Class Blue Supergiant#c#
+#ST_OSupergiant7_Name: #c:f00#O7-Class Blue Supergiant#c#
+#ST_OSupergiant6_Name: #c:f00#O6-Class Blue Supergiant#c#
+#ST_OSupergiant5_Name: #c:f00#O5-Class Blue Supergiant#c#
+#ST_OSupergiant4_Name: #c:f00#O4-Class Blue Supergiant#c#
+#ST_OSupergiant3_Name: #c:f00#O3-Class Blue Supergiant#c#
+#ST_OSupergiant2_Name: #c:f00#O2-Class Blue Supergiant#c#
+#ST_OSupergiant1_Name: #c:f00#O1-Class Blue Supergiant#c#
+#ST_OSupergiant0_Name: #c:f00#O0-Class Blue Supergiant#c#
+
+#ST_OBrightgiant9_Name: #c:f00#O9-Class Blue Brightgiant#c#
+#ST_OBrightgiant8_Name: #c:f00#O8-Class Blue Brightgiant#c#
+#ST_OBrightgiant7_Name: #c:f00#O7-Class Blue Brightgiant#c#
+#ST_OBrightgiant6_Name: #c:f00#O6-Class Blue Brightgiant#c#
+#ST_OBrightgiant5_Name: #c:f00#O5-Class Blue Brightgiant#c#
+#ST_OBrightgiant4_Name: #c:f00#O4-Class Blue Brightgiant#c#
+#ST_OBrightgiant3_Name: #c:f00#O3-Class Blue Brightgiant#c#
+#ST_OBrightgiant2_Name: #c:f00#O2-Class Blue Brightgiant#c#
+#ST_OBrightgiant1_Name: #c:f00#O1-Class Blue Brightgiant#c#
+#ST_OBrightgiant0_Name: #c:f00#O0-Class Blue Brightgiant#c#
+
+#ST_OGiant9_Name: #c:f00#O9-Class Blue Giant#c#
+#ST_OGiant8_Name: #c:f00#O8-Class Blue Giant#c#
+#ST_OGiant7_Name: #c:f00#O7-Class Blue Giant#c#
+#ST_OGiant6_Name: #c:f00#O6-Class Blue Giant#c#
+#ST_OGiant5_Name: #c:f00#O5-Class Blue Giant#c#
+#ST_OGiant4_Name: #c:f00#O4-Class Blue Giant#c#
+#ST_OGiant3_Name: #c:f00#O3-Class Blue Giant#c#
+#ST_OGiant2_Name: #c:f00#O2-Class Blue Giant#c#
+#ST_OGiant1_Name: #c:f00#O1-Class Blue Giant#c#
+#ST_OGiant0_Name: #c:f00#O0-Class Blue Giant#c#
+
+#ST_OSubgiant9_Name: #c:f00#O9-Class Blue Sub-Giant#c#
+#ST_OSubgiant8_Name: #c:f00#O8-Class Blue Sub-Giant#c#
+#ST_OSubgiant7_Name: #c:f00#O7-Class Blue Sub-Giant#c#
+#ST_OSubgiant6_Name: #c:f00#O6-Class Blue Sub-Giant#c#
+#ST_OSubgiant5_Name: #c:f00#O5-Class Blue Sub-Giant#c#
+#ST_OSubgiant4_Name: #c:f00#O4-Class Blue Sub-Giant#c#
+#ST_OSubgiant3_Name: #c:f00#O3-Class Blue Sub-Giant#c#
+#ST_OSubgiant2_Name: #c:f00#O2-Class Blue Sub-Giant#c#
+#ST_OSubgiant1_Name: #c:f00#O1-Class Blue Sub-Giant#c#
+#ST_OSubgiant0_Name: #c:f00#O0-Class Blue Sub-Giant#c#
+
+#ST_OMSQ9_Name: #c:f00#O9-Class Blue Main-Sequence#c#
+#ST_OMSQ8_Name: #c:f00#O8-Class Blue Main-Sequence#c#
+#ST_OMSQ7_Name: #c:f00#O7-Class Blue Main-Sequence#c#
+#ST_OMSQ6_Name: #c:f00#O6-Class Blue Main-Sequence#c#
+#ST_OMSQ5_Name: #c:f00#O5-Class Blue Main-Sequence#c#
+#ST_OMSQ4_Name: #c:f00#O4-Class Blue Main-Sequence#c#
+#ST_OMSQ3_Name: #c:f00#O3-Class Blue Main-Sequence#c#
+#ST_OMSQ2_Name: #c:f00#O2-Class Blue Main-Sequence#c#
+#ST_OMSQ1_Name: #c:f00#O1-Class Blue Main-Sequence#c#
+#ST_OMSQ0_Name: #c:f00#O0-Class Blue Main-Sequence#c#
+
+
+//White Dwarfs, various cosmetic variables.
+
+#ST_DDAwarf9_Name: #c:f00#DA9-Class Hydrogen Black Dwarf#c#
+#ST_DDAwarf8_Name: #c:f00#DA8-Class Hydrogen White Dwarf#c#
+#ST_DDAwarf7_Name: #c:f00#DA7-Class Hydrogen White Dwarf#c#
+#ST_DDAwarf6_Name: #c:f00#DA6-Class Hydrogen White Dwarf#c#
+#ST_DDAwarf5_Name: #c:f00#DA5-Class Hydrogen White Dwarf#c#
+#ST_DDAwarf4_Name: #c:f00#DA4-Class Hydrogen White Dwarf#c#
+#ST_DDAwarf3_Name: #c:f00#DA3-Class Hydrogen White Dwarf#c#
+#ST_DDAwarf2_Name: #c:f00#DA2-Class Hydrogen White Dwarf#c#
+#ST_DDAwarf1_Name: #c:f00#DA1-Class Hydrogen White Dwarf#c#
+#ST_DDAwarf0_Name: #c:f00#DA0-Class Hydrogen White Dwarf#c#
+
+#ST_DDPwarf9_Name: #c:f00#DP9-Class Polarized Black Dwarf#c#
+#ST_DDPwarf8_Name: #c:f00#DP8-Class Polarized White Dwarf#c#
+#ST_DDPwarf7_Name: #c:f00#DP7-Class Polarized White Dwarf#c#
+#ST_DDPwarf6_Name: #c:f00#DP6-Class Polarized White Dwarf#c#
+#ST_DDPwarf5_Name: #c:f00#DP5-Class Polarized White Dwarf#c#
+#ST_DDPwarf4_Name: #c:f00#DP4-Class Polarized White Dwarf#c#
+#ST_DDPwarf3_Name: #c:f00#DP3-Class Polarized White Dwarf#c#
+#ST_DDPwarf2_Name: #c:f00#DP2-Class Polarized White Dwarf#c#
+#ST_DDPwarf1_Name: #c:f00#DP1-Class Polarized White Dwarf#c#
+#ST_DDPwarf0_Name: #c:f00#DP0-Class Polarized White Dwarf#c#
+
+#ST_DDQwarf9_Name: #c:f00#DQ9-Class Carbon Black Dwarf#c#
+#ST_DDQwarf8_Name: #c:f00#DQ8-Class Carbon White Dwarf#c#
+#ST_DDQwarf7_Name: #c:f00#DQ7-Class Carbon White Dwarf#c#
+#ST_DDQwarf6_Name: #c:f00#DQ6-Class Carbon White Dwarf#c#
+#ST_DDQwarf5_Name: #c:f00#DQ5-Class Carbon White Dwarf#c#
+#ST_DDQwarf4_Name: #c:f00#DQ4-Class Carbon White Dwarf#c#
+#ST_DDQwarf3_Name: #c:f00#DQ3-Class Carbon White Dwarf#c#
+#ST_DDQwarf2_Name: #c:f00#DQ2-Class Carbon White Dwarf#c#
+#ST_DDQwarf1_Name: #c:f00#DQ1-Class Carbon White Dwarf#c#
+#ST_DDQwarf0_Name: #c:f00#DQ0-Class Carbon White Dwarf#c#
+
+#ST_DDZwarf9_Name: #c:f00#DZ9-Class Metalic Black Dwarf#c#
+#ST_DDZwarf8_Name: #c:f00#DZ8-Class Metalic White Dwarf#c#
+#ST_DDZwarf7_Name: #c:f00#DZ7-Class Metalic White Dwarf#c#
+#ST_DDZwarf6_Name: #c:f00#DZ6-Class Metalic White Dwarf#c#
+#ST_DDZwarf5_Name: #c:f00#DZ5-Class Metalic White Dwarf#c#
+#ST_DDZwarf4_Name: #c:f00#DZ4-Class Metalic White Dwarf#c#
+#ST_DDZwarf3_Name: #c:f00#DZ3-Class Metalic White Dwarf#c#
+#ST_DDZwarf2_Name: #c:f00#DZ2-Class Metalic White Dwarf#c#
+#ST_DDZwarf1_Name: #c:f00#DZ1-Class Metalic White Dwarf#c#
+#ST_DDZwarf0_Name: #c:f00#DZ0-Class Metalic White Dwarf#c#
+
+#ST_DDBwarf9_Name: #c:f00#DB9-Class Helium Black Dwarf#c#
+#ST_DDBwarf8_Name: #c:f00#DB8-Class Helium White Dwarf#c#
+#ST_DDBwarf7_Name: #c:f00#DB7-Class Helium White Dwarf#c#
+#ST_DDBwarf6_Name: #c:f00#DB6-Class Helium White Dwarf#c#
+#ST_DDBwarf5_Name: #c:f00#DB5-Class Helium White Dwarf#c#
+#ST_DDBwarf4_Name: #c:f00#DB4-Class Helium White Dwarf#c#
+#ST_DDBwarf3_Name: #c:f00#DB3-Class Helium White Dwarf#c#
+#ST_DDBwarf2_Name: #c:f00#DB2-Class Helium White Dwarf#c#
+#ST_DDBwarf1_Name: #c:f00#DB1-Class Helium White Dwarf#c#
+#ST_DDBwarf0_Name: #c:f00#DB0-Class Helium White Dwarf#c#
+
+#ST_BSS_Name: #c:f00#BSS-Class Blue Straggler Super-Hot Merged Binary#c#
+
+ #ST_Testclass0_Name: #c:f00#Testclass0#c#
+ #ST_Testclass1_Name: #c:f00#TestclassI#c#
+ #ST_Testclass2_Name: #c:f00#TestclassII#c#
+ #ST_Testclass3_Name: #c:f00#TestclassIII#c#
+ #ST_Testclass4_Name: #c:f00#TestclassIV#c#
+ 
+ //Dwarf Planet Types
+#PT_DRock: Gaian Dwarf Planet
+#PT_DDesert: Arean Dwarf Planet
+#PT_DIce: Tundral Dwarf Planet
+#PT_DLava: Hephaestian Dwarf Planet
+
+///////////////////////////////////////////////////////////// New by Jon END ///////////////////////////////////////////////////////////////////////////

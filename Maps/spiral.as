@@ -10,6 +10,7 @@ void makeMap(Galaxy@ Glx) {
 	
 	uint sysCount = getGameSetting("SYSTEM_COUNT",150);
 	float rad, theta;
+//	float maxRad = sqrt(sysCount) * getGameSetting("MAP_SYSTEM_SPACING", 3000.f) * orbitRadiusFactor / 70.f; //Magic number = old base setting
 	float maxRad = sqrt(sysCount) * getGameSetting("MAP_SYSTEM_SPACING", 3000.f) * orbitRadiusFactor / 70.f; //Magic number = old base setting
 	float maxHgt = maxRad / 4.f;
 	if(getGameSetting("MAP_FLATTEN", 0) == 1)
@@ -20,7 +21,8 @@ void makeMap(Galaxy@ Glx) {
 	
 	uint sysIndex = 0;
 	if(sysCount >= 50) {
-		minRad = makeQuasar(Glx, vector(0,0,0), sqrt(float(sysCount) / 50.f)) + (12.f * orbitRadiusFactor);
+//		minRad = makeQuasar(Glx, vector(0,0,0), sqrt(float(sysCount) / 500.f)) + (12.f * orbitRadiusFactor);
+		minRad = makeQuasar(Glx, vector(0,0,0), sqrt(float(sysCount) / 500.f)) + maxRad / 3.f;
 		++sysIndex;
 	}
 	

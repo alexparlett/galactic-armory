@@ -29,7 +29,7 @@ System: PlanetLaser
 	
 	MassLevel: Techs.Materials_Lightweight.Level As Level
 	HPLevel: Techs.Materials_Struct.Level As Level
-	DamageLevel: Techs.BeamEnergy_Root.Level
+	DamageLevel: Techs.BeamEnergy_Root.Level As Level
 	RangeLevel: Techs.BeamEnergy_Focus.Level As Level
 	WaveLevel: Techs.BeamEnergy_Wavelength.Level As Level
 	
@@ -43,7 +43,7 @@ System: PlanetLaser
 	Costs: Metals[180 * Size * pow(COST_INC_CRV, Level)], Electronics[50 * Size * pow(COST_INC_CRV, Level)], AdvParts[50 * Size * pow(COST_INC_CRV, Level)]
 	Complexity: 1.5 * STRUCT_COMPLX_MULT
 	
-	vDamage: 100* Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT
+	vDamage: 100 * Size * (1 + (DamageLevel * GA_TECH_INCREASE)) * GAME_DAMAGE_MULT
 	vDelay:(4 + (sqrt(Size) / 5)) / (1 + (0.05 * PowerLevel))
 	vDeviation: 0.1
 	vDuration: 3
@@ -72,7 +72,7 @@ System: Laser
 	Level: Techs.BeamEnergy_Root.Level
 	
 	MassLevel: Techs.Materials_Lightweight.Level As Level
-	DamageLevel: Techs.BeamEnergy_Root.Level
+	DamageLevel: Techs.BeamEnergy_Root.Level As Level
 	RangeLevel: Techs.BeamEnergy_Focus.Level As Level
 	PowerLevel: Techs.BeamEnergy_Efficiency.Level As Level
 	WaveLevel: Techs.BeamEnergy_Wavelength.Level As Level

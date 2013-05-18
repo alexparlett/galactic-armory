@@ -22,7 +22,7 @@ uint gateSystems = 0;
 
 // Descriptors
 Oddity_Desc comet_desc, asteroid_desc;
-Planet_Desc plDesc;
+Planet_Desc plDesc, dplDesc;
 System_Desc sysDesc;
 Star_Desc starDesc;
 Orbit_Desc orbDesc;
@@ -32,6 +32,10 @@ int[] NormalTypes;
 int[] WarmTypes;
 int[] LavaTypes;
 int[] GasTypes;
+int[] DColdTypes;
+int[] DNormalTypes;
+int[] DWarmTypes;
+int[] DLavaTypes;
 
 void setOrbitDesc(Orbit_Desc& orb) {
 	orbDesc.set(orb);
@@ -59,6 +63,10 @@ void initPlanetTypes() {
 	initPlanetType(WarmTypes, "desert");
 	initPlanetType(LavaTypes, "lava");
 	initPlanetType(GasTypes, "gas");
+	initPlanetType(DColdTypes, "dwarfice");
+	initPlanetType(DNormalTypes, "dwarfterran");
+	initPlanetType(DWarmTypes, "dwarfdesert");
+	initPlanetType(DLavaTypes, "dwarflava");
 }
 
 void setMakeOddities(bool make) {
@@ -143,4 +151,21 @@ System@ makeSupernova(Galaxy@ glx, vector pos) {
 float makeQuasar(Galaxy@ glx, vector pos, float sizeFactor) {
 	return RS_makeQuasar(glx, pos, sizeFactor);
 }
+Star@ makeGlobularCluster(System@ sys, vector pos, uint gcNum, uint gcCount, float sizeFactor, float rad) {
+	return RS_makeGlobularCluster(sys, pos, gcNum, gcCount, sizeFactor, rad);
+}
 
+Star@ makeGlobularStar(System@ sys, vector pos, uint gcNum, uint gcCount, float sizeFactor, float rad) {
+	return RS_makeGlobularStar(sys, pos, gcNum, gcCount, sizeFactor, rad);
+}
+
+void makeRandomAsteroidNew(System@ sys, uint rocks, float starRad) {
+	RS_makeRandomAsteroidNew(sys, rocks, starRad);
+}
+Planet@ makeRandomDwarfPlanet(System@ sys, uint dplNum, uint dplCount) {
+	return RS_makeRandomDwarfPlanet(sys, dplNum, dplCount);
+
+}
+Planet@ makeDwarfPlanet(System@ sys, uint dplNum, uint dplCount) {
+	return RS_makeDwarfPlanet(sys, dplNum, dplCount);
+}

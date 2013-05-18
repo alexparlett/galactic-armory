@@ -20,12 +20,6 @@
 //			This typically involves analyzing the situation, and giving orders to objects to fit the situation
 //			As well as adjusting empire settings, such as the current research.
 
-import void init_pirate_ai() from "pirate_ai";
-import void prep_pirate_ai_defaults(Empire@ emp) from "pirate_ai";
-
-import void init_remnant_ai() from "remnant_ai";
-import void prep_remnant_ai_defaults(Empire@ emp) from "remnant_ai";
-
 
 #include "/include/empire_lib.as"
 
@@ -41,14 +35,6 @@ void registerEmpireData(Empire@ emp) {
 	if(!initialized) {
 		loadDefaults(false);
 		
-		if(getGameSetting("MAP_PIRATES", 1.f) > 0.5f) {
-			init_pirate_ai();
-		}
-		
-		if(getGameSetting("MAP_SPECIAL_SYSTEMS", 1.f) > 0.5f) {
-			init_remnant_ai();
-		}
-		
 		initialized = true;
 	}
 	
@@ -57,12 +43,10 @@ void registerEmpireData(Empire@ emp) {
 			if(emp.ID == -2) {
 				print("Registering pirate AI for " + emp.getName());
 				emp.regScriptData("pirate_ai", "PirateAIData");
-				prep_pirate_ai_defaults(emp);
 			}
 			else if(emp.ID == -3) {
 				print("Registering remnant AI for " + emp.getName());
 				emp.regScriptData("remnant_ai", "RemnantAIData");
-				prep_remnant_ai_defaults(emp);
 			}		
 		}
 		else {
