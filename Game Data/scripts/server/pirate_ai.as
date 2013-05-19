@@ -18,6 +18,7 @@ class RaidManager {
 class ResourceManager {
 	
 	float credits;
+	float materials;
 	
 	ResourceManager(Region@ region) {
 	}
@@ -39,18 +40,48 @@ class SystemMonitor {
 	
 	float economicValue;
 	float militaryStrength;
-	float inhabitedPlanets;
+	int inhabitedPlanets;
 	
 	SystemMonitor(System@ sys) {
+		this.sys = sys;
+		
+		economicValue = 0.0f;
+		militaryStrength = 0.0f
+		
+		inhabitedPlanets = 0;
 	}
 	
 	SystemMonitor(XMLReader@ xml) {
+		uint uid = s_to_i(xml.getAttributeValue("uid"));
+		@sys = getObjectByID(uid).toSystem();
+		
+		economicValue = s_to_f(xml.getAttributeValue("ec"));
+		militaryStrength = s_to_f(xml.getAttributeValue("ml"));
+		
+		inhabitedPlanets = s_to_i(xml.getAttributeValue("in"));
 	}
 	
-	void update(Empire@ emp, float tick) {
+	void update(Empire@ emp, float time) {
+		inhabitedPlanets = getColonizedPlanets();
 	}
 	
 	void save(XMLWriter@ xml) {
+	}
+	
+	int getColonizedPlanets() {
+		int totalPlanets = 0;
+		
+		uint empCnt = getEmpireCount();
+		for (uint i = 0; i < empCnt; ++i) {
+			Empire@ emp = getEmpire(i);
+			if (!emp.isValid() || emp.ID < 0) {
+				continue;
+			}
+
+			totalPlanets += obj.getStat(emp, "planets");
+		}
+
+		return totalPlanets;
 	}
 };
 
@@ -76,7 +107,7 @@ class Region {
 		lastBaseTime = 0.0f;
 		asteroidBase = -1;
 
-		minTimeSinceLastBase = multiplier * 60.0f * 60.0f;
+		minTimeSinceLastBase = multiplier * 60.0f * 5.0f;
 	}
 	
 	Region(PirateAIData@ data, XMLReader@ xml) {
