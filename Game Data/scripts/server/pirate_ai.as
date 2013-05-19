@@ -36,7 +36,6 @@ class ResourceManager {
 class SystemMonitor {
 
 	System@ sys;
-	Empire@ owner;
 	
 	float economicValue;
 	float militaryStrength;
@@ -61,15 +60,10 @@ class SystemMonitor {
 		inhabitedPlanets = s_to_i(xml.getAttributeValue("in"));
 	}
 	
-	void update(Empire@ emp, float time) {
-		inhabitedPlanets = getColonizedPlanets();
-	}
-	
-	void save(XMLWriter@ xml) {
-	}
-	
-	int getColonizedPlanets() {
-		int totalPlanets = 0;
+	void update() {
+		inhabitedPlanets = 0;
+		economicValue = 0.0f;
+		militaryStrength = 0.0f;
 		
 		uint empCnt = getEmpireCount();
 		for (uint i = 0; i < empCnt; ++i) {
@@ -78,11 +72,20 @@ class SystemMonitor {
 				continue;
 			}
 
-			totalPlanets += obj.getStat(emp, "planets");
-		}
-
-		return totalPlanets;
+			inhabitedPlanets += sys.toObject().getPlanets(emp);
+			economicValue += sys.toObject().getCivStrength(emp);
+			militaryStrength += sys.toObject().getStrength(emp);
+		}		
 	}
+	
+	float getSystemValue() {
+		return (economicValue / militaryStrength);
+	}
+	
+	void save(XMLWriter@ xml) {
+		xml.addElement("sys",true,"uid",i_to_s(sys.toObject().uid),"ec",f_to_s(economicValue),"ml",f_to_s(militaryStrength),"in",i_to_s(inhabitedPlanets));
+	}
+	
 };
 
 class Region {
@@ -132,13 +135,8 @@ class Region {
 						resMan = ResourceManager(this,xml);
 					}
 					else if(name == "base") {
-						if(xml.hasAttribute("uid")) {
-							asteroidBase = s_to_i(xml.getAttributeValue("uid"));
-						}
-
-						if(xml.hasAttribute("time")) {
-							lastBaseTime = s_to_f(xml.getAttributeValue("time"));
-						}
+						asteroidBase = s_to_i(xml.getAttributeValue("uid"));
+						lastBaseTime = s_to_f(xml.getAttributeValue("time"));
 					}
 				break;
 			}
@@ -161,7 +159,7 @@ class Region {
 
 	void update(PirateAIData@ data, Empire@ emp, float time) {		
 		for(uint i = 0; i < systems.length(); ++i) {
-			systems[i].update(emp,time);
+			systems[i].update();
 		}
 		
 		resMan.update(this,emp,time);
@@ -184,6 +182,22 @@ class Region {
 	}
 	
 	void save(XMLWriter@ xml) {
+		xml.writeElement("rgn",false);
+		
+		if(systems.length() > 0) {
+			xml.writeElement("stms",false);
+			for(uint i = 0; i < systems.length(); ++i) {
+				systems[i].save(xml);
+			}
+			xml.closeTag("stms");
+		}
+		
+		raidMan.save(xml);
+		resMan.save(xml);
+		
+		xml.writeElement("base",true,"uid",i_to_s(asteroidBase),"time",f_to_s(lastBaseTime));
+		
+		xml.closeTag("rgn");
 	}
 	
 	void addSystemMonitor(System@ sys) {
@@ -238,46 +252,12 @@ class PirateAIData {
 			string@ name = xml.getNodeName();
 			switch(xml.getNodeType()) {
 				case XN_Element:
-					if(name == "vars") {
-						loadVariables(xml);
-					}
-					else if(name == "dsgns") {
+					if(name == "dsgns") {
 						loadDesigns(xml);
 					}
 					else if(name == "rgns") {
 						loadRegions(xml);
 					}
-				break;
-			}
-		}
-	}
-
-	void save(XMLWriter@ xml) {
-	}
-	
-	void onDiplomaticMessage(Empire@ emp, Empire@ from, DiploMsg@ msg) {
-	}
-
-	void tick(Empire@ emp, float time) {
-		if(!regionsInitialized) {
-			createRegions();
-		}
-		
-		for(uint i = 0; i < regions.length(); ++i) {
-			regions[i].update(this,emp,time);
-		}
-		
-		resMan.update(this,emp,time);
-	}
-	
-	void loadVariables(XMLReader@ xml) {
-		while(xml.advance()) {
-			string@ name = xml.getNodeName();
-			if(xml.getNodeType() == XN_Element) {
-				string@ value = xml.getAttributeValue("v");
-				break;
-			}
-			else if(xml.getNodeType() == XN_Element_End && name == "vars") {
 				break;
 			}
 		}
@@ -323,8 +303,44 @@ class PirateAIData {
 				break;
 			}
 		}
+	}	
+
+	void save(XMLWriter@ xml) {
+		xml.createHeader();
+		
+		if(shipDesigns.length() > 0) {
+			xml.writeElement("dsgns",false);
+			for(uint i = 0; i < shipDesigns.length(); ++i) {
+				ShipDesign@ design = shipDesigns[i];
+				xml.addElement("d", true, "n", design.className, "g", i_to_s(design.goalID));				
+			}
+			xml.closeTag("dsgns");
+		}
+		
+		if(regions.length() > 0) {
+			xml.writeElement("rgns",false);
+			for(uint j = 0; j < regions.length(); ++j) {
+				regions[j].save(xml);
+			}
+			xml.closeTag("rgns");
+		}
 	}
 	
+	void onDiplomaticMessage(Empire@ emp, Empire@ from, DiploMsg@ msg) {
+	}
+
+	void tick(Empire@ emp, float time) {
+		if(!regionsInitialized) {
+			createRegions();
+		}
+		
+		for(uint i = 0; i < regions.length(); ++i) {
+			regions[i].update(this,emp,time);
+		}
+		
+		resMan.update(this,emp,time);
+	}
+		
 	void createRegions() {
 		float left = 0.0f, right = 0.0f, top = 0.0f, bottom = 0.0f;
 		float width, height;
