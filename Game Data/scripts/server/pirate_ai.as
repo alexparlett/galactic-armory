@@ -1,17 +1,191 @@
 #include "/include/empire_lib.as"
 
-class RaidManager {
+class TrackedShip {
+	HulledObj@ ship;
+	System@ targ;
 	
-	RaidManager(Region@ region) {
+	bool isRetreating;
+	
+	TrackedShip(HulledObj@ obj, System@ target) {
+		@ship = @obj;
+		@targ = @target;
+		
+		isRetreating = false;
 	}
 	
-	RaidManager(Region@ region, XMLReader@ xml) {
-	}
-	
-	void update(PirateAIData@ data, Region@ region, Empire@ emp, float time) {
+	TrackedShip(XMLReader@ xml, System@ target) {
+		@ship = getObjectByID(s_to_i(xml.getAttributeValue("obj"))).toHulledObj();
+		@targ = @target;
+		
+		isRetreating = xml.getAttributeValue("ret") == "true";
 	}
 	
 	void save(XMLWriter@ xml) {
+		xml.addElement("ship",true,"obj",i_to_s(ship.toObject().uid),"ret",isRetreating ? "true":"false");
+	}
+	
+	void retreat(Region@ region) {
+		isRetreating = true;
+	}
+
+	bool retreated() {
+		if(ship.toObject().getCurrentSystem() != targ) {
+			return true;
+		}
+		return false;
+	}
+};
+
+class Raid {
+	
+	TrackedShip@[] ships;
+	System@ target;
+	
+	float checkTimer;
+	float strengthRatio;
+	float timeLeft;
+	
+	uint shipsPerCheck;
+	uint lastShipIndex;
+	
+	Raid(System@ sys, float duration) {
+		strengthRatio = 1.0f;
+		timeLeft = duration;
+		checkTimer = 0.0f;
+		shipsPerCheck = 10;
+		
+		timeLeft = duration;
+		lastShipIndex = 0;
+		@target = @sys;
+	}
+	
+	Raid(XMLReader@ xml {
+		strengthRatio = 1.0f;
+		timeLeft = duration;
+		checkTimer = 0.0f;
+		shipsPerCheck = 10;
+		
+		timeLeft = s_to_f(xml.getAttributeValue("time"));
+		lastShipIndex = s_to_i(xml.getAttributeValue("index"));
+		@target = getObjectByID(s_to_i(xml.getAttributeValue("targ"))).toSystem();
+		
+		uint index = 0;
+		while(xml.advance()) {
+			string@ name = xml.getNodeName();
+			if(xml.getNodeType() == XN_Element && name == "ship") {
+				TrackedShip@ ship = TrackedShip(xml,target);
+				ships.resize(index + 1);
+				@ships[index] = @ships;
+				++index;	
+			}
+			else if(xml.getNodeType() == XN_Element_End && name == "r") {
+				break;
+			}
+		}		
+	}
+	
+	void save(XMLWriter@ xml) {
+		xml.addElement("r",false,"time",f_to_s(timeLeft),"index",i_to_s(lastShipIndex),"targ",i_to_s(target.toObject().uid));
+		
+		for(uint i = 0; i < ships.length(); ++i) {
+			ships[i].save(xml);
+		}
+		
+		xml.closeTag("r");
+		
+	}
+	
+	void update(Region@ region, float time) {
+		if(checkTimer <= 0.0f) {
+			if(timeLeft <= 0.0f) {
+				for(uint i = 0; i < ships.length(); ++i) {
+					if(!ships[i].isRetreating) {
+						ships[i].retreat(region);
+					}
+					else if(ships[i].retreated()) {
+						region.resMan.shipReturned(ships[i].ship);
+						ships[i].toObject().destroy(true);
+					}
+				}
+			}
+			else {
+				timeLeft -= time;
+			}	
+
+			SystemMonitor@ mon = region.getSystemMonitor(target);
+			if(ourStrength / militaryStrength < strengthRatio) {
+				for(uint i = 0; i < ships.length(); ++i) {
+					if(!ships[i].isRetreating) {
+						ships[i].retreat(region);
+					}
+				}			
+			}
+			
+			checkTimer = 200.0f;
+		}
+		else {
+			checkTimer -= time;
+		}
+	}
+};
+
+class RaidManager {
+	
+	Raid@[] raids;
+	
+	float raidInterval;
+	float raidDelay;
+	float raidDuration;
+	
+	float lastRaid;
+	
+	RaidManager(Region@ region) {
+		raidInterval = 12.0f * 60.0f / region.multiplier;
+		raidDuration = 6.0f * 60.0f * region.multiplier;
+		
+		lastRaid = 0.0f;
+	}
+	
+	RaidManager(Region@ region, XMLReader@ xml) {
+		raidInterval = 12.0f * 60.0f / region.multiplier;
+		raidDelay = 3.0f * 60.0f / region.multiplier;
+		raidDuration = 6.0f * 60.0f * region.multiplier;
+		
+		lastRaid = s_to_f(xml.getAttributeValue("lr"));
+		
+		uint index = 0;
+		while(xml.advance()) {
+			string@ name = xml.getNodeName();
+			if(xml.getNodeType() == XN_Element && name == "r") {
+				Raid@ raid = Raid(xml);
+				raids.resize(index + 1);
+				@raids[index] = @raid;
+				++index;				
+			}
+			else if(xml.getNodeType() == XN_Element_End && name == "rm") {
+				break;
+			}
+		}
+	}
+	
+	void update(PirateAIData@ data, Region@ region, Empire@ emp, float time) {
+		for(uint i = 0; i < raids.length(); ++i) {
+			raids[i].update(region,time);
+		}
+		
+		if(getGameTime() - lastRaid > raidInterval) {
+			//TODO: Add Raid Creation
+		}
+	}
+	
+	void save(XMLWriter@ xml) {
+		xml.addElement("rm",false,"lr",f_to_s(lastRaid));
+		
+		for(uint i = 0; i < raids.length(); ++i) {
+			raids[i].save(xml);
+		}
+		
+		xml.closeTag("rm");
 	}	
 };
 
@@ -19,17 +193,56 @@ class ResourceManager {
 	
 	float credits;
 	float materials;
+	float crew;
+	
+	float passiveCredits;
+	float passiveMaterials;
+	float passiveCrew;
 	
 	ResourceManager(Region@ region) {
+		credits = 0.0f;
+		materials = 0.0f;
+		crew = 0.0f;
+		
+		passiveCredits = 5.0f * region.multiplier;
+		passiveMaterials = 10.0f * region.multiplier;
+		passiveCrew = 2.5f * region.multiplier;
 	}
 	
 	ResourceManager(Region@ region, XMLReader@ xml) {
+		credits = s_to_f(xml.getAttributeValue("cr"));
+		materials = s_to_f(xml.getAttributeValue("mt"));
+		crew = s_to_f(xml.getAttributeValue("crew"));
+		
+		passiveCredits = 5.0f * region.multiplier;
+		passiveMaterials = 10.0f * region.multiplier;
+		passiveCrew = 2.5f * region.multiplier		
 	}	
 	
-	void update(Region@ region, Empire@ emp, float time) {
+	void update(float time) {
+		credits += passiveCredits * time;
+		materials += passiveMaterials * time;
+		crew += passiveCrew * time;
 	}	
 	
 	void save(XMLWriter@ xml) {
+		xml.addElement("res",false,"cr",f_to_s(credits),"mt",f_to_s(materials),"crew",f_to_s(crew));
+	}
+	
+	void shipReturned(HulledObj@ ship) {
+	}
+	
+	void shipBuilt(HulledObj@ ship) {
+	}
+	
+	void baseBuilt() {
+	}
+	
+	void baseDestroyed() {
+	}
+	
+	bool canBuildBase() {
+		return false;
 	}
 };
 
@@ -39,15 +252,20 @@ class SystemMonitor {
 	
 	float economicValue;
 	float militaryStrength;
+	float outStrength;
 	int inhabitedPlanets;
 	
-	SystemMonitor(System@ sys) {
-		this.sys = sys;
+	float checkTimer;
+	
+	SystemMonitor(System@ system) {
+		@sys = @system;
 		
 		economicValue = 0.0f;
-		militaryStrength = 0.0f
-		
+		militaryStrength = 0.0f;
 		inhabitedPlanets = 0;
+		ourStrength = 0.0f;
+		
+		checkTimer = 0.0f;
 	}
 	
 	SystemMonitor(XMLReader@ xml) {
@@ -56,26 +274,35 @@ class SystemMonitor {
 		
 		economicValue = s_to_f(xml.getAttributeValue("ec"));
 		militaryStrength = s_to_f(xml.getAttributeValue("ml"));
-		
+		outStrength = s_to_f(xml.getAttributeValue("os"));
 		inhabitedPlanets = s_to_i(xml.getAttributeValue("in"));
+		
+		checkTimer = 0.0f;
 	}
 	
-	void update() {
-		inhabitedPlanets = 0;
-		economicValue = 0.0f;
-		militaryStrength = 0.0f;
-		
-		uint empCnt = getEmpireCount();
-		for (uint i = 0; i < empCnt; ++i) {
-			Empire@ emp = getEmpire(i);
-			if (!emp.isValid() || emp.ID < 0) {
-				continue;
-			}
+	void update(float time) {
+		if(checkTimer <= 0.0f) {
+			inhabitedPlanets = 0;
+			economicValue = 0.0f;
+			militaryStrength = 0.0f;
+					
+			uint empCnt = getEmpireCount();
+			for (uint i = 0; i < empCnt; ++i) {
+				Empire@ emp = getEmpire(i);
+				if (!emp.isValid() || emp.ID < 0) {
+					continue;
+				}
 
-			inhabitedPlanets += sys.toObject().getPlanets(emp);
-			economicValue += sys.toObject().getCivStrength(emp);
-			militaryStrength += sys.toObject().getStrength(emp);
+				inhabitedPlanets += sys.toObject().getPlanets(emp);
+				economicValue += sys.toObject().getCivStrength(emp);
+				militaryStrength += sys.toObject().getStrength(emp);
+			}	
+			
+			checkTimer = 200.0f;
 		}		
+		else {
+			checkTimer -= time;
+		}
 	}
 	
 	float getSystemValue() {
@@ -83,7 +310,7 @@ class SystemMonitor {
 	}
 	
 	void save(XMLWriter@ xml) {
-		xml.addElement("sys",true,"uid",i_to_s(sys.toObject().uid),"ec",f_to_s(economicValue),"ml",f_to_s(militaryStrength),"in",i_to_s(inhabitedPlanets));
+		xml.addElement("sys",true,"uid",i_to_s(sys.toObject().uid),"ec",f_to_s(economicValue),"ml",f_to_s(militaryStrength),"in",i_to_s(inhabitedPlanets),"os",f_to_s(outStrength));
 	}
 	
 };
@@ -104,40 +331,37 @@ class Region {
 	Region(PirateAIData@ data) {
 		multiplier = data.multipler;
 		
-		resMan = ResourceManager(this);
-		raidMan = RaidManager(this);
+		@resMan = ResourceManager(this);
+		@raidMan = RaidManager(this);
 		
 		lastBaseTime = 0.0f;
-		asteroidBase = -1;
+		asteroidBase = 0;
 
-		minTimeSinceLastBase = multiplier * 60.0f * 5.0f;
+		minTimeSinceLastBase = (60.0f * 45.0f) / multiplier;
 	}
 	
 	Region(PirateAIData@ data, XMLReader@ xml) {
 		multiplier = data.multipler;
-		
-		lastBaseTime = 0.0f;
-		asteroidBase = -1;
-		
-		minTimeSinceLastBase = multiplier * 60.0f * 60.0f;
+		minTimeSinceLastBase = (60.0f * 45.0f) / multiplier;
 		
 		while(xml.advance()) {
 			string@ name = xml.getNodeName();
-			switch(xml.getNodeType()) {
-				case XN_Element:
-					if(name == "stms") {
-						loadSystemMonitors(xml);
-					}
-					else if(name == "raid") {
-						raidMan = RaidManager(this,xml);
-					}
-					else if(name == "res") {
-						resMan = ResourceManager(this,xml);
-					}
-					else if(name == "base") {
-						asteroidBase = s_to_i(xml.getAttributeValue("uid"));
-						lastBaseTime = s_to_f(xml.getAttributeValue("time"));
-					}
+			if(xml.getNodeType() == XN_Element) {
+				if(name == "stms") {
+					loadSystemMonitors(xml);
+				}
+				else if(name == "rm") {
+					@raidMan = RaidManager(this,xml);
+				}
+				else if(name == "res") {
+					@resMan = ResourceManager(this,xml);
+				}
+				else if(name == "base") {
+					asteroidBase = s_to_i(xml.getAttributeValue("uid"));
+					lastBaseTime = s_to_f(xml.getAttributeValue("time"));
+				}
+			}
+			else if(xml.getNodeType() == XN_Element_End && name == "rgn"){
 				break;
 			}
 		}
@@ -150,8 +374,11 @@ class Region {
 			if(xml.getNodeType() == XN_Element && name == "sys") {
 				SystemMonitor@ sysMon = SystemMonitor(xml);
 				systems.resize(index + 1);
-				@systems[index] = sysMon;
+				@systems[index] = @sysMon;
 				++index;
+			}
+			else if(xml.getNodeType() == XN_Element_End && name == "stms") {
+				break;
 			}
 		}
 	}
@@ -159,33 +386,35 @@ class Region {
 
 	void update(PirateAIData@ data, Empire@ emp, float time) {		
 		for(uint i = 0; i < systems.length(); ++i) {
-			systems[i].update();
+			systems[i].update(time);
 		}
 		
-		resMan.update(this,emp,time);
+		resMan.update(time);
 		
 		if(hasBaseSystem()) {
 			if(objectExists(asteroidBase)) {
 				raidMan.update(data,this,emp,time);
 			}
 			else {
-				asteroidBase = -1;
+				asteroidBase = 0;
 				lastBaseTime = getGameTime();
+				resMan.baseDestroyed();
 			}
 		}
 		else
 		{
 			float timeSince = getGameTime() - lastBaseTime;
-			if(timeSince > minTimeSinceLastBase) {
+			if(timeSince > minTimeSinceLastBase && resMan.canBuildBase()) {
+				createBaseSystem(emp);
 			}
 		}
 	}
 	
 	void save(XMLWriter@ xml) {
-		xml.writeElement("rgn",false);
+		xml.addElement("rgn",false);
 		
 		if(systems.length() > 0) {
-			xml.writeElement("stms",false);
+			xml.addElement("stms",false);
 			for(uint i = 0; i < systems.length(); ++i) {
 				systems[i].save(xml);
 			}
@@ -195,7 +424,7 @@ class Region {
 		raidMan.save(xml);
 		resMan.save(xml);
 		
-		xml.writeElement("base",true,"uid",i_to_s(asteroidBase),"time",f_to_s(lastBaseTime));
+		xml.addElement("base",true,"uid",i_to_s(asteroidBase),"time",f_to_s(lastBaseTime));
 		
 		xml.closeTag("rgn");
 	}
@@ -207,11 +436,48 @@ class Region {
 		@systems[n] = SystemMonitor(sys);
 	}	
 	
-	void createBaseSystem(Empire@ emp, System@ targ) {
+	SystemMonitor@ getSystemMonitor(System@ sys) {
+		for(uint i = 0; i < systems.length(); ++i) {
+			if(@systems[i].sys == @sys) {
+				return systems[i];
+			}
+		}
+		return null;
+	}	
+	
+	System@ getBestSystem() {
+		uint index = 0;
+		float indexStrength = 1.0f;
+		
+		for(uint i = 0; i < systems.length(); ++i) {
+			float iStrength = systems[i].inhabitedPlanets * systems[i].militaryStrength;
+			if(iStrength <= indexStrength) {
+				index = i;
+				indexStrength = iStrength;
+			}
+		}
+		
+		return systems[index].sys;
+	}	
+	
+	void createBaseSystem(Empire@ emp) {
+		System@ targ = getBestSystem();
+		
+		Planet_Desc desc;
+		Orbit_Desc orbit;
+		
+		resMan.baseBuilt();
+	}
+		
+	bool hasBaseSystem() {
+		return asteroidBase > 0;
 	}
 	
-	bool hasBaseSystem() {
-		return asteroidBase >= 0;
+	System@ getBaseSystem() {
+		if(objectExists(asteroidBase) {
+			return = getObjectByID(asteroidBase).getCurrentSystem();
+		}
+		return null;
 	}
 };
 
@@ -239,14 +505,14 @@ class PirateAIData {
 		regionsInitialized = false;
 		multipler = getGameSetting("MAP_PIRATES_MULT",1.0f);	
 		
-		resMan = ResearchManager(this);
+		@resMan = ResearchManager(this);
 	}
 
 	PirateAIData(Empire@ emp, XMLReader@ xml) {
 		regionsInitialized = false;
 		multipler = getGameSetting("MAP_PIRATES_MULT",1.0f);	
 
-		resMan = ResearchManager(this);
+		@resMan = ResearchManager(this);
 		
 		while(xml.advance()) {
 			string@ name = xml.getNodeName();
@@ -292,7 +558,7 @@ class PirateAIData {
 		uint index = 0;
 		while(xml.advance()) {
 			string@ name = xml.getNodeName();
-			if(xml.getNodeType() == XN_Element) {
+			if(xml.getNodeType() == XN_Element && name == "rgn") {
 				Region@ region = Region(this,xml);
 				regions.resize(index + 1);
 				@regions[index] = @region;
@@ -309,7 +575,7 @@ class PirateAIData {
 		xml.createHeader();
 		
 		if(shipDesigns.length() > 0) {
-			xml.writeElement("dsgns",false);
+			xml.addElement("dsgns",false);
 			for(uint i = 0; i < shipDesigns.length(); ++i) {
 				ShipDesign@ design = shipDesigns[i];
 				xml.addElement("d", true, "n", design.className, "g", i_to_s(design.goalID));				
@@ -318,7 +584,7 @@ class PirateAIData {
 		}
 		
 		if(regions.length() > 0) {
-			xml.writeElement("rgns",false);
+			xml.addElement("rgns",false);
 			for(uint j = 0; j < regions.length(); ++j) {
 				regions[j].save(xml);
 			}
@@ -397,5 +663,8 @@ class PirateAIData {
 				regions[n].addSystemMonitor(sys);
 			}
 		}
+	}
+	
+	ShipDesign@ getAffordableDesign(ResourceManager@ res) {
 	}
 };
