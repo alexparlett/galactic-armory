@@ -116,47 +116,10 @@ class Raid {
 	
 	void update(Region@ region, float time) {
 		if(checkTimer <= 0.0f) {
-			if(timeLeft <= 0.0f) {
-				for(uint i = lastShipIndex; i <= lastShipIndex + shipsPerCheck && i < ships.length(); ++i) {
-					if(!ships[i].isRetreating) {
-						ships[i].retreat(region);
-					}
-				}
-			}
-			else {
-				timeLeft -= time;
-				
-				SystemMonitor@ mon = region.getSystemMonitor(target);
-				float strRatio = mon.ourStrength / mon.militaryStrength;
-				if(strRatio < strengthRatio) {
-					for(uint i = lastShipIndex; i <= lastShipIndex + shipsPerCheck && i < ships.length(); ++i) {
-						if(!ships[i].isRetreating) {
-							ships[i].retreat(region);
-						}
-					}			
-				}				
-			}	
-			
-			uint[] rem;
-			for(uint i = lastShipIndex; i <= lastShipIndex + shipsPerCheck && i < ships.length(); ++i) {
-				if(ships[i].destroyed()) {
-					uint n = rem.length();
-					rem.resize(n+1);
-					rem[n] = i;
-				}					
-				else if(ships[i].retreated()) {
-					region.resMan.shipReturned(ships[i].ship);
-					ships[i].toObject().destroy(true);
-					
-					uint n = rem.length();
-					rem.resize(n+1);
-					rem[n] = i;
-				}				
-			}
-				
-			for(uint j = 0; j < rem.length(); ++j) {
-				ships.erase(rem[j]);
-			}
+	
+			checkTimeLeft();
+			checkStrengthRatio();
+			checkShipStatus();
 			
 			lastShipIndex += shipsPerCheck;
 			if(lastShipIndex >= ships.length()) {
@@ -170,6 +133,54 @@ class Raid {
 		}
 	}
 	
+	void checkTimeLeft() {
+		if(timeLeft <= 0.0f) {
+			for(uint i = lastShipIndex; i <= lastShipIndex + shipsPerCheck && i < ships.length(); ++i) {
+				if(!ships[i].isRetreating) {
+					ships[i].retreat(region);
+				}
+			}
+		}
+		else {
+			timeLeft -= time;
+		}
+	}
+	
+	void checkStrengthRatio() {
+		SystemMonitor@ mon = region.getSystemMonitor(target);
+		float strRatio = mon.ourStrength / mon.militaryStrength;
+		if(strRatio < strengthRatio) {
+			for(uint i = lastShipIndex; i <= lastShipIndex + shipsPerCheck && i < ships.length(); ++i) {
+				if(!ships[i].isRetreating) {
+					ships[i].retreat(region);
+				}
+			}			
+		}
+	}
+	
+	void checkShipStatus() {
+		uint[] rem;
+		for(uint i = lastShipIndex; i <= lastShipIndex + shipsPerCheck && i < ships.length(); ++i) {
+			if(ships[i].destroyed()) {
+				uint n = rem.length();
+				rem.resize(n+1);
+				rem[n] = i;
+			}					
+			else if(ships[i].retreated()) {
+				region.resMan.shipReturned(ships[i].ship);
+				ships[i].toObject().destroy(true);
+				
+				uint n = rem.length();
+				rem.resize(n+1);
+				rem[n] = i;
+			}				
+		}
+			
+		for(uint j = 0; j < rem.length(); ++j) {
+			ships.erase(rem[j]);
+		}		
+	}
+	
 	void spawnShips() {
 		
 	}	
@@ -180,7 +191,6 @@ class RaidManager {
 	Raid@[] raids;
 	
 	float raidInterval;
-	float raidDelay;
 	float raidDuration;
 	
 	float lastRaid;
@@ -194,7 +204,6 @@ class RaidManager {
 	
 	RaidManager(Region@ region, XMLReader@ xml) {
 		raidInterval = 12.0f * 60.0f / region.multiplier;
-		raidDelay = 3.0f * 60.0f / region.multiplier;
 		raidDuration = 6.0f * 60.0f * region.multiplier;
 		
 		lastRaid = s_to_f(xml.getAttributeValue("lr"));
@@ -220,7 +229,9 @@ class RaidManager {
 		}
 		
 		if(getGameTime() - lastRaid > raidInterval) {
-			//TODO: Add Raid Creation
+			if(region.resMan.canAffordRaid()) {
+				createRaid();
+			}
 		}
 	}
 	
@@ -233,6 +244,9 @@ class RaidManager {
 		
 		xml.closeTag("rm");
 	}	
+	
+	void createRaid() {
+	}
 };
 
 class ResourceManager {
