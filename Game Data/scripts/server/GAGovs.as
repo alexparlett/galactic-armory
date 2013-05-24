@@ -132,6 +132,7 @@ bool checkTrade(Planet@ pl)
 	State@ trade = obj.getState(strTrade);	
 	State@ govTrade = obj.getState(strGovTrade);
 
+	bool maxed = false;
 	if(govTrade.val == 0)    
 		govTrade.val = gameTime;
     
@@ -143,10 +144,16 @@ bool checkTrade(Planet@ pl)
 		if(req > trade.max * 10)
 			return false;
 			
+		if(req > trade.max)
+			maxed = true;
+			
 			
 		govTrade.val = gameTime;
 		govTrade.max = req;
 	}
+	
+	if(!maxed)
+		return false;
 
 	//try to get a port
 	return buildRequired(pl, port);
