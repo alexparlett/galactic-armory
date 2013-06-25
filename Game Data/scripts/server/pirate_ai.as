@@ -78,7 +78,7 @@ class Raid {
 		spawnShips();
 	}
 	
-	Raid(XMLReader@ xml {
+	Raid(XMLReader@ xml) {
 		strengthRatio = 1.0f;
 		timeLeft = duration;
 		checkTimer = 0.0f;
